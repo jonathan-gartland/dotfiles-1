@@ -1,0 +1,94 @@
+conkygooglecalendar (2.02) intrepid; urgency=low
+
+  * Now loading the template file in unicode mode to allow for the extended character set
+  * Changed option tags from <...> to [...], so <eta> now needs to be [eta] in the template to work
+  * Updated example template and README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Wed, 19 November 2008 20:50:00 +0000
+ 
+conkygooglecalendar (2.01) intrepid; urgency=low
+
+  * Added utf-8 encoding to output
+  * Added --errorlog and --infolog options to log data to a file
+  * Refactored and tidied up
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 10 November 2008 19:55:00 +0000 
+
+conkygooglecalendar (2.00) intrepid; urgency=low
+
+  * Updated for Intrepid, new version at 2.00
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 02 November 2008 15:55:00 +0000 
+ 
+conkygooglecalendar (1.10) hardy; urgency=low
+ 
+  * Updated to require a deliberate new line in any custom template for blank line separators between event output, so that output can have no blank lines if required. Templates may require updating!
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 29 October 2008 18:00:00 +0000
+ 
+conkygooglecalendar (1.09) hardy; urgency=low
+ 
+  * Updated script to work properly without a template, now --nowho option works when no template used
+  * Updated script to bring back event data for ALL calendars available, not just the default one
+  * Added --requestCalendarNames option to pick and choose which calendars event data should be returned, e.g. --requestCalendarNames="cal1;cal2;other cal". If not set all calendar events are returned
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 13 October 2008 14:20:00 +0100
+
+conkygooglecalendar (1.08) hardy; urgency=low
+ 
+  * Updated script to remove the whole line from a template based output where no data is available for the required output, this will mean all template output should be on new lines, but enables conky based formatting in the template when using execp or execpi
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 04 October 2008 13:00:00 +0100
+ 
+conkygooglecalendar (1.07) hardy; urgency=low
+ 
+  *  Updated /usr/bin shell script to handle whitespace in options
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 25 September 2008 21:15:00 +0100
+
+conkygooglecalendar (1.06) hardy; urgency=low
+ 
+  * Changed default time format locale used for output, now 24hr clock based to hopefully support all language locales
+  * Added timeformat option to allow changing the default time formatting of output, this does no support a blank setting
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 08 September 2008 19:30:00 +0100
+
+conkygooglecalendar (1.05) hardy; urgency=low
+ 
+  * Refactored code and added better info and error logging
+  * Added regex removal of trailing email address on who list, so "someone@abc.net" becomes "someone"
+  * Added --version option to display the script version and exit
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 05 September 2008 19:45:00 +0100
+ 
+conkygooglecalendar (1.04) hardy; urgency=low
+
+  * Updated the template handling code to cope better with missing data
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 26 August 2008 11:45:00 +0100
+conkygooglecalendar (1.03) hardy; urgency=low
+
+  * Events now get ignored when their end date is not effective anymore, rather than the start date
+  * Changed default for --daysahead from 1 to 7, and up'ed the default for the end date parameter of date ranged output, now up to the year 2020
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 26 August 2008 01:45:00 +0100
+conkygooglecalendar (1.02) hardy; urgency=low
+
+  * Events now get ignored when their end date is not effective anymore, rather than the start date
+  * Changed default for --daysahead from 1 to 7, and up'ed the default for the end date parameter of date ranged output, now up to the year 2020
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 24 August 2008 13:45:00 +0100
+conkygooglecalendar (1.01) hardy; urgency=low
+
+  * Added dependancy to python-gdata to ensure a working script
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 24 August 2008 13:45:00 +0100
+ 
+conkygooglecalendar (1.00) hardy; urgency=low
+
+  * Initial package
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 21 August 2008 09:45:00 +0100
+

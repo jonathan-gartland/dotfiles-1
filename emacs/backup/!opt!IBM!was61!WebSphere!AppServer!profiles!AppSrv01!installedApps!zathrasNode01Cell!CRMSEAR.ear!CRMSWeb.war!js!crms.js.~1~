@@ -1,0 +1,8 @@
+
+
+function addDDMenuOnHover( li_id )
+{
+    $('.ddmenu').singleDropMenu({parentMO: 'ddmenu-hover', childMO: 'ddchildhover'});
+    $('.ddmenu > li > a').removeClass('ddmenu-hover')
+    $('#' + li_id + ' > a').addClass('ddmenu-hover');
+}

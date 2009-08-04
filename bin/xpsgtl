@@ -1,0 +1,23 @@
+#!/bin/bash
+
+terminal="/usr/bin/gnome-terminal"
+#terminal="/usr/bin/terminator --profile Terminator "
+
+case ${1:-UnseT} in
+    UnseT) 
+	$terminal --command="$HOME/bin/xpsgtl Ask $2 $3" &
+	;;
+    Ask)
+	echo -n "ssh to what system? "
+	read h
+	if [ ${h:-''} = '' ]; then
+            h="localhost"
+	fi
+
+        $HOME/bin/xrename $h
+        /usr/bin/ssh -Y $h $2 $3
+	;;
+    *)
+	$terminal --command="/usr/bin/ssh -Y $1 $2 $3" &
+	;;
+esac

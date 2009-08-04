@@ -1,0 +1,5 @@
+{--datatype=DW --startday=1 --shortweekday}            {--datatype=DW --startday=2 --shortweekday}           {--datatype=DW --startday=3 --shortweekday}         {--datatype=DW --startday=4 --shortweekday}
+{--datatype=HT --startday=1}          {--datatype=HT --startday=2}           {--datatype=HT --startday=3}        {--datatype=HT --startday=4}
+{--datatype=LT --startday=1}          {--datatype=LT --startday=2}           {--datatype=LT --startday=3}       {--datatype=LT --startday=4}
+ {--datatype=PC --startday=1}     {--datatype=PC --startday=2}     {--datatype=PC --startday=3}
+      {--datatype=PC --startday=4}

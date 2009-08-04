@@ -1,0 +1,7 @@
+${color3}Title: ${color1}[title]
+${color3}Start Time: ${color1}[starttime]
+${color3}End Time: ${color1}[endtime]
+${color3}Location: ${color1}[location]
+${color3}Description: ${color1}[description]
+${color3}Who: ${color1}[who]
+

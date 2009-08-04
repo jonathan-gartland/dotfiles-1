@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+#if [[ -f /bin/zsh ]] ; then
+#    SHELL=/bin/zsh
+#elif [[ -f $HOME/local/bin/zsh ]] ; then
+#    SHELL=$HOME/local/bin/zsh
+#fi 
+
+if [[ $(hostname) == "whitestar.sr.unh.edu" ]] ; then
+    test -r /sw/bin/init.sh && . /sw/bin/init.sh
+    TERM=xterm-color
+    export TERM
+fi
+
+# rcc
+if [[ $(domainname) == "rcc" ]] || [[ $(domainname) == "eos" ]] ; then 
+    export SHELL 
+    umask 002
+fi

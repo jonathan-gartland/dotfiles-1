@@ -1,0 +1,173 @@
+conkyforecast (2.02) intrepid; urgency=low
+
+  * Added dutch translation files
+  * Updated translation code to fallback to english if no translation found for locale requested
+  * Added unused text arrays to aid the translation process, all translatable text will now be picked up by pygettext - thanks foppeh
+  * Updated conkyForecast.pot file, for future translation use.
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 17 November 2008 17:50:00 +0000 
+ 
+conkyforecast (2.01) intrepid; urgency=low
+
+  * Added --errorlog and --infolog options to log data to a file, and removed unnecessary --enableerrors option
+  * Refactored and tidied up
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 10 November 2008 19:50:00 +0000 
+
+conkyforecast (2.00) intrepid; urgency=low
+
+  * Updated for Intrepid, new version at 2.00
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 02 November 2008 15:50:00 +0000 
+ 
+conkyforecast (1.19) hardy; urgency=low
+
+  * Updated daylight output to always provide correct output, now using delta.seconds -> hours/minutes string
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 26 October 2008 09:55:00 +0100 
+
+conkyforecast (1.18) hardy; urgency=low
+
+  * Updated to load template file in unicode mode, so we can work with all characters
+  * Template options default to command line ones, and get overriden if set in the template
+  * location is now setup-able in the template, allowing multiple location output within one exec - thanks Nite
+  * Updated test template to use the correct brackets
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 07 October 2008 18:50:00 +0100 
+
+conkyforecast (1.17) hardy; urgency=low
+
+  * Updated script to now use "[" and "]" as template brackets rather than "{" and "}" so that the execp/execpi conky command can be used, this enables the use of $font, $color, $goto, $offset and $voffset options in the template which conky will then make adjustments for in the output!
+  * Added DL (Daylight) datatype which returns the difference in hours and minutes between sunrise and sunset
+  * Updated example files to use new template functionality with execpi in conky, as well as standard (no template) output
+  * Updated README for usage changes
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 04 October 2008 11:50:00 +0100 
+
+conkyforecast (1.16) hardy; urgency=low
+
+  * Added new BS datatype to output wind direction with strength, will require new ConkyWind fonts
+  * Updated BF output to handle VAR and calm output
+  * Updated Arrows font to output a space for VAR and calm output
+  * Added new ConkyWind, ConkyWindN and ConkyWindNESW fonts to the package - thanks to Stancho and Nite
+  * Updated example conkyrc and template to work and use ConkyWindNESW
+  * Added fontforge sfd files for Arrows and ConkyWind fonts - thanks to Stancho and Nite
+  * Added --centeredwidth option to output with spacing of designated width
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 28 September 2008 11:25:00 +0100  
+ 
+conkyforecast (1.15) hardy; urgency=low
+
+  * Updated script to be python 2.4 compliant, this time for datetime conversions....hopefully
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 14 September 2008 19:25:00 +0100  
+
+conkyforecast (1.14) hardy; urgency=low
+
+  * Updated /usr/bin shell script to handle whitespace in options
+  * removed nl language file setup config as nothing has come yet
+  * Updated script to be python 2.4 compliant, file open function not reliant on with operator now
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 14 September 2008 17:45:00 +0100  
+
+conkyforecast (1.13) hardy; urgency=low
+
+  * Used regex to extract the datetime and timezone (if applicable) from the lastupdate text
+  * VI (visibility) is now converted to miles if --imperial option used
+  * Updated convert function to provide decimal place functionality and used for VI and BR output
+  * Replaced weather.ttf with ConkyWeather.oft and updated WF output to suit, we now have day and night based font output! - thanks Stancho
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 04 September 2008 18:40:00 +0100  
+
+conkyforecast (1.12) hardy; urgency=low
+
+  * Strip out local time from last update before converting datetime for output
+  * Added version option to script which only outputs the version number of the script and exits
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 01 September 2008 00:00:00 +0100  
+  
+conkyforecast (1.11) hardy; urgency=low
+
+  * Fix to short weekday output when used in templates
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 01 September 2008 00:00:00 +0100  
+conkyforecast (1.10) hardy; urgency=low
+
+  * Fix to LU datatype code
+  * Added test conkyrc and template
+  * Updated README
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 31 August 2008 19:10:00 +0100  
+conkyforecast (1.09) hardy; urgency=low
+
+  * Updated to use cPickle library where available
+  * Added KeyError exception handler to getOutputText(), in case an unexpected word appears in the weather xml and is used as index to WeatherText dictionary (like a Wind Bearing text is used as an index for Bearing Font)
+  * Added a "VAR" key to the Bearing Font dictionary in WeatherText
+  * Fixed mixed up current and feels_like temp in current conditions
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 31 August 2008 17:30:00 +0100
+conkyforecast (1.08) hardy; urgency=low
+
+  * Moved all cached data into one pickled class per location, cache location set by CACHE_FOLDERPATH
+  * Changed DATETIME_FORMAT config option to DATE_FORMAT, which is used only for formatting dates.
+  * Added datatype LF (Last Fetch) - Displays date and time of the last fetching of weather data from the server
+  * Added datatype WA (Wind Angle) - Displays wind direction as a number (bearing)
+  * Added datatype OB (Observatory) - Displays the name of the observatory from which the weather data for given location originate.
+  * Added datatype VI (Visibility) - Displays visibility. As of now, only metric units are supported...
+  * Added datatype CO (Country) - Displays the country for the location code used
+  * Updated datatype CN (City Name), now only displays the city name, country displayed in own datatype CO
+  * Updated datatype BR (barametric reading) to output to 2 decimal places for --imperial (inches) option
+  * Added new option --minuteshide, which hides certain parts of the timestamp if it is "recent enough" (not older than the minutes specified)
+  * Template parsing was rewritten from scratch and should now be a bit more effective and handle any kind of syntax error gracefully
+  * Removed dependancy to ttf-liberation and changed example to use standard mono font
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 31 August 2008 14:45:00 +0100
+conkyforecast (1.07) hardy; urgency=low
+
+  * Added dependancy to ttf-liberation and removed excess fonts
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 20 August 2008 11:45:00 +0100
+conkyforecast (1.06) hardy; urgency=low
+
+  * Updated translation data for Romanian for the wind speed term "calm"
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 20 August 2008 11:45:00 +0100
+ 
+conkyforecast (1.05) hardy; urgency=low
+
+  * Added translation data for Romanian - thanks for the contribution vasilub1
+  * updated README
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 20 August 2008 11:45:00 +0100
+conkyforecast (1.04) hardy; urgency=low
+
+  * Updated all language po files to accomodate new bearing text and wind speed texts for script
+  * Updated last update datatype to be based on last update datetime from feed not cached file
+  * Configured script to use a ~/ based config file called .conkyForecast.config and updated README
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 20 August 2008 11:45:00 +0100
+conkyforecast (1.03) hardy; urgency=low
+
+  * Updated README doc to include help on config settings and template files. ALso added a gotchas section.
+  * Updated conditions_text to match xoap sdk and updated translation options in code
+  * Updated all language po files to accomodate new conditions text in script
+  
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 19 August 2008 15:10:00 +0100
+conkyforecast (1.02) hardy; urgency=low
+
+  * Added README doc for general help
+  * Added example conkyrc and template file, demonstrating most of the functionality
+  * Added fonts required for mono output, weather images, arrows and open logos . They are used in the example.
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 18 August 2008 23:33:00 +0100
+conkyforecast (1.01) hardy; urgency=low
+
+  * Corrected minor issue with package
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 18 August 2008 23:33:00 +0100
+conkyforecast (1.00) hardy; urgency=low
+
+  * Created first released code package
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 18 August 2008 17:33:00 +0100

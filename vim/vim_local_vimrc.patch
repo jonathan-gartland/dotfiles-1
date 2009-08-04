@@ -1,0 +1,135 @@
+Index: vim_local/vimrc
+===================================================================
+--- vim_local/vimrc	(revision 47)
++++ vim_local/vimrc	(working copy)
+@@ -91,11 +91,11 @@
+ nmap <leader>f :find<cr>
+ 
+ "Fast reloading of the .vimrc
+-map <leader>s :source ~/vim_local/vimrc<cr>
++map <leader>s :source $VIMRC<cr>
+ "Fast editing of .vimrc
+-map <leader>e :e! ~/vim_local/vimrc<cr>
++map <leader>e :e! $VIMRC<cr>
+ "When .vimrc is edited, reload it
+-autocmd! bufwritepost vimrc source ~/vim_local/vimrc
++autocmd! bufwritepost vimrc source $HOME/.vimrc
+ 
+ 
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+@@ -259,11 +259,11 @@
+ 
+ "Actually, the tab does not switch buffers, but my arrows
+ "Bclose function ca be found in "Buffer related" section
+-map <leader>bd :Bclose<cr>
+-map <down> <leader>bd
++"map <leader>bd :Bclose<cr>
++"map <down> <leader>bd
+ "Use the arrows to something usefull
+-map <right> :bn<cr>
+-map <left> :bp<cr>
++"map <right> :bn<cr>
++"map <left> :bp<cr>
+ 
+ "Tab configuration
+ map <leader>tn :tabnew %<cr>
+@@ -590,7 +590,7 @@
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => Todo
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+-   au BufNewFile,BufRead *.todo so ~/vim_local/syntax/amido.vim
++   au BufNewFile,BufRead *.todo so $HOME/.vim/vim_local/syntax/amido.vim
+    au BufNewFile,BufRead *.mako set ft=mako
+ 
+    """"""""""""""""""""""""""""""
+@@ -604,7 +604,7 @@
+    """"""""""""""""""""""""""""""
+    " HTML entities - used by xml edit plugin
+    let xml_use_xhtml = 1
+-   "let xml_no_auto_nesting = 1
++   let xml_no_auto_nesting = 1
+ 
+    "To HTML
+    let html_use_css = 1
+@@ -624,7 +624,10 @@
+    " => Python section
+    """"""""""""""""""""""""""""""
+    "Run the current buffer in python - ie. on leader+space
+-   "au FileType python so ~/vim_local/syntax/python.vim
++    "<<<<<<< .mine
++    "au FileType python so $HOME/.vim/vim_local/syntax/python.vim
++    "autocmd FileType python map <buffer> <leader><space> :w!<cr>:!python %<cr>
++    "autocmd FileType python so $HOME/.vim/vim_local/plugin/python_fold.vim
+ 
+    "Python iMaps
+    au FileType python set cindent
+@@ -654,21 +657,21 @@
+    au FileType java inoremap <buffer> <C-t> System.out.println();<esc>hi
+ 
+    "Java comments
+-   autocmd FileType java source ~/vim_local/macros/jcommenter.vim
+-   autocmd FileType java let b:jcommenter_class_author='Amir Salihefendic (amix@amix.dk)'
+-   autocmd FileType java let b:jcommenter_file_author='Amir Salihefendic (amix@amix.dk)'
++   "autocmd FileType java source $HOME/.vim/vim_local/macros/jcommenter.vim
++   autocmd FileType java let b:jcommenter_class_author='Steven Knight'
++   autocmd FileType java let b:jcommenter_file_author='Steven Knight'
+    autocmd FileType java map <buffer> <F2> :call JCommentWriter()<cr>
+ 
+    "Abbr'z
+-   autocmd FileType java inoremap <buffer> $pr private 
+-   autocmd FileType java inoremap <buffer> $r return 
+-   autocmd FileType java inoremap <buffer> $pu public 
+-   autocmd FileType java inoremap <buffer> $i import 
+-   autocmd FileType java inoremap <buffer> $b boolean 
+-   autocmd FileType java inoremap <buffer> $v void 
+-   autocmd FileType java inoremap <buffer> $s String 
++   "autocmd FileType java inoremap <buffer> $pr private 
++   "autocmd FileType java inoremap <buffer> $r return 
++   "autocmd FileType java inoremap <buffer> $pu public 
++   "autocmd FileType java inoremap <buffer> $i import 
++   "autocmd FileType java inoremap <buffer> $b boolean 
++   "autocmd FileType java inoremap <buffer> $v void 
++   "autocmd FileType java inoremap <buffer> $s String 
+ 
+-   "Folding
++   " Folding
+    function! JavaFold() 
+      setl foldmethod=syntax
+      setl foldlevelstart=1
+@@ -685,16 +688,16 @@
+ 
+    au BufEnter *.sablecc,*.scc set ft=sablecc
+    au BufEnter *.peep set ft=peephole
+-   au Syntax peephole so ~/vim_local/syntax/peephole.vim
++   au Syntax peephole so $HOME/.vim/vim_local/syntax/peephole.vim
+ 
+ 
+    """"""""""""""""""""""""""""""
+    " => JavaScript section
+    """""""""""""""""""""""""""""""
+-   au FileType javascript so ~/vim_local/syntax/javascript.vim
++   au FileType javascript so $HOME/.vim/vim_local/syntax/javascript.vim
+    function! JavaScriptFold() 
+      setl foldmethod=syntax
+      setl foldlevelstart=1
+@@ -783,13 +786,13 @@
+    """""""""""""""""""""""""""""""
+    " => Java
+    """""""""""""""""""""""""""""""
+-   autocmd FileType java inorea <buffer> cfun <c-r>=IMAP_PutTextWithMovement("public<++> <++>(<++>) {\n<++>;\nreturn <++>;\n}")<cr> 
+-   autocmd FileType java inorea <buffer> cfunpr <c-r>=IMAP_PutTextWithMovement("private<++> <++>(<++>) {\n<++>;\nreturn <++>;\n}")<cr> 
+-   autocmd FileType java inorea <buffer> cfor <c-r>=IMAP_PutTextWithMovement("for(<++>; <++>; <++>) {\n<++>;\n}")<cr> 
+-   autocmd FileType java inorea <buffer> cif <c-r>=IMAP_PutTextWithMovement("if(<++>) {\n<++>;\n}")<cr> 
+-   autocmd FileType java inorea <buffer> cifelse <c-r>=IMAP_PutTextWithMovement("if(<++>) {\n<++>;\n}\nelse {\n<++>;\n}")<cr>
+-   autocmd FileType java inorea <buffer> cclass <c-r>=IMAP_PutTextWithMovement("class <++> <++> {\n<++>\n}")<cr>
+-   autocmd FileType java inorea <buffer> cmain <c-r>=IMAP_PutTextWithMovement("public static void main(String[] argv) {\n<++>\n}")<cr>
++   "autocmd FileType java inorea <buffer> cfun <c-r>=IMAP_PutTextWithMovement("public<++> <++>(<++>) {\n<++>;\nreturn <++>;\n}")<cr> 
++   "autocmd FileType java inorea <buffer> cfunpr <c-r>=IMAP_PutTextWithMovement("private<++> <++>(<++>) {\n<++>;\nreturn <++>;\n}")<cr> 
++   "autocmd FileType java inorea <buffer> cfor <c-r>=IMAP_PutTextWithMovement("for(<++>; <++>; <++>) {\n<++>;\n}")<cr> 
++   "autocmd FileType java inorea <buffer> cif <c-r>=IMAP_PutTextWithMovement("if(<++>) {\n<++>;\n}")<cr> 
++   "autocmd FileType java inorea <buffer> cifelse <c-r>=IMAP_PutTextWithMovement("if(<++>) {\n<++>;\n}\nelse {\n<++>;\n}")<cr>
++   "autocmd FileType java inorea <buffer> cclass <c-r>=IMAP_PutTextWithMovement("class <++> <++> {\n<++>\n}")<cr>
++   "autocmd FileType java inorea <buffer> cmain <c-r>=IMAP_PutTextWithMovement("public static void main(String[] argv) {\n<++>\n}")<cr>
+    
+ 
+    "Presse c-q insted of space (or other key) to complete the snippet

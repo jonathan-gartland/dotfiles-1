@@ -1,0 +1,164 @@
+set pager_index_lines=9
+set askcc=yes
+#set spoolfile=/var/mail/skk
+set sort=threads
+set nostrict_threads
+set postpone=ask-no                     # Ask about postponing.
+set record="=sentmail"
+set nomove                              # Hold messages in $MAIL.
+set print=ask-yes                       # Ask before printing.
+set delete=ask-yes                      # Ask before doing a delete.
+set include=yes                         # Include the message in replies.
+set edit_hdrs                           # I want to edit the message headers.
+set editor="vim -X"
+set nomark_old                          # Don't mark unread new msgs as old.
+set copy=yes                            # Keep copies of outgoing mail...
+set record=+outbox                      # ... and it gets saved in =outbox.
+set nobeep                              # We don't need no beeping software.
+set nosmart_wrap                        # Don't want smart wrapping.
+set nomarkers                           # Don't want any wrap markers.
+set mime_fwd                            # Forward message as MIME attachments.
+set pager_context=3                     # Display 3 lines of context in pager.
+set nostrict_threads                    # Lets have some fuzzy threading.
+set sendmail_wait=-1                    # Don't wait around for sendmail.
+set nopipe_decode                       # Don't decode messages when piping.
+                                        # Format printed mail with mp.
+set print_cmd="a2ps -1gEmail --strip=3 -Php8500" # Print via a2ps
+set tilde                               # Fill out messages with '~'.
+set read_inc=50                         # Read counter ticks every 50 msgs.
+set write_inc=50                        # Write counter ticks every 50 msgs.
+set noconfirmappend                     # Just append, don't hassle me.
+set pager_stop                          # Don't skip msgs on next page.
+                                        # Where to find the mailcap.
+                                        # What we consider to be a quote.
+set quote_regexp="^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
+set folder = ~/Maildir
+#set record="=.Sent/"
+set record=Maildir/.Sent/
+set ascii_chars="yes"
+set beep="no"
+set alias_file=~/.muttrc     # Keep aliases in this file.
+
+
+
+# Some people think that HTML is good for email <sigh>
+alternative_order text/enriched text/plain text/html
+
+
+# Ignore all headers
+ignore *
+
+# Then un-ignore the ones I want to see
+unignore From:
+unignore To:
+unignore Subject:
+unignore Date:
+unignore Organization:
+unignore Newsgroups:
+unignore CC:
+unignore BCC:
+unignore X-Mailer:
+unignore X-Junked-Because:
+unignore User-Agent:
+
+# Now order the visable header lines
+hdr_order From:
+hdr_order Subject: 
+hdr_order To: 
+hdr_order CC: 
+hdr_order BCC: 
+hdr_order Date: 
+hdr_order Organization: 
+hdr_order X-Mailer:
+hdr_order User-Agent:
+
+push V
+
+# url helpers
+macro index \cb |urlview\n
+macro pager \cb |urlview\n
+
+#macro index ^r "tag-pattern ~s 'needs tapes'"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# User Defined Headers
+#
+
+my_hdr Organization: Research Computing Center
+my_hdr Reply-To: skk@sr.unh.edu
+my_hdr From:skk@sr.unh.edu
+#my_hdr X-Mailer: `mutt -v | head -n 1`
+
+alias	rea 	Robert Anderson 	<rea@sr.unh.edu>
+alias	tjb 	Thomas Baker 		<tjb@sr.unh.edu>
+alias	janet 	Janet Caddle 		<j_caddle@cisvms.unh.edu>
+alias	pmc2 	Phil Collins 		<pmc2@sr.unh.edu>
+alias	chc 	Carol Cooper 		<chc@sr.unh.edu>
+alias	carol 	Carol Cooper 		<chc@sr.unh.edu>
+alias	pmc 	Patricia Craig 		<pmc@sr.unh.edu>
+alias	teh 	Tucker Hurton 		<teh@sr.unh.edu>
+alias	skk 	Steven Knight 		<skk@sr.unh.edu>
+alias	whl 	William Lenharth	<whl@sr.unh.edu>
+alias	mlm 	Mark Maciolek 		<mlm@sr.unh.edu>
+alias	pfm 	Patrick Messer 		<pfm@sr.unh.edu>
+alias	aew 	Allan Wright 		<aew@sr.unh.edu>
+alias stanley stanley <stanley@eos.sr.unh.edu>
+alias mike Mike Routhier <mike@meridian.sr.unh.edu>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Color definitions
+#
+
+color hdrdefault cyan default
+# The following lines are used for messages with nested quoting
+color quoted green default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 cyan default
+# Highlight signatures
+color signature red default
+color indicator brightyellow red
+color error brightred default
+color status brightyellow blue
+# Color the thread tree in the index menu
+color tree red default
+color tilde red default
+color message cyan default
+#color normal brightwhite default
+color attachment red default
+# Highlight search patterns in the pager.
+color search black green
+color header brightyellow default ^(From|Subject):
+color underline brightgreen default
+
+# Highlight URLs...
+color body yellow default "(ftp|http|https|file)://[^ ]+"
+# ...and e-mails...
+color body blue default "[-a-z_0-9.]+@[-a-z_0-9.]+"
+# ...and smilies...
+color body red default "((;|:|8\\:|\\=)(-|=|~|_|-'|%|<|)(\\)|Q|P|\\)%))"
+# ...and acronyms
+color body cyan default "(ACK|ROTFL|LOL|BRB|BTW|HTH|IMHO|IMNSHO|IOW|RTFM)"
+
+color index magenta default ~N         # new messages
+color index yellow default ~T		 # tagged messages
+color index red default ~D		 # deleted messages
+color index cyan default ~F		 # flagged messages
+color index blue default ~Q                # replied messages
+
+color index green default (moderator|Moderator|MODERATOR|faq|FAQ)  # specials ;-)
+
+# Headers highlighting
+color header magenta default ^(Date)
+color header yellow default ^(From|Reply-To)
+color header cyan default ^(To|Cc|Bcc|Delivered-To)
+color header green default ^(Subject)
+color header red default ^(In-Reply-To)
+color header blue default ^(X-|User)
+
+# attributes when using a mono terminal
+mono header underline ^(From|Subject):
+mono quoted bold
+

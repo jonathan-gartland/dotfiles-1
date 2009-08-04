@@ -1,0 +1,33 @@
+CURRENT CONDITIONS:
+[--datatype=DW]: [--datatype=HT] / [--datatype=LT] [--datatype=CC] (unlocalized text: [--datatype=CT])
+Wind: [--datatype=WD] ([--datatype=WA]) at [--datatype=WS] Humidity: [--datatype=HM] Precipatation: [--datatype=PC] Visibility: [--datatype=VI] Sun: Rise/Set: [--datatype=SR] / [--datatype=SS]
+Moon: [--datatype=MP] Bar: [--datatype=BR] ([--datatype=BD]) UV: [--datatype=UI] ([--datatype=UT]) Dew point: [--datatype=DP] [--datatype=LU]
+IMPERIAL:
+[--datatype=DW --imperial]: [--datatype=HT --imperial] / [--datatype=LT --imperial] [--datatype=CC --imperial] (unlocalized text: [--datatype=CT --imperial])
+Wind: [--datatype=WD --imperial] ([--datatype=WA --imperial]) at [--datatype=WS --imperial] Humidity: [--datatype=HM --imperial] Precipatation: [--datatype=PC --imperial] Visibility: [--datatype=VI --imperial] Sun: Rise/Set: [--datatype=SR --imperial] / [--datatype=SS --imperial]
+Moon: [--datatype=MP --imperial] Bar: [--datatype=BR --imperial] ([--datatype=BD --imperial]) UV: [--datatype=UI --imperial] ([--datatype=UT --imperial]) Dew point: [--datatype=DP --imperial] [--datatype=LU --imperial]
+HIDEUNITS:
+[--datatype=DW --hideunits]: [--datatype=HT --hideunits] / [--datatype=LT --hideunits] [--datatype=CC --hideunits] (unlocalized text: [--datatype=CT --hideunits])
+Wind: [--datatype=WD --hideunits] ([--datatype=WA --hideunits]) at [--datatype=WS --hideunits] Humidity: [--datatype=HM --hideunits] Precipatation: [--datatype=PC --hideunits] Visibility: [--datatype=VI --hideunits] Sun: Rise/Set: [--datatype=SR --hideunits] / [--datatype=SS --hideunits]
+Moon: [--datatype=MP --hideunits] Bar: [--datatype=BR --hideunits] ([--datatype=BD --hideunits]) UV: [--datatype=UI --hideunits] ([--datatype=UT --hideunits]) Dew point: [--datatype=DP --hideunits] [--datatype=LU --hideunits]
+FORECAST 0:
+[--datatype=DW --startday=0]: [--datatype=HT --startday=0] / [--datatype=LT --startday=0] [--datatype=CC --startday=0] (unlocalized text: [--datatype=CT --startday=0])
+Wind: [--datatype=WD --startday=0] ([--datatype=WA --startday=0]) at [--datatype=WS --startday=0] Humidity: [--datatype=HM --startday=0] Precipatation: [--datatype=PC --startday=0] Visibility: [--datatype=VI --startday=0] Sun: Rise/Set: [--datatype=SR --startday=0] / [--datatype=SS --startday=0]
+Moon: [--datatype=MP --startday=0] Bar: [--datatype=BR --startday=0] ([--datatype=BD --startday=0]) UV: [--datatype=UI --startday=0] ([--datatype=UT --startday=0]) Dew point: [--datatype=DP --startday=0] [--datatype=LU --startday=0]
+FORECAST 1:
+[--datatype=DW --startday=1]: [--datatype=HT --startday=1] / [--datatype=LT --startday=1] [--datatype=CC --startday=1] (unlocalized text: [--datatype=CT --startday=1])
+Wind: [--datatype=WD --startday=1] ([--datatype=WA --startday=1]) at [--datatype=WS --startday=1] Humidity: [--datatype=HM --startday=1] Precipatation: [--datatype=PC --startday=1] Visibility: [--datatype=VI --startday=1] Sun: Rise/Set: [--datatype=SR --startday=1] / [--datatype=SS --startday=1]
+Moon: [--datatype=MP --startday=1] Bar: [--datatype=BR --startday=1] ([--datatype=BD --startday=1]) UV: [--datatype=UI --startday=1] ([--datatype=UT --startday=1]) Dew point: [--datatype=DP --startday=1] [--datatype=LU --startday=1]
+FORECAST 4:
+[--datatype=DW --startday=4]: [--datatype=HT --startday=4] / [--datatype=LT --startday=4] [--datatype=CC --startday=4] (unlocalized text: [--datatype=CT --startday=4])
+Wind: [--datatype=WD --startday=4] ([--datatype=WA --startday=4]) at [--datatype=WS --startday=4] Humidity: [--datatype=HM --startday=4] Precipatation: [--datatype=PC --startday=4] Visibility: [--datatype=VI --startday=4] Sun: Rise/Set: [--datatype=SR --startday=4] / [--datatype=SS --startday=4]
+Moon: [--datatype=MP --startday=4] Bar: [--datatype=BR --startday=4] ([--datatype=BD --startday=4]) UV: [--datatype=UI --startday=4] ([--datatype=UT --startday=4]) Dew point: [--datatype=DP --startday=4] [--datatype=LU --startday=4]
+MINUTESHIDE LAST FETCH:
+default: [--datatype=LF --minuteshide=-1]
+0: [--datatype=LF --minuteshide=0]
+5: [--datatype=LF --minuteshide=5]
+SPACING:
+default: [--datatype=DW --startday=0 --endday=4]
+[--datatype=CT --startday=0 --endday=4]
+spaces = 3: [--datatype=DW --startday=0 --endday=4 --spaces=3]
+[--datatype=CT --startday=0 --endday=4 --spaces=3]

@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: conkyforecast
+Version: 2.02
+Summary: Conky Weather Forecast
+Home-page: None
+Author: Mark Buck (Kaivalagi)
+Author-email: m_buck@hotmail.com
+License: GPLv3
+Description: Weather forecast script with support for language files, for use in Conky
+Platform: linux
