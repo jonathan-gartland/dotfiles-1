@@ -3,6 +3,8 @@
 
 (define-abbrev-table 'Custom-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'apropos-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'awk-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'bubbles-mode-abbrev-table '(    ))
