@@ -10,7 +10,9 @@
 (mapcar '(lambda(p)
            (add-to-list 'load-path p) 
            (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(cd "~/")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require-maybe  (http://www.emacswiki.org/cgi-bin/wiki/LocateLibrary)
@@ -127,7 +129,7 @@
 
 ;; cycle through buffers with Ctrl-Tab (like Firefox)
 ;; from http://emacs-fu.blogspot.com/2008/12/cycling-through-your-buffers-with-ctrl.html
-(global-set-key (kbd "<C-tab>") 'bury-buffer)
+;; (global-set-key (kbd "<C-tab>") 'bury-buffer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -270,7 +272,7 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  abbrevs (emacs will automagically expand abbreviations)
 (setq abbrev-file-name                ; tell emacs where to read abbrev
-      "~/.emacs.d/abbrev_defs")       ; definitions from...
+      "~/.emacs.d/abbrev_defs.el")    ; definitions from...
 (abbrev-mode t)                       ; enable abbrevs (abbreviations) ...
 (setq default-abbrev-mode t
   save-abbrevs t)                     ; don't ask
@@ -346,7 +348,8 @@ directory, select directory. Lastly the file is opened."
 (setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
-
+(add-hook 'python-mode-hook (lambda ()
+	(require 'gpycomplete)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
