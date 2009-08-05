@@ -25,7 +25,6 @@
 
 (pymacs-load "gpycomplete")
 
-
 (defgroup python nil
   "Inline autocompletion for the python language"
   :group 'languages
@@ -44,6 +43,18 @@
   :group 'python)
 
 
+(defcustom gpy-file-contains-errors "This file contains errors!"
+  "Message to display when the file contains errors"
+  :type 'string
+  :group 'python)
+
+
+(defcustom gpy-file-contains-no-errors "This file contains NO errors!"
+  "Message to display when the file does not contains errors"
+  :type 'string
+  :group 'python)
+
+
 (defcustom gpy-max-completions 0
   "The number of completions to display, if 0 it means no limit"
   :type 'integer
@@ -57,7 +68,7 @@
 
 
 (defcustom gpy-completions-buffer-name "*gpy-completions*"
-  "Error to display when no completions available"
+  "Name of the buffer which will contain all the available completions"
   :type 'string
   :group 'python)
 
@@ -83,7 +94,7 @@
       (end-of-line)
       (narrow-to-region (mark) (point)))
     (save-excursion
-      (if (search-backward " " nil t)
+      (if (re-search-backward  ",\\|(\\| " nil t)
 	  (forward-char)
 	(beginning-of-line))
       (push-mark nil t)
@@ -92,6 +103,7 @@
 
 
 (defun gpy-get-cursor-indentation ()
+  "Gets the indentation of the cursor in the current line"
   (save-excursion
     (re-search-backward "^\\( *\\)" nil t)
     (match-string-no-properties 1)))
@@ -120,7 +132,7 @@ An optional argument tells the function to search backwards"
 
 
 (defun gpy-get-subcontext ()
-  "Gets the current function or class where the user could be into"
+  "Gets the current function or class where the user is into"
   (interactive)
   (save-excursion
     (let ((symbol nil)
@@ -150,8 +162,7 @@ An optional argument tells the function to search backwards"
 with the beginning of all the words of the list.
 
 For example, given the list \('calefon' 'calabaza' 'caliente') it
-returns 'cal'
-"
+returns 'cal'"
   (let ((current-string (gpy-find-shortest-word words))
 	(matches-with-all nil)
 	(index 0)
@@ -188,7 +199,9 @@ returns 'cal'
 displays the result"
   (interactive)
   (gpy-show
-   (gpycomplete-refresh-context (gpy-get-code))))
+   (if (gpycomplete-refresh-context (gpy-get-code))
+       gpy-file-contains-no-errors
+     gpy-file-contains-errors)))
 
 
 (defun gpy-get-completions nil
@@ -245,10 +258,8 @@ is typed and inserts ,"
     (set-buffer gpy-completions-buffer-name)
     (erase-buffer)
     (insert string)
-    (mark-whole-buffer)
     (set-fill-column gpy-completions-fill-column)
-    (fill-region (point-min) (point-max))
-    (message (buffer-substring (point-min) (point-max)))
+    (message (buffer-string))
     (set-buffer buffer)))
 
 
@@ -276,29 +287,42 @@ should be shown on the *gpy-completions* buffer"
 	  parsed))
     gpy-no-completions-error))
 
-(defun gpy-complete-and-indent ()
+
+(defun gpy-complete-or-indent ()
   "If a set of completions is available for the previous
 expression prints the available completions, if only a single
 completion is available then it is insertered on the buffer. If no
 completions are available it indents"
   (interactive)
   (let ((completions-list)
-	(parsed-completions)
-	(buffer (current-buffer))
-	(completion))
+        (parsed-completions)
+        (buffer (current-buffer))
+        (completion))
     (setq completions-list (gpy-get-completions))
     (setq parsed-completions (gpy-parse-completions completions-list))
     (if (equal completions-list nil)
-	(progn
-	  (indent-for-tab-command)
-	  (gpy-show-completions parsed-completions))
+        (progn
+          (indent-for-tab-command)
+          (gpy-show-completions parsed-completions))
       (progn
-	(gpy-show-completions parsed-completions)
-	(setq completion (gpy-find-equal-string-from-start completions-list))
-	(if (not (equal completion ""))
-	    (progn
-	      (backward-kill-word 1)
-	      (insert completion)))))))
+        (gpy-show-completions parsed-completions)
+        (setq completion (gpy-find-equal-string-from-start completions-list))
+        (if (not (equal completion ""))
+            (progn
+              (save-restriction
+                (beginning-of-line)
+                (push-mark nil t)
+                (end-of-line)
+                (narrow-to-region (mark) (point))
+                (let ((end-point (point))
+                      (start-point 0))
+                  (if (search-backward "." nil t)
+                      (progn
+                        (forward-char)
+                        (setq start-point (point))
+                        (delete-region start-point end-point))
+                    (backward-kill-word 1))
+                  (insert completion)))))))))
 
 
 (defun gpy-refresh-and-dot ()
@@ -337,7 +361,7 @@ settings file without the .py extension"
   (gpycomplete-set-django-project path settings-module))
 
 
-(define-key py-mode-map "\t" 'gpy-complete-and-indent)
+(define-key py-mode-map "\t" 'gpy-complete-or-indent)
 (define-key py-mode-map "(" 'gpy-electric-lparen)
 (define-key py-mode-map "," 'gpy-electric-comma)
 (define-key py-mode-map [f1] 'gpy-help-at-point)

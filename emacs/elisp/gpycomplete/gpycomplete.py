@@ -81,14 +81,12 @@ subprogram_globals_buffer = {}
 subprogram_globals = {}
 helper_globals = {}
 helper_globals_buffer = {}
-# FIXME - CONVERT SUBCONTEXT_GLOBALS IN A DICT
-subcontext_globals = []
+subcontext_globals = {}
 
 
 def get_completions(obj, code, subcontext="", cursor_indentation=""):
     """Returns the completions parsed as a string"""
-    _calculate_subcontext(subcontext, cursor_indentation)
-    return _get_completions(obj, code)
+    return _get_completions(obj, code, subcontext, cursor_indentation)
 
 
 def get_help(obj):
@@ -100,19 +98,16 @@ def get_help(obj):
         obj = obj[:paren]
     if obj.endswith("(") or obj.endswith("."):
         obj = obj[:-1]
-    out = "no help string for " + obj
     found = False
+    pobj = None
     context = 'subprogram_globals'
     if not obj in _get_context():
         context = 'helper_globals'
         found = _import(obj, context)
-    else:
-        found = True
-    if obj not in subcontext_globals and \
-       found == True:
-        obj = _eval_code(obj, context)
-    else:
-        return out
+    if obj not in subcontext_globals and found:
+        pobj = _eval_code(obj, context)
+    if not pobj:
+        return "no help string for " + obj
     stdout = sys.stdout
     out = StringIO.StringIO()
     try:
@@ -145,9 +140,9 @@ def refresh_context(code):
     message
     """
     if _exec_code(code):
-        return "This file contains no errors"
+        return True
     else:
-        return "This file contains errors"
+        return False
 
 
 def get_signature(obj):
@@ -228,16 +223,22 @@ def _calculate_subcontext(subcontext, cursor_indentation):
                 code += subcontext[i][2] + "."
         code = code[:-1]
         obj = _eval_code(code)
-        context = []
+        context = {}
         if type(obj) == types.MethodType:
-            context = list(obj.im_func.func_code.co_varnames)
-            for item in dir(obj):
-                context.append(item)
+            variables = list(obj.im_func.func_code.co_varnames)
+            #for item in dir(obj):
+            for item in variables:
+                # context.append(item)
+                context[item] = types.ObjectType
         elif type(obj) == types.FunctionType:
-            context = list(obj.func_code.co_varnames)
+            variables = list(obj.func_code.co_varnames)
+            for item in variables:
+                # context.append(item)
+                context[item] = types.ObjectType
+        # subcontext_globals = context
         subcontext_globals = context
     else:
-        subcontext_globals = []
+        subcontext_globals = {}
     return code
 
 
@@ -251,14 +252,15 @@ def _get_context():
            subprogram_globals.keys() + \
            helper_globals.keys() + \
            BUILTIN_KEYS + \
-           subcontext_globals
+           subcontext_globals.keys()
     keys.sort()
     return keys
 
 
-def _get_completions(word, code):
+def _get_completions(word, code, subcontext, cursor_indentation):
     """gets the completions for word after evaluating code"""
     global subprogram_globals
+    parsed_subcontext = _calculate_subcontext(subcontext, cursor_indentation)
     _exec_code(code)
     keys = _get_context()
     dots = word.split('.')
@@ -271,6 +273,10 @@ def _get_completions(word, code):
         # the global keys starting with the word
         return [i for i in keys if i.startswith(word)]
     else:
+        if word.startswith('self'):
+            dot_index = parsed_subcontext.rfind('.')
+            parsed_subcontext = parsed_subcontext[:dot_index]
+            word = word.replace('self', parsed_subcontext)
         # If word ends with a "." strip it and execute _get_dir
         if word.endswith('.'):
             module = _eval_code(word[:-1])
@@ -344,18 +350,13 @@ def _exec_code(code, context='subprogram_globals_buffer'):
 def _eval_code(code, context='subprogram_globals'):
     """Evals code in the given context"""
     global subprogram_globals
-    global subprogram_globals_buffer
     global helper_globals
     obj = None
     try:
         if context == 'subprogram_globals':
             obj = eval(code, subprogram_globals)
-        elif context == 'subprogram_globals_buffer':
-            obj = eval(code, subprogram_globals_buffer)
         elif context == 'helper_globals':
             obj = eval(code, helper_globals)
-        elif context == 'helper_globals_buffer':
-            obj = eval(code, helper_globals_buffer)
     except:
         obj = None
     return obj
@@ -378,18 +379,35 @@ def _import(obj, context='helper_globals'):
 
 
 if __name__ == "__main__":
-    code = "import django\nimport django.contrib\nimport sys\na = django\ndef test(a):\n\tbar = a\n\tfoo = 2"
+    code = """import django\n
+import django.contrib\n
+import sys\n
+a = django\n
+def test(a):\n\t
+    bar = a\n\t
+    foo = 2\n
+class Test(object):\n\t
+    def __init__(self, arg1):\n\t
+        self._arg1 = arg1\n
+    def test(self, arg):\n\t
+        a = self._arg1
+
+"""
     print get_completions("djan", code)
     print get_completions("tes", code)
-    # print complete("sys", code)
-    # print complete("a.", code)
+    print get_completions("sys", code)
+    print get_completions("a.", code)
     print get_completions("di", code, [["","def","test",2313]], "\t")
-#     print get_signature("sys.path")
-#     print get_signature("dir")
-#     print get_signature("glob.glob(")
-#     print get_signature("_get_completions(")
-#     print get_help("django.contrib")
+    print get_completions("Tes", code)
+    print get_completions("self.", code)
+    print get_signature("sys.path")
+    print get_signature("dir")
+    print get_signature("glob.glob(")
+    print get_signature("_get_completions(")
+    print get_help("django.contrib")
     print get_help("foo")
     print get_help("sys.path")
-#    print complete("fo", code, [["","def","test",2313]], "\t")
-#    print complete("fo", code, [["","def","test",234]],"\t")
+    print get_completions("fo", code, [["","def","test",2313]], "\t")
+    print get_completions("fo", code, [["","def","test",234]],"\t")
+    print subprogram_globals
+    print subcontext_globals
