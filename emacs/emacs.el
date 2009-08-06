@@ -1,17 +1,22 @@
 
 ;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 (defconst elisp-path '("~/.emacs.d/elisp/")) ;; my elisp directories
 (mapcar '(lambda(p)
            (add-to-list 'load-path p) 
            (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
 (cd "~/")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -203,22 +208,26 @@
   (setq show-paren-style 'parenthesis))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; some commands for rectangular selections;
 ;; http://www.emacswiki.org/cgi-bin/wiki/RectangleMark
 (require 'rect-mark)
 (global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
 (global-set-key (kbd "C-w")  
-  (lambda(b e) (interactive "r") 
-     (if rm-mark-active (rm-kill-region b e) (kill-region b e))))
+ (lambda(b e) (interactive "r") 
+    (if rm-mark-active (rm-kill-region b e) (kill-region b e))))
 (global-set-key (kbd "M-w")  
-  (lambda(b e) (interactive "r") 
-     (if rm-mark-active (rm-kill-ring-save b e) (kill-ring-save b e))))
+ (lambda(b e) (interactive "r") 
+    (if rm-mark-active (rm-kill-ring-save b e) (kill-ring-save b e))))
 (global-set-key (kbd "C-x C-x")  
-  (lambda(&optional p) (interactive "p") 
-    (if rm-mark-active (rm-exchange-point-and-mark p) 
-      (exchange-point-and-mark p))))
+ (lambda(&optional p) (interactive "p") 
+   (if rm-mark-active (rm-exchange-point-and-mark p) 
+     (exchange-point-and-mark p))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; make C-c C-c and C-c C-u work for comment/uncomment region in all modes 
 (global-set-key (kbd "C-c C-c") 'comment-region)
 (global-set-key (kbd "C-c C-u") 'uncomment-region)
@@ -315,7 +324,7 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp, for remote access
-(setq tramp-default-method "ssh")
+;(setq tramp-default-method "ssh")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -437,9 +446,16 @@ directory, select directory. Lastly the file is opened."
 (setq viper-mode t)                ; enable Viper at load time
 (setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
 (require 'viper)                   ; load Viper
+(setq vimpulse-experimental nil)   ; don't load bleeding edge code (see 6. installation instruction)
 (require 'vimpulse)                ; load Vimpulse
 (setq woman-use-own-frame nil)     ; don't create new frame for manpages
 (setq woman-use-topic-at-point t)  ; don't prompt upon K key (manpage display)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; redo 
+(when (require-maybe 'redo))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
