@@ -49,6 +49,8 @@ if test -z $PAGER; and test ( type more )
     set PAGER more
 end
 
+set stow $HOME/local/stow
+
 set EDITOR vim
 #set VISUAL gvim
 set SVN_EDITOR vim
@@ -184,8 +186,6 @@ if test (hostname) = 'skk'
     #. /opt/was61/wasSetup.fish
  end
 
-set -x PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOME/.emacs.d/elisp/gpycomplete
-addToPATH $JAVA_HOME/bin
-set stow $HOME/local/stow
+set -x PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOME/.emacs.d/elisp/gpycomplete $HOME/local/lib/$python_version/site-packages/ $HOME/local/stow/lib/
 
 # /* vim: set filetype=fish : */ 

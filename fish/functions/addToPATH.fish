@@ -21,7 +21,7 @@ function addToPATH -d "Add $argv[1] to PATH"
     else
         #echo "Appending $path to \$PATH"
         #echo "PATH $PATH"
-        set PATH $PATH $path
+        set PATH $path $PATH
         #echo "PATH $PATH"
     end
 
