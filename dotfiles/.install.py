@@ -19,9 +19,9 @@ from createlinks import CreateLinks
 cl = CreateLinks( argv )
 cl.createLinks(
     [
-    { 'src': 'astylerc', 'dst': '.astylerc' }
+    { 'src': 'astylerc', 'dst': '.astylerc' },
     { 'src': 'screenrc', 'dst': '.screenrc' },
-    { 'src': 'logrotate.conf', 'dst': '.logrotate.conf' }
+    { 'src': 'logrotate.conf', 'dst': '.logrotate.conf' },
     { 'src': 'muttrc', 'dst': '.muttrc' },
     { 'src': 'xbindkeys', 'dst': '.xbindkeysrc' }
     ] )
