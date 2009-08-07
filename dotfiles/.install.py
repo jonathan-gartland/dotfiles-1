@@ -23,5 +23,6 @@ cl.createLinks(
     { 'src': 'screenrc', 'dst': '.screenrc' },
     { 'src': 'logrotate.conf', 'dst': '.logrotate.conf' },
     { 'src': 'muttrc', 'dst': '.muttrc' },
+    { 'src': 'sqliterc', 'dst': '.sqliterc' },
     { 'src': 'xbindkeys', 'dst': '.xbindkeysrc' }
     ] )
