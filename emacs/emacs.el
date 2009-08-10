@@ -1,6 +1,7 @@
 
 ;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
+(server-start)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
