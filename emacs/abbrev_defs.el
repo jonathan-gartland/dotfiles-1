@@ -41,6 +41,8 @@
 
 (define-abbrev-table 'global-abbrev-table '(    ))
 
+(define-abbrev-table 'html-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'idl-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '(    ))
@@ -62,6 +64,8 @@
 (define-abbrev-table 'python-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'sgml-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'sh-mode-abbrev-table '(    ))
 
