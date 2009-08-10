@@ -17,8 +17,8 @@ from createlinks import CreateLinks
 
 # create the links
 cl = CreateLinks( argv )
-cl.createLinks( [ 
-{'src': '', 'dst': '.emacs.d' }, 
-{'src': 'emacs.el', 'dst': '.emacs' }, 
-{'src': 'viper.el', 'dst': '.viper' } 
+cl.createLinks( [
+{'src': '', 'dst': '.emacs.d' },
+{'src': 'emacs.el', 'dst': '.emacs' },
+{'src': 'viper.el', 'dst': '.viper' }
 ] )

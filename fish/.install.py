@@ -22,7 +22,7 @@ cl = CreateLinks( argv )
 cl.createLinks(
     [
         { 'src': '', 'dst': '.fish' },
-        { 'src': 'config.fish', 'dst': '.fishrc' },
-        { 'src': 'lib/convert_csh_setup_file.py', 'dst': 'bin/convert_csh_setup_file.py' }
+        { 'src': 'config.fish', 'dst': '.fishrc' }
+        #{ 'src': 'lib/convert_csh_setup_file.py', 'dst': 'bin/convert_csh_setup_file.py' }
     ]
 )

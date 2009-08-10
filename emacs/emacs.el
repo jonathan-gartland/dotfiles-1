@@ -6,6 +6,11 @@
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(server-start)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 (defconst elisp-path '("~/.emacs.d/elisp/")) ;; my elisp directories
@@ -331,37 +336,38 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
 
-;; Required values of PYTHONPATH
-;; $HOME/.emacs.d/python/lib/python2.5/site-packages/ $HOME/.emacs.d/elisp/gpycomplete
-;; This may not work for python without version 2.5
-
 ; pymacs
+(when (require-maybe 'pymacs))
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 
-
 ; ropemacs 
-(require 'pymacs)
-;(pymacs-load "ropemacs" "rope-")
-;; enabling autoimport
-;(setq ropemacs-enable-autoimport 't;)
+(pymacs-load "ropemacs" "rope-")
 
-;gpycomplete
-(when (require-maybe 'gpycomplete))
-
-;; python-mode
+; python-mode
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
+;gpycomplete
 (add-hook 'python-mode-hook (lambda ()
-	(require 'gpycomplete)))
+    (when (require-maybe 'gpycomplete))
+    (local-setkey [tab] 'gpy-complete-and-indent)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-complete
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(setq ac-dwim t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -442,7 +448,7 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; viper/vimpulse
+; viper/vimpulse
 (setq viper-mode t)                ; enable Viper at load time
 (setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
 (require 'viper)                   ; load Viper
@@ -466,16 +472,20 @@ directory, select directory. Lastly the file is opened."
  (dtrt-indent-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-install http://www.emacswiki.org/emacs/AutoInstall
+(when (require-maybe 'auto-install))
+(setq auto-install-directory "~/.emacs.d/elsip/auto-install/")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c++ mode
- (defun skk-c-mode-common-hook ()
-   (setq c-basic-offset 4)
-   (setq c-default-style '(c++-mode . "ellemtel")))
- 
- (add-hook 'c-mode-common-hook 'skk-c-mode-common-hook)
+; (defun skk-c-mode-common-hook ()
+;   (setq c-basic-offset 4)
+;   (setq c-default-style '(c++-mode . "ellemtel")))
+; (add-hook 'c-mode-common-hook 'skk-c-mode-common-hook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- 
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; number-lines and line-numbers
