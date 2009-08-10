@@ -21,6 +21,3 @@ cl.createLinks(
     [
     { 'src': '', 'dst': 'bin' },
     ] )
-
-cl 
-
