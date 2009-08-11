@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8
-
+s = """
 from sys import argv,path
 from subprocess import call
 from os import chdir
@@ -18,3 +18,4 @@ from createlinks import CreateLinks
 # create the links
 cl = CreateLinks( argv )
 cl.createLinks( [ {'src': '', 'dst': '.vim' }, { 'src': 'vimrc', 'dst': '.vimrc' } ] )
+"""

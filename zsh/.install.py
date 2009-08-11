@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #coding=utf-8
 
+"""
 from sys import argv,path
 from subprocess import call
 from os import chdir
@@ -22,3 +23,4 @@ cl.createLinks( [
     { 'src': 'zshenv', 'dst': '.zshenv' },
     { 'src': 'zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide' },
 ] )
+"""
