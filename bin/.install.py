@@ -5,5 +5,5 @@ from install import createLinks
 
 # create the links
 createLinks( [ { 'src': 'bin', 'dst': 'bin', 'type': 'dir' } ], 
-{ 'dry_run' : True, 'verbose' : True }
+{ 'dry_run' : False, 'verbose' : True }
 )

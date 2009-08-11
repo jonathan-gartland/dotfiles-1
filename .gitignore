@@ -8,4 +8,6 @@ emacs/backup
 emacs/cache
 
 # Ignore *all* .pyc files
-#*.pyc
+**/**/*.pyc
+vim/.netrwhist
+emacs/auto-save-list/

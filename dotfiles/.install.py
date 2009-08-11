@@ -8,10 +8,10 @@ from install import createLinks
 createLinks(
 [
     {'src': 'dotfiles', 'dst': '.dotfiles', 'type': 'dir' }, 
-    { 'src': 'astylerc', 'dst': '.astylerc', 'dir': '.dotfiles', 'type': 'file' },
-    { 'src': 'screenrc', 'dst': '.screenrc', 'dir': '.dotfiles', 'type': 'file' },
-    { 'src': 'logrotate.conf', 'dst': '.logrotate.conf', 'dir': '.dotfiles', 'type': 'file' },
-    { 'src': 'muttrc', 'dst': '.muttrc', 'dir': '.dotfiles', 'type': 'file' },
-    { 'src': 'sqliterc', 'dst': '.sqliterc', 'dir': '.dotfiles', 'type': 'file' },
-    { 'src': 'xbindkeys', 'dst': '.xbindkeysrc', 'dir': '.dotfiles', 'type': 'file' }
-], { 'dry_run' : True, 'verbose' : True } )
+    { 'src': 'astylerc', 'dst': '.astylerc', 'dir': '../', 'type': 'file' },
+    { 'src': 'screenrc', 'dst': '.screenrc', 'dir': '../', 'type': 'file' },
+    { 'src': 'logrotate.conf', 'dst': '.logrotate.conf', 'dir': '../', 'type': 'file' },
+    { 'src': 'muttrc', 'dst': '.muttrc', 'dir': '../', 'type': 'file' },
+    { 'src': 'sqliterc', 'dst': '.sqliterc', 'dir': '../', 'type': 'file' },
+    { 'src': 'xbindkeys', 'dst': '.xbindkeysrc', 'dir': '../', 'type': 'file' }
+], { 'dry_run' : False, 'verbose' : True } )
