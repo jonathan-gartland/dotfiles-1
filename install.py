@@ -20,14 +20,9 @@ def createLinks( args, options = {} ):
         print ""
         if options[ 'verbose' ]:
             print "argument: %s" % arg
-        
-        if arg['type'] == 'dir':
-            src = join( src_directory, arg[ 'src' ] )
-            dst = join( dst_directory, arg[ 'dst' ] )
 
-        if arg['type'] == 'file':
-            src = join( src_directory, arg['dir'], arg[ 'src' ] )
-            dst = join( dst_directory, arg['dir'], arg[ 'dst' ] )
+	src = join( src_directory, arg[ 'src' ] )
+	dst = join( dst_directory, arg[ 'dst' ] )
 
         if exists( dst ):
             print "Removing Link: %s" % ( dst )
@@ -37,7 +32,7 @@ def createLinks( args, options = {} ):
                 except OSError:
                     pass
 
-        print "Creating link: %s to %s" % ( src, dst )
+        print "ln -sf %s %s" % ( src, dst )
         if not options['dry_run']:
             try:
                 symlink( src, dst )

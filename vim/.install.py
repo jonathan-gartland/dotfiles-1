@@ -4,8 +4,8 @@
 # import CreateLinks
 from createlinks import CreateLinks
 
-createLinks( 
-[ 
-  { 'src': 'vim', 'dst': '.vim', 'type': 'dir' }, 
-  { 'src': 'vimrc', 'dst': '.vimrc', 'dir': 'vim', 'type': 'file' } 
-], { 'dry_run' : False, 'verbose' : True } )
+createLinks(
+[
+  { 'src': 'vim', 'dst': '.vim' },
+  { 'src': 'vim/vimrc', 'dst': '.vimrc' }
+], { 'dry_run' : True, 'verbose' : False } )

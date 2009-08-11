@@ -7,11 +7,11 @@ from install import createLinks
 # create the links
 createLinks(
 [
-    {'src': 'dotfiles', 'dst': '.dotfiles', 'type': 'dir' }, 
-    { 'src': 'astylerc', 'dst': '.astylerc', 'dir': '../', 'type': 'file' },
-    { 'src': 'screenrc', 'dst': '.screenrc', 'dir': '../', 'type': 'file' },
-    { 'src': 'logrotate.conf', 'dst': '.logrotate.conf', 'dir': '../', 'type': 'file' },
-    { 'src': 'muttrc', 'dst': '.muttrc', 'dir': '../', 'type': 'file' },
-    { 'src': 'sqliterc', 'dst': '.sqliterc', 'dir': '../', 'type': 'file' },
-    { 'src': 'xbindkeys', 'dst': '.xbindkeysrc', 'dir': '../', 'type': 'file' }
-], { 'dry_run' : False, 'verbose' : True } )
+    {'src': 'dotfiles', 'dst': '.dotfiles' },
+    { 'src': 'dotfiles/astylerc', 'dst': '.astylerc',  },
+    { 'src': 'dotfiles/screenrc', 'dst': '.screenrc',  },
+    { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf',  },
+    { 'src': 'dotfiles/muttrc', 'dst': '.muttrc',  },
+    { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc',  },
+    { 'src': 'dotfiles/xbindkeys', 'dst': '.xbindkeysrc',  }
+], { 'dry_run' : True, 'verbose' : False } )

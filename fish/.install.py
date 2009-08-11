@@ -4,11 +4,11 @@
 from install import createLinks
 
 # create the links
-createLinks( 
+createLinks(
 [
-{'src': 'fish', 'dst': '.fish', 'type': 'dir' }, 
-{'src': 'fish', 'dst': '../config/fish', 'type': 'dir' },
-{'src': 'function', 'dst': '../config/function', 'type': 'dir' }
-], 
-{ 'dry_run' : False, 'verbose' : True }
+{'src': 'fish', 'dst': '.fish' },
+{'src': 'fish', 'dst': '.config/fish' },
+#{'src': 'function', 'dst': '.config/function' }
+],
+{ 'dry_run' : True, 'verbose' : False }
 )
