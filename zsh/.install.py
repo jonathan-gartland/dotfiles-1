@@ -2,7 +2,7 @@
 #coding=utf-8
 
 # import CreateLinks
-from createlinks import CreateLinks
+from install import createLinks
 
 # create the links
 createLinks(
