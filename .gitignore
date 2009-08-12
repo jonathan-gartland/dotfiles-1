@@ -1,5 +1,5 @@
 # Ignore *all* .pyc files
-**/**/*.pyc
+*.pyc
 
 # ignore emacs directories
 emacs/backup
