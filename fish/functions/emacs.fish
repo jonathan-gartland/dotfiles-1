@@ -1,7 +1,9 @@
-function emacs -d "Start emacs[client]"
-	emacs $argv
-    #emacsclient --no-wait --alternate-editor=(which emacs) $argv 
-    #if test $status > 0
-    #    ($location_emacs --daemon $argv)
-    #end
+function emacs -d "Start emacsclient or emacs"
+
+# look through process
+#ps u $USERNAME  |grep "emacs --daemon"
+# see if one exists
+#if $status 
+    
+    emacsclient --create-frame --no-wait --alternate-editor=(which emacs) $argv 
 end

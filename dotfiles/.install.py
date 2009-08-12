@@ -8,10 +8,10 @@ from install import createLinks
 createLinks(
 [
     {'src': 'dotfiles', 'dst': '.dotfiles' },
-    { 'src': 'dotfiles/astylerc', 'dst': '.astylerc',  },
-    { 'src': 'dotfiles/screenrc', 'dst': '.screenrc',  },
-    { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf',  },
-    { 'src': 'dotfiles/muttrc', 'dst': '.muttrc',  },
-    { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc',  },
-    { 'src': 'dotfiles/xbindkeys', 'dst': '.xbindkeysrc',  }
+    { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
+    { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
+    { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf' },
+    { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
+    { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
+    { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }
 ], { 'dry_run' : True, 'verbose' : False } )
