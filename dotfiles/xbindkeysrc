@@ -3,5 +3,5 @@
 ###########################
 
 # xask.sh
-"~/bin/xask.sh localhost &"
+"~/bin/xask.sh &"
     Alt + Escape 

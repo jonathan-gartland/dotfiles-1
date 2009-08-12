@@ -8,6 +8,7 @@ emacs/auto-save-list/
 
 # vim
 vim/.netrwhist
+vim/doc/*
 
 # fish
 fish/fish_history
