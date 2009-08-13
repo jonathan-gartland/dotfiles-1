@@ -8,6 +8,7 @@ alias df 'df -h'
 alias du 'du -h'
 alias grep 'grep --color=auto'
 alias la 'ls -al'	 # show hidden files
+
 alias lc 'ls -lcr'	# sort by change time
 alias lk 'ls -lSr'	# sort by size
 alias ll 'ls -l'            
@@ -51,14 +52,12 @@ end
 
 set stow $HOME/local/stow
 
-set EDITOR ew
-set VISUAL ew
-
 # setup CDPATH
 setupCDPATH
 
 # setup PATH
-setupPATH
+#setupPATH
+set -gx PATH $HOME/local/bin $HOME/bin /usr/local/bin /usr/bin /bin  /usr/sbin /sbin
 
 set MANPATH $MANPATH $HOME/local/man
 set TERMINFO $HOME/.terminfo
@@ -183,8 +182,13 @@ if test (hostname) = 'skk'
 
     # setup IBM WebSphere environment variables
     #. /opt/was61/wasSetup.fish
- end
+end
 
-set -x PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOME/.emacs.d/elisp/gpycomplete $HOME/local/lib/$python_version/site-packages/ $HOME/local/stow/lib/
+# set PATH and PYTHONPATH
+set -gx PATH $JAVA_HOME/bin $PATH 
+set -gx PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOME/.emacs.d/elisp/gpycomplete $HOME/local/lib/$python_version/site-packages/ $HOME/local/stow/lib/
 
+# set EDITOR/VISUAL
+set -gx EDITOR ew
+set -gx VISUAL ew
 # /* vim: set filetype=fish : */ 

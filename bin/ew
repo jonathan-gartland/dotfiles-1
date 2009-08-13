@@ -1,19 +1,35 @@
-#!/bin/sh
+#!/bin/bash
+PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
-EMACS=emacs
-EMACSCLIENT=emacsclient
-if [ -f $HOME/.emacsconfig ]; then
-  . $HOME/.emacsconfig
-fi
+#!/bin/bash
+# Based opon http://www.bennee.com/~alex/news.php?wl_mode=more&wl_eid=1283
+#
+#
+# Emacs Specific setup
+#
+# There is only one editor (although I can get to it in different ways).
+# For most stuff I want to use emacsclient to spawn a quick shell and
+# for emacs 23 I want to ensure the daemon is always running for the user.
+#
+# Luckily this is covered by specifying -a '' which will spawn a daemon if
+# one is not running
+#
 
-if [ -z "$DISPLAY" ]; then
-  exec $EMACS "$@"
+if [[ "$DISPLAY" == "" ]]; then
+    # Can we use muti-tty?
+    emacsclient --help | grep "\-\-tty" > /dev/null
+    if [[ "$?" == "0" ]]; then
+        # Thats a yes
+        EMACS_CMD="emacsclient -a '' -t"
+    else
+        # Hmmm, opening in another pane would be a pain?
+        EMACS_CMD="emacs -nw "
+    fi
 else
-  tempuid=`id -u`
-  temphost=`hostname`
-  if [ -e "/tmp/esrv$tempuid-$temphost" ]; then
-    exec $EMACSCLIENT "$@"
-  else
-    exec $EMACS "$@"
-  fi
+    # otherwise don't wait and open a new frame
+    EMACS_CMD="emacsclient -a '' -c"
 fi
+emacsclient -a '' -e "(server-running-p)"
+
+echo $EMACS_CMD $*
+$EMACS_CMD $*
