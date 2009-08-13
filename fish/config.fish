@@ -51,9 +51,8 @@ end
 
 set stow $HOME/local/stow
 
-set EDITOR vim
-#set VISUAL gvim
-set SVN_EDITOR vim
+set EDITOR ew
+set VISUAL ew
 
 # setup CDPATH
 setupCDPATH
