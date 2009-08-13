@@ -1,9 +1,9 @@
 function addToPATH -d "Add $argv[1] to PATH"
 
     set -l path $argv[1]
-    #echo "path $path"
+    #/bin/echo "path $path"
 
-    if not test -d $path
+    if not /usr/bin/test -d $path
         return 2
     end
 
@@ -11,22 +11,22 @@ function addToPATH -d "Add $argv[1] to PATH"
         return 3
     end
 
-    if test (count $argv) -eq 2;
+    if /usr/bin/test (count $argv) -eq 2;
         if test $argv[2] = "after"
-            #echo "Appending $path to \$PATH"
-            #echo "PATH $PATH"
-            set PATH $PATH $path
-            #echo "PATH $PATH"
+            #/bin/echo "Appending $path to \$PATH"
+            #/bin/echo "PATH $PATH"
+            set -gx PATH "$PATH $path"
+            #/bin/echo "PATH $PATH"
         end
     else
-        #echo "Appending $path to \$PATH"
-        #echo "PATH $PATH"
-        set PATH $path $PATH
-        #echo "PATH $PATH"
+        #/bin/echo "Appending $path to \$PATH"
+        #/bin/echo "PATH $PATH"
+        set -gx PATH "$path $PATH"
+        #/bin/echo "PATH $PATH"
     end
 
-    #echo "Adding $path to PATH: $PATH"
-    #echo "\n"
+    #/bin/echo "Adding $path to PATH: $PATH"
+    #/bin/echo "\n"
 
     return 0
 end

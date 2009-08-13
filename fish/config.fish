@@ -56,8 +56,7 @@ set stow $HOME/local/stow
 setupCDPATH
 
 # setup PATH
-#setupPATH
-set -gx PATH $HOME/local/bin $HOME/bin /usr/local/bin /usr/bin /bin  /usr/sbin /sbin
+setupPATH
 
 set MANPATH $MANPATH $HOME/local/man
 set TERMINFO $HOME/.terminfo
@@ -98,22 +97,21 @@ end
 
 # fish stuff for zathras
 if test (hostname) = 'zathras.sr.unh.edu' 
-
     # General Aliases
     alias bigmomma '/usr/bin/vncviewer -FullColor bigmomma'
 
     # Environmental variablles
-    set ECLIPSE_HOME /usr/local/eclipse
-    set PYTHONDOCS "/usr/share/doc/python-docs-2.6/html/"
-    set LD_LIBRARY_PATH $HOME/local/lib:$LD_LIBRARY_PATH
+    set -xg ECLIPSE_HOME /usr/local/eclipse
+    set -xg PYTHONDOCS "/usr/share/doc/python-docs-2.6/html/"
+    set -xg LD_LIBRARY_PATH $HOME/local/lib:$LD_LIBRARY_PATH
 
-    set -x JAVA_HOME /usr/local/java/IBMJava16
-    set -x JRE_HOME $JAVA_HOME
-    set PRINTER HP3800
-    set MAILDIR $HOME/Maildir
+    set -xg JAVA_HOME /usr/local/java/IBMJava16
+    set -xg JRE_HOME $JAVA_HOME
+    set -xg PRINTER HP3800
+    set -xg MAILDIR $HOME/Maildir
     
     # Database aliases
-    set -x ORACLE_COMMAND $HOME/bin/pysql.sh
+    set -xg ORACLE_COMMAND $HOME/bin/pysql.sh
 
     # source IBM WebSphere AS 6.1 setup file
     . /opt/IBM/was61/wasSetup.fish
@@ -148,8 +146,8 @@ end
 
 # fish stuff for kona and kenyan
 if test (hostname) = 'kona.sr.unh.edu'; or test (hostname) = 'kenyan.sr.unh.edu'
-    set -x JAVA_HOME /usr/local/java/IBMJava16
-    set -x JRE_HOME $JAVA_HOME
+    set -gx JAVA_HOME /usr/local/java/IBMJava16
+    set -gx JRE_HOME $JAVA_HOME
 
      # source IBM WebSphere AS 6.1 setup file
     . /opt/IBM/was61/wasSetup.fish
@@ -157,8 +155,8 @@ end
 
 if test (hostname) = 'spoo.sr.unh.edu'
 
-    set -x JAVA_HOME /usr/local/java/IBMJava16
-    set -x JRE_HOME $JAVA_HOME
+    set -gx JAVA_HOME /usr/local/java/IBMJava16
+    set -gx JRE_HOME $JAVA_HOME
 
      # source IBM WebSphere AS 6.1 setup file
     . /opt/IBM/was61/wasSetup.fish
@@ -169,14 +167,14 @@ end
 if test (hostname) = 'skk'
     set svnroot "file:///home/svn/skk/"
     set svnmusic "file:///home/svn/music/"
-    set MAILDIR $HOME/Maildir
-    set -x JAVA_HOME /usr/local/java/IBMJava16
-    set -x JRE_HOME $JAVA_HOME
+    set -gx MAILDIR $HOME/Maildir
+    set -gx JAVA_HOME /usr/local/java/IBMJava16
+    set -gx JRE_HOME $JAVA_HOME
 
     setup_oracle_env
 
     # Database aliases
-    set -x ORACLE_COMMAND $HOME/bin/pysql.sh
+    set -gx ORACLE_COMMAND $HOME/bin/pysql.sh
 
     cd
 
@@ -184,8 +182,9 @@ if test (hostname) = 'skk'
     #. /opt/was61/wasSetup.fish
 end
 
-# set PATH and PYTHONPATH
-set -gx PATH $JAVA_HOME/bin $PATH 
+# add JAVA_HOME/bin to PATH
+addToPATH $JAVA_HOME/bin
+
 set -gx PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOME/.emacs.d/elisp/gpycomplete $HOME/local/lib/$python_version/site-packages/ $HOME/local/stow/lib/
 
 # set EDITOR/VISUAL
