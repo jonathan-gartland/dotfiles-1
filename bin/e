@@ -1,14 +1,68 @@
 #!/bin/bash
 
-EMACS=emacs
-EMACSCLIENT=emacsclient
-if [ -f $HOME/.emacsconfig ]; then
-  . $HOME/.emacsconfig
+PATH="$HOME/bin:$HOME/local/bin:$PATH"
+
+#EMACS=emacs
+#EMACSCLIENT=emacsclient
+#if [ -f $HOME/.emacsconfig ]; then
+#  . $HOME/.emacsconfig
+#fi
+
+#tempuid=`id -u`
+#if [ ! -e "/tmp/emacs$tempuid/server" ]; 
+#then
+#    exec $EMACS --daemon --funcall server-start
+#fi
+#exec $EMACSCLIENT --create-frame --no-wait -s "/tmp/emacs$tempuid/server" "$@"
+
+#!/bin/bash
+#
+# Alex's .bashrc_emacs
+#
+# Emacs Specific setup
+#
+# There is only one editor (although I can get to it in different ways).
+# For most stuff I want to use emacsclient to spawn a quick shell and
+# for emacs 23 I want to ensure the daemon is always running for the user.
+#
+# Luckily this is covered by specifying -a '' which will spawn a daemon if
+# one is not running
+#
+
+if [[ "$DISPLAY" == "" ]]; then
+echo "1"
+    # Can we use muti-tty?
+    emacsclient --help | grep "\-\-tty" > /dev/null
+    if [[ "$?" == "0" ]]; then
+	echo "2"
+        # Thats a yes
+        EMACS_CMD="emacsclient -a '' -t"
+    else
+	echo "3"
+        # Hmmm, opening in another pane would be a pain?
+        EMACS_CMD="emacs -nw "
+    fi
+else
+	echo "4"
+    # otherwise don't wait and open a new frame
+    EMACS_CMD="emacsclient -n -a '' -c"
 fi
 
-tempuid=`id -u`
-if [ ! -e "/tmp/emacs$tempuid/server" ]; 
-then
-    exec $EMACS --daemon --funcall server-start
-fi
-exec $EMACSCLIENT --create-frame --no-wait -s "/tmp/emacs$tempuid/server" "$@"
+# Set the environment variables for the editors
+#export EDITOR=${EMACS_CMD}
+#export VISUAL=${EMACS_CMD}
+#export ALTERNATE_EDITOR=emacs
+
+#echo "EDITOR $EDITOR"
+#echo "VISUAL $VISUAL"
+#echo "ALTERNATE_EDITOR $ALTERNATE_EDITOR"
+
+# shortcut
+#alias ec="${EMACS_CMD}"
+
+# And finally lets get the status of the emacs server
+DT=`emacsclient -a '' -e "(server-running-p)" 2> /dev/null`
+echo "loading .bashrc_emacs (server-running-p)=${DT}"
+
+echo exec $EDITOR $*
+exec $EMACS_CMD $*
