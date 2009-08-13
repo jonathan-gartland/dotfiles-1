@@ -1,0 +1,23 @@
+#!/bin/sh
+
+EMACS=emacs
+EMACSCLIENT=emacsclient
+if [ -f $HOME/.emacsconfig ]; then
+  . $HOME/.emacsconfig
+fi
+
+if [ -z "$DISPLAY" ]; then
+  exec $EMACS "$@"
+else
+  tempuid=`id -u`
+  temphost=`hostname`
+  if [ -e "/tmp/esrv$tempuid-$temphost" ]; then
+    if [ $# -gt 0 ]; then
+      $EMACSCLIENT --no-wait "$@"
+    else
+      $EMACSCLIENT --no-wait .
+    fi
+  else
+    $EMACS -f server-start "$@" &
+  fi
+fi
