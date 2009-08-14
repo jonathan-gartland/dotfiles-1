@@ -5,11 +5,6 @@
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(server-start)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 (defconst elisp-path '("~/.emacs.d/elisp/")) ;; my elisp directories
@@ -17,13 +12,10 @@
            (add-to-list 'load-path p) 
            (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
 (cd "~/")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require-maybe  (http://www.emacswiki.org/cgi-bin/wiki/LocateLibrary)
 ;; this is useful when this .emacs is used in an env where not all of the
 ;; other stuff is available
@@ -31,7 +23,7 @@
   "*Try to require FEATURE, but don't signal an error if `require' fails."
   `(require ,feature ,file 'noerror)) 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; system type
 (defconst djcb-win32-p (eq system-type 'windows-nt) "Are we on Windows?")
 (defconst djcb-linux-p (or (eq system-type 'gnu/linux) (eq system-type 'linux))
@@ -40,9 +32,9 @@
   "Are we in a console?")
 (defconst djcb-machine (substring (shell-command-to-string "hostname") 0 -1))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; create required directories
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (unless (file-directory-p "~/.emacs.d/cache")
  (make-directory "~/.emacs.d/cache")) 
@@ -361,11 +353,69 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
-(require 'auto-complete)
+(when (require-maybe 'auto-complete))
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 (setq ac-dwim t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; predictive abbreviations 
+
+; load pabbrev
+(when (require-maybe 'pabbrev))
+
+;; The following code is from: http://www.emacswiki.org/emacs/PredictiveAbbreviation
+(defun pabbrevx-ac-on-pre-command ()
+  (if (or (eq this-command 'self-insert-command)
+          (and (not (ac-trigger-command-p))
+               (or (not (symbolp this-command))
+                   (not (string-match "^ac-" (symbol-name this-command))))))
+      (progn
+        (remove-hook 'post-command-hook 'pabbrevx-ac-on-post-command t)
+        (remove-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command t)
+        (ac-abort))))
+
+(defun pabbrevx-ac-on-post-command ()
+  (if (and (not isearch-mode)
+           (ac-trigger-command-p))
+      (pabbrevx-ac-start)))
+
+(defun pabbrevx-ac-start ()
+  (let ((candidates (mapcar 'car pabbrev-expansion-suggestions)))
+    (add-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command nil t)
+    (add-hook 'post-command-hook 'pabbrevx-ac-on-post-command nil t)
+    (let* ((point (save-excursion (funcall ac-prefix-function)))
+           (reposition (not (equal ac-point point))))
+      (if (null point)
+          (ac-abort)
+        (setq ac-point point)
+        (when (not (equal ac-point ac-old-point))
+          (setq ac-old-point point))
+        (setq ac-prefix (buffer-substring-no-properties point (point)))
+        (setq ac-limit ac-candidate-max)
+        (if (or reposition (null ac-menu))
+            (save-excursion
+              (funcall ac-init-function)))
+        (let* ((current-width (if ac-menu (ac-menu-width ac-menu) 0))
+               (width (let ((w '(0)) s)
+                        (dotimes (i ac-candidate-menu-height)
+                          (setq s (nth i candidates))
+                          (if (stringp s) (push (string-width s) w)))
+                        (apply 'max w))))
+          (if (or reposition
+                  (null ac-menu)
+                  (> width current-width)
+                  (< width (- current-width 20)))
+              (ac-setup point (* (ceiling (/ width 20.0)) 20)))
+          (ac-update-candidates candidates))))))
+
+(defun pabbrevx-suggestions-goto-buffer (suggestions)
+  (pabbrevx-ac-start))
+
+(fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -525,6 +575,6 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set default custom-file
- (setq custom-file "~/.emacs.d/custom.el")
- (load custom-file 'noerror)
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
