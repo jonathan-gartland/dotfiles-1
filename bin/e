@@ -30,7 +30,13 @@ else
     # otherwise don't wait and open a new frame
     EMACS_CMD="emacsclient -n -a '' -c"
 fi
-emacsclient -a '' -e "(server-running-p)"
+#emacsclient -a '' -e "(server-running-p)"
+
+emacsclient -a '' -e "
+(require 'server) 
+(when (and (functionp 'server-running-p) (not (server-running-p)))
+  (server-start))
+" 
 
 echo $EMACS_CMD $*
 $EMACS_CMD $*

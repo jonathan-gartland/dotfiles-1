@@ -14,6 +14,7 @@ function convert_csh_fish
 
     # dump file
     #cat $tmpFile
+    #echo "tmpFile $tmpFile"
 
     # remove tmp file
     rm -f $tmpFile

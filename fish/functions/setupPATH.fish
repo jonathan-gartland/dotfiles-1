@@ -7,9 +7,9 @@ function setupPATH -d "Define PATH"
     addToPATH /bin
 
     # add user's dirs
-    addToPATH $JAVA_HOME/bin
-    addToPATH $HOME/local/bin
-    addToPATH $HOME/bin
+    addToPATH "$JAVA_HOME/bin"
+    addToPATH "$HOME/local/bin"
+    addToPATH "$HOME/bin"
 
     # add sbin dirs
     if test (id -u) = "0"
