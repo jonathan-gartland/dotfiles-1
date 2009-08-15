@@ -1,0 +1,3 @@
+[submodule "emacs"]
+	path = emacs
+	url = git://gitorious.org/skk/dot-files-forest-submodule-emacs.git
