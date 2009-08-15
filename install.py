@@ -3,6 +3,19 @@
 from os import environ, getcwd, remove, symlink
 from os.path import exists, join
 
+def _execute_command( command ):
+    from subprocess import call
+    try:
+        print >>sys.stderr, "Command:\n%s" % command
+        #retcode = 0
+        retcode = call(command, shell=True)
+
+        if retcode < 0:
+            print >>sys.stderr, "Child was terminated by signal", -retcode
+
+    except OSError, e:
+            print >>sys.stderr, "Execution failed:", e
+
 def createLinks( args, options = {} ):
     if options is None:
         options = { 'verbose': None, 'dry_run': None }
@@ -39,7 +52,9 @@ def createLinks( args, options = {} ):
                 pass
 
 if __name__ == "__main__":
-    for d in ['bin', 'conky', 'emacs', 'dotfiles', 'emacs', 'fish', 'terminfo', 'vim', 'zsh' ]:
-        file = "%s/.install.py" % d
+    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'emacs', 'fish', 'terminfo', 'vim', 'zsh' ]:
+        file = "%s/.install.py" % dir
         if exists(file):
-            execfile( file )
+	    _execute_command( "git init %s" % dir ):
+	    _execute_command( "git update %s" % dir ):
+            execfile(file)
