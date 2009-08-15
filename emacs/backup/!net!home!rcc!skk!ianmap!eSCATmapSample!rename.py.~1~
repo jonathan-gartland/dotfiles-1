@@ -1,6 +1,0 @@
-#!/usr/bin/env python
-
-for x in range(1,222):
-	print x
-
-

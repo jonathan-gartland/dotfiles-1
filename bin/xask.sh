@@ -1,6 +1,8 @@
 #!/bin/bash
 
 konsole="/usr/bin/env konsole"
+$konsole
+exit 0
 
 case ${1:-UnseT} in
     UnseT) 
