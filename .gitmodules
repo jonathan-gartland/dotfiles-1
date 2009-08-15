@@ -1,3 +1,15 @@
 [submodule "emacs"]
 	path = emacs
 	url = git://gitorious.org/skk/dot-files-forest-submodule-emacs.git
+[submodule "bin"]
+	path = bin
+	url = git@gitorious.org:skk/dot-files-forest-submodule-bin.git
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@gitorious.org:skk/dot-files-forest-submodule-dotfiles.git
+[submodule "fish"]
+	path = fish
+	url = git@gitorious.org:skk/dot-files-forest-submodule-fish.git
+[submodule "vim"]
+	path = vim
+	url = git@gitorious.org:skk/dot-files-forest-submodule-vim.git
