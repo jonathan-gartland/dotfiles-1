@@ -13,3 +13,6 @@
 [submodule "vim"]
 	path = vim
 	url = git@gitorious.org:skk/dot-files-forest-submodule-vim.git
+[submodule "conky"]
+	path = conky
+	url = git@gitorious.org:skk/dot-files-forest-submodule-conky.git
