@@ -1,7 +1,0 @@
-###########################
-# xbindkeys configuration #
-###########################
-
-# xask.sh
-"~/bin/xask.sh &"
-    Alt + Escape 

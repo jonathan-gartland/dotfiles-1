@@ -1,6 +1,0 @@
-tail $@ | perl -e '
-while (<STDIN>) {
-  s/\\t/\t/g;
-  s/\\n/\n/g;
-  print $_;
-}'

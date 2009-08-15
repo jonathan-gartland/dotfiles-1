@@ -1,1 +1,0 @@
-../fish/lib/convert_csh_setup_file.py
