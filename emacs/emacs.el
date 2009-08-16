@@ -328,36 +328,35 @@ directory, select directory. Lastly the file is opened."
 ;; python
 
 ; pymacs
-(when (require-maybe 'pymacs))
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-
-; ropemacs 
-(pymacs-load "ropemacs" "rope-")
-
-; python-mode
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;gpycomplete
-(add-hook 'python-mode-hook (lambda ()
-    (when (require-maybe 'gpycomplete))
-    (local-setkey [tab] 'gpy-complete-and-indent)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;(when (require-maybe 'pymacs))
+;(autoload 'pymacs-apply "pymacs")
+;(autoload 'pymacs-call "pymacs")
+;(autoload 'pymacs-eval "pymacs" nil t)
+;(autoload 'pymacs-exec "pymacs" nil t)
+;(autoload 'pymacs-load "pymacs" nil t)
+;
+;; ropemacs 
+;(pymacs-load "ropemacs" "rope-")
+;
+;; python-mode
+;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;(setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
+;(autoload 'python-mode "python-mode" "Python editing mode." t)
+;
+;;gpycomplete
+;(add-hook 'python-mode-hook (lambda ()
+;    (when (require-maybe 'gpycomplete))
+;    (local-setkey [tab] 'gpy-complete-and-indent)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
-(when (require-maybe 'auto-complete))
-(global-auto-complete-mode t)
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(setq ac-dwim t)
+;(when (require-maybe 'auto-complete))
+;(global-auto-complete-mode t)
+;(define-key ac-complete-mode-map "\C-n" 'ac-next)
+;(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;(setq ac-dwim t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -575,6 +574,7 @@ directory, select directory. Lastly the file is opened."
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'python)
 (require 'auto-complete)
 (require 'yasnippet)
