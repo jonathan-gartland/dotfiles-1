@@ -1,15 +1,2 @@
 # Ignore *all* .pyc files
 *.pyc
-
-# ignore emacs directories
-emacs/backup
-emacs/cache
-emacs/auto-save-list/
-
-# vim
-vim/.netrwhist
-vim/doc/*
-
-# fish
-fish/fish_history
-fish/fishd.*
