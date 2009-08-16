@@ -1,0 +1,1 @@
+../conkygooglecalendar-2.02/conkyGoogleCalendar.py

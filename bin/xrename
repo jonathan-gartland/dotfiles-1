@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ `uname` = Linux ]; then
+        ECHOCMD="echo -e"
+else
+        ECHOCMD="echo"
+fi
+
+$ECHOCMD "\033]1;$1\007\033]2;$1\007\c"
+

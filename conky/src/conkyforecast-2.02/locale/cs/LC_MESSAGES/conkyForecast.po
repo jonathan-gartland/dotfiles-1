@@ -1,0 +1,357 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: conkyForecast.py 1.0\n"
+"POT-Creation-Date: 2008-08-19 19:02+BST\n"
+"PO-Revision-Date: 2008-08-20 11:28+0100\n"
+"Last-Translator: Kaivalagi <m_buck@hotmail.com>\n"
+"Language-Team: nite <nite@f-mail.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "falling"
+msgstr "spadající"
+
+msgid "rising"
+msgstr "stoupá"
+
+msgid "steady"
+msgstr "ustálený"
+
+msgid "calm"
+msgstr "bezvětří"
+
+#: conkyForecast.py:157
+msgid "Tornado"
+msgstr "Tornádo"
+
+#: conkyForecast.py:158
+msgid "Tropical Storm"
+msgstr "Tropická Bouře"
+
+#: conkyForecast.py:159
+msgid "Hurricane"
+msgstr "Hurikán"
+
+#: conkyForecast.py:160
+msgid "Severe Thunderstorms"
+msgstr "Silné Bouřky"
+
+#: conkyForecast.py:161
+msgid "Thunderstorms"
+msgstr "Bouřky"
+
+#: conkyForecast.py:162
+msgid "Mixed Rain and Snow"
+msgstr "Déšť se Sněhem"
+
+#: conkyForecast.py:163
+msgid "Mixed Rain and Sleet"
+msgstr "Mrznoucí Déšť"
+
+#: conkyForecast.py:164
+msgid "Mixed Precipitation"
+msgstr "Smíšené Srážky"
+
+#: conkyForecast.py:165
+msgid "Freezing Drizzle"
+msgstr "Mrznoucí Mrholení"
+
+#: conkyForecast.py:166
+msgid "Drizzle"
+msgstr "Mrholení"
+
+#: conkyForecast.py:167
+msgid "Freezing Rain"
+msgstr "Mrznoucí Déšť"
+
+#: conkyForecast.py:168
+msgid "Light Rain"
+msgstr "Lehké Déšť"
+
+#: conkyForecast.py:169
+msgid "Rain"
+msgstr "Déšť"
+
+#: conkyForecast.py:170
+msgid "Snow Flurries"
+msgstr "Přívaly Sněhu"
+
+#: conkyForecast.py:171
+msgid "Light Snow Showers"
+msgstr "Lehké Sněhové Přeháňky"
+
+#: conkyForecast.py:172
+msgid "Drifting Snow"
+msgstr "Sníh a Větrno"
+
+#: conkyForecast.py:173
+msgid "Snow"
+msgstr "Sníh"
+
+#: conkyForecast.py:174
+msgid "Hail"
+msgstr "Kroupy"
+
+#: conkyForecast.py:175
+msgid "Sleet"
+msgstr "Zmrzlý Déšť"
+
+#: conkyForecast.py:176
+msgid "Dust"
+msgstr "Prach"
+
+#: conkyForecast.py:177
+msgid "Fog"
+msgstr "Mlha"
+
+#: conkyForecast.py:178
+msgid "Haze"
+msgstr "Opar"
+
+#: conkyForecast.py:179
+msgid "Smoke"
+msgstr "Kouř"
+
+#: conkyForecast.py:180
+msgid "Blustery"
+msgstr "Silný Vítr"
+
+#: conkyForecast.py:181
+msgid "Windy"
+msgstr "Větrno"
+
+#: conkyForecast.py:182
+#: conkyForecast.py:201
+#: conkyForecast.py:205
+#: conkyForecast.py:206
+#: conkyForecast.py:248
+#: conkyForecast.py:258
+msgid "N/A"
+msgstr "N/A"
+
+#: conkyForecast.py:183
+msgid "Cloudy"
+msgstr "Oblačno"
+
+#: conkyForecast.py:184
+#: conkyForecast.py:185
+msgid "Mostly Cloudy"
+msgstr "Převážně Zataženo"
+
+#: conkyForecast.py:186
+#: conkyForecast.py:187
+msgid "Partly Cloudy"
+msgstr "Polojasno"
+
+#: conkyForecast.py:188
+#: conkyForecast.py:189
+msgid "Clear"
+msgstr "Jasno"
+
+#: conkyForecast.py:190
+#: conkyForecast.py:191
+msgid "Fair"
+msgstr "Hezky"
+
+#: conkyForecast.py:192
+msgid "Mixed Rain and Hail"
+msgstr "Déšť a Kroupy"
+
+#: conkyForecast.py:193
+msgid "Hot"
+msgstr "Horko"
+
+#: conkyForecast.py:194
+#: conkyForecast.py:204
+msgid "Isolated Thunderstorms"
+msgstr "Výjimečně Bouřky"
+
+#: conkyForecast.py:195
+msgid "Scattered Thunderstorms"
+msgstr "Občasné Bouřky"
+
+#: conkyForecast.py:196
+#: conkyForecast.py:202
+msgid "Scattered Showers"
+msgstr "Občasné Přeháňky"
+
+#: conkyForecast.py:197
+msgid "Heavy Rain"
+msgstr "Těžký Déšť"
+
+#: conkyForecast.py:198
+msgid "Scattered Snow Showers"
+msgstr "Občasné Sněhové Přeháňky"
+
+#: conkyForecast.py:199
+#: conkyForecast.py:200
+msgid "Heavy Snow"
+msgstr "Těžký Sníh"
+
+#: conkyForecast.py:203
+msgid "Snow Showers"
+msgstr "Sněhové Přeháňky"
+
+#: conkyForecast.py:210
+msgid "Today"
+msgstr "Dnes"
+
+#: conkyForecast.py:211
+msgid "Monday"
+msgstr "Pondělí"
+
+#: conkyForecast.py:212
+msgid "Tuesday"
+msgstr "Úterý"
+
+#: conkyForecast.py:213
+msgid "Wednesday"
+msgstr "Středa"
+
+#: conkyForecast.py:214
+msgid "Thursday"
+msgstr "Čtvrtek"
+
+#: conkyForecast.py:215
+msgid "Friday"
+msgstr "Pátek"
+
+#: conkyForecast.py:216
+msgid "Saturday"
+msgstr "Sobota"
+
+#: conkyForecast.py:217
+msgid "Sunday"
+msgstr "Neděle"
+
+#: conkyForecast.py:221
+msgid "Now"
+msgstr "Teď"
+
+#: conkyForecast.py:222
+msgid "Mon"
+msgstr "Po"
+
+#: conkyForecast.py:223
+msgid "Tue"
+msgstr "Út"
+
+#: conkyForecast.py:224
+msgid "Wed"
+msgstr "St"
+
+#: conkyForecast.py:225
+msgid "Thu"
+msgstr "Čt"
+
+#: conkyForecast.py:226
+msgid "Fri"
+msgstr "Pá"
+
+#: conkyForecast.py:227
+msgid "Sat"
+msgstr "So"
+
+#: conkyForecast.py:228
+msgid "Sun"
+msgstr "Ne"
+
+#: conkyForecast.py:232
+msgid "N"
+msgstr "S"
+
+#: conkyForecast.py:233
+msgid "NNE"
+msgstr "SSV"
+
+#: conkyForecast.py:234
+msgid "NE"
+msgstr "SV"
+
+#: conkyForecast.py:235
+msgid "ENE"
+msgstr "VSV"
+
+#: conkyForecast.py:236
+msgid "E"
+msgstr "V"
+
+#: conkyForecast.py:237
+msgid "ESE"
+msgstr "VJV"
+
+#: conkyForecast.py:238
+msgid "SE"
+msgstr "JV"
+
+#: conkyForecast.py:239
+msgid "SSE"
+msgstr "JJV"
+
+#: conkyForecast.py:240
+msgid "S"
+msgstr "J"
+
+#: conkyForecast.py:241
+msgid "SSW"
+msgstr "JJZ"
+
+#: conkyForecast.py:242
+msgid "SW"
+msgstr "JZ"
+
+#: conkyForecast.py:243
+msgid "WSW"
+msgstr "ZJZ"
+
+#: conkyForecast.py:244
+msgid "W"
+msgstr "Z"
+
+#: conkyForecast.py:245
+msgid "WNW"
+msgstr "ZSZ"
+
+#: conkyForecast.py:246
+msgid "NW"
+msgstr "SZ"
+
+#: conkyForecast.py:247
+msgid "NNW"
+msgstr "SSZ"
+
+#: conkyForecast.py:252
+msgid "Very Low"
+msgstr "Velmi Nízké"
+
+#: conkyForecast.py:253
+msgid "Low"
+msgstr "Nízké"
+
+#: conkyForecast.py:254
+msgid "Moderate"
+msgstr "Střední"
+
+#: conkyForecast.py:255
+msgid "High"
+msgstr "Vysoké"
+
+#: conkyForecast.py:256
+msgid "Very High"
+msgstr "Velmi Vysoké"
+
+#: conkyForecast.py:257
+msgid "Extreme"
+msgstr "Extrémní"
+
+#~ msgid "Showers"
+#~ msgstr "Přeháňky"
+#~ msgid "Cold"
+#~ msgstr "Zima"
+#~ msgid "Thunder Showers"
+#~ msgstr "Bouřkové přeháňky"
+

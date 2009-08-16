@@ -1,0 +1,15 @@
+include AUTHORS
+include CHANGELOG
+include COPYING
+include README
+include setup.py
+include MANIFEST.in
+include conkyForecast
+include conkyForecast.py
+include conkyForecast.config
+include conkyForecast.pot
+recursive-include locale *
+recursive-include example *
+recursive-include test *
+recursive-include fonts *
+
