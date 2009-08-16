@@ -53,10 +53,10 @@ def createLinks( args, options = {} ):
                 pass
 
 if __name__ == "__main__":
-    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'emacs', 'fish', 'vim']:
+    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'fish', 'vim']:
 
-        _execute_command( "git submodule init %s" % dir )
-        _execute_command( "git submodule update %s" % dir )
+        #_execute_command( "git submodule init %s" % dir )
+        #_execute_command( "git submodule update %s" % dir )
 
         file = "%s/.install.py" % dir
         if exists(file):
