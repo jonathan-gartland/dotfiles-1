@@ -661,10 +661,10 @@ directory, select directory. Lastly the file is opened."
 
 ;;Ryan's python specific tab completion                                                                        
 (defun ryan-python-tab ()
-  ; Try the following:                                                                                         
-  ; 1) Do a yasnippet expansion                                                                                
-  ; 2) Do a Rope code completion                                                                               
-  ; 3) Do an indent                                                                                            
+  ;Try the following:
+  ;1) Do a yasnippet expansion
+  ;2) Do a Rope code completion
+  ;3) Do an indent
   (interactive)
   (if (eql (ac-start) 0)
       (indent-for-tab-command)))
@@ -675,6 +675,41 @@ directory, select directory. Lastly the file is opened."
   (set (make-local-variable 'ac-auto-start) nil))
 
 (define-key python-mode-map "\t" 'ryan-python-tab)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
 ;;; End Auto Completion                                                                                        
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Run pyflakes with flymake.
+; From https://dev.launchpad.net/EmacsTips
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "pyflakes" (list local-file))))
+
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;; Work around bug in flymake that causes Emacs to hang when you open a
+;; docstring.
+(delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 2 4 nil 5)
+        flymake-err-line-patterns)
+
+;; And the same for the emacs-snapshot in Hardy ... spot the difference.
+(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 2 4 nil 5)
+        flymake-err-line-patterns)
+
+(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 2 4 nil 5)
+        flymake-err-line-patterns)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; flyspell
+(when (require-maybe 'flyspell)
+  (flyspell-mode 1))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
