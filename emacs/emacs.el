@@ -555,13 +555,9 @@ directory, select directory. Lastly the file is opened."
           (insert (format (concat "%" (int-to-string width) "d. ") n))
           (forward-line))))
 
-
-
-	(require 'linum)
-	(global-linum-mode 1) 		; enable display of line-numbers to left of buffer
-	(setq linum-format "%d ") 	; update linum's format
-	
-
+(require 'linum)
+(global-linum-mode 1) 		; enable display of line-numbers to left of buffer
+(setq linum-format "%d ") 	; update linum's format
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -604,11 +600,11 @@ directory, select directory. Lastly the file is opened."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
-;;; Auto-completion                                                                                            
-;;;  Integrates:                                                                                               
-;;;   1) Rope                                                                                                  
-;;;   2) Yasnippet                                                                                             
-;;;   all with AutoComplete.el                                                                                 
+;;; Auto-completion
+;;;  Integrates:
+;;;   1) Rope
+;;;   2) Yasnippet
+;;;   all with AutoComplete.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
 (defun prefix-list-elements (list prefix)
   (let (value)
