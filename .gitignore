@@ -13,3 +13,5 @@ vim/doc/*
 # # fish
 fish/fish_history
 fish/fishd.*
+
+\#*.*\#
