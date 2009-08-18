@@ -1,17 +1,17 @@
-# Ignore *all* .pyc files
+# repo wide
 *.pyc
+\#*.*\#
 
-# ignore emacs directories
+# emacs
 emacs/backup/
 emacs/cache/
 emacs/auto-save-list/
+emacs/tramp
 
 # vim
 vim/.netrwhist
 vim/doc/*
-#
-# # fish
+
+# fish
 fish/fish_history
 fish/fishd.*
-
-\#*.*\#

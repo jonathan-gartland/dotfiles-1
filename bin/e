@@ -1,8 +1,4 @@
 #!/bin/bash
-
-PATH="$HOME/bin:$HOME/local/bin:$PATH"
-
-#!/bin/bash
 # Based opon http://www.bennee.com/~alex/news.php?wl_mode=more&wl_eid=1283
 #
 #
@@ -16,6 +12,10 @@ PATH="$HOME/bin:$HOME/local/bin:$PATH"
 # one is not running
 #
 
+echo "\${0} ${0}"
+
+PATH="$HOME/bin:$HOME/local/bin:$PATH"
+
 if [[ "$DISPLAY" == "" ]]; then
     # Can we use muti-tty?
     emacsclient --help | grep "\-\-tty" > /dev/null
@@ -27,11 +27,22 @@ if [[ "$DISPLAY" == "" ]]; then
         EMACS_CMD="emacs -nw "
     fi
 else
-    # otherwise don't wait and open a new frame
-    EMACS_CMD="emacsclient -n -a '' -c"
-fi
-#emacsclient -a '' -e "(server-running-p)"
 
+    EMACS_CMD=""
+
+    if [[ "${0}" =~ "/e$" ]]; then 
+	EMACS_CMD="emacsclient -n -a '' -c"
+    fi
+
+    if [[ "${0}" =~ "/ew$" ]]; then 
+	EMACS_CMD="emacsclient -a '' -c"
+    fi
+
+    if [[ $EMACS_CMD == "" ]]; then
+	echo "EMACS_CMD is undefined."
+	exit 1
+    fi
+fi
 emacsclient -a '' -e "
 (require 'server) 
 (when (and (functionp 'server-running-p) (not (server-running-p)))
