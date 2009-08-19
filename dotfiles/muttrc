@@ -4,7 +4,6 @@ set askcc=yes
 set sort=threads
 set nostrict_threads
 set postpone=ask-no                     # Ask about postponing.
-set record="=sentmail"
 set nomove                              # Hold messages in $MAIL.
 set print=ask-yes                       # Ask before printing.
 set delete=ask-yes                      # Ask before doing a delete.
@@ -32,13 +31,24 @@ set pager_stop                          # Don't skip msgs on next page.
                                         # Where to find the mailcap.
                                         # What we consider to be a quote.
 set quote_regexp="^( {0,4}[>|:#]| {0,4}[a-z0-9]+[>|]+)+"
-set folder = ~/Maildir
+#set folder = ~/Maildir/.MaildirInbox/
 #set record="=.Sent/"
-set record=Maildir/.Sent/
+#set record=Maildir/.Sent/
 set ascii_chars="yes"
 set beep="no"
 set alias_file=~/.muttrc     # Keep aliases in this file.
 
+set mbox_type=Maildir
+set folder="~/Maildir"
+set mask="!^\\.[^.]"
+set mbox="~/Maildir"
+set record="+.Sent"
+set postponed="+.Drafts"
+set spoolfile="~/Maildir"
+
+mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
+macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
 
 # Some people think that HTML is good for email <sigh>
