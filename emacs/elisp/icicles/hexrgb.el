@@ -4,15 +4,15 @@
 ;; Description: Functions to manipulate colors, including RGB hex strings.
 ;; Author: Drew Adams
 ;; Maintainer: Drew Adams
-;; Copyright (C) 2004-2008, Drew Adams, all rights reserved.
+;; Copyright (C) 2004-2009, Drew Adams, all rights reserved.
 ;; Created: Mon Sep 20 22:58:45 2004
 ;; Version: 21.0
-;; Last-Updated: Tue Jan 01 13:37:31 2008 (-28800 Pacific Standard Time)
+;; Last-Updated: Thu Aug  6 18:26:27 2009 (-0700)
 ;;           By: dradams
-;;     Update #: 540
+;;     Update #: 586
 ;; URL: http://www.emacswiki.org/cgi-bin/wiki/hexrgb.el
 ;; Keywords: number, hex, rgb, color, background, frames, display
-;; Compatibility: GNU Emacs 20.x, GNU Emacs 21.x, GNU Emacs 22.x
+;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x
 ;;
 ;; Features that might be required by this library:
 ;;
@@ -65,10 +65,19 @@
 ;;
 ;;    (require 'hexrgb)
 ;;
+;;  Do not try to use this library without a window manager.
+;;  That is, do not use this with `emacs -nw'.
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Change log:
 ;;
+;; 2008/12/25 dadams
+;;    hexrgb-rgb-to-hsv:
+;;      Replace (not (equal 0.0e+NaN saturation)) by standard test (= saturation saturation).
+;;      Thx to  Michael Heerdegen for the bug report.
+;; 2008-10-17 dadams
+;;    hexrgb-defined-colors(-alist): Prevent load-time error if user tries to use emacs -nw.
 ;; 2007/12/30 dadams
 ;;    Added: hexrgb-hex-to-color-values.
 ;; 2007/10/20 dadams
@@ -133,18 +142,27 @@
 
 (eval-when-compile (require 'cl)) ;; case; plus, for Emacs < 20: when, unless
 
+;; Unless you first load `hexrgb.el', then either `palette.el' or `eyedropper.el', you will get
+;; warnings about variables and functions with prefix `eyedrop-' when you byte-compile
+;; `hexrgb.el'.  You can ignore these warnings.
+
+(defvar eyedrop-picked-foreground)
+(defvar eyedrop-picked-background)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;; Not used here, but put here to be available to libraries that use `hexrgb.el'.
 ;;;###autoload
-(defconst hexrgb-defined-colors (eval-when-compile (x-defined-colors))
+(defconst hexrgb-defined-colors (eval-when-compile (and window-system (x-defined-colors)))
   "List of all supported colors.")
 
 ;;;###autoload
-(defconst hexrgb-defined-colors-alist (eval-when-compile (mapcar #'list (x-defined-colors)))
+(defconst hexrgb-defined-colors-alist (eval-when-compile
+                                       (and window-system (mapcar #'list (x-defined-colors))))
   "Alist of all supported colors, for use in completion.")
 
+;; RMS added this function to Emacs (23) as `read-color', with some feature loss.
 ;;;###autoload
 (defun hexrgb-read-color (&optional convert-to-RGB-p allow-empty-name-p prompt)
   "Read a color name or RGB hex value: #RRRRGGGGBBBB.
@@ -185,6 +203,8 @@ empty input.
 Optional arg PROMPT is the prompt.  Nil means use a default prompt."
   (interactive "p")                     ; Always convert to RGB interactively.
   (let* ((completion-ignore-case t)
+         ;; Free variables here: `eyedrop-picked-foreground', `eyedrop-picked-background'.
+         ;; They are defined in library `palette.el' or library `eyedropper.el'.
          (colors (if (fboundp 'eyedrop-foreground-at-point)
                      (append (and eyedrop-picked-foreground '(("*copied foreground*")))
                              (and eyedrop-picked-background '(("*copied background*")))
@@ -314,12 +334,13 @@ Returns a list of HSV components of value 0.0 to 1.0, inclusive."
          (delta (- max min))
          hue saturation)
     (if (hexrgb-approx-equal 0.0 delta)
-        (setq hue 0.0 saturation 0.0) ; Gray scale - no color; only value.
+        (setq hue 0.0 saturation 0.0)   ; Gray scale - no color; only value.
       (if (and (condition-case nil
                    (setq saturation (/ delta max))
                  (arith-error nil))
-               (or (< emacs-major-version 21) ; Emacs 20 bug makes next test fail falsely.
-                   (not (equal 0.0e+NaN saturation)))) ; Must be a number, not NaN.
+               ;; Must be a number, not a NaN.  The standard test for a NaN is (not (= N N)),
+               ;; but an Emacs 20 bug makes (= N N) return t for a NaN also.
+               (or (< emacs-major-version 21) (= saturation saturation)))                
           (if (hexrgb-approx-equal 0.0 saturation)
               (setq hue 0.0 saturation 0.0) ; Again, no color; only value.
             ;; Color
