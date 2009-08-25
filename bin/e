@@ -12,8 +12,6 @@
 # one is not running
 #
 
-echo "\${0} ${0}"
-
 PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
 if [[ "$DISPLAY" == "" ]]; then
@@ -27,15 +25,15 @@ if [[ "$DISPLAY" == "" ]]; then
         EMACS_CMD="emacs -nw "
     fi
 else
+    EMACSCLIENT="emacsclient -c -a ''"
 
     EMACS_CMD=""
-
     if [[ "${0}" =~ "/e$" ]]; then 
-	EMACS_CMD="emacsclient -n -a '' -c"
+	EMACS_CMD="$EMACSCLIENT -n"
     fi
 
     if [[ "${0}" =~ "/ew$" ]]; then 
-	EMACS_CMD="emacsclient -a '' -c"
+	EMACS_CMD="$EMACSCLIENT"
     fi
 
     if [[ $EMACS_CMD == "" ]]; then
@@ -43,11 +41,10 @@ else
 	exit 1
     fi
 fi
+
 emacsclient -a '' -e "
 (require 'server) 
 (when (and (functionp 'server-running-p) (not (server-running-p)))
   (server-start))
-" 
-
-echo $EMACS_CMD $*
+" > /dev/null
 $EMACS_CMD $*
