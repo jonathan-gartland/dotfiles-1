@@ -36,11 +36,11 @@
 ;; create required directories
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(unless (file-directory-p "~/.emacs.d/cache")
- (make-directory "~/.emacs.d/cache")) 
+(unless (file-directory-p "~/.emacs.d/.cache")
+ (make-directory "~/.emacs.d/.cache")) 
 
-(unless (file-directory-p "~/.emacs.d/backup")
- (make-directory "~/.emacs.d/backup")) 
+(unless (file-directory-p "~/.emacs.d/.backup")
+ (make-directory "~/.emacs.d/.backup")) 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; the modeline
@@ -91,13 +91,13 @@
 (setq inhibit-startup-message t          ; don't show ...    
   inhibit-startup-echo-area-message t)   ; ... startup messages
 
-(setq save-place-file "~/.emacs.d/cache/saveplace") ;; keep my ~/ clean
+(setq save-place-file "~/.emacs.d/.cache/saveplace") ;; keep my ~/ clean
 (setq-default save-place t)                   ;; activate it for all buffers
 (require 'saveplace)                          ;; get the package
 
 (setq savehist-additional-variables    ;; also save...
         '(search-ring regexp-search-ring)    ;; ... my search entries
-          savehist-file "~/.emacs.d/cache/savehist") ;; keep my home clean
+          savehist-file "~/.emacs.d/.cache/savehist") ;; keep my home clean
 (savehist-mode t)                      ;; do customization before activate
 
 ;; disabled the damm bell !
@@ -105,6 +105,9 @@
 (setq sound-alist nil)
 (setq ring-bell-function 'ignore)
 (setq visible-bell t)
+
+
+(setq auto-save-list-file-prefix "~/.emacs.d/.cache/auto-save-list/")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -153,7 +156,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bookmarks
-(setq bookmark-default-file "~/.emacs.d/cache/bookmarks")
+(setq bookmark-default-file "~/.emacs.d/.cache/bookmarks")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -218,7 +221,7 @@
 (require 'ido) 
 (ido-mode 'both)
 (setq 
-  ido-save-directory-list-file "~/.emacs.d/cache/ido.last"
+  ido-save-directory-list-file "~/.emacs.d/.cache/ido.last"
   ido-ignore-buffers ;; ignore these guys
   '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido")
   ido-work-directory-list '("~/" "~/Desktop" "~/Documents")
@@ -273,7 +276,7 @@ directory, select directory. Lastly the file is opened."
 ;; backups  (emacs will write backups and number them)
 (setq make-backup-files t ; do make backups
   backup-by-copying t ; and copy them ...
-  backup-directory-alist '(("." . "~/.emacs.d/backup/")) ; ... here
+  backup-directory-alist '(("." . "~/.emacs.d/.backup/")) ; ... here
   version-control t
   kept-new-versions 2
   kept-old-versions 5
@@ -294,17 +297,17 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 ;; recent files                                                                  
 (when (require-maybe 'recentf)
-  (setq recentf-save-file "~/.emacs.d/cache/recent-files"
+  (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
     recentf-max-saved-items 500                                            
     recentf-max-menu-items 60)
   (recentf-mode t))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; tramp, for remote access
-;(setq tramp-default-method "ssh")
+; tramp, for remote access
+(setq tramp-default-method "ssh")
+(setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python
@@ -654,7 +657,7 @@ directory, select directory. Lastly the file is opened."
 
 (define-key python-mode-map "\t" 'ryan-python-tab)
 ;;; End Auto Completion                                                                                        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
@@ -700,5 +703,17 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; org-mode
-;(add-to-list ’auto-mode-alist ’("\\.org$" . org-mode))
+;(add-to-list ’auto-mode-alist ’("\\.org$'" . org-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; command-frequency (http://xahlee.org/emacs/command-frequency.html)
+(setq-default command-frequency-table-file "~/.emacs.d/.cache/frequencies")
+(require 'command-frequency)
+(command-frequency-table-load)
+(command-frequency-mode 1)
+(command-frequency-autosave-mode 1)
+
+; NOTE: To use command-frequency, M-x command-frequency, will take you to a 
+; buffer showing the relative frequencies of all your commands.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

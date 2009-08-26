@@ -3,10 +3,8 @@
 \#*.*\#
 
 # emacs
-emacs/backup/
-emacs/cache/
-emacs/auto-save-list/
-emacs/tramp
+emacs/.backup/
+emacs/.cache/
 
 # vim
 vim/.netrwhist
