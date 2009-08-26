@@ -60,24 +60,6 @@
 (scroll-bar-mode t)              
 (set-scroll-bar-mode 'right)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; the modeline
-(line-number-mode t)                     ; show line numbers
-(column-number-mode t)                   ; show column numbers
-(when (fboundp size-indication-mode)      
-  (size-indication-mode t))              ; show file size (emacs 22+)
-(display-time-mode -1)                   ; don't show the time
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; general settings
-(menu-bar-mode t)                       ; don't show the menu 
-;(tool-bar-mode t)                       ; don't show the toolbar
-(icomplete-mode t)                       ; completion in minibuffer
-(setq icomplete-prospects-height 2)      ; don't spam my minibuffer
-(scroll-bar-mode t)              
-(set-scroll-bar-mode 'right)
-
 (when (fboundp 'set-fringe-mode)         ; emacs22+ 
   (set-fringe-mode 1))                   ; space left of col1 in pixels
 
@@ -711,6 +693,12 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; lacarte
+(when (require-maybe 'lacarte)
+    (global-set-key [?\M-`] 'lacarte-execute-menu-command))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; org-mode
-(add-to-list ’auto-mode-alist ’("\\.org$" . org-mode))
+;(add-to-list ’auto-mode-alist ’("\\.org$" . org-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
