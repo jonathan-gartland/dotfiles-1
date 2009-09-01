@@ -27,6 +27,7 @@ alias pl 'tail -f -n 30 $HOME/.procmail/log/procmail'
 alias putty 'set TERM=putty'
 alias rm 'rm -i'
 alias today 'date +%F'
+alias todayISO1806 'date -u +"%FT%TZ"'
 alias tree 'tree -Csuh'	    # nice alternative to 'ls'
 alias vgrep 'grep -nH'
 alias watch 'watch -n 1'
@@ -107,7 +108,7 @@ if test (hostname) = 'zathras.sr.unh.edu'
 
     set -xg JAVA_HOME /usr/local/java/IBMJava16
     set -xg JRE_HOME $JAVA_HOME
-    set -xg PRINTER HP3800
+    set -xg PRINTER HP-Color-LaserJet-3800
     set -xg MAILDIR $HOME/Maildir
     
     # Database aliases
