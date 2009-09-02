@@ -1,0 +1,3 @@
+[submodule "bin/.eg.git"]
+	path = bin/.eg.git
+	url = git://gitorious.org/eg/mainline.git
