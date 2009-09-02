@@ -30,33 +30,45 @@ def createLinks( args, options = {} ):
     src_directory = getcwd()
 
     for arg in args:
-        print ""
         if options[ 'verbose' ]:
             print "argument: %s" % arg
 
 	src = join( src_directory, arg[ 'src' ] )
 	dst = join( dst_directory, arg[ 'dst' ] )
 
+        if options['verbose']:
+            print "ln -sf %s %s" % ( src, dst )
+
         if exists( dst ):
-            print "Removing Link: %s" % ( dst )
+            if options['verbose']:
+                print "Removing Exsting Link: %s" % ( dst )
+
             if not options['dry_run']:
                 try:
                     remove( dst )
                 except OSError:
                     pass
 
-        print "ln -sf %s %s" % ( src, dst )
-        if not options['dry_run']:
+            if options['verbose']:
+                print "Recreating Link: %s" % (dst)
+
+            try:
+                symlink( src, dst )
+            except OSError:
+                pass
+        else:
+            print "Creating Link: %s" % (dst)
             try:
                 symlink( src, dst )
             except OSError:
                 pass
 
 if __name__ == "__main__":
-    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'fish', 'vim']:
 
-        #_execute_command( "git submodule init %s" % dir )
-        #_execute_command( "git submodule update %s" % dir )
+    _execute_command( "git submodule init %s" % "bin/.eg.git" )
+    _execute_command( "git submodule update %s" % "bin/.eg.git" )
+    
+    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'fish', 'vim']:
 
         file = "%s/.install.py" % dir
         if exists(file):
