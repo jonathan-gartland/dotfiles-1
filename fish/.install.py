@@ -12,5 +12,5 @@ createLinks(
 {'src': 'fish/config.fish', 'dst': '.config/fish/config.fish' },
 {'src': 'fish/functions', 'dst': '.config/fish/functions' },
 ],
-{ 'dry_run' : False, 'verbose' : True }
+{ 'dry_run' : False, 'verbose' : False }
 )
