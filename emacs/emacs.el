@@ -99,8 +99,9 @@
         '(search-ring regexp-search-ring)    ;; ... my search entries
           savehist-file "~/.emacs.d/.cache/savehist") ;; keep my home clean
 (savehist-mode t)                      ;; do customization before activate
+(setq default-tab-width 4)            ; set tab-width
 
-;; disabled the damm bell !
+;; disabled that damm bell !
 (setq bell-volume 0)
 (setq sound-alist nil)
 (setq ring-bell-function 'ignore)
@@ -175,8 +176,9 @@
 ;; color-theme
 (when (require 'color-theme)
   (color-theme-initialize)
-  ;(color-theme-aalto-light)
 )
+(when (require 'color-theme-skk));
+(color-theme-skk-light);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

@@ -1,0 +1,55 @@
+
+(defun color-theme-skk-light ()
+  "Light Color theme be created by skk, 2009-09-01.  Based on theme obtained here: http://www.zbhua.info/uploads/color-theme-zbh.el"
+
+  (interactive)
+  (color-theme-install
+   '(color-theme-skk-light
+     ((background-color . "white")
+      (background-mode . light)
+      (border-color . "black")
+      (cursor-color . "darkgreen")
+      (foreground-color . "black")
+      (mouse-color . "black"))
+     ((list-matching-lines-face . bold)
+      (view-highlight-face . highlight))
+
+     (default ((t (nil))))
+     (bold ((t (:bold t))))
+     (italic ((t (:italic t))))
+     (bold-italic ((t (:italic t :bold t))))
+     (fixed ((t (:bold t))))
+     (excerpt ((t (:italic t))))
+     (underline ((t (:underline t))))
+
+     (region ((t (:background "darkgray" :foreground "black"))))
+     (highlight ((t (:background "palegoldenrod"))))
+     (highlight-changes-face ((t (:foreground "red"))))
+     (highlight-changes-delete-face ((t (:foreground "red" :underline t))))
+     (show-paren-match-face ((t (:foreground "white" :background "purple"))))
+     (show-paren-mismatch-face ((t (:foreground "white" :background "red"))))
+     (secondary-selection ((t (:background "palegreen"))))
+     (isearch ((t (:bold t :background "green" :foreground "black"))))
+     (isearch-lazy-highlight-face ((t (:background "plum" :foreground "black" ))))
+
+     ;; (modeline ((t (:background "lightgreen" :foreground "black"))))
+     ;; (modeline-buffer-id ((t (:background "plum" :foreground "black"))))
+     ;; (modeline-mousable ((t (:background "plum" :foreground "black"))))
+     ;; (modeline-mousable-minor-mode ((t (:background "plum" :foreground "black"))))
+
+     (font-lock-comment-face ((t (:background "#f6f5ec" :foreground "mediumblue"))))
+     ;;(font-lock-comment-delimiter-face ((t (:bold t :foreground "red4"))))
+     (font-lock-string-face ((t (:background "lightgoldenrod" :foreground "black"))))
+     (font-lock-doc-face ((t (:background "#f6f5ec" :foreground "red3"))))
+     (font-lock-keyword-face ((t (:bold t :foreground "red"))))
+     (font-lock-builtin-face ((t (:bold t :foreground "red"))))
+     (font-lock-function-name-face ((t (:bold t :foreground "blue"))))
+     (font-lock-variable-name-face ((t (:italic t :bold t :foreground "tan4"))))
+     (font-lock-type-face ((t (:bold t :foreground "darkgreen"))))
+     (font-lock-constant-face ((t (:foreground "red"))))
+     (font-lock-warning-face ((t (:bold t :foreground "red"))))
+     ;;(font-lock-negation-char-face ((t (:foreground "darkred"))))
+     (font-lock-preprocessor-face ((t (:foreground "red"))))
+     (font-lock-reference-face ((t (:bold t :foreground "red4")))))))
+
+(provide 'color-theme-skk)

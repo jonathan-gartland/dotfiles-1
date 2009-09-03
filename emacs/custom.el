@@ -8,7 +8,9 @@
  '(inhibit-startup-screen t)
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
  '(sql-product (quote sqlite))
- '(sql-sqlite-program "sqlite3"))
+ '(sql-sqlite-program "sqlite3")
+ '(tab-always-indent nil)
+ '(viper-shift-width 4))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
