@@ -21,8 +21,5 @@ bin/eg
 bin/errorlog.sh
 bin/accesslog.sh
 
-# submodules
-bin/.eg.git
-
 # rope-projects
 bin/.ropeproject
