@@ -7,9 +7,10 @@ from install import createLinks
 createLinks(
 [
 {'src': 'fish', 'dst': '.fish' },
-{'src': 'fish', 'dst': '.config/fish' },
 {'src': 'fish/config.fish', 'dst' : '.fishrc' },
-#{'src': 'function', 'dst': '.config/function' }
+
+{'src': 'fish/config.fish', 'dst': '.config/fish/config.fish' },
+{'src': 'fish/functions', 'dst': '.config/fish/functions' },
 ],
-{ 'dry_run' : True, 'verbose' : False }
+{ 'dry_run' : False, 'verbose' : True }
 )
