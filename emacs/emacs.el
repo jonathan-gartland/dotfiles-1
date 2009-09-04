@@ -176,9 +176,10 @@
 ;; color-theme
 (when (require 'color-theme)
   (color-theme-initialize)
+  (color-theme-blippblopp)
 )
-(when (require 'color-theme-skk));
-(color-theme-skk-light);
+;(when (require 'color-theme-blippblopp));
+;(color-theme-skk-light);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
