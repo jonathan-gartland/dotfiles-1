@@ -174,10 +174,10 @@ e;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
 (when (require 'color-theme)
-  (color-theme-initialize))
-;(when (require 'color-theme-skk));
-(when (require 'zenburn));
-(color-theme-zenburn);
+  (color-theme-zenburn)
+  ;(color-theme-initialize)
+  ;(color-theme-blippblopp)
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
