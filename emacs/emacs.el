@@ -1,5 +1,4 @@
-
-;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
+e;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
@@ -175,10 +174,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
 (when (require 'color-theme)
-  (color-theme-initialize)
-)
-(when (require 'color-theme-skk));
-(color-theme-skk-light);
+  (color-theme-initialize))
+;(when (require 'color-theme-skk));
+(when (require 'zenburn));
+(color-theme-zenburn);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -339,70 +338,71 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
-;(when (require-maybe 'auto-complete))
-;(global-auto-complete-mode t)
-;(define-key ac-complete-mode-map "\C-n" 'ac-next)
-;(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-;(setq ac-dwim t)
+(when (require-maybe 'auto-complete))
+(global-auto-complete-mode t)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(setq ac-dwim t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; predictive abbreviations 
 
-; load pabbrev
-(when (require-maybe 'pabbrev))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; predictive abbreviations 
 
-;; The following code is from: http://www.emacswiki.org/emacs/PredictiveAbbreviation
-(defun pabbrevx-ac-on-pre-command ()
-  (if (or (eq this-command 'self-insert-command)
-          (and (not (ac-trigger-command-p))
-               (or (not (symbolp this-command))
-                   (not (string-match "^ac-" (symbol-name this-command))))))
-      (progn
-        (remove-hook 'post-command-hook 'pabbrevx-ac-on-post-command t)
-        (remove-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command t)
-        (ac-abort))))
+;; ; load pabbrev
+;; (when (require-maybe 'pabbrev))
 
-(defun pabbrevx-ac-on-post-command ()
-  (if (and (not isearch-mode)
-           (ac-trigger-command-p))
-      (pabbrevx-ac-start)))
+;; ;; The following code is from: http://www.emacswiki.org/emacs/PredictiveAbbreviation
+;; (defun pabbrevx-ac-on-pre-command ()
+;;   (if (or (eq this-command 'self-insert-command)
+;;           (and (not (ac-trigger-command-p))
+;;                (or (not (symbolp this-command))
+;;                    (not (string-match "^ac-" (symbol-name this-command))))))
+;;       (progn
+;;         (remove-hook 'post-command-hook 'pabbrevx-ac-on-post-command t)
+;;         (remove-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command t)
+;;         (ac-abort))))
 
-(defun pabbrevx-ac-start ()
-  (let ((candidates (mapcar 'car pabbrev-expansion-suggestions)))
-    (add-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command nil t)
-    (add-hook 'post-command-hook 'pabbrevx-ac-on-post-command nil t)
-    (let* ((point (save-excursion (funcall ac-prefix-function)))
-           (reposition (not (equal ac-point point))))
-      (if (null point)
-          (ac-abort)
-        (setq ac-point point)
-        (when (not (equal ac-point ac-old-point))
-          (setq ac-old-point point))
-        (setq ac-prefix (buffer-substring-no-properties point (point)))
-        (setq ac-limit ac-candidate-max)
-        (if (or reposition (null ac-menu))
-            (save-excursion
-              (funcall ac-init-function)))
-        (let* ((current-width (if ac-menu (ac-menu-width ac-menu) 0))
-               (width (let ((w '(0)) s)
-                        (dotimes (i ac-candidate-menu-height)
-                          (setq s (nth i candidates))
-                          (if (stringp s) (push (string-width s) w)))
-                        (apply 'max w))))
-          (if (or reposition
-                  (null ac-menu)
-                  (> width current-width)
-                  (< width (- current-width 20)))
-              (ac-setup point (* (ceiling (/ width 20.0)) 20)))
-          (ac-update-candidates candidates))))))
+;; (defun pabbrevx-ac-on-post-command ()
+;;   (if (and (not isearch-mode)
+;;            (ac-trigger-command-p))
+;;       (pabbrevx-ac-start)))
 
-(defun pabbrevx-suggestions-goto-buffer (suggestions)
-  (pabbrevx-ac-start))
+;; (defun pabbrevx-ac-start ()
+;;   (let ((candidates (mapcar 'car pabbrev-expansion-suggestions)))
+;;     (add-hook 'pre-command-hook 'pabbrevx-ac-on-pre-command nil t)
+;;     (add-hook 'post-command-hook 'pabbrevx-ac-on-post-command nil t)
+;;     (let* ((point (save-excursion (funcall ac-prefix-function)))
+;;            (reposition (not (equal ac-point point))))
+;;       (if (null point)
+;;           (ac-abort)
+;;         (setq ac-point point)
+;;         (when (not (equal ac-point ac-old-point))
+;;           (setq ac-old-point point))
+;;         (setq ac-prefix (buffer-substring-no-properties point (point)))
+;;         (setq ac-limit ac-candidate-max)
+;;         (if (or reposition (null ac-menu))
+;;             (save-excursion
+;;               (funcall ac-init-function)))
+;;         (let* ((current-width (if ac-menu (ac-menu-width ac-menu) 0))
+;;                (width (let ((w '(0)) s)
+;;                         (dotimes (i ac-candidate-menu-height)
+;;                           (setq s (nth i candidates))
+;;                           (if (stringp s) (push (string-width s) w)))
+;;                         (apply 'max w))))
+;;           (if (or reposition
+;;                   (null ac-menu)
+;;                   (> width current-width)
+;;                   (< width (- current-width 20)))
+;;               (ac-setup point (* (ceiling (/ width 20.0)) 20)))
+;;           (ac-update-candidates candidates))))))
 
-(fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (defun pabbrevx-suggestions-goto-buffer (suggestions)
+;;   (pabbrevx-ac-start))
+
+;; (fset 'pabbrev-suggestions-goto-buffer 'pabbrevx-suggestions-goto-buffer)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -425,6 +425,28 @@ directory, select directory. Lastly the file is opened."
       (e (if mark-active end (point-max))))
     (message "Word count: %s" (how-many "\\w+" b e))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; pylookup http://github.com/tsgates/pylookup/tree/master
+;; ======================================================================
+
+;(setq pylookup-dir "~/.emacs.d/elisp/pylookup/")
+;(add-to-list 'load-path pylookup-dir)
+
+;; load pylookup when compile time
+;(eval-when-compile (require 'pylookup))
+
+; set pyloook dir
+;(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+;(setq pylookup-db-file (concat "~/.emacs.d/doc/python2.6/" "pylookup.db")
+
+;; to speedup, just load it on demand
+;(autoload 'pylookup-lookup "pylookup"
+;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
+;(autoload 'pylookup-update "pylookup" 
+;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  Makefiles
@@ -586,80 +608,80 @@ directory, select directory. Lastly the file is opened."
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
-;;; Auto-completion
-;;;  Integrates:
-;;;   1) Rope
-;;;   2) Yasnippet
-;;;   all with AutoComplete.el
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
-(defun prefix-list-elements (list prefix)
-  (let (value)
-    (nreverse
-     (dolist (element list value)
-      (setq value (cons (format "%s%s" prefix element) value))))))
-(defvar ac-source-rope
-  '((candidates
-     . (lambda ()
-         (prefix-list-elements (rope-completions) ac-target))))
-  "Source for Rope")
-(defun ac-python-find ()
-  "Python `ac-find-function'."
-  (require 'thingatpt)
-  (let ((symbol (car-safe (bounds-of-thing-at-point 'symbol))))
-    (if (null symbol)
-        (if (string= "." (buffer-substring (- (point) 1) (point)))
-            (point)
-          nil)
-      symbol)))
-(defun ac-python-candidate ()
-  "Python `ac-candidates-function'"
-  (let (candidates)
-    (dolist (source ac-sources)
-      (if (symbolp source)
-          (setq source (symbol-value source)))
-      (let* ((ac-limit (or (cdr-safe (assq 'limit source)) ac-limit))
-             (requires (cdr-safe (assq 'requires source)))
-             cand)
-        (if (or (null requires)
-                (>= (length ac-target) requires))
-            (setq cand
-                  (delq nil
-                        (mapcar (lambda (candidate)
-                                  (propertize candidate 'source source))
-                                (funcall (cdr (assq 'candidates source)))))))
-        (if (and (> ac-limit 1)
-                 (> (length cand) ac-limit))
-            (setcdr (nthcdr (1- ac-limit) cand) nil))
-        (setq candidates (append candidates cand))))
-    (delete-dups candidates)))
-(add-hook 'python-mode-hook
-          (lambda ()
-                 (auto-complete-mode 1)
-                 (set (make-local-variable 'ac-sources)
-                      (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
-                 (set (make-local-variable 'ac-find-function) 'ac-python-find)
-                 (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate)
-                 (set (make-local-variable 'ac-auto-start) nil)))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
+;; ;;; Auto-completion
+;; ;;;  Integrates:
+;; ;;;   1) Rope
+;; ;;;   2) Yasnippet
+;; ;;;   all with AutoComplete.el
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                         
+;; (defun prefix-list-elements (list prefix)
+;;   (let (value)
+;;     (nreverse
+;;      (dolist (element list value)
+;;       (setq value (cons (format "%s%s" prefix element) value))))))
+;; (defvar ac-source-rope
+;;   '((candidates
+;;      . (lambda ()
+;;          (prefix-list-elements (rope-completions) ac-target))))
+;;   "Source for Rope")
+;; (defun ac-python-find ()
+;;   "Python `ac-find-function'."
+;;   (require 'thingatpt)
+;;   (let ((symbol (car-safe (bounds-of-thing-at-point 'symbol))))
+;;     (if (null symbol)
+;;         (if (string= "." (buffer-substring (- (point) 1) (point)))
+;;             (point)
+;;           nil)
+;;       symbol)))
+;; (defun ac-python-candidate ()
+;;   "Python `ac-candidates-function'"
+;;   (let (candidates)
+;;     (dolist (source ac-sources)
+;;       (if (symbolp source)
+;;           (setq source (symbol-value source)))
+;;       (let* ((ac-limit (or (cdr-safe (assq 'limit source)) ac-limit))
+;;              (requires (cdr-safe (assq 'requires source)))
+;;              cand)
+;;         (if (or (null requires)
+;;                 (>= (length ac-target) requires))
+;;             (setq cand
+;;                   (delq nil
+;;                         (mapcar (lambda (candidate)
+;;                                   (propertize candidate 'source source))
+;;                                 (funcall (cdr (assq 'candidates source)))))))
+;;         (if (and (> ac-limit 1)
+;;                  (> (length cand) ac-limit))
+;;             (setcdr (nthcdr (1- ac-limit) cand) nil))
+;;         (setq candidates (append candidates cand))))
+;;     (delete-dups candidates)))
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;                  (auto-complete-mode 1)
+;;                  (set (make-local-variable 'ac-sources)
+;;                       (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
+;;                  (set (make-local-variable 'ac-find-function) 'ac-python-find)
+;;                  (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate)
+;;                  (set (make-local-variable 'ac-auto-start) nil)))
 
-;;Ryan's python specific tab completion                                                                        
-(defun ryan-python-tab ()
-  ;Try the following:
-  ;1) Do a yasnippet expansion
-  ;2) Do a Rope code completion
-  ;3) Do an indent
-  (interactive)
-  (if (eql (ac-start) 0)
-      (indent-for-tab-command)))
+;; ;;Ryan's python specific tab completion                                                                        
+;; (defun ryan-python-tab ()
+;;   ;Try the following:
+;;   ;1) Do a yasnippet expansion
+;;   ;2) Do a Rope code completion
+;;   ;3) Do an indent
+;;   (interactive)
+;;   (if (eql (ac-start) 0)
+;;       (indent-for-tab-command)))
 
-(defadvice ac-start (before advice-turn-on-auto-start activate)
-  (set (make-local-variable 'ac-auto-start) t))
-(defadvice ac-cleanup (after advice-turn-off-auto-start activate)
-  (set (make-local-variable 'ac-auto-start) nil))
+;; (defadvice ac-start (before advice-turn-on-auto-start activate)
+;;   (set (make-local-variable 'ac-auto-start) t))
+;; (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
+;;   (set (make-local-variable 'ac-auto-start) nil))
 
-(define-key python-mode-map "\t" 'ryan-python-tab)
-;;; End Auto Completion                                                                                        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (define-key python-mode-map "\t" 'ryan-python-tab)
+;; ;;; End Auto Completion                                                                                        
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
