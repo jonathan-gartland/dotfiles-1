@@ -1,4 +1,4 @@
-e;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
+; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
@@ -185,9 +185,10 @@ e;; -*-mode: Emacs-Lisp; outline-minor-mode:t-*-
 ;; show-paren-mode
 ;; show a subtle blinking of the matching paren (the defaults are ugly)
 ;; http://www.emacswiki.org/cgi-bin/wiki/ShowParenMode
-(when (fboundp 'show-paren-mode)
-  (show-paren-mode t)
-  (setq show-paren-style 'parenthesis))
+;(when (fboundp 'show-paren-mode)
+;  (show-paren-mode t)
+;  (setq show-paren-style 'parenthesis))
+(add-hook 'python-mode-hook (lambda () (show-paren-mode 1)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
