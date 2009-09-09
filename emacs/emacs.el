@@ -174,10 +174,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
 (when (require 'color-theme)
-  (color-theme-zenburn)
-  ;(color-theme-initialize)
-  ;(color-theme-blippblopp)
-)
+  (color-theme-initialize)
+  (when (require 'zenburn)
+  (color-theme-zenburn)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
