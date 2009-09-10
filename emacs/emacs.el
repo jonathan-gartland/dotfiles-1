@@ -188,6 +188,13 @@
 ;  (show-paren-mode t)
 ;  (setq show-paren-style 'parenthesis))
 (add-hook 'python-mode-hook (lambda () (show-paren-mode 1)))
+(add-hook 'python-mode-hook (lambda () ( setq 
+        tab-width 4
+	py-indent-offset 4
+	indent-tabs-mode t
+        py-smart-indentation t
+	python-indent 4)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
