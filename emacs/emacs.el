@@ -742,6 +742,29 @@ directory, select directory. Lastly the file is opened."
 ;(add-to-list ’auto-mode-alist ’("\\.org$'" . org-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ipython/emacs
+(require 'ipython)
+(setq py-python-command-args '( "-colors" "Linux"))
+
+;; (defadvice py-execute-buffer (around python-keep-focus activate)
+;;   "return focus to python code buffer"
+;;   (save-excursion ad-do-it))
+
+(setenv "PYMACS_PYTHON" "python2.6") 
+
+(add-hook 'python-mode-hook
+          '(lambda () (eldoc-mode 1)) t)
+
+
+;(provide 'python-programming)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; command-frequency (http://xahlee.org/emacs/command-frequency.html)
 (setq-default command-frequency-table-file "~/.emacs.d/.cache/frequencies")
