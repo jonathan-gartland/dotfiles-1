@@ -175,8 +175,13 @@
 ;; color-theme
 (when (require 'color-theme)
   (color-theme-initialize)
-  (when (require 'zenburn)
-  (color-theme-zenburn)))
+  ;(when (require 'zenburn)
+  ;(color-theme-zenburn)
+
+  (when (require 'color-theme-tango))
+  (color-theme-tango)
+
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
