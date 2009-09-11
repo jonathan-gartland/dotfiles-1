@@ -99,6 +99,7 @@
           savehist-file "~/.emacs.d/.cache/savehist") ;; keep my home clean
 (savehist-mode t)                      ;; do customization before activate
 (setq default-tab-width 4)            ; set tab-width
+(setq-default tab-stop-list (list 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108))
 
 ;; disabled that damm bell !
 (setq bell-volume 0)
@@ -177,10 +178,8 @@
   (color-theme-initialize)
   ;(when (require 'zenburn)
   ;(color-theme-zenburn)
-
   (when (require 'color-theme-tango))
   (color-theme-tango)
-
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -193,12 +192,12 @@
 ;  (show-paren-mode t)
 ;  (setq show-paren-style 'parenthesis))
 (add-hook 'python-mode-hook (lambda () (show-paren-mode 1)))
-(add-hook 'python-mode-hook (lambda () ( setq 
-        tab-width 4
-	py-indent-offset 4
-	indent-tabs-mode t
-        py-smart-indentation t
-	python-indent 4)))
+(add-hook 'python-mode-hook (lambda () (setq 
+    tab-width 4
+    py-indent-offset 4
+    indent-tabs-mode t
+    py-smart-indentation t
+    python-indent 4)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -748,21 +747,10 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ipython/emacs
 (require 'ipython)
-(setq py-python-command-args '( "-colors" "Linux"))
-
-;; (defadvice py-execute-buffer (around python-keep-focus activate)
-;;   "return focus to python code buffer"
-;;   (save-excursion ad-do-it))
-
 (setenv "PYMACS_PYTHON" "python2.6") 
-
-(add-hook 'python-mode-hook
-          '(lambda () (eldoc-mode 1)) t)
-
-
-;(provide 'python-programming)
+(setq py-python-command-args '( "-colors" "Linux"))
+;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
