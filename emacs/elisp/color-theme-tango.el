@@ -5,10 +5,11 @@
   (interactive)
   (color-theme-install
    '(color-theme-tango
-     ((background-color . "#2e3436")
-      (background-mode . dark)
+     ((background-mode . dark)
+	  ; (background-color . "#3c4447")
+	  (background-color . "#4c5559")
       (border-color . "#888a85")
-      (cursor-color . "#000000")
+      (cursor-color . "#FFFFFF")
       (foreground-color . "#eeeeec")
       (mouse-color . "#8ae234"))
      ((help-highlight-face . underline)
