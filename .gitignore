@@ -20,6 +20,10 @@ bin/e
 bin/eg
 bin/errorlog.sh
 bin/accesslog.sh
+bin/xask.py
 
 # rope-projects
 bin/.ropeproject
+
+# procmail
+procmail/work/log/*
