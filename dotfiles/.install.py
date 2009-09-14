@@ -18,4 +18,5 @@ createLinks(
     { 'src': 'dotfiles/zshrc', 'dst': '.zshrc' },
     { 'src': 'dotfiles/zshenv', 'dst': '.zshenv'},
     { 'src': 'dotfiles/zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide'}
-], { 'dry_run' : True, 'verbose' : False } )
+]
+)

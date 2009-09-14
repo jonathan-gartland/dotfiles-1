@@ -8,4 +8,4 @@ createLinks(
 [
   { 'src': 'vim', 'dst': '.vim' },
   { 'src': 'vim/vimrc', 'dst': '.vimrc' }
-], { 'dry_run' : True, 'verbose' : False } )
+] )

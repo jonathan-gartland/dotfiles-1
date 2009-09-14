@@ -3,9 +3,11 @@
 
 from install import createLinks
 
+print __file__
+
 # create the links
-createLinks( [ 
+createLinks( [
 { 'src': 'bin', 'dst': 'bin' },
-{ 'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' }
-], 
-{ 'dry_run' : False, 'verbose' : False } )
+{ 'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
+{ 'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' }
+])
