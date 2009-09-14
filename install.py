@@ -2,6 +2,7 @@
 
 from os import environ, getcwd, remove, symlink
 from os.path import exists, join
+from time import sleep
 
 def _execute_command( command ):
     from subprocess import call
@@ -19,7 +20,7 @@ def _execute_command( command ):
 
 def createLinks( args, options = {} ):
     if options is None:
-        options = { 'verbose': None, 'dry_run': None }
+        options = { 'verbose': True, 'dry_run': False }
     else:
         if not options.has_key('verbose'):
             options['verbose'] = None
@@ -63,13 +64,23 @@ def createLinks( args, options = {} ):
             except OSError:
                 pass
 
+def setup_git_submodule(repo_path):
+    _execute_command( "git submodule init %s" % repo_path )
+    _execute_command( "git submodule update %s" % repo_path )
+
 if __name__ == "__main__":
 
-    _execute_command( "git submodule init %s" % "bin/.eg.git" )
-    _execute_command( "git submodule update %s" % "bin/.eg.git" )
-    
-    for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'fish', 'vim']:
-
-        file = "%s/.install.py" % dir
+	for dir in ['bin', 'conky', 'emacs', 'dotfiles', 'fish', 'vim']:
+		file = "%s/.install.py" % dir
         if exists(file):
-            execfile(file)
+			execfile(file)
+
+	for dir in ['procmail']:
+		# prompt user for work/HOME
+
+	print "Sleeping for 30 seconds"
+	sleep(30)
+
+	setup_git_submodule("bin/.eg.git")
+	setup_git_submodule("bin/.xask.git")
+
