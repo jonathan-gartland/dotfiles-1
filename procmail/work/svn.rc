@@ -1,0 +1,52 @@
+# $Id: svn.rc 2649 2009-03-10 12:37:59Z skk $
+
+# SVN Commits Log Messages
+
+#
+# svn.sr.unh.edu
+# 
+
+:0 
+* ^To:.*EOS-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.EOS/
+
+:0 
+* ^To:.*eSCAT-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.eSCAT/
+
+:0 
+* ^To:.*skk-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.skk/
+
+:0 
+* ^To:.*TwinView-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.TwinView/
+
+:0 
+* ^To:.*FLOSS-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.FLOSS/
+
+:0 
+* ^To:.*HandyCEMS-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.HandyCEMS/
+
+:0 
+* ^To:.*Project54-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.Project54/
+
+:0 
+* ^To:.*CRMS-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.CRMS/
+
+:0 
+* ^To:.*Events-commit@kenyan.sr.unh.edu.*
+.SVN\ Commit\ Logs.Events/
+
+#
+# erma-svn.sr.unh.edu
+# 
+:0
+* ^To:.*erma-svn-commit@morden.sr.unh.edu.*
+.SVN\ Commit\ Logs.ERMA/
+
+# /* vim: set filetype=procmail : */ 

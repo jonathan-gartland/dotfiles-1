@@ -1,0 +1,41 @@
+# $Id: root.rc 2492 2008-06-30 16:41:08Z skk $
+
+# root messages
+
+# just delete DHCP warnings
+:0
+* ^Subject: DHCP Warning
+/dev/null
+
+# delete all postmaster email
+:0
+* ^To: .*(postmaster)@.*
+/dev/null
+
+# delete all mailer-daemon email
+:0
+* ^From: .*MAILER-DAEMON.*
+/dev/null
+
+# delete logwatch for other systems.
+:0
+* ^Subject: .*LogWatch for (amnesiac|stella|alumni|arpeggi).*
+/dev/null
+
+# delete clamav messages from alumni
+:0
+* ^Subject:*Cron <root@alumni> /usr/share/clamav/freshclam-sleep.*
+/dev/null
+
+# delete cron from arpeggi
+:0
+* ^Subject:.*Cron <root@arpeggi> run-parts.*
+/dev/null
+
+# delete webcal error messages
+:0
+* ^Subject:.*/web/facilities-dc/htdocs/webcams/.*
+#.Possible\ Junk\ Mail/
+/dev/null
+
+# /* vim: set filetype=procmail : */ 

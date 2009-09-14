@@ -1,0 +1,60 @@
+# $Id: rcc.rc 2649 2009-03-10 12:37:59Z skk $
+
+# RCC emails
+# Staff email
+:0
+* ^(To|Cc):.*(rcc-staff-ops|staff|rcc-staff)@sr.unh.edu.*
+.Staff/
+
+# Ops email
+:0
+* ^(To|Cc):.*(rcc-ops|ops|rccops|rcc)@(.*)sr.unh.edu.*
+.Ops/
+
+:0
+* ^(To|Cc):.*(rcc-ops|ops|rccops|rcc)@blackstar.sr.unh.edu.*
+.Ops/
+
+:0
+* ^(To|Cc):.*(rcc-ops|ops|rccops|rcc)@sr.unh.edu.*
+.Ops/
+
+# Email sent to addresses other than the "Ops" addresses above, but still should be put into the .Ops/ maildir.
+:0
+* ^To: .*(machineroom)@(.*)sr.unh.edu.*
+.Ops/
+
+# WebAdmin email
+:0
+* ^To: .*web-admin@sr.unh.edu.*
+.WebAdmin/
+
+# Old rules; kept until I know the new Ops/Staff rules work.
+#
+# Staff email
+#:0
+#* ^To: .*(rcc-staff-ops|staff|rcc-staff)@sr.unh.edu.*
+#.Staff/
+#
+#:0
+#* ^CC: .*(rcc-staff-ops|staff|rcc-staff)@sr.unh.edu.*
+#.Staff/
+#
+## Ops email
+#:0
+#* ^To: .*(rcc-ops|ops)@(eos|bluemoon).unh.edu.*
+#.Ops/
+#
+#:0
+#* ^To: .*(rcc-ops|ops)@(eos|blackstar).unh.edu.*
+#.Ops/
+#
+#:0
+#* ^CC: .*(ops|rcc-ops|rcc)@sr.unh.edu.*
+#.Ops/
+#
+#:0
+#* ^To: .*(rcc-ops|ops|rccops|rcc)@(.*)sr.unh.edu.*
+#.Ops/
+#
+# /* vim: set filetype=procmail : */ 

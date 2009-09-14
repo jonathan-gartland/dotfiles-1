@@ -1,0 +1,21 @@
+# root messages from zathras
+
+:0
+* ^Subject:.*Cron.*
+.Systems.CronDaemon/
+
+:0
+* ^From:.*logwatch*.*
+.Systems.LogWatch/
+
+
+:0
+* ^Subject:.*DenyHosts Report*.*
+.Systems.DenyHosts/
+
+:0
+* ^From:.*root@.*
+.Systems.Root/
+
+
+# /* vim: set filetype=procmail : */ 

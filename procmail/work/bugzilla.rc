@@ -1,0 +1,8 @@
+# $Id: bugzilla.rc 2475 2008-04-03 13:41:09Z skk $
+
+# bugzilla
+:0
+* ^From: bugzilla-daemon@zathras.sr.unh.edu
+.Bugzilla/
+
+# /* vim: set filetype=procmail : */ 
