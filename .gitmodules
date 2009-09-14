@@ -1,3 +1,6 @@
 [submodule "bin/.eg.git"]
 	path = bin/.eg.git
 	url = git://gitorious.org/eg/mainline.git
+[submodule "bin/.xask.git"]
+	path = bin/.xask.git
+	url = ssh://zathras.sr.unh.edu//dvcs/git/xask
