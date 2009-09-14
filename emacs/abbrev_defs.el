@@ -33,6 +33,8 @@
 
 (define-abbrev-table 'css-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'doctex-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'dun-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '(    ))
@@ -51,7 +53,11 @@
 
 (define-abbrev-table 'jython-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'latex-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'lisp-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'log-view-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'objc-mode-abbrev-table '(    ))
 
@@ -60,6 +66,8 @@
 (define-abbrev-table 'outline-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'pike-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'plain-tex-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'python-mode-abbrev-table '(    ))
 
@@ -71,9 +79,15 @@
 
 (define-abbrev-table 'shell-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'slitex-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'special-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'sql-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'tex-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'tex-shell-abbrev-table '(    ))
 
 (define-abbrev-table 'text-mode-abbrev-table '(    ))
 
