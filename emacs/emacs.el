@@ -30,6 +30,17 @@
 (defconst djcb-console-p (eq (symbol-value 'window-system) nil) 
   "Are we in a console?")
 (defconst djcb-machine (substring (shell-command-to-string "hostname") 0 -1))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color-theme
+(when (require 'color-theme)
+  (color-theme-initialize)
+  (when (require 'color-theme-tango))
+  (color-theme-tango))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; create required directories
@@ -144,18 +155,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; dired
-(add-hook 'dired-load-hook
-  (lambda() 
-    (load "dired-x")
-    ;; put dired-x config here
-))
-(add-hook 'dired-mode-hook
-  (lambda()
-    ;; dired-x buffer local variables here
-    ))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bookmarks
 (setq bookmark-default-file "~/.emacs.d/.cache/bookmarks")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -169,15 +168,6 @@
 ; linux
 (when djcb-linux-p
   (set-default-font "Liberation Mono-12"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; color-theme
-(when (require 'color-theme)
-  (color-theme-initialize)
-  (when (require 'color-theme-tango))
-  (color-theme-tango)
-)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -458,23 +448,30 @@ directory, select directory. Lastly the file is opened."
 (load custom-file 'noerror)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; yasnippet
 (when (require-maybe 'yasnippet))
 ; Initialize Yasnippet
-; (setq yas/trigger-key (kbd "C-c <kp-multiply>"))
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/elisp/snippets")
+(setq yas/use-menu 'abbreviate)
 
+;set yas/root-directory as a list, to allow for adding user snippets 
+(setq yas/root-directory '("~/.emacs.d/elisp/yasnippet-0.6.1c"))
+
+;; Map `yas/load-directory' to every element
+(mapc 'yas/load-directory yas/root-directory)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; auto-complete
 (when (require-maybe 'auto-complete))
 (global-auto-complete-mode t)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 (setq ac-dwim t)
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; python
 (require 'python)
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
@@ -488,79 +485,42 @@ directory, select directory. Lastly the file is opened."
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 
-;; Initialize Rope
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
+(add-hook 'python-mode-hook (lambda () (
+  ;; Initialize Rope
+  (pymacs-load "ropemacs" "rope-")
+  (setq ropemacs-enable-autoimport t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
 ; From https://dev.launchpad.net/EmacsTips
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "pyflakes" (list local-file))))
+  (when (load "flymake" t)
+	(defun flymake-pyflakes-init ()
+	  (let* ((temp-file (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+			 (local-file (file-relative-name temp-file
+											 (file-name-directory buffer-file-name))))
+		(list "pyflakes" (list local-file))))
 
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
+	(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
+  (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+  ;; Work around bug in flymake that causes Emacs to hang when you open a
+  ;; docstring.
+  (delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 
+			2 4 nil 5) flymake-err-line-patterns)
 
-;; Work around bug in flymake that causes Emacs to hang when you open a
-;; docstring.
-(delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 2 4 nil 5)
-        flymake-err-line-patterns)
-
-;; And the same for the emacs-snapshot in Hardy ... spot the difference.
-(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 2 4 nil 5)
-        flymake-err-line-patterns)
-
-(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 2 4 nil 5)
-        flymake-err-line-patterns)
+  ;; And the same for the emacs-snapshot in Hardy ... spot the difference
+  (delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
+			2 4 nil 5) flymake-err-line-patterns)
+  (delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
+			2 4 nil 5) flymake-err-line-patterns)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ipython/emacs
-(require 'ipython)
-(setenv "PYMACS_PYTHON" "python2.6") 
-(setq py-python-command-args '( "-colors" "Linux"))
+  (require 'ipython)
+  (setenv "PYMACS_PYTHON" "python2.6") 
+  (setq py-python-command-args '( "-colors" "Linux"))
 ;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; command-frequency (http://xahlee.org/emacs/command-frequency.html)
-(setq-default command-frequency-table-file "~/.emacs.d/.cache/frequencies")
-(require 'command-frequency)
-(command-frequency-table-load)
-(command-frequency-mode 1)
-(command-frequency-autosave-mode 1)
-
-; NOTE: To use command-frequency, M-x command-frequency, will take you to a 
-; buffer showing the relative frequencies of all your commands.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; flyspell
-(require 'flyspell)
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(add-hook 'c++-mode-common-hook 'turn-on-flyspell)
-(add-hook 'c++-mode-hook 'turn-on-flyspell)
-(add-hook 'c-mode-common-hook 'turn-on-flyspell)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
-(add-hook 'fundamental-mode-hook 'turn-on-flyspell)
-(add-hook 'message-mode-hook 'turn-on-flyspell)
-(add-hook 'python-mode-hook 'turn-on-flyspell)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
-(defun turn-on-flyspell ()
-  "Force flyspell-mode on using a positive argument. For use in hooks."
-  (interactive)
-  (flyspell-mode 1))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+)))
