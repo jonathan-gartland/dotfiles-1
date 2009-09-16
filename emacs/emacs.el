@@ -462,17 +462,10 @@ directory, select directory. Lastly the file is opened."
 (mapc 'yas/load-directory yas/root-directory)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; auto-complete
-(when (require-maybe 'auto-complete))
-(global-auto-complete-mode t)
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(setq ac-dwim t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; python
 (require 'python)
+(require 'pycomplete)
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -485,42 +478,51 @@ directory, select directory. Lastly the file is opened."
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 
-(add-hook 'python-mode-hook (lambda () (
-  ;; Initialize Rope
-  (pymacs-load "ropemacs" "rope-")
-  (setq ropemacs-enable-autoimport t)
+;; Initialize Rope
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+(setq interpreter-mode-alist(cons '("python" . python-mode)
+                             interpreter-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
 ; From https://dev.launchpad.net/EmacsTips
-  (when (load "flymake" t)
-	(defun flymake-pyflakes-init ()
-	  (let* ((temp-file (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+	(let* ((temp-file (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
 			 (local-file (file-relative-name temp-file
 											 (file-name-directory buffer-file-name))))
-		(list "pyflakes" (list local-file))))
+	  (list "pyflakes" (list local-file))))
 
-	(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
-  (add-hook 'find-file-hook 'flymake-find-file-hook)
+  	(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
+(add-hook 'find-file-hook 'flymake-find-file-hook)
 
   ;; Work around bug in flymake that causes Emacs to hang when you open a
   ;; docstring.
-  (delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 
+(delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 
 			2 4 nil 5) flymake-err-line-patterns)
 
   ;; And the same for the emacs-snapshot in Hardy ... spot the difference
-  (delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
+(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
 			2 4 nil 5) flymake-err-line-patterns)
-  (delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
+(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
 			2 4 nil 5) flymake-err-line-patterns)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ipython/emacs
-  (require 'ipython)
-  (setenv "PYMACS_PYTHON" "python2.6") 
-  (setq py-python-command-args '( "-colors" "Linux"))
+(require 'ipython)
+(setenv "PYMACS_PYTHON" "python2.6") 
+(setq py-python-command-args '( "-colors" "Linux"))
 ;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; auto-complete
+(when (require-maybe 'auto-complete)
+(global-auto-complete-mode t)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(setq ac-dwim t))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
