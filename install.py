@@ -75,12 +75,8 @@ if __name__ == "__main__":
         if exists(file):
 			execfile(file)
 
-	for dir in ['procmail']:
+	#for dir in ['procmail']:
 		# prompt user for work/HOME
-
-	print "Sleeping for 30 seconds"
-	sleep(30)
 
 	setup_git_submodule("bin/.eg.git")
 	setup_git_submodule("bin/.xask.git")
-
