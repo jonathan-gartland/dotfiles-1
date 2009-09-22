@@ -364,6 +364,11 @@ directory, select directory. Lastly the file is opened."
 ;; icicles
 (when (require-maybe 'icicles)
   (icy-mode 1))
+
+; load highlight line, and set it to highlight line when idle
+; hl-line+ requires icicles
+(when (require-maybe 'hl-line+)
+  (toggle-hl-line-when-idle 1)) ; Highlight only when idle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -404,10 +409,25 @@ directory, select directory. Lastly the file is opened."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ahg (https://disi.unitn.it/~griggio/ahg.html)
+(when (require-maybe 'ahg))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://mfgames.com/csharp-mode/start
+;(when (require-maybe 'csharp-mode))
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+	  (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dtrt-indent minor mode
 ;; http://git.savannah.gnu.org/gitweb/?p=dtrt-indent.git;a=blob_plain;f=dtrt-indent.el;hb=HEAD
- (require 'dtrt-indent)
- (dtrt-indent-mode 1)
+(when (require-maybe 'dtrt-indent)
+ (dtrt-indent-mode 1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -464,12 +484,14 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; python
-(require 'python)
+;(require 'python)
+(require 'python-mode)
 (require 'pycomplete)
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;(add-to-list 'interpreter-mode-alist '("python" . python-mode))                               
+
 
 ;; Initialize Pymacs
 (autoload 'pymacs-apply "pymacs")
@@ -512,9 +534,9 @@ directory, select directory. Lastly the file is opened."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ipython/emacs
-(require 'ipython)
-(setenv "PYMACS_PYTHON" "python2.6") 
-(setq py-python-command-args '( "-colors" "Linux"))
+;(require 'ipython)
+;(setenv "PYMACS_PYTHON" "python2.6") 
+;(setq py-python-command-args '( "-colors" "Linux"))
 ;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -527,6 +549,39 @@ directory, select directory. Lastly the file is opened."
 (setq ac-dwim t))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; org-mode http://orgmode.org/org.html
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Section  Template
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; flyspell
 (require 'flyspell)
@@ -536,7 +591,6 @@ directory, select directory. Lastly the file is opened."
   "Force flyspell-mode on using a positive argument. For use in hooks."
   (interactive)
   (flyspell-mode 1))
-
 
 (when djcb-linux-p
   (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
