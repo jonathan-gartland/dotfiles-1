@@ -3,8 +3,6 @@
 
 from install import createLinks
 
-print __file__
-
 # create the links
 createLinks( [
 { 'src': 'bin', 'dst': 'bin' },
