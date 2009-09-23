@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 
-from os import environ, getcwd, remove, symlink
-from os.path import exists, join
-from time import sleep
+import sys, os, os.path
+import enum
 
 def _execute_command( command ):
 	from subprocess import call
 	from sys import stderr
 	try:
-		#print >>stderr, "Command:\n%s" % command
-		#retcode = 0
 		retcode = call(command, shell=True)
 
 		if retcode < 0:
@@ -27,26 +24,26 @@ def createLinks( args, options = {} ):
 		if not options.has_key('dry_rune'):
 			options['dry_run'] = None
 
-	dst_directory = environ[ 'HOME' ]
-	src_directory = getcwd()
+	dst_directory = os.environ[ 'HOME' ]
+	src_directory = os.getcwd()
 
 	for arg in args:
 		if options[ 'verbose' ]:
 			print "argument: %s" % arg
 
-	src = join( src_directory, arg[ 'src' ] )
-	dst = join( dst_directory, arg[ 'dst' ] )
+	src = os.path.join( src_directory, arg[ 'src' ] )
+	dst = os.path.join( dst_directory, arg[ 'dst' ] )
 
 	if options['verbose']:
 		print "ln -sf %s %s" % ( src, dst )
 
-	if exists( dst ):
+	if os.path.exists( dst ):
 		if options['verbose']:
 			print "Removing Exsting Link: %s" % ( dst )
 
 		if not options['dry_run']:
 			try:
-				remove( dst )
+				os.remove( dst )
 			except OSError:
 				pass
 
@@ -54,13 +51,13 @@ def createLinks( args, options = {} ):
 			print "Recreating Link: %s" % (dst)
 
 		try:
-			symlink( src, dst )
+			os.symlink( src, dst )
 		except OSError:
 			pass
 	else:
 		print "Creating Link: %s" % (dst)
 		try:
-			symlink( src, dst )
+			os.symlink( src, dst )
 		except OSError:
 			pass
 
@@ -70,10 +67,25 @@ def setup_git_submodule(repo_path):
 
 if __name__ == "__main__":
 
+	if len(sys.argv) != 2:
+		print "%s: work|home|other" % __file__
+
 	for dir in ['bin','conky','emacs','dotfiles','fish','vim']:
 		file = "%s/.install.py" % dir
-		if exists(file):
+		if os.path.exists(file):
 			execfile(file)
 
 	setup_git_submodule("bin/.eg.git")
 	setup_git_submodule("bin/.xask.git")
+	
+
+	location = sys.argv[0]
+	if location == "Work":
+		file = "procmail/work/.install.py"
+	elif location == "Home":
+		file = "procmail/home/.install.py"
+	else:
+		file = None
+
+	if file != None and os.path.exists(file):
+		execfile(file)
