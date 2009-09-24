@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys, os, os.path
-import enum
 
 def _execute_command( command ):
 	from subprocess import call
@@ -69,6 +68,7 @@ if __name__ == "__main__":
 
 	if len(sys.argv) != 2:
 		print "%s: work|home|other" % __file__
+                sys.exit(1)
 
 	for dir in ['bin','conky','emacs','dotfiles','fish','vim']:
 		file = "%s/.install.py" % dir
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
 	setup_git_submodule("bin/.eg.git")
 	setup_git_submodule("bin/.xask.git")
-	
+
 
 	location = sys.argv[0]
 	if location == "Work":
