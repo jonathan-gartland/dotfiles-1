@@ -27,38 +27,40 @@ def createLinks( args, options = {} ):
 	src_directory = os.getcwd()
 
 	for arg in args:
-		if options[ 'verbose' ]:
-			print "argument: %s" % arg
+            if options[ 'verbose' ]:
+                print "argument: %s" % arg
+            src = os.path.join( src_directory, arg[ 'src' ] )
+            dst = os.path.join( dst_directory, arg[ 'dst' ] )
 
-	src = os.path.join( src_directory, arg[ 'src' ] )
-	dst = os.path.join( dst_directory, arg[ 'dst' ] )
+            if options['verbose']:
+                print "src: %s, dst: %s" % (src,dst)
 
-	if options['verbose']:
-		print "ln -sf %s %s" % ( src, dst )
+            if options['verbose']:
+                    print "ln -sf %s %s" % ( src, dst )
 
-	if os.path.exists( dst ):
-		if options['verbose']:
-			print "Removing Exsting Link: %s" % ( dst )
+            if os.path.exists( dst ):
+                    if options['verbose']:
+                            print "Removing Exsting Link: %s" % ( dst )
 
-		if not options['dry_run']:
-			try:
-				os.remove( dst )
-			except OSError:
-				pass
+                    if not options['dry_run']:
+                            try:
+                                    os.remove( dst )
+                            except OSError:
+                                    pass
 
-		if options['verbose']:
-			print "Recreating Link: %s" % (dst)
+                    if options['verbose']:
+                            print "Recreating Link: %s" % (dst)
 
-		try:
-			os.symlink( src, dst )
-		except OSError:
-			pass
-	else:
-		print "Creating Link: %s" % (dst)
-		try:
-			os.symlink( src, dst )
-		except OSError:
-			pass
+                    try:
+                            os.symlink( src, dst )
+                    except OSError:
+                            pass
+            else:
+                    print "Creating Link: %s" % (dst)
+                    try:
+                            os.symlink( src, dst )
+                    except OSError:
+                            pass
 
 def setup_git_submodule(repo_path):
 	_execute_command( "git submodule init %s" % repo_path )
@@ -79,10 +81,10 @@ if __name__ == "__main__":
 	setup_git_submodule("bin/.xask.git")
 
 
-	location = sys.argv[0]
-	if location == "Work":
+	location = sys.argv[1]
+        if location.upper() == "WORK":
 		file = "procmail/work/.install.py"
-	elif location == "Home":
+        elif location.upper() == "HOME":
 		file = "procmail/home/.install.py"
 	else:
 		file = None

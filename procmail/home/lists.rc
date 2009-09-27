@@ -1,0 +1,30 @@
+# $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
+
+# Mailing lists
+
+# Python User
+:0
+* (To|Cc):.*python-list@python.org.*
+.Mailing\ Lists.Python\ User/
+
+# Fish Users 
+:0
+* ^(Subject|Sender):.*\[fish-users\].*
+.Mailing\ Lists.Fish\ User/
+
+# IBD Editorials
+:0
+* ^From:.*newsletter@ibdeditorials.com.*
+.IBDEditorials/
+
+# Glenn Beck
+:0
+* ^From:.*Glenn.*Beck.*
+.Mailing\ Lists.Glenn\ Beck/
+
+# GNU Emacs Help
+:0
+* (To|Cc):.*help-gnu-emacs@gnu.org.*
+.Mailing\ Lists.GNU\ Emacs\ Help/
+
+# /* vim: set filetype=procmail : */ 

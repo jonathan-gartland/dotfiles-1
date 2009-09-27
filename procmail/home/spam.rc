@@ -1,0 +1,41 @@
+# $Id: spam.rc 2469 2008-04-03 12:59:08Z skk $
+
+# procmail spam.rc file
+
+# just delete spam
+:0
+* ^Subject:\ *\[SPAM\]
+/dev/null
+
+:0
+* ^Subject:.*SEXUALLY-EXPLICIT:.*
+.Spam
+
+:0
+* ^X-Spam-Flag: YES
+* ^X-MailScanner-SpamCheck: spam
+* ^X-Spam-Status: ^Yes$
+* ^X-MailScanner-SpamCheck: spam
+.Spam/
+
+:0
+* ^(To|CC):.*(res05564|[Uu]ndisclosed-[Rr]ecipients|undisclosed-recipients|spambot)
+* ^From:.*(galamail\.com|agentoflove|absoluteagency\.com|delphi\.com|238525)
+* ^Subject:.*(offer|free|pay|[Vv][Ii1][Aa][Gg][Rr][Aa]|wanted|penis|offer|chip|inch|please|pill|[Hh]ydrocodone|remember|f(w:|wd|orward))
+* ^X-Advertisement:.*
+* ^X-Mailer:.*(Advanced Mass)
+* ^Message-ID.*<>
+.Possible\ Junk\ Mail/
+
+:0
+* ^To:.*(rcc-ops|ops|rccops|rcc)@(.*)sr.unh.edu.*
+* ^From:.*(allan.wright@comcast.net).*
+{
+    :0c 
+    .AllMail/	# to AllMail/
+    
+    :0
+    .Ops/	# to Ops/
+}
+
+# /* vim: set filetype=procmail : */ 

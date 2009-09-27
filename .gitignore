@@ -27,3 +27,4 @@ bin/.ropeproject
 
 # procmail
 procmail/work/log/*
+procmail/home/log/*
