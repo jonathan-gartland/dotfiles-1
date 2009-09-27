@@ -1,0 +1,46 @@
+# $Id: procmailrc 2652 2009-03-10 12:40:19Z skk $
+#VERBOSE=on
+VERBOSE=off
+MAILDIR=$HOME/Maildir
+DEFAULT=$MAILDIR/.MaildirInbox/
+PROCMAILDIR=$HOME/.procmail
+LOGFILE=$PROCMAILDIR/log/procmail
+
+
+# forward all email through spamc daemon
+:0fw
+| /usr/bin/spamc
+
+
+# handle spam message
+INCLUDERC=$PROCMAILDIR/spam.rc
+
+# handle mailing list
+INCLUDERC=$PROCMAILDIR/lists.rc
+
+# Copy all mail now
+:0c		
+*
+.Archive/	# to AllMail
+
+:0
+* ^From:.*blockbusteronline@blockbuster.com.*
+.BlockbusterOnline/
+
+:0
+* ^From:.*netflix.com.*
+.Netflix/
+
+#PatsBlog
+:0
+* ^From.*bidemytime@gmail.com.*
+.PatsBlog/
+
+## handle svn messages
+#INCLUDERC=$PROCMAILDIR/svn.rc
+
+# last
+:0:
+$DEFAULT
+
+# /* vim: set filetype=procmail : */ 
