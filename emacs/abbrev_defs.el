@@ -3,6 +3,20 @@
 
 (define-abbrev-table 'Custom-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'ahg-command-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-diff-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-glog-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-log-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-mq-patches-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-short-log-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'ahg-status-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'apropos-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'awk-mode-abbrev-table '(    ))
@@ -12,6 +26,8 @@
 (define-abbrev-table 'c++-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'c-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'change-log-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'comint-mode-abbrev-table '(    ))
 
@@ -31,7 +47,11 @@
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'csharp-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'css-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'diff-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'doctex-mode-abbrev-table '(    ))
 
@@ -47,6 +67,8 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'idlwave-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '(    ))
@@ -58,6 +80,8 @@
 (define-abbrev-table 'latex-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'lisp-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'log-edit-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'log-view-mode-abbrev-table '(    ))
 
@@ -106,8 +130,4 @@
 (define-abbrev-table 'vc-hg-outgoing-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '(    ))
-
-(define-abbrev-table 'wl-draft-mode-abbrev-table '(    ))
-
-(define-abbrev-table 'wl-news-mode-abbrev-table '(    ))
 
