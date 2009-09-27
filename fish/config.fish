@@ -115,7 +115,7 @@ if test (hostname) = 'zathras.sr.unh.edu'
     set -xg ORACLE_COMMAND $HOME/bin/pysql.sh
 
     # source IBM WebSphere AS 6.1 setup file
-    . /opt/IBM/was61/wasSetup.fish
+    /opt/IBM/setup_was/setup_was.py | .
 
     # catlab
     alias catlab-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
@@ -146,21 +146,19 @@ if test (hostname) = 'zathras.sr.unh.edu'
 end
 
 # fish stuff for kona and kenyan
-if test (hostname) = 'kona.sr.unh.edu'; or test (hostname) = 'kenyan.sr.unh.edu'
+if test (hostname) = 'kona.sr.unh.edu'
     set -gx JAVA_HOME /usr/local/java/IBMJava16
     set -gx JRE_HOME $JAVA_HOME
 
      # source IBM WebSphere AS 6.1 setup file
-    . /opt/IBM/was61/wasSetup.fish
+    /opt/IBM/setup_was/setup_was.py | .
 end
 
 if test (hostname) = 'spoo.sr.unh.edu'
-
     set -gx JAVA_HOME /usr/local/java/IBMJava16
     set -gx JRE_HOME $JAVA_HOME
-
      # source IBM WebSphere AS 6.1 setup file
-    . /opt/IBM/was61/wasSetup.fish
+    /opt/IBM/setup_was/setup_was.py | .
 end
 
 
@@ -169,18 +167,9 @@ if test (hostname) = 'skk'
     set svnroot "file:///home/svn/skk/"
     set svnmusic "file:///home/svn/music/"
     set -gx MAILDIR $HOME/Maildir
-    set -gx JAVA_HOME /usr/local/java/IBMJava16
-    set -gx JRE_HOME $JAVA_HOME
-
-    setup_oracle_env
-
-    # Database aliases
-    set -gx ORACLE_COMMAND $HOME/bin/pysql.sh
-
+    set -x JAVA_HOME /usr/local/java/IBMJava16
+    set -x JRE_HOME $JAVA_HOME
     cd
-
-    # setup IBM WebSphere environment variables
-    #. /opt/was61/wasSetup.fish
 end
 
 # add JAVA_HOME/bin to PATH
