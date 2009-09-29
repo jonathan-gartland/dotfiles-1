@@ -7,10 +7,9 @@
   wl-folder-window-width 25                     ;; toggle on/off with 'i'
   
   wl-smtp-posting-server "localhost"            ;; put the smtp server here
-  wl-local-domain "blackstar.sr.unh.edu"          ;; put something here...
-  wl-message-id-domain "blackstar.sr.unh.edu"     ;; ...
-
-  wl-from "Steven Knight <skk@sr.unh.edu>"                  ;; my From:
+  wl-local-domain "zathras.sr.unh.edu"          ;; put something here...
+  wl-message-id-domain "zathras.sr.unh.edu"     ;; ...
+  wl-from "Steven Knight <steven.knight@unh.edu>"                  ;; my From:
 
   ;; note: all below are dirs (Maildirs) under elmo-maildir-folder-path 
   ;; the '.'-prefix is for marking them as maildirs
@@ -46,3 +45,15 @@
      "^Date"
      "^To"
      "^Cc"))
+
+; enable ssl
+(setq ssl-certificate-verification-policy 1)
+(setq elmo-imap4-default-stream-type 'ssl)
+
+
+(setq wl-smtp-posting-server "zathras.sr.unh.edu")
+(setq elmo-imap4-default-server "zathras.sr.unh.edu")
+(setq elmo-imap4-default-user "knight")
+(setq elmo-imap4-default-authenticate-type 'clear)
+(setq elmo-imap4-default-stream-type 'ssl)
+(setq elmo-imap4-default-port 993)

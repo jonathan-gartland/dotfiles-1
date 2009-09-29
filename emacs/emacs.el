@@ -111,6 +111,7 @@
 (savehist-mode t)                      ;; do customization before activate
 (setq default-tab-width 4)            ; set tab-width
 (setq-default tab-stop-list (list 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108))
+(setq-default indent-tabs-mode nil)
 
 ;; disabled that damm bell !
 (setq bell-volume 0)
@@ -167,7 +168,7 @@
    "-outline-Consolas-normal-r-normal-normal-*-*-*-*-*-*-*-*"))
 ; linux
 (when djcb-linux-p
-  (set-default-font "Liberation Mono-12"))
+  (set-default-font "Liberation Mono-10"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,12 +179,12 @@
 ;  (show-paren-mode t)
 ;  (setq show-paren-style 'parenthesis))
 (add-hook 'python-mode-hook (lambda () (show-paren-mode 1)))
-(add-hook 'python-mode-hook (lambda () (setq 
-    tab-width 4
-    py-indent-offset 4
-    indent-tabs-mode t
-    py-smart-indentation t
-    python-indent 4)))
+;(add-hook 'python-mode-hook (lambda () (setq 
+;    tab-width 4
+;    py-indent-offset 4
+;    indent-tabs-mode t
+;    py-smart-indentation t
+;    python-indent 4)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -212,48 +213,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ido makes completing buffers and ffinding files easier
-;; http://www.emacswiki.org/cgi-bin/wiki/InteractivelyDoThings
-(require 'ido) 
-(ido-mode 'both)
-(setq 
-  ido-save-directory-list-file "~/.emacs.d/.cache/ido.last"
-  ido-ignore-buffers ;; ignore these guys
-  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido")
-  ido-work-directory-list '("~/" "~/Desktop" "~/Documents")
-  ido-everywhere t            ; use for many file dialogs
-  ido-case-fold  t            ; be case-insensitive
-  ido-use-filename-at-point nil ; don't use filename at point (annoying)
-  ido-use-url-at-point nil      ;  don't use url at point (annoying)
-  ido-enable-flex-matching t  ; be flexible
-  ido-max-prospects 4         ; don't spam my minibuffer
-  ido-confirm-unique-completion t) ; wait for RET, even with unique completion
-
-;; http://www.emacswiki.org/emacs/FileNameCache
-(defun file-cache-ido-find-file (file)
-  "Using ido, interactively open file from file cache'.
-First select a file, matched using ido-switch-buffer against the contents
-in `file-cache-alist'. If the file exist in more than one
-directory, select directory. Lastly the file is opened."
-  (interactive 
-    (list (file-cache-ido-read "File: " 
-            (mapcar (lambda (x) (car x)) file-cache-alist))))
-  (let* ((record (assoc file file-cache-alist)))
-    (find-file
-     (expand-file-name
-      file
-      (if (= (length record) 2)
-          (car (cdr record))
-        (file-cache-ido-read
-         (format "Find %s in dir: " file) (cdr record)))))))
-
-(defun file-cache-ido-read (prompt choices)
-  (let ((ido-make-buffer-list-hook
-         (lambda ()
-           (setq ido-temp-list choices))))
-    (ido-read-buffer prompt)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -360,23 +319,6 @@ directory, select directory. Lastly the file is opened."
               auto-recompile outline-minor-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; icicles
-(when (require-maybe 'icicles)
-  (icy-mode 1))
-
-; load highlight line, and set it to highlight line when idle
-; hl-line+ requires icicles
-(when (require-maybe 'hl-line+)
-  (toggle-hl-line-when-idle 1)) ; Highlight only when idle
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; lacarte
-(when (require-maybe 'lacarte)
-    (global-set-key [?\M-`] 'lacarte-execute-menu-command))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc loading
@@ -387,41 +329,11 @@ directory, select directory. Lastly the file is opened."
 (when (require-maybe 'pair-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; viper/vimpulse
-(setq viper-mode t)                ; enable Viper at load time
-(setq viper-ex-style-editing nil)  ; can backspace past start of insert / line
-(require 'viper)                   ; load Viper
-(setq vimpulse-experimental nil)   ; don't load bleeding edge code (see 6. installation instruction)
-(require 'vimpulse)                ; load Vimpulse
-(setq woman-use-own-frame nil)     ; don't create new frame for manpages
-(setq woman-use-topic-at-point t)  ; don't prompt upon K key (manpage display)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redo 
 (when (require-maybe 'redo))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; git-emacs 
-(when (require-maybe 'git-emacs))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ahg (https://disi.unitn.it/~griggio/ahg.html)
-(when (require-maybe 'ahg))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://mfgames.com/csharp-mode/start
-;(when (require-maybe 'csharp-mode))
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-	  (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dtrt-indent minor mode
@@ -438,7 +350,7 @@ directory, select directory. Lastly the file is opened."
  
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; number-lines and line-numbers
-  (defun number-lines-region (start end &optional beg)
+(defun number-lines-region (start end &optional beg)
       (interactive "*r\np")
       (let* ((lines (count-lines start end))
              (from (or beg 1))
@@ -462,150 +374,100 @@ directory, select directory. Lastly the file is opened."
 (setq linum-format "%d ") 	; update linum's format
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Set default custom-file
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; yasnippet
-(when (require-maybe 'yasnippet))
-; Initialize Yasnippet
-(yas/initialize)
-(setq yas/use-menu 'abbreviate)
+; load various module
 
-;set yas/root-directory as a list, to allow for adding user snippets 
-(setq yas/root-directory '("~/.emacs.d/elisp/yasnippet-0.6.1c"))
+(add-to-list 'load-path "~/.emacs.d/init")
+;Add all top-level subdirectories of .emacs.d to the load path
+(progn (cd "~/.emacs.d/init")
+       (normal-top-level-add-subdirs-to-load-path))
 
-;; Map `yas/load-directory' to every element
-(mapc 'yas/load-directory yas/root-directory)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; load wanderlust 
+(load-library "skk-wanderlust.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; python
-;(require 'python)
-(require 'python-mode)
-(require 'pycomplete)
+; load flyspell
+(load-library "skk-flyspell.el")
 
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;(add-to-list 'interpreter-mode-alist '("python" . python-mode))                               
+; load org-mode
+(load-library "skk-org-mode.el")
 
+; load auto-complete
+(load-library "skk-auto-complete.el")
 
-;; Initialize Pymacs
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
+; load yasnippet
+(load-library "skk-yasnippet.el")
 
-;; Initialize Rope
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+; load python 
+(load-library "skk-python.el")
 
-(setq interpreter-mode-alist(cons '("python" . python-mode)
-                             interpreter-mode-alist))
+; load c-sharp.el
+(load-library "skk-c-sharp.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Run pyflakes with flymake.
-; From https://dev.launchpad.net/EmacsTips
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-	(let* ((temp-file (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
-			 (local-file (file-relative-name temp-file
-											 (file-name-directory buffer-file-name))))
-	  (list "pyflakes" (list local-file))))
+; load git
+(load-library "skk-git.el")
 
-  	(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pyflakes-init)))
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+; load mercurial
+(load-library "skk-mercurial.el")
 
-  ;; Work around bug in flymake that causes Emacs to hang when you open a
-  ;; docstring.
-(delete '(" *\\(\\[javac\\]\\)? *\\(\\([a-zA-Z]:\\)?[^:(\t\n]+\\)\:\\([0-9]+\\)\:[ \t\n]*\\(.+\\)" 
-			2 4 nil 5) flymake-err-line-patterns)
+; load cut
+(load-library "skk-custom.el")
 
-  ;; And the same for the emacs-snapshot in Hardy ... spot the difference
-(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
-			2 4 nil 5) flymake-err-line-patterns)
-(delete '(" *\\(\\[javac\\] *\\)?\\(\\([a-zA-Z]:\\)?[^:(        \n]+\\):\\([0-9]+\\):[  \n]*\\(.+\\)" 
-			2 4 nil 5) flymake-err-line-patterns)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; load 
+(load-library "skk-icicles.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ipython/emacs
-;(require 'ipython)
-;(setenv "PYMACS_PYTHON" "python2.6") 
-;(setq py-python-command-args '( "-colors" "Linux"))
-;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; load 
+; (load-library "skk-ido.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; auto-complete
-(when (require-maybe 'auto-complete)
-(global-auto-complete-mode t)
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
-(setq ac-dwim t))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; load 
+(load-library "skk-viper.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; org-mode http://orgmode.org/org.html
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; load 
+;; (load-library "skk-")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; flyspell
-(require 'flyspell)
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;; ; load 
+;; (load-library "skk-")
 
-(defun turn-on-flyspell ()
-  "Force flyspell-mode on using a positive argument. For use in hooks."
-  (interactive)
-  (flyspell-mode 1))
-
-(when djcb-linux-p
-  (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
-  (add-hook 'c++-mode-hook 'turn-on-flyspell)
-  (add-hook 'c-mode-common-hook 'turn-on-flyspell  )
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
-  (add-hook 'fundamental-mode-hook 'turn-on-flyspell)
-  (add-hook 'message-mode-hook 'turn-on-flyspell)
-  (add-hook 'python-mode-hook 'turn-on-flyspell)
-  (add-hook 'text-mode-hook 'turn-on-flyspell))
+;; ; load 
+;; (load-library "skk-")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Section  Template
-;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Highlight mark
+; http://lists.gnu.org/archive/html/help-gnu-emacs/2003-11/msg00328.html
+; nice mark - shows mark as a highlighted 'cursor' so user 'always' 
+; sees where the mark is. Especially nice for killing a region.
+
+(defvar pg-mark-overlay nil
+  "Overlay to show the position where the mark is") 
+(make-variable-buffer-local 'pg-mark-overlay)
+
+(put 'pg-mark-mark 'face 'secondary-selection)
+
+(defvar pg-mark-old-position nil
+  "The position the mark was at. To be able to compare with the
+current position")
+
+(defun pg-show-mark () 
+  "Display an overlay where the mark is at. Should be hooked into 
+activate-mark-hook" 
+  (unless pg-mark-overlay 
+    (setq pg-mark-overlay (make-overlay 0 0))
+    (overlay-put pg-mark-overlay 'category 'pg-mark-mark))
+  (let ((here (mark t)))
+    (when here
+      (move-overlay pg-mark-overlay here (1+ here)))))
+
+(defadvice  exchange-point-and-mark (after pg-mark-exchange-point-and-mark)
+  "Show visual marker"
+  (pg-show-mark))
+
+(ad-activate 'exchange-point-and-mark)
+(add-hook 'activate-mark-hook 'pg-show-mark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; wanderlust
-(defconst wl-testing 'nil)
-(when wl-testing 
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/apel")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/flim")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/semi")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/wl")
-
-    ;; mel-b-ccl is buggy. use emacs built-in base64 decoder
-    (setq mel-b-ccl-module nil
-          base64-internal-decoding-limit nil)
-    (require 'mel-b-el)
-    (defalias 'base64-internal-decode-string 'base64-decode-string)
-
-    (autoload 'wl "wl" "wanderlust" t)
-    (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
-    (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-    (setq wl-icon-directory "/usr/share/pixmaps/wl/")
-
-    ; enable ssl
-    (setq elmo-imap4-default-stream-type 'ssl)
-    ; set stmp server
-    (setq wl-smtp-posting-server "blackstar.sr.unh.edu")
-    ; set imap server
-    (setq elmo-imap4-default-server "blackstar.sr.unh.edu"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

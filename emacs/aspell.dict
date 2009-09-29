@@ -1,10 +1,12 @@
-personal_ws-1.1 en 27 
+personal_ws-1.1 en 32 
+Ui
 MessaageBox
 rootDir
 PDA
 autoload
 pdb
 DLLs
+WeightTracking
 entryPoint
 usr
 docstring
@@ -13,12 +15,14 @@ gps
 jjfoerch
 dll
 sqlalchemy
+QMainWindow
 argv
 UNH
 namespace
 ExampleModule
 yasnippet
 ExitPoint
+sys
 ModuleBase
 py
 README
@@ -26,3 +30,4 @@ hostname
 execfile
 setq
 RCC
+getenv
