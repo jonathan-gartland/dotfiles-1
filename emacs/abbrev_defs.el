@@ -75,6 +75,8 @@
 
 (define-abbrev-table 'java-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'jsp-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'jython-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'latex-mode-abbrev-table '(    ))
@@ -130,4 +132,6 @@
 (define-abbrev-table 'vc-hg-outgoing-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'xml-mode-abbrev-table '(    ))
 
