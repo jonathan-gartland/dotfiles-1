@@ -2,7 +2,7 @@
 
 # bugzilla
 :0
-* ^From: bugzilla-daemon@zathras.sr.unh.edu
+* ^From: bugzilla-daemon@kona.sr.unh.edu
 .Bugzilla/
 
 # /* vim: set filetype=procmail : */ 
