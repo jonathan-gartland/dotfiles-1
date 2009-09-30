@@ -37,8 +37,10 @@
 ;; color-theme
 (when (require 'color-theme)
   (color-theme-initialize)
-  (when (require 'color-theme-tango))
-  (color-theme-tango))
+  ;(when (require 'color-theme-tango))
+  ;(color-theme-tango))
+  (when (require 'color-theme-mods))
+  (color-theme-billc))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -384,7 +386,7 @@
        (normal-top-level-add-subdirs-to-load-path))
 
 ; load wanderlust 
-(load-library "skk-wanderlust.el")
+; (load-library "skk-wanderlust.el")
 
 ; load flyspell
 (load-library "skk-flyspell.el")
@@ -420,7 +422,7 @@
 ; (load-library "skk-ido.el")
 
 ; load 
-(load-library "skk-viper.el")
+; (load-library "skk-viper.el")
 
 ; load 
 ;; (load-library "skk-")
