@@ -177,10 +177,10 @@
 ;; show-paren-mode
 ;; show a subtle blinking of the matching paren (the defaults are ugly)
 ;; http://www.emacswiki.org/cgi-bin/wiki/ShowParenMode
-;(when (fboundp 'show-paren-mode)
-;  (show-paren-mode t)
-;  (setq show-paren-style 'parenthesis))
-(add-hook 'python-mode-hook (lambda () (show-paren-mode 1)))
+(when (fboundp 'show-paren-mode)
+  (show-paren-mode t)
+  (setq show-paren-style 'parenthesis))
+
 ;(add-hook 'python-mode-hook (lambda () (setq 
 ;    tab-width 4
 ;    py-indent-offset 4
@@ -385,6 +385,7 @@
 (progn (cd "~/.emacs.d/init")
        (normal-top-level-add-subdirs-to-load-path))
 
+
 ; load wanderlust 
 ; (load-library "skk-wanderlust.el")
 
@@ -424,8 +425,8 @@
 ; load 
 ; (load-library "skk-viper.el")
 
-; load 
-;; (load-library "skk-")
+; load comapny-mode
+(load-library "skk-company.el")
 
 ;; ; load 
 ;; (load-library "skk-")
