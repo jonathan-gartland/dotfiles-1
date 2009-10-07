@@ -143,6 +143,9 @@ if test (hostname) = 'zathras.sr.unh.edu'
     # mysql
     alias fms-dev '***REMOVED***'
     alias fms-win '***REMOVED***'
+
+    # xask options
+    set -x XASK_TERMINAL "/usr/bin/konsole"
 end
 
 # fish stuff for kona and kenyan
