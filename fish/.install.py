@@ -9,7 +9,6 @@ createLinks(
 {'src': 'fish', 'dst': '.fish' },
 {'src': 'fish/config.fish', 'dst' : '.fishrc' },
 
-{'src': 'fish/config.fish', 'dst': '.config/fish/config.fish' },
-{'src': 'fish/functions', 'dst': '.config/fish/functions' },
+{'src': 'fish/', 'dst': '.config/fish' },
 ]
 )

@@ -184,3 +184,6 @@ set -gx PYTHONPATH $HOME/.emacs.d/python/lib/$python_version/site-packages/ $HOM
 set -gx EDITOR ew
 set -gx VISUAL ew
 # /* vim: set filetype=fish : */ 
+
+
+cd .
