@@ -3,11 +3,11 @@
 ; wanderlust
 (defconst wl-testing 't)
 (when wl-testing 
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/apel")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/flim")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/semi")
-    (add-to-list 'load-path "/usr/share/emacs/site-lisp/wl")
+    ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/")
+    ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/apel")
+    ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/flim")
+    ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/semi")
+    ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/wl")
 
     ;; mel-b-ccl is buggy. use emacs built-in base64 decoder
     (setq mel-b-ccl-module nil
@@ -18,7 +18,7 @@
     (autoload 'wl "wl" "wanderlust" t)
     (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
     (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-    (setq wl-icon-directory "/usr/share/pixmaps/wl/")
+    (setq wl-icon-directory "~/.emacs.d/elisp/wanderlust/pixmaps/")
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
