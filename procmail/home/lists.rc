@@ -7,6 +7,11 @@
 * (To|Cc):.*python-list@python.org.*
 .Mailing\ Lists.Python\ User/
 
+# python-mode
+:0
+* (To|Cc):.*python-mode@python.org.*
+.Mailing\ Lists.Python\ Mode/
+
 # Fish Users 
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
