@@ -50,7 +50,6 @@
 (setq ssl-certificate-verification-policy 1)
 (setq elmo-imap4-default-stream-type 'ssl)
 
-
 (setq wl-smtp-posting-server "zathras.sr.unh.edu")
 (setq elmo-imap4-default-server "zathras.sr.unh.edu")
 (setq elmo-imap4-default-user "knight")

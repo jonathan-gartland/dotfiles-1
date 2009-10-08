@@ -10,7 +10,6 @@
 (mapcar '(lambda(p)
            (add-to-list 'load-path p) 
            (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
-(cd "~/")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -387,7 +386,7 @@
 
 
 ; load wanderlust 
-; (load-library "skk-wanderlust.el")
+(load-library "skk-wanderlust.el")
 
 ; load flyspell
 (load-library "skk-flyspell.el")
@@ -474,3 +473,4 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+(cd "~/")
