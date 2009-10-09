@@ -4,7 +4,7 @@
 VERBOSE=off
 
 USER=skk
-HOME=/home/rcc/skk/
+HOME=/home/skk/
 MAILDIR=$HOME/Maildir
 DEFAULT=$MAILDIR/.MaildirInbox/
 PROCMAILDIR=$HOME/.procmail
@@ -37,11 +37,15 @@ INCLUDERC=$PROCMAILDIR/rcc.rc
 INCLUDERC=$PROCMAILDIR/svn.rc
 INCLUDERC=$PROCMAILDIR/systems.rc
 
+# mail from Google's Calendar notification system, put into .MaildirInbox/
+:0
+* ^From:.*calendar-notification@google.com.*
+.MaildirInbox/
+
 # If the From field does not contain *unh.edu*, move the email to Possible Junk Mail.
 :0
 *! ^From:.*(unh.edu).*
 .Possible\ Junk\ Mail/
-
 
 # last
 :0:
