@@ -61,11 +61,6 @@ def createLinks( args, options = {} ):
                             os.symlink( src, dst )
                     except OSError:
                             pass
-
-def setup_git_submodule(repo_path):
-	_execute_command( "git submodule init %s" % repo_path )
-	_execute_command( "git submodule update %s" % repo_path )
-
 if __name__ == "__main__":
 
 	if len(sys.argv) != 2:
@@ -76,10 +71,6 @@ if __name__ == "__main__":
 		file = "%s/.install.py" % dir
 		if os.path.exists(file):
 			execfile(file)
-
-	setup_git_submodule("bin/.eg.git")
-	setup_git_submodule("bin/.xask.git")
-
 
 	location = sys.argv[1]
         if location.upper() == "WORK":
