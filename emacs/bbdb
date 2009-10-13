@@ -1,0 +1,10 @@
+;; -*-coding: utf-8-emacs;-*-
+;;; file-version: 6
+["GUI2Exe" "" nil nil nil nil ("gui2exe@googlegroups.com") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["Help-gnu-emacs" "" nil nil nil nil ("Help-gnu-emacs@gnu.org") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["Francis" "Moreau" nil nil nil nil ("francis.moro@gmail.com") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["Andreas" "Politz" nil nil nil nil ("politza@fh-trier.de") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["Richard" "Riley" nil nil nil nil ("rileyrgdev@gmail.com") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["Olivier" "Sirven" nil nil nil nil ("the.slaa@gmail.com") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["skk" "" nil nil nil nil ("skk@sr.unh.edu") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
+["wdysun" "" nil nil nil nil ("grammophonia@gmail.com") ((creation-date . "2009-10-12") (timestamp . "2009-10-12")) nil]
