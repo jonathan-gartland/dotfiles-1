@@ -94,6 +94,9 @@ if test (/bin/dnsdomainname) = "sr.unh.edu"
 
     # setup oracle environment variables
     setup_oracle_env
+
+    # xask options
+    set -x XASK_TERMINAL "/usr/bin/konsole"
 end
 
 # fish stuff for zathras
@@ -116,6 +119,7 @@ if test (hostname) = 'zathras.sr.unh.edu'
 
     # source IBM WebSphere AS 6.1 setup file
     /opt/IBM/setup_was/setup_was.py | .
+    switch_was_tail_to_emacs
 
     # catlab
     alias catlab-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
@@ -143,9 +147,6 @@ if test (hostname) = 'zathras.sr.unh.edu'
     # mysql
     alias fms-dev '***REMOVED***'
     alias fms-win '***REMOVED***'
-
-    # xask options
-    set -x XASK_TERMINAL "/usr/bin/konsole"
 end
 
 # fish stuff for kona and kenyan
