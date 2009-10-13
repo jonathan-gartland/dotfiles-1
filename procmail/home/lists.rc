@@ -32,4 +32,9 @@
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Help/
 
+# GNU Emacs Wanderlust Mailingist
+:0
+* (To|Cc):.*wl-en@lists.airs.net.*
+.Mailing\ Lists.Wanderlust/
+
 # /* vim: set filetype=procmail : */ 
