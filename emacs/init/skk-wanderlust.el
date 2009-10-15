@@ -9,6 +9,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; autoload wanderlust
+ (setq browse-url-browser-function 'w3m-browse-url)
+ (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+ ;; optional keyboard short-cut
+ (global-set-key "\C-xm" 'browse-url-at-point)
+ (setq w3m-use-cookies t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; load w3m
 (require 'octet)
 (octet-mime-setup)
@@ -19,16 +29,8 @@
   wl-stay-folder-window t                       ;; show the folder pane (left)
   wl-folder-window-width 25                     ;; toggle on/off with 'i'
   
-
-  wl-smtp-posting-server "localhost"            ;; put the smtp server here
-  wl-local-domain "zathras.sr.unh.edu"          ;; put something here...
-  wl-message-id-domain "zathras.sr.unh.edu"     ;; ...
-;  wl-from "Steven Knight <steven.knight@unh.edu>"                  ;; my From:
-
-
   ;; note: all below are dirs (Maildirs) under elmo-maildir-folder-path 
   ;; the '.'-prefix is for marking them as maildirs
-  wl-fcc ".Sent"                       ;; sent msgs go to the "sent"-folder
   wl-fcc-force-as-read t               ;; mark sent messages as read 
   wl-default-folder ".MaildirInbox"           ;; my main inbox 
   wl-draft-folder ".Drafts"            ;; store drafts in 'postponed'
@@ -36,11 +38,7 @@
   wl-spam-folder ".Junk"              ;; ...spam as well
   wl-queue-folder ".Queue"             ;; we don't use this
 
-  ;; check this folder periodically, and update modeline
-  wl-biff-check-folder-list '(".todo") ;; check every 180 seconds
-                                       ;; (default: wl-biff-check-interval)
-
-  ;; hide many fields from message buffers
+   ;; hide many fields from message buffers
   wl-message-ignored-field-list '("^.*:")
   wl-message-visible-field-list
   '("^\\(To\\|Cc\\):"
@@ -126,33 +124,24 @@
 
 
 ;; ----------------------------------------------------------------------------
-;;; Draft:
-;elmo-imap4-default-server
-(setq wl-draft-config-alist
-      '(
-       ((string-match ".*knight.*" user-login-name)
-        ("From" . "Steven Knight <steven.knight@unh.edu>")
-         (message wl-draft-parent-folder)
-         (signature . "~/.signature"))
-
-       ((string-match ".*skk.*" user-login-name)
-         ("From" . "Steven Knight <skk@sr.unh.edu>")
-         ("Organization" . "UNH-UNH")
-         (message wl-draft-parent-folder)
-         (signature . "~/.signature"))
-       )
-
-      wl-draft-reply-without-argument-list
-      '(("Followup-To" .
-         (("Mail-Followup-To" "Mail-Reply-To" "Reply-To") nil ("Followup-To")))
-        ("Mail-Followup-To" .
-         (("Mail-Followup-To") nil nil))
-         ("Mail-Reply-To" .
-         (("Mail-Reply-To" "Reply-To") nil nil))
-        ("Reply-To" .
-         (("Reply-To") nil nil))
-        (wl-draft-self-reply-p . (("To") nil))
-        ("From" . (("From") nil nil)))
-
-      )
-
+(setq 
+    wl-draft-config-matchone t
+    wl-draft-config-alist
+    '(((string-match "work" wl-draft-parent-folder)
+       ("From" . "Steven Knight <skk@sr.unh.edu>")
+       (wl-envelope-from . "skk@sr.unh.edu")
+       (wl-message-id-domain . "zathras.sr.unh.edu")
+       ("Fcc" . "%Sent:skk@zathras.sr.unh.edu:993")
+       (wl-smtp-posting-server . "localhost")
+       (signature-file-name "~/.dotfiles/signature.work")
+       (signature-insert-at-eof t)
+       (signature-delete-blank-lines-at-eof t))
+      ((string-match "personal" wl-draft-parent-folder)
+       ("From" . "Steven Knight <steven.knight@unh.edu>")
+       (wl-envelope-from . "skk@sr.unh.edu")
+       (wl-message-id-domain . "unh.edu")
+       ("Fcc" . "%Sent:knight@zathras.sr.unh.edu:993")
+       (wl-smtp-posting-server . "localhost")
+       (signature-file-name "~/.dotfiles/signature.personal")
+       (signature-insert-at-eof t)
+       (signature-delete-blank-lines-at-eof t))))
