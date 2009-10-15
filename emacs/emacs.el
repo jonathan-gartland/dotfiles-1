@@ -330,6 +330,10 @@
 (when (require-maybe 'pair-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; redo 
+(when (require-maybe 'rect-mark))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; redo 
@@ -379,63 +383,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; load various module
 
-(add-to-list 'load-path "~/.emacs.d/init")
-;Add all top-level subdirectories of .emacs.d to the load path
-(progn (cd "~/.emacs.d/init")
-       (normal-top-level-add-subdirs-to-load-path))
+(setq files-to-load
+      '(
+        skk-auto-complete.el
+        skk-company.el
+        skk-c-sharp.el
+        skk-custom.el
+        skk-flyspell.el
+        skk-git.el
+        skk-icicles.el
+        ;skk-ido.el
+        skk-mercurial.el
+        skk-org-mode.el
+        skk-python.el
+        skk-wanderlust.el
+        skk-xml.el
+        skk-yasnippet.el))
 
-
-; load wanderlust 
-(load-library "skk-wanderlust.el")
-
-; load flyspell
-(load-library "skk-flyspell.el")
-
-; load org-mode
-(load-library "skk-org-mode.el")
-
-; load auto-complete
-(load-library "skk-auto-complete.el")
-
-; load yasnippet
-(load-library "skk-yasnippet.el")
-
-; load python 
-(load-library "skk-python.el")
-
-; load c-sharp.el
-(load-library "skk-c-sharp.el")
-
-; load git
-(load-library "skk-git.el")
-
-; load mercurial
-(load-library "skk-mercurial.el")
-
-; load cut
-(load-library "skk-custom.el")
-
-; load 
-(load-library "skk-icicles.el")
-
-; load 
-; (load-library "skk-ido.el")
-
-; load 
-; (load-library "skk-viper.el")
-
-; load comapny-mode
-(load-library "skk-company.el")
-
-;; ; load 
-;; (load-library "skk-")
-
-;; ; load 
-;; (load-library "skk-")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Section  Template
+(defun load-config (f)
+    (load (concat "~/.emacs.d/init/" (symbol-name f))))
+(mapcar 'load-config files-to-load)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
