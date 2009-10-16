@@ -17,10 +17,15 @@ fish/fishd.*
 # symlinks created through install.py script
 bin/ew
 bin/e
-bin/eg
 bin/errorlog.sh
 bin/accesslog.sh
+bin/.eg.git
+bin/eg
+bin/.xask.git
 bin/xask.py
+bin/.cutpass.bzr
+bin/cutpass.py
+bin/qCutpass.py
 
 # rope-projects
 bin/.ropeproject
