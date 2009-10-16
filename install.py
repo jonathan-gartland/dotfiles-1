@@ -106,20 +106,20 @@ class install(object):
             {'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
             {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
             {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass.py' },
-            {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass.py' }            ])
+            {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass.py'}])
 
     def dotfiles(self):
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
-              { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
-              { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
-              { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf' },
-              { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
-              { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
-              { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  },
-              { 'src' : 'dotfiles', 'dst' : '.zsh' },
-              { 'src': 'dotfiles/zshrc', 'dst': '.zshrc' },
-              { 'src': 'dotfiles/zshenv', 'dst': '.zshenv'},
-              { 'src': 'dotfiles/zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide'}])
+        { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
+        { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
+        { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf' },
+        { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
+        { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
+        { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  },
+        { 'src' : 'dotfiles', 'dst' : '.zsh' },
+        { 'src': 'dotfiles/zshrc', 'dst': '.zshrc' },
+        { 'src': 'dotfiles/zshenv', 'dst': '.zshenv'},
+        { 'src': 'dotfiles/zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide'}])
 
     def emacs(self):
         self._createLinks([     
@@ -132,35 +132,26 @@ class install(object):
 
     def fish(self):
         self._createLinks([
-            {'src': 'fish', 'dst': '.fish' },
-            {'src': 'fish/config.fish', 'dst' : '.fishrc' },
-            {'src': 'fish/', 'dst': '.config/fish' }])
+        {'src': 'fish', 'dst': '.fish' },
+        {'src': 'fish/config.fish', 'dst' : '.fishrc' },
+        {'src': 'fish/', 'dst': '.config/fish' }])
 
     def vim(self):
-        self._createLinks(
-[
-  { 'src': 'vim', 'dst': '.vim' },
-  { 'src': 'vim/vimrc', 'dst': '.vimrc' }
-] )
+        self._createLinks([
+            { 'src': 'vim', 'dst': ' .vim' },
+            { 'src': 'vim/vimrc', 'dst': '.vimrc' }])
 
 
     def procmail(self, type):
-
         if self.procmail_type.Work == type:
-            self._createLinks(
-[
-{'src': 'procmail/work', 'dst': '.procmail' },
-{'src': 'procmail/work/procmailrc', 'dst': '.procmailrc' },
-]
-)
-        if self.procmail_type.Home == type:
-            self._createLinks(
-[
-{'src': 'procmail/home', 'dst': '.procmail' },
-{'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' },
-]
-)
+            self._createLinks([
+                {'src': 'procmail/work', 'dst': '.procmail' },
+                {'src': 'procmail/work/procmailrc', 'dst': '.procmailrc' }])
 
+        if self.procmail_type.Home == type:
+            self._createLinks([
+                {'src': 'procmail/home', 'dst': '.procmail' },
+                {'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' }])
 
 if __name__ == '__main__':
 
