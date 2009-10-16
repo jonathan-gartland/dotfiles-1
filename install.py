@@ -46,31 +46,32 @@ class install(object):
                     print "src: %s, dst: %s" % (src,dst)
 
                 if self.options['verbose']:
-                        print "ln -sf %s %s" % ( src, dst )
+                    print "ln -sf %s %s" % ( src, dst )
 
                 if os.path.exists( dst ):
-                        if self.options['verbose']:
-                                print "Removing Exsting Link: %s" % ( dst )
+                    if self.options['verbose']:
+                         print "Removing Exsting Link: %s" % ( dst )
 
-                        if not self.options['dry_run']:
-                                try:
-                                        os.remove( dst )
-                                except OSError:
-                                        pass
+                    if not self.options['dry_run']:
+                        try:
+                            os.remove( dst )
+                        except OSError:
+                            pass
 
                         if self.options['verbose']:
-                                print "Recreating Link: %s" % (dst)
+                            print "Recreating Link: %s" % (dst)
 
                         try:
-                                os.symlink( src, dst )
+                           os.symlink( src, dst )
                         except OSError:
-                                pass
+                           pass
                 else:
-                        print "Creating Link: %s" % (dst)
-                        try:
-                                os.symlink( src, dst )
-                        except OSError:
-                                pass
+                    print "Creating Link: %s" % (dst)
+                    try:
+                        os.symlink( src, dst )
+                    except OSError:
+                        pass
+
     def _git(self, url, path):
         return "git clone {0} {1}".format(url,path)
 
@@ -82,23 +83,23 @@ class install(object):
         if not os.path.exists(path):
             command = self._git("git://gitorious.org/eg/mainline.git", path)
             self._execute_command(command)
-            self._execute_command("git ignore bin/.eg.git")
-            self._execute_command("git ignore bin/eg")
+            #self._execute_command("git ignore bin/.eg.git")
+            #self._execute_command("git ignore bin/eg")
 
         path = os.path.join(self.basedir, "bin", ".xask.git")
         if not os.path.exists(path):
             command = self._git("ssh://zathras.sr.unh.edu///dvcs/git/xask", path)
             self._execute_command(command)
-            self._execute_command("git ignore bin/.cutpass.bzr")
-            self._execute_command("git ignore bin/xask.py")
+            #self._execute_command("git ignore bin/.cutpass.bzr")
+            #self._execute_command("git ignore bin/xask.py")
 
         path = os.path.join(self.basedir, "bin", ".cutpass.bzr")
         if not os.path.exists(path):
             command = self._bzr("sftp://q.sr.unh.edu/home/rea/data/bzr/cutpass/", path)
             self._execute_command(command)
-            self._execute_command("git ignore bin/.cutpass.bzr")
-            self._execute_command("git ignore bin/cutpass.py")
-            self._execute_command("git ignore bin/qCutpass.py")
+            #self._execute_command("git ignore bin/.cutpass.bzr")
+            #self._execute_command("git ignore bin/cutpass.py")
+            #self._execute_command("git ignore bin/qCutpass.py")
 
                 
         self._createLinks([
@@ -167,7 +168,7 @@ if __name__ == '__main__':
          pt = None
 
     basedir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)) )
-    installer = install(basedir, { 'verbose': True, 'dry_run': True })
+    installer = install(basedir, { 'verbose': True, 'dry_run': False })
 
     for key in install.__dict__.keys():
         if not key.startswith('_') and \
