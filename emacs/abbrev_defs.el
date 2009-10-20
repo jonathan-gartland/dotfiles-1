@@ -63,6 +63,10 @@
 
 (define-abbrev-table 'global-abbrev-table '(    ))
 
+(define-abbrev-table 'gnus-article-edit-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'gnus-sticky-article-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'html-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'idl-mode-abbrev-table '(    ))
@@ -87,6 +91,8 @@
 
 (define-abbrev-table 'log-view-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'message-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'objc-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'org-mode-abbrev-table '(    ))
@@ -98,6 +104,27 @@
 (define-abbrev-table 'plain-tex-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'python-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'regex-tool-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'rst-mode-abbrev-table '(    ("con" ".. contents::
+..
+   " nil 0)
+    ("cont" "[...]" nil 0)
+    ("contents" ".. contents::
+..
+   " nil 0)
+    ("seq" "
+
+[...]
+
+  " nil 0)
+    ("skip" "
+
+[...]
+
+  " nil 0)
+    ))
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '(    ))
 
