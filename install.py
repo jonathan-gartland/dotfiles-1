@@ -104,8 +104,9 @@ class install(object):
             {'src': 'bin', 'dst': 'bin' },
             {'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
             {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
-            {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass.py' },
-            {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass.py'}])
+            {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass' },
+            {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
+        ])
 
     def dotfiles(self):
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
@@ -115,13 +116,13 @@ class install(object):
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  },
-        { 'src' : 'dotfiles', 'dst' : '.zsh' },
+        { 'src': 'dotfiles', 'dst' : '.zsh' },
         { 'src': 'dotfiles/zshrc', 'dst': '.zshrc' },
         { 'src': 'dotfiles/zshenv', 'dst': '.zshenv'},
         { 'src': 'dotfiles/zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide'}])
 
     def emacs(self):
-        self._createLinks([     
+        self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
         {'src': 'emacs/emacs.el', 'dst': '.emacs' },
         {'src': 'emacs/viper.el', 'dst': '.viper' },
@@ -153,7 +154,7 @@ class install(object):
 if __name__ == '__main__':
 
     (options, args, parser) = parser(sys.argv)
-    
+
     if len(sys.argv) < 2:
         parser.print_help()
         sys.exit(1)
