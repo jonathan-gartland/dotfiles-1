@@ -3,5 +3,5 @@
 ###########################
 
 # xask.sh
-"~/bin/xask.sh &"
+"~/bin/xask.py "/usr/bin/konsole" &"
     Alt + Escape 
