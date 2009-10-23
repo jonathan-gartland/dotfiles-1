@@ -1,0 +1,5 @@
+# -*- mode: shell-script -*-
+
+export EDITOR="ew"
+export VISUAL="ew"
+export ALTERNATE_EDITOR="/usr/bin/emacs -nw"

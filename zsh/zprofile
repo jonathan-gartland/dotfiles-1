@@ -1,0 +1,7 @@
+# -*- mode: shell-script; -*-
+#
+# ~/.zprofile is executed by zsh(1) for login shells.
+
+# source all login.d files
+source ~/.zsh/_utils
+source-dir ~/.zsh/login.d

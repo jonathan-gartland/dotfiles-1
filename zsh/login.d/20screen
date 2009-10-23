@@ -1,0 +1,22 @@
+# -*- mode: shell-script -*-
+# From <http://www.openslack.org/~piterpk>.
+
+# check if exists a detached screen session
+DETACH=`screen -ls | grep -c "Detached"`
+
+# if exists more than one detached session, list they and show a command to
+# help you recover some session
+if [ $DETACH -gt 1 ]; then
+    screen -list
+    echo "You can reattach one of detached session using:"
+    echo -e "\tscreen -r nnnn.tty.host\n"
+
+# if exists only one detached session, connect to it
+elif [ $DETACH -eq 1 ]; then
+    SESSION=`screen -ls | grep "Detached" | awk '{print $1}'`
+    screen -r $SESSION
+
+# if not exists at least one detached session, start a new one
+else
+    screen -a && exit
+fi
