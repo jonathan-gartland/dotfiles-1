@@ -115,12 +115,15 @@ class install(object):
         { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
-        { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  },
-        { 'src': 'dotfiles', 'dst' : '.zsh' },
-        { 'src': 'dotfiles/zshrc', 'dst': '.zshrc' },
-        { 'src': 'dotfiles/zshenv', 'dst': '.zshenv'},
-        { 'src': 'dotfiles/zsh_prompt_termwide', 'dst': '.zsh_prompt_termwide'}])
+        { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
+    def zsh(self):
+        self._createLinks([
+        { 'src': 'zsh', 'dst' : '.zsh' },
+        { 'src': 'zsh/zshrc', 'dst': '.zshrc' },
+        { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
+        { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
+ 
     def emacs(self):
         self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
