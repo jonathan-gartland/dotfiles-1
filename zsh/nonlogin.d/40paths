@@ -15,7 +15,8 @@ fi
 export stow="$HOME/local/stow"
 
 # setup CDPATH
-export CDPATH=".:~:~/src:~/work:/web:/web*"
+export CDPATH=.:~:~/src:~/work:/web  
+# TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:$JAVA_HOME/bin:$HOME/local/bin:$HOME/bin"
@@ -61,7 +62,7 @@ if [[ $hostname = "zathras.sr.unh.edu" ]]; then
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 
-    export CDPATH="$CDPATH:~/CRMS"
+    export CDPATH=$CDPATH:~/CRMS
 fi
 
 if [[ $hostname = "kona.sr.unh.edu" ]]; then
