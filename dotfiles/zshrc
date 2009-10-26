@@ -154,42 +154,6 @@ if [[ $(dnsdomainname -y) == "rcc" ]] || [[ $(dnsdomainname -y) == "eos" ]] || [
     alias was='cd /usr/local/IBM/WebSphere/AppServer'
     alias ast='/usr/local/IBM/WebSphere/AST/ast'
 
-    # Database aliases
-    
-    # catlab
-    alias catlab-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-    alias catlab='( cd $HOME; gqlplus ***REMOVED*** )'
-
-    # eos
-    alias eos-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-    alias eos='( cd $HOME; gqlplus eos/m0rse@webdb1 )'
-    
-    # skk ( database user for database testing )
-    alias skk='( cd $HOME; gqlplus skk/skk@webdev10g )'
-
-    # layout
-    alias layout-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-
-    # events
-    alias events-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-    alias events='( cd $HOME; gqlplus ***REMOVED*** )'
-
-    # alumni
-    alias alumni-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-    alias alumni='( cd $HOME; gqlplus ***REMOVED*** )'
-
-    # seagrant
-    alias seagrant-dev='( cd $HOME; gqlplus ***REMOVED*** )'
-    alias seagrant='( cd $HOME; gqlplus ***REMOVED*** )'
-
-    # fms
-    alias fms-dev='***REMOVED***'
-    alias fms-win='***REMOVED***'
-
-
-
-
-
     export EDITOR=vim
     export svnhandycems="https://svn.sr.unh.edu/svn/HandyCEMS/"
     export svnskk="https://svn.sr.unh.edu/svn/skk/"
