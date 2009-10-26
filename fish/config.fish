@@ -120,33 +120,6 @@ if test (hostname) = 'zathras.sr.unh.edu'
     # source IBM WebSphere AS 6.1 setup file
     /opt/IBM/setup_was/setup_was.py | .
     switch_was_tail_to_emacs
-
-    # catlab
-    alias catlab-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    alias catlab 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-
-    # layout
-    alias layout-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-
-    # events
-    alias events-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    alias events 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-
-    # alumni
-    alias alumni-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    alias alumni 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-
-    # seagrant
-    alias seagrant-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    alias seagrant 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-
-    # eos
-    alias eos 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    alias eos-dev 'pushd $PWD; pysql.sh ***REMOVED***; popd'
-    
-    # mysql
-    alias fms-dev '***REMOVED***'
-    alias fms-win '***REMOVED***'
 end
 
 # fish stuff for kona and kenyan
@@ -173,7 +146,6 @@ if test (hostname) = 'skk'
     set -gx MAILDIR $HOME/Maildir
     set -x JAVA_HOME /usr/local/java/IBMJava16
     set -x JRE_HOME $JAVA_HOME
-    cd
 end
 
 # add JAVA_HOME/bin to PATH
