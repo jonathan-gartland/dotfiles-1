@@ -128,6 +128,6 @@ function stowdir_local
 
 function switch_was_tail_to_emacs
 {
-     WAS_TAIL_ARGS=' '
-     WAS_TAIL_COMMAND=/opt/IBM/setup_was/emacs_tail.sh
+     export WAS_TAIL_ARGS=' '
+     export WAS_TAIL_COMMAND=/opt/IBM/setup_was/emacs_tail.sh
 }

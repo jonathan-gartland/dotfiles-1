@@ -34,10 +34,10 @@ if [[ $(dnsdomainname -y) == "rcc" ]] ||
     # svn variables
     export svndemo="https://svn.sr.unh.edu/svn/demo/"
     export svnskk="https://svn.sr.unh.edu/svn/skk/"
-    export svnevents "https://svn.sr.unh.edu/svn/Events/"
+    export svnevents="https://svn.sr.unh.edu/svn/Events/"
     export svnescat="https://svn.sr.unh.edu/svn/eSCAT/"
     export svncrms="https://svn.sr.unh.edu/svn/CRMS/"
-    export svntv "https://svn.sr.unh.edu/svn/TwinView/"
+    export svntv="https://svn.sr.unh.edu/svn/TwinView/"
     export svneos="https://svn.sr.unh.edu/svn/EOS/"
     export svnseagrant="https://svn.sr.unh.edu/svn/SeaGrant/"
     export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
@@ -46,7 +46,6 @@ if [[ $(dnsdomainname -y) == "rcc" ]] ||
 fi
 
 hostname=$(hostname -f)
-
 # stuff for zathras.sr.unh.edu
 if [[ $hostname = "zathras.sr.unh.edu" ]]; then
     # Environmental variablles
@@ -61,6 +60,8 @@ if [[ $hostname = "zathras.sr.unh.edu" ]]; then
     
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
+
+    export CDPATH="$CDPATH:~/CRMS"
 fi
 
 if [[ $hostname = "kona.sr.unh.edu" ]]; then
