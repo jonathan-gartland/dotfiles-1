@@ -88,24 +88,25 @@ class install(object):
         return "bzr checkout {0} {1}".format(url, path)
 
     def bin(self):
-        path = os.path.join(self.basedir, "bin", ".eg.git")
-        if not os.path.exists(path):
-            self._execute_command(self._git("git://gitorious.org/eg/mainline.git", path))
+        if not self.options.dry_run:
+            path = os.path.join(self.basedir, "bin", ".eg.git")
+            if not os.path.exists(path):
+                self._execute_command(self._git("git://gitorious.org/eg/mainline.git", path))
 
-        path = os.path.join(self.basedir, "bin", ".xask.git")
-        if not os.path.exists(path):
-            self._execute_command(self._git("ssh://zathras.sr.unh.edu///dvcs/git/xask", path))
+            path = os.path.join(self.basedir, "bin", ".xask.git")
+            if not os.path.exists(path):
+                self._execute_command(self._git("ssh://zathras.sr.unh.edu///dvcs/git/xask", path))
 
-        path = os.path.join(self.basedir, "bin", ".cutpass.bzr")
-        if not os.path.exists(path):
-            self._execute_command(self._bzr("sftp://q.sr.unh.edu/home/rea/data/bzr/cutpass/", path))
+            path = os.path.join(self.basedir, "bin", ".cutpass.bzr")
+            if not os.path.exists(path):
+                self._execute_command(self._bzr("sftp://q.sr.unh.edu/home/rea/data/bzr/cutpass/", path))
 
         self._createLinks([
-            {'src': 'bin', 'dst': 'bin' },
-            {'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
-            {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
-            {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass' },
-            {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
+                {'src': 'bin', 'dst': 'bin' },
+                {'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
+                {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
+                {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass' },
+                {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
         ])
 
     def dotfiles(self):
@@ -123,7 +124,7 @@ class install(object):
         { 'src': 'zsh/zshrc', 'dst': '.zshrc' },
         { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
         { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
- 
+
     def emacs(self):
         self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
