@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, os.path, types, optparse
+import sys, os.path, types, optparse, fileinput
 
 import enum
 
@@ -42,6 +42,12 @@ class install(object):
     def __init__(self, basedir, options):
         self.basedir = basedir
         self.options = options
+
+    def _replaceAll(self, file,searchExp,replaceExp):
+        for line in fileinput.input(file, inplace=1):
+            if searchExp in line:
+                line = line.replace(searchExp,replaceExp)
+            sys.stdout.write(line)
 
     def _createLinks(self, args):
 
@@ -117,6 +123,9 @@ class install(object):
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
+
+        # copy dotfiles/logrotate.conf to ~/.logrotate.conf
+        # then use _replaceAll to replace $HOME with the value of $HOME
 
     def zsh(self):
         self._createLinks([
