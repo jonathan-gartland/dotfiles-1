@@ -1,1 +1,133 @@
 # -*- mode: shell-script -*-
+
+function _zsh_run_command # "Local zsh function to run a command"
+{
+    if [[ $1 != '' ]]; then
+        command=$1
+        echo "Command: $command"
+        eval $command
+    fi
+}
+
+function _print_helper
+{
+    options="--tabsize=4 --highlight-level=heavy --line-numbers=5"
+    command="/usr/bin/env a2ps $options $@"
+    _zsh_run_command "$command"
+}
+
+function text1p
+{
+    options="--portrait --columns=1" 
+    if [[ $2 == '' ]]; then
+        _print_helper $options $1
+    else
+        _print_helper $options $1 --output $2
+    fi
+}
+
+function text1r
+{
+    options="--landscape --columns=1" 
+    if [[ $2 == '' ]]; then
+        _print_helper $options $1
+    else
+        _print_helper $options $1 --output $2
+    fi
+}
+
+function text2p
+{
+    options="--portrait --columns=2" 
+    if [[ $2 == '' ]]; then
+        _print_helper $options $1
+    else
+        _print_helper $options $1 --output $2
+    fi
+}
+
+
+
+function BackupAndDelete
+{
+    ~/bin/backup-and-delete.py "$*"
+}
+
+function convert_csh_zsh
+{
+    # get file, dir
+    tmpFile=$1
+    oracleFile=$2
+
+    command="$HOME/bin/convert_csh_up_file.py"
+
+    # run command
+    eval $command -t "zsh" -s $oracleFile -d $tmpFile
+
+    # source convert oracle statement
+    . $tmpFile
+
+    # dump file
+    #cat $tmpFile
+    #echo "tmpFile $tmpFile"
+
+    # remove tmp file
+    rm -f $tmpFile
+}
+
+function create_maildir # "Create a Maildir directory"
+{
+    if [[ -d $MAILDIR ]]; then
+        if [[ $1 != '' ]]; then 
+	        mkdir -m 700 $MAILDIR/.$argv[1]/{,tmp,new,cur}
+        fi
+    fi 
+}
+
+function setup_oracle_env
+{
+    convertedOracleSetupFile=0
+
+    if [[ -f /usr/local/setup/oracle ]]; then
+	   tmpFile=/tmp/setup.oracle.$USER
+	   oracleFile=/usr/local/setup/oracle
+	   convert_csh_zsh $tmpFile $oracleFile
+       convertedOracleSetupFile=1
+    fi
+
+
+    if [[ -f /usr/local/oracle/setup ]]; then
+        tmpFile=/tmp/setup.oracle.$USER
+        oracleFile=/usr/local/oracle/setup
+        convert_csh_zsh $tmpFile $oracleFile
+        convertedOracleSetupFile=1
+    fi 
+}
+
+function sql -d "Launch sql client"
+{
+    /usr/bin/python $HOME/work/SQL/sql.py $argv
+}
+
+function start_synergy
+{
+    killall -9  synergys
+    synergys
+}
+
+function stowdir
+{
+    echo $stow/(basename $PWD)
+}
+
+function stowdir_local
+{
+    stowdir=/usr/local/stow/(basename $PWD)
+    echo $stowdir
+}
+
+function switch_was_tail_to_emacs
+{
+     WAS_TAIL_ARGS=' '
+     WAS_TAIL_COMMAND=/opt/IBM/setup_was/emacs_tail.sh
+}

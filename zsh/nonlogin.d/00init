@@ -9,7 +9,7 @@
 # shopt -s checkwinsize
 autoload -U promptinit
 promptinit
-prompt bart
+#prompt bart
 
 # keep history file between sessions
 DIRSTACKSIZE=15
@@ -31,8 +31,6 @@ setopt AUTO_PARAM_SLASH # adds slash at end of tabbed dirs
 setopt CHECK_JOBS # check bg jobs on exit
 setopt CORRECT # corrects spelling
 setopt CORRECT_ALL # corrects spelling
-
-
 setopt GLOB_DOTS # find dotfiles easier
 setopt HASH_CMDS # save cmd location to skip PATH lookup
 setopt HIST_NO_STORE # don't save 'history' cmd in history
@@ -63,6 +61,5 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
-
 
 
