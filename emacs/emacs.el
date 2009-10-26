@@ -400,6 +400,7 @@
         skk-org-mode.el
         skk-python.el
         skk-reStructuredText.el
+        skk-sql.el
         skk-wanderlust.el
         skk-xml.el
         skk-yasnippet.el))
