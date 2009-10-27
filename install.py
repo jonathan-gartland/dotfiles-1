@@ -43,12 +43,6 @@ class install(object):
         self.basedir = basedir
         self.options = options
 
-    def _replaceAll(self, file,searchExp,replaceExp):
-        for line in fileinput.input(file, inplace=1):
-            if searchExp in line:
-                line = line.replace(searchExp,replaceExp)
-            sys.stdout.write(line)
-
     def _createLinks(self, args):
 
         dst_directory = self.options.dst_dir
@@ -56,6 +50,10 @@ class install(object):
 
         if not os.path.exists(dst_directory):
             os.makedirs(dst_directory)
+
+        if self.options.verbose:
+            print "Source Directory: %s" % src_directory
+            print "Destination Directory: %s" % dst_directory
 
         for arg in args:
            src = os.path.join( src_directory, arg[ 'src' ] )
@@ -119,13 +117,21 @@ class install(object):
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
-        { 'src': 'dotfiles/logrotate.conf', 'dst': '.logrotate.conf' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
-        # copy dotfiles/logrotate.conf to ~/.logrotate.conf
-        # then use _replaceAll to replace $HOME with the value of $HOME
+        if not self.options.dry_run:
+            pwd = os.path.dirname(os.path.abspath(__file__))
+            input = os.path.join(pwd, "dotfiles/logrotate.conf")
+            output_filename = os.path.join(self.options.dst_dir, ".logrotate.conf")
+            if os.path.exists(output_filename):
+                output = open(output_filename, "w+")
+            else:
+                output = open(output_filename, "w")
+
+            for line in fileinput.input(input):
+                output.write(line.replace("$HOME", os.environ['HOME']))
 
     def zsh(self):
         self._createLinks([
@@ -176,7 +182,7 @@ if __name__ == '__main__':
     elif sys.argv[1].upper() == "HOME":   pt = install.procmail_type.Home
     else:                                 pt = None
 
-    basedir = os.path.dirname( os.path.dirname(os.path.abspath(__file__)) )
+    basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     installer = install(basedir, options)
 
     for key in install.__dict__.keys():
