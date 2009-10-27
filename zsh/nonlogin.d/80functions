@@ -46,33 +46,9 @@ function text2p
     fi
 }
 
-
-
 function BackupAndDelete
 {
     ~/bin/backup-and-delete.py "$*"
-}
-
-function convert_csh_zsh
-{
-    # get file, dir
-    tmpFile=$1
-    oracleFile=$2
-
-    command="$HOME/bin/convert_csh_up_file.py"
-
-    # run command
-    eval $command -t "zsh" -s $oracleFile -d $tmpFile
-
-    # source convert oracle statement
-    . $tmpFile
-
-    # dump file
-    #cat $tmpFile
-    #echo "tmpFile $tmpFile"
-
-    # remove tmp file
-    rm -f $tmpFile
 }
 
 function create_maildir # "Create a Maildir directory"
@@ -86,22 +62,13 @@ function create_maildir # "Create a Maildir directory"
 
 function setup_oracle_env
 {
-    convertedOracleSetupFile=0
-
-    if [[ -f /usr/local/setup/oracle ]]; then
-	   tmpFile=/tmp/setup.oracle.$USER
-	   oracleFile=/usr/local/setup/oracle
-	   convert_csh_zsh $tmpFile $oracleFile
-       convertedOracleSetupFile=1
+    if [[ -r /usr/local/setup/oracle ]]; then
+        eval "$(~/bin/convert_csh_setup_file.py < /usr/local/setup/oracle)"
     fi
 
-
-    if [[ -f /usr/local/oracle/setup ]]; then
-        tmpFile=/tmp/setup.oracle.$USER
-        oracleFile=/usr/local/oracle/setup
-        convert_csh_zsh $tmpFile $oracleFile
-        convertedOracleSetupFile=1
-    fi 
+    if [[ -r /usr/local/oracle/setup ]]; then
+        eval "$(~/bin/convert_csh_setup_file.py < /usr/local/oracle/setup)"
+    fi
 }
 
 function sql -d "Launch sql client"
