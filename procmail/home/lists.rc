@@ -12,6 +12,11 @@
 * (To|Cc):.*python-mode@python.org.*
 .Mailing\ Lists.Python\ Mode/
 
+# Python Ideas
+:0
+* (To|Cc):.*python-ideas@python.org.*
+.Mailing\ Lists.Python\ Ideas/
+
 # Fish Users 
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
@@ -31,6 +36,11 @@
 :0
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Help/
+
+# Gnu Emacs Devel
+:0
+* (To|Cc):.*emacs-devel@gnu.org.*
+.Mailing\ Lists.GNU\ Emacs\ Devel/
 
 # GNU Emacs Wanderlust Mailingist
 :0
