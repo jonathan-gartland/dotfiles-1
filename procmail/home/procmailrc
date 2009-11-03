@@ -23,21 +23,15 @@ INCLUDERC=$PROCMAILDIR/lists.rc
 *
 .Archive/	# to AllMail
 
+# BlockbusterOnline
 :0
 * ^From:.*blockbusteronline@blockbuster.com.*
 .BlockbusterOnline/
 
+# Hemlock Forest 
 :0
-* ^From:.*netflix.com.*
-.Netflix/
-
-#PatsBlog
-:0
-* ^From.*bidemytime@gmail.com.*
-.PatsBlog/
-
-## handle svn messages
-#INCLUDERC=$PROCMAILDIR/svn.rc
+* ^From:.*(Ddonelan@evergreenmgt.com|EHarte10@aol.com|shaf12345@aol.com|sforbes61@yahoo.com|totracym@yahoo.com).*
+.HemlockForest/
 
 # last
 :0:
