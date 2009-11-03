@@ -84,12 +84,12 @@ function start_synergy
 
 function stowdir
 {
-    echo $stow/(basename $PWD)
+    echo $stow/$(basename $PWD)
 }
 
 function stowdir_local
 {
-    stowdir=/usr/local/stow/(basename $PWD)
+    stowdir=/usr/local/stow/$(basename $PWD)
     echo $stowdir
 }
 
