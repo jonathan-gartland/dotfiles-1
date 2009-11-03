@@ -96,25 +96,10 @@ macro pager \cb |urlview\n
 #
 
 my_hdr Organization: Research Computing Center
-my_hdr Reply-To: skk@sr.unh.edu
-my_hdr From:skk@sr.unh.edu
+my_hdr Reply-To: steven.knight@unh.edu
+my_hdr From: steven.knight@unh.edu
 #my_hdr X-Mailer: `mutt -v | head -n 1`
 
-alias	rea 	Robert Anderson 	<rea@sr.unh.edu>
-alias	tjb 	Thomas Baker 		<tjb@sr.unh.edu>
-alias	janet 	Janet Caddle 		<j_caddle@cisvms.unh.edu>
-alias	pmc2 	Phil Collins 		<pmc2@sr.unh.edu>
-alias	chc 	Carol Cooper 		<chc@sr.unh.edu>
-alias	carol 	Carol Cooper 		<chc@sr.unh.edu>
-alias	pmc 	Patricia Craig 		<pmc@sr.unh.edu>
-alias	teh 	Tucker Hurton 		<teh@sr.unh.edu>
-alias	skk 	Steven Knight 		<skk@sr.unh.edu>
-alias	whl 	William Lenharth	<whl@sr.unh.edu>
-alias	mlm 	Mark Maciolek 		<mlm@sr.unh.edu>
-alias	pfm 	Patrick Messer 		<pfm@sr.unh.edu>
-alias	aew 	Allan Wright 		<aew@sr.unh.edu>
-alias stanley stanley <stanley@eos.sr.unh.edu>
-alias mike Mike Routhier <mike@meridian.sr.unh.edu>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
