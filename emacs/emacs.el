@@ -448,8 +448,17 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.newartisans.com/2007/10/a-regular-expression-ide-for-emacs.html
 (load "regex-tool" t)    ; load regex-tool if it's available
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+
+(defconst autoload-path '("~/.emacs.d/autoload/"))
+(mapcar '(lambda(p)
+           (add-to-list 'load-path p) 
+           (cd p) (normal-top-level-add-subdirs-to-load-path)) autoload-path)
+
+; Idea from http://andreasjacobsen.com/2009/01/07/elisp-best-practices/
+(autoload 'ack "skk-ack" "grep replacement" t)
 
 ; change directory to home
 (cd "~/")
