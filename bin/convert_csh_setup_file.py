@@ -17,17 +17,17 @@ class CovertCSHSetupFiles(object):
         else:
             return None
 
-        
+
         if self.shell == "zsh":
             self.env = lambda k, v: "export %s=\"%s\"" % (k, v)
-            self.path = lambda v: "export PATH=\"%s\"" % v
+            self.path = lambda v: "export PATH=\"%s\":$PATH" % v
         elif self.shell == "fish":
             self.env = lambda k, v: "set -x %s '%s'" % (k, v)
             self.path = lambda v: "set -xg PATH $PATH %s" % v
         else:
             self.env = lambda k, v: None
             self.path = lambda v: None
-            
+
     def outputConvertedFile( self ):
         envPattern = re.compile( r'setenv\s*([-$_a-z0-9]*)\s*(.*)', re.IGNORECASE )
         pathPattren = re.compile( r'set path = \((\$.*)\$.*\)', re.IGNORECASE )
