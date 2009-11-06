@@ -127,6 +127,7 @@ class install(object):
             output_filename = os.path.join(self.options.dst_dir, ".logrotate.conf")
             if os.path.exists(output_filename):
                 output = open(output_filename, "w+")
+                output.write("\n")
             else:
                 output = open(output_filename, "w")
 
