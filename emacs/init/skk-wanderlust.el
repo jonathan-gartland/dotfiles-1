@@ -125,9 +125,9 @@
 
 ;; ----------------------------------------------------------------------------
 (setq 
-    wl-draft-config-matchone t
-    wl-draft-config-alist
-    '(((string-match "work" wl-draft-parent-folder)
+   wl-draft-config-matchone t
+   wl-draft-config-alist
+    '(((string-match "skk" wl-draft-parent-folder)
        ("From" . "Steven Knight <skk@sr.unh.edu>")
        (wl-envelope-from . "skk@sr.unh.edu")
        (wl-message-id-domain . "zathras.sr.unh.edu")
@@ -136,10 +136,10 @@
        (signature-file-name "~/.dotfiles/signature.work")
        (signature-insert-at-eof t)
        (signature-delete-blank-lines-at-eof t))
-      ((string-match "personal" wl-draft-parent-folder)
+      ((string-match "knight" wl-draft-parent-folder)
        ("From" . "Steven Knight <steven.knight@unh.edu>")
-       (wl-envelope-from . "skk@sr.unh.edu")
-       (wl-message-id-domain . "unh.edu")
+       (wl-envelope-from . "steven.knight@unh.edu")
+       (wl-message-id-domain . "zathras.sr.unh.edu")
        ("Fcc" . "%Sent:knight@zathras.sr.unh.edu:993")
        (wl-smtp-posting-server . "localhost")
        (signature-file-name "~/.dotfiles/signature.personal")
