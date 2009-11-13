@@ -63,3 +63,5 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
 
 
+
+export SHELL=$(which zsh)
