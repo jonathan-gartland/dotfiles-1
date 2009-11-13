@@ -93,10 +93,6 @@ class install(object):
 
     def bin(self):
         if not self.options.dry_run:
-            path = os.path.join(self.basedir, "bin", ".eg.git")
-            if not os.path.exists(path):
-                self._execute_command(self._git("git://gitorious.org/eg/mainline.git", path))
-
             path = os.path.join(self.basedir, "bin", ".xask.git")
             if not os.path.exists(path):
                 self._execute_command(self._git("ssh://zathras.sr.unh.edu///dvcs/git/xask", path))
@@ -107,7 +103,6 @@ class install(object):
 
         self._createLinks([
                 {'src': 'bin', 'dst': 'bin' },
-                {'src': 'bin/.eg.git/eg', 'dst': 'bin/eg' },
                 {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
                 {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass' },
                 {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
@@ -145,8 +140,7 @@ class install(object):
         self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
         {'src': 'emacs/emacs.el', 'dst': '.emacs' },
-        {'src': 'emacs/viper.el', 'dst': '.viper' },
-        {'src': 'emacs/init/skk-wanderlust.el', 'dst': '.wl' },
+        {'src': 'emacs/autoload/skk-wanderlust.el', 'dst': '.wl' },
         {'src': 'emacs/init/skk-wanderlust-folders.el', 'dst': '.folders' }])
 
     def fish(self):
