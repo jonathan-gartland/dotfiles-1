@@ -21,3 +21,7 @@ Control + Mod1 + d
 # cutpass
 "~/bin/qCutpass &"
 Control + Mod1 + c
+
+# krunner
+"/usr/bin/krunner &"
+Control + Mod1 + r"
