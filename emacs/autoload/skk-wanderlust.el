@@ -145,3 +145,4 @@
        (signature-file-name "~/.dotfiles/signature.personal")
        (signature-insert-at-eof t)
        (signature-delete-blank-lines-at-eof t))))
+(provide 'skk-wanderlust)

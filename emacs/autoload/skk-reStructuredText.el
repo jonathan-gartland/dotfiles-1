@@ -8,3 +8,5 @@
                 ("\\.rest$" . rst-mode)) auto-mode-alist))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(provide 'skk-reStructuredText)

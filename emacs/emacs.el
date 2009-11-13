@@ -390,26 +390,41 @@
       '(
         skk-auto-complete.el
         skk-company.el
-        skk-c-sharp.el
         skk-custom.el
-        skk-flyspell.el
-        skk-git.el
         skk-icicles.el
-        ;skk-ido.el
-        skk-mercurial.el
-        skk-org-mode.el
-        skk-python.el
-        skk-reStructuredText.el
         skk-sql.el
-        skk-wanderlust.el
-        skk-xml.el
-        skk-yasnippet.el))
+        skk-python.el
+))
 
 (defun load-config (f)
     (load (concat "~/.emacs.d/init/" (symbol-name f))))
 (mapcar 'load-config files-to-load)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.newartisans.com/2007/10/a-regular-expression-ide-for-emacs.html
+(load "regex-tool" t)    ; load regex-tool if it's available
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defconst autoload-path '("~/.emacs.d/autoload/"))
+(mapcar '(lambda(p)
+           (add-to-list 'load-path p) 
+           (cd p) (normal-top-level-add-subdirs-to-load-path)) autoload-path)
+
+; Idea from http://andreasjacobsen.com/2009/01/07/elisp-best-practices/
+(autoload 'ack "skk-ack" "grep replacement" t)
+(autoload 'c-sharp "skk-c-sharp" "C# Mode" t)
+(autoload 'nxml "skk-xml" "nXml Mode" t)
+(autoload 'org-mode "skk-org-mode" "org-mode" t)
+(autoload 'git-emacs "skk-git" "git-emacs mode" t)
+(autoload 'ahg "skk-mercurial" "mercurial" t)
+(autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
+(autoload 'wl "skk-wanderlust" "wanderlust" t)
+(autoload 'skk-load-yasnippet "skk-yasnippet" "yasnippet" t)
+;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
+;(autoload 'company-mode "skk-company" "company" t)
+; (autoload 'python-mode "skk-python" "python-mode" t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Highlight mark
 ; http://lists.gnu.org/archive/html/help-gnu-emacs/2003-11/msg00328.html
@@ -444,21 +459,22 @@ activate-mark-hook"
 (add-hook 'activate-mark-hook 'pg-show-mark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.newartisans.com/2007/10/a-regular-expression-ide-for-emacs.html
-(load "regex-tool" t)    ; load regex-tool if it's available
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-ring-save (before slick-copy activate compile) "When called
+  interactively with no active region, copy a single line instead."
+  (interactive (if mark-active (list (region-beginning) (region-end)) (message
+  "Copied line") (list (line-beginning-position) (line-beginning-position
+  2)))))
 
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (list (line-beginning-position)
+        (line-beginning-position 2)))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-(defconst autoload-path '("~/.emacs.d/autoload/"))
-(mapcar '(lambda(p)
-           (add-to-list 'load-path p) 
-           (cd p) (normal-top-level-add-subdirs-to-load-path)) autoload-path)
-
-; Idea from http://andreasjacobsen.com/2009/01/07/elisp-best-practices/
-(autoload 'ack "skk-ack" "grep replacement" t)
 
 ; change directory to home
 (cd "~/")

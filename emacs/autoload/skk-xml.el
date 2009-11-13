@@ -1,4 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ahg (https://disi.unitn.it/~griggio/ahg.html)
-(when (require-maybe 'ahg))
+(setq auto-mode-alist
+	  (append '(("\\.xml$" . nxml-mode)) auto-mode-alist))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(provide 'skk-xml)

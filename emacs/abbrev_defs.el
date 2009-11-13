@@ -160,5 +160,9 @@
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'wl-draft-mode-abbrev-table '(    ))
+
+(define-abbrev-table 'wl-news-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'xml-mode-abbrev-table '(    ))
 

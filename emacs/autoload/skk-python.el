@@ -16,7 +16,7 @@
 (setq ropemacs-guess-project t)
 
 ;; Initialize company-mode
-(add-hook 'python-mode-hook (lambda () (company-mode)))
+;(add-hook 'python-mode-hook (lambda () (company-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
@@ -55,3 +55,5 @@
 (show-paren-mode 1)
 ;)))
 
+
+(provide 'skk-python)
