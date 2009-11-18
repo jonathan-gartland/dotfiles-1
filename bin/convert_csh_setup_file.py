@@ -20,7 +20,7 @@ class CovertCSHSetupFiles(object):
 
         if self.shell == "zsh":
             self.env = lambda k, v: "export %s=\"%s\"" % (k, v)
-            self.path = lambda v: "export PATH=\"%s\":$PATH" % v
+            self.path = lambda v: "export PATH=\"\"%s\":$PATH\"" % v
         elif self.shell == "fish":
             self.env = lambda k, v: "set -x %s '%s'" % (k, v)
             self.path = lambda v: "set -xg PATH $PATH %s" % v
@@ -42,7 +42,7 @@ class CovertCSHSetupFiles(object):
                 print self.env(key,value)
 
             if path_parts:
-                path = path_parts.group(1)
+                value = path_parts.group(1).strip()
                 print self.path(value)
 
 if __name__ == "__main__":
