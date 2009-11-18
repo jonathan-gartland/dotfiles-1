@@ -60,6 +60,13 @@ function create_maildir # "Create a Maildir directory"
     fi 
 }
 
+function setup_was_env
+{
+    if [[ -f "/opt/IBM/setup_was/setup_was.py" ]]; then
+        eval "$(/opt/IBM/setup_was/setup_was.py)"
+    fi
+}
+
 function setup_oracle_env
 {
     if [[ -r /usr/local/setup/oracle ]]; then
