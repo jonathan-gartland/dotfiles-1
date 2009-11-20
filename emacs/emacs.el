@@ -394,6 +394,7 @@
         skk-icicles.el
         skk-sql.el
         skk-python.el
+        skk-yasnippet.el
 ))
 
 (defun load-config (f)
@@ -421,7 +422,6 @@
 (autoload 'ahg "skk-mercurial" "mercurial" t)
 (autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
-(autoload 'skk-load-yasnippet "skk-yasnippet" "yasnippet" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
 ;(autoload 'company-mode "skk-company" "company" t)
 ; (autoload 'python-mode "skk-python" "python-mode" t)

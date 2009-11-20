@@ -38,7 +38,7 @@ function text1r
 
 function text2p
 {
-    options="--portrait --columns=2" 
+    options="--landscape --columns=2" 
     if [[ $2 == '' ]]; then
         _print_helper $options $1
     else
