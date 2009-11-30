@@ -16,7 +16,12 @@
 (setq ropemacs-guess-project t)
 
 ;; Initialize company-mode
-(add-hook 'python-mode-hook (lambda () (company-mode)))
+(add-hook 'python-mode-hook (lambda () 
+                              (company-mode)
+                              (progn
+                                (set-variable 'py-indent-offset 4)
+                                (set-variable 'py-smart-indentation nil)
+                                (set-variable 'indent-tabs-mode nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Run pyflakes with flymake.
@@ -47,11 +52,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ipython/emacs
-;(require 'ipython)
-;(setenv "PYMACS_PYTHON" "python2.6") 
-;(setq py-python-command-args '( "-colors" "Linux"))
-;(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
+(require 'ipython)
+(setenv "PYMACS_PYTHON" "python2.6") 
+(setq py-python-command-args '( "-colors" "Linux"))
+(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (show-paren-mode 1)
+
 ;)))
 
