@@ -34,7 +34,5 @@ bin/xask
 bin/.ropeproject
 
 # procmail
-procmail/work/log/procmail.*
-procmail/home/log/procmail.*
-procmail/work/log/procmail
-procmail/home/log/procmail
+procmail/work/log/*
+procmail/home/log/*
