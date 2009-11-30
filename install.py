@@ -86,20 +86,20 @@ class install(object):
                pass
 
     def _git(self, url, path):
-        return "git clone %s %s" % (url,path)
+        return "git clone {0} {1}".format(url,path)
 
     def _bzr(self, url, path):
-        return "bzr checkout %s %s" % (url,path)
+        return "bzr checkout {0} {1}".format(url, path)
 
     def bin(self):
         if not self.options.dry_run:
             path = os.path.join(self.basedir, "bin", ".xask.git")
             if not os.path.exists(path):
-                self._execute_command(self._git("ssh://zathras.sr.unh.edu///dvcs/git/xask", path))
+                self._execute_command(self._git("ssh://skk@zathras.sr.unh.edu///dvcs/git/xask", path))
 
             path = os.path.join(self.basedir, "bin", ".cutpass.bzr")
             if not os.path.exists(path):
-                self._execute_command(self._bzr("sftp://q.sr.unh.edu/home/rea/data/bzr/cutpass/", path))
+                self._execute_command(self._bzr("sftp://skk@q.sr.unh.edu/home/rea/data/bzr/cutpass/", path))
 
         self._createLinks([
                 {'src': 'bin', 'dst': 'bin' },
