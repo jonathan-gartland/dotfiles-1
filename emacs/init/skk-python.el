@@ -55,9 +55,14 @@
 (require 'ipython)
 (setenv "PYMACS_PYTHON" "python2.6") 
 (setq py-python-command-args '( "-colors" "Linux"))
-(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; show-paren-mode
 (show-paren-mode 1)
+
+; eldoc-mode
+(add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 
 ;)))
 

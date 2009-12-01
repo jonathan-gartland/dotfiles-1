@@ -32,20 +32,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; color-theme
-(when (require 'color-theme)
-  (color-theme-initialize)
-  ;(when (require 'color-theme-tango))
-  ;(color-theme-tango))
-  (when (require 'color-theme-mods))
-  (color-theme-billc))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; create required directories
-
 (unless (file-directory-p "~/.emacs.d/.cache")
  (make-directory "~/.emacs.d/.cache")) 
 
@@ -389,7 +378,7 @@
 (setq files-to-load
       '(
         skk-auto-complete.el
-        skk-company.el
+  ;      skk-company.el
         skk-custom.el
         skk-icicles.el
         skk-sql.el
@@ -424,7 +413,7 @@
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
 ;(autoload 'company-mode "skk-company" "company" t)
-; (autoload 'python-mode "skk-python" "python-mode" t)
+;(autoload 'python-mode "skk-python" "python-mode" t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Highlight mark
 ; http://lists.gnu.org/archive/html/help-gnu-emacs/2003-11/msg00328.html
@@ -494,6 +483,47 @@ activate-mark-hook"
 (define-auto-insert "\.py" "template.py")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color-theme
+(when (require 'color-theme)
+  (color-theme-initialize)
+  (require 'zenburn)
+  (require 'color-theme-mods)
+)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2009/03/color-theming.html#c8118197870582055840
+(defvar after-make-console-frame-hooks '()
+  "Hooks to run after creating a new TTY frame")
+
+(defvar after-make-window-system-frame-hooks '()
+  "Hooks to run after creating a new window-system frame")
+
+(defun run-after-make-frame-hooks (frame)
+  "Selectively run either `after-make-console-frame-hooks' or
+`after-make-window-system-frame-hooks'"
+  (select-frame frame)
+  (run-hooks (if window-system
+                 'after-make-window-system-frame-hooks
+               'after-make-console-frame-hooks)))
+
+(add-hook 'after-make-frame-functions 'run-after-make-frame-hooks)
+(add-hook 'after-init-hook
+          (lambda ()
+            (run-after-make-frame-hooks (selected-frame))))
+
+(set-variable 'color-theme-is-global nil)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-billc)
+(add-hook 'after-make-console-frame-hooks 'color-theme-djcb-dark)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun byte-recompile-emacsd ()
+  "Byte-compilete all files in ~/.emacs.d"
+  (byte-recompile-directory '~/.emacs.d' 0 t))
 
 ; change directory to home
 (cd "~/")
