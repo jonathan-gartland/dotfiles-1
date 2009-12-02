@@ -377,8 +377,7 @@
 
 (setq files-to-load
       '(
-        skk-auto-complete.el
-  ;      skk-company.el
+        skk-company.el
         skk-custom.el
         skk-icicles.el
         skk-sql.el
@@ -524,6 +523,7 @@ activate-mark-hook"
 (defun byte-recompile-emacsd ()
   "Byte-compilete all files in ~/.emacs.d"
   (byte-recompile-directory '~/.emacs.d' 0 t))
+
 
 ; change directory to home
 (cd "~/")

@@ -2,8 +2,8 @@
 ; python
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
-
-;(add-hook 'python-mode-hook (lambda () (
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 (autoload 'pymacs-load "pymacs" nil t)
 (autoload 'pymacs-eval "pymacs" nil t)
@@ -55,7 +55,6 @@
 (require 'ipython)
 (setenv "PYMACS_PYTHON" "python2.6") 
 (setq py-python-command-args '( "-colors" "Linux"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; show-paren-mode
@@ -64,5 +63,23 @@
 ; eldoc-mode
 (add-hook 'python-mode-hook '(lambda () (eldoc-mode 1)) t)
 
-;)))
+(require 'pymacs)
 
+(when (load "flymake" t)
+  (defun flymake-pycheckers-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "pycheckers"  (list local-file)))))
+
+
+(add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pycheckers-init))
+
+;; (require 'anything-ipython)
+;; (add-hook 'python-mode-hook #'(lambda ()
+;;                                  (define-key py-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
+;; (add-hook 'ipython-shell-hook #'(lambda ()
+;;                                    (define-key py-mode-map (kbd "M-<tab>") 'anything-ipython-complete)))
