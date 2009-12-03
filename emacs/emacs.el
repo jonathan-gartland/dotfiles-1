@@ -487,8 +487,8 @@ activate-mark-hook"
 (when (require 'color-theme)
   (color-theme-initialize)
   (require 'zenburn)
-  (require 'color-theme-mods)
-)
+  (require 'color-theme-djcb-dark)
+  (require 'color-theme-mods))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

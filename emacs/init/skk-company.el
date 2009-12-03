@@ -26,13 +26,9 @@
                'emacs-lisp-mode-hook
                'lisp-mode-hook
                'lisp-interaction-mode-hook
-               'scheme-mode-hook
-               'c-mode-hook
-               'c++-mode-hook
-               'java-mode-hook
-               'haskell-mode-hook
-               'asm-mode-hook
-               'emms-tag-editor-mode-hook
+               ;'c-mode-hook
+               ;'c++-mode-hook
+               ;'java-mode-hook
                'sh-mode-hook
                ))
   (add-hook hook 'company-mode))
