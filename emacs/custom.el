@@ -10,7 +10,7 @@
  '(regex-tool-backend (quote perl))
  '(sql-sqlite-program "sqlite3")
  '(tab-always-indent nil)
- '(tramp-default-method "ssh")
+ '(tramp-default-method "ssh" t)
  '(viper-shift-width 4))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
