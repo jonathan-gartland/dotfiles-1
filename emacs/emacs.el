@@ -516,7 +516,7 @@ activate-mark-hook"
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-billc)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-djcb-dark)
 (add-hook 'after-make-console-frame-hooks 'color-theme-djcb-dark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
