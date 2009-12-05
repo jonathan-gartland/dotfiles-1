@@ -4,7 +4,7 @@ import sys, os.path, types, optparse, fileinput
 
 import enum
 
-def parser(arguments):
+def get_parser(arguments):
     usage = "usage: %prog [options] other|home|work"
     parser = optparse.OptionParser(usage = usage)
 
@@ -23,6 +23,31 @@ def parser(arguments):
 
     (options, args) = parser.parse_args(args = arguments)
     return (options, args, parser)
+
+def run(argv):
+    (options, args, parser) = get_parser(argv)
+
+    if len(argv) < 2:
+        parser.print_help()
+        return 1
+
+    if argv[1].upper() == "WORK":     pt = install.procmail_type.Work
+    elif argv[1].upper() == "HOME":   pt = install.procmail_type.Home
+    else:                             pt = None
+
+    basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    installer = install(basedir, options)
+
+    for key in install.__dict__.keys():
+        if not key.startswith('_') and \
+               type(install.__dict__[key]) == types.FunctionType:
+            method = install.__dict__[key].__get__(installer, install)
+            if key == "procmail":
+                method(pt)
+            else:
+                method()
+
+    return 0
 
 class install(object):
 
@@ -117,7 +142,8 @@ class install(object):
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
-            pwd = os.path.dirname(os.path.abspath(__file__))
+            #pwd = os.path.dirname(os.path.abspath(__file__))
+            pwd = self.options.src_dir
             input = os.path.join(pwd, "dotfiles/logrotate.conf")
             output_filename = os.path.join(self.options.dst_dir, ".logrotate.conf")
             if os.path.exists(output_filename):
@@ -165,26 +191,3 @@ class install(object):
                 {'src': 'procmail/home', 'dst': '.procmail' },
                 {'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' }])
 
-if __name__ == '__main__':
-
-    (options, args, parser) = parser(sys.argv)
-
-    if len(sys.argv) < 2:
-        parser.print_help()
-        sys.exit(1)
-
-    if sys.argv[1].upper() == "WORK":     pt = install.procmail_type.Work
-    elif sys.argv[1].upper() == "HOME":   pt = install.procmail_type.Home
-    else:                                 pt = None
-
-    basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    installer = install(basedir, options)
-
-    for key in install.__dict__.keys():
-        if not key.startswith('_') and \
-               type(install.__dict__[key]) == types.FunctionType:
-            method = install.__dict__[key].__get__(installer, install)
-            if key == "procmail":
-                method(pt)
-            else:
-                method()
