@@ -1,7 +1,0 @@
-# -*- mode: shell-script; -*-
-#
-# ~/.zshrc is executed by zsh(1) for non-login shells.
-
-# source all nonlogin.d files
-source ~/.zsh/_utils
-source-dir ~/.zsh/nonlogin.d
