@@ -86,10 +86,10 @@ class install(object):
                pass
 
     def _git(self, url, path):
-        return "git clone {0} {1}".format(url,path)
+        return "git clone %s %s" % (url,path)
 
     def _bzr(self, url, path):
-        return "bzr checkout {0} {1}".format(url, path)
+        return "bzr checkout %s %s" % (url, path)
 
     def bin(self):
         if not self.options.dry_run:
