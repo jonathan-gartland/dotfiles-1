@@ -27,6 +27,8 @@ def get_parser(arguments):
 def run(argv):
     (options, args, parser) = get_parser(argv)
 
+
+
     if len(argv) < 2:
         parser.print_help()
         return 1
