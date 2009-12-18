@@ -74,8 +74,17 @@
 (setq linum-format "%d ") 	; update linum's format
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://xahlee.org/emacs/emacs_make_modern.html
+(defun remove-hard-wrap-region (start end)
+  "Replace newline chars in region by single spaces." 
+  (interactive "r")
+  (let ((fill-column 90002000)) 
+    (fill-region start end)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (provide 'skk-functions)
 ;;; skk-functions.el ends here
