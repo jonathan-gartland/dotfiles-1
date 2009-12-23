@@ -11,38 +11,38 @@ function _zsh_run_command # "Local zsh function to run a command"
 
 function _print_helper
 {
-    options="--tabsize=4 --highlight-level=heavy --line-numbers=5"
-    command="/usr/bin/env a2ps $options $@"
+    a2ps_options="--tabsize=4 --highlight-level=heavy --line-numbers=5"
+    command="/usr/bin/env a2ps $a2ps_options $@"
     _zsh_run_command "$command"
 }
 
 function text1p
 {
-    options="--portrait --columns=1" 
+    a2ps_options="--portrait --columns=1" 
     if [[ $2 == '' ]]; then
-        _print_helper $options $1
+        _print_helper $a2ps_options $1
     else
-        _print_helper $options $1 --output $2
+        _print_helper $a2ps_options $1 --output $2
     fi
 }
 
 function text1r
 {
-    options="--landscape --columns=1" 
+    a2ps_options="--landscape --columns=1" 
     if [[ $2 == '' ]]; then
-        _print_helper $options $1
+        _print_helper $a2ps_options $1
     else
-        _print_helper $options $1 --output $2
+        _print_helper $a2ps_options $1 --output $2
     fi
 }
 
 function text2p
 {
-    options="--landscape --columns=2" 
+    a2ps_options="--landscape --columns=2" 
     if [[ $2 == '' ]]; then
-        _print_helper $options $1
+        _print_helper $a2ps_options $1
     else
-        _print_helper $options $1 --output $2
+        _print_helper $a2ps_options $1 --output $2
     fi
 }
 
