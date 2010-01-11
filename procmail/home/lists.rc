@@ -1,6 +1,14 @@
 # $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
 
 # Mailing lists
+#
+#
+#
+
+# Arch Linux
+:0
+* (To|Cc):.*arch-general@archlinux.org.*
+.Mailing\ Lists.ArchLinux\ General/
 
 # Python User
 :0
