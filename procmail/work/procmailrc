@@ -24,11 +24,6 @@ INCLUDERC=$PROCMAILDIR/lists.rc
 # handle root message
 INCLUDERC=$PROCMAILDIR/root.rc
 
-# Copy all mail now
-:0c		
-*
-.Archive/	# Archive mail
-
 # handle bugzilla, trac, project, rcc, svn and zathras messages next
 INCLUDERC=$PROCMAILDIR/bugzilla.rc
 INCLUDERC=$PROCMAILDIR/trac.rc

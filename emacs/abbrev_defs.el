@@ -3,6 +3,8 @@
 
 (define-abbrev-table 'Custom-mode-abbrev-table '(    ))
 
+(define-abbrev-table 'ack-mode-abbrev-table '(    ))
+
 (define-abbrev-table 'ahg-command-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'ahg-diff-mode-abbrev-table '(    ))
@@ -159,10 +161,6 @@
 (define-abbrev-table 'vc-hg-outgoing-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '(    ))
-
-(define-abbrev-table 'wl-draft-mode-abbrev-table '(    ))
-
-(define-abbrev-table 'wl-news-mode-abbrev-table '(    ))
 
 (define-abbrev-table 'xml-mode-abbrev-table '(    ))
 
