@@ -7,9 +7,9 @@
 ;; Copyright (C) 1996-2009, Drew Adams, all rights reserved.
 ;; Created: Mon Feb 27 09:23:26 2006
 ;; Version: 22.0
-;; Last-Updated: Sun Aug  9 10:06:14 2009 (-0700)
+;; Last-Updated: Wed Mar  3 02:00:05 2010 (-0800)
 ;;           By: dradams
-;;     Update #: 998
+;;     Update #: 1060
 ;; URL: http://www.emacswiki.org/cgi-bin/wiki/icicles-var.el
 ;; Keywords: internal, extensions, help, abbrev, local, minibuffer,
 ;;           keys, apropos, completion, matching, regexp, command
@@ -18,8 +18,10 @@
 ;; Features that might be required by this library:
 ;;
 ;;   `apropos', `apropos-fn+var', `cl', `color-theme', `cus-face',
-;;   `easymenu', `ffap', `ffap-', `hexrgb', `icicles-opt', `kmacro',
-;;   `levenshtein', `thingatpt', `thingatpt+', `wid-edit', `widget'.
+;;   `easymenu', `el-swank-fuzzy', `ffap', `ffap-', `fuzzy-match',
+;;   `hexrgb', `icicles-face', `icicles-opt', `kmacro',
+;;   `levenshtein', `reporter', `sendmail', `thingatpt',
+;;   `thingatpt+', `wid-edit', `widget'.
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -31,8 +33,8 @@
 ;;
 ;;  Internal variables defined here:
 ;;
-;;    `icicle-abs-file-candidates', `icicle-acting-on-next/prev-p',
-;;    `icicle-all-candidates-action-p',
+;;    `icicle-abs-file-candidates', `icicle-acting-on-next/prev',
+;;    `icicle-advice-info-list', `icicle-all-candidates-action-p',
 ;;    `icicle-all-candidates-list-action-fn',
 ;;    `icicle-all-candidates-list-alt-action-fn',
 ;;    `icicle-apply-nomsg', `icicle-apropos-complete-match-fn',
@@ -54,8 +56,8 @@
 ;;    `icicle-completion-set-history', `icicle-confirm-exit-commands',
 ;;    `icicle-current-completion-candidate-overlay',
 ;;    `icicle-current-completion-mode', `icicle-current-input',
-;;    `icicle-current-raw-input', `icicle-cycling-p',
-;;    `icicle-default-directory',
+;;    `icicle-current-raw-input', `icicle-current-TAB-method',
+;;    `icicle-cycling-p', `icicle-default-directory',
 ;;    `icicle-default-thing-insertion-flipped-p',
 ;;    `icicle-delete-candidate-object', `icicle-dictionary-history',
 ;;    `icicle-dir-candidate-can-exit-p',
@@ -85,11 +87,12 @@
 ;;    `icicle-last-apropos-complete-match-fn',
 ;;    `icicle-last-completion-candidate',
 ;;    `icicle-last-completion-command', `icicle-last-input',
-;;    `icicle-last-sort-function', `icicle-last-top-level-command',
+;;    `icicle-last-sort-comparer', `icicle-last-top-level-command',
 ;;    `icicle-last-transform-function', `icicle-list-use-nth-parts',
-;;    `icicle-menu-map', `icicle-minor-mode-map-entry',
-;;    `icicle-ms-windows-drive-hash', `icicle-must-match-regexp',
-;;    `icicle-must-not-match-regexp', `icicle-must-pass-predicate',
+;;    `icicle-menu-map', `icicle-minibuffer-message-ok-p',
+;;    `icicle-minor-mode-map-entry', `icicle-ms-windows-drive-hash',
+;;    `icicle-must-match-regexp', `icicle-must-not-match-regexp',
+;;    `icicle-must-pass-predicate',
 ;;    `icicle-nb-of-other-cycle-candidates',
 ;;    `icicle-next-apropos-complete-cycles-p',
 ;;    `icicle-next-prefix-complete-cycles-p',
@@ -99,9 +102,10 @@
 ;;    `icicle-post-command-hook', `icicle-pre-command-hook',
 ;;    `icicle-previous-raw-file-name-inputs',
 ;;    `icicle-previous-raw-non-file-name-inputs',
+;;    `icicle-progressive-completing-p',
 ;;    `icicle-proxy-candidate-regexp', `icicle-proxy-candidates',
 ;;    `icicle-read-expression-map', `icicle-re-no-dot',
-;;    `icicle-require-match-p', `icicle-respect-completion-styles-p',
+;;    `icicle-require-match-p', `icicle-reverse-multi-sort-p',
 ;;    `icicle-reverse-sort-p', `icicle-saved-candidate-overlays',
 ;;    `icicle-saved-candidates-variables-obarray',
 ;;    `icicle-saved-completion-candidate',
@@ -120,7 +124,7 @@
 ;;    `icicle-search-overlays', `icicle-search-refined-overlays',
 ;;    `icicle-search-replacement',
 ;;    `icicle-search-replacement-history',
-;;    `icicle-successive-grab-count',
+;;    `icicle-sorted-bookmark-alist', `icicle-successive-grab-count',
 ;;    `icicle-text-property-value-history',
 ;;    `icicle-thing-at-pt-fns-pointer',
 ;;    `icicle-universal-argument-map',
@@ -170,7 +174,7 @@
 
 (require 'apropos-fn+var nil t) ;; (no error if not found): apropos-command,
                                 ;; apropos-function, apropos-option, apropos-variable
-(require 'icicles-opt) ;; icicle-sort-function
+(require 'icicles-opt) ;; icicle-sort-comparer
 
 ;;; Defvars to quiet byte-compiler:
 (defvar kmacro-ring-max)                ; Defined in `kmacro.el' in Emacs 22+.
@@ -194,8 +198,16 @@
 (defvar icicle-abs-file-candidates nil
   "Current list of absolute file-name candidates.")
 
-(defvar icicle-acting-on-next/prev-p nil
-  "Non-nil means this command acts on the previous or next candidate.")
+(defvar icicle-acting-on-next/prev nil
+  "Non-nil means this command acts on the previous or next candidate.
+The particular non-nil value indicates the navigation direction:
+`forward' or `backward'.")
+
+(defvar icicle-advice-info-list ()
+  "List of advice information for functions that Icicles redefines.
+If such redefined functions are advised, then Icicles deactivates the
+advice when you turn on Icicle mode.  It restores the recorded advice
+activation state when you turn off Icicle mode.")
 
 (defvar icicle-all-candidates-action-p nil
   "Non-nil means that we are acting on all candidates.
@@ -344,6 +356,10 @@ Effective starting with Emacs 23.")
 
 (defvar icicle-current-input "" "Current minibuffer input.")
 
+(defvar icicle-current-TAB-method 'basic
+  "*Current completion method for \
+`\\<minibuffer-local-completion-map>\\[icicle-prefix-complete]'.")
+
 (defvar icicle-current-raw-input "" "Current minibuffer raw (unexpanded) input.
 This can be different from `icicle-current-input' only when
 `icicle-expand-input-to-common-match-flag' is non-nil.")
@@ -455,7 +471,7 @@ Each name is a symbol name or a lambda form, as a string.")
 Customize Icicles: `M-x icicle-customize-icicles-group'.
 Summary of customizable options and faces (alphabetical order).
 
-Some of the binary options can be toggled - their toggle keys are
+Some of the options can be toggled or cycled - the keys for this are
 noted in parentheses.
 
 * `case-fold-search', `completion-ignore-case',
@@ -464,7 +480,7 @@ noted in parentheses.
 * `completion-ignored-extensions'        - Ignored filenames (`C-.')
 * `icicle-add-buffer-name-flag'          - Add candidate's buffer?
 * `icicle-add-proxy-candidates-flag'     - Include proxies? (`C-M-_')
-* `icicle-alternative-sort-function'     - Other sort (`M-,', `C-M-,')
+* `icicle-alternative-sort-comparer'     - Other sort (`M-,', `C-M-,')
 * `icicle-top-level-key-bindings'        - Bind top-level commands
 * `icicle-buffer-*'                      - `icicle-buffer' options
 * `icicle-candidate-width-factor'        - Width %%, candidate columns
@@ -483,7 +499,6 @@ noted in parentheses.
 \\<minibuffer-local-completion-map>\\[icicle-insert-string-at-point]
 * `icicle-default-value'                 - How to treat default value
 * `icicle-expand-input-to-common-match-flag'- Expand input? (`C-;')
-* `icicle-fuzzy-completion-flag'         - Fuzzy completion? (`C-(')
 * `icicle-highlight-historical-candidates-flag'
                                          - Highlight past input?
 * `icicle-highlight-input-initial-whitespace-flag'
@@ -504,7 +519,8 @@ noted in parentheses.
 * `icicle-minibuffer-setup-hook'         - Functions run after setup
 * `icicle-modal-cycle-up-keys', `icicle-modal-cycle-down-keys'
                                          - Keys for modal cycling
-* `icicle-next-apropos-match-function'   - Change match func (`M-(')
+* `icicle-next-S-TAB-completion-method'  - Next `S-TAB' method (`M-(')
+* `icicle-next-TAB-completion-method'    - Next `TAB' method (`C-(')
 * `icicle-point-position-in-candidate'   - Cursor position in cycling
 * `icicle-redefine-standard-commands-flag'- Redefine std commands?
 * `icicle-regexp-quote-flag'             - Escape chars? (`C-`')
@@ -533,8 +549,8 @@ noted in parentheses.
 * `icicle-search-whole-word-flag'        - Find whole words? (`M-q')
 * `icicle-show-Completions-help-flag'    - Show *Completions* help?
 * `icicle-show-Completions-initially-flag'- Show *Completions* first?
-* `icicle-sort-function'                 - Sort candidates (`C-,')
-* `icicle-sort-functions-alist'          - Functions for sorting
+* `icicle-sort-comparer'                 - Sort candidates (`C-,')
+* `icicle-sort-orders-alist'             - Predicates for sorting
 * `icicle-special-candidate-regexp'      - To highlight special cands
 * `icicle-TAB-shows-candidates-flag'     - 1st `TAB' shows candidates?
 * `icicle-test-for-remote-files-flag'    - Check remote files? (`C-^')
@@ -615,8 +631,9 @@ input prompt is prefixed by `+'.
 + `icicle-delete-file'                 - Delete file/directory
 + `icicle-delete-windows'              - Delete windows (`C-u C-x 0')
 + `icicle-doc'                         - Show doc for fn, var, or face
-  `icicle-doremi-candidate-width-factor' - +/- candidate column width
-  `icicle-doremi-inter-candidates-min-spaces' - +/- candidate spacing
+  `icicle-doremi-candidate-width-factor+' - +/- candidate column width
+  `icicle-doremi-inter-candidates-min-spaces+' - +/- candidate spacing
+  `icicle-doremi-zoom-Completions+'    - +/- *Completions* text size
 + `icicle-execute-extended-command'    - Execute command - multi-`M-x'
 + `icicle-execute-named-keyboard-macro' - Execute named keyboard macro
 + `icicle-file'(`-other-window')       - Visit file/dir (`C-x C-f')
@@ -640,7 +657,8 @@ input prompt is prefixed by `+'.
 + `icicle-locate-file'(`-other-window') - Visit file in a directory
   `icicle-minibuffer-help'             - Show Icicles minibuffer help
   `icy-mode' or `icicle-mode'          - Toggle Icicle mode
-  `icicle-next-apropos-match-function' - Change match func (`M-(')
+  `icicle-next-S-TAB-completion-method' - Next `S-TAB' method (`M-(')
+  `icicle-next-TAB-completion-method'  - Next `TAB' method (`C-(')
 + `icicle-occur'                       - Enhanced `occur' (`C-c '')
 + `icicle-other-window-or-frame'       - Other window/frame (`C-x o')
 + `icicle-plist'                       - Show symbols, property lists
@@ -667,7 +685,6 @@ input prompt is prefixed by `+'.
   `icicle-toggle-case-sensitivity'     - Toggle case sensitivity
   `icicle-toggle-C-for-actions'        - Toggle using `C-' for actions
   `icicle-toggle-expand-to-common-match' - Toggle input ECM expansion
-  `icicle-toggle-fuzzy-completion'     - Toggle fuzzy completion
   `icicle-toggle-highlight-all-current' - Toggle max search highlight
   `icicle-toggle-highlight-historical-candidates'
                                        - Toggle past-input highlight
@@ -779,8 +796,8 @@ RING-ITEM is an item in `kmacro-ring' or `(kmacro-ring-head)'.")
 
 (defvar icicle-last-input "" "Last minibuffer input typed (not from cycling).")
 
-(defvar icicle-last-sort-function (or icicle-sort-function 'icicle-case-string-less-p)
-  "Local copy of `icicle-sort-function', so we can restore it.")
+(defvar icicle-last-sort-comparer (or icicle-sort-comparer 'icicle-case-string-less-p)
+  "Local copy of `icicle-sort-comparer', so we can restore it.")
 
 (defvar icicle-last-top-level-command nil "Last top-level command used.")
 
@@ -810,6 +827,10 @@ use the second part, first part, and second part again - you can use a
 given part any number of times.")
 
 (defvar icicle-menu-map nil "Icicles menu-bar menu keymap.")
+
+(defvar icicle-minibuffer-message-ok-p t
+  "Non-nil means we can show messages in minibuffer.
+This affects only `icicle-msg-maybe-in-minibuffer'.")
 
 (defvar icicle-minor-mode-map-entry nil "Icicles mode entry in `minor-mode-map-alist'.")
 
@@ -914,6 +935,9 @@ These are inputs typed but not necessarily entered with `RET'.")
   "Previous inputs user has typed during non-file-name completion.
 These are inputs typed but not necessarily entered with `RET'.")
 
+(defvar icicle-progressive-completing-p nil
+  "Non-nil means this completion is a narrowing completion.")
+
 (defvar icicle-proxy-candidate-regexp nil
   "Regexp to match proxy candidates, or nil to do nothing.
 The candidates are highlighted in buffer *Completions* using face
@@ -944,11 +968,11 @@ Several Emacs-Lisp mode key bindings are used.")
 Starting with Emacs 23, this is no longer enough to tell whether a
 match is required - use function `icicle-require-match-p' instead.")
 
-(defvar icicle-respect-completion-styles-p nil
-  "Non-nil means Icicles respects `completion-styles'.
-Otherwise, only `basic' style (more or less) is used.
-This variable is used starting with Emacs 23, which introduced
-`completion-styles'.")
+(defvar icicle-reverse-multi-sort-p nil
+  "Non-nil means the truth values returned by predicates are complemented.
+This changes the order of the sorting groups, but it does not in
+general reverse that order.  The order within each group is unchanged
+\(not reversed).")
 
 (defvar icicle-reverse-sort-p nil
   "Non-nil means that candidates are being sorted in the reverse order.")
@@ -1042,6 +1066,10 @@ a single overlay (or nil).  Otherwise, this is a list of overlays.")
 
 (defvar icicle-search-replacement-history nil
   "History variable for reading replacement string for `icicle-search'.")
+
+(defvar icicle-sorted-bookmark-alist ()
+  "Copy of current bookmark alist, sorted, and with faces for types.
+Has the same structure as `bookmark-alist'.")
 
 (defvar icicle-successive-grab-count 0
   "Number of text things to be grabbed by next `\\<minibuffer-local-map>\
