@@ -101,7 +101,7 @@ function stowdir_local
 }
 
 function switch_was_tail_to_emacs
-{
-     export WAS_TAIL_ARGS=' '
+{ 
+     export WAS_TAIL_ARGS="--font \"Liberation Mono-14\""
      export WAS_TAIL_COMMAND=/opt/IBM/setup_was/emacs_tail.sh
 }
