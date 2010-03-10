@@ -1,5 +1,15 @@
 # -*- mode: shell-script -*-
 
+if [[ "$TERM" == "dumb" ]]
+    then
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -13,8 +23,8 @@ promptinit
 
 # keep history file between sessions
 DIRSTACKSIZE=15
-HISTSIZE=4000
-SAVEHIST=4000
+HISTSIZE=8192
+SAVEHIST=8192
 HISTFILE=~/.history
 
 #--- zsh options ---
