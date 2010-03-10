@@ -348,6 +348,5 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
 (provide 'skk-general)
 ;;; skk-general.el ends here

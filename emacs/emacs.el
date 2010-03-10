@@ -89,7 +89,29 @@
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
 ;(autoload 'company-mode "skk-company" "company" t)
 ;(autoload 'python-mode "skk-python" "python-mode" t)
+
+(autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
+(add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
+
+(add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+(autoload 'csv-mode "csv-mode" "Major mode for editing comma-separated value files." t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; change directory to home
-(cd "~/")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; enable midnight mode
+(require 'midnight)
+(add-to-list 'clean-buffer-list-kill-buffer-names
+             "*Pymacs*"
+             "trace.log")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; open user-init-file on startup
+(add-hook 'emacs-startup-hook (lambda () (find-file-noselect user-init-file)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; change directory to $PWD or ~
+(if (getenv "PWD")
+    (cd (getenv "PWD"))
+  (cd "~"))
+  
