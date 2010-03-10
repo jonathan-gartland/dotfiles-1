@@ -28,9 +28,8 @@
 #
 
 :0
-* ^From:.*ian.j.zelo@noaa.gov.*
+* ^From:.*(ian.j.zelo|Jerry.Muhasky)@noaa.gov.*
 .Projects.eSCAT/
-
 
 #
 # ERMA
