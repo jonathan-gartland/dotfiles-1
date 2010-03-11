@@ -76,7 +76,7 @@ if [[ $hostname = "spoo.sr.unh.edu" ]]; then
 fi
 
 if [[ $hostname = "long.sr.unh.edu" ]]; then
-    export PATH="/usr/lib/postgresql/8.3/bin/shp2pgsql:$PATH"
+    export PATH="/usr/lib/postgresql/8.3/bin:$PATH"
 fi
 
 if [[ $hostname = "skk" ]]; then
