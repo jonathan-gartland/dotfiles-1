@@ -4,11 +4,11 @@
 # Environment variables
 #
 
-if [[ -n $(which most) ]]; then
+if [[ -x $(which most) ]]; then
     export PAGER=most
-elif [[ -n $(which less) ]]; then
+elif [[ -x $(which less) ]]; then
     export PAGER=less 
-elif [[ -n $(which more) ]]; then
+elif [[ -x $(which more) ]]; then
     export PAGER=more
 fi
 
@@ -73,6 +73,10 @@ fi
 if [[ $hostname = "spoo.sr.unh.edu" ]]; then
     export JAVA_HOME="/usr/local/java/IBMJava16"
     export JRE_HOME="$JAVA_HOME"
+fi
+
+if [[ $hostname = "long.sr.unh.edu" ]]; then
+    export PATH="/usr/lib/postgresql/8.3/bin/shp2pgsql:$PATH"
 fi
 
 if [[ $hostname = "skk" ]]; then
