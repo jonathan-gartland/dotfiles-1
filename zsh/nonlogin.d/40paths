@@ -19,7 +19,13 @@ export CDPATH=.:~:~/src:~/work:/web
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:$JAVA_HOME/bin:$HOME/local/bin:$HOME/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/local/bin:$HOME/bin:$PATH"
+
+if [[ $(id -u) -eq 0 ]]; then
+    export PATH="/sbin:/usr/sbin:$PATH"
+else
+    export PATH="$PATH:/usr/sbin:/sbin"
+fi
 
 export MANPATH="$MANPATH:$HOME/local/man"
 export TERMINFO="$HOME/.terminfo"
@@ -80,9 +86,13 @@ if [[ $hostname = "long.sr.unh.edu" ]]; then
 fi
 
 if [[ $hostname = "skk" ]]; then
-    export svnroot=""file:///home/svn/skk/""
-    export svnmusic=""file:///home/svn/music/""
+    export svnroot="file:///home/svn/skk/"
+    export svnmusic="file:///home/svn/music/"
     export MAILDIR="$HOME/Maildir"
     export JAVA_HOME="/usr/local/java/IBMJava16"
     export JRE_HOME="$JAVA_HOME"
+fi
+
+if [[ -n $JAVA_HOME ]]; then
+    export PATH="$JAVA_HOME:/bin:$PATH"
 fi
