@@ -4,9 +4,9 @@
 # Environment variables
 #
 
-if [[ -x $(which most) ]]; then
-    export PAGER=most
-elif [[ -x $(which less) ]]; then
+#if [[ -x $(which most) ]]; then
+#    export PAGER=most
+if [[ -x $(which less) ]]; then
     export PAGER=less 
 elif [[ -x $(which more) ]]; then
     export PAGER=more
