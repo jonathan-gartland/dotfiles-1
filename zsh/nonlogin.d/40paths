@@ -30,9 +30,8 @@ fi
 export MANPATH="$MANPATH:$HOME/local/man"
 export TERMINFO="$HOME/.terminfo"
 
-Python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
-
 # set PYTHONPATH
+python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
 export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
 
 # rcc
