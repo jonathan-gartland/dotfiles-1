@@ -1,7 +1,5 @@
 # -*- mode: shell-script -*-
 
-echo "start of 40paths" 
-
 #
 # Environment variables
 #
@@ -40,7 +38,6 @@ export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOM
 # rcc
 if [[ $(dnsdomainname -y) = "rcc" ]] || 
     [[ $(dnsdomainname -y) = "eos" ]]; then
-    echo "exporting svn variables"
     # svn variables
     export svndemo="https://svn.sr.unh.edu/svn/demo/"
     export svnskk="https://svn.sr.unh.edu/svn/skk/"
@@ -102,9 +99,6 @@ fi
 
 if [[ $(dnsdomainname -y) = "rcc" ]] || 
     [[ $(dnsdomainname -y) = "eos" ]]; then
-    echo "Adding pkgsrc to PATH and MANPATH"
     export PATH="/net/home/rcc/skk/pkgsrc/usr/pkg/bin:$PATH"
     export MATHPATH="/net/home/rcc/skk/pkgsrc/usr/pkg/man:$MANPATH"
 fi
-
-echo "end of 40paths"
