@@ -1,5 +1,7 @@
 # -*- mode: shell-script -*-
 
+echo "start of 40paths" 
+
 #
 # Environment variables
 #
@@ -29,15 +31,16 @@ fi
 
 export MANPATH="$MANPATH:$HOME/local/man"
 export TERMINFO="$HOME/.terminfo"
- 
-python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
+
+Python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
 
 # set PYTHONPATH
 export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
 
 # rcc
-if [[ $(dnsdomainname -y) == "rcc" ]] || 
-    [[ $(dnsdomainname -y) == "eos" ]]; then
+if [[ $(dnsdomainname -y) = "rcc" ]] || 
+    [[ $(dnsdomainname -y) = "eos" ]]; then
+    echo "exporting svn variables"
     # svn variables
     export svndemo="https://svn.sr.unh.edu/svn/demo/"
     export svnskk="https://svn.sr.unh.edu/svn/skk/"
@@ -50,7 +53,7 @@ if [[ $(dnsdomainname -y) == "rcc" ]] ||
     export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
     export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
     export svnerma="https://erma-svn.sr.unh.edu/svn/trunk"
-fi
+ fi
 
 hostname=$(hostname -f)
 # stuff for zathras.sr.unh.edu
@@ -96,3 +99,12 @@ fi
 if [[ -n $JAVA_HOME ]]; then
     export PATH="$JAVA_HOME:/bin:$PATH"
 fi
+
+if [[ $(dnsdomainname -y) = "rcc" ]] || 
+    [[ $(dnsdomainname -y) = "eos" ]]; then
+    echo "Adding pkgsrc to PATH and MANPATH"
+    export PATH="/net/home/rcc/skk/pkgsrc/usr/pkg/bin:$PATH"
+    export MATHPATH="/net/home/rcc/skk/pkgsrc/usr/pkg/man:$MANPATH"
+fi
+
+echo "end of 40paths"
