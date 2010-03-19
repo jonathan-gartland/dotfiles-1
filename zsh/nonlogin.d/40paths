@@ -93,11 +93,5 @@ if [[ $hostname = "skk" ]]; then
 fi
 
 if [[ -n $JAVA_HOME ]]; then
-    export PATH="$JAVA_HOME:/bin:$PATH"
-fi
-
-if [[ $(dnsdomainname -y) = "rcc" ]] || 
-    [[ $(dnsdomainname -y) = "eos" ]]; then
-    export PATH="/net/home/rcc/skk/pkgsrc/usr/pkg/bin:$PATH"
-    export MATHPATH="/net/home/rcc/skk/pkgsrc/usr/pkg/man:$MANPATH"
+    export PATH="$JAVA_HOME/bin:$PATH"
 fi
