@@ -24,4 +24,8 @@ Control + Mod1 + c
 
 # krunner
 "/usr/bin/krunner &"
-Control + Mod1 + r"
+Control + Mod1 + r
+
+# google-chrome
+"/usr/bin/google-chrome& "
+Control + Mod1 + g
