@@ -30,7 +30,7 @@ def rsync( options, src, dst ):
 if __name__ == '__main__':
 
     # Backup ~skk/Maildir/ to ~MailArchive
-    rsync( rsync_options, '/net/home/rcc/skk/Maildir', '/home/MailArchive' )
+    rsync( rsync_options, '/home/skk/Maildir', '/home/MailArchive' )
 
     if datetime.date.today().day == 1:
         # Delete ~skk/Maildir
@@ -51,4 +51,4 @@ if __name__ == '__main__':
     run_command( "/usr/bin/find /home/MailArchive/Maildir -type d -exec chmod g+rx {} \;" );
     run_command( "/usr/bin/find /home/MailArchive/Maildir -type f -exec chmod g+r {} \;" );
     run_command( "/bin/chown -R MailArchive:MailArchive /home/MailArchive/Maildir" )
-    run_command( "/bin/chown -R skk:users /net/home/rcc/skk/Maildir/" )
+    run_command( "/bin/chown -R skk:users /home/skk/Maildir/" )
