@@ -8,7 +8,6 @@
 * ^From:.*logwatch*.*
 .Systems.LogWatch/
 
-
 :0
 * ^Subject:.*DenyHosts Report*.*
 .Systems.DenyHosts/
@@ -17,5 +16,8 @@
 * ^From:.*root@.*
 .Systems.Root/
 
+:0
+* ^Subject:.*UNH Admissions received your e-mail.*
+/dev/null
 
 # /* vim: set filetype=procmail : */ 
