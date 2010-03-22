@@ -1,5 +1,13 @@
 # -*- mode: shell-script -*-
 
-export EDITOR="ew"
-export VISUAL="ew"
-export ALTERNATE_EDITOR="/usr/bin/emacs -nw"
+hostname=$(/usr/bin/env hostname -f)
+# stuff for zathras.sr.unh.edu
+if [[ $hostname = "zathras.sr.unh.edu" ]] || [[ $hostname = "skk" ]]; then
+    export EDITOR="ew"
+    export VISUAL="ew"
+    export ALTERNATE_EDITOR="/usr/bin/emacs -nw"
+else
+    export EDITOR="vim"
+    export VISUAL="gvim"
+    export ALTERNATE_EDITOR="/usr/bin/emacs -nw"
+fi    
