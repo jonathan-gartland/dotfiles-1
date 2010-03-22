@@ -27,10 +27,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
-(when (require 'color-theme)
-  (color-theme-initialize)
-  (require 'zenburn)
-  (require 'color-theme-mods))
+(when 
+    (require 'color-theme)
+    (color-theme-initialize)
+    (require 'color-theme-tango))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -55,8 +55,8 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-billc)
-(add-hook 'after-make-console-frame-hooks 'color-theme-zenburn)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-tango)
+(add-hook 'after-make-console-frame-hooks 'color-theme-tango-light)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
