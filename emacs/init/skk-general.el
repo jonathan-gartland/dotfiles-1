@@ -15,7 +15,7 @@
 (tool-bar-mode nil)                       ; don't show the toolbar
 (icomplete-mode t)                       ; completion in minibuffer
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
-(scroll-bar-mode t)              
+(scroll-bar-mode nil)              
 (set-scroll-bar-mode 'right)
 
 (when (fboundp 'set-fringe-mode)         ; emacs22+ 
@@ -172,11 +172,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; tramp, for remote access
-(setq tramp-default-method "ssh")
-(setq tramp-persistency-file-name "~/.emacs.d/.cache/tramp")
+(setq tramp-default-method "ssh"
+      tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
+      tramp-verbose 3)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; safe locals; we mark these as 'safe', so emacs22+ won't give us annoying 
@@ -317,34 +316,54 @@ activate-mark-hook"
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2009/12/changing-cursor-color-and-shape.html
-;; Change cursor color according to mode; inspired by
-;; http://www.emacswiki.org/emacs/ChangingCursorDynamically
-(setq djcb-read-only-color       "gray")
-;; valid values are t, nil, box, hollow, bar, (bar . WIDTH), hbar,
-;; (hbar. HEIGHT); see the docs for set-cursor-type
+; I was using djcb's cursor code, but I switched to cursor-chg code.
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://emacs-fu.blogspot.com/2009/12/changing-cursor-color-and-shape.html
+;; ;; Change cursor color according to mode; inspired by
+;; ;; http://www.emacswiki.org/emacs/ChangingCursorDynamically
+;; (setq djcb-read-only-color       "gray")
+;; ;; valid values are t, nil, box, hollow, bar, (bar . WIDTH), hbar,
+;; ;; (hbar. HEIGHT); see the docs for set-cursor-type
 
-(setq djcb-read-only-cursor-type 'hbar)
-(setq djcb-overwrite-color       "red")
-(setq djcb-overwrite-cursor-type 'block)
-(setq djcb-normal-color          "yellow")
-(setq djcb-normal-cursor-type    'bar)
+;; (setq djcb-read-only-cursor-type 'hbar)
+;; (setq djcb-overwrite-color       "red")
+;; (setq djcb-overwrite-cursor-type 'block)
+;; (setq djcb-normal-color          "yellow")
+;; (setq djcb-normal-cursor-type    'bar)
 
-(defun djcb-set-cursor-according-to-mode ()
-  "change cursor color and type according to some minor modes."
+;; (defun djcb-set-cursor-according-to-mode ()
+;;   "change cursor color and type according to some minor modes."
 
-  (cond
-    (buffer-read-only
-      (set-cursor-color djcb-read-only-color)
-      (setq cursor-type djcb-read-only-cursor-type))
-    (overwrite-mode
-      (set-cursor-color djcb-overwrite-color)
-      (setq cursor-type djcb-overwrite-cursor-type))
-    (t 
-      (set-cursor-color djcb-normal-color)
-      (setq cursor-type djcb-normal-cursor-type))))
+;;   (cond
+;;     (buffer-read-only
+;;       (set-cursor-color djcb-read-only-color)
+;;       (setq cursor-type djcb-read-only-cursor-type))
+;;     (overwrite-mode
+;;       (set-cursor-color djcb-overwrite-color)
+;;       (setq cursor-type djcb-overwrite-cursor-type))
+;;     (t 
+;;       (set-cursor-color djcb-normal-color)
+;;       (setq cursor-type djcb-normal-cursor-type))))
 
-(add-hook 'post-command-hook 'djcb-set-cursor-according-to-mode)
+;; (add-hook 'post-command-hook 'djcb-set-cursor-according-to-mode)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ChangingCursorDynamically
+(require 'cursor-chg)  ; Load the library
+(toggle-cursor-type-when-idle 1) ; Turn on cursor change when Emacs is idle
+(change-cursor-mode 1) ; Turn on change for overwrite, read-only, and input mode
+(setq curchg-default-cursor-color "white")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2010/03/showing-buffer-position-in-mode-line.html
+(if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
+  (progn 
+    (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
+    (scroll-bar-mode -1))                   ;; turn off the scrollbar
+  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
+  (set-scroll-bar-mode 'right))             ;; ... on the right
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
