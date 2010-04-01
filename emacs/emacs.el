@@ -89,11 +89,17 @@
 ;(autoload 'python-mode "skk-python" "python-mode" t)
 (autoload 'company-mode "company" nil t)
 
+; http://log4j-mode.sourceforge.net/
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
 
+; http://www.emacswiki.org/emacs/CsvMode
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 (autoload 'csv-mode "csv-mode" "Major mode for editing comma-separated value files." t)
+
+; http://www.mobilegeographics.com/mapserver/mapserver-mode.el
+(autoload 'mapserver-mode "mapserver-mode" "Mode for editing UMN MapServer files." t)
+(add-to-list 'auto-mode-alist '("\\.map\\'" . mapserver-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
