@@ -51,7 +51,7 @@
         skk-flyspell.el
         skk-functions.el
         skk-general.el
-        ;skk-gitconfigmode.el
+        skk-git.el 
         skk-icicles.el
         skk-makefilemode.el
         skk-python.el
@@ -82,13 +82,12 @@
 (autoload 'c-sharp "skk-c-sharp" "C# Mode" t)
 (autoload 'nxml "skk-xml" "nXml Mode" t)
 ;(autoload 'org-mode "skk-org-mode" "org mode" t)
-;(autoload 'git-emacs "skk-git" "git-emacs mode" t)
 (autoload 'ahg "skk-mercurial" "mercurial" t)
 (autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
-;(autoload 'company-mode "skk-company" "company" t)
 ;(autoload 'python-mode "skk-python" "python-mode" t)
+(autoload 'company-mode "company" nil t)
 
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
