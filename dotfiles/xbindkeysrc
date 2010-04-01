@@ -29,3 +29,7 @@ Control + Mod1 + r
 # google-chrome
 "/usr/bin/google-chrome& "
 Control + Mod1 + g
+
+# qalculate
+"/usr/bin/qalculate"
+Control + Mod1 + q"
