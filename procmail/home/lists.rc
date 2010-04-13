@@ -55,4 +55,7 @@
 * (To|Cc):.*wl-en@lists.airs.net.*
 .Mailing\ Lists.Wanderlust/
 
-# /* vim: set filetype=procmail : */ 
+# Haskell Cafe
+:0
+* (To|Cc):.*haskell-cafe@haskell.org.*
+.Mailing\ Lists.Haskell\ Cafe/
