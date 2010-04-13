@@ -19,7 +19,7 @@ export CDPATH=.:~:~/src:~/work:/web
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/local/bin/:$HOME/bin/:$HOME/bin/$(uname -p)/:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/local/bin/:$HOME/bin/:$HOME/bin/$(uname -m)/:$PATH"
 
 if [[ $(id -u) -eq 0 ]]; then
     export PATH="/sbin:/usr/sbin:$PATH"
