@@ -9,7 +9,7 @@
 
 # delete all postmaster email
 :0
-* ^To: .*(postmaster)@.*
+* ^To:.*(postmaster)@.*
 /dev/null
 
 # delete all mailer-daemon email
@@ -19,7 +19,7 @@
 
 # delete logwatch for other systems.
 :0
-* ^Subject: .*LogWatch for (amnesiac|stella|alumni|arpeggi).*
+* ^Subject: .*LogWatch for (amnesiac|stella|alumni|arpeggi|hollow|myxomatosis|kenyan|morden).*
 /dev/null
 
 # delete clamav messages from alumni
@@ -35,7 +35,13 @@
 # delete webcal error messages
 :0
 * ^Subject:.*/web/facilities-dc/htdocs/webcams/.*
-#.Possible\ Junk\ Mail/
 /dev/null
 
+# Delete MAILER-DAEMON@stella
+:0
+* ^From:.*MAILER-DAEMON@stella.sr.unh.edu.*
+/dev/null
+
+
 # /* vim: set filetype=procmail : */ 
+p

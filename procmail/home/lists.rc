@@ -1,9 +1,13 @@
 # $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
 
-# Mailing lists
+# 
+# Mailing Lists
 #
-#
-#
+
+# 912 Project
+:0
+* (To|Cc):.*rochester-912-project-list@meetup.com.*
+.Mailing\ Lists.Rochester-912-Project/
 
 # Arch Linux
 :0
@@ -15,10 +19,15 @@
 * (To|Cc):.*python-list@python.org.*
 .Mailing\ Lists.Python\ User/
 
-# python-mode
+# Python Mode
 :0
 * (To|Cc):.*python-mode@python.org.*
 .Mailing\ Lists.Python\ Mode/
+
+# Python Devel
+:0
+* (To|Cc):.*python-dev@python.org.*
+.Mailing\ Lists.Python\ Dev/
 
 # Python Ideas
 :0
@@ -55,4 +64,12 @@
 * (To|Cc):.*wl-en@lists.airs.net.*
 .Mailing\ Lists.Wanderlust/
 
-# /* vim: set filetype=procmail : */ 
+# Haskell Cafe
+:0
+* (To|Cc):.*haskell-cafe@haskell.org.*
+.Mailing\ Lists.Haskell\ Cafe/
+
+# Debian User
+:0
+* (To|Cc):.*debian-user@lists.debian.org.*
+.Mailing\ Lists.Debuan\ User/

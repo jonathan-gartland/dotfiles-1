@@ -4,11 +4,13 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(auto-revert-interval 1)
+ '(column-number-mode t)
  '(flymake-gui-warnings-enabled nil)
  '(flymake-log-level 0)
  '(inhibit-startup-screen t)
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
  '(regex-tool-backend (quote perl))
+ '(show-paren-mode t)
  '(sql-sqlite-program "sqlite3")
  '(tab-always-indent nil)
  '(tramp-default-method "ssh" t)

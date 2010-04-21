@@ -51,7 +51,7 @@
         skk-flyspell.el
         skk-functions.el
         skk-general.el
-        ;skk-gitconfigmode.el
+        skk-git.el 
         skk-icicles.el
         skk-makefilemode.el
         skk-mk-project.el
@@ -83,19 +83,24 @@
 (autoload 'c-sharp "skk-c-sharp" "C# Mode" t)
 (autoload 'nxml "skk-xml" "nXml Mode" t)
 ;(autoload 'org-mode "skk-org-mode" "org mode" t)
-;(autoload 'git-emacs "skk-git" "git-emacs mode" t)
 (autoload 'ahg "skk-mercurial" "mercurial" t)
 (autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
-;(autoload 'company-mode "skk-company" "company" t)
 ;(autoload 'python-mode "skk-python" "python-mode" t)
+(autoload 'company-mode "company" nil t)
 
+; http://log4j-mode.sourceforge.net/
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
 
+; http://www.emacswiki.org/emacs/CsvMode
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 (autoload 'csv-mode "csv-mode" "Major mode for editing comma-separated value files." t)
+
+; http://www.mobilegeographics.com/mapserver/mapserver-mode.el
+(autoload 'mapserver-mode "mapserver-mode" "Mode for editing UMN MapServer files." t)
+(add-to-list 'auto-mode-alist '("\\.map\\'" . mapserver-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
