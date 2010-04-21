@@ -54,6 +54,7 @@
         ;skk-gitconfigmode.el
         skk-icicles.el
         skk-makefilemode.el
+        skk-mk-project.el
         skk-python.el
         skk-sql.el
         skk-textmode.el
