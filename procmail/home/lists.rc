@@ -68,3 +68,8 @@
 :0
 * (To|Cc):.*haskell-cafe@haskell.org.*
 .Mailing\ Lists.Haskell\ Cafe/
+
+# Debian User
+:0
+* (To|Cc):.*debian-user@lists.debian.org.*
+.Mailing\ Lists.Debuan\ User/
