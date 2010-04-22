@@ -48,6 +48,7 @@
         skk-colortheme.el
         skk-company.el
         skk-custom.el
+        skk-emacslisp-mode.el
         skk-flyspell.el
         skk-functions.el
         skk-general.el
