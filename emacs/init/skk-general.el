@@ -172,9 +172,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; tramp, for remote access
-(setq tramp-default-method "ssh"
+(setq tramp-default-method "sftp"
       tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
-      tramp-verbose 3)
+      tramp-encoding-shell "/bin/bash"
+      tramp-verbose 5)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -346,7 +347,7 @@ activate-mark-hook"
 ;;       (setq cursor-type djcb-normal-cursor-type))))
 
 ;; (add-hook 'post-command-hook 'djcb-set-cursor-according-to-mode)
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/ChangingCursorDynamically
@@ -366,6 +367,24 @@ activate-mark-hook"
   (set-scroll-bar-mode 'right))             ;; ... on the right
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; enable midnight mode
+(require 'midnight)
+;; kill everything, clean-buffer-list is very intelligent at not killing
+;; unsaved buffer.
+(setq clean-buffer-list-kill-regexps
+	  '("^.*$"))
+
+;;kill buffers if they were last disabled more than this seconds ago
+(setq clean-buffer-list-delay-special 7200)
+
+;; (add-to-list clean-buffer-list-kill-never-buffer-names
+;;              "*scratch*"
+;;              "*Messages*"
+;;              "*server*"
+;;              "*tramp*"
+;;              "trace.log")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
