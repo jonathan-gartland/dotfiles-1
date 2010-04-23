@@ -21,12 +21,12 @@
 
 # Email sent to addresses other than the "Ops" addresses above, but still should be put into the .Ops/ maildir.
 :0
-* ^To: .*(machineroom)@(.*)sr.unh.edu.*
+* ^(To|Cc):.*(machineroom)@(.*)sr.unh.edu.*
 .Ops/
 
 # WebAdmin email
 :0
-* ^To: .*web-admin@sr.unh.edu.*
+* ^(To:Cc):.*web-admin@sr.unh.edu.*
 .WebAdmin/
 
 # Old rules; kept until I know the new Ops/Staff rules work.
