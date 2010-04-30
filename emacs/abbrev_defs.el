@@ -65,8 +65,6 @@
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
 
-(define-abbrev-table 'gdb-script-mode-abbrev-table '())
-
 (define-abbrev-table 'global-abbrev-table '())
 
 (define-abbrev-table 'gnus-article-edit-mode-abbrev-table '())
@@ -74,8 +72,6 @@
 (define-abbrev-table 'gnus-sticky-article-mode-abbrev-table '())
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
-
-(define-abbrev-table 'gud-mode-abbrev-table '())
 
 (define-abbrev-table 'html-mode-abbrev-table '())
 
@@ -100,18 +96,6 @@
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'log-view-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-automake-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-gmake-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-imake-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-makepp-mode-abbrev-table '())
-
-(define-abbrev-table 'makefile-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
@@ -157,10 +141,6 @@
 (define-abbrev-table 'sh-mode-abbrev-table '())
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
-
-(define-abbrev-table 'sieve-manage-mode-abbrev-table '())
-
-(define-abbrev-table 'sieve-mode-abbrev-table '())
 
 (define-abbrev-table 'slitex-mode-abbrev-table '())
 
