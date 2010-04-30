@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: sqw ac2
-# --
-sqw.addColumn("$1",
