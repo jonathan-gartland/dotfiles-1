@@ -308,7 +308,7 @@ If this many lines are not available, prefer to display the tooltip above."
                 (return t))))))
 
 (defcustom company-backends '(company-elisp company-nxml company-css
-                              company-eclim company-semantic company-clang
+                              company-eclim company-semantic 
                               company-xcode company-ropemacs
                               (company-gtags company-etags company-dabbrev-code
                                company-pysmell company-keywords)
