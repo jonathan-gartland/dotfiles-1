@@ -28,12 +28,15 @@
 #
 
 :0
-* ^From:.*(ian.j.zelo|Jerry.Muhasky)@noaa.gov.*
+* ^From:.*ian.j.zelo@noaa.gov.*
+* ^From:*Jerry.Muhasky@noaa.gov.*
+* ^From:.*Brianne.Connolly@noaa.gov.*
 .Projects.eSCAT/
 
 #
 # ERMA
 #
+
 :0
 * ^From:.*Michele.Jacobi@noaa.gov.*
 * ^From:.*TracyR@genwest.com.*
