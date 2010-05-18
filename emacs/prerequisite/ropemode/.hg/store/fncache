@@ -6,3 +6,6 @@ data/ropemode/filter.py.i
 data/ropemode/interface.py.i
 data/ropemode/refactor.py.i
 data/ropemodetest.py.i
+data/.hgignore.i
+data/.hgtags.i
+data/setup.py.i
