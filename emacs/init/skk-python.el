@@ -1,3 +1,5 @@
+(when djcb-win32-p
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; python
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
@@ -46,3 +48,4 @@
 (setenv "PYMACS_PYTHON" "python2.6") 
 (setq py-python-command-args '( "-colors" "Linux"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+)

@@ -30,6 +30,7 @@
 (when 
     (require 'color-theme)
     (color-theme-initialize)
+    (require 'zenburn)
     (require 'color-theme-tango))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -11,7 +11,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; general settings
-(menu-bar-mode t)                       ; don't show the menu 
+(menu-bar-mode nil)                       ; don't show the menu 
 (tool-bar-mode nil)                       ; don't show the toolbar
 (icomplete-mode t)                       ; completion in minibuffer
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
@@ -101,6 +101,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; set default font
+
+(setq font-use-system-font t)
+
 ; windows
 (when djcb-win32-p
  (set-default-font
@@ -190,8 +193,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc loading
-;(when (require-maybe 'table)
-;  (add-hook 'text-mode-hook 'table-recognize))
 (when (require-maybe 'tabber))
 ;(when (require-maybe 'ide-skel))
 (when (require-maybe 'pair-mode))
@@ -373,17 +374,33 @@ activate-mark-hook"
 ;; kill everything, clean-buffer-list is very intelligent at not killing
 ;; unsaved buffer.
 (setq clean-buffer-list-kill-regexps
-	  '("^.*$"))
+	  '(".*"))
 
 ;;kill buffers if they were last disabled more than this seconds ago
 (setq clean-buffer-list-delay-special 7200)
 
-;; (add-to-list clean-buffer-list-kill-never-buffer-names
-;;              "*scratch*"
-;;              "*Messages*"
-;;              "*server*"
-;;              "*tramp*"
-;;              "trace.log")
+(setq clean-buffer-list-kill-never-buffer-names
+      '(
+       "*scratch*"
+       "*Messages*"
+       "*server*"
+       "*Pymacs*"
+       "trace.log"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/MultiTerm
+(require 'multi-term)
+(setq 
+ multi-term-program "/bin/zsh")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ShellPop 
+(require 'shell-pop)
+(shell-pop-set-internal-mode "multi-term")
+(shell-pop-set-internal-mode-shell "/bin/zsh")
+(global-set-key [f8] 'shell-pop)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'skk-general)

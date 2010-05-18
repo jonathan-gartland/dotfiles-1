@@ -1,4 +1,4 @@
-personal_ws-1.1 en 32 
+personal_ws-1.1 en 35 
 Ui
 MessaageBox
 rootDir
@@ -11,6 +11,8 @@ entryPoint
 usr
 docstring
 eSCAT
+SQLite
+API
 gps
 jjfoerch
 dll
@@ -21,6 +23,7 @@ UNH
 namespace
 ExampleModule
 yasnippet
+GpsTools
 ExitPoint
 sys
 ModuleBase

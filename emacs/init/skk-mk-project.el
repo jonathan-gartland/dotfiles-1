@@ -32,6 +32,21 @@
   (defun escatconduit-project-startup ()
     (setq c-default-style "k&r"
           c-old-style-variable-behavior nil t))
+
+
+
+  (project-def "eSCATDocsProject"
+               '((basedir "~/work/eSCAT/docs")
+                 (src-patterns ("*.rst"))
+                 (tags-file nil)
+                 (file-list-cache nil)
+                 (open-files-cache nil)
+                 (vcs git)
+                 (compile-cmd "make html")
+                 (ack-args nil)
+                 (startup-hook nil)
+                 (shutdown-hook nil)))
+                               
 )
                               
 (provide 'skk-mk-project)

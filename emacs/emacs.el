@@ -11,7 +11,7 @@
   "Are we running on a GNU/Linux system?")
 (defconst djcb-console-p (eq (symbol-value 'window-system) nil) 
   "Are we in a console?")
-(defconst djcb-machine (substring (shell-command-to-string "hostname") 0 -1))
+(defconst djcb-machine (system-name))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -28,7 +28,7 @@
 ;; other stuff is available
 (defmacro require-maybe (feature &optional file)
   "*Try to require FEATURE, but don't signal an error if `require' fails."
-  `(require ,feature ,file 'noerror)) 
+3  `(require ,feature ,file 'noerror)) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
