@@ -28,9 +28,7 @@
 #
 
 :0
-* ^From:.*ian.j.zelo@noaa.gov.*
-* ^From:.*Jerry.Muhasky@noaa.gov.*
-* ^From:.*Brianne.Connolly@noaa.gov.*
+* ^From:.*(ian.j.zelo|Jerry.Muhask|Brianne.Connoly)@noaa.gov.*
 .Projects.eSCAT/
 
 #
@@ -38,10 +36,11 @@
 #
 
 :0
-* ^From:.*Michele.Jacobi@noaa.gov.*
+* ^From:.*(Michele.Jacobi|Marla.Steinhoff|Benjamin.Shorr)@noaa.gov.*
+.Projects.ERMA/
+
+:0
 * ^From:.*TracyR@genwest.com.*
-* ^From:.*Marla.Steinhoff@noaa.gov.*
-* ^From:.*Benjamin.Shorr@noaa.gov.*
 .Projects.ERMA/
 
 # Events

@@ -12,18 +12,8 @@
 .Spam
 
 :0
-* ^X-Spam-Flag: YES
-* ^X-MailScanner-SpamCheck: spam
-* ^X-Spam-Status: ^Yes$
-* ^X-MailScanner-SpamCheck: spam
+* ^X-Spam-Flag:^YES$
 .Spam/
-
-:0
-* ^From:.*allan.wright@comcast.net.*
-{
-    :0
-    .MaildirInbox/	# to Ops/
-}
 
 :0
 * ^(To|CC):.*(res05564|[Uu]ndisclosed-[Rr]ecipients|undisclosed-recipients|spambot)
