@@ -2,8 +2,6 @@
 
 import sys, os.path, types, optparse, fileinput
 
-import enum
-
 def get_parser(arguments):
     usage = "usage: %prog [options] other|home|work"
     parser = optparse.OptionParser(usage = usage)
@@ -33,8 +31,8 @@ def run(argv):
         parser.print_help()
         return 1
 
-    if argv[1].upper() == "WORK":     pt = install.procmail_type.Work
-    elif argv[1].upper() == "HOME":   pt = install.procmail_type.Home
+    if argv[1].upper() == "WORK":     pt = install.WORK
+    elif argv[1].upper() == "HOME":   pt = install.HOME
     else:                             pt = None
 
     basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,7 +51,8 @@ def run(argv):
 
 class install(object):
 
-    procmail_type = enum.Enum('Home', 'Work')
+    WORK = 1
+    HOME = 2
 
     def _execute_command(self, command ):
         from subprocess import call
@@ -182,13 +181,18 @@ class install(object):
             { 'src': 'vim', 'dst': '.vim' },
             { 'src': 'vim/vimrc', 'dst': '.vimrc' }])
 
+    def gnupg(self):
+        self._createLinks([
+            {'src': 'gnupg', 'dst': '.gnupg'}
+            ])
+
     def procmail(self, type):
-        if self.procmail_type.Work == type:
+        if self.WORK == type:
             self._createLinks([
                 {'src': 'procmail/work', 'dst': '.procmail' },
                 {'src': 'procmail/work/procmailrc', 'dst': '.procmailrc' }])
 
-        if self.procmail_type.Home == type:
+        if self.HOME == type:
             self._createLinks([
                 {'src': 'procmail/home', 'dst': '.procmail' },
                 {'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' }])
