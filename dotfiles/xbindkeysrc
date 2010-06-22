@@ -3,7 +3,7 @@
 ###########################
 
 # xask.py
-"~/bin/xask.py "/usr/bin/konsole" &"
+"~/bin/xask.py "/usr/bin/konsole" "-e" &"
 Control + Mod1 + x
 
 # firefox
