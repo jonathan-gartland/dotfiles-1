@@ -403,5 +403,15 @@ activate-mark-hook"
 (global-set-key [f8] 'shell-pop)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/LustyExplorer
+(when (require 'lusty-explorer nil 'noerror)
+
+  ;; overrride the normal file-opening, buffer switching
+  (global-set-key (kbd "C-x C-f") 'lusty-file-explorer)
+  (global-set-key (kbd "C-x b")   'lusty-buffer-explorer))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 (provide 'skk-general)
 ;;; skk-general.el ends here
