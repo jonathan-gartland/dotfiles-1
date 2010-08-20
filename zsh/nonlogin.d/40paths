@@ -49,7 +49,9 @@ if [[ $(dnsdomainname -y) = "rcc" ]] ||
     export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
     export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
     export svnerma="https://erma-svn.sr.unh.edu/svn/trunk"
- fi
+    export PATH="$HOME/local/$(uname -m)/bin:$PATH"
+    export MANPATH="$MANPATH:$HOME/local/$(uname -m)/man"
+fi
 
 hostname=$(hostname -f)
 # stuff for zathras.sr.unh.edu
@@ -61,7 +63,7 @@ if [[ $hostname = "zathras.sr.unh.edu" ]]; then
 
     export JAVA_HOME="/usr/local/java/IBMJava16"
     export JRE_HOME="$JAVA_HOME"
-    export PRINTER="HP-Color-LaserJet-3800"
+    export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
     
     # Database aliases
