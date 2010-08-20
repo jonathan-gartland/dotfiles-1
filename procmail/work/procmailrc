@@ -1,7 +1,7 @@
 # $Id: procmailrc 2649 2009-03-10 12:37:59Z skk $
 
-VERBOSE=on
-#VERBOSE=off
+#VERBOSE=on
+VERBOSE=off
 LOGABSTRACT=all
 
 USER=skk
@@ -27,6 +27,7 @@ INCLUDERC=$PROCMAILDIR/root.rc
 
 # handle bugzilla, trac, project, rcc, svn and zathras messages next
 INCLUDERC=$PROCMAILDIR/bugzilla.rc
+INCLUDERC=$PROCMAILDIR/redmine.rc
 INCLUDERC=$PROCMAILDIR/trac.rc
 INCLUDERC=$PROCMAILDIR/projects.rc
 INCLUDERC=$PROCMAILDIR/rcc.rc
