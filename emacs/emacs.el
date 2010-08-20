@@ -54,6 +54,7 @@
         skk-general.el
         skk-git.el 
         skk-icicles.el
+        skk-js2-mode.el
         skk-makefilemode.el
         skk-mk-project.el
         skk-python.el
@@ -102,6 +103,11 @@
 ; http://www.mobilegeographics.com/mapserver/mapserver-mode.el
 (autoload 'mapserver-mode "mapserver-mode" "Mode for editing UMN MapServer files." t)
 (add-to-list 'auto-mode-alist '("\\.map\\'" . mapserver-mode))
+
+; js2-mode
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(autoload 'espresso-mode "espresso")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

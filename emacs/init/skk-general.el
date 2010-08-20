@@ -178,7 +178,7 @@
 (setq tramp-default-method "sftp"
       tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
       tramp-encoding-shell "/bin/bash"
-      tramp-verbose 5)
+      tramp-verbose 0)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -412,6 +412,11 @@ activate-mark-hook"
   (global-set-key (kbd "C-x b")   'lusty-buffer-explorer))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun tab-width-two ()
+  (setq default-tab-width 2)            ; set tab-width
+  (setq-default tab-stop-list (list 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108))
+  (setq-default indent-tabs-mode nil)
+)
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
