@@ -12,6 +12,7 @@
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
  '(regex-tool-backend (quote perl))
  '(show-paren-mode t)
+ '(sql-product (quote oracle))
  '(sql-sqlite-program "sqlite3")
  '(tab-always-indent nil)
  '(tramp-default-method "ssh")

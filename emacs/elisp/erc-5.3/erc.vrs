@@ -1,0 +1,6 @@
+\entry {\code {erc-nick}}{12}
+\entry {\code {erc-nick-uniquifier}}{12}
+\entry {\code {erc-port}}{11}
+\entry {\code {erc-server}}{11}
+\entry {\code {erc-try-new-nick-p}}{12}
+\entry {\code {erc-user-full-name}}{12}

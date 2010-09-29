@@ -28,7 +28,7 @@
 ;; other stuff is available
 (defmacro require-maybe (feature &optional file)
   "*Try to require FEATURE, but don't signal an error if `require' fails."
-3  `(require ,feature ,file 'noerror)) 
+  `(require ,feature ,file 'noerror)) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -54,9 +54,10 @@
         skk-general.el
         skk-git.el 
         skk-icicles.el
-        skk-js2-mode.el
+        skk-js2mode.el
         skk-makefilemode.el
         skk-mk-project.el
+        skk-perl.el
         skk-python.el
         skk-sql.el
         skk-textmode.el

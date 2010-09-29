@@ -55,6 +55,8 @@
 
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
+(define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
 (define-abbrev-table 'doctex-mode-abbrev-table '())
 
 (define-abbrev-table 'dun-mode-abbrev-table '())
@@ -85,6 +87,8 @@
 
 (define-abbrev-table 'java-mode-abbrev-table '())
 
+(define-abbrev-table 'js2-mode-abbrev-table '())
+
 (define-abbrev-table 'jsp-mode-abbrev-table '())
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
@@ -108,6 +112,8 @@
 (define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
+
+(define-abbrev-table 'prog-mode-abbrev-table '())
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
