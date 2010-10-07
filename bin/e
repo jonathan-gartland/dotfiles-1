@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Based on http://www.bennee.com/~alex/news.php?wl_mode=more&wl_eid=1283
 #
 #
@@ -12,39 +13,43 @@
 # one is not running
 #
 
-PATH="$HOME/bin:$HOME/local/bin:$PATH"
+# PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
-if [[ "$DISPLAY" == "" ]]; then
-    # Can we use muti-tty?
-    emacsclient --help | grep "\-\-tty" > /dev/null
-    if [[ "$?" == "0" ]]; then
-        # Thats a yes
-        EMACS_CMD="emacsclient -a '' -t"
-    else
-        # Hmmm, opening in another pane would be a pain?
-        EMACS_CMD="emacs -nw "
-    fi
-else
-    EMACSCLIENT="emacsclient -c -a ''"
+# if [[ "$DISPLAY" == "" ]]; then
+#     # Can we use muti-tty?
+#     emacsclient --help | grep "\-\-tty" > /dev/null
+#     if [[ "$?" == "0" ]]; then
+#         # Thats a yes
+#         EMACS_CMD="emacsclient -a '' -t"
+#     else
+#         # Hmmm, opening in another pane would be a pain?
+#         EMACS_CMD="emacs -nw "
+#     fi
+# else
+#     EMACSCLIENT="emacsclient -c -a ''"
+#     EMACS_CMD=""
 
-    EMACS_CMD=""
-    if [[ "${0}" =~ "/e$" ]]; then 
-	EMACS_CMD="$EMACSCLIENT -n"
-    fi
+#     #if [[ "${0}" =~ "ew$" ]]; then 
+# #	EMACS_CMD="$EMACSCLIENT"
+# #    fi
 
-    if [[ "${0}" =~ "/ew$" ]]; then 
-	EMACS_CMD="$EMACSCLIENT"
-    fi
+# #    if [[ "${0}" =~ "e$" ]]; then 
+# 	EMACS_CMD="$EMACSCLIENT -n"
+# #    fi
 
-    if [[ $EMACS_CMD == "" ]]; then
-	echo "EMACS_CMD is undefined."
-	exit 1
-    fi
-fi
 
-emacsclient -a '' -e "
-(require 'server) 
-(when (and (functionp 'server-running-p) (not (server-running-p)))
-  (server-start))
-" > /dev/null
-$EMACS_CMD $*
+#     if [[ $EMACS_CMD == "" ]]; then
+# 	echo "EMACS_CMD is undefined."
+# 	exit 1
+#     fi
+# fi
+
+#  emacsclient -a '' -e "
+#  (require 'server) 
+#  (when (and (functionp 'server-running-p) (not (server-running-p)))
+#    (server-start))
+#  " > /dev/null
+#  $EMACS_CMD $*
+
+export GDK_NATIVE_WINDOWS=1
+emacsclient -a '' -c -n $*
