@@ -7,7 +7,7 @@
 Control + Mod1 + x
 
 # firefox
-"/usr/bin/firefox &"
+"firefox &"
 Control + Mod1 + f
 
 # emacs
