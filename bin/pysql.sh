@@ -2,7 +2,7 @@
 
 if [ $(/bin/uname) == "Linux" ]; then 
 
-    export PYSQL=$HOME/src/pysql
+    export PYSQL=$HOME/src/pysql-0.15
     
     if [ $(/bin/hostname -s ) == "zathras" ]; then
 	export PYTHONPATH=$PYSQL/src:$PYTHONPATH
