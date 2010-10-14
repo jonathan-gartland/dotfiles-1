@@ -10,6 +10,8 @@
  '(flymake-log-level 0)
  '(inhibit-startup-screen t)
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
+ '(nxml-child-indent 4)
+ '(nxml-outline-child-indent 2)
  '(regex-tool-backend (quote perl))
  '(show-paren-mode t)
  '(sql-product (quote oracle))
