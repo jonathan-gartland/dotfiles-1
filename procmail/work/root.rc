@@ -13,9 +13,9 @@
 /dev/null
 
 # delete all mailer-daemon email
-#:0
-#* ^From: .*MAILER-DAEMON.*
-#/dev/null
+:0
+* ^From: .*MAILER-DAEMON.*
+.Systems.MailerDaemon/
 
 # delete logwatch for other systems.
 :0

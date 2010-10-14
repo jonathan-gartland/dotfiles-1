@@ -16,6 +16,9 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0fw
 | /usr/bin/spamc
 
+# handle svn first
+INCLUDERC=$PROCMAILDIR/svn.rc
+
 # handle spam message
 INCLUDERC=$PROCMAILDIR/spam.rc
 
@@ -25,14 +28,15 @@ INCLUDERC=$PROCMAILDIR/lists.rc
 # handle root message
 INCLUDERC=$PROCMAILDIR/root.rc
 
-# handle bugzilla, trac, project, rcc, svn and zathras messages next
+# handle system messages
+INCLUDERC=$PROCMAILDIR/systems.rc
+
+# handle bugzilla, redmine, trac, rcc, project and svn messages
 INCLUDERC=$PROCMAILDIR/bugzilla.rc
 INCLUDERC=$PROCMAILDIR/redmine.rc
 INCLUDERC=$PROCMAILDIR/trac.rc
 INCLUDERC=$PROCMAILDIR/projects.rc
 INCLUDERC=$PROCMAILDIR/rcc.rc
-INCLUDERC=$PROCMAILDIR/svn.rc
-INCLUDERC=$PROCMAILDIR/systems.rc
 
 # mail from Google's Calendar notification system, put into .MaildirInbox/
 :0
