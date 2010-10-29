@@ -406,7 +406,6 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/LustyExplorer
 (when (require 'lusty-explorer nil 'noerror)
-
   ;; overrride the normal file-opening, buffer switching
   (global-set-key (kbd "C-x C-f") 'lusty-file-explorer)
   (global-set-key (kbd "C-x b")   'lusty-buffer-explorer))
@@ -416,6 +415,17 @@ activate-mark-hook"
   (setq default-tab-width 2)            ; set tab-width
   (setq-default tab-stop-list (list 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108))
   (setq-default indent-tabs-mode nil))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://panela.blog-city.com/python_and_emacs_7_buffer_navigation_point_history.htm
+(add-to-list 'load-path "~/.emacs.d/elisp/point-stack")
+(require 'point-stack)
+(global-set-key '[(f5)] 'point-stack-push)
+(global-set-key '[(f6)] 'point-stack-pop)
+(global-set-key '[(f7)] 'point-stack-forward-stack-pop)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
