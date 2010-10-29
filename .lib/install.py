@@ -31,9 +31,9 @@ def run(argv):
         parser.print_help()
         return 1
 
-    if argv[1].upper() == "WORK":     pt = install.WORK
-    elif argv[1].upper() == "HOME":   pt = install.HOME
-    else:                             pt = None
+    if args[1].upper() == "WORK":     install_type = install.WORK
+    elif args[1].upper() == "HOME":   install_type = install.HOME
+    else:                             install_type = None
 
     basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     installer = install(basedir, options)
@@ -42,10 +42,7 @@ def run(argv):
         if not key.startswith('_') and \
                type(install.__dict__[key]) == types.FunctionType:
             method = install.__dict__[key].__get__(installer, install)
-            if key == "procmail":
-                method(pt)
-            else:
-                method()
+            method(install_type)
 
     return 0
 
@@ -117,7 +114,7 @@ class install(object):
     def _bzr(self, url, path):
         return "bzr checkout %s %s" % (url, path)
 
-    def bin(self):
+    def bin(self, install_type):
         if not self.options.dry_run:
             path = os.path.join(self.basedir, "bin", ".xask.git")
             if not os.path.exists(path):
@@ -134,12 +131,21 @@ class install(object):
                 {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
         ])
 
-    def dotfiles(self):
+    def dotfiles(self, install_type):
+        gitconfig = ""
+
+        if self.WORK == install_type:
+            gitconfig = 'dotfiles/gitconfig.WORK'
+
+        if self.HOME == install_type:
+            gitconfig = 'dotfiles/gitconfig.HOME'
+
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
+        { 'src': gitconfig, 'dst': '.gitconfig' },                           
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
@@ -156,43 +162,43 @@ class install(object):
             for line in fileinput.input(input):
                 output.write(line.replace("$HOME", os.environ['HOME']))
 
-    def zsh(self):
+    def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
         { 'src': 'zsh/zshrc', 'dst': '.zshrc' },
         { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
         { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
 
-    def emacs(self):
+    def emacs(self, install_type):
         self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
         {'src': 'emacs/emacs.el', 'dst': '.emacs' },
         {'src': 'emacs/autoload/skk-wanderlust.el', 'dst': '.wl' },
         {'src': 'emacs/init/skk-wanderlust-folders.el', 'dst': '.folders' }])
 
-    def fish(self):
+    def fish(self, install_type):
         self._createLinks([
         {'src': 'fish', 'dst': '.fish' },
         {'src': 'fish/config.fish', 'dst' : '.fishrc' },
         {'src': 'fish/', 'dst': '.config/fish' }])
 
-    def vim(self):
+    def vim(self, install_type):
         self._createLinks([
             { 'src': 'vim', 'dst': '.vim' },
             { 'src': 'vim/vimrc', 'dst': '.vimrc' }])
 
-    def gnupg(self):
+    def gnupg(self, install_type):
         self._createLinks([
             {'src': 'gnupg', 'dst': '.gnupg'}
             ])
 
-    def procmail(self, type):
-        if self.WORK == type:
+    def procmail(self, install_type):
+        if self.WORK == install_type:
             self._createLinks([
                 {'src': 'procmail/work', 'dst': '.procmail' },
                 {'src': 'procmail/work/procmailrc', 'dst': '.procmailrc' }])
 
-        if self.HOME == type:
+        if self.HOME == install_type:
             self._createLinks([
                 {'src': 'procmail/home', 'dst': '.procmail' },
                 {'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' }])
