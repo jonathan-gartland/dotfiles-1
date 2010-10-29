@@ -45,6 +45,7 @@
 
 (setq files-to-load
       '(
+        skk-autocomplete.el
         skk-colortheme.el
         skk-company.el
         skk-custom.el
