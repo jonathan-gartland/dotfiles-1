@@ -135,12 +135,15 @@ class install(object):
         if self.HOME == install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
 
+        if install_type == None:
+            gitconfig = 'dotfiles/gitconfig.NONE'
+
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
-        { 'src': gitconfig, 'dst': '.gitconfig' },                           
+        { 'src':  gitconfig, 'dst': '.gitconfig' },
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
