@@ -28,9 +28,6 @@ INCLUDERC=$PROCMAILDIR/lists.rc
 # handle root message
 INCLUDERC=$PROCMAILDIR/root.rc
 
-# handle system messages
-INCLUDERC=$PROCMAILDIR/systems.rc
-
 # handle bugzilla, redmine, trac, rcc, project and svn messages
 INCLUDERC=$PROCMAILDIR/bugzilla.rc
 INCLUDERC=$PROCMAILDIR/redmine.rc
