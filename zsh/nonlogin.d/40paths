@@ -72,6 +72,14 @@ if [[ $hostname = "zathras.sr.unh.edu" ]]; then
     export CDPATH=$CDPATH:~/CRMS
 fi
 
+if [[ $hostname = "kosh.sr.unh.edu" ]]; then
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+    export PRINTER="Color-LaserJet-3800"
+    export MAILDIR="$HOME/Maildir"
+    export CDPATH=$CDPATH:~/CRMS
+fi
+
 if [[ $hostname = "kona.sr.unh.edu" ]]; then
     export JAVA_HOME="/usr/local/java/IBMJava16"
     export JRE_HOME="$JAVA_HOME"
