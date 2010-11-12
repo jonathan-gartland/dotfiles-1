@@ -116,17 +116,12 @@ class install(object):
 
     def bin(self, install_type):
         if not self.options.dry_run:
-            path = os.path.join(self.basedir, "bin", ".xask.git")
-            if not os.path.exists(path):
-                self._execute_command(self._git("ssh://skk@zathras.sr.unh.edu///dvcs/git/xask", path))
-
             path = os.path.join(self.basedir, "bin", ".cutpass.bzr")
             if not os.path.exists(path):
                 self._execute_command(self._bzr("sftp://skk@q.sr.unh.edu/home/rea/data/bzr/cutpass/", path))
 
         self._createLinks([
                 {'src': 'bin', 'dst': 'bin' },
-                {'src': 'bin/.xask.git/xask.py', 'dst': 'bin/xask.py' },
                 {'src': 'bin/.cutpass.bzr/cutpass.py', 'dst': 'bin/cutpass' },
                 {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
         ])
