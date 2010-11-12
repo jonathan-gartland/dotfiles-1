@@ -17,8 +17,8 @@ fi
 # update the values of LINES and COLUMNS.
 #TODO: zsh equivalent?
 # shopt -s checkwinsize
-autoload -U promptinit
-promptinit
+#autoload -U promptinit
+#promptinit
 #prompt bart
 
 # keep history file between sessions
@@ -72,7 +72,9 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
 
-
 umask 022
 
 export SHELL=$(which zsh)
+
+# bindkey (set to emacs key bindings)
+bindkey -e
