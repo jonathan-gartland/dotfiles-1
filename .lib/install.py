@@ -138,12 +138,19 @@ class install(object):
         if install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
 
+
+
+        ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
+        if not os.path.exists(ssh_dir):
+            os.makedir(ssh_dir)
+
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src':  gitconfig, 'dst': '.gitconfig' },
+        { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
