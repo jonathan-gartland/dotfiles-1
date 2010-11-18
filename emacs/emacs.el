@@ -54,7 +54,9 @@
         skk-functions.el
         skk-general.el
         skk-git.el 
+        skk-ibuffer.el
         skk-icicles.el
+        skk-ido.el
         skk-js2mode.el
         skk-makefilemode.el
         skk-mk-project.el
