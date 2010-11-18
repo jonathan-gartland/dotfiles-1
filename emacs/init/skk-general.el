@@ -370,22 +370,22 @@ activate-mark-hook"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; enable midnight mode
-(require 'midnight)
+; (require 'midnight)
 ;; kill everything, clean-buffer-list is very intelligent at not killing
 ;; unsaved buffer.
-(setq clean-buffer-list-kill-regexps
-	  '(".*"))
+; (setq clean-buffer-list-kill-regexps
+;	  '(".*"))
 
 ;;kill buffers if they were last disabled more than this seconds ago
-(setq clean-buffer-list-delay-special 7200)
+; (setq clean-buffer-list-delay-special 7200)
 
-(setq clean-buffer-list-kill-never-buffer-names
-      '(
-       "*scratch*"
-       "*Messages*"
-       "*server*"
-       "*Pymacs*"
-       "trace.log"))
+; (setq clean-buffer-list-kill-never-buffer-names
+;      '(
+;       "*scratch*"
+;       "*Messages*"
+;       "*server*"
+;       "*Pymacs*"
+;       "trace.log"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
