@@ -4,6 +4,7 @@ __requires__ = 'pysmell==0.7.3'
 import sys
 from pkg_resources import load_entry_point
 
-sys.exit(
-   load_entry_point('pysmell==0.7.3', 'console_scripts', 'pysmell')()
-)
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('pysmell==0.7.3', 'console_scripts', 'pysmell')()
+    )
