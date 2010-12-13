@@ -1,19 +1,13 @@
 # $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
 
-# 
-# Mailing Lists
-#
-
+# ---- 9/12 Project ----
 # 912 Project
-:0
-* (To|Cc):.*rochester-912-project-list@meetup.com.*
+:0 
+* (To|Cc):.*rochester-912-project-list@meetup.com.* 
 .Mailing\ Lists.Rochester-912-Project/
+# ---- 9/12 Project ----
 
-# Arch Linux
-:0
-* (To|Cc):.*arch-general@archlinux.org.*
-.Mailing\ Lists.ArchLinux\ General/
-
+# ---- Python Mailing Lists ---
 # Python User
 :0
 * (To|Cc):.*python-list@python.org.*
@@ -33,22 +27,23 @@
 :0
 * (To|Cc):.*python-ideas@python.org.*
 .Mailing\ Lists.Python\ Ideas/
+# ---- Python Mailing Lists ---
 
+# ---- Fish Mailing Lists ---
 # Fish Users 
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
 .Mailing\ Lists.Fish\ User/
+# ---- Fish Mailing Lists ---
 
-# IBD Editorials
-:0
-* ^From:.*newsletter@ibdeditorials.com.*
-.IBDEditorials/
-
+# ---- Glenn Beck -----
 # Glenn Beck
 :0
 * ^From:.*Glenn.*Beck.*
 .Mailing\ Lists.Glenn\ Beck/
+# ---- Glenn Beck -----
 
+# --- GNU Mailing Lists ----
 # GNU Emacs Help
 :0
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
@@ -63,13 +58,40 @@
 :0
 * (To|Cc):.*wl-en@lists.airs.net.*
 .Mailing\ Lists.Wanderlust/
+# --- GNU Mailing Lists ----
 
+# ---- Haskell Cafe Mailing Lists ----
 # Haskell Cafe
 :0
 * (To|Cc):.*haskell-cafe@haskell.org.*
 .Mailing\ Lists.Haskell\ Cafe/
+# ---- Haskell Cafe Mailing Lists ----
 
+# ---- Debian Mailing Lists ----
 # Debian User
 :0
 * (To|Cc):.*debian-user@lists.debian.org.*
-.Mailing\ Lists.Debuan\ User/
+.Mailing\ Lists.Debian\ User/
+# ---- Debian Mailing Lists ----
+
+# ---- Awesome User List ----
+:0
+* (To|Cc):.*awesome@naquadah.org.*
+.Mailing\ Lists.Awesome\ User/
+# ---- Awesome User List ----
+
+# ---- XMonad User List ----
+:0
+* (To|Cc):.*xmonad@haskell.org.*
+.Mailing\ Lists.xmonad/
+# ---- XMonad User List ----
+
+# -----  Arch Linux ---
+:0
+* (To|Cc):.*arch-general@archlinux.org.*
+.Mailing\ Lists.Arch\ General/
+
+:0
+* (To|Cc):.*arch-announce@archlinux.org.*
+.Mailing\ Lists.Arch\ Announce/
+# -----  Arch Linux ---
