@@ -3,10 +3,14 @@
 (require 'ibuffer) 
 (setq ibuffer-saved-filter-groups
   (quote (("default"      
-            ("ERMA"
-              (filename . "ERMA/"))
+            ("erma-skk"
+             (filename . "/web/erma-skk"))
+            ("nh-wetlands-mapper-dev"
+             (filename . "/web/nh-wetlands-mapper-dev"))
             ("Housing"
              (filename . "/web/housing"))
+            ("Emacs Config"
+             (filename . "~/.emacs.d/"))
             ("Programming" ;; prog stuff not already in MyProjectX
               (or
                 (mode . c-mode)
@@ -14,8 +18,9 @@
                 (mode . python-mode)
                 (mode . emacs-lisp-mode)
                 ;; etc
-                )) 
-            ("ERC"   (mode . erc-mode))))))
+                ))
+            ))))
+
 
 (add-hook 'ibuffer-mode-hook
   (lambda ()
