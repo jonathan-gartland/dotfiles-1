@@ -11,6 +11,8 @@
              (filename . "/web/housing"))
             ("Emacs Config"
              (filename . "~/.emacs.d/"))
+            ("DotFilesForest"
+             (filename . "dot-files-forest"))
             ("Programming" ;; prog stuff not already in MyProjectX
               (or
                 (mode . c-mode)
