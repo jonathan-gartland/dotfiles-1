@@ -2,6 +2,6 @@ Host *
    Compression yes
    ForwardX11 yes
    ForwardX11Trusted yes
-   #ControlMaster auto
-   #ControlPath ~/.ssh/master-%r@%h\:%p
+   ControlMaster auto
+   ControlPath ~/.ssh/master-%r@%h\:%p
    HashKnownHosts no
