@@ -64,13 +64,9 @@
 * ^(To|Cc):.*paygate-support@sr.unh.edu.*
 .Projects\ \(Mothballed\).Events/
 
-
-
 # PSMP
 
 # PSMP email
 :0
 * ^(To|Cc):.*psmp-team@sr.unh.edu.*
 .Projects\ (Mothballed).PSMP/
-
-# /* vim: set filetype=procmail : */ 

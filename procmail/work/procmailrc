@@ -48,5 +48,3 @@ INCLUDERC=$PROCMAILDIR/rcc.rc
 # last
 :0:
 $DEFAULT
-
-# /* vim: set filetype=procmail : */ 
