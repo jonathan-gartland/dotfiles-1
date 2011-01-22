@@ -7,7 +7,7 @@ LOGABSTRACT=all
 USER=skk
 HOME=/home/skk/
 MAILDIR=$HOME/Maildir
-DEFAULT=$MAILDIR/.MaildirInbox/
+DEFAULT=.INBOX/
 PROCMAILDIR=$HOME/.procmail
 LOGFILE=$PROCMAILDIR/log/procmail
 
@@ -44,6 +44,9 @@ INCLUDERC=$PROCMAILDIR/rcc.rc
 :0
 *! ^From:.*(unh.edu).*
 .Possible\ Junk\ Mail/
+
+:0c
+.MaildirInbox/
 
 # last
 :0:
