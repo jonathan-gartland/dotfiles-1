@@ -41,20 +41,16 @@
 /dev/null
 
 :0
+* ^From:.*[lL]ogwatch.*
+.Systems.LogWatch/
+
+:0
 * ^From:.*root@.*
 .Systems.Root/
 
 :0
 * ^Subject:.*Cron.*
 .Systems.CronDaemon/
-
-:0
-* ^From:.*[lL]ogwatch.*
-.Systems.LogWatch/
-
-:0
-* ^Subject:.*[lL]ogwatch.*
-.Systems.LogWatch/
 
 :0
 * ^Subject:.*DenyHosts Report*.*
