@@ -6,6 +6,12 @@
 * ^(To|Cc):.*(rcc-staff-ops|staff|rcc-staff)@sr.unh.edu.*
 .Staff/
 
+ 
+# RCI Staff email
+:0 
+* ^(To|Cc):.*rci-staff@icarus.sr.unh.edu.*
+.Staff/
+
 # Ops email
 :0
 * ^(To|Cc):.*(rcc-ops|ops|rccops|rcc)@(.*)sr.unh.edu.*

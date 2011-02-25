@@ -12,7 +12,7 @@
 .Spam
 
 :0
-* ^X-Spam-Flag: YES
+* ^X-Spam-Flag:.*YES.*
 * ^X-MailScanner-SpamCheck: spam
 * ^X-Spam-Status: ^Yes$
 * ^X-MailScanner-SpamCheck: spam

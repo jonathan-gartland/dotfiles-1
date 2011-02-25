@@ -21,13 +21,19 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'bubbles-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
@@ -48,6 +54,30 @@
 (define-abbrev-table 'conf-windows-mode-abbrev-table '())
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
+
+(define-abbrev-table 'cperl-mode-abbrev-table
+  '(
+    ("=head1" "=head1" cperl-electric-pod 0)
+    ("=head2" "=head2" cperl-electric-pod 0)
+    ("=over" "=over" cperl-electric-pod 0)
+    ("=pod" "=pod" cperl-electric-pod 0)
+    ("continue" "continue" cperl-electric-else 0)
+    ("do" "do" cperl-electric-keyword 0)
+    ("else" "else" cperl-electric-else 0)
+    ("elsif" "elsif" cperl-electric-keyword 0)
+    ("for" "for" cperl-electric-keyword 0)
+    ("foreach" "foreach" cperl-electric-keyword 0)
+    ("foreachmy" "foreachmy" cperl-electric-keyword 0)
+    ("formy" "formy" cperl-electric-keyword 0)
+    ("head1" "head1" cperl-electric-pod 0)
+    ("head2" "head2" cperl-electric-pod 0)
+    ("if" "if" cperl-electric-keyword 0)
+    ("over" "over" cperl-electric-pod 0)
+    ("pod" "pod" cperl-electric-pod 0)
+    ("unless" "unless" cperl-electric-keyword 0)
+    ("until" "until" cperl-electric-keyword 0)
+    ("while" "while" cperl-electric-keyword 0)
+   ))
 
 (define-abbrev-table 'csharp-mode-abbrev-table '())
 
@@ -85,7 +115,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'js2-mode-abbrev-table '())
 
@@ -103,13 +135,17 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -154,7 +190,9 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table '())
+(define-abbrev-table 'sql-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
 

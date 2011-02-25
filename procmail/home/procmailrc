@@ -1,4 +1,5 @@
 # $Id: procmailrc 2652 2009-03-10 12:40:19Z skk $
+
 #VERBOSE=on
 VERBOSE=off
 MAILDIR=$HOME/Maildir
@@ -18,20 +19,23 @@ INCLUDERC=$PROCMAILDIR/spam.rc
 # handle mailing list
 INCLUDERC=$PROCMAILDIR/lists.rc
 
+# handle HemlockForest
+INCLUDERC=$PROCMAILDIR/hemlockforest.rc
+
 # Copy all mail now
 :0c		
 *
-.Archive/	# to AllMail
+.Archive/	# to Archive
 
 # BlockbusterOnline
 :0
 * ^From:.*blockbusteronline@blockbuster.com.*
 .BlockbusterOnline/
 
-# Hemlock Forest 
+# IBD Editorials
 :0
-* ^From:.*(Ddonelan@evergreenmgt.com|EHarte10@aol.com|shaf12345@aol.com|sforbes61@yahoo.com|totracym@yahoo.com).*
-.HemlockForest/
+* ^From:.*ibd@ibd1.investors.com.*
+.IBDEditorials/
 
 # last
 :0:

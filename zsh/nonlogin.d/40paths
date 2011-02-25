@@ -35,8 +35,7 @@ python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.ver
 export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
 
 # rcc
-if [[ $(dnsdomainname -y) = "rcc" ]] || 
-    [[ $(dnsdomainname -y) = "eos" ]]; then
+if [[ $(dnsdomainname -d ) = "sr.unh.edu" ]]; then
     # svn variables
     export svndemo="https://svn.sr.unh.edu/svn/demo/"
     export svnskk="https://svn.sr.unh.edu/svn/skk/"
@@ -48,7 +47,7 @@ if [[ $(dnsdomainname -y) = "rcc" ]] ||
     export svnseagrant="https://svn.sr.unh.edu/svn/SeaGrant/"
     export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
     export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
-    export svnerma="https://erma-svn.sr.unh.edu/svn/trunk"
+    export svnerma="https://erma-svn.sr.unh.edu/svn/"
     export PATH="$HOME/local/$(uname -m)/bin:$PATH"
     export MANPATH="$MANPATH:$HOME/local/$(uname -m)/man"
 fi
