@@ -32,4 +32,8 @@ Control + Mod1 + g
 
 # qalculate
 "/usr/bin/qalculate"
-Control + Mod1 + q"
+Control + Mod1 + q
+
+# IE 8 via spoo
+"rdesktop -g1500x1100 -uskk -pskk spoo&"
+Control + Mod1 + i
