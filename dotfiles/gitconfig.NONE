@@ -42,11 +42,12 @@
 # giggle
 [giggle]
 	main-window-maximized = false
-	main-window-geometry = 1368x1063+192+40
+	main-window-geometry = 1194x1043+349+85
 	main-window-view = HistoryView
-	history-view-vpane-position = 507
-	file-view-vpane-position = 331
+	history-view-vpane-position = 638
+	file-view-vpane-position = 559
 	show-graph = true
+	file-view-hpane-position = 296
 
 # cola
 [cola]
