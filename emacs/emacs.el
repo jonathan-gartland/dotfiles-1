@@ -1,4 +1,4 @@
-; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
+                                        ; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
@@ -64,6 +64,7 @@
         skk-python.el
         skk-sql.el
         skk-textmode.el
+        skk-workgroups.el
         ;skk-wanderlust-folders.el
         skk-yasnippet.el
 ))
@@ -131,4 +132,7 @@
 (if (getenv "PWD")
     (cd (getenv "PWD"))
   (cd "~"))
-  
+
+(eval-after-load "sql"
+  '(load-library "sql-indent"))
+
