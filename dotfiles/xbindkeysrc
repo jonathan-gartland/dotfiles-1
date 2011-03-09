@@ -31,9 +31,14 @@ Control + Mod1 + r
 Control + Mod1 + g
 
 # qalculate
-"/usr/bin/qalculate"
+"/usr/bin/qalculate&"
 Control + Mod1 + q
 
 # IE 8 via spoo
 "rdesktop -g1500x1100 -uskk -pskk spoo&"
 Control + Mod1 + i
+
+
+# IE 6 via amethyst
+"rdesktop -g1280x1024 -uskk -pv93FgC  amethyst&"
+Control + Mod1 + a
