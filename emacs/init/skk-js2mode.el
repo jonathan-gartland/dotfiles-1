@@ -60,10 +60,10 @@
 
 (defun skk-js2-mode-hook ()
   (require 'espresso)
-  (setq js2-basic-offset 2)
-  (setq espresso-indent-level 2
+  (setq js2-basic-offset 4)
+  (setq espresso-indent-level 4
         indent-tabs-mode nil
-        c-basic-offset 2)
+        c-basic-offset 4)
   (c-toggle-auto-state 0)
   (c-toggle-hungry-state 1)
   (set (make-local-variable 'indent-line-function) 'skk-js2-indent-function)
