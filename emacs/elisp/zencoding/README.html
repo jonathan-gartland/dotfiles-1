@@ -1,0 +1,296 @@
+<h1>About Zencoding</h1>
+
+<p><a href="http://www.456bereastreet.com/archive/200909/write_html_and_css_quicker_with_with_zen_coding/">Description
+here</a>
+and <a href="http://mondaybynoon.com/2009/08/17/the-art-of-zen-coding-bringing-snippets-to-a-new-level/">here</a>.</p>
+
+<p>I’ll quote the blog:</p>
+
+<blockquote>
+  <p>zen-coding includes an entirely new angle to writing markup, and it
+  facilitates the feature by letting you write HTML based on CSS
+  selectors. It’s so simple it’s confusing at first. I think it’s best
+  explained by doing a quick before and after. If you were to type:</p>
+</blockquote>
+
+<pre><code>div#name.one.two
+</code></pre>
+
+<blockquote>
+  <p>and follow that with the zen-coding plugin keystroke (CMD+E in
+    TextMate), the plugin will reformat the line as:</p>
+</blockquote>
+
+<pre><code>&lt;div id="name" class="one two"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>See the <a href="http://www.emacswiki.org/emacs/ZenCoding">EmacsWiki for more background on this mode.</a></p>
+
+<h1>Screenshots and videos</h1>
+
+<ul>
+<li><p><img src="http://img703.imageshack.us/img703/4474/zencodingmode.png" alt="Picture of zencoding in action" /></p></li>
+<li><p><a href="http://www.youtube.com/watch?v=u2r8JfJJgy8">YouTube video</a></p></li>
+</ul>
+
+<h1>Installation</h1>
+
+<p>Just make sure zencoding-mode.el is in your <code>load-path</code>, if you
+extracted zencoding-mode to a directory:</p>
+
+<pre><code>(add-to-list "~/emacs.d/zencoding-mode")
+</code></pre>
+
+<p>And then just require as normal:</p>
+
+<pre><code>(require 'zencoding-mode)
+</code></pre>
+
+<h1>Usage</h1>
+
+<p>Enable it by running <code>M-x zencoding-mode</code>. You probably want to add it
+to auto-load on your sgml modes:</p>
+
+<pre><code>(add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
+</code></pre>
+
+<p>Good to go.</p>
+
+<h1>Examples</h1>
+
+<h2>Basic tags</h2>
+
+<pre><code>a                        &lt;a&gt;&lt;/a&gt;
+a.x                      &lt;a class="x"&gt;&lt;/a&gt;
+a#q.x                    &lt;a id="q" class="x"&gt;&lt;/a&gt;
+a#q.x.y.z                &lt;a id="q" class="x y z"&gt;&lt;/a&gt;
+#q                       &lt;div id="q"&gt;
+                         &lt;/div&gt;
+.x                       &lt;div class="x"&gt;
+                         &lt;/div&gt;
+#q.x                     &lt;div id="q" class="x"&gt;
+                         &lt;/div&gt;
+#q.x.y.z                 &lt;div id="q" class="x y z"&gt;
+                         &lt;/div&gt;
+</code></pre>
+
+<h2>Empty tags</h2>
+
+<pre><code>a/                       &lt;a/&gt;
+a/.x                     &lt;a class="x"/&gt;
+a/#q.x                   &lt;a id="q" class="x"/&gt;
+a/#q.x.y.z               &lt;a id="q" class="x y z"/&gt;
+</code></pre>
+
+<h2>Self-closing tags</h2>
+
+<pre><code>input type=text          &lt;input type="text"/&gt;
+img                      &lt;img/&gt;
+img&gt;metadata/*2          &lt;img&gt;
+                             &lt;metadata/&gt;
+                             &lt;metadata/&gt;
+                         &lt;/img&gt;
+</code></pre>
+
+<h2>Siblings</h2>
+
+<pre><code>a+b                      &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a+b+c                    &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+                         &lt;c&gt;&lt;/c&gt;
+a.x+b                    &lt;a class="x"&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a#q.x+b                  &lt;a id="q" class="x"&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a#q.x.y.z+b              &lt;a id="q" class="x y z"&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a#q.x.y.z+b#p.l.m.n      &lt;a id="q" class="x y z"&gt;&lt;/a&gt;
+                         &lt;b id="p" class="l m n"&gt;&lt;/b&gt;
+</code></pre>
+
+<h2>Tag expansion</h2>
+
+<pre><code>table+                   &lt;table&gt;
+                             &lt;tr&gt;
+                                 &lt;td&gt;
+                                 &lt;/td&gt;
+                             &lt;/tr&gt;
+                         &lt;/table&gt;
+dl+                      &lt;dl&gt;
+                             &lt;dt&gt;&lt;/dt&gt;
+                             &lt;dd&gt;&lt;/dd&gt;
+                         &lt;/dl&gt;
+ul+                      &lt;ul&gt;
+                             &lt;li&gt;&lt;/li&gt;
+                         &lt;/ul&gt;
+ul++ol+                  &lt;ul&gt;
+                             &lt;li&gt;&lt;/li&gt;
+                         &lt;/ul&gt;
+                         &lt;ol&gt;
+                             &lt;li&gt;&lt;/li&gt;
+                         &lt;/ol&gt;
+ul#q.x.y m=l+            &lt;ul id="q" class="x y" m="l"&gt;
+                             &lt;li&gt;&lt;/li&gt;
+                         &lt;/ul&gt;
+</code></pre>
+
+<h2>Parent &gt; child</h2>
+
+<pre><code>a&gt;b                      &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+a&gt;b&gt;c                    &lt;a&gt;&lt;b&gt;&lt;c&gt;&lt;/c&gt;&lt;/b&gt;&lt;/a&gt;
+a.x&gt;b                    &lt;a class="x"&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+a#q.x&gt;b                  &lt;a id="q" class="x"&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+a#q.x.y.z&gt;b              &lt;a id="q" class="x y z"&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+a#q.x.y.z&gt;b#p.l.m.n      &lt;a id="q" class="x y z"&gt;&lt;b id="p" class="l m n"&gt;&lt;/b&gt;&lt;/a&gt;
+#q&gt;.x                    &lt;div id="q"&gt;
+                             &lt;div class="x"&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+a&gt;b+c                    &lt;a&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                             &lt;c&gt;&lt;/c&gt;
+                         &lt;/a&gt;
+a&gt;b+c&gt;d                  &lt;a&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                             &lt;c&gt;&lt;d&gt;&lt;/d&gt;&lt;/c&gt;
+                         &lt;/a&gt;
+</code></pre>
+
+<h2>Multiplication</h2>
+
+<pre><code>a*1                      &lt;a&gt;&lt;/a&gt;
+a*2                      &lt;a&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;/a&gt;
+a/*2                     &lt;a/&gt;
+                         &lt;a/&gt;
+a*2+b*2                  &lt;a&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a*2&gt;b*2                  &lt;a&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                         &lt;/a&gt;
+                         &lt;a&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                         &lt;/a&gt;
+a&gt;b*2                    &lt;a&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                             &lt;b&gt;&lt;/b&gt;
+                         &lt;/a&gt;
+a#q.x&gt;b#q.x*2            &lt;a id="q" class="x"&gt;
+                             &lt;b id="q" class="x"&gt;&lt;/b&gt;
+                             &lt;b id="q" class="x"&gt;&lt;/b&gt;
+                         &lt;/a&gt;
+a#q.x&gt;b/#q.x*2           &lt;a id="q" class="x"&gt;
+                             &lt;b id="q" class="x"/&gt;
+                             &lt;b id="q" class="x"/&gt;
+                         &lt;/a&gt;
+</code></pre>
+
+<h2>Properties</h2>
+
+<pre><code>a x                      &lt;a x=""&gt;&lt;/a&gt;
+a x=                     &lt;a x=""&gt;&lt;/a&gt;
+a x=""                   &lt;a x=""&gt;&lt;/a&gt;
+a x=y                    &lt;a x="y"&gt;&lt;/a&gt;
+a x="y"                  &lt;a x="y"&gt;&lt;/a&gt;
+a x="()"                 &lt;a x="()"&gt;&lt;/a&gt;
+a x m                    &lt;a x="" m=""&gt;&lt;/a&gt;
+a x= m=""                &lt;a x="" m=""&gt;&lt;/a&gt;
+a x=y m=l                &lt;a x="y" m="l"&gt;&lt;/a&gt;
+a/ x=y m=l               &lt;a x="y" m="l"/&gt;
+a#foo x=y m=l            &lt;a id="foo" x="y" m="l"&gt;&lt;/a&gt;
+a.foo x=y m=l            &lt;a class="foo" x="y" m="l"&gt;&lt;/a&gt;
+a#foo.bar.mu x=y m=l     &lt;a id="foo" class="bar mu" x="y" m="l"&gt;&lt;/a&gt;
+a/#foo.bar.mu x=y m=l    &lt;a id="foo" class="bar mu" x="y" m="l"/&gt;
+a x=y+b                  &lt;a x="y"&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a x=y+b x=y              &lt;a x="y"&gt;&lt;/a&gt;
+                         &lt;b x="y"&gt;&lt;/b&gt;
+a x=y&gt;b                  &lt;a x="y"&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+a x=y&gt;b x=y              &lt;a x="y"&gt;&lt;b x="y"&gt;&lt;/b&gt;&lt;/a&gt;
+a x=y&gt;b x=y+c x=y        &lt;a x="y"&gt;
+                             &lt;b x="y"&gt;&lt;/b&gt;
+                             &lt;c x="y"&gt;&lt;/c&gt;
+                         &lt;/a&gt;
+</code></pre>
+
+<h2>Parentheses</h2>
+
+<pre><code>(a)                      &lt;a&gt;&lt;/a&gt;
+(a)+(b)                  &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+a&gt;(b)                    &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+(a&gt;b)&gt;c                  &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+(a&gt;b)+c                  &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+                         &lt;c&gt;&lt;/c&gt;
+z+(a&gt;b)+c+k              &lt;z&gt;&lt;/z&gt;
+                         &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+                         &lt;c&gt;&lt;/c&gt;
+                         &lt;k&gt;&lt;/k&gt;
+(a)*2                    &lt;a&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;/a&gt;
+((a)*2)                  &lt;a&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;/a&gt;
+((a))*2                  &lt;a&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;/a&gt;
+(a&gt;b)*2                  &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+                         &lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;
+(a+b)*2                  &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+                         &lt;a&gt;&lt;/a&gt;
+                         &lt;b&gt;&lt;/b&gt;
+</code></pre>
+
+<h2>Filter: HTML with comments</h2>
+
+<pre><code>a.b|c                    &lt;!-- .b --&gt;
+                         &lt;a class="b"&gt;&lt;/a&gt;
+                         &lt;!-- /.b --&gt;
+#a&gt;.b|c                  &lt;!-- #a --&gt;
+                         &lt;div id="a"&gt;
+                             &lt;!-- .b --&gt;
+                             &lt;div class="b"&gt;
+                             &lt;/div&gt;
+                             &lt;!-- /.b --&gt;
+                         &lt;/div&gt;
+                         &lt;!-- /#a --&gt;
+</code></pre>
+
+<h2>Filter: HAML</h2>
+
+<pre><code>a|haml                   %a
+a#q.x.y.z|haml           %a#q.x.y.z
+a#q.x x=y m=l|haml       %a#q.x{:x =&gt; "y", :m =&gt; "l"}
+div|haml                 %div
+div.footer|haml          .footer
+.footer|haml             .footer
+p&gt;a href=#+br|haml       %p
+                             %a{:href =&gt; "#"}
+                             %br
+</code></pre>
+
+<h2>Filter: Hiccup</h2>
+
+<pre><code>a|hic                    [:a]
+a#q.x.y.z|hic            [:a#q.x.y.z]
+a#q.x x=y m=l|hic        [:a#q.x {:x "y", :m "l"}]
+.footer|hic              [:div.footer]
+p&gt;a href=#+br|hic        [:p
+                             [:a {:href "#"}]
+                             [:br]]
+#q&gt;(a*2&gt;b)+p&gt;b|hic       [:div#q
+                             [:a [:b]]
+                             [:a [:b]]
+                             [:p
+                                 [:b]]]
+</code></pre>
+
+<h2>Filter: escape</h2>
+
+<pre><code>script src=&amp;quot;|e      &amp;lt;script src="&amp;amp;quot;"&amp;gt;
+                         &amp;lt;/script&amp;gt;
+</code></pre>
