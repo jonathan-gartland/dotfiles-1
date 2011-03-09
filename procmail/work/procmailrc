@@ -2,7 +2,7 @@
 
 #VERBOSE=on
 VERBOSE=off
-LOGABSTRACT=all
+#LOGABSTRACT=all
 
 USER=skk
 HOME=/home/skk/
