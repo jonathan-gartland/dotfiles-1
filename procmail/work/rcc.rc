@@ -6,7 +6,6 @@
 * ^(To|Cc):.*(rcc-staff-ops|staff|rcc-staff)@sr.unh.edu.*
 .Staff/
 
- 
 # RCI Staff email
 :0 
 * ^(To|Cc):.*rci-staff@icarus.sr.unh.edu.*
@@ -44,7 +43,7 @@
 * ^(To:CC):.*PATDistrict8@maple.unh.edu.*
 .Staff/
 
-0:
+:0
 * ^(To:CC):.*pat.council@lists.unh.edu.*
 .Staff/
 
