@@ -35,6 +35,18 @@
 * ^(To:Cc):.*web-admin@sr.unh.edu.*
 .WebAdmin/
 
+# PAT Related emails
+:0
+* ^(To:CC).*PATDistrict8@maple.unh.edu.*
+.Staff/
+
+:0
+* ^(To:CC).*PATDistrict8@maple.unh.edu.*
+.Staff/
+
+* ^(To:CC).*pat.council@lists.unh.edu.*
+.Staff/
+
 # catch messages from Al's personal email address
 :0
 * ^From:.*allan.wright@comcast.net.*

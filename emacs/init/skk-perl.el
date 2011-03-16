@@ -5,7 +5,8 @@
 (setq cperl-indent-level 4)
 
 (defun cperl-indent4 ()
- (setq cperl-indent-level 4))
+ (setq cperl-indent-level 4)
+)
 
 (defun cperl-indent2 ()
  (setq cperl-indent-level 2)
