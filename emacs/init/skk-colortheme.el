@@ -24,13 +24,13 @@
 
 ;;; Code:
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
 (when 
     (require 'color-theme)
     (color-theme-initialize)
-    (require 'color-theme-tango))
+    ;;(require 'color-theme-tango)
+    (require 'color-theme-solarized))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -45,7 +45,7 @@
   "Selectively run either `after-make-console-frame-hooks' or
 `after-make-window-system-frame-hooks'"
   (select-frame frame)
-  (run-hooks (if window-system
+  (run-hooks (if window-system-version
                  'after-make-window-system-frame-hooks
                'after-make-console-frame-hooks)))
 
@@ -55,8 +55,8 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-tango)
-(add-hook 'after-make-console-frame-hooks 'color-theme-tango-light)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-solarized-dark)
+(add-hook 'after-make-console-frame-hooks 'color-theme-solarized-dark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
