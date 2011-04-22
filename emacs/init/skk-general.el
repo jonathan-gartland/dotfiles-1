@@ -466,6 +466,13 @@ activate-mark-hook"
 
 (global-set-key (kbd "C-x C-;") 'comment-region)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://code.google.com/p/autopair/
+(add-to-list 'load-path "~/.emacs.d/elisp/autopair")
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'edit-server)
 (edit-server-start)
   
