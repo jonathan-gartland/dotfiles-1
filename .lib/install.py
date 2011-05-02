@@ -128,16 +128,18 @@ class install(object):
 
     def dotfiles(self, install_type):
         gitconfig = ""
-
-        if self.WORK == install_type:
-            gitconfig = 'dotfiles/gitconfig.WORK'
-
-        if self.HOME == install_type:
-            gitconfig = 'dotfiles/gitconfig.HOME'
+        signature = None
 
         if install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
 
+        if self.WORK == install_type:
+            gitconfig = 'dotfiles/gitconfig.WORK'
+            signature = 'dotfiles/signature.WORK'
+
+        if self.HOME == install_type:
+            gitconfig = 'dotfiles/gitconfig.HOME'
+            signature = 'dotfiles/signature.HOME'
 
 
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
@@ -150,6 +152,7 @@ class install(object):
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src':  gitconfig, 'dst': '.gitconfig' },
+        { 'src':  signature, 'dst': '.signature' },
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
