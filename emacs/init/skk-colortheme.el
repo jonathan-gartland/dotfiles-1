@@ -29,8 +29,9 @@
 (when 
     (require 'color-theme)
     (color-theme-initialize)
-    ;;(require 'color-theme-tango)
-    (require 'color-theme-solarized))
+;    (require 'color-theme-tango)
+    (require 'color-theme-solarized)
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
