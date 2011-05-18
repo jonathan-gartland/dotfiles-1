@@ -2,10 +2,14 @@
 
 hostname=$(/usr/bin/env hostname -f)
 # stuff for zathras.sr.unh.edu
-if [[ $hostname = "zathras.sr.unh.edu" ]] || [[ $hostname = "skk" ]]; then
+
+if [[ $hostname = "zathras.sr.unh.edu" ]] || [[ $hostname = "kosh.sr.unh.edu" ]] || [[ $hostname = "skk" ]]; then
     export EDITOR="ew"
     export VISUAL="ew"
     export ALTERNATE_EDITOR="/usr/bin/emacs -nw"
+elif [[ $hostname = "knight.cx" ]]; then
+    export EDITOR="vim"
+    export VISUAL="vim"
 else
     export EDITOR="vim"
     export VISUAL="gvim"
