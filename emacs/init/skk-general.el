@@ -76,11 +76,11 @@
 (blink-cursor-mode 0)           ; don't blink cursor
 
 ; http://www.emacswiki.org/cgi-bin/wiki/download/cursor-chg.el
-(when (require-maybe 'cursor-chg)  ; Load this library
-  (change-cursor-mode 1) ; On for overwrite/read-only/input mode
-  (toggle-cursor-type-when-idle 1)
-  (setq 
-    curchg-default-cursor-color "Black"))
+;; (when (require-maybe 'cursor-chg)  ; Load this library
+;;   (change-cursor-mode 1) ; On for overwrite/read-only/input mode
+;;   (toggle-cursor-type-when-idle 1)
+;;   (setq 
+;;     curchg-default-cursor-color "Black"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -468,10 +468,33 @@ activate-mark-hook"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://code.google.com/p/autopair/
-(add-to-list 'load-path "~/.emacs.d/elisp/autopair")
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers 
+;(add-to-list 'load-path "~/.emacs.d/elisp/autopair")
+;(require 'autopair)
+;(autopair-global-mode) ;; enable autopair in all buffers 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2011/05/toward-balanced-and-colorful-delimiters.html
+(when (require 'rainbow-delimiters nil 'noerror) 
+  (add-hook 'cperl-mode-hook  'rainbow-delimiters-mode)
+  (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'python-mode-hook 'rainbow-delimiters-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://www.emacswiki.org/emacs/ImenuMode
+(defun try-to-add-imenu ()
+  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
+
+(add-hook 'cperl-mode-hook 'try-to-add-imenu)
+(add-hook 'python-mode-hook 'try-to-add-imenu)
+(add-hook 'lisp-mode-hook 'try-to-add-imenu)
+(add-hook 'js2-mode-hook 'try-to-add-imenu)
+
+(global-set-key (kbd "C-c =") 'imenu)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (require 'edit-server)
 (edit-server-start)
