@@ -44,7 +44,7 @@ set mask="!^\\.[^.]"
 set mbox="~/Maildir"
 set record="+.Sent"
 set postponed="+.Drafts"
-set spoolfile="~/Maildir/.MaildirInbox/"
+set spoolfile="~/Maildir/.INBOX/"
 
 mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
 macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
