@@ -8,5 +8,5 @@
 /dev/null
 
 :0
-* ^X-Spam-Level:\ ******.*
-/dev/null
+* ^X-Spam-Flag:\ YES
+.Spam/
