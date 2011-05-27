@@ -77,6 +77,9 @@ if [[ $hostname = "kosh.sr.unh.edu" ]]; then
     export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
     export CDPATH=$CDPATH:~/CRMS
+
+    # Database aliases
+    export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 fi
 
 if [[ $hostname = "kona.sr.unh.edu" ]]; then
