@@ -142,7 +142,6 @@ class install(object):
             gitconfig = 'dotfiles/gitconfig.HOME'
             signature = 'dotfiles/signature.HOME'
 
-
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
         if not os.path.exists(ssh_dir):
             os.makedir(ssh_dir)
@@ -153,7 +152,9 @@ class install(object):
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
         { 'src':  gitconfig, 'dst': '.gitconfig' },
-        { 'src':  signature, 'dst': '.signature' },
+        { 'src': 'dotfiles/signature.HOME', 'dst': '.signature.home' },
+        { 'src': 'dotfiles/signature.WORK', 'dst': '.signature.work' },
+        { 'src': signature, 'dst': '.signature' },
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
