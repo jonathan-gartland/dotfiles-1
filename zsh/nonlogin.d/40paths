@@ -78,6 +78,10 @@ if [[ $hostname = "kosh.sr.unh.edu" ]]; then
     export MAILDIR="$HOME/Maildir"
     export CDPATH=$CDPATH:~/CRMS
 
+    # add cljr to path
+    export PATH=/home/skk/.cljr/bin:$PATH
+
+
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 fi
