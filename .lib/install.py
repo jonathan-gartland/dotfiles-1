@@ -132,6 +132,7 @@ class install(object):
 
         if install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
+            signature = 'dotfiles/signature.HOME'
 
         if self.WORK == install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
@@ -183,6 +184,11 @@ class install(object):
         {'src': 'emacs/emacs.el', 'dst': '.emacs' },
         {'src': 'emacs/autoload/skk-wanderlust.el', 'dst': '.wl' },
         {'src': 'emacs/init/skk-wanderlust-folders.el', 'dst': '.folders' }])
+
+    def clojure(self, install_type):
+        self._createLinks([
+                {'src': 'lein', 'dst': '.lein'},
+                {'src': 'm2', 'dst': '.m2'}])
 
     def fish(self, install_type):
         self._createLinks([

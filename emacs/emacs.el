@@ -46,6 +46,7 @@
 (setq files-to-load
       '(
         skk-autocomplete.el
+        skk-clojure.el
         skk-colortheme.el
         skk-company.el
         skk-custom.el
