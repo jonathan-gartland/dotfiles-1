@@ -15,6 +15,11 @@
               (filename . "/web/perl/Lib/EPSCOR")))
             ("UPS"
              (filename . "~/work/ups"))
+            ("NEC"
+             (or
+              (filename . "/web/nec")
+              (filename . "/web1/nec")
+              (filename . "/web2/nec")))
             ("Emacs Config"
               (filename . "emacs"))
             ("NHIHPP"

@@ -496,6 +496,79 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://me.in-berlin.de/~myrkr/dictionary/
+(add-to-list 'load-path "~/.emacs.d/elisp/dictionary-1.8.7")
+(load "dictionary-init")
+
+;; key bindings
+(global-set-key "\C-cs" 'dictionary-search)
+(global-set-key "\C-cm" 'dictionary-match-words)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; bookmarks
+; http://www.nongnu.org/bm/
+(setq bm-restore-repository-on-load t)
+(require 'bm)
+(global-set-key (kbd "<M-f2>") 'bm-toggle)
+(global-set-key (kbd "<f2>")   'bm-next)
+(global-set-key (kbd "<S-f2>") 'bm-previous)
+ 
+;; make bookmarks persistent as default
+(setq-default bm-buffer-persistence t)
+ 
+;; Loading the repository from file when on start up.
+(add-hook' after-init-hook 'bm-repository-load)
+ 
+;; Restoring bookmarks when on file find.
+(add-hook 'find-file-hooks 'bm-buffer-restore)
+ 
+;; Saving bookmark data on killing a buffer
+(add-hook 'kill-buffer-hook 'bm-buffer-save)
+
+;; Allow cross-buffer 'next'
+(setq bm-cycle-all-buffers t)
+ 
+;; Saving the repository to file when on exit.
+;; kill-buffer-hook is not called when emacs is killed, so we
+;; must save all bookmarks first.
+(add-hook 'kill-emacs-hook '(lambda nil
+                              (bm-buffer-save-all)
+                              (bm-repository-save)))
+
+; http://www.emacswiki.org/emacs/bm-ext.el
+; (require 'bm-ext)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;http://www.emacswiki.org/emacs/tiling.el
+(require 'tiling)
+;;; Windows related operations
+;; Split & Resize
+(define-key global-map (kbd "C-x |") 'split-window-horizontally)
+(define-key global-map (kbd "C-x _") 'split-window-vertically)
+(define-key global-map (kbd "C-{") 'shrink-window-horizontally)
+(define-key global-map (kbd "C-}") 'enlarge-window-horizontally)
+(define-key global-map (kbd "C-^") 'enlarge-window)
+;; Navgating: Windmove uses C-<up> etc.
+(define-key global-map (kbd "C-<up>"   ) 'windmove-up)
+(define-key global-map (kbd "C-<down>" ) 'windmove-down)
+(define-key global-map (kbd "C-<right>") 'windmove-right)
+(define-key global-map (kbd "C-<left>" ) 'windmove-left)
+;; Swap buffers: M-<up> etc.
+(define-key global-map (kbd "M-<up>"   ) 'buf-move-up)
+(define-key global-map (kbd "M-<down>" ) 'buf-move-down)
+(define-key global-map (kbd "M-<right>") 'buf-move-right)
+(define-key global-map (kbd "M-<left>" ) 'buf-move-left)
+;; Tile
+(define-key global-map (kbd "C-\\") 'tiling-cycle) ; accepts prefix number
+(define-key global-map (kbd "C-M-<up>") 'tiling-tile-up)
+(define-key global-map (kbd "C-M-<down>") 'tiling-tile-down)
+(define-key global-map (kbd "C-M-<right>") 'tiling-tile-right)
+(define-key global-map (kbd "C-M-<left>") 'tiling-tile-left)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ELPA
 (require 'package)
 (add-to-list 'package-archives

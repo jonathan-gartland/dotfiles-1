@@ -37,5 +37,10 @@
 ;;                2 3 nil 1)
 ;;              flymake-err-line-patterns))
 
+(add-hook 'cperl-mode-hook
+          '(lambda ()
+             (yas/minor-mode-on)
+             (setq yas/mode-symbol 'perl-mode)))
+
 (provide 'skk-perl)
 ;;; skk-perl.el ends here

@@ -63,6 +63,7 @@
         skk-mk-project.el
         skk-perl.el
         skk-python.el
+        skk-slime.el
         skk-sql.el
         skk-textmode.el
         skk-workgroups.el
