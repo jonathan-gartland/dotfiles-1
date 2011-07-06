@@ -3,7 +3,7 @@
 ###########################
 
 # xask.py
-"~/bin/cutpass -X "/usr/bin/konsole" "-e" &"
+"~/bin/cutpass -X "/usr/bin/env terminator" "-e" &"
 Control + Mod1 + x
 
 # firefox
