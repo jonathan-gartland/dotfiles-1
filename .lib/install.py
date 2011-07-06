@@ -132,6 +132,7 @@ class install(object):
 
         if install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
+            signature = 'dotfiles/signature.HOME'
 
         if self.WORK == install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
