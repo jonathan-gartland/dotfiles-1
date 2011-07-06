@@ -3,13 +3,7 @@
 if [ $(/bin/uname) == "Linux" ]; then 
 
     export PYSQL=$HOME/src/pysql-0.15
-    
-    if [ $(/bin/hostname -s ) == "zathras" ]; then
-	export PYTHONPATH=$PYSQL/src:$PYTHONPATH
-    else
-        echo "pysql may not work on $(/bin/hostname -s)"
-        return 0
-    fi
+    export PYTHONPATH=$PYSQL/src:$PYTHONPATH
 
     # Start it
     /usr/bin/python $PYSQL/src/bin/pysql $*
