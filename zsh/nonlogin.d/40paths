@@ -77,11 +77,6 @@ if [[ $hostname = "kosh.sr.unh.edu" ]]; then
     export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
     export CDPATH=$CDPATH:~/CRMS
-
-    # add cljr to path
-    export PATH=/home/skk/.cljr/bin:$PATH
-
-
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 fi
@@ -111,3 +106,14 @@ fi
 if [[ -n $JAVA_HOME ]]; then
     export PATH="$JAVA_HOME/bin:$PATH"
 fi
+
+# add ~/.cljr/bin to path
+if [[ -d $HOME/.cljr/bin ]]; then
+    export PATH=/home/skk/.cljr/bin:$PATH
+fi
+
+# add ~/.lein/bin to path
+if [[ -d $HOME/.lein/bin ]]; then
+    export PATH=/home/skk/.lein/bin:$PATH
+fi
+
