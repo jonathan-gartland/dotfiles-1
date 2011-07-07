@@ -141,6 +141,8 @@
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
+(define-abbrev-table 'package-menu-mode-abbrev-table '())
+
 (define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
