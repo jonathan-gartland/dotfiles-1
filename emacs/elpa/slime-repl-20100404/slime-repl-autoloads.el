@@ -3,9 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads (slime-repl-init) "slime-repl" "slime-repl.el"
-;;;;;;  (19987 49187))
-;;; Generated autoloads from slime-repl.el
+;;;### (autoloads (slime-repl-init) "slime-repl" "../../../../.emacs.d/elpa/slime-repl-20100404/slime-repl.el"
+;;;;;;  (19988 53233))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/slime-repl-20100404/slime-repl.el
 
 (autoload 'slime-repl-init "slime-repl" "\
 Not documented
@@ -16,7 +16,9 @@ Not documented
 
 ;;;***
 
-;;;### (autoloads nil nil ("slime-repl-pkg.el") (19987 49188 35876))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/slime-repl-20100404/slime-repl-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/slime-repl-20100404/slime-repl.el")
+;;;;;;  (19988 53233 360513))
 
 ;;;***
 
