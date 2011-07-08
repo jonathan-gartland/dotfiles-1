@@ -1,5 +1,14 @@
 ;;; skk-ido.el --- 
 
+(when (require-maybe 'clojure-mode))
+(when (require-maybe 'slime)
+
+  ;; slime
+  (eval-after-load "slime" 
+    '(progn (slime-setup '(slime-repl))))
+
+  (slime-setup))
+
 (defun clojure-swank ()
   "Launch swank-clojure from users homedir/.lein/bin"
   (interactive)

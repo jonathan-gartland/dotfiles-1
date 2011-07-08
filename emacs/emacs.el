@@ -14,9 +14,15 @@
 (defconst djcb-machine (system-name))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defconst elisp-path '("~/.emacs.d/elisp/")) ;; my elisp directories
+(mapcar '(lambda(p)
+           (add-to-list 'load-path p) 
+           (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defconst elisp-path '("~/.emacs.d/elpa/")) ;; my elisp directories
 (mapcar '(lambda(p)
            (add-to-list 'load-path p) 
            (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
