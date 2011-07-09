@@ -31,6 +31,8 @@
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
+(define-abbrev-table 'clojure-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())

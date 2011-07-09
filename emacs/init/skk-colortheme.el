@@ -22,17 +22,12 @@
 
 ;; 
 
-;;; Code:
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; color-theme
-(when 
-    (require 'color-theme)
-    (color-theme-initialize)
-;    (require 'color-theme-tango)
-    (require 'color-theme-solarized)
-)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(when (require 'color-theme)
+  (require 'color-theme-zenburn)
+  (require 'color-theme-solarized)
+  (color-theme-zenburn))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://emacs-fu.blogspot.com/2009/03/color-theming.html#c8118197870582055840
@@ -56,7 +51,7 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-solarized-dark)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-zenburn)
 (add-hook 'after-make-console-frame-hooks 'color-theme-solarized-dark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

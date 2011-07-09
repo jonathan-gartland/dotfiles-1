@@ -22,10 +22,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defconst elisp-path '("~/.emacs.d/elpa/")) ;; my elisp directories
+(defconst elpa-path '("~/.emacs.d/elpa/")) ;; my elpa directories
 (mapcar '(lambda(p)
            (add-to-list 'load-path p) 
-           (cd p) (normal-top-level-add-subdirs-to-load-path)) elisp-path)
+           (cd p) (normal-top-level-add-subdirs-to-load-path)) elpa-path)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
