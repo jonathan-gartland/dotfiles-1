@@ -1,3 +1,8 @@
+
+(require 'sqlplus)
+(require 'sql)
+(add-to-list 'auto-mode-alist '("\\.sqp\\'" . sqlplus-mode))
+
 (defun install-eat-sqlplus-junk ()
   "Install `comint-preoutput-filter-functions' if appropriate.
 Add this function to `sql-interactive-mode-hook' in your .emacs:

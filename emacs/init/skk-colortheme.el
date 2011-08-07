@@ -22,11 +22,21 @@
 
 ;; 
 
-
 (when (require 'color-theme)
-  (require 'color-theme-zenburn)
+
+  (require 'color-theme-github)
+  (require 'color-theme-dpaste)
+  (require 'color-theme-emacs-revert-theme)
+  (require 'color-theme-ir-black)
+  (require 'color-theme-railscasts)
   (require 'color-theme-solarized)
-  (color-theme-zenburn))
+  (require 'color-theme-tango)
+  (require 'color-theme-tangotango)
+;  (require 'color-theme-twilight)
+  (require 'color-theme-vim-insert-mode)
+  (require 'color-theme-zenburn)
+
+  (color-theme-railscasts))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

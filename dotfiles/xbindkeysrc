@@ -3,7 +3,7 @@
 ###########################
 
 # xask.py
-"~/bin/cutpass -X "/usr/bin/env terminator" "-e" &"
+"~/bin/cutpass -X "/usr/bin/env konsole" "-e" &"
 Control + Mod1 + x
 
 # firefox
@@ -15,7 +15,7 @@ Control + Mod1 + f
 Control + Mod1 + e
 
 # dolphin
-"/usr/bin/dolphin &"
+"date +%F%T%z | xclip"
 Control + Mod1 + d
 
 # cutpass

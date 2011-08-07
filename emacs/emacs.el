@@ -67,6 +67,7 @@
         skk-js2mode.el
         skk-makefilemode.el
         skk-mk-project.el
+        skk-org-mode.el
         skk-perl.el
         skk-python.el
         skk-sql.el

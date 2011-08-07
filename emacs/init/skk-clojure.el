@@ -1,5 +1,6 @@
 ;;; skk-ido.el --- 
 
+
 (when (require-maybe 'clojure-mode))
 (when (require-maybe 'slime)
 
@@ -37,4 +38,4 @@
           (decf timeout)))
       (ignore-errors (kill-buffer "*clojure-swank*")))))
 (provide 'skk-clojure)
-;;; skk-ido.el ends here
+;;; skk-clojure.el ends here

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fresh</groupId>
+  <artifactId>fresh</artifactId>
+  <version>1.0.1</version>
+  <name>fresh</name>
+  <description>A library to keep your clojure runtime 'Fresh'.</description>
+  <scm>
+    <connection>scm:git:git://github.com/slagyr/fresh.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/slagyr/fresh.git</developerConnection>
+    <tag>d7f5a883465de04fba4d17ad712e84029350b1a4</tag>
+    <url>http://github.com/slagyr/fresh</url>
+  </scm>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>spec</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>example_src</directory>
+      </testResource>
+    </testResources>
+  </build>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+    <repository>
+      <id>clojure</id>
+      <url>http://build.clojure.org/releases</url>
+    </repository>
+    <repository>
+      <id>clojure-snapshots</id>
+      <url>http://build.clojure.org/snapshots</url>
+    </repository>
+    <repository>
+      <id>clojars</id>
+      <url>http://clojars.org/repo/</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+  </dependencies>
+</project>
