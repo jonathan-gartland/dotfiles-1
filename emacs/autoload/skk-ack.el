@@ -1,6 +1,4 @@
-(require 'ack)
 
-(setq ack-guess-type t)
-(setq ack-command "ack --nocolor --nogroup")
+(autoload 'ack "full-ack" nil t)
 
 (provide 'skk-ack)
