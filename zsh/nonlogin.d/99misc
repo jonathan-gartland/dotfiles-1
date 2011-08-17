@@ -5,3 +5,6 @@
 
 # good less
 export LESS='-FSRX'
+
+# set default umask
+umask 002
