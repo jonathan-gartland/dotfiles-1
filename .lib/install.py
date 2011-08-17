@@ -172,6 +172,9 @@ class install(object):
             for line in fileinput.input(input):
                 output.write(line.replace("$HOME", os.environ['HOME']))
 
+    def qtile(self, install_type):
+            self._createLinks([{ 'src': 'qtile', 'dst': '.config/qtile' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
