@@ -3,18 +3,23 @@
 #VERBOSE=on
 VERBOSE=off
 MAILDIR=$HOME/Maildir
-DEFAULT=$MAILDIR/.MaildirInbox/
+DEFAULT=$MAILDIR/.INBOX/
 PROCMAILDIR=$HOME/.procmail
 LOGFILE=$PROCMAILDIR/log/procmail
 
 
 # forward all email through spamc daemon
-:0fw
-| /usr/bin/spamc
+#:0fw
+#| /usr/bin/spamc
 
 
 # handle spam message
 INCLUDERC=$PROCMAILDIR/spam.rc
+
+# Copy all mail now
+:0c		
+*
+.Archive/	# to Archive
 
 # handle mailing list
 INCLUDERC=$PROCMAILDIR/lists.rc
@@ -22,10 +27,10 @@ INCLUDERC=$PROCMAILDIR/lists.rc
 # handle HemlockForest
 INCLUDERC=$PROCMAILDIR/hemlockforest.rc
 
-# Copy all mail now
-:0c		
-*
-.Archive/	# to Archive
+# eHaramony
+:0
+* ^From:.*ehsupport@eharmony.com.*
+.eHarmony/
 
 # BlockbusterOnline
 :0
@@ -34,11 +39,14 @@ INCLUDERC=$PROCMAILDIR/hemlockforest.rc
 
 # IBD Editorials
 :0
-* ^From:.*ibd@ibd1.investors.com.*
+* ^From:.*investors@e.investors.com.*
 .IBDEditorials/
+
+# Output from emerge/portage from home computer
+:0
+* ^From:.*portage@knight.cx.*
+.Portage/
 
 # last
 :0:
 $DEFAULT
-
-# /* vim: set filetype=procmail : */ 
