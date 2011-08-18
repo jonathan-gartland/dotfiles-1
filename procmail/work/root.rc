@@ -59,3 +59,7 @@
 :0
 * ^Subject:.*UNH Admissions received your e-mail.*
 /dev/null
+
+:0
+* ^From:.*isxcentral@sr.unh.edu.*
+.Systems.Root/
