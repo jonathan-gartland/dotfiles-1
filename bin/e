@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 source $HOME/.zsh/nonlogin.d/40paths
 export GDK_NATIVE_WINDOWS=1

@@ -1,7 +1,6 @@
 # $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
 
 # ---- 9/12 Project ----
-# 912 Project
 :0 
 * (To|Cc):.*rochester-912-project-list@meetup.com.* 
 .Mailing\ Lists.Rochester-912-Project/
@@ -41,57 +40,85 @@
 :0
 * ^From:.*Glenn.*Beck.*
 .Mailing\ Lists.Glenn\ Beck/
+
+
+# The Blaze
+:0
+* ^Subject:.*News from TheBlaze.com.*
+.Mailing\ Lists.Glenn\ Beck/
+
 # ---- Glenn Beck -----
 
 # --- GNU Mailing Lists ----
-# GNU Emacs Help
+# Help
 :0
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Help/
 
-# Gnu Emacs Devel
+# Devel
 :0
 * (To|Cc):.*emacs-devel@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Devel/
 
-# GNU Emacs Wanderlust Mailingist
+# Wanderlust
 :0
 * (To|Cc):.*wl-en@lists.airs.net.*
 .Mailing\ Lists.Wanderlust/
 # --- GNU Mailing Lists ----
-
-# ---- Haskell Cafe Mailing Lists ----
-# Haskell Cafe
+# ----- SymPy ----
 :0
-* (To|Cc):.*haskell-cafe@haskell.org.*
-.Mailing\ Lists.Haskell\ Cafe/
-# ---- Haskell Cafe Mailing Lists ----
+* (To|Cc):.*sympy@googlegroups.com.*
+.Mailing\ Lists.SymPy/
+# ----- SymPy ----
 
-# ---- Debian Mailing Lists ----
-# Debian User
+# ----- Clojure ------
 :0
-* (To|Cc):.*debian-user@lists.debian.org.*
-.Mailing\ Lists.Debian\ User/
-# ---- Debian Mailing Lists ----
+* (To|Cc):.*clojure@googlegroups.com.*
+.Mailing\ Lists.Clojure/
+# ----- Clojure ------
 
-# ---- Awesome User List ----
-:0
-* (To|Cc):.*awesome@naquadah.org.*
-.Mailing\ Lists.Awesome\ User/
-# ---- Awesome User List ----
+################################################################################
+# OLD PROCMAIL RULES, NO LONGER USED
 
-# ---- XMonad User List ----
-:0
-* (To|Cc):.*xmonad@haskell.org.*
-.Mailing\ Lists.xmonad/
-# ---- XMonad User List ----
+# # ----- Flask ------
+# :0
+# * (To|Cc):.*flask@librelist.[com|org].*
+# .Mailing\ Lists.Flask/
+# # ----- Flask ------
 
-# -----  Arch Linux ---
-:0
-* (To|Cc):.*arch-general@archlinux.org.*
-.Mailing\ Lists.Arch\ General/
+# # ---- Haskell Cafe Mailing Lists ----
+# # Haskell Cafe
+# :0
+# * (To|Cc):.*haskell-cafe@haskell.org.*
+# .Mailing\ Lists.Haskell\ Cafe/
+# # ---- Haskell Cafe Mailing Lists ----
 
-:0
-* (To|Cc):.*arch-announce@archlinux.org.*
-.Mailing\ Lists.Arch\ Announce/
-# -----  Arch Linux ---
+# # ---- Debian Mailing Lists ----
+# # Debian User
+# :0
+# * (To|Cc):.*debian-user@lists.debian.org.*
+# .Mailing\ Lists.Debian\ User/
+# # ---- Debian Mailing Lists ----
+
+# # ---- Awesome User List ----
+# :0
+# * (To|Cc):.*awesome@naquadah.org.*
+# .Mailing\ Lists.Awesome\ User/
+# # ---- Awesome User List ----
+
+# # ---- XMonad User List ----
+# :0
+# * (To|Cc):.*xmonad@haskell.org.*
+# .Mailing\ Lists.xmonad/
+# # ---- XMonad User List ----
+
+# # -----  Arch Linux ---
+# :0
+# * (To|Cc):.*arch-general@archlinux.org.*
+# .Mailing\ Lists.Arch\ General/
+
+# :0
+# * (To|Cc):.*arch-announce@archlinux.org.*
+# .Mailing\ Lists.Arch\ Announce/
+# # -----  Arch Linux ---
+################################################################################
