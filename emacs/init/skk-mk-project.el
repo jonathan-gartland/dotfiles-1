@@ -46,8 +46,53 @@
                  (ack-args nil)
                  (startup-hook nil)
                  (shutdown-hook nil)))
-                               
+
+  (project-def "EPSCOR"
+               '((basedir "/web/epscor")
+                 (src-patterns ("*.js *.html *.pm"))
+                 (ignore-patterns nil)
+                 (tags-file nil)
+                 (file-list-cache nil)
+                 (open-files-cache nil)
+                 (vcs git)
+                 (ack-args "--perl --javascript")
+                 (compile-cmd nil)
+                 (startup-hook epscor-startuphook)
+                 (shutdown-hook nil)))
+
+  (defun epscor-startuphook ()
+    (setq cperl-indent-level 4))
+
+  (project-def "Housing-Dev"
+               '((basedir "/ssh:lithium.sr.unh.edu:/web/housing")
+                 (src-patterns ("*.js *.html *.pm"))
+                 (ignore-patterns nil)
+                 (tags-file nil)
+                 (file-list-cache nil)
+                 (open-files-cache nil)
+                 (vcs git)
+                 (ack-args "--perl --javascript")
+                 (compile-cmd nil)
+                 (startup-hook epscor-startuphook)
+                 (shutdown-hook nil)))
+
+  (project-def "Housing-Pre"
+               '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/housing")
+                 (src-patterns ("*.js *.html *.pm"))
+                 (ignore-patterns nil)
+                 (tags-file nil)
+                 (file-list-cache nil)
+                 (open-files-cache nil)
+                 (vcs git)
+                 (ack-args "--perl --javascript")
+                 (compile-cmd nil)
+                 (startup-hook epscor-startuphook)
+                 (shutdown-hook nil)))
+
+  (defun housing-startuphook ()
+    (setq cperl-indent-level 4))
+
 )
-                              
+
 (provide 'skk-mk-project)
 ;;; skk-mk-project.el ends here
