@@ -586,6 +586,12 @@ activate-mark-hook"
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/find-file-in-project.el
+(require 'project)
+(require 'find-file-in-project)
+(global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'edit-server)
 (edit-server-start)
