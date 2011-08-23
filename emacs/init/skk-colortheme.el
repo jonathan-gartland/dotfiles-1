@@ -61,7 +61,7 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-zenburn)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-railscasts)
 (add-hook 'after-make-console-frame-hooks 'color-theme-solarized-dark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
