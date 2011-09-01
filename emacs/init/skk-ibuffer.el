@@ -22,6 +22,8 @@
               (filename . "/web2/nec")))
             ("Emacs Config"
               (filename . "emacs"))
+            ("University Calculus"
+             (filename . "~/TextBookSummaries/UniversityCalculus"))
             ("NHIHPP"
              (filename . "/web/perl/Lib/NHIHPP"))
             ("DotFilesForest"
