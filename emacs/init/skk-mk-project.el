@@ -9,7 +9,7 @@
   (global-set-key (kbd "C-c p g") 'project-grep)
   (global-set-key (kbd "C-c p o") 'project-multi-occur)
   (global-set-key (kbd "C-c p u") 'project-unload)
-  (global-set-key (kbd "C-c p f") 'project-find-file) ; or project-find-file-ido
+  (global-set-key (kbd "C-c p f") 'project-find-file-ido) ; or project-find-file-ido
   (global-set-key (kbd "C-c p i") 'project-index)
   (global-set-key (kbd "C-c p s") 'project-status)
   (global-set-key (kbd "C-c p h") 'project-home)
@@ -47,15 +47,30 @@
                  (startup-hook nil)
                  (shutdown-hook nil)))
 
-  (project-def "EPSCOR"
-               '((basedir "/web/epscor")
+  (project-def "EPSCOR Development"
+               '((basedir "/ssh:lithium.sr.unh.edu:/web/epscor")
+                 (src-patterns ("*.js *.html *.pm"))
+                 (ignore-patterns nil)
+                 (tags-file nil)
+                 (file-list-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/file-list") 
+                 (open-files-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/open-files") 
+                 (vcs git)
+                 (ack-args "--perl --js --html --css")
+                 (compile-cmd nil)
+                 (index-find-cmd (lambda (content)
+                                   (concat "find ." mk-proj-basedir)))
+                 (startup-hook epscor-startuphook)
+                 (shutdown-hook nil)))
+
+  (project-def "EPSCOR Preview"
+               '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/epscor")
                  (src-patterns ("*.js *.html *.pm"))
                  (ignore-patterns nil)
                  (tags-file nil)
                  (file-list-cache nil)
                  (open-files-cache nil)
                  (vcs git)
-                 (ack-args "--perl --javascript")
+                 (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
                  (startup-hook epscor-startuphook)
                  (shutdown-hook nil)))
@@ -63,7 +78,7 @@
   (defun epscor-startuphook ()
     (setq cperl-indent-level 4))
 
-  (project-def "Housing-Dev"
+  (project-def "Housing Development"
                '((basedir "/ssh:lithium.sr.unh.edu:/web/housing")
                  (src-patterns ("*.js *.html *.pm"))
                  (ignore-patterns nil)
@@ -76,7 +91,7 @@
                  (startup-hook epscor-startuphook)
                  (shutdown-hook nil)))
 
-  (project-def "Housing-Pre"
+  (project-def "Housing Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/housing")
                  (src-patterns ("*.js *.html *.pm"))
                  (ignore-patterns nil)
