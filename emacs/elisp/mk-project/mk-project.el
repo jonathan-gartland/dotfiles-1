@@ -678,7 +678,8 @@ With C-u prefix, start ack from the current directory."
         (setq buffer-read-only nil))
       (message "project-indexing cmd: \"%s\"" find-cmd)
       (message "Refreshing %s buffer..." mk-proj-fib-name)
-      (start-file-process proc-name mk-proj-fib-name find-cmd)
+      ;; (start-file-process proc-name mk-proj-fib-name find-cmd)
+      (start-process-shell-command proc-name mk-proj-fib-name find-cmd)
       (set-process-sentinel (get-process proc-name) 'mk-proj-fib-cb))))
 
 (defun mk-proj-fib-matches (regex)
