@@ -57,15 +57,20 @@
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (index-find-cmd (lambda (content)
-;;                                    (let* ( 
-;; ;                                       (start-dir "/web/epscor")
-;;                                        (find-cmd (concat "find '/web/epscor' -type f "
-;;                                                           (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns)))))
+                 (index-find-cmd (
+                   lambda (content)
+                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "lithium.sr.unh.edu")
+                                 (start-dir "/web/epscor")
+                                 (find-cmd (concat "find \"" start-dir "\" -type f "
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
 
-;;                                    (when (mk-proj-get-vcs-path)
-;;                                      (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                   (concat "ssh lithium.sr.unh.edu 'find /web/epscor/ -type f'")))
+                            (concat "ssh " hostname " \"" find-cmd "\""))))
                  (startup-hook epscor-startuphook)
                  (shutdown-hook nil)))
 
