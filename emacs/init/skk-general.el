@@ -178,7 +178,7 @@
 (setq tramp-default-method "ssh"
       tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
       tramp-encoding-shell "/bin/bash"
-      tramp-verbose 3)
+      tramp-verbose 4)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -591,6 +591,12 @@ activate-mark-hook"
 (require 'project)
 (require 'find-file-in-project)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; auctex
+(add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.86/")
+(require 'auctex-autoloads)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'edit-server)
