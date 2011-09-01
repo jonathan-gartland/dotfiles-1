@@ -58,7 +58,14 @@
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
                  (index-find-cmd (lambda (content)
-                                   (concat "find ." mk-proj-basedir)))
+;;                                    (let* ( 
+;; ;                                       (start-dir "/web/epscor")
+;;                                        (find-cmd (concat "find '/web/epscor' -type f "
+;;                                                           (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns)))))
+
+;;                                    (when (mk-proj-get-vcs-path)
+;;                                      (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                                   (concat "ssh lithium.sr.unh.edu 'find /web/epscor/ -type f'")))
                  (startup-hook epscor-startuphook)
                  (shutdown-hook nil)))
 
@@ -106,7 +113,6 @@
 
   (defun housing-startuphook ()
     (setq cperl-indent-level 4))
-
 )
 
 (provide 'skk-mk-project)
