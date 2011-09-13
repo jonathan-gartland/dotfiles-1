@@ -132,15 +132,12 @@ class install(object):
 
         if install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
-            signature = 'dotfiles/signature.HOME'
 
         if self.WORK == install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
-            signature = 'dotfiles/signature.WORK'
 
         if self.HOME == install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
-            signature = 'dotfiles/signature.HOME'
 
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
         if not os.path.exists(ssh_dir):
@@ -154,8 +151,9 @@ class install(object):
         { 'src':  gitconfig, 'dst': '.gitconfig' },
         { 'src': 'dotfiles/signature.HOME', 'dst': '.signature.home' },
         { 'src': 'dotfiles/signature.WORK', 'dst': '.signature.work' },
-        { 'src': signature, 'dst': '.signature' },
+        { 'src': 'dotfiles/signature.WORK.HTML', 'dst': '.signature.work.html' },
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
+        { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
