@@ -52,8 +52,9 @@
                  (src-patterns ("*.js *.html *.pm"))
                  (ignore-patterns nil)
                  (tags-file nil)
-                 (file-list-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/file-list") 
-                 (open-files-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/open-files") 
+                 (file-list-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/files")
+                 (open-files-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/open-files")
+                 (tags-file "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/TAGS")
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
@@ -65,11 +66,11 @@
                           (let* (
                                  (hostname "lithium.sr.unh.edu")
                                  (start-dir "/web/epscor")
-                                 (find-cmd (concat "find \"" start-dir "\" -type f "
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
                                                    (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
                             (when (mk-proj-get-vcs-path)
                               (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-
+                            
                             (concat "ssh " hostname " \"" find-cmd "\""))))
                  (startup-hook epscor-startuphook)
                  (shutdown-hook nil)))
