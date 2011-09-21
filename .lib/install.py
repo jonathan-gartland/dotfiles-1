@@ -148,6 +148,7 @@ class install(object):
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
+        { 'src': 'dotfiles/abcde.conf', 'dst': '.abcde.conf'  },
         { 'src':  gitconfig, 'dst': '.gitconfig' },
         { 'src': 'dotfiles/signature.HOME', 'dst': '.signature.home' },
         { 'src': 'dotfiles/signature.WORK', 'dst': '.signature.work' },
