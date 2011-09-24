@@ -1,6 +1,5 @@
 ;;; skk-mk-project.el --- mk-project.el config
 
-
 (when (require-maybe 'mk-project)
 
   (global-set-key (kbd "C-c p c") 'project-compile)
@@ -16,50 +15,17 @@
   (global-set-key (kbd "C-c p d") 'project-dired)
   (global-set-key (kbd "C-c p t") 'project-tags)
 
-  (project-def "eSCATConduitProject"
-               '((basedir "C:/eSCATConduit")
-                 (src-patterns ("*.cpp", "*.h"))
-                 (ignore-patterns ("*.o"))
-                 (tags-file nil)
-                 (file-list-cache nil)
-                 (open-files-cache nil)
-                 (vcs git)
-                 (compile-cmd "q:/unix/MinGW/bin/make.exe -k")
-                 (ack-args nil)
-                 (startup-hook escatconduit-project-startup)
-                 (shutdown-hook nil)))
-
-  (defun escatconduit-project-startup ()
-    (setq c-default-style "k&r"
-          c-old-style-variable-behavior nil t))
-
-
-
-  (project-def "eSCATDocsProject"
-               '((basedir "~/work/eSCAT/docs")
-                 (src-patterns ("*.rst"))
-                 (tags-file nil)
-                 (file-list-cache nil)
-                 (open-files-cache nil)
-                 (vcs git)
-                 (compile-cmd "make html")
-                 (ack-args nil)
-                 (startup-hook nil)
-                 (shutdown-hook nil)))
-
   (project-def "EPSCOR Development"
                '((basedir "/ssh:lithium.sr.unh.edu:/web/epscor")
-                 (src-patterns ("*.js *.html *.pm"))
+                 (src-patterns ("*.js *.html *.pm *.css"))
                  (ignore-patterns nil)
-                 (tags-file nil)
-                 (file-list-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/files")
-                 (open-files-cache "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/open-files")
-                 (tags-file "/ssh:lithium.sr.unh.edu:/web/epscor/.cache/TAGS")
+                 (file-list-cache "~/.emacs.d/.cache/epscor-dev/files")
+                 (open-files-cache "~/.emacs.d/.cache/epscor-dev/open-files")
+                 (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (index-find-cmd (
-                   lambda (content)
+                 (index-find-cmd (lambda (content)
                           ; TODO: 
                           ; 1) Update to use regex to split up basedir, instead of hard-coding data.
                           ; 2) It'd be nice to use src-patterns and ignore-patterns
@@ -72,53 +38,123 @@
                               (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
                             
                             (concat "ssh " hostname " \"" find-cmd "\""))))
-                 (startup-hook epscor-startuphook)
+                 (startup-hook (lambda ()
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+                                 (setq cperl-indent-level 4)))
                  (shutdown-hook nil)))
 
   (project-def "EPSCOR Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/epscor")
-                 (src-patterns ("*.js *.html *.pm"))
+                 (src-patterns ("*.js *.html *.pm *.css"))
                  (ignore-patterns nil)
-                 (tags-file nil)
-                 (file-list-cache nil)
-                 (open-files-cache nil)
+                 (file-list-cache "~/.emacs.d/.cache/epscor-pre/files")
+                 (open-files-cache "~/.emacs.d/.cache/epscor-pre/open-files")
+                 (tags-file "~/.emacs.d/.cache/epscor-pre/TAGS")
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (startup-hook epscor-startuphook)
+                 (index-find-cmd (lambda (content)
+'                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "myxomatosis.sr.unh.edu")
+                                 (start-dir "/web/epscor")
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                            
+                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                 (startup-hook (lambda () 
+                                 (setq cperl-indent-level 4)))
                  (shutdown-hook nil)))
 
-  (defun epscor-startuphook ()
-    (setq cperl-indent-level 4))
+  (project-def "EPSCOR Test"
+               '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/epscor-test")
+                 (src-patterns ("*.js *.html *.pm *.css"))
+                 (ignore-patterns nil)
+                 (file-list-cache "~/.emacs.d/.cache/epscor-test/files")
+                 (open-files-cache "~/.emacs.d/.cache/epscor-test/open-files")
+                 (tags-file "~/.emacs.d/.cache/epscor-test/TAGS")
+                 (vcs git)
+                 (ack-args "--perl --js --html --css")
+                 (compile-cmd nil)
+                 (index-find-cmd (lambda (content)
+                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "myxomatosis.sr.unh.edu")
+                                 (start-dir "/web/epscor-test")
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                            
+                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                 (startup-hook (lambda () 
+                                 (setq cperl-indent-level 4)))
+                 (shutdown-hook nil)))
+
 
   (project-def "Housing Development"
                '((basedir "/ssh:lithium.sr.unh.edu:/web/housing")
-                 (src-patterns ("*.js *.html *.pm"))
+                 (src-patterns ("*.js *.html *.pm *.css"))
                  (ignore-patterns nil)
                  (tags-file nil)
-                 (file-list-cache nil)
-                 (open-files-cache nil)
+                 (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
+                 (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
+                 (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
                  (vcs git)
-                 (ack-args "--perl --javascript")
+                 (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (startup-hook epscor-startuphook)
+                 (index-find-cmd (lambda (content)
+                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "lithium.sr.unh.edu")
+                                 (start-dir "/web/housing")
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                            
+                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                 (startup-hook (lambda () 
+                                 (setq cperl-indent-level 4)))
                  (shutdown-hook nil)))
 
   (project-def "Housing Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/housing")
-                 (src-patterns ("*.js *.html *.pm"))
+                 (src-patterns ("*.js *.html *.pm *.css"))
                  (ignore-patterns nil)
                  (tags-file nil)
-                 (file-list-cache nil)
-                 (open-files-cache nil)
+                 (file-list-cache "~/.emacs.d/.cache/housing-pre/files")
+                 (open-files-cache "~/.emacs.d/.cache/housing-pre/open-files")
+                 (tags-file "~/.emacs.d/.cache/housing-pre/TAGS")
                  (vcs git)
-                 (ack-args "--perl --javascript")
+                 (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (startup-hook epscor-startuphook)
+                 (index-find-cmd (lambda (content)
+                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "myxomatosis.sr.unh.edu")
+                                 (start-dir "/web/housing")
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                            
+                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                 (startup-hook (lambda () 
+                                 (setq cperl-indent-level 4)))
                  (shutdown-hook nil)))
-
-  (defun housing-startuphook ()
-    (setq cperl-indent-level 4))
 )
 
 (provide 'skk-mk-project)
