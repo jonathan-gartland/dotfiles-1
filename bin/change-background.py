@@ -29,7 +29,7 @@ import os.path
 import random
 import mimetypes
 
-backgrounds = environ.get( 'HOME' ) + "/Pictures/"
+backgrounds = environ.get( 'HOME' ) + "/Pictures/images/"
 
 class GConfClient( object ):
         def __init__ (self):
