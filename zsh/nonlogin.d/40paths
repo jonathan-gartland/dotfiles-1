@@ -19,7 +19,7 @@ export CDPATH=.:~:~/src:~/work:/web
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/local/bin/:$HOME/bin/:$HOME/bin/$(uname -m)/:$PATH"
+export PATH="$HOME/local/bin/:$HOME/bin/:$HOME/bin/$(uname -m)/:$PATH:/usr/local/bin:/usr/bin:/bin"
 
 if [[ $(id -u) -eq 0 ]]; then
     export PATH="/sbin:/usr/sbin:$PATH"
@@ -53,6 +53,7 @@ if [[ $(dnsdomainname -d ) = "sr.unh.edu" ]]; then
 fi
 
 hostname=$(hostname -f)
+
 # stuff for zathras.sr.unh.edu
 if [[ $hostname = "zathras.sr.unh.edu" ]]; then
     # Environmental variablles
@@ -79,6 +80,9 @@ if [[ $hostname = "kosh.sr.unh.edu" ]]; then
     export CDPATH=$CDPATH:~/CRMS
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
+
+    # source autojump init file
+#    source /etc/profile.d/autojump.zsh
 fi
 
 if [[ $hostname = "kona.sr.unh.edu" ]]; then
@@ -104,7 +108,14 @@ if [[ $hostname = "skk" ]]; then
 fi
 
 if [[ -n $JAVA_HOME ]]; then
-    export PATH="$JAVA_HOME/bin:$PATH"
+
+    if [[ -d $JAVA_HOME/bin ]]; then
+        export PATH="$JAVA_HOME/bin:$PATH"
+    fi
+
+    if [[ -d $JAVA_HOME/jre/bin ]]; then
+        export PATH="$JAVA_HOME/jre/bin:$PATH"
+    fi
 fi
 
 # add ~/.cljr/bin to path
