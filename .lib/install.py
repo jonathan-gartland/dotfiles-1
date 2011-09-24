@@ -191,6 +191,7 @@ class install(object):
     def clojure(self, install_type):
         self._createLinks([
                 {'src': 'lein', 'dst': '.lein'},
+                {'src': 'cljr', 'dst': '.cljr'},
                 {'src': 'm2', 'dst': '.m2'}])
 
     def fish(self, install_type):
