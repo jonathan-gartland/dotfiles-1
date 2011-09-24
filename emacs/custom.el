@@ -12,15 +12,17 @@
  '(flymake-log-level 0)
  '(inhibit-startup-screen t)
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
+ '(mk-proj-ack-cmd "~/bin/ack")
  '(nxml-child-indent 4)
  '(nxml-outline-child-indent 2)
  '(regex-tool-backend (quote perl))
+ '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(sql-product (quote oracle))
  '(sql-sqlite-program "sqlite3")
  '(tab-always-indent nil)
  '(term-unbind-key-list (quote ("C-x" "C-c" "C-h" "C-y" "<ESC>")))
- '(tramp-default-method "ssh")
+ '(tramp-default-method "ssh" t)
  '(viper-shift-width 4))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
