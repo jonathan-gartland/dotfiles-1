@@ -72,6 +72,14 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
 
+_sql_cpl() {
+    local a
+    read -l a
+    reply=(`sql -l -q $a`)
+}
+compctl -K _sql_cpl sql
+
+
 umask 022
 
 export SHELL=$(which zsh)
