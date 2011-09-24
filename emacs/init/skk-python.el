@@ -1,4 +1,4 @@
-(when djcb-win32-p
+(when djcb-linux-p
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; python
@@ -43,9 +43,9 @@
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; ipython/emacs
-(require 'ipython)
-(setenv "PYMACS_PYTHON" "python2.6") 
-(setq py-python-command-args '( "-colors" "Linux"))
+;; ; ipython/emacs
+;; (require 'ipython)
+;; (setenv "PYMACS_PYTHON" "python2.6") 
+;; (setq py-python-command-args '( "-colors" "Linux"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 )
