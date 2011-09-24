@@ -1,4 +1,4 @@
-                                        ; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
+; -*-mode: Emacs-Lisp; outline-minor-mode:t-*- 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; emacs.el file based on http://www.djcbsoftware.nl/dot-emacs.html
@@ -69,7 +69,7 @@
         skk-mk-project.el
         skk-org-mode.el
         skk-perl.el
-        skk-python.el
+        ;; skk-python.el
         skk-sql.el
         skk-textmode.el
         skk-workgroups.el
@@ -102,7 +102,7 @@
 (autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
-;(autoload 'python-mode "skk-python" "python-mode" t)
+(autoload 'python-mode "skk-python" "python-mode" t)
 (autoload 'company-mode "company" nil t)
 
 ; http://log4j-mode.sourceforge.net/
@@ -143,4 +143,3 @@
 
 (eval-after-load "sql"
   '(load-library "sql-indent"))
-
