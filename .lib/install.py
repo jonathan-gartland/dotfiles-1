@@ -181,6 +181,14 @@ class install(object):
         { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
         { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
 
+    def  bash(self, install_type):
+        self._createLinks([
+        { 'src': 'bash', 'dst' : '.bash' },
+        { 'src': 'bash/bashrc', 'dst': '.bashrc' },
+        { 'src': 'bash/inputrc', 'dst': '.inputrc' },
+        { 'src': 'bash/bash_profile', 'dst': '.bash_profile' },
+        { 'src': 'bash/bash_logout', 'dst': '.bash_logout' }])
+
     def emacs(self, install_type):
         self._createLinks([
         {'src': 'emacs', 'dst': '.emacs.d' },
