@@ -1,0 +1,128 @@
+# -*- mode: shell-script -*-
+
+#
+# Environment variables
+#
+
+#if [ -x $(which most) ]; then
+#    export PAGER=most
+if [ -x $(which less) ]; then
+    export PAGER=less 
+elif [ -x $(which more) ]; then
+    export PAGER=more
+fi
+
+export stow="$HOME/local/stow"
+
+# setup CDPATH
+export CDPATH=.:~:~/src:~/work:/web  
+# TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
+
+# setup PATH
+export PATH="$HOME/local/bin/:$HOME/bin/:$HOME/bin/$(uname -m)/:$PATH:/usr/local/bin:/usr/bin:/bin"
+
+if [ $(id -u) -eq 0 ]; then
+    export PATH="/sbin:/usr/sbin:$PATH"
+else
+    export PATH="$PATH:/usr/sbin:/sbin"
+fi
+
+export MANPATH="$MANPATH:$HOME/local/man"
+export TERMINFO="$HOME/.terminfo"
+
+# set PYTHONPATH
+python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
+export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
+
+# rcc
+if [ "$DNS_DOMAIN_NAME" == "rcc" ]; then
+    # svn variables
+    export svndemo="https://svn.sr.unh.edu/svn/demo/"
+    export svnskk="https://svn.sr.unh.edu/svn/skk/"
+    export svnevents="https://svn.sr.unh.edu/svn/Events/"
+    export svnescat="https://svn.sr.unh.edu/svn/eSCAT/"
+    export svncrms="https://svn.sr.unh.edu/svn/CRMS/"
+    export svntv="https://svn.sr.unh.edu/svn/TwinView/"
+    export svneos="https://svn.sr.unh.edu/svn/EOS/"
+    export svnseagrant="https://svn.sr.unh.edu/svn/SeaGrant/"
+    export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
+    export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
+    export svnerma="https://erma-svn.sr.unh.edu/svn/"
+    export PATH="$HOME/local/$(uname -m)/bin:$PATH"
+    export MANPATH="$MANPATH:$HOME/local/$(uname -m)/man"
+fi
+
+# stuff for zathras.sr.unh.edu
+if [ $HOSTNAME == "zathras.sr.unh.edu" ]; then
+    # Environmental variablles
+    export ECLIPSE_HOME="/usr/local/eclipse"
+    export PYTHONDOCS="/usr/share/doc/python-docs-2.6/html/"
+    export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+    export PRINTER="Color-LaserJet-3800"
+    export MAILDIR="$HOME/Maildir"
+    
+    # Database aliases
+    export ORACLE_COMMAND="$HOME/bin/pysql.sh"
+
+    export CDPATH=$CDPATH:~/CRMS
+fi
+
+if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+    export PRINTER="Color-LaserJet-3800"
+    export MAILDIR="$HOME/Maildir"
+    export CDPATH=$CDPATH:~/CRMS
+    # Database aliases
+    export ORACLE_COMMAND="$HOME/bin/pysql.sh"
+
+    # source autojump init file
+#    source /etc/profile.d/autojump.zsh
+fi
+
+if [ $HOSTNAME == "kona.sr.unh.edu" ]; then
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+fi
+
+if [ $HOSTNAME == "spoo.sr.unh.edu" ]; then
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+fi
+
+if [ $HOSTNAME == "long.sr.unh.edu" ]; then
+    export PATH="/usr/lib/postgresql/8.3/bin:$PATH"
+fi
+
+if [ $HOSTNAME == "skk" ]; then
+    export svnroot="file:///home/svn/skk/"
+    export svnmusic="file:///home/svn/music/"
+    export MAILDIR="$HOME/Maildir"
+    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JRE_HOME="$JAVA_HOME"
+fi
+
+if [ -n $JAVA_HOME ]; then
+
+    if [ -d $JAVA_HOME/bin ]; then
+        export PATH="$JAVA_HOME/bin:$PATH"
+    fi
+
+    if [ -d $JAVA_HOME/jre/bin ]; then
+        export PATH="$JAVA_HOME/jre/bin:$PATH"
+    fi
+fi
+
+# add ~/.cljr/bin to path
+if [ -d $HOME/.cljr/bin ]; then
+    export PATH=/home/skk/.cljr/bin:$PATH
+fi
+
+# add ~/.lein/bin to path
+if [ -d $HOME/.lein/bin ]; then
+    export PATH=/home/skk/.lein/bin:$PATH
+fi
+

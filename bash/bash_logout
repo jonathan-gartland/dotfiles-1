@@ -1,0 +1,7 @@
+# -*- mode: shell-script -*-
+
+# ~/.bash_logout is executed by bash(1) when login shell exits.
+
+# source all logout.d files
+source ~/.bash/_utils
+source-dir ~/.zsh/logout.d/

@@ -1,0 +1,133 @@
+# -*- mode: shell-script -*-
+
+if [[ "$TERM" == "dumb" ]]; then
+    PS1=''
+    return
+fi
+
+# We'll use these elsewhere
+
+export HOSTNAME=$(/usr/bin/env hostname -f)
+export DNS_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -y)
+
+#set xterm title
+case "$TERM" in
+  xterm | xterm-color)
+    XTERM_TITLE='\[\e]0;\W@\u@\H\a\]'
+  ;;
+esac
+
+
+# Enable options
+shopt -s autocd
+shopt -s cdable_vars
+shopt -s cdspell
+shopt -s checkhash
+shopt -s checkjobs
+shopt -s checkwinsize
+shopt -s cmdhist
+shopt -s dirspell
+shopt -s dotglob
+shopt -s extglob
+shopt -s globstar
+shopt -s histappend
+shopt -s histreedit
+shopt -s histverify
+shopt -s hostcomplete
+shopt -s interactive_comments
+shopt -s lithist
+shopt -s shift_verbose
+#shopt -s soucepath
+shopt -s progcomp
+shopt -s promptvars
+#shopt -o mailwarn
+
+# export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
+
+
+# if [[ "$TERM" == "dumb" ]]
+#     then
+#     unsetopt zle
+#     unsetopt prompt_cr
+#     unsetopt prompt_subst
+#     unfunction precmd
+#     unfunction preexec
+#     PS1='$ '
+# fi
+
+# # If not running interactively, don't do anything
+# [ -z "$PS1" ] && return
+
+# # check the window size after each command and, if necessary,
+# # update the values of LINES and COLUMNS.
+# #TODO: zsh equivalent?
+# # shopt -s checkwinsize
+# #autoload -U promptinit
+# #promptinit
+# #prompt bart
+
+# # keep history file between sessions
+# DIRSTACKSIZE=15
+# HISTSIZE=8192
+# SAVEHIST=8192
+# HISTFILE=~/.history
+
+# #--- zsh options ---
+# #
+# setopt autopushd # turn cd into pushd for all situations 
+# setopt APPEND_HISTORY
+# setopt AUTO_CD # cd if no matching command
+# setopt EXTENDED_HISTORY # saves timestamps on history
+# setopt EXTENDED_GLOB # globs #, ~ and ^
+# setopt PUSHDMINUS       # make using cd -3 go to the 3rd directory history (dh) directory instead of having to use + (the default)
+# setopt PUSHD_IGNORE_DUPS
+# setopt HIST_IGNORE_ALL_DUPS
+# setopt AUTO_PARAM_SLASH # adds slash at end of tabbed dirs
+# setopt CHECK_JOBS # check bg jobs on exit
+# setopt CORRECT # corrects spelling
+# setopt CORRECT_ALL # corrects spelling
+# setopt GLOB_DOTS # find dotfiles easier
+# setopt HASH_CMDS # save cmd location to skip PATH lookup
+# setopt HIST_NO_STORE # don't save 'history' cmd in history
+# setopt INC_APPEND_HISTORY # append history as command are entered
+# setopt LIST_ROWS_FIRST # completion options left-to-right, top-to-bottom
+# setopt LIST_TYPES # show file types in list
+# setopt MARK_DIRS # adds slash to end of completed dirs
+# setopt NUMERIC_GLOB_SORT # sort numerically first, before alpha
+# setopt PROMPT_SUBST # sub values in prompt (though it seems to work anyway haha)
+# setopt SHARE_HISTORY # share history between open shells
+
+# unsetopt beep
+
+# zmodload zsh/complist
+# autoload -Uz compinit && compinit
+
+# _force_rehash() {
+#   (( CURRENT == 1 )) && rehash
+#   return 1	# Because we didn't really complete anything
+# }
+# zstyle ':completion:::::' completer _force_rehash _complete _approximate
+
+# zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+# zstyle ':completion:*:descriptions' format "- %d -"
+# zstyle ':completion:*:corrections' format "- %d - (errors %e})"
+# zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*:manuals' separate-sections true
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' verbose yes
+
+# _sql_cpl() {
+#     local a
+#     read -l a
+#     reply=(`sql -l -q $a`)
+# }
+# compctl -K _sql_cpl sql
+
+
+# umask 022
+
+# export SHELL=$(which zsh)
+
+# # bindkey (set to emacs key bindings)
+# bindkey -e

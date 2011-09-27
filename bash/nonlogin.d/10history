@@ -1,0 +1,7 @@
+# -*- mode: shell-script -*-
+
+# # keep history file between sessions
+export HISTTIMEFORMAT="%H:%M > "
+export HISTIGNORE="&:bg:fg:ll:h"
+export HISTFILESIZE=65536
+export HISTFILE=~/.bash.history.$HOSTNAME
