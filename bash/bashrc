@@ -2,4 +2,11 @@
 
 # source all nonlogin.d files
 source ~/.bash/_utils
+
+if [[ "$TERM" == "dumb" ]]; then
+    export PS1=""
+    unset prompt_command
+    exit 1
+fi
+
 source-dir ~/.bash/nonlogin.d
