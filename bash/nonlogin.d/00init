@@ -1,8 +1,8 @@
 # -*- mode: shell-script -*-
 
 if [[ "$TERM" == "dumb" ]]; then
-    PS1=''
-    return
+    export PS1=''
+    exit 0
 fi
 
 # We'll use these elsewhere
