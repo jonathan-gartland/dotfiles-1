@@ -18,7 +18,7 @@ class CovertCSHSetupFiles(object):
             return None
 
 
-        if self.shell == "zsh":
+        if self.shell == "zsh" or self.shell == "bash":
             self.env = lambda k, v: "export %s=\"%s\"" % (k, v)
             self.path = lambda v: "export PATH=\"\"%s\":$PATH\"" % v
         elif self.shell == "fish":
