@@ -10,6 +10,9 @@
 # change colors
 [color]
     ui = auto
+	status = auto
+	branch = auto
+	diff = auto
 [color "branch"]
     current = yellow reverse
     local = yellow
