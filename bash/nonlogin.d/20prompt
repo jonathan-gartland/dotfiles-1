@@ -1,261 +1,193 @@
 # # -*- mode: shell-script -*-
 
-# #!/bin/bash
-# # Filename:      custom_prompt.sh
-# # Maintainer:    Dave Vehrs 
-# # Last Modified: 12 Jul 2005 13:29:40 by Dave Vehrs
 
-# # Current Format: USER@HOST [dynamic section] { CURRENT DIRECTORY }$ 
-# # USER:      (also sets the base color for the prompt)
-# #   Red       == Root(UID 0) Login shell (i.e. sudo bash)
-# #   Light Red == Root(UID 0) Login shell (i.e. su -l or direct login)
-# #   Yellow    == Root(UID 0) priviledges in non-login shell (i.e. su)
-# #   Brown     == SU to user other than root(UID 0)
-# #   Green     == Normal user
-# # @:
-# #   Light Red == http_proxy environmental variable undefined.
-# #   Green     == http_proxy environmental variable configured.
-# # HOST:
-# #   Red       == Insecure remote connection (unknown type)
-# #   Yellow    == Insecure remote connection (Telnet)
-# #   Brown     == Insecure remote connection (RSH)
-# #   Cyan      == Secure remote connection (i.e. SSH)
-# #   Green     == Local session
-# # DYNAMIC SECTION:  
-# #     (If count is zero for any of the following, it will not appear)
-# #   [scr:#] ==== Number of detached screen sessions
-# #     Yellow    == 1-2
-# #     Red       == 3+
-# #   [bg:#]  ==== Number of backgrounded but still running jobs
-# #     Yellow    == 1-10
-# #     Red       == 11+
-# #   [stp:#] ==== Number of stopped (backgrounded) jobs
-# #     Yellow    == 1-2
-# #     Red       == 3+
-# # CURRENT DIRECTORY:     (truncated to 1/4 screen width)
-# #   Red       == Current user does not have write priviledges
-# #   Green     == Current user does have write priviledges
-# # NOTE:
-# #   1.  Displays message on day change at midnight on the line above the
-# #       prompt (Day changed to...). 
-# #   2.  Command is added to the history file each time you hit enter so its
-# #       available to all shells.
-
-# # Configure Colors:
-# COLOR_WHITE='\033[1;37m'
-# COLOR_LIGHTGRAY='033[0;37m'
-# COLOR_GRAY='\033[1;30m'
-# COLOR_BLACK='\033[0;30m'
-# COLOR_RED='\033[0;31m'
-# COLOR_LIGHTRED='\033[1;31m'
-# COLOR_GREEN='\033[0;32m'
-# COLOR_LIGHTGREEN='\033[1;32m'
-# COLOR_BROWN='\033[0;33m'
-# COLOR_YELLOW='\033[1;33m'
-# COLOR_BLUE='\033[0;34m'
-# COLOR_LIGHTBLUE='\033[1;34m'
-# COLOR_PURPLE='\033[0;35m'
-# COLOR_PINK='\033[1;35m'
-# COLOR_CYAN='\033[0;36m'
-# COLOR_LIGHTCYAN='\033[1;36m'
-# COLOR_DEFAULT='\033[0m'
-
-# # Function to set prompt_command to.
-# function promptcmd () {
-#     history -a 
-#     local SSH_FLAG=0
-#     local TTY=$(tty | awk -F/dev/ '{print $2}')
-#     if [[ ${TTY} ]]; then 
-#         local SESS_SRC=$(who | grep "$TTY "  | awk '{print $6 }')
-#     fi
-    
-#     # Titlebar
-#     case ${TERM} in 
-#         xterm*  )  
-#             local TITLEBAR='\[\033]0;\u@\h: { \w }  \007\]'
-#             ;;
-#         *       )  
-#             local TITLEBAR=''                               
-#             ;;
-#     esac
-#     PS1="${TITLEBAR}"
-  
-#     # Test for day change.
-#     if [ -z $DAY ] ; then
-#         export DAY=$(date +%A)
-#     else
-#         local today=$(date +%A)
-#         if [ "${DAY}" != "${today}" ]; then
-#             PS1="${PS1}\n\[${COLOR_GREEN}\]Day changed to $(date '+%A, %d %B %Y').\n"
-#             export DAY=$today
-#        fi
-#     fi
-   
-#     # User
-#     if [ ${UID} -eq 0 ] ; then
-#         if [ "${USER}" == "${LOGNAME}" ]; then
-#             if [[ ${SUDO_USER} ]]; then
-#                 PS1="${PS1}\[${COLOR_RED}\]\u"
-#             else
-#                 PS1="${PS1}\[${COLOR_LIGHTRED}\]\u"
-#             fi
-#         else                               
-#             PS1="${PS1}\[${COLOR_YELLOW}\]\u"
+# # http://opinionated-programmer.com/2011/01/colorful-bash-prompt-reflecting-git-status/
+# function _git_prompt() {
+#     local git_status="`git status -unormal 2>&1`"
+#     if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+#         if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+#             local ansi=42
+#         elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+#             local ansi=43
+#         else
+#             local ansi=45
 #         fi
-#     else
-#         if [ ${USER} == ${LOGNAME} ]; then     
-#             PS1="${PS1}\[${COLOR_GREEN}\]\u"
-#         else                               
-#             PS1="${PS1}\[${COLOR_BROWN}\]\u"
+#         if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
+#             branch=${BASH_REMATCH[1]}
+#             test "$branch" != master || branch=' '
+#         else
+#             # Detached HEAD.  (branch=HEAD is a faster alternative.)
+#             branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
+#                 echo HEAD`)"
 #         fi
+#         echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
 #     fi
-
-#     # HTTP Proxy var configured or not
-#     if [ -n "$http_proxy" ] ; then
-#         PS1="${PS1}\[${COLOR_GREEN}\]@"
-#     else                               
-#         PS1="${PS1}\[${COLOR_LIGHTRED}\]@"
-#     fi
-
-#     # Host
-
-#     if [[ ${SSH_CLIENT} ]] || [[ ${SSH2_CLIENT} ]]; then 
-#         SSH_FLAG=1
-#     fi
-#     if [ ${SSH_FLAG} -eq 1 ]; then 
-#        PS1="${PS1}\[${COLOR_CYAN}\]\h "
-#     elif [[ -n ${SESS_SRC} ]]; then 
-#         if [ "${SESS_SRC}" == "(:0.0)" ]; then 
-#         PS1="${PS1}\[${COLOR_GREEN}\]\h "
-#         else 
-#             local parent_process=`cat /proc/${PPID}/cmdline`
-#             if [[ "$parent_process" == "in.rlogind*" ]]; then
-#                 PS1="${PS1}\[${COLOR_BROWN}\]\h "
-#             elif [[ "$parent_process" == "in.telnetd*" ]]; then 
-#                 PS1="${PS1}\[${COLOR_YELLOW}\]\h "
-#             else
-#                 PS1="${PS1}\[${COLOR_LIGHTRED}\]\h "
-#             fi
-#         fi
-#     elif [[ "${SESS_SRC}" == "" ]]; then
-#         PS1="${PS1}\[${COLOR_GREEN}\]\h "
-#     else                                 
-#         PS1="${PS1}\[${COLOR_RED}\]\h " 
-#     fi
-
-#     # Detached Screen Sessions
-#     local DTCHSCRN=$(screen -ls | grep -c Detach )
-#     if [ ${DTCHSCRN} -gt 2 ]; then
-#         PS1="${PS1}\[${COLOR_RED}\][scr:${DTCHSCRN}] "
-#     elif [ ${DTCHSCRN} -gt 0 ]; then
-#         PS1="${PS1}\[${COLOR_YELLOW}\][scr:${DTCHSCRN}] "
-#     fi
-   
-#     # Backgrounded running jobs
-#     local BKGJBS=$(jobs -r | wc -l )
-#     if [ ${BKGJBS} -gt 2 ]; then
-#         PS1="${PS1}\[${COLOR_RED}\][bg:${BKGJBS}]"
-#     elif [ ${BKGJBS} -gt 0 ]; then
-#         PS1="${PS1}\[${COLOR_YELLOW}\][bg:${BKGJBS}] "
-#     fi
-    
-#     # Stopped Jobs
-#     local STPJBS=$(jobs -s | wc -l )
-#     if [ ${STPJBS} -gt 2 ]; then
-#         PS1="${PS1}\[${COLOR_RED}\][stp:${STPJBS}]"
-#     elif [ ${STPJBS} -gt 0 ]; then
-#         PS1="${PS1}\[${COLOR_YELLOW}\][stp:${STPJBS}] "
-#     fi
-    
-#     # Bracket {
-#     if [ ${UID} -eq 0 ]; then              
-#         if [ "${USER}" == "${LOGNAME}" ]; then 
-#             if [[ ${SUDO_USER} ]]; then
-#                 PS1="${PS1}\[${COLOR_RED}\]"
-#             else
-#                 PS1="${PS1}\[${COLOR_LIGHTRED}\]"
-#             fi
-#         else                               
-#             PS1="${PS1}\[${COLOR_YELLOW}\]"
-#         fi
-#     else                                 
-#         if [ "${USER}" == "${LOGNAME}" ]; then 
-#             PS1="${PS1}\[${COLOR_GREEN}\]"
-#         else                               
-#             PS1="${PS1}\[${COLOR_BROWN}\]"
-#         fi
-#     fi
-#     PS1="${PS1}{ "
-    
-#     # Working directory
-#     if [ -w "${PWD}" ]; then 
-#         PS1="${PS1}\[${COLOR_GREEN}\]$(prompt_workingdir)"
-#     else                                 
-#         PS1="${PS1}\[${COLOR_RED}\]$(prompt_workingdir)"
-#     fi
-    
-#     # Closing bracket } and $\#
-#     if [ ${UID} -eq 0 ]; then              
-#         if [ "${USER}" == "${LOGNAME}" ]; then 
-#             if [[ ${SUDO_USER} ]]; then
-#                 PS1="${PS1}\[${COLOR_RED}\]"
-#             else
-#                 PS1="${PS1}\[${COLOR_LIGHTRED}\]"
-#             fi
-#         else                               
-#             PS1="${PS1}\[${COLOR_YELLOW}\]"
-#         fi
-#     else                                 
-#         if [ "${USER}" == "${LOGNAME}" ]; then 
-#             PS1="${PS1}\[${COLOR_GREEN}\]"
-#         else                               
-#             PS1="${PS1}\[${COLOR_BROWN}\]"
-#         fi
-#     fi
-#     PS1="${PS1} }\$\[${COLOR_DEFAULT}\] "
-# }     
-
-# # Trim working dir to 1/4 the screen width
-# function prompt_workingdir () {
-#   local pwdmaxlen=$(($COLUMNS/4))
-#   local trunc_symbol="..."
-#   if [[ $PWD == $HOME* ]]; then
-#     newPWD="~${PWD#$HOME}" 
-#   else
-#     newPWD=${PWD}
-#   fi
-#   if [ ${#newPWD} -gt $pwdmaxlen ]; then
-#     local pwdoffset=$(( ${#newPWD} - $pwdmaxlen + 3 ))
-#     newPWD="${trunc_symbol}${newPWD:$pwdoffset:$pwdmaxlen}"
-#   fi
-#   echo $newPWD
 # }
-
-# # Determine what prompt to display:
-# # 1.  Display simple custom prompt for shell sessions started
-# #     by script.  
-# # 2.  Display "bland" prompt for shell sessions within emacs or 
-# #     xemacs.
-# # 3   Display promptcmd for all other cases.
-
-# function load_prompt () {
-#     # Get PIDs
-#     local parent_process=$(cat /proc/$PPID/cmdline | cut -d \. -f 1)
-#     local my_process=$(cat /proc/$$/cmdline | cut -d \. -f 1)
-
-#     if  [[ $parent_process == script* ]]; then
-#         PROMPT_COMMAND=""
-#         PS1="\t - \# - \u@\H { \w }\$ "
-#     elif [[ $parent_process == emacs* || $parent_process == xemacs* ]]; then
-#         PROMPT_COMMAND=""
-#         PS1="\u@\h { \w }\$ "
-#     else
-#         export DAY=$(date +%A)
-#         PROMPT_COMMAND=promptcmd
-#      fi 
-#     export PS1 PROMPT_COMMAND
+# function _prompt_command() {
+#     PS1="`_git_prompt`$PS1"
 # }
+# PROMPT_COMMAND=_prompt_command
 
-# load_prompt()
+
+# _bold=$(tput bold)
+# _normal=$(tput sgr0)
+
+# __vcs_dir() {
+#   local vcs base_dir sub_dir ref
+#   sub_dir() {
+#     local sub_dir
+#     sub_dir=$(readlink -f "${PWD}")
+#     sub_dir=${sub_dir#$1}
+#     echo ${sub_dir#/}
+#   }
+
+#   git_dir() {
+#     base_dir=$(git-rev-parse --show-cdup 2>/dev/null) || return 1
+#     base_dir=$(readlink -f "$base_dir/..")
+#     sub_dir=$(git-rev-parse --show-prefix)
+#     sub_dir=${sub_dir%/}
+#     ref=$(git-symbolic-ref -q HEAD || git-name-rev --name-only HEAD 2>/dev/null)
+#     ref=${ref#refs/heads/}
+#     vcs="git"
+#   }
+
+#   svn_dir() {
+#     [ -d ".svn" ] || return 1
+#     base_dir="."
+#     while [ -d "$base_dir/../.svn" ]; do base_dir="$base_dir/.."; done
+#     base_dir=$(readlink -f "$base_dir")
+#     sub_dir=$(sub_dir "${base_dir}")
+#     ref=$(svn info "$base_dir" | awk '/^URL/ { sub(".*/","",$0); r=$0 } /^Revision/ { sub("[^0-9]*","",$0); print r":"$0 }')
+#     vcs="svn"
+#   }
+
+#   hg_dir() {
+#     base_dir="."
+#     while [ ! -d "$base_dir/.hg" ]; do base_dir="$base_dir/.."; [ $(readlink -f "${base_dir}") = "/" ] && return 1; done
+#     base_dir=$(readlink -f "$base_dir")
+#     sub_dir=$(sub_dir "${base_dir}")
+#     ref=$(< "${base_dir}/.hg/branch")
+#     vcs="hg"
+#   }
+
+#   git_dir ||
+#   svn_dir ||
+#   hg_dir ||
+#   base_dir="$PWD"
+
+# if [ -n "$vcs" ]; then
+# __vcs_prefix="($vcs)"
+# __vcs_base_dir="${base_dir/$HOME/~}"
+# __vcs_ref="[$ref]"
+# __vcs_sub_dir="${sub_dir}"
+# else
+# __vcs_prefix=""
+# __vcs_base_dir="${PWD/$HOME/~}"
+# __vcs_ref=""
+# __vcs_sub_dir=""
+# fi
+# }
+# PROMPT_COMMAND=__vcs_dir
+# PS1='${debian_chroot:+($debian_chroot)}\u@\h:$__vcs_prefix\[${_bold}\]${__vcs_base_dir}\[${_normal}\]${__vcs_ref}\[${_bold}\]${__vcs_sub_dir}\[${_normal}\]\$ '
+
+# https://github.com/teranex/dotfiles/blob/master/bash/trexprompt
+#!/bin/bash
+
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_BRANCH_COLOR="\[\033[38;5;155m\]\[\033[48;5;235m\]"
+PS1_EXIT_RED="\[\033[38;5;208m\]\[\033[48;5;52m\]"
+
+# === Initializing static variables ===========================================
+case $TERM in
+    xterm* | screen)
+        CORNER_TOP="\[\033(0l\033(B\]"
+        CORNER_BOTTOM="\[\033(0m\033(B\]"
+        LINE_TWO="\[\033(0qq\033(B\]"
+        ;;
+    *)
+        LINE_TWO="--"
+        ;;
+esac
+
+if [ "$PROMPT_COLOR_1" == "" ];
+then
+    PROMPT_COLOR_1="\[\033[48;5;$(($(hostname | cksum | cut -c1-3) % 56))m\]"
+fi
+
+if [ "$PROMPT_COLOR_2" == "" ];
+then
+    PROMPT_COLOR_2="\[\033[48;5;$(($(hostname | cksum | cut -c1-3) % 65))m\]"
+fi
+
+GRAY="\[\033[1;30m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
+NO_COLOUR="\[\033[0m\]"
+
+type __git_ps1 > /dev/null 2>&1
+PS1_GIT_NOT_AVAILABLE=$?
 
 
+# === The actual function to create the prompt ================================
+function prompt_command
+{
+    # === first inspect the previous exit code ================================
+    # when this is not zero (=previous command exited with an error, show it
+    # in the prompt
+    local es=$?
+    local exitStatusLength=""
+    if [ $es -ne 0 ]
+    then
+        local exitStatus="${PS1_EXIT_RED} $(printf "%3d" ${es}) $NO_COLOUR$LINE_TWO"
+        exitStatusLength="       "
+    fi
+
+    history -a # write previous executed command to the history
+
+    # === use other color when user is root ===================================
+    if [ $UID -eq "0" ]; # user is root
+    then
+        PROMPT_COLOR_1="\[\033[0;41m\]"
+    fi
+
+    # === First part of the prompt ============================================
+    # this part is always present and show the basic info
+    local hostn=$(hostname -s)
+    local usern=$(whoami)
+
+    if [ ${#PWD} -gt 50 ];
+    then
+        local working_dir=${PWD:0:10}...${PWD:$((${#PWD}-37))};
+    else
+        local working_dir=$PWD
+    fi
+
+    PS1="$NO_COLOUR$CORNER_TOP$LINE_TWO[$PROMPT_COLOR_1$usern@$hostn$NO_COLOUR]$LINE_TWO[$PROMPT_COLOR_1${working_dir}$NO_COLOUR]$LINE_TWO$exitStatus"
+        
+
+    # === Second part of the prompt: git info =================================
+    if [ $COLUMNS -gt 98 ];
+    then
+        if [ $PS1_GIT_NOT_AVAILABLE = 0 ];
+        then
+            local git_branch=$(__git_ps1 '  %s  ')
+            PS1="$PS1$GIT_BRANCH_COLOR$git_branch$NO_COLOUR"
+        fi
+        PS1="$PS1${LINE_TWO}${LINE_TWO}$LIGHT_GRAY${LINE_TWO}$GRAY${LINE_TWO}$NO_COLOUR"
+    fi
+
+
+    # === Third part of the prompt, for wide screens ==========================
+    # shows the current time and load on the right side of the screen
+    if [ ${COLUMNS} -gt 128 ];
+    then
+        local fill=$(printf "%$(($COLUMNS-${#usern}-${#hostn}-${#working_dir}-${#git_branch}-${#exitStatusLength}-50))s" '')
+
+        PS1="$PS1$fill$GRAY${LINE_TWO}$LIGHT_GRAY${LINE_TWO}$NO_COLOUR${LINE_TWO}[$PROMPT_COLOR_2\t$NO_COLOUR]$LINE_TWO[$PROMPT_COLOR_2\$(temp=\$(cat /proc/loadavg) && echo \${temp%% *})$NO_COLOUR]${LINE_TWO}$LIGHT_GRAY${LINE_TWO}$GRAY${LINE_TWO}$NO_COLOUR"
+    fi
+
+    # === Last part of the prompt =============================================
+    # adds a newline and the prompt sign ($ or #)
+    PS1="$PS1\n\$ "
+}
+
+PROMPT_COMMAND=prompt_command
