@@ -32,12 +32,11 @@
   (require 'color-theme-solarized)
   (require 'color-theme-tango)
   (require 'color-theme-tangotango)
+  (require 'color-theme-sanityinc-solarized)
 ;  (require 'color-theme-twilight)
   (require 'color-theme-vim-insert-mode)
   (require 'color-theme-zenburn)
-
-  (color-theme-railscasts))
-
+  (color-theme-sanityinc-solarized-dark))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://emacs-fu.blogspot.com/2009/03/color-theming.html#c8118197870582055840
@@ -61,7 +60,7 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-railscasts)
+(add-hook 'after-make-window-system-frame-hooks 'color-theme-sanityinc-solarized-dark)
 (add-hook 'after-make-console-frame-hooks 'color-theme-solarized-dark)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
