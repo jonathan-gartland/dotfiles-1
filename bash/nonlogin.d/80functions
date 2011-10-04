@@ -12,7 +12,7 @@ function _zsh_run_command # "Local zsh function to run a command"
 function _print_helper
 {
     a2ps_options="--tabsize=4 --highlight-level=heavy --line-numbers=5"
-    command="/usr/bin/env a2ps $a2ps_options $@"
+    command="/usr/bin/env a2ps $a2ps_options $*"
     _zsh_run_command "$command"
 }
 
@@ -80,12 +80,12 @@ function setup_oracle_env
 
 function sql
 {
-    /usr/bin/python $HOME/work/SQL/sql.py $argv
+    /usr/bin/python $HOME/work/SQL/sql.py $*
 }
 
 function start_synergy
 {
-    killall -9  synergys
+    killall -9 synergys
     synergys
 }
 
