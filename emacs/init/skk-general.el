@@ -177,8 +177,7 @@
 ; tramp, for remote access
 (setq tramp-default-method "ssh"
       tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
-      tramp-encoding-shell "/bin/bash"
-      tramp-verbose 4)
+      tramp-verbose 8)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
