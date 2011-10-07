@@ -3,7 +3,8 @@
 ###########################
 
 # xask.py
-"~/bin/cutpass -X ~/local/bin/terminator" "&"
+#"~/bin/cutpass -X ~/local/bin/terminator" "&"
+"/usr/bin/terminator &"
 Control + Mod1 + x
 
 # firefox
