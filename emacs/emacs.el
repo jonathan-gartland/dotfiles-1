@@ -57,7 +57,7 @@
         skk-company.el
         skk-custom.el
         skk-emacslisp-mode.el
-        skk-flyspell.el
+;        skk-flyspell.el
         skk-functions.el
         skk-general.el
         skk-git.el 
@@ -99,7 +99,7 @@
 (autoload 'nxml "skk-xml" "nXml Mode" t)
 ;(autoload 'org-mode "skk-org-mode" "org mode" t)
 (autoload 'ahg "skk-mercurial" "mercurial" t)
-(autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
+;(autoload 'flyspell-mode "skk-flyspell" "flyspell" t)
 (autoload 'wl "skk-wanderlust" "wanderlust" t)
 ;(autoload 'auto-complete-mode "skk-auto-complete" "auto-complete" t)
 (autoload 'python-mode "skk-python" "python-mode" t)
