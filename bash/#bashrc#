@@ -1,6 +1,0 @@
-# -*- mode: shell-script -*-
-# ~/.bashrc is executed by zsh(1) for non-login shells.
-
-# source all nonlogin.d files
-source ~/.bash/_utils
-source-dir ~/.bash/nonlogin.d
