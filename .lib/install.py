@@ -166,6 +166,7 @@ class install(object):
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
+        { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
@@ -192,7 +193,7 @@ class install(object):
         { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
         { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
 
-    def  bash(self, install_type):
+    def bash(self, install_type):
         self._createLinks([
         { 'src': 'bash', 'dst' : '.bash' },
         { 'src': 'bash/bashrc', 'dst': '.bashrc' },
