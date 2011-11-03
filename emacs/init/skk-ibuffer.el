@@ -11,6 +11,8 @@
              (filename . "/web/nh-wetlands-mapper-dev"))
             ("Housing"
              (filename . "/web/housing"))
+            ("RCC"
+             (filename . "/webdev/rcc"))
             ("EPSCoR"
              (or
               (filename . "/web/epscor")
