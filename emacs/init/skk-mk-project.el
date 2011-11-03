@@ -157,7 +157,7 @@
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                  (setq cperl-indent-level 4)))
-                 (shutdown-hook nil)
+                 (shutdown-hook nil)))
 
   (project-def "EPSCOR Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/epscor")
