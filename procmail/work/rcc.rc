@@ -31,20 +31,20 @@
 
 # WebAdmin email
 :0
-* ^(To:Cc):.*web-admin@sr.unh.edu.*
+* ^(To|Cc):.*web-admin@sr.unh.edu.*
 .WebAdmin/
 
 # PAT Related emails
 :0
-* ^(To:CC):.*PATDistrict8@maple.unh.edu.*
+* ^(To|CC):.*PATDistrict8@maple.unh.edu.*
 .Staff/
 
 :0
-* ^(To:CC):.*PATDistrict8@maple.unh.edu.*
+* ^(To|CC):.*PATDistrict8@maple.unh.edu.*
 .Staff/
 
 :0
-* ^(To:CC):.*pat.council@lists.unh.edu.*
+* ^(To|CC):.*pat.council@lists.unh.edu.*
 .Staff/
 
 
