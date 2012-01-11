@@ -5,41 +5,40 @@
 # xask.py
 #"~/bin/cutpass -X ~/local/bin/terminator" "&"
 "/usr/bin/terminator &"
-Control + shift + x
+Control + Mod1 + shift + x
 
 # firefox
 "~/bin/killfirefox.sh; firefox &"
-Control + shift + f
+Control + Mod1 + shift + f
 
 # emacs
 "~/bin/e &"
-Control + shift + e
+Control + Mod1 + shift + e
 
 # dolphin
 "date +%F%T%z | xclip"
-Control + shift + d
+Control + Mod1 + shift + d
 
 # cutpass
 "~/bin/qCutpass &"
-Control + shift + c
+Control + Mod1 + shift + c
 
 # krunner
 "/usr/bin/krunner &"
-Control + shift + r
+Control + Mod1 + shift + r
 
 # google-chrome
 "/usr/bin/google-chrome& "
-Control + shift + g
+Control + Mod1 + shift + g
 
 # qalculate
 "/usr/bin/qalculate&"
-Control + shift + q
+Control + Mod1 + shift + q
 
 # IE 8 via spoo
 "rdesktop -g1500x1100 -uskk -pskk spoo&"
-Control + shift + i
-
+Control + Mod1 + shift + i
 
 # IE 6 via amethyst
 "rdesktop -g1280x1024 -uskk -pv93FgC  amethyst&"
-Control + shift + a
+Control + Mod1 + shift + a
