@@ -2,6 +2,13 @@
 #
 # ~/.zshrc is executed by zsh(1) for non-login shells.
 
+echo "zshrc"
+
+if [[ "$TERM" == "dumb" ]]; then
+    PS1="" 
+    exit 0
+fi
+
 # source all nonlogin.d files
 source ~/.zsh/_utils
 source-dir ~/.zsh/nonlogin.d

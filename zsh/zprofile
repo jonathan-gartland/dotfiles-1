@@ -2,6 +2,13 @@
 #
 # ~/.zprofile is executed by zsh(1) for login shells.
 
+echo "zshprobile"
+
+if [[ "$TERM" == "dumb" ]]; then
+    PS1="" 
+    exit 0
+fi
+
 # source all login.d files
 source ~/.zsh/_utils
 source-dir ~/.zsh/login.d
