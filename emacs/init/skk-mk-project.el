@@ -15,37 +15,37 @@
   (global-set-key (kbd "C-c p d") 'project-dired)
   (global-set-key (kbd "C-c p t") 'project-tags)
 
-  (defun web-project-def-factory (project-name hostname start-dir _vcs)
-    "Create a project-def for RCI's web sites."
+  ;; (defun web-project-def-factory (project-name hostname start-dir _vcs)
+  ;;   "Create a project-def for RCI's web sites."
 
-    (project-def project-name
-    '(
-      (basedir (concat "/ssh:" hostname ":" start-dir))
-      (src-patterns _src-patterns)
-      (file-list-cache (concat "~/.emacs.d/.cache/" start-dir "files"))
-      (open-files-cache (concat "~/.emacs.d/.cache/" start-dir "open-files"))
-      (tag-files (concat "~/.emacs.d/.cache/" start-dir "TAGS"))
-      (vcs _vcs)
-      (ack-args _src-patterns)
-      (compile-cmd nil)
-      (index-find-cmd (lambda (content)
-                          ; TODO: 
-                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                          ; 2) It'd be nice to use src-patterns and ignore-patterns
-                        (let* (
-                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                            (when (mk-proj-get-vcs-path)
-                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+  ;;   (project-def project-name
+  ;;   '(
+  ;;     (basedir (concat "/ssh:" hostname ":" start-dir))
+  ;;     (src-patterns _src-patterns)
+  ;;     (file-list-cache (concat "~/.emacs.d/.cache/" start-dir "files"))
+  ;;     (open-files-cache (concat "~/.emacs.d/.cache/" start-dir "open-files"))
+  ;;     (tag-files (concat "~/.emacs.d/.cache/" start-dir "TAGS"))
+  ;;     (vcs _vcs)
+  ;;     (ack-args _src-patterns)
+  ;;     (compile-cmd nil)
+  ;;     (index-find-cmd (lambda (content)
+  ;;                         ; TODO: 
+  ;;                         ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+  ;;                         ; 2) It'd be nice to use src-patterns and ignore-patterns
+  ;;                       (let* (
+  ;;                                (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+  ;;                                                  (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
+  ;;                           (when (mk-proj-get-vcs-path)
+  ;;                             (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
                             
-                            (concat "ssh " hostname " \"" find-cmd "\""))))
-      (startup-hook (lambda ()
-                      (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                      (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                      (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                      (setq cperl-indent-level 4))))))
+  ;;                           (concat "ssh " hostname " \"" find-cmd "\""))))
+  ;;     (startup-hook (lambda ()
+  ;;                     (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+  ;;                     (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+  ;;                     (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+  ;;                     (setq cperl-indent-level 4))))))
 
-  (web-project-def-factory "TEST" "lithium.sr.unh.edu" "/web/epscor" 'git)
+  ;; (web-project-def-factory "TEST" "lithium.sr.unh.edu" "/web/epscor" 'git)
   
   ;; 
   ;; Web Projects
@@ -121,21 +121,21 @@
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
-                 (src-find-cmd (lambda (context)
+                 ;; (src-find-cmd (lambda (context)
 
-                          ; TODO: 
-                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                 ;;          ; TODO: 
+                 ;;          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                 ;;          ; 2) It'd be nice to use src-patterns and ignore-patterns
 
-                          (let* (
-                                 (hostname "lithium.sr.unh.edu")
-                                 (start-dir "/web/epscor")
-                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                            (when (mk-proj-get-vcs-path)
-                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                 ;;          (let* (
+                 ;;                 (hostname "lithium.sr.unh.edu")
+                 ;;                 (start-dir "/web/epscor")
+                 ;;                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                 ;;                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
+                 ;;            (when (mk-proj-get-vcs-path)
+                 ;;              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
                             
-                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                 ;;            (concat "ssh " hostname " \"" find-cmd "\""))))
 
                  (index-find-cmd (lambda (contet)
                           ; TODO: 
@@ -157,7 +157,7 @@
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                  (setq cperl-indent-level 4)))
-                 (shutdown-hook nil)
+                 (shutdown-hook nil)))
 
   (project-def "EPSCOR Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/epscor")
@@ -170,7 +170,7 @@
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
                  (index-find-cmd (lambda (content)
-'                          ; TODO: 
+                          ; TODO: 
                           ; 1) Update to use regex to split up basedir, instead of hard-coding data.
                           ; 2) It'd be nice to use src-patterns and ignore-patterns
                           (let* (
@@ -246,11 +246,13 @@
                             
                             (concat "ssh " hostname " \"" find-cmd "\""))))
                  (startup-hook (lambda ()
+                                 (setq tags-file-name "/ssh:lithium.sr.unh.edu:/web/housing/perl/TAGS")
                                  (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                  (setq cperl-indent-level 4)))
-                 (shutdown-hook nil)))
+                 (shutdown-hook (lambda ()
+                                  (setq tags-file-name nil)))))
 
   (project-def "Housing Preview"
                '((basedir "/ssh:myxomatosis.sr.unh.edu:/web/housing")
@@ -267,7 +269,7 @@
                           ; TODO: 
                           ; 1) Update to use regex to split up basedir, instead of hard-coding data.
                           ; 2) It'd be nice to use src-patterns and ignore-patterns
-                          (let* (
+                                   (let* (
                                  (hostname "myxomatosis.sr.unh.edu")
                                  (start-dir "/web/housing")
                                  (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
@@ -285,7 +287,7 @@
 
   (project-def "RCC Development"
                '((basedir "/ssh:amnesiac.sr.unh.edu:/webdev/rcc")
-                 (src-patterns ("*.js *.html *.pm *.css"))
+                 (src-patterns ("*.pm"))
                  (ignore-patterns nil)
                  (tags-file nil)
                  (file-list-cache "~/.emacs.d/.cache/rcc-dev/files")
@@ -294,19 +296,21 @@
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
+
                  (index-find-cmd (lambda (content)
                           ; TODO: 
                           ; 1) Update to use regex to split up basedir, instead of hard-coding data.
                           ; 2) It'd be nice to use src-patterns and ignore-patterns
-                          (let* (
+                                   (let* (
                                  (hostname "amnesiac.sr.unh.edu")
                                  (start-dir "/webdev/rcc")
                                  (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
+                                                   (mk-proj-find-cmd-ignore-args  mk-proj-ignore-patterns))))
                             (when (mk-proj-get-vcs-path)
                               (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
                             
                             (concat "ssh " hostname " \"" find-cmd "\""))))
+
                  (startup-hook (lambda ()
                                  (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -333,11 +337,11 @@
                                  (hostname "velouria.sr.unh.edu")
                                  (start-dir "/web/humanf")
                                  (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
+                                                   (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns)))))
                             (when (mk-proj-get-vcs-path)
                               (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
                             
-                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                            (concat "ssh " hostname " \"" find-cmd "\"")))
                  (startup-hook (lambda ()
                                  (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
