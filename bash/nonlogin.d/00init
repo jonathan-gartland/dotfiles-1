@@ -38,3 +38,5 @@ shopt -s promptvars
 #shopt -o mailwarn
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
+[ -s  "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh" ] && source "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh"

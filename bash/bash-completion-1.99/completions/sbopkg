@@ -1,0 +1,74 @@
+# bash completion for sbopkg tool                          -*- shell-script -*-
+
+_sbopkg()
+{
+    local cur prev words cword
+    _init_completion || return
+
+    if [[ "$cur" == -* ]]; then
+        COMPREPLY=( $( compgen -W '-b -c -d -e -f -g -h -i -k -l -o
+            -P -p -q -R -r -s -u -V -v' -- "$cur" ) )
+        return
+    fi
+
+    case "$prev" in
+        -e)
+            COMPREPLY=( $( compgen -W 'ask continue stop' -- "$cur" ) )
+            return
+            ;;
+        -f)
+            _filedir
+            return
+            ;;
+        -d)
+            _filedir -d
+            return
+            ;;
+        -V)
+            COMPREPLY=( $( compgen -W "? \
+                $( sbopkg -V ? 2>&1 | cut -s -f1 )" -- "$cur" ) )
+            return
+            ;;
+        -i|-b)
+            ;;
+        *)
+            return
+            ;;
+    esac
+
+    local i config
+    config="/etc/sbopkg/sbopkg.conf"
+    for (( i=${#words[@]}-1; i>0; i-- )); do
+        if [[ "${words[i]}" == -f ]]; then
+            config="${words[i+1]}"
+            break
+        fi
+    done
+
+    if [[ ! -r "$config" ]]; then
+        return
+    fi
+
+    . $config
+
+    for (( i=1; i<${#words[@]}; i++ )); do
+        case "${words[i]}" in
+            -V)
+                REPO_NAME="${words[i+1]%%/*}"
+                REPO_BRANCH="${words[i+1]#*/}"
+                ;;
+            -d)
+                REPO_ROOT="${words[i+1]}"
+                ;;
+        esac
+    done
+
+    if [[ ! -r $REPO_ROOT/$REPO_NAME/$REPO_BRANCH/SLACKBUILDS.TXT ]]; then
+        return
+    fi
+    COMPREPLY=( $( sed -ne "/^SLACKBUILD NAME: $cur/{s/^SLACKBUILD NAME: //;p}"\
+        $REPO_ROOT/$REPO_NAME/$REPO_BRANCH/SLACKBUILDS.TXT )
+        $( cd $QUEUEDIR; compgen -f -X "!*.sqf"  -- "$cur" ) )
+} && complete -F _sbopkg sbopkg
+
+# ex: ts=4 sw=4 et filetype=sh
