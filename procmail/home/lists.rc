@@ -1,4 +1,44 @@
-# $Id: lists.rc 2671 2009-04-28 13:41:49Z skk $
+
+# --- Rust mailing lists ---
+
+# Dev
+:0
+* (To:Cc):.*rust-dev@mozilla.org.*
+.Mailing\ Lists.Rust\ Dev/
+# --- Rust Dev mailing lists ---
+
+# -- QTile Lists ---
+:0
+* (To|Cc):.*qtile-dev@googlegroups.com.*
+.Mailing\ Lists.QTile\ Dev/
+# -- QTile Dev Lists ---
+
+# ---- StumpWM Mailing Lists ---
+# StumpWM Users 
+:0
+* ^(Subject|Sender):.*\[STUMP\].*
+.Mailing\ Lists.StumpWM/
+# ---- Fish Mailing Lists ---
+
+# ---- Scheme Lists ----
+
+# MIT Schme User List
+:0
+* ^(To|Cc):.*mit-scheme-users@gnu.org.*
+.Mailing\ Lists.MIT\ Scheme\ User/
+
+# GNU Guile Users List
+:0
+* ^(To|Cc):.*guile-user@gnu.org.*
+.Mailing\ Lists.GNU\ Guile\ User/
+
+# ---- Scheme Lists ----
+
+# ---- leiningen ----
+:0
+* (To|Cc):.*leiningen@googlegroups.com.*
+.Mailing\ Lists.Leiningen/
+# ---- 9/12 Project ----
 
 # ---- 9/12 Project ----
 :0 
@@ -62,7 +102,7 @@
 
 # Wanderlust
 :0
-* (To|Cc):.*wl-en@lists.airs.net.*
+* (To|Cc):.*wl-en@ml.gentei.org.*
 .Mailing\ Lists.Wanderlust/
 # --- GNU Mailing Lists ----
 # ----- SymPy ----
@@ -72,6 +112,10 @@
 # ----- SymPy ----
 
 # ----- Clojure ------
+:0
+* (To|Cc):.*4clojure@googlegroups.com.*
+.Mailing\ Lists.4Clojure/
+
 :0
 * (To|Cc):.*clojure@googlegroups.com.*
 .Mailing\ Lists.Clojure/
