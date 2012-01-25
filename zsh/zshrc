@@ -2,7 +2,7 @@
 #
 # ~/.zshrc is executed by zsh(1) for non-login shells.
 
-echo "zshrc"
+#echo "zshrc"
 
 if [[ "$TERM" == "dumb" ]]; then
     PS1="" 
