@@ -163,6 +163,8 @@ class install(object):
         { 'src': 'dotfiles/signature.HOME', 'dst': '.signature.home' },
         { 'src': 'dotfiles/signature.WORK', 'dst': '.signature.work' },
         { 'src': 'dotfiles/signature.WORK.HTML', 'dst': '.signature.work.html' },
+        { 'src': 'dotfiles/authinfo.HOME.gpg', 'dst': '.authinfo.home' },
+        { 'src': 'dotfiles/authinfo.WORK.gpg', 'dst': '.authinfo.work' },
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
