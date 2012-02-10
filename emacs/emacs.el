@@ -57,6 +57,7 @@
         skk-company.el
         skk-custom.el
         skk-emacslisp-mode.el
+        skk-eldoc.el
 ;        skk-flyspell.el
         skk-functions.el
         skk-general.el
@@ -67,7 +68,9 @@
         skk-js2mode.el
         skk-makefilemode.el
         skk-mk-project.el
+        skk-mu4e.el
         skk-org-mode.el
+        skk-scheme.el
         skk-perl.el
         ;; skk-python.el
         skk-sql.el
@@ -129,6 +132,33 @@
 (add-to-list 'clean-buffer-list-kill-buffer-names
              "*Pymacs*"
              "trace.log")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://tychoish.com/rhizome/persistent-emacs-daemons/
+ (setq-default inhibit-startup-message 't
+               initial-scratch-message 'nil
+               save-place t
+               scroll-bar-mode nil
+               tool-bar-mode nil
+               menu-bar-mode nil
+               scroll-margin 0
+               indent-tabs-mode nil
+               flyspell-issue-message-flag 'nil
+               size-indication-mode t
+               scroll-conservatively 25
+               scroll-preserve-screen-position 1
+               cursor-in-non-selected-windows nil)
+
+(setq default-frame-alist '((font-backend . "xft")
+                             (font . "Inconsolata-10")
+                             (vertical-scroll-bars . 0)
+                             (menu-bar-lines . 0)
+                             (tool-bar-lines . 0)
+                            )) 
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
