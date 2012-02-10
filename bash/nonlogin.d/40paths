@@ -27,7 +27,7 @@ else
     export PATH="$PATH:/usr/sbin:/sbin"
 fi
 
-export MANPATH="$MANPATH:$HOME/local/man"
+export MANPATH="$MANPATH:$HOME/local/share/man"
 export TERMINFO="$HOME/.terminfo"
 
 # set PYTHONPATH
