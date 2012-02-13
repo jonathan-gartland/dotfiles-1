@@ -15,6 +15,8 @@
   (require 'color-theme-cobalt)
   (require 'color-theme-complexity) 
   (require 'color-theme-wombat)
+  (require 'color-theme-subdued)
+  (require 'color-theme-gruber-darker)
                                         ;(require 'color-theme-wombat+)
                                         ;(require 'color-theme-twilight)
                                         ;(require 'color-theme-zenburn)
@@ -22,7 +24,7 @@
                                         ;(color-theme-sanityinc-solarized-dark)
   (require 'color-theme-vim-insert-mode)
   (require 'zenburn)
-  (color-theme-zenburn)
+  (color-theme-gruber-darker)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
