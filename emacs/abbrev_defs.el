@@ -21,25 +21,15 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
-
-(define-abbrev-table 'bibtex-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
 (define-abbrev-table 'bubbles-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
-
-(define-abbrev-table 'calendar-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
@@ -93,10 +83,6 @@
 
 (define-abbrev-table 'csv-mode-abbrev-table '())
 
-(define-abbrev-table 'custom-new-theme-mode-abbrev-table '())
-
-(define-abbrev-table 'custom-theme-choose-mode-abbrev-table '())
-
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
 (define-abbrev-table 'dig-mode-abbrev-table '())
@@ -115,27 +101,11 @@
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
-(define-abbrev-table 'finder-mode-abbrev-table '())
-
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
 
-(define-abbrev-table 'gdb-breakpoints-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-disassembly-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-frames-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-locals-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-memory-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-registers-mode-abbrev-table '())
-
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-threads-mode-abbrev-table '())
 
 (define-abbrev-table 'global-abbrev-table '())
 
@@ -161,9 +131,7 @@
 
 (define-abbrev-table 'inferior-scheme-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -175,8 +143,6 @@
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
 
-(define-abbrev-table 'lisp-interaction-mode-abbrev-table '())
-
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
@@ -185,13 +151,9 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'nroff-mode-abbrev-table '())
-
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -203,9 +165,7 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -266,11 +226,9 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'sql-mode-abbrev-table '())
 
-(define-abbrev-table 'tar-mode-abbrev-table '())
+(define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
 
