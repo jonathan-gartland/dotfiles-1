@@ -458,6 +458,24 @@
                                  (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
 
                  ))
+
+  (project-def "SICP"
+               '((basedir "~/work/SICP/")
+                 (src-patterns ("*.scm"))
+                 (ignore-patterns nil)
+                 (file-list-cache "~/.emacs.d/.cache/SICP/files")
+                 (open-files-cache "~/.emacs.d/.cache/SICP/open-files")
+                 (tags-file "~/.emacs.d/.cache/SICP/TAGS")
+                 (vcs git)
+                 (ack-args "--scheme")
+                 (compile-cmd nil)
+                 (startup-hook (lambda ()
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
+
+                 ))
+
  )
 
 (provide 'skk-mk-project)
