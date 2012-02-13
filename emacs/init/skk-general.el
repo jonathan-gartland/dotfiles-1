@@ -605,10 +605,10 @@ activate-mark-hook"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/rebox2
-(add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
-(require 'rebox2)
-(global-set-key [(meta q)] 'rebox-dwim)
-(global-set-key [(shift meta q)] 'rebox-cycle)
+;(add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
+;(require 'rebox2)
+;(global-set-key [(meta q)] 'rebox-dwim)
+;(global-set-key [(shift meta q)] 'rebox-cycle)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'edit-server)
