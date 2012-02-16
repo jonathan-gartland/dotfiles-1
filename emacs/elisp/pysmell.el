@@ -1,1 +1,0 @@
-../prerequisite/pysmell/pysmell.el

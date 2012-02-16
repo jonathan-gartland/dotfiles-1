@@ -2,10 +2,10 @@
 (autoload 'company-mode "company" nil t)
 (setq company-minimum-prefix-length 1)
 
-(require 'pysmell)
-(add-hook 'python-mode-hook (lambda () (pysmell-mode 1)))
+;(require 'pysmell)
+;(add-hook 'python-mode-hook (lambda () (pysmell-mode 1)))
 
-(require 'company-ropemacs)
+;(require 'company-ropemacs) ; needs pymacs
 (require 'company-abbrev)
 (require 'company-css)
 (require 'company-elisp)
