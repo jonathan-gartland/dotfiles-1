@@ -32,13 +32,14 @@
 ;                       (:name flyspell :type elpa)
                        (:name flymake :type elpa)
                        (:name bookmark :type emacswiki)
+                       (:name tiling :type emacswiki)
                        (:name cursor-chg :type elpa)
                        (:name multi-term :type elpa)
                        (:name mk-project :type emacswiki)
                        (:name minimap :type emacswiki)
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
-                       (:name shell-pop :type elpa)
+                       (:name shell-pop :type emacswiki)
                        (:name color-theme-github :type elpa)
                        (:name color-theme-dpaste :type elpa)
                        (:name color-theme-emacs-revert-theme :type elpa)
@@ -54,8 +55,8 @@
                        (:name color-theme-cobalt :type elpa)
                        (:name color-theme-complexity :type elpa)
                        (:name color-theme-wombat :type elpa)
-                       (:name color-theme-subdued :type elpa)
-                       (:name color-theme-gruber :type elpa)
+;                       (:name color-theme-subdued :type elpa)
+                       (:name color-theme-gruber-darker :type elpa)
                        (:name color-theme-wombat+ :type elpa)
                        (:name color-theme-twilight :type elpa)
                        (:name color-theme-active :type elpa)
@@ -126,7 +127,6 @@
    rainbow-delimiters
    smart-tab
    tail
-   tiling
    xclip
    zencoding-mode
    yasnippet
