@@ -26,6 +26,8 @@
                'emacs-lisp-mode-hook
                'lisp-mode-hook
                'lisp-interaction-mode-hook
+               ; 'cperl-mode-hook
+               'quack-mode-hook
                ;'c-mode-hook
                ;'c++-mode-hook
                ;'java-mode-hook

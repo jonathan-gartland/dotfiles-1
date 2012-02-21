@@ -51,6 +51,49 @@
   ;; Web Projects
   ;; 
 
+
+  ;; (defun make-project-def-sshfs (_projectname _basedir _vcs)
+  ;;   (let (cache-dirname '(concat "~/.emacs.d/.cache/" _projectname))
+  ;;     (project-def _projectname
+  ;;                  '((basedir  _basedir)
+  ;;                    (src-patterns ("*.js *.html *.pm *.css"))
+  ;;                    (ignore-patterns nil)
+  ;;                    (open-file-cache (concat cache-dirname "/open-files"))
+  ;;                    (file-list-cache (concat cache-dirname "/files"))
+  ;;                    (tags-file (concat cache-dirname "/TAGS"))
+  ;;                    (vcs _vcs)
+  ;;                    (ack-args "--perl --js --html --css")
+  ;;                    (compile-cmd nil)
+  ;;                    (startup-hook (lambda ()
+  ;;                                (setq perl-command "/home/skk/bin/perl_syntax_checker.sh")
+  ;;                                (setq perl-dbg-flags "")
+  ;;                                (setq cperl-indent-level 4)))
+  ;;                    (shutdown-hook (lambda ()))))))
+
+  ;; (make-project-def-sshfs "EPSCOR Developemnt SSHFS" "/sshfs/lithium/web/epscor" 'git)
+  ;; (make-project-def-sshfs "Housing Preview SSHFS" "/sshfs/myxomatosis//web/housing" 'git)
+  ;; (make-project-def-sshfs "EPSCOR Preview SSHFS" "/sshfs/myxomatosis/web/epscor" 'git)
+  ;; (make-project-def-sshfs "EPSCOR Testing SSHFS" "/sshfs/myxomatosis/web/epscor-tnt" 'git)
+
+
+  (project-def "Housing Development (SSHFS)"
+               '((basedir "/sshfs/lithium/web/housing")
+                 (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
+                 (ignore-patterns nil)
+                 (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
+                 (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
+                 (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
+                 (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
+                 (vcs git)
+                 (ack-args "--perl --js --html --css")
+                 (compile-cmd nil)
+                 (startup-hook (lambda ()
+                                 (setq perl-command "/home/skk/bin/perl_syntax_checker.sh")
+                                 (setq perl-dbg-flags "")
+                                 (setq cperl-indent-level 4)))
+                 (shutdown-hook (lambda ()
+                                  (setq tags-file-name nil)))))
+
   (project-def "NEC Live"
                '((basedir "/ssh:contact.sr.unh.edu:/web2/nec")
                  (src-patterns ("*.js *.html *.pm *.css"))
@@ -220,12 +263,11 @@
                                  (setq cperl-indent-level 4)))
                  (shutdown-hook nil)))
 
-
   (project-def "Housing Development"
                '((basedir "/ssh:lithium.sr.unh.edu:/web/housing")
-                 (src-patterns ("*.js *.html *.pm *.css"))
+                 (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
                  (ignore-patterns nil)
-                 (tags-file nil)
+                 (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
                  (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
                  (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
                  (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
@@ -243,8 +285,22 @@
                                                    (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
                             (when (mk-proj-get-vcs-path)
                               (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                            
-                            (concat "ssh " hostname " \"" find-cmd "\""))))
+                            (setq  cmd (concat "ssh " hostname " \"" find-cmd "\""))
+                            cmd)))
+                 (src-find-cmd (lambda (content)
+                          ; TODO: 
+                          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
+                          ; 2) It'd be nice to use src-patterns and ignore-patterns
+                          (let* (
+                                 (hostname "lithium.sr.unh.edu")
+                                 (start-dir "/web/housing")
+                                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
+                                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
+                            (when (mk-proj-get-vcs-path)
+                              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
+                            (setq  cmd (concat "ssh " hostname " \"" find-cmd "\""))
+                            cmd)))
+
                  (startup-hook (lambda ()
                                  (setq tags-file-name "/ssh:lithium.sr.unh.edu:/web/housing/perl/TAGS")
                                  (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
@@ -403,7 +459,24 @@
 
                  ))
 
-)
+  (project-def "SICP"
+               '((basedir "~/work/SICP/")
+                 (src-patterns ("*.scm"))
+                 (ignore-patterns nil)
+                 (file-list-cache "~/.emacs.d/.cache/SICP/files")
+                 (open-files-cache "~/.emacs.d/.cache/SICP/open-files")
+                 (tags-file "~/.emacs.d/.cache/SICP/TAGS")
+                 (vcs git)
+                 (ack-args "--scheme")
+                 (compile-cmd nil)
+                 (startup-hook (lambda ()
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                 (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
+
+                 ))
+
+ )
 
 (provide 'skk-mk-project)
 ;;; skk-mk-project.el ends here

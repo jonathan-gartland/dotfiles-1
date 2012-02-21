@@ -27,7 +27,7 @@ else
     export PATH="$PATH:/usr/sbin:/sbin"
 fi
 
-export MANPATH="$MANPATH:$HOME/local/man"
+export MANPATH="$MANPATH:$HOME/local/share/man"
 export TERMINFO="$HOME/.terminfo"
 
 # set PYTHONPATH
@@ -117,6 +117,10 @@ if [ -n $JAVA_HOME ]; then
     if [ -d $JAVA_HOME/jre/bin ]; then
         export PATH="$JAVA_HOME/jre/bin:$PATH"
     fi
+fi
+
+if [ -n /opt/android-sdk-linux ]; then
+    export PATH="/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:$PATH"
 fi
 
 # add ~/.cljr/bin to path

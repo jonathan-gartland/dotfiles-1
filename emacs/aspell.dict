@@ -1,12 +1,13 @@
-personal_ws-1.1 en 58 
+personal_ws-1.1 en 61 
 py
 PDA
 pdb
-sys
 userinput
+sys
 PDF
 DOIT
 entryPoint
+differentiable
 namespace
 Ui
 ExitPoint
@@ -25,8 +26,8 @@ GetCrashReportORICaseNumber
 execfile
 ExampleModule
 GpsTools
-dll
 jjfoerch
+dll
 DLLs
 getenv
 rootDir
@@ -48,8 +49,10 @@ CRMS
 hostname
 autoload
 AbstractQuery
+differentable
 PartialNextRecord
 API
+Differentiability
 ModuleBase
 README
 UNH

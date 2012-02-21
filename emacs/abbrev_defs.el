@@ -21,21 +21,15 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'bookmark-bmenu-mode-abbrev-table '())
 
 (define-abbrev-table 'bubbles-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
@@ -66,8 +60,8 @@
     ("=over" "=over" cperl-electric-pod 0)
     ("=pod" "=pod" cperl-electric-pod 0)
     ("continue" "continue" cperl-electric-else 0)
-    ("do" "do" cperl-electric-keyword 1)
-    ("else" "else" cperl-electric-else 1)
+    ("do" "do" cperl-electric-keyword 0)
+    ("else" "else" cperl-electric-else 0)
     ("elsif" "elsif" cperl-electric-keyword 0)
     ("for" "for" cperl-electric-keyword 0)
     ("foreach" "foreach" cperl-electric-keyword 0)
@@ -75,7 +69,7 @@
     ("formy" "formy" cperl-electric-keyword 0)
     ("head1" "head1" cperl-electric-pod 0)
     ("head2" "head2" cperl-electric-pod 0)
-    ("if" "if" cperl-electric-keyword 2)
+    ("if" "if" cperl-electric-keyword 0)
     ("over" "over" cperl-electric-pod 0)
     ("pod" "pod" cperl-electric-pod 0)
     ("unless" "unless" cperl-electric-keyword 0)
@@ -107,8 +101,6 @@
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
-(define-abbrev-table 'finder-mode-abbrev-table '())
-
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
@@ -137,9 +129,9 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'inferior-scheme-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'js-mode-abbrev-table '())
 
@@ -151,8 +143,6 @@
 
 (define-abbrev-table 'latex-mode-abbrev-table '())
 
-(define-abbrev-table 'lisp-interaction-mode-abbrev-table '())
-
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
@@ -161,13 +151,9 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'nroff-mode-abbrev-table '())
-
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
@@ -179,9 +165,7 @@
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -242,11 +226,9 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'sql-mode-abbrev-table '())
 
-(define-abbrev-table 'tar-mode-abbrev-table '())
+(define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
 

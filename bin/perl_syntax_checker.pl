@@ -1,8 +1,14 @@
 #!/usr/bin/perl
-use lib '/usr/local/apache/lib/perl';
-use lib '/webdev/events/api';
-use lib '/web/seagrant-development/perl';
-require '/usr/local/apache/conf/startup.pl';
+
+use lib '/web/perl';
+use lib '/web/layout/perl';
+use lib '/web/housing/perl';
+use lib '/web/epscor/perl';
+
+use lib '/sshfs/lithium/usr/lib/perl5/site_perl';
+use lib '/sshfs/lithium/web/perl';
+use lib '/sshfs/lithium/web/housing/perl';
+use lib '/sshfs/lithium/web/epscor/perl';
 
 my $rv = 0;
 
@@ -11,7 +17,7 @@ for (@ARGV) {
     $rv = require $_;
   }
   elsif (-d $_) {
-    foreach my $fn (`find '$_' -name '*.pm'`) {
+    foreach my $fn (`find ./ -name '*.pm'`) {
       chomp $fn;
       $rv = require $fn;
     }

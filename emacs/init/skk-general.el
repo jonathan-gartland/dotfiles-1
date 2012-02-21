@@ -12,7 +12,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; general settings
 (menu-bar-mode t)                       ; don't show the menu 
-(tool-bar-mode nil)                       ; don't show the toolbar
+(tool-bar-mode)                       ; don't show the toolbar
 (icomplete-mode t)                       ; completion in minibuffer
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
 (scroll-bar-mode nil)              
@@ -177,7 +177,7 @@
 ; tramp, for remote access
 (setq tramp-default-method "ssh"
       tramp-persistency-file-name "~/.emacs.d/.cache/tramp"
-      tramp-verbose 8)
+      tramp-verbose 10)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,7 +195,7 @@
 (when (require-maybe 'tabber))
 ;(when (require-maybe 'ide-skel))
 (when (require-maybe 'pair-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rect-mark 
@@ -605,10 +605,10 @@ activate-mark-hook"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/rebox2
-(add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
-(require 'rebox2)
-(global-set-key [(meta q)] 'rebox-dwim)
-(global-set-key [(shift meta q)] 'rebox-cycle)
+;(add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
+;(require 'rebox2)
+;(global-set-key [(meta q)] 'rebox-dwim)
+;(global-set-key [(shift meta q)] 'rebox-cycle)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'edit-server)
@@ -622,6 +622,18 @@ activate-mark-hook"
 ;; Load both major and minor modes in one call based on file type 
 (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ModeCompile
+ ;;mode-compile
+    (autoload 'mode-compile "mode-compile"
+      "Command to compile current buffer file based on the major mode" t)
+    (global-set-key "\C-cc" 'mode-compile)
+    (autoload 'mode-compile-kill "mode-compile"
+      "Command to kill a compilation launched by `mode-compile'" t)
+    (global-set-key "\C-ck" 'mode-compile-kill) 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (provide 'skk-general)
 ;;; skk-general.el ends here
