@@ -8,7 +8,7 @@
   (global-set-key (kbd "C-c p g") 'project-grep)
   (global-set-key (kbd "C-c p o") 'project-multi-occur)
   (global-set-key (kbd "C-c p u") 'project-unload)
-  (global-set-key (kbd "C-c p f") 'project-find-file-ido) ; or project-find-file-ido
+  (global-set-key (kbd "C-c p f") 'project-find-file-ido) ; or project-find-file
   (global-set-key (kbd "C-c p i") 'project-index)
   (global-set-key (kbd "C-c p s") 'project-status)
   (global-set-key (kbd "C-c p h") 'project-home)
