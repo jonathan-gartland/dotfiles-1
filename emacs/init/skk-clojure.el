@@ -1,4 +1,4 @@
-;;; skk-ido.el --- 
+;;; skk-clojure.el --- 
 
 
 (when (require-maybe 'clojure-mode))
