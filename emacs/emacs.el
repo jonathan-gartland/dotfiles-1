@@ -31,11 +31,25 @@
                        (:name hexrgb :type elpa)
 ;                       (:name flyspell :type elpa)
                        (:name flymake :type elpa)
-                       (:name bookmark :type emacswiki)
+;                       (:name bookmark :type emacswiki)
                        (:name tiling :type emacswiki)
                        (:name cursor-chg :type elpa)
                        (:name multi-term :type elpa)
                        (:name mk-project :type emacswiki)
+                       (:name icicles :type emacswiki)
+                       (:name icicles-mac :type emacswiki)
+                       (:name icicles-face :type emacswiki)
+                       (:name icicles-opt :type emacswiki)
+                       (:name icicles-var :type emacswiki)
+                       (:name icicles-fn :type emacswiki)
+                       (:name icicles-mcmd :type emacswiki)
+                       (:name icicles-cmd1 :type emacswiki)
+                       (:name icicles-cmd2 :type emacswiki)
+                       (:name icicles-doc1 :type emacswiki)
+                       (:name icicles-doc2 :type emacswiki)
+                       (:name icicles-mode :type emacswiki)
+                       (:name lacarte :type emacswiki)
+                       (:name hl-line+ :type emacswiki)
                        (:name minimap :type emacswiki)
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
@@ -60,13 +74,12 @@
                        (:name color-theme-wombat+ :type elpa)
                        (:name color-theme-twilight :type elpa)
                        (:name color-theme-active :type elpa)
-		       (:name color-theme-vim-insert-mode :type elpa)
+                       (:name color-theme-vim-insert-mode :type elpa)
                        (:name charp-mode :type http
-                  :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
+                              :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
                        (:name mapserver-mode :type http
-                  :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
-		       ))
-
+                              :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
+                       ))
 
 (if (string-match "linux" system-configuration)
     (loop for p in '(auctex bbdb magit wanderlust)
@@ -83,7 +96,7 @@
    auto-complete-etags
    auto-complete-extension
    auto-complete-yasnippet
-   bookmark+ ; HTTP 503 error
+;   bookmark+ ; HTTP 503 error
    boxquote
    color-theme
    color-theme-almost-monokai
@@ -99,7 +112,7 @@
    color-theme-tomorrow
    color-theme-twilight
    color-theme-zen-and-art
-   color-theme-zenburn
+   ;color-theme-zenburn
    cperl-mode ; TODO Add :after hook
    crontab-mode
    clevercss
@@ -111,12 +124,14 @@
    egg
    google-maps
    google-weather
+
    js2-mode ; TODO Added :after hook
    json
    markdown-mode
    magithub
    notify
    package
+   paredit
    point-stack
    pylookup
 ;   pymacs
@@ -214,31 +229,31 @@
 ;; (autoload 'espresso-mode "espresso")
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://tychoish.com/rhizome/persistent-emacs-daemons/
- (setq-default inhibit-startup-message 't
-               initial-scratch-message 'nil
-               save-place t
-               scroll-bar-mode nil
-               tool-bar-mode nil
-               menu-bar-mode nil
-               scroll-margin 0
-               indent-tabs-mode nil
-               flyspell-issue-message-flag 'nil
-               size-indication-mode t
-               scroll-conservatively 25
-               scroll-preserve-screen-position 1
-               cursor-in-non-selected-windows nil)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://tychoish.com/rhizome/persistent-emacs-daemons/
+;;  (setq-default inhibit-startup-message 't
+;;                initial-scratch-message 'nil
+;;                save-place t
+;;                scroll-bar-mode nil
+;;                tool-bar-mode nil
+;;                menu-bar-mode nil
+;;                scroll-margin 0
+;;                indent-tabs-mode nil
+;;                flyspell-issue-message-flag 'nil
+;;                size-indication-mode t
+;;                scroll-conservatively 25
+;;                scroll-preserve-screen-position 1
+;;                cursor-in-non-selected-windows nil)
 
-(setq default-frame-alist '((font-backend . "xft")
-                             (font . "Inconsolata-10")
-                             (vertical-scroll-bars . 0)
-                             (menu-bar-lines . 0)
-                             (tool-bar-lines . 0)))
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(menu-bar-mode 1)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq default-frame-alist '((font-backend . "xft")
+;;                              (font . "Inconsolata-10")
+;;                              (vertical-scroll-bars . 0)
+;;                              (menu-bar-lines . 0)
+;;                              (tool-bar-lines . 0)))
+;; (tool-bar-mode -1)
+;; (scroll-bar-mode -1)
+;; (menu-bar-mode 1)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; change directory to $PWD or ~
 (if (getenv "PWD")
