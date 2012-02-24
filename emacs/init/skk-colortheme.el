@@ -1,5 +1,5 @@
 
-;; (when (require 'color-theme)
+(when (require 'color-theme)
 ;;   (require 'color-theme-github)
 ;;   (require 'color-theme-dpaste)
 ;;   (require 'color-theme-emacs-revert-theme)
@@ -16,7 +16,7 @@
 ;;   (require 'color-theme-complexity) 
 ;;   (require 'color-theme-wombat)
 ;;   (require 'color-theme-subdued)
-;;   (require 'color-theme-gruber-darker)
+   (require 'color-theme-gruber-darker))
 ;;   ;(require 'color-theme-wombat+)
 ;;   ;(require 'color-theme-twilight)
 ;;   ;(require 'color-theme-active)
