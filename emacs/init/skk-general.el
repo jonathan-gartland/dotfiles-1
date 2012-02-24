@@ -110,7 +110,7 @@
    "-outline-Consolas-normal-r-normal-normal-*-*-*-*-*-*-*-*"))
 ; linux
 (when djcb-linux-p
-  (set-frame-font "Anonymous Pro 12"))
+  (set-frame-font "Anonymous Pro 11"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
