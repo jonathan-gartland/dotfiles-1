@@ -79,11 +79,31 @@
   (project-def "Housing Development (SSHFS)"
                '((basedir "/sshfs/lithium/web/housing")
                  (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
-                 (ignore-patterns nil)
+                 (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif.R"
+                                   "*.PNG" "*.JPG" "*.GIF" "*.GIF.R" "*.mov" "*.pdf"
+                                   "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
                  (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
                  (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
                  (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
                  (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
+                 (vcs git)
+                 (ack-args "--perl --js --html --css")
+                 (compile-cmd nil)
+                 (startup-hook (lambda ()
+                                 (setq perl-command "/home/skk/bin/perl_syntax_checker.sh")
+                                 (setq perl-dbg-flags "")
+                                 (setq cperl-indent-level 4)))
+                 (shutdown-hook (lambda ()
+                                  (setq tags-file-name nil)))))
+
+  (project-def "EPSCOR Development (SSHFS)"
+               '((basedir "/sshfs/lithium/web/epscor")
+                 (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
+                 (ignore-patterns nil)
+                 (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
+                 (file-list-cache "~/.emacs.d/.cache/epscor-dev/files")
+                 (open-files-cache "~/.emacs.d/.cache/epscor-dev/open-files")
+                 (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
                  (vcs git)
                  (ack-args "--perl --js --html --css")
                  (compile-cmd nil)
@@ -412,7 +432,7 @@
   (project-def "DotFilesForest"
                '((basedir "~/dot-files-forest/")
                  (src-patterns ("*.el .py .sh"))
-                 (ignore-patterns nil)
+                 (ignore-patterns (".backup .cache"))
                  (file-list-cache "~/.emacs.d/.cache/dot-files-forest/files")
                  (open-files-cache "~/.emacs.d/.cache/dot-files-forest/open-files")
                  (tags-file "~/.emacs.d/.cache/dot-files-forest/TAGS")
@@ -424,23 +444,6 @@
                                  (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                  (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
                  ))
-
-  (project-def "emacs"
-               '((basedir "~/.emacs.d/")
-                 (src-patterns ("*.el"))
-                 (ignore-patterns nil)
-                 (file-list-cache "~/.emacs.d/.cache/emacs/files")
-                 (open-files-cache "~/.emacs.d/.cache/emacs/open-files")
-                 (tags-file "~/.emacs.d/.cache/emacs/TAGS")
-                 (vcs git)
-                 (ack-args "--elisp")
-                 (compile-cmd nil)
-                 (startup-hook (lambda ()
-                                 (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                                 (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                 (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
-                 ))
-
 
   (project-def "CRMS"
                '((basedir "~/CRMS/")
