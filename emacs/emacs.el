@@ -38,7 +38,7 @@
                        (:name mk-project :type emacswiki)
                        (:name icicles :type emacswiki)
                        (:name icicles-mac :type emacswiki)
-                       (:name icicles-face :type emacswiki)
+;                       (:name icicles-face :type emacswiki)
                        (:name icicles-opt :type emacswiki)
                        (:name icicles-var :type emacswiki)
                        (:name icicles-fn :type emacswiki)
@@ -54,27 +54,27 @@
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
-                       (:name color-theme-github :type elpa)
-                       (:name color-theme-dpaste :type elpa)
-                       (:name color-theme-emacs-revert-theme :type elpa)
+                       ;; (:name color-theme-github :type elpa)
+                       ;; (:name color-theme-dpaste :type elpa)
+                       ;; (:name color-theme-emacs-revert-theme :type elpa)
 ;                       (:name color-theme-ir-black :type elpa)
                        (:name color-theme-railscasts :type elpa)
-                       (:name color-theme-solarized :type elpa)
-                       (:name color-theme-tango :type elpa)
-                       (:name color-theme-tangotango :type elpa)
-                       (:name color-theme-sanityinc-solarized :type elpa)
-                       (:name color-theme-actress :type elpa)
-                       (:name color-theme-dg :type elpa)
-                       (:name color-theme-molokai :type elpa)
-                       (:name color-theme-cobalt :type elpa)
-                       (:name color-theme-complexity :type elpa)
-                       (:name color-theme-wombat :type elpa)
+                       ;; (:name color-theme-solarized :type elpa)
+                       ;; (:name color-theme-tango :type elpa)
+                       ;; (:name color-theme-tangotango :type elpa)
+                       ;; (:name color-theme-sanityinc-solarized :type elpa)
+                       ;; (:name color-theme-actress :type elpa)
+                       ;; (:name color-theme-dg :type elpa)
+                       ;; (:name color-theme-molokai :type elpa)
+                       ;; (:name color-theme-cobalt :type elpa)
+                       ;; (:name color-theme-complexity :type elpa)
+                       ;; (:name color-theme-wombat :type elpa)
 ;                       (:name color-theme-subdued :type elpa)
                        (:name color-theme-gruber-darker :type elpa)
-                       (:name color-theme-wombat+ :type elpa)
-                       (:name color-theme-twilight :type elpa)
-                       (:name color-theme-active :type elpa)
-                       (:name color-theme-vim-insert-mode :type elpa)
+                       ;; (:name color-theme-wombat+ :type elpa)
+                       ;; (:name color-theme-twilight :type elpa)
+                       ;; (:name color-theme-active :type elpa)
+                       ;; (:name color-theme-vim-insert-mode :type elpa)
                        (:name charp-mode :type http
                               :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
                        (:name mapserver-mode :type http
@@ -82,7 +82,7 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex bbdb magit wanderlust)
+    (loop for p in '(auctex bbdb magit magithub pylookup wanderlust)
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
@@ -99,19 +99,19 @@
 ;   bookmark+ ; HTTP 503 error
    boxquote
    color-theme
-   color-theme-almost-monokai
-   color-theme-chocolate-rain
-   color-theme-desert
-   color-theme-mac-classic
-   color-theme-railscasts
-   color-theme-sanityinc
-   color-theme-solarized
-   color-theme-subdued
-   color-theme-tango
-   color-theme-tango-2
-   color-theme-tomorrow
-   color-theme-twilight
-   color-theme-zen-and-art
+   ;; color-theme-almost-monokai
+   ;; color-theme-chocolate-rain
+   ;; color-theme-desert
+   ;; color-theme-mac-classic
+   ;; color-theme-railscasts
+   ;; color-theme-sanityinc
+   ;; color-theme-solarized
+   ;; color-theme-subdued
+   ;; color-theme-tango
+   ;; color-theme-tango-2
+   ;; color-theme-tomorrow
+   ;; color-theme-twilight
+   ;; color-theme-zen-and-art
    ;color-theme-zenburn
    cperl-mode ; TODO Add :after hook
    crontab-mode
@@ -128,12 +128,10 @@
    js2-mode ; TODO Added :after hook
    json
    markdown-mode
-   magithub
    notify
    package
    paredit
    point-stack
-   pylookup
 ;   pymacs
    python
    python-mode
