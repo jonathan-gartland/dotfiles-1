@@ -1,4 +1,3 @@
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; system type
 (defconst djcb-win32-p (eq system-type 'windows-nt) "Are we on Windows?")
@@ -54,11 +53,12 @@
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
+                       (:name iy-go-to-char :type elpa)
                        ;; (:name color-theme-github :type elpa)
                        ;; (:name color-theme-dpaste :type elpa)
                        ;; (:name color-theme-emacs-revert-theme :type elpa)
-;                       (:name color-theme-ir-black :type elpa)
-                       (:name color-theme-railscasts :type elpa)
+;                      ;; (:name color-theme-ir-black :type elpa)
+                       ;; (:name color-theme-railscasts :type elpa)
                        ;; (:name color-theme-solarized :type elpa)
                        ;; (:name color-theme-tango :type elpa)
                        ;; (:name color-theme-tangotango :type elpa)
@@ -69,12 +69,35 @@
                        ;; (:name color-theme-cobalt :type elpa)
                        ;; (:name color-theme-complexity :type elpa)
                        ;; (:name color-theme-wombat :type elpa)
-;                       (:name color-theme-subdued :type elpa)
-                       (:name color-theme-gruber-darker :type elpa)
+;                      ;; (:name color-theme-subdued :type elpa)
+                       ;; (:name color-theme-gruber-darker :type elpa)
                        ;; (:name color-theme-wombat+ :type elpa)
                        ;; (:name color-theme-twilight :type elpa)
                        ;; (:name color-theme-active :type elpa)
                        ;; (:name color-theme-vim-insert-mode :type elpa)
+                       (:name jump-char :type git 
+                              :url "https://github.com/lewang/jump-char.git")
+
+                       ;; (:name emacs-flymake :type git 
+                       ;;        :url "https://github.com/illusori/emacs-flymake.git")
+                       ;;
+
+                       ; ace-jump-mode
+                       (:name ace-jump-mode :type git 
+                              :url "git://github.com/winterTTr/ace-jump-mode.git")
+
+                       ; js2-refactor
+                       (:name js2-refactor :type git 
+                              :url "https://github.com/magnars/js2-refactor.el.git")
+                       
+                       ; mark-multiple
+                       (:name mark-multiple :type git
+                              :url "https://github.com/magnars/mark-multiple.el.git")
+                       
+                       ; expand-region
+                       (:name expand-region :type git
+                              :url "git://github.com/magnars/expand-region.el.git")
+
                        (:name charp-mode :type http
                               :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
                        (:name mapserver-mode :type http
@@ -82,7 +105,7 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex bbdb pylookup wanderlust) ; magit magithub 
+    (loop for p in '(auctex pylookup wanderlust) ; magit magithub bbdb
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
@@ -116,7 +139,7 @@
    cperl-mode ; TODO Add :after hook
    crontab-mode
    clevercss
-   cmake-mode
+   ;cmake-mode
    csv
    csv-mode
    dictionary
@@ -124,10 +147,18 @@
 ;   egg
    google-maps
    google-weather
-
    js2-mode ; TODO Added :after hook
    json
    markdown-mode
+   mapserver-mode
+   csharp-mode
+   ace-jump-mode
+
+   jump-char
+   js2-refactor
+   mark-multiple
+   expand-region
+
    notify
    package
    paredit
@@ -138,6 +169,7 @@
    python-pep8
    quack
    rainbow-delimiters
+   rebox2
    smart-tab
    tail
    xclip
@@ -188,6 +220,7 @@
         skk-custom.el
         skk-emacslisp-mode.el
         skk-eldoc.el
+;        skk-flymake.el
         skk-flyspell.el
         skk-functions.el
         skk-general.el

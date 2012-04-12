@@ -604,16 +604,16 @@ activate-mark-hook"
 ;(require 'minimap)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/rebox2
-;(add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
-;(require 'rebox2)
-;(global-set-key [(meta q)] 'rebox-dwim)
-;(global-set-key [(shift meta q)] 'rebox-cycle)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://www.emacswiki.org/emacs/rebox2
+;; (add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
+(require 'rebox2)
+(global-set-key [(meta q)] 'rebox-dwim)
+(global-set-key [(shift meta q)] 'rebox-cycle)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'edit-server)
-(edit-server-start)
+;; (require 'edit-server)
+;; (edit-server-start)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://blog.gabrielsaldana.org/easy-css-editing-with-emacs/
@@ -623,8 +623,6 @@ activate-mark-hook"
 ;; Load both major and minor modes in one call based on file type 
 (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'rebox2)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -641,6 +639,57 @@ activate-mark-hook"
 (defconst show-local-info-path (file-truename "~/local/share/info"))
 (if (file-accessible-directory-p show-local-info-path)
     (add-to-list 'Info-default-directory-list show-local-info-path))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/IyGoToChar
+(require 'jump-char)
+;; iy-go-to-char - like f in Vim
+(global-set-key (kbd "M-m") 'jump-char-forward)
+(global-set-key (kbd "M-M") 'jump-char-backward)
+
+;; Remap old M-m to M-i (better mnemonic for back-to-indentation)
+;; We lose tab-to-tab-stop, which is no big loss in my use cases.
+(global-set-key (kbd "M-i") 'back-to-indentation)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacsrocks.com/e09.html
+;; Expand region (increases selected region by semantic units)
+(require 'expand-region)
+(global-set-key (kbd "M-'") 'er/expand-region)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacsrocks.com/e10.html
+
+; http://www.emacswiki.org/emacs/AceJump
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; Push mark when using ido-imenu
+
+(defvar push-mark-before-goto-char nil)
+
+(defadvice goto-char (before push-mark-first activate)
+  (when push-mark-before-goto-char
+    (push-mark)))
+
+(defun add-hyper-char-to-ace-jump-word-mode (c)
+  (define-key global-map
+    (read-kbd-macro (concat "H-" (string c)))
+    `(lambda ()
+       (interactive)
+       (setq ace-jump-query-char ,c)
+       (setq ace-jump-current-mode 'ace-jump-word-mode)
+       (ace-jump-do (concat "\\b"
+                            (regexp-quote (make-string 1 ,c)))))))
+
+(loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?Å to ?ø do (add-hyper-char-to-ace-jump-word-mode c))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
