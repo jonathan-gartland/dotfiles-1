@@ -16,8 +16,8 @@
 ;;   (require 'color-theme-complexity) 
 ;;   (require 'color-theme-wombat)
 ;;   (require 'color-theme-subdued)
-   (require 'color-theme-gruber-darker)
-;   (require 'color-theme-dawn-night)
+;;   (require 'color-theme-gruber-darker)
+;;  (require 'color-theme-dawn-night)
 )
 
 ;;   ;(require 'color-theme-wombat+)
@@ -49,8 +49,8 @@
             (run-after-make-frame-hooks (selected-frame))))
 
 (set-variable 'color-theme-is-global nil)
-(add-hook 'after-make-window-system-frame-hooks 'color-theme-gruber-darker)
-(add-hook 'after-make-console-frame-hooks 'color-theme-gruber-darker);
+;(add-hook 'after-make-window-system-frame-hooks 'color-theme-gruber-darker)
+;(add-hook 'after-make-console-frame-hooks 'color-theme-gruber-darker);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
