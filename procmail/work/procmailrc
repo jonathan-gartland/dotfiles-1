@@ -1,7 +1,7 @@
 # $Id: procmailrc 2649 2009-03-10 12:37:59Z skk $
 
-#VERBOSE=on
-VERBOSE=off
+VERBOSE=on
+#VERBOSE=off
 #LOGABSTRACT=all
 
 USER=skk

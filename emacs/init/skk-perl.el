@@ -30,9 +30,9 @@
 ;;      	 (local-file (file-relative-name
 ;;                       temp-file
 ;;                       (file-name-directory buffer-file-name))))
-;;     (list "/sshfs/lithium/usr/local/bin/perl_syntax_checker.pl" (list " " local-file))))
+;;     (list "/sshfs/lithium/net/home/rcc/skk/dot-files-forest/bin/perl_syntax_checker.pl" (list " " local-file))))
 
-(setq flymake-log-level 10)
+;; (setq flymake-log-level 10)
 
 ;; (setq flymake-allowed-file-name-masks nil)
 
@@ -54,13 +54,13 @@
 ;;              (yas/minor-mode-on)
 ;;              (setq yas/mode-symbol 'perl-mode)))
 
-(defun flymake-perl-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-     	 (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list perl-command (list perl-dbg-flags temp-file))))
+;; (defun flymake-perl-init ()
+;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                      'flymake-create-temp-inplace))
+;;      	 (local-file (file-relative-name
+;;                       temp-file
+;;                       (file-name-directory buffer-file-name))))
+;;     (list perl-command (list perl-dbg-flags temp-file))))
 
 ;; (setq flymake-allowed-file-name-masks
 ;;       (cons '(".+\\pm$"

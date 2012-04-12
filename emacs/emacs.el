@@ -26,11 +26,11 @@
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
-
+;(el-get-emacswiki-refresh)
 (setq el-get-sources '(
                        (:name hexrgb :type elpa)
 ;                       (:name flyspell :type elpa)
-                       (:name flymake :type elpa)
+;                       (:name flymake :type elpa)
 ;                       (:name bookmark :type emacswiki)
                        (:name tiling :type emacswiki)
                        (:name cursor-chg :type elpa)
@@ -38,7 +38,7 @@
                        (:name mk-project :type emacswiki)
                        (:name icicles :type emacswiki)
                        (:name icicles-mac :type emacswiki)
-;                       (:name icicles-face :type emacswiki)
+                       (:name icicles-face :type emacswiki)
                        (:name icicles-opt :type emacswiki)
                        (:name icicles-var :type emacswiki)
                        (:name icicles-fn :type emacswiki)
@@ -82,7 +82,7 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex bbdb magit magithub pylookup wanderlust)
+    (loop for p in '(auctex bbdb pylookup wanderlust) ; magit magithub 
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
@@ -121,7 +121,7 @@
    csv-mode
    dictionary
    edit-server
-   egg
+;   egg
    google-maps
    google-weather
 
@@ -191,13 +191,14 @@
         skk-flyspell.el
         skk-functions.el
         skk-general.el
-        skk-git.el 
+        ;skk-git.el 
         skk-ibuffer.el
         skk-icicles.el
         skk-ido.el
         skk-js2mode.el
         skk-makefilemode.el
         skk-mk-project.el
+;        skk-flymake.el
         skk-mu4e.el
         skk-org-mode.el
         skk-scheme.el
@@ -207,7 +208,7 @@
         skk-textmode.el
         skk-workgroups.el
         ;skk-wanderlust-folders.el
-	;skk-yasnippet.el
+        skk-yasnippet.el
 ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -216,10 +217,20 @@
 (mapcar 'load-config files-to-load)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (defconst etc-emacs-sitestart-path '("/etc/emacs/site-start.d")) ;; my elisp directories
+;; (when (file-exists-p etc-emacs-sitestart-path)
+;;  (mapcar '(lambda(p)
+;;            (add-to-list 'load-path p) 
+;;            (cd p) (normal-top-level-add-subdirs-to-load-path)) etc-emacs-sitestart-path-path))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (autoload 'nxml "skk-xml" "nXml Mode" t)
 ; http://log4j-mode.sourceforge.net/
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;; (autoload 'js2-mode "js2-mode" nil t)

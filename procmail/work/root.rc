@@ -1,8 +1,37 @@
 # $Id: root.rc 2492 2008-06-30 16:41:08Z skk $
 
+:0
+* ^From:.*root@.*
+.Systems.Root/
+
+:0
+* ^Subject:.*Cron.*
+.Systems.CronDaemon/
+
+:0
+* ^Subject:.*DenyHosts Report from (zathras|kosh)*.*
+.Systems.DenyHosts/
+
+:0
+* ^Subject:.*Logwatch for (zathras|kosh)*.*
+.Systems.LogWatch/
+
+:0
+* ^Subject:.*UNH Admissions received your e-mail.*
+/dev/null
+
+:0
+* ^From:.*isxcentral@sr.unh.edu.*
+.Systems.Root/
+
 # just delete DHCP warnings
 :0
 * ^Subject: DHCP Warning
+/dev/null
+
+# delete observerplots message
+:0
+* ^Subject:.*observerplots_30min.*
 /dev/null
 
 # delete all postmaster email
@@ -17,7 +46,12 @@
 
 # delete logwatch for other systems.
 :0
-* ^Subject: .*LogWatch for (amnesiac|stella|alumni|arpeggi|hollow|myxomatosis|kenyan|morden).*
+* ^Subject:.*LogWatch for.*
+/dev/null
+
+# delete denyhosts for other systems.
+:0
+* ^Subject:.*DenyHosts Report from.*
 /dev/null
 
 # delete clamav messages from alumni
@@ -39,27 +73,3 @@
 :0
 * ^From:.*MAILER-DAEMON@stella.sr.unh.edu.*
 /dev/null
-
-:0
-* ^From:.*[lL]ogwatch.*
-.Systems.LogWatch/
-
-:0
-* ^From:.*root@.*
-.Systems.Root/
-
-:0
-* ^Subject:.*Cron.*
-.Systems.CronDaemon/
-
-:0
-* ^Subject:.*DenyHosts Report*.*
-.Systems.DenyHosts/
-
-:0
-* ^Subject:.*UNH Admissions received your e-mail.*
-/dev/null
-
-:0
-* ^From:.*isxcentral@sr.unh.edu.*
-.Systems.Root/

@@ -47,6 +47,9 @@
 * ^(To|CC):.*pat.council@lists.unh.edu.*
 .Staff/
 
+:0
+* ^Subject:.*SheepDog.*
+.Systems.SheepDot/
 
 # catch messages from Al's personal email address
 :0
@@ -55,3 +58,5 @@
     :0
     .MaildirInbox/	# to Ops/
 }
+
+

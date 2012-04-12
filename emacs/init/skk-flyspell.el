@@ -9,10 +9,6 @@
   (flyspell-mode 1))
 
 (when djcb-linux-p
-  (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
-  (add-hook 'c++-mode-hook 'turn-on-flyspell)
-  (add-hook 'c-mode-common-hook 'turn-on-flyspell  )
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
   (add-hook 'fundamental-mode-hook 'turn-on-flyspell)
   (add-hook 'message-mode-hook 'turn-on-flyspell)
   (add-hook 'python-mode-hook 'turn-on-flyspell)

@@ -16,7 +16,10 @@
 ;;   (require 'color-theme-complexity) 
 ;;   (require 'color-theme-wombat)
 ;;   (require 'color-theme-subdued)
-   (require 'color-theme-gruber-darker))
+   (require 'color-theme-gruber-darker)
+;   (require 'color-theme-dawn-night)
+)
+
 ;;   ;(require 'color-theme-wombat+)
 ;;   ;(require 'color-theme-twilight)
 ;;   ;(require 'color-theme-active)
@@ -47,7 +50,7 @@
 
 (set-variable 'color-theme-is-global nil)
 (add-hook 'after-make-window-system-frame-hooks 'color-theme-gruber-darker)
-(add-hook 'after-make-console-frame-hooks 'zenburn);
+(add-hook 'after-make-console-frame-hooks 'color-theme-gruber-darker);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

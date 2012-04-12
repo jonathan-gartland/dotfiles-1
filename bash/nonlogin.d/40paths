@@ -80,7 +80,7 @@ if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 
     # add cabal/bin to PATH
-    export PATH=$HOME/.cabal/bin:$PATH
+    #export PATH=$HOME/.cabal/bin:$PATH
 
     # source autojump init file
 #    source /etc/profile.d/autojump.zsh

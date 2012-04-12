@@ -93,6 +93,10 @@
 
 (define-abbrev-table 'csv-mode-abbrev-table '())
 
+(define-abbrev-table 'custom-new-theme-mode-abbrev-table '())
+
+(define-abbrev-table 'custom-theme-choose-mode-abbrev-table '())
+
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
 (define-abbrev-table 'dig-mode-abbrev-table '())
@@ -177,6 +181,18 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
+(define-abbrev-table 'mu4e-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'mu4e-hdrs-mode-abbrev-table '())
+
+(define-abbrev-table 'mu4e-main-mode-abbrev-table '())
+
+(define-abbrev-table 'mu4e-raw-view-mode-abbrev-table '())
+
+(define-abbrev-table 'mu4e-view-mode-abbrev-table '())
+
+(define-abbrev-table 'nroff-mode-abbrev-table '())
+
 (define-abbrev-table 'nxml-mode-abbrev-table '())
 
 (define-abbrev-table 'objc-mode-abbrev-table '())
@@ -190,6 +206,8 @@
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'perl-mode-abbrev-table '())
 
 (define-abbrev-table 'pike-mode-abbrev-table '())
 
@@ -257,6 +275,8 @@
 (define-abbrev-table 'snippet-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
+
+(define-abbrev-table 'speedbar-mode-abbrev-table '())
 
 (define-abbrev-table 'sql-mode-abbrev-table '())
 

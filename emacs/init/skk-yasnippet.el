@@ -1,14 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; yasnippet
-(when (require-maybe 'yasnippet))
-; Initialize Yasnippet
-(yas/initialize)
-(setq yas/use-menu 'abbreviate)
+(when (require-maybe 'yasnippet)
 
-;set yas/root-directory as a list, to allow for adding user snippets 
-(setq yas/root-directory '(
+  ; Initialize Yasnippet
+  (yas/initialize)
+  (setq yas/use-menu 'abbreviate)
+
+  (yas/global-mode 1)
+
+  ;set yas/root-directory as a list, to allow for adding user snippets 
+  (setq yas/root-directory '(
                            "~/.emacs.d/snippets"
-                           "~/.emacs.d/elisp/yasnippet-0.6.1c"))
+                           "~/.emacs.d/el-get/yasnippet/snippets"))
 
-;; Map `yas/load-directory' to every element
-(mapc 'yas/load-directory yas/root-directory)
+  ;; Map `yas/load-directory' to every element
+  (mapc 'yas/load-directory yas/root-directory))

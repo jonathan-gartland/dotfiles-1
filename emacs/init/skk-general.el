@@ -1,3 +1,4 @@
+
 ;;; skk-general.el --- General Settings
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -623,6 +624,8 @@ activate-mark-hook"
 (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'rebox2)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/ModeCompile
@@ -634,6 +637,10 @@ activate-mark-hook"
       "Command to kill a compilation launched by `mode-compile'" t)
     (global-set-key "\C-ck" 'mode-compile-kill) 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defconst show-local-info-path (file-truename "~/local/share/info"))
+(if (file-accessible-directory-p show-local-info-path)
+    (add-to-list 'Info-default-directory-list show-local-info-path))
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
