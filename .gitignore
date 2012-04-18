@@ -5,6 +5,8 @@
 # emacs
 emacs/.backup/
 emacs/.cache/
+emacs/el-get
+emacs/el-get/*
 
 # vim
 vim/.netrwhist
