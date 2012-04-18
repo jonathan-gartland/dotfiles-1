@@ -105,3 +105,14 @@ function switch_was_tail_to_emacs
      export WAS_TAIL_ARGS=" "
      export WAS_TAIL_COMMAND=$HOME/bin/e
 }
+
+function mount_sshfs
+{
+    if [[ $1 != '' ]]; then
+         echo "mount_sshfs: host"
+         exit 1
+    fi
+    hostname=$1
+    mkdir -p /sshfs/$hostname
+    sshfs skk@$hostname:/ /sshfs/$hostname
+}
