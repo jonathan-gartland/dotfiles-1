@@ -14,7 +14,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-
 (unless (require 'el-get nil t)
   (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el" 
 		(lambda (s) 
@@ -27,9 +26,9 @@
 ;; el-get installer.
 ;(el-get-emacswiki-refresh)
 (setq el-get-sources '(
-                       (:name hexrgb :type elpa)
+		       (:name hexrgb :type emacswiki)
 ;                       (:name flyspell :type elpa)
-;                       (:name flymake :type elpa)
+                       (:name flymake :type elpa)
 ;                       (:name bookmark :type emacswiki)
                        (:name tiling :type emacswiki)
                        (:name cursor-chg :type elpa)
@@ -54,26 +53,26 @@
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
                        (:name iy-go-to-char :type elpa)
-                       ;; (:name color-theme-github :type elpa)
-                       ;; (:name color-theme-dpaste :type elpa)
-                       ;; (:name color-theme-emacs-revert-theme :type elpa)
-;                      ;; (:name color-theme-ir-black :type elpa)
-                       ;; (:name color-theme-railscasts :type elpa)
-                       ;; (:name color-theme-solarized :type elpa)
-                       ;; (:name color-theme-tango :type elpa)
-                       ;; (:name color-theme-tangotango :type elpa)
-                       ;; (:name color-theme-sanityinc-solarized :type elpa)
-                       ;; (:name color-theme-actress :type elpa)
-                       ;; (:name color-theme-dg :type elpa)
-                       ;; (:name color-theme-molokai :type elpa)
-                       ;; (:name color-theme-cobalt :type elpa)
-                       ;; (:name color-theme-complexity :type elpa)
-                       ;; (:name color-theme-wombat :type elpa)
-;                      ;; (:name color-theme-subdued :type elpa)
-                       ;; (:name color-theme-gruber-darker :type elpa)
-                       ;; (:name color-theme-wombat+ :type elpa)
-                       ;; (:name color-theme-twilight :type elpa)
-                       ;; (:name color-theme-active :type elpa)
+                       (:name color-theme-github :type elpa)
+                       (:name color-theme-dpaste :type elpa)
+                       (:name color-theme-emacs-revert-theme :type elpa)
+		       (:name color-theme-ir-black :type elpa)
+                       (:name color-theme-railscasts :type elpa)
+                       (:name color-theme-solarized :type elpa)
+                       (:name color-theme-tango :type elpa)
+                       (:name color-theme-tangotango :type elpa)
+                       (:name color-theme-sanityinc-solarized :type elpa)
+                       (:name color-theme-actress :type elpa)
+                       (:name color-theme-dg :type elpa)
+                       (:name color-theme-molokai :type elpa)
+                       (:name color-theme-cobalt :type elpa)
+                       (:name color-theme-complexity :type elpa)
+                       (:name color-theme-wombat :type elpa)
+		       (:name color-theme-subdued :type elpa)
+                       (:name color-theme-gruber-darker :type elpa)
+                       (:name color-theme-wombat+ :type elpa)
+                       (:name color-theme-twilight :type elpa)
+                       (:name color-theme-active :type elpa)
                        ;; (:name color-theme-vim-insert-mode :type elpa)
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
@@ -98,14 +97,15 @@
                        (:name expand-region :type git
                               :url "git://github.com/magnars/expand-region.el.git")
 
-                       (:name charp-mode :type http
-                              :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
+                       (:name csharp-mode :type http
+			      :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
+
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex pylookup wanderlust) ; magit magithub bbdb
+    (loop for p in '(auctex wanderlust emacs-w3m) ; magit magithub bbdb
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
@@ -141,6 +141,7 @@
    clevercss
    ;cmake-mode
    csv
+   hexrgb
    csv-mode
    dictionary
    edit-server
@@ -153,12 +154,11 @@
    mapserver-mode
    csharp-mode
    ace-jump-mode
-
    jump-char
    js2-refactor
    mark-multiple
    expand-region
-
+   
    notify
    package
    paredit
