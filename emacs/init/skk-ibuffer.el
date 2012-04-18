@@ -70,6 +70,7 @@
                 (mode . perl-mode)
                 (mode . python-mode)
                 (mode . emacs-lisp-mode)
+                (mode . scheme-mode)
                 ;; etc
                 ))
             ))))
