@@ -169,6 +169,8 @@ class install(object):
         { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
         { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
+        { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
+        { 'src': 'dotfiles/offlineimaprc', 'dst' : '.offlineimaprc'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
