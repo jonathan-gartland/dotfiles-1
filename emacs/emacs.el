@@ -158,7 +158,7 @@
    js2-refactor
    mark-multiple
    expand-region
-   
+  geiser 
    notify
    package
    paredit
