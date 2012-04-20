@@ -100,6 +100,14 @@ if [ $HOSTNAME == "long.sr.unh.edu" ]; then
     export PATH="/usr/lib/postgresql/8.3/bin:$PATH"
 fi
 
+if [ $HOSTNAME == "lithium.sr.unh.edu" ]; then
+    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+fi
+
+if [ $HOSTNAME == "myxomatosis.sr.unh.edu" ]; then
+    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+fi
+
 if [ $HOSTNAME == "skk" ]; then
     export svnroot="file:///home/svn/skk/"
     export svnmusic="file:///home/svn/music/"
