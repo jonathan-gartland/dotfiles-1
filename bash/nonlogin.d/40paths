@@ -78,6 +78,7 @@ if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
     export CDPATH=$CDPATH:~/CRMS
     # Database aliases
     export ORACLE_COMMAND="$HOME/bin/pysql.sh"
+    export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
 
     # add cabal/bin to PATH
     #export PATH=$HOME/.cabal/bin:$PATH
@@ -114,6 +115,7 @@ if [ $HOSTNAME == "skk" ]; then
     export MAILDIR="$HOME/Maildir"
     export JAVA_HOME="/usr/local/java/IBMJava16"
     export JRE_HOME="$JAVA_HOME"
+    export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
 fi
 
 if [ -n $JAVA_HOME ]; then
