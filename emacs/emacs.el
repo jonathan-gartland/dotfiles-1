@@ -97,8 +97,11 @@
                        (:name expand-region :type git
                               :url "git://github.com/magnars/expand-region.el.git")
 
+                       (:name geiser-git :type git
+                              :url "git://git.sv.gnu.org/geiser.git")
+
                        (:name csharp-mode :type http
-			      :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
+                              :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
 
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
@@ -148,6 +151,7 @@
 ;   egg
    google-maps
    google-weather
+   geiser-git
    js2-mode ; TODO Added :after hook
    json
    markdown-mode
