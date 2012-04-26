@@ -118,7 +118,7 @@ if has("gui_running")
   "set guioptions-=e
   set background=dark
   let psc_style='cool'
-  colorscheme peaksea
+  "colorscheme peaksea
 endif
 
 set encoding=utf8
@@ -880,7 +880,7 @@ imap ½ $
 vmap ½ $
 cmap ½ $
 
-if has("gui_running")
-  set fuoptions=maxvert,maxhorz
-  au GUIEnter * set fullscreen
-endif
+"if has("gui_running")
+"  set fuoptions=maxvert,maxhorz
+"  au GUIEnter * set fullscreen
+"endif
