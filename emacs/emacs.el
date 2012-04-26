@@ -108,7 +108,7 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex wanderlust emacs-w3m) ; magit magithub bbdb
+    (loop for p in '(auctex wanderlust emacs-w3m magit) ; magit magithub bbdb
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
