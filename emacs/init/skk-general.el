@@ -1,4 +1,3 @@
-
 ;;; skk-general.el --- General Settings
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -47,8 +46,8 @@
 (when (fboundp file-name-shadow-mode)    ; emacs22+
   (file-name-shadow-mode 1))             ; be smart about filenames in minbuffer
 
-(setq inhibit-startup-message t          ; don't show ...    
-  inhibit-startup-echo-area-message t)   ; ... startup messages
+(setq inhibit-startup-message t         ; don't show ...    
+      inhibit-startup-echo-area-message t) ; ... startup messages
 
 (setq save-place-file "~/.emacs.d/.cache/saveplace") ;; keep my ~/ clean
 (setq-default save-place t)                   ;; activate it for all buffers
@@ -690,6 +689,10 @@ activate-mark-hook"
 (loop for c from ?Å to ?ø do (add-hyper-char-to-ace-jump-word-mode c))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; remove emacs' ability to interactive with git.  This was done because accessing remote git repo through sshfs caused major lag. 
+(delete 'Git vc-handled-backends)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
