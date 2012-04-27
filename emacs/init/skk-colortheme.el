@@ -1,31 +1,5 @@
 
-(when (require 'color-theme)
-;;   (require 'color-theme-github)
-;;   (require 'color-theme-dpaste)
-;;   (require 'color-theme-emacs-revert-theme)
-;;   (require 'color-theme-ir-black)
-;;   (require 'color-theme-railscasts)
-;;   (require 'color-theme-solarized)
-;;   (require 'color-theme-tango)
-;;   (require 'color-theme-tangotango)
-;;   (require 'color-theme-sanityinc-solarized)
-;;   (require 'color-theme-actress)
-;;   (require 'color-theme-dg)
-;;   (require 'color-theme-molokai)
-;;   (require 'color-theme-cobalt)
-;;   (require 'color-theme-complexity) 
-;;   (require 'color-theme-wombat)
-;;   (require 'color-theme-subdued)
-;;   (require 'color-theme-gruber-darker)
-;;  (require 'color-theme-dawn-night)
-)
-
-;;   ;(require 'color-theme-wombat+)
-;;   ;(require 'color-theme-twilight)
-;;   ;(require 'color-theme-active)
-;;   ;(color-theme-sanityinc-solarized-dark)
-;;   (require 'color-theme-vim-insert-mode)
-;;   (require 'zenburn))
+(when (require 'color-theme))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://emacs-fu.blogspot.com/2009/03/color-theming.html#c8118197870582055840
@@ -52,6 +26,5 @@
 ;(add-hook 'after-make-window-system-frame-hooks 'color-theme-gruber-darker)
 ;(add-hook 'after-make-console-frame-hooks 'color-theme-gruber-darker);
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 (provide 'skk-colortheme)
