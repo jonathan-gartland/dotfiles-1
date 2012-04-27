@@ -108,12 +108,31 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex wanderlust emacs-w3m magit) ; magit magithub bbdb
+    (loop for p in '(auctex wanderlust emacs-w3m magit slime swank-clojure)
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
       (append  
 '(
+   ; color-theme-almost-monokai
+   ; color-theme-chocolate-rain
+   ; color-theme-desert
+   ; color-theme-mac-classic
+   ; color-theme-railscasts
+   ; color-theme-sanityinc
+   ; color-theme-solarized
+   ; color-theme-subdued
+   ; color-theme-tango
+   ; color-theme-tango-2
+   ; color-theme-tomorrow
+   ; color-theme-twilight
+   ; color-theme-zen-and-art
+   ; cmake-mode
+   ; color-theme-zenburn
+   ; bookmark+ ; HTTP 503 error
+   ; egg
+   ; pymacs
+   ace-jump-mode
    ack
    auto-complete
    auto-complete-clang
@@ -122,52 +141,34 @@
    auto-complete-etags
    auto-complete-extension
    auto-complete-yasnippet
-;   bookmark+ ; HTTP 503 error
    boxquote
+   clevercss
+   clojure-mode
    color-theme
-   ;; color-theme-almost-monokai
-   ;; color-theme-chocolate-rain
-   ;; color-theme-desert
-   ;; color-theme-mac-classic
-   ;; color-theme-railscasts
-   ;; color-theme-sanityinc
-   ;; color-theme-solarized
-   ;; color-theme-subdued
-   ;; color-theme-tango
-   ;; color-theme-tango-2
-   ;; color-theme-tomorrow
-   ;; color-theme-twilight
-   ;; color-theme-zen-and-art
-   ;color-theme-zenburn
    cperl-mode ; TODO Add :after hook
    crontab-mode
-   clevercss
-   ;cmake-mode
+   csharp-mode
    csv
-   hexrgb
    csv-mode
    dictionary
+   durendal
    edit-server
-;   egg
+   expand-region
+   geiser-git
    google-maps
    google-weather
-   geiser-git
+   hexrgb
    js2-mode ; TODO Added :after hook
-   json
-   markdown-mode
-   mapserver-mode
-   csharp-mode
-   ace-jump-mode
-   jump-char
    js2-refactor
+   json
+   jump-char
+   mapserver-mode
    mark-multiple
-   expand-region
-  geiser 
+   markdown-mode
    notify
    package
    paredit
    point-stack
-;   pymacs
    python
    python-mode
    python-pep8
@@ -175,11 +176,15 @@
    rainbow-delimiters
    rebox2
    smart-tab
+   sqlplus
+   sql
+   sql-complete
    tail
-   xclip
-   zencoding-mode
-   yasnippet
    workgroups
+   xclip
+   yasnippet
+   zencoding-mode
+   geiser 
 )
 (mapcar 'el-get-source-name el-get-sources)))
 
@@ -243,7 +248,7 @@
         ;skk-python.el
         skk-sql.el
         skk-textmode.el
-        skk-workgroups.el
+        ;skk-workgroups.el
         ;skk-wanderlust-folders.el
         skk-yasnippet.el
 ))
