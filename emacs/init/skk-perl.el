@@ -5,12 +5,10 @@
 (setq cperl-indent-level 4)
 
 (defun cperl-indent4 ()
- (setq cperl-indent-level 4)
-)
+  (setq cperl-indent-level 4))
 
 (defun cperl-indent2 ()
- (setq cperl-indent-level 2)
-)
+  (setq cperl-indent-level 2))
 
 (defun my-cperl-eldoc-documentation-function ()
       "Return meaningful doc string for `eldoc-mode'."
@@ -18,9 +16,10 @@
        (let ((cperl-message-on-help-error nil))
          (cperl-get-help))))
 
-
 (add-hook 'cperl-mode-hook
           (lambda ()
+            (set (make-local-variable) 'rebox-style-loop '(525))
+            (set (make-local-variable 'rebox-min-fill-column) 40)
             (set (make-local-variable 'eldoc-documentation-function)
                  'my-cperl-eldoc-documentation-function)))
 
