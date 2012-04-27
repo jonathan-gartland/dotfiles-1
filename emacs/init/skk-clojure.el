@@ -1,6 +1,5 @@
 ;;; skk-clojure.el --- 
 
-
 (when (require-maybe 'clojure-mode))
 (when (require-maybe 'slime)
 
@@ -37,5 +36,8 @@
           (sit-for 1)
           (decf timeout)))
       (ignore-errors (kill-buffer "*clojure-swank*")))))
+
+(durendal-enable)
+
 (provide 'skk-clojure)
 ;;; skk-clojure.el ends here
