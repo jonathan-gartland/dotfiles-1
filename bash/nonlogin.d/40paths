@@ -71,7 +71,7 @@ if [ $HOSTNAME == "zathras.sr.unh.edu" ]; then
 fi
 
 if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
-    export JAVA_HOME="/usr/local/java/IBMJava16"
+    export JAVA_HOME="/usr/local/java/jdk1.7.0_04"
     export JRE_HOME="$JAVA_HOME"
     export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
