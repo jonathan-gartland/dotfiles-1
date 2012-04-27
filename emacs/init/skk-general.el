@@ -105,12 +105,13 @@
 (setq font-use-system-font t)
 
 ; windows
-(when djcb-win32-p
+(if (string-match "windows" system-configuration)
  (set-default-font
    "-outline-Consolas-normal-r-normal-normal-*-*-*-*-*-*-*-*"))
+
 ; linux
-(when djcb-linux-p
-  (set-frame-font "Anonymous Pro 11"))
+(if (string-match "linux" system-configuration)
+    (set-default-font "Anonymous Pro 10"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -693,6 +694,12 @@ activate-mark-hook"
 ; remove emacs' ability to interactive with git.  This was done because accessing remote git repo through sshfs caused major lag. 
 (delete 'Git vc-handled-backends)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; (fset 'indent4
+;;    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("    " 0 "%d")) arg)))
+
+
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
