@@ -5,7 +5,7 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
-;(setq ac-comphist-file  "~/.emacs.d/.cache/ac-comphist.dat")
+(setq ac-comphist-file  "~/.emacs.d/.cache/ac-comphist.dat")
 ;(add-to-list 'ac-dictionary-directories "~/.emacs.d/.cache/ac-dict")
 
 (provide 'skk-autocomplete)
