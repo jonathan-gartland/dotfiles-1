@@ -129,7 +129,21 @@
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
 
+(define-abbrev-table 'gdb-breakpoints-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-disassembly-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-frames-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-locals-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-memory-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-registers-mode-abbrev-table '())
+
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
+
+(define-abbrev-table 'gdb-threads-mode-abbrev-table '())
 
 (define-abbrev-table 'geiser-messages-mode-abbrev-table '())
 
@@ -306,6 +320,8 @@
 
 (define-abbrev-table 'tex-shell-abbrev-table '())
 
+(define-abbrev-table 'texinfo-mode-abbrev-table '())
+
 (define-abbrev-table 'text-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-bzr-log-view-mode-abbrev-table '())
@@ -321,4 +337,6 @@
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'xml-mode-abbrev-table '())
+
+(define-abbrev-table 'yas/rails-erb-mode-abbrev-table '())
 
