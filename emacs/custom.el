@@ -18,7 +18,6 @@
  '(mk-proj-ack-cmd "~/bin/ack")
  '(nxml-child-indent 4)
  '(nxml-outline-child-indent 2)
- '(quack-default-program "guile")
  '(regex-tool-backend (quote perl))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
