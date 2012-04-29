@@ -9,6 +9,8 @@
              (filename . "/web/erma-skk"))
             ("nh-wetlands-mapper-dev"
              (filename . "/web/nh-wetlands-mapper-dev"))
+            ("SICP"
+             (filename . "~work/SICP"))
             ("Housing"
              (filename . "/web/housing"))
             ("RCC"
