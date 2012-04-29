@@ -144,6 +144,7 @@
    boxquote
    clevercss
    clojure-mode
+   clojure-mode
    color-theme
    cperl-mode ; TODO Add :after hook
    crontab-mode
@@ -154,6 +155,9 @@
    durendal
    edit-server
    expand-region
+   expand-region
+   geiser 
+   geiser-git
    geiser-git
    google-maps
    google-weather
@@ -172,19 +176,20 @@
    python
    python-mode
    python-pep8
+;   pymacs
    quack
    rainbow-delimiters
    rebox2
    smart-tab
-   sqlplus
    sql
    sql-complete
+   sqlplus
+   swank-clojure
    tail
    workgroups
    xclip
    yasnippet
    zencoding-mode
-   geiser 
 )
 (mapcar 'el-get-source-name el-get-sources)))
 
