@@ -1,7 +1,7 @@
 
 ;;; skk-autocomplete.el --- AutoComplete
 
-;(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/el-get/auto-complete")
 
 (require 'auto-complete-config)
 (ac-config-default)

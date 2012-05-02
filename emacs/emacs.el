@@ -12,6 +12,9 @@
 
 (require 'cl)				; common lisp goodies, loop
 
+(defvar *emacs-load-start* (current-time))
+
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -53,7 +56,10 @@
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
                        (:name iy-go-to-char :type elpa)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
 
@@ -88,25 +94,12 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex wanderlust emacs-w3m magit slime swank-clojure)
+    (loop for p in '(auctex wanderlust emacs-w3m magit slime swank-clojure pymacs rope ropemacs)
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
       (append  
 '(
-   ; color-theme-almost-monokai
-   ; color-theme-chocolate-rain
-   ; color-theme-desert
-   ; color-theme-mac-classic
-   ; color-theme-railscasts
-   ; color-theme-sanityinc
-   ; color-theme-solarized
-   ; color-theme-subdued
-   ; color-theme-tango
-   ; color-theme-tango-2
-   ; color-theme-tomorrow
-   ; color-theme-twilight
-   ; color-theme-zen-and-art
    ; cmake-mode
    ; color-theme-zenburn
    ; bookmark+ ; HTTP 503 error
@@ -115,7 +108,6 @@
    ace-jump-mode
    ack
    auto-complete
-   auto-complete-clang
    auto-complete-css
    auto-complete-emacs-lisp
    auto-complete-etags
@@ -125,6 +117,7 @@
    calfw
    clevercss
    clojure-mode
+   ;color-theme
    cperl-mode ; TODO Add :after hook
    crontab-mode
    csharp-mode
@@ -134,9 +127,6 @@
    durendal
    edit-server
    expand-region
-   expand-region
-   geiser 
-   geiser-git
    geiser-git
    google-maps
    google-weather
@@ -155,7 +145,6 @@
    python
    python-mode
    python-pep8
-;   pymacs
    quack
    rainbow-delimiters
    rebox2
@@ -209,34 +198,63 @@
         skk-autocomplete.el
         skk-calfw.el
         skk-clojure.el
-        skk-colortheme.el
         skk-company.el
         skk-custom.el
-        skk-emacslisp-mode.el
         skk-eldoc.el
-;        skk-flymake.el
-        skk-flyspell.el
+        skk-flymake.el
+        ;; skk-flyspell.el
         skk-functions.el
         skk-general.el
-        ;skk-git.el 
+        ;; ;skk-git.el 
         skk-ibuffer.el
         skk-icicles.el
         skk-ido.el
-        skk-js2mode.el
-        skk-makefilemode.el
         skk-mk-project.el
-;        skk-flymake.el
         skk-mu4e.el
-        skk-org-mode.el
-        skk-scheme.el
-        skk-perl.el
-        ;skk-python.el
         skk-sql.el
-        skk-textmode.el
-        ;skk-workgroups.el
-        ;skk-wanderlust-folders.el
-        skk-yasnippet.el
+        ;; ;skk-workgroups.el
+        ;; ;skk-wanderlust-folders.el
+        ;; skk-yasnippet.el
 ))
+
+(autoload 'skk-clojure "skk-clojure.el" t)
+(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+
+(autoload 'skk-emacslisp-mode "skk-emacslisp-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
+
+(autoload 'skk-js2mode "skk-js2mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(autoload 'skk-makefilemode "skk-makefilemode.el" t)
+(add-to-list 'auto-mode-alist '("\\Makefile\\'" . makefile-mode))
+
+;(autoload 'skk-mu4e "skk-mu4e.el" t)
+
+(autoload 'skk-org-mode "skk-org-mode.el" t)
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+
+(autoload 'skk-scheme "skk-scheme.el" t)
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . geiser-install))
+
+(autoload 'skk-perl "skk-perl.el" t)
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.pm\\'" . cperl-mode))
+
+(autoload 'skk-python "skk-python.el" t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+(autoload 'skk-sql "skk-sql.el" t)
+
+(autoload 'skk-textmode "skk-textmode.el" t)
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . text-mode))
+
+(autoload 'skk-yasnippet "skk-yasnippet.el" t)
+
+;; (autoload 'skk-git. "skk-git.el " t)
+;; (autoload 'skk-workgroups "skk-workgroups.el" t)
+;; (autoload 'skk-wanderlust-folders "skk-wanderlust-folders.el" t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun load-config (f)
@@ -258,6 +276,7 @@
 (autoload 'log4j-mode "log4j-mode" "Major mode for viewing log files." t)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . log4j-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 
 ;; (autoload 'js2-mode "js2-mode" nil t)
@@ -295,3 +314,11 @@
 (if (getenv "PWD")
     (cd (getenv "PWD"))
   (cd "~"))
+
+;; rest of your .emacs goes here
+(message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+                           (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
+(switch-to-buffer "*Messages*")
+
+;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+

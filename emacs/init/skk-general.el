@@ -1,5 +1,9 @@
 ;;; skk-general.el --- General Settings
 
+
+(eval-after-load "skk-general"
+  '(progn
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; the modeline
 (line-number-mode t)                     ; show line numbers
@@ -699,7 +703,7 @@ activate-mark-hook"
 ;; (fset 'indent4
 ;;    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("    " 0 "%d")) arg)))
 
-
+))
 
 (provide 'skk-general)
 ;;; skk-general.el ends here
