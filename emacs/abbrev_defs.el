@@ -103,6 +103,10 @@
 
 (define-abbrev-table 'custom-theme-choose-mode-abbrev-table '())
 
+(define-abbrev-table 'diary-fancy-display-mode-abbrev-table '())
+
+(define-abbrev-table 'diary-mode-abbrev-table '())
+
 (define-abbrev-table 'diff-mode-abbrev-table '())
 
 (define-abbrev-table 'dig-mode-abbrev-table '())
