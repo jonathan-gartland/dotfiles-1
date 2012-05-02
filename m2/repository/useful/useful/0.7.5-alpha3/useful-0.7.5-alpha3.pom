@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>useful</groupId>
+  <artifactId>useful</artifactId>
+  <version>0.7.5-alpha3</version>
+  <name>useful</name>
+  <description>A collection of generally-useful Clojure utility functions</description>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>http://clojars.org/repo</url>
+    </repository>
+    <repository>
+      <id>maven</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.macro</artifactId>
+      <version>0.1.1</version>
+    </dependency>
+  </dependencies>
+</project>
