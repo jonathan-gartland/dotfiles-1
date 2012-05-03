@@ -56,10 +56,7 @@
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
                        (:name iy-go-to-char :type elpa)
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
 
