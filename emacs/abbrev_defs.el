@@ -27,6 +27,8 @@
 
 (define-abbrev-table 'bbdb-mode-abbrev-table '())
 
+(define-abbrev-table 'bibtex-mode-abbrev-table '())
+
 (define-abbrev-table 'bmkp-edit-bookmark-record-mode-abbrev-table '())
 
 (define-abbrev-table 'bmkp-edit-bookmark-records-mode-abbrev-table '())
@@ -125,8 +127,6 @@
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
 
-(define-abbrev-table 'erc-mode-abbrev-table '())
-
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
 (define-abbrev-table 'finder-mode-abbrev-table '())
@@ -135,21 +135,7 @@
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
 
-(define-abbrev-table 'gdb-breakpoints-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-disassembly-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-frames-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-locals-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-memory-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-registers-mode-abbrev-table '())
-
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
-
-(define-abbrev-table 'gdb-threads-mode-abbrev-table '())
 
 (define-abbrev-table 'geiser-messages-mode-abbrev-table '())
 
@@ -209,6 +195,18 @@
 
 (define-abbrev-table 'log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'makefile-automake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-gmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-imake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-makepp-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-mode-abbrev-table '())
+
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
 (define-abbrev-table 'message-mode-abbrev-table '())
@@ -249,6 +247,8 @@
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
+(define-abbrev-table 'proced-mode-abbrev-table '())
+
 (define-abbrev-table 'process-menu-mode-abbrev-table '())
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
@@ -283,6 +283,8 @@
 
   " nil 0)
    ))
+
+(define-abbrev-table 'rst-toc-mode-abbrev-table '())
 
 (define-abbrev-table 'scheme-mode-abbrev-table '())
 
@@ -326,8 +328,6 @@
 
 (define-abbrev-table 'tex-shell-abbrev-table '())
 
-(define-abbrev-table 'texinfo-mode-abbrev-table '())
-
 (define-abbrev-table 'text-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-bzr-log-view-mode-abbrev-table '())
@@ -343,6 +343,4 @@
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'xml-mode-abbrev-table '())
-
-(define-abbrev-table 'yas/rails-erb-mode-abbrev-table '())
 
