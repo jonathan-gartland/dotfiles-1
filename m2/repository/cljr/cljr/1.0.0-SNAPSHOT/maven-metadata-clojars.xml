@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>cljr</groupId>
+  <artifactId>cljr</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20100502.112537</timestamp>
+      <buildNumber>14</buildNumber>
+    </snapshot>
+    <lastUpdated>20100722220031</lastUpdated>
+  </versioning>
+</metadata>
