@@ -705,5 +705,19 @@ activate-mark-hook"
 
 ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://blog.printf.net/articles/tag/emacs
+(defun find-tag-at-point ()
+  "*Find tag whose name contains TAGNAME.
+  Identical to `find-tag' but does not prompt for 
+  tag when called interactively;  instead, uses 
+  tag around or before point."
+    (interactive)
+      (find-tag (if current-prefix-arg
+                    (find-tag-tag "Find tag: "))
+                (find-tag (find-tag-default))))
+(global-set-key [f9] 'find-tag-at-point)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (provide 'skk-general)
 ;;; skk-general.el ends here
