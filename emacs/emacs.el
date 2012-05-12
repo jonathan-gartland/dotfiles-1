@@ -29,7 +29,7 @@
 ;; el-get installer.
 ;(el-get-emacswiki-refresh)
 (setq el-get-sources '(
-		       (:name hexrgb :type emacswiki)
+                       (:name hexrgb :type emacswiki)
 ;                       (:name flyspell :type elpa)
                        (:name flymake :type elpa)
 ;                       (:name bookmark :type emacswiki)
@@ -127,6 +127,7 @@
    geiser-git
    google-maps
    google-weather
+   helm
    hexrgb
    js2-mode ; TODO Added :after hook
    js2-refactor
@@ -156,11 +157,11 @@
    yasnippet
    zencoding-mode
 )
-(mapcar 'el-get-source-name el-get-sources)))
 
+(mapcar 'el-get-source-name el-get-sources)))
 (el-get 'sync my-el-get-packages)
 
-; Added marmalade-repo to package
+
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -316,6 +317,10 @@
 (message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
                            (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
 (switch-to-buffer "*Messages*")
+
+
+;; (add-to-list 'load-path "~/.emacs.d/el-get/theme-sinburn")
+;; (load-theme 'theme-sinburn)
 
 ;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
