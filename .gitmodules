@@ -1,0 +1,6 @@
+[submodule "hub"]
+	path = hub
+	url = https://github.com/defunkt/hub.git
+[submodule "scm_breeze"]
+	path = scm_breeze
+	url = https://github.com/ndbroadbent/scm_breeze.git
