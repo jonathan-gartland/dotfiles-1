@@ -11,6 +11,24 @@
              (filename . "/web/nh-wetlands-mapper-dev"))
             ("SICP"
              (filename . "~work/SICP"))
+            ("Housing OCM"
+             (or
+              (filename . "/web/housing/perl/HOUSING/EXT/OCM")
+              (filename . "/web/housing/htdocs/js/ocm")
+              (filename . "/web/housing/htdocs/css/ocm")
+              (filename . "/web/housing/sql/ocm")))
+            ("Housing ResLife"
+             (or
+              (filename . "/web/housing/perl/HOUSING/EXT/ResLife")
+              (filename . "/web/housing/htdocs/js/reslife")
+              (filename . "/web/housing/htdocs/css/reslife")
+              (filename . "/web/housing/sql/reslife")))
+            ("Housing InHall"
+             (or
+              (filename . "/web/housing/perl/HOUSING/EXT/Assignments/InHall")
+              (filename . "/web/housing/htdocs/js/inhall")
+              (filename . "/web/housing/htdocs/css/inhall")
+              (filename . "/web/housing/sql/inhall")))
             ("Housing"
              (filename . "/web/housing"))
             ("RCC"
