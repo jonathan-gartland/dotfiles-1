@@ -126,16 +126,6 @@ class install(object):
                 {'src': 'bin/.cutpass.bzr/qCutpass.py', 'dst': 'bin/qCutpass'}
         ])
 
-    def scm_breeze(self, install_type):
-        if not self.options.dry_run:
-            path = os.path.join(self.basedir, "scm_breeze.git")
-            if not os.path.exists(path):
-                self._execute_command(self._git("https://github.com/ndbroadbent/scm_breeze.git", path))
-
-        self._createLinks([
-                {'src': 'scm_breeze.git', 'dst': '.scm_breeze' }
-        ])
-
     def dotfiles(self, install_type):
         gitconfig = ""
         signature = None
