@@ -57,6 +57,8 @@
                        (:name shell-pop :type emacswiki)
                        (:name iy-go-to-char :type elpa)
 
+                       (:name monokai-theme :type elpa)
+
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
 
@@ -110,10 +112,18 @@
    auto-complete-etags
    auto-complete-extension
    auto-complete-yasnippet
+   bookmark+
+   bookmark+-1
+   bookmark+-bmu
+   bookmark+-doc
+   bookmark+-key
+   bookmark+-mac
+   bookmark+-lit
    boxquote
    calfw
    clevercss
    clojure-mode
+   color-theme-solarized
    ;color-theme
    cperl-mode ; TODO Add :after hook
    crontab-mode
@@ -136,6 +146,7 @@
    mapserver-mode
    mark-multiple
    markdown-mode
+   monokai-theme
    notify
    package
    paredit
@@ -210,6 +221,7 @@
         skk-mk-project.el
         skk-mu4e.el
         skk-sql.el
+        skk-perl.el
         ;; ;skk-workgroups.el
         ;; ;skk-wanderlust-folders.el
         ;; skk-yasnippet.el
@@ -235,9 +247,9 @@
 (autoload 'skk-scheme "skk-scheme.el" t)
 (add-to-list 'auto-mode-alist '("\\.scm\\'" . geiser-install))
 
-(autoload 'skk-perl "skk-perl.el" t)
-(add-to-list 'auto-mode-alist '("\\.pl\\'" . cperl-mode))
-(add-to-list 'auto-mode-alist '("\\.pm\\'" . cperl-mode))
+;; (autoload 'skk-perl "skk-perl.el" t)
+;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . cperl-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pm\\'" . cperl-mode))
 
 (autoload 'skk-python "skk-python.el" t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -317,10 +329,3 @@
 (message "My .emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
                            (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
 (switch-to-buffer "*Messages*")
-
-
-;; (add-to-list 'load-path "~/.emacs.d/el-get/theme-sinburn")
-;; (load-theme 'theme-sinburn)
-
-;(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
-
