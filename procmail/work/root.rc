@@ -16,6 +16,12 @@
 * ^Subject:.*Logwatch for (zathras|kosh)*.*
 .Systems.LogWatch/
 
+# Delete Host UP/Down alerts
+:0
+* ^Subject:.*Host UP alert for.*
+* ^Subject:.*Host DOWN alert for.*
+.Systems.RootDeletable/
+
 :0
 * ^Subject:.*UNH Admissions received your e-mail.*
 /dev/null
@@ -73,3 +79,5 @@
 :0
 * ^From:.*MAILER-DAEMON@stella.sr.unh.edu.*
 /dev/null
+
+nn
