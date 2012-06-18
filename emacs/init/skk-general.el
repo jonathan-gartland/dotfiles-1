@@ -354,12 +354,18 @@ activate-mark-hook"
 ;; (add-hook 'post-command-hook 'djcb-set-cursor-according-to-mode)
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://www.emacswiki.org/emacs/ChangingCursorDynamically
+;; (require 'cursor-chg)  ; Load the library
+;; (toggle-cursor-type-when-idle 1) ; Turn on cursor change when Emacs is idle
+;; (change-cursor-mode 1) ; Turn on change for overwrite, read-only, and input mode
+;; (setq curchg-default-cursor-color "black")
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ChangingCursorDynamically
-(require 'cursor-chg)  ; Load the library
-(toggle-cursor-type-when-idle 1) ; Turn on cursor change when Emacs is idle
-(change-cursor-mode 1) ; Turn on change for overwrite, read-only, and input mode
-(setq curchg-default-cursor-color "white")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/color-theme-solarized")
+(load-theme 'solarized-light t)
+;(load-theme 'solarized-dark t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -717,6 +723,13 @@ activate-mark-hook"
                     (find-tag-tag "Find tag: "))
                 (find-tag (find-tag-default))))
 (global-set-key [f9] 'find-tag-at-point)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; bookmarks http://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
+; bookarmks+ http://www.emacswiki.org/emacs/BookmarkPlus
+(require 'bookmark+)
+(bookmark-save-flag 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'skk-general)
