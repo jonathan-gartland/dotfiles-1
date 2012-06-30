@@ -112,6 +112,7 @@
    auto-complete-etags
    auto-complete-extension
    auto-complete-yasnippet
+   autopair
    bookmark+
    bookmark+-1
    bookmark+-bmu
@@ -220,7 +221,7 @@
         skk-ido.el
         skk-mk-project.el
         skk-mu4e.el
-        skk-sql.el
+;        skk-sql.el
         skk-perl.el
         ;; ;skk-workgroups.el
         ;; ;skk-wanderlust-folders.el
@@ -251,8 +252,8 @@
 ;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . cperl-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.pm\\'" . cperl-mode))
 
-(autoload 'skk-python "skk-python.el" t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;; (autoload 'skk-python "skk-python.el" t)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 (autoload 'skk-sql "skk-sql.el" t)
 
