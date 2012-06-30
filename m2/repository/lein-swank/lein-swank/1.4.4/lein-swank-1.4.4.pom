@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>lein-swank</groupId>
+  <artifactId>lein-swank</artifactId>
+  <version>1.4.4</version>
+  <name>lein-swank</name>
+  <description>A Leiningen plugin for launching a Swank server for Slime.</description>
+  <url></url>
+  <licenses>
+    <license />
+  </licenses>
+  <build>
+    <sourceDirectory>/home/phil/src/swank-clojure/lein-swank/src</sourceDirectory>
+    <testSourceDirectory>/home/phil/src/swank-clojure/lein-swank/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>/home/phil/src/swank-clojure/lein-swank/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>/home/phil/src/swank-clojure/lein-swank/resources</directory>
+      </testResource>
+    </testResources>
+  </build>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo1.maven.org/maven2</url>
+    </repository>
+    <repository>
+      <id>clojars</id>
+      <url>http://clojars.org/repo/</url>
+    </repository>
+  </repositories>
+</project>

@@ -4,3 +4,6 @@
 [submodule "scm_breeze"]
 	path = scm_breeze
 	url = https://github.com/ndbroadbent/scm_breeze.git
+[submodule "use-package"]
+	path = use-package
+	url = https://github.com/jwiegley/use-package.git
