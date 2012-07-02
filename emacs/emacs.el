@@ -223,6 +223,12 @@
          sql-complete
          sqlplus
          swank-clojure
+         sunrise-commander
+         sunrise-x-checkpoints
+         sunrise-x-loop
+         sunrise-x-mirror
+         sunrise-x-modeline
+         sunrise-x-tree
          tail
          workgroups
          xclip
