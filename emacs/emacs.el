@@ -145,9 +145,6 @@
                        (:name geiser-git :type git
                               :url "git://git.sv.gnu.org/geiser.git")
 
-                       (:name csharp-mode :type http
-                              :url "http://code.google.com/p/csharpmode/source/browse/trunk/csharp-mode.el")
-
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
                        ))
@@ -188,7 +185,6 @@
                                         ;color-theme
          cperl-mode ; TODO Add :after hook
          crontab-mode
-         csharp-mode
          csv
          csv-mode
          dictionary
