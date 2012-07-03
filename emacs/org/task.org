@@ -1,0 +1,24 @@
+* 2012
+** July
+*** 01
+**** [WEEKEND]
+*** 02
+**** OCM 
+***** 1 hour billable to OCM.  Created 'audit log' based on ApplicationLog from EMS (and functions from EPSCOR).
+***** 1 hour billable to OCM.  Added priors and show priors to arrest form.
+****  4 hours non-billable to OCM.   Fixes, misc changes.
+*** 03
+**** OCM
+***** 3.5 hours non-billable to OCM.  Meeting with Sarah.
+***** 1 hours billable to OCM. I've updated the Complaint Form to include view/update access checks.  In the Application Log, you'll see the results of these checks.
+***** 1 hours non-billable to OCM.  Misc. bug fixes.
+*** 04
+**** HOLIDAY
+*** 05
+**** VACATION
+*** 06
+**** VACATION
+*** 07
+**** WEEKEND
+*** 08
+**** WEEKEND
