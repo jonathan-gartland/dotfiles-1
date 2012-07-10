@@ -8,6 +8,7 @@
 (add-to-list 'load-path use-package-dir)
 
 (require 'use-package)
+(require 'bind-key)
 
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
@@ -122,6 +123,9 @@
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
 
+                       (:name jshint-mode :type git 
+                              :url "https://github.com/daleharvey/jshint-mode.git")
+
                        ;; (:name emacs-flymake :type git 
                        ;;        :url "https://github.com/illusori/emacs-flymake.git")
                        ;;
@@ -130,15 +134,15 @@
                        (:name ace-jump-mode :type git 
                               :url "git://github.com/winterTTr/ace-jump-mode.git")
 
-                                        ; js2-refactor
+                       ; js2-refactor
                        (:name js2-refactor :type git 
                               :url "https://github.com/magnars/js2-refactor.el.git")
                        
-                                        ; mark-multiple
+                       ; mark-multiple
                        (:name mark-multiple :type git
                               :url "https://github.com/magnars/mark-multiple.el.git")
                        
-                                        ; expand-region
+                       ; expand-region
                        (:name expand-region :type git
                               :url "git://github.com/magnars/expand-region.el.git")
 
@@ -156,11 +160,11 @@
 (setq my-el-get-packages  
       (append  
        '(
-                                        ; cmake-mode
-                                        ; color-theme-zenburn
-                                        ; bookmark+ ; HTTP 503 error
-                                        ; egg
-                                        ; pymacs
+         ; cmake-mode
+         ; color-theme-zenburn
+         ; bookmark+ ; HTTP 503 error
+         ; egg
+         ; pymacs
          ace-jump-mode
          ack
          auto-complete
@@ -197,6 +201,7 @@
          helm
          hexrgb
          js2-mode ; TODO Added :after hook
+         jshint-mode
          js2-refactor
          json
          jump-char
@@ -287,6 +292,7 @@
   (progn
     (autoload 'slime "slime" nil t)
     (slime-setup '(slime-repl))))
+
 ;;;_. clojure
 (use-package clojure-mode
   :init 
@@ -345,13 +351,22 @@
      ;; I want to see at most the first 4 errors for a line.
      (setq flymake-number-of-errors-to-display 4)))
 
+;;;_. jshint-mode
+(use-package jshint-mode
+  :config
+  '(progn
+     (setq jshint-mode-location (expand-file-name "~/dot-files-forest/jshint-mode"))
+     (require 'flymake-jshint)
+     (add-hook 'javascript-mode-hook
+               (lambda () (flymake-mode t)))))
 
+;;;_. ibuffer
 (require 'ibuffer) 
 (require 'ibuf-ext)
 
-(use-package flymake
+(use-package ibuffer
   :config
-  (progn 
+  (progn 2
     (setq ibuffer-saved-filter-groups
           (quote (("default"      
                    ("erma-skk"
@@ -568,10 +583,12 @@ Symbols matching the text at point are put first in the completion list."
     (imenu-update-menubar)
     (ido-imenu)))
 
+
 ;;;_. ido
 (use-package ido
-  :config
+  :init
   (progn
+    (bind-key "C-x C-i" 'ido-imenu)
     (setq ido-create-new-buffer (quote never))
     (setq ido-enable-flex-matching t)
     (setq ido-enable-last-directory-history nil)
@@ -582,10 +599,10 @@ Symbols matching the text at point are put first in the completion list."
     (setq ido-use-url-at-point t)
     (setq ido-use-virtual-buffers t)
     ;; enable fuzzy matching
-    (setq ido-enable-flex-matching t))
-                                        ;  :bind 
-                                        ;  ("C-x C-i" 'ido-menu)
-  )
+    (setq ido-enable-flex-matching t)
+    
+    ))
+
 
 ;;;_. mk-project
 (use-package mk-project
@@ -1102,12 +1119,12 @@ Symbols matching the text at point are put first in the completion list."
 ;;;_. sql
 (use-package sql)
 
-
+;;;_. linum
 (use-package linum
   :init
   (progn
-                                        ; enable display of line-numbers to left of buffer,
-                                        ; update linum's format
+    ; enable display of line-numbers to left of buffer,
+    ; update linum's format
     (setq linum-format "%d ") 
     (global-linum-mode 1)))
 
@@ -1115,7 +1132,7 @@ Symbols matching the text at point are put first in the completion list."
   :init
   (progn 
 
-    (defconst sepia-path (file-truename "~/.emacs.d/elisp/Sepia-0.992_01"))
+    (defconst sepia-path (file-truename "~/.emacs.d/vendor/Sepia-0.992_01"))
     (add-to-list 'load-path sepia-path)
     (setq sepia-perl5lib (list (expand-file-name (concat sepia-path "/lib"))))
     (defalias 'perl-mode 'sepia-mode)
@@ -1165,7 +1182,7 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. python
 (use-package python-mode
-  :mode ("\\.py$" . python-mode)
+ :mode ("\\.py$" . python-mode)
   :interpreter ("python" . python-mode)
   :init
   (progn
@@ -1223,15 +1240,15 @@ Symbols matching the text at point are put first in the completion list."
       (interactive)
       (flyspell-mode 1))
 
-    (when (eq system-type "gnu/linux"))
-    (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
-    (add-hook 'c++-mode-hook 'turn-on-flyspell)
-    (add-hook 'c-mode-common-hook 'turn-on-flyspell  )
-    (add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
-    (add-hook 'fundamental-mode-hook 'turn-on-flyspell)
-    (add-hook 'message-mode-hook 'turn-on-flyspell)
-    (add-hook 'python-mode-hook 'turn-on-flyspell)
-    (add-hook 'text-mode-hook 'turn-on-flyspell)))
+    (when (eq system-type "gnu/linux")
+      (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
+      (add-hook 'c++-mode-hook 'turn-on-flyspell)
+      (add-hook 'c-mode-common-hook 'turn-on-flyspell  )
+      (add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
+      (add-hook 'fundamental-mode-hook 'turn-on-flyspell)
+      (add-hook 'message-mode-hook 'turn-on-flyspell)
+      (add-hook 'python-mode-hook 'turn-on-flyspell)
+      (add-hook 'text-mode-hook 'turn-on-flyspell))))
 
 ;;;_. mercurial
 (use-package ahg)
@@ -1483,6 +1500,19 @@ Symbols matching the text at point are put first in the completion list."
     (cd (getenv "PWD"))
   (cd "~"))
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bookmark-save-flag nil)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; Local Variables:
 ;;   mode: emacs-lisp
 ;;   mode: allout
