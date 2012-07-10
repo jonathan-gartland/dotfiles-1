@@ -22,3 +22,10 @@
 **** WEEKEND
 *** 08
 **** WEEKEND
+*** 09
+**** OCM
+***** 6 hours non-billable to OCM.  Corrected error loading complaint form.  Added lookup of student info by PIDM using using 'Find Student' tool.  Changed listing of violations/sanctions to honor deprecated column.
+*** 10
+**** OCM
+***** 3 hours non-billable to OCM.  Changed 'members' fields on resolution tab.  Fixed download.  Removed 'hearing to determine' field.  Printing case number and due date on 'student snapshot'
+***** 3 hours bilalble to OCM.  Created message areas on dashboads (conduct, arrest, academic).  Imported data from table tcc_tblIncidents to improve lookup of student records.  Import most of the OCM volunteers (most volunteers don't have PIDMs). Switched Res path radioboxes to checkboxes. 
