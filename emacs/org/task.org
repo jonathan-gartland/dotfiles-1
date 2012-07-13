@@ -31,6 +31,22 @@
 ***** 3 hours bilalble to OCM.  Created message areas on dashboads (conduct, arrest, academic).  Imported data from table tcc_tblIncidents to improve lookup of student records.  Import most of the OCM volunteers (most volunteers don't have PIDMs). Switched Res path radioboxes to checkboxes. 
 *** 11
 **** OCM
-**** 3 hours billable to OCM.  Added support for "organization" as the respondent for an complaint form.
-**** 1 hours billable to OCM.  Added support for highlighting of dates customizable by OCM.
-**** 2 hours non-billable ot OCM. Misc. bug fixes.
+***** 3 hours billable to OCM.  Added support for "organization" as the respondent for an complaint form.
+***** 1 hour billable to OCM.  Added support for highlighting of dates customizable by OCM.
+***** 2 hours non-billable ot OCM. Misc. bug fixes.
+*** 12
+**** OCM
+***** 1 hour billable to OCM.  Completed work on organizations.
+***** 1 hour billable to OCM.  Updated Sanction Record to store auto complete (using custom script) sancitons.
+***** 1 hour billable to OCM.  Updated Sanction Record to store hidden on other - ocm report sanctions.
+***** 2.5 hours billable to OCM.  Updated perl modules to implement privilege checks to limit access as defined by Sarah.
+*** 13 
+**** OCM
+***** 1.5 hours non-billable to OCM. Updated OCM menus to implement privilege checks to limit access.
+***** 1.5 hours billable to OCM.  Created Arrest Dashboard based on Conudct Dashboard.
+***** 1 hour billable to OCM.  Update Complaint Form hide/show PIDM/Organization fields based on respondent_type.
+***** 1 hour billable to OCM.  Added notes/files tab to Arrest Form.  Created Arrest Charges record/recordset.  
+*** 14
+**** WEEKEND
+*** 15
+**** WEEKEND
