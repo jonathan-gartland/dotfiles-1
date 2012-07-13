@@ -205,6 +205,7 @@
          js2-refactor
          json
          jump-char
+         lusty-explorer
          mapserver-mode
          mark-multiple
          markdown-mode
@@ -523,6 +524,9 @@
   :config
   (progn
     (global-set-key [?\M-`] 'lacarte-execute-menu-command)))
+
+
+(use-package lusty-explorer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                         ; http://emacsrocks.com/e10.html
