@@ -50,3 +50,14 @@
 **** WEEKEND
 *** 15
 **** WEEKEND
+*** 16
+**** OCM
+***** 2 hours non-billable to OCM.  Meet with Yunus Syed to work on allowing OCM to lookup PIDM by Student ID via LDAP.  Created perl function to connect to LDAP and obtain PIDM. 
+***** 2 hours non-billable to OCM.  Corrected perforcemace problems when using Three Strikes report.'
+***** 1 hours non-billable to OCM.  Misc bug fixes.
+***** 1 hours billable to OCM.  Updates to Arrest Form letters.
+*** 17
+**** OCM
+***** 1.5 hours billable to OCM. Updates to Arrest Form letters.  Added updating Assoc. Deans to Settings page.
+***** 2 hours non-billable to OCM.  Continued working on LDAP lookup.  At this point, I switched to using a simple shell script to lookup pidm.
+***** 1.5 hours non-billable to OCM.  Improve Three Strike report (with Phil's help) to improve loading time and its implemention.
