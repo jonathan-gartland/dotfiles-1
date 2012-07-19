@@ -60,4 +60,17 @@
 **** OCM
 ***** 1.5 hours billable to OCM. Updates to Arrest Form letters.  Added updating Assoc. Deans to Settings page.
 ***** 2 hours non-billable to OCM.  Continued working on LDAP lookup.  At this point, I switched to using a simple shell script to lookup pidm.
-***** 1.5 hours non-billable to OCM.  Improve Three Strike report (with Phil's help) to improve loading time and its implemention.
+***** 1.5 hours non-billable to OCM.  Improved Three Strike report (with Phil's help) to improve loading time and its implemention.
+*** 18
+**** OCM
+***** 6.5 hours non-billable to OCM.  Using a script created by Bill Costa from UNHIT, I updated OCM to correctly lookup pidm by student id.  Updated ThreeStrikes, Complaint Form and Arrest Form to use access StudentSnapshot using student_id or org_id.  Updated ConductDashboard & ArrestDashboard to allow search for Organziations using Respondent fields.  
+*** 19 
+**** OCM
+***** 4.5 hour non-billable to OCM.  Updated ThreeStrikes, Complaint Form and Arrest Form to improve how they access prior data.  Created Arrast Dashbaord.
+***** 1 hour billable to OCM.  Created recordset 'Conduct with Scholarship'.
+*** 20
+**** OCM
+*** 21
+**** WEEKEND
+*** 22
+**** WEEKEND
