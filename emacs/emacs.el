@@ -119,6 +119,7 @@
                        (:name iy-go-to-char :type elpa)
 
                        (:name monokai-theme :type elpa)
+                       (:name nrepl :type elpa)
 
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
@@ -210,6 +211,7 @@
          mark-multiple
          markdown-mode
          monokai-theme
+         nrepl
          notify
          package
          paredit
@@ -1486,6 +1488,11 @@ Symbols matching the text at point are put first in the completion list."
             ; do the intelligent wrapping of lines
             (use-package filladapt
               :init (filladapt-mode t))))
+
+(use-package expand-region
+  :init
+  (progn
+    (bind-key "C-=" 'er/expand-region)))
 
 ;;;_. workgroups
 (use-package workgroups
