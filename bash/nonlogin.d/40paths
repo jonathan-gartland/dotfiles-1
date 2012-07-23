@@ -134,6 +134,11 @@ if [ -n /opt/android-sdk-linux ]; then
     export PATH="/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:$PATH"
 fi
 
+export NODE_DIR=$HOME/dot-files-forest/node-v0.8.2
+if [ -d $NODE_DIR ]; then
+    export PATH=$NODE_DIR/bin:$PATH
+fi
+
 # add ~/.cljr/bin to path
 if [ -d $HOME/.cljr/bin ]; then
     export PATH=/home/skk/.cljr/bin:$PATH
