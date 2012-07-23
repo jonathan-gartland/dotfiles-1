@@ -70,7 +70,13 @@
 ***** 1 hour billable to OCM.  Created recordset 'Conduct with Scholarship'.
 *** 20
 **** OCM
+***** 3 hours billable to OCM.
+**** RCI
+***** 3 hours non-billable to RCI.  Created task-output.py to convert task.org into useable data.
 *** 21
 **** WEEKEND
 *** 22
 **** WEEKEND
+*** 22
+**** RCI
+***** 1 hour non-billable to RCI.  Finished task-output.py to include billable/non-bibllable total and option hanlding.
