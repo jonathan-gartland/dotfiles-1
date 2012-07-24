@@ -80,3 +80,5 @@
 *** 22
 **** RCI
 ***** 1 hour non-billable to RCI.  Finished task-output.py to include billable/non-bibllable total and option hanlding.
+**** OCM
+***** 1.5 hours billable to OCM.  Updated MySanctions report to allow complainant to set completed date.
