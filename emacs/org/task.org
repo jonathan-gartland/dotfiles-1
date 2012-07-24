@@ -82,3 +82,8 @@
 ***** 1 hour non-billable to RCI.  Finished task-output.py to include billable/non-bibllable total and option hanlding.
 **** OCM
 ***** 1.5 hours billable to OCM.  Updated MySanctions report to allow complainant to set completed date.
+*** 24
+**** OCM
+***** 1.5 hour non-billable to OCM. Corrected page loading errors.  Updated OCM Privileges document (will send to Blaise tomorrow.)
+**** FR (TODO: Comfirm this with Bob.)
+***** 2.5 hours billable to FR.  Updated PDF files from ODT templates for printable output.
