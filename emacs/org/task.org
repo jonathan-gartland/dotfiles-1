@@ -1,4 +1,3 @@
-# NHMAPPER: 59011
 # OCM: 58797
 * 2012
 ** July
@@ -91,5 +90,11 @@
 **** OCM
 ***** .5 hour non-billable to OCM.  Complted changes to validate_privilege().
 ***** 2 hour non-billable to OCM.  Corrected page loading errors.  Updated OCM Privileges document (will send to Blaise tomorrow.)
-**** NHMAPPER
+**** NHMAPPER (59011)
 ***** 2.5 hours billable to FR.  Updated PDF files from ODT templates for printable output.
+*** 25
+**** SIRS (58233)
+***** 3 hours billable.  Help Al debug problems UserRecord on Layout2 site.
+**** OCM 
+***** 1 hour billable.  Meeting with OCM, VPSAS and RCI to dicssus/review OCM.
+***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
