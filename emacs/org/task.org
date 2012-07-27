@@ -5,14 +5,14 @@
 **** WEEKEND
 *** 02
 **** OCM 
-***** 1 hour billable to OCM.  Created 'audit log' based on ApplicationLog from EMS (and functions from EPSCOR).
-***** 1 hour billable to OCM.  Added priors and show priors to arrest form.
-****  4 hours non-billable to OCM.   Fixes, misc changes.
+***** 1 hour billable.  Created 'audit log' based on ApplicationLog from EMS (and functions from EPSCOR).
+***** 1 hour billable.  Added priors and show priors to arrest form.
+****  4 hours non-billable.   Fixes, misc changes.
 *** 03
 **** OCM
-***** 3.5 hours non-billable to OCM.  Meeting with Sarah.
-***** 1 hours billable to OCM. I've updated the Complaint Form to include view/update access checks.  In the Application Log, you'll see the results of these checks.
-***** 1 hours non-billable to OCM.  Misc. bug fixes.
+***** 3.5 hours non-billable.  Meeting with Sarah.
+***** 1 hours billable. I've updated the Complaint Form to include view/update access checks.  In the Application Log, you'll see the results of these checks.
+***** 1 hours non-billable.  Misc. bug fixes.
 *** 04
 **** HOLIDAY
 *** 05
@@ -25,76 +25,94 @@
 **** WEEKEND
 *** 09
 **** OCM
-***** 6 hours non-billable to OCM.  Corrected error loading complaint form.  Added lookup of student info by PIDM using using 'Find Student' tool.  Changed listing of violations/sanctions to honor deprecated column.
+***** 6 hours non-billable.  Corrected error loading complaint form.  Added lookup of student info by PIDM using using 'Find Student' tool.  Changed listing of violations/sanctions to honor deprecated column.
 *** 10
 **** OCM
-***** 3 hours non-billable to OCM.  Changed 'members' fields on resolution tab.  Fixed download.  Removed 'hearing to determine' field.  Printing case number and due date on 'student snapshot'
-***** 3 hours bilalble to OCM.  Created message areas on dashboads (conduct, arrest, academic).  Imported data from table tcc_tblIncidents to improve lookup of student records.  Import most of the OCM volunteers (most volunteers don't have PIDMs). Switched Res path radioboxes to checkboxes. 
+***** 3 hours non-billable.  Changed 'members' fields on resolution tab.  Fixed download.  Removed 'hearing to determine' field.  Printing case number and due date on 'student snapshot'
+***** 3 hours bilalble.  Created message areas on dashboads (conduct, arrest, academic).  Imported data from table tcc_tblIncidents to improve lookup of student records.  Import most of the OCM volunteers (most volunteers don't have PIDMs). Switched Res path radioboxes to checkboxes. 
 *** 11
 **** OCM
-***** 3 hours billable to OCM.  Added support for "organization" as the respondent for an complaint form.
-***** 1 hour billable to OCM.  Added support for highlighting of dates customizable by OCM.
+***** 3 hours billable.  Added support for "organization" as the respondent for an complaint form.
+***** 1 hour billable.  Added support for highlighting of dates customizable by OCM.
 ***** 2 hours non-billable ot OCM. Misc. bug fixes.
 *** 12
 **** OCM
-***** 1 hour billable to OCM.  Completed work on organizations.
-***** 1 hour billable to OCM.  Updated Sanction Record to store auto complete (using custom script) sancitons.
-***** 1 hour billable to OCM.  Updated Sanction Record to store hidden on other - ocm report sanctions.
-***** 2.5 hours billable to OCM.  Updated perl modules to implement privilege checks to limit access as defined by Sarah.
+***** 1 hour billable.  Completed work on organizations.
+***** 1 hour billable.  Updated Sanction Record to store auto complete (using custom script) sancitons.
+***** 1 hour billable.  Updated Sanction Record to store hidden on other - ocm report sanctions.
+***** 2.5 hours billable.  Updated perl modules to implement privilege checks to limit access as defined by Sarah.
 *** 13 
 **** OCM
-***** 1.5 hours non-billable to OCM. Updated OCM menus to implement privilege checks to limit access.
-***** 1.5 hours billable to OCM.  Created Arrest Dashboard based on Conudct Dashboard.
-***** 1 hour billable to OCM.  Update Complaint Form hide/show PIDM/Organization fields based on respondent_type.
-***** 1 hour billable to OCM.  Added notes/files tab to Arrest Form.  Created Arrest Charges record/recordset.  
+***** 1.5 hours non-billable. Updated OCM menus to implement privilege checks to limit access.
+***** 1.5 hours billable.  Created Arrest Dashboard based on Conudct Dashboard.
+***** 1 hour billable.  Update Complaint Form hide/show PIDM/Organization fields based on respondent_type.
+***** 1 hour billable.  Added notes/files tab to Arrest Form.  Created Arrest Charges record/recordset.  
 *** 14
 **** WEEKEND
 *** 15
 **** WEEKEND
 *** 16
 **** OCM
-***** 2 hours non-billable to OCM.  Meet with Yunus Syed to work on allowing OCM to lookup PIDM by Student ID via LDAP.  Created perl function to connect to LDAP and obtain PIDM. 
-***** 2 hours non-billable to OCM.  Corrected perforcemace problems when using Three Strikes report.'
-***** 1 hours non-billable to OCM.  Misc bug fixes.
-***** 1 hours billable to OCM.  Updates to Arrest Form letters.
+***** 2 hours non-billable.  Meet with Yunus Syed to work on allowing OCM to lookup PIDM by Student ID via LDAP.  Created perl function to connect to LDAP and obtain PIDM. 
+***** 2 hours non-billable.  Corrected perforcemace problems when using Three Strikes report.'
+***** 1 hours non-billable.  Misc bug fixes.
+***** 1 hours billable.  Updates to Arrest Form letters.
 *** 17
 **** OCM
-***** 1.5 hours billable to OCM. Updates to Arrest Form letters.  Added updating Assoc. Deans to Settings page.
-***** 2 hours non-billable to OCM.  Continued working on LDAP lookup.  At this point, I switched to using a simple shell script to lookup pidm.
-***** 1.5 hours non-billable to OCM.  Improved Three Strike report (with Phil's help) to improve loading time and its implemention.
+***** 1.5 hours billable. Updates to Arrest Form letters.  Added updating Assoc. Deans to Settings page.
+***** 2 hours non-billable.  Continued working on LDAP lookup.  At this point, I switched to using a simple shell script to lookup pidm.
+***** 1.5 hours non-billable.  Improved Three Strike report (with Phil's help) to improve loading time and its implemention.
 *** 18
 **** OCM
-***** 6.5 hours non-billable to OCM.  Using a script created by Bill Costa from UNHIT, I updated OCM to correctly lookup pidm by student id.  Updated ThreeStrikes, Complaint Form and Arrest Form to use access StudentSnapshot using student_id or org_id.  Updated ConductDashboard & ArrestDashboard to allow search for Organziations using Respondent fields.  
+***** 6.5 hours non-billable.  Using a script created by Bill Costa from UNHIT, I updated OCM to correctly lookup pidm by student id.  Updated ThreeStrikes, Complaint Form and Arrest Form to use access StudentSnapshot using student_id or org_id.  Updated ConductDashboard & ArrestDashboard to allow search for Organziations using Respondent fields.  
 *** 19 
 **** OCM
-***** 4.5 hour non-billable to OCM.  Updated ThreeStrikes, Complaint Form and Arrest Form to improve how they access prior data.  Created Arrast Dashbaord.
-***** 1 hour billable to OCM.  Created recordset 'Conduct with Scholarship'.
+***** 4.5 hour non-billable.  Updated ThreeStrikes, Complaint Form and Arrest Form to improve how they access prior data.  Created Arrast Dashbaord.
+***** 1 hour billable.  Created recordset 'Conduct with Scholarship'.
 *** 20
 **** OCM
-***** 3 hours billable to OCM.
+***** 3 hours billable.
 **** RCI
-***** 3 hours non-billable to RCI.  Created task-output.py to convert task.org into useable data.
+***** 3 hours non-billable.  Created task-output.py to convert task.org into useable data.
 *** 21
 **** WEEKEND
 *** 22
 **** WEEKEND
 *** 23
 **** RCI
-***** 3 hour non-billable to RCI.  Finished task-output.py to include billable/non-bibllable total and option hanlding.
+***** 3 hour non-billable.  Finished task-output.py to include billable/non-bibllable total and option hanlding.
 **** OCM
-***** 1.5 hour billable to OCM.  Updated MySanctions report to allow complainant to set completed date.
-***** .5 hour billable to OCM.  Updated Arrest Form for required/optional fields.
-***** .5 hour billable to OCM.  Updated Open Sanction Reports to ignore complaints with withdrawn sanctions.
-***** .5 hour non-billable to OCM.  Updated validate_privilege() to allow specifing AND/OR privilege requirement.
+***** 1.5 hour billable.  Updated MySanctions report to allow complainant to set completed date.
+***** .5 hour billable.  Updated Arrest Form for required/optional fields.
+***** .5 hour billable.  Updated Open Sanction Reports to ignore complaints with withdrawn sanctions.
+***** .5 hour non-billable.  Updated validate_privilege() to allow specifing AND/OR privilege requirement.
 *** 24
 **** OCM
-***** .5 hour non-billable to OCM.  Complted changes to validate_privilege().
-***** 2 hour non-billable to OCM.  Corrected page loading errors.  Updated OCM Privileges document (will send to Blaise tomorrow.)
+***** .5 hour non-billable.  Complted changes to validate_privilege().
+***** 2 hour non-billable.  Corrected page loading errors.  Updated OCM Privileges document (will send to Blaise tomorrow.)
 **** NHMAPPER (59011)
-***** 2.5 hours billable to FR.  Updated PDF files from ODT templates for printable output.
+***** 2.5 hours billable.  Updated PDF files from ODT templates for printable output.
 *** 25
 **** SIRS (58233)
-***** 3 hours billable.  Help Al debug problems UserRecord on Layout2 site.
+***** 3.5 hours billable.  Help Al debug problems UserRecord on Layout2 site.
 **** OCM 
-***** 1 hour billable.  Meeting with OCM, VPSAS and RCI to dicssus/review OCM.
-***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
+***** 1 hour billable.  Meeting with OCM, VPSAS and RCI.
+*****e 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
+*** 26
+**** OCM
+***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints based on business rules from OCM.
+***** 2 hour billable.  Imported OCM Arrest data.
+**** SIRS (58233)
+***** .5 hour billable.  Minor corrections to PDF files.
+**** RCI
+***** 2 hour non-billable.  Completed task-output.py.  It now supports including task ids both globally and locally.  The output has been updated to include all projects.
+**** EMS (50988)
+***** .5 hour non-billable. Responded to email to paygate-support.
+*** 27
+**** OCM
+***** .5 hour billable.  Imported OCM Arrest data.
+***** 2 hours billable.  Imported OCM Arrest data.
+***** 2 hours non-billable.  Updated Arrest/Conduct Dashbaords to include counts for acadmeic years.
+***** .5 hour non-billable.  Updated student snapshot to use 'not responsible' column.
+**** EMS (50988)
+***** .5 hour non-billable. Responded to email to paygate-support.
