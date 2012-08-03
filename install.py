@@ -194,11 +194,7 @@ class install(object):
         { 'src': 'bash/bash_logout', 'dst': '.bash_logout' }])
 
     def emacs(self, install_type):
-        self._createLinks([
-        {'src': 'emacs', 'dst': '.emacs.d' },
-        {'src': 'emacs/emacs.el', 'dst': '.emacs' },
-        {'src': 'emacs/autoload/skk-wanderlust.el', 'dst': '.wl' },
-        {'src': 'emacs/init/skk-wanderlust-folders.el', 'dst': '.folders' }])
+        self._createLinks([{'src': 'emacs', 'dst': '.emacs.d'}])
 
     def clojure(self, install_type):
         self._createLinks([
