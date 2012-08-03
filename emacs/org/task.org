@@ -71,7 +71,7 @@
 ***** 1 hour billable.  Created recordset 'Conduct with Scholarship'.
 *** 20
 **** OCM
-***** 3 hours billable.
+***** 3 hours billable.  !!!!!!!!MISSING!!!!!!
 **** RCI
 ***** 3 hours non-billable.  Created task-output.py to convert task.org into useable data.
 *** 21
@@ -97,7 +97,7 @@
 ***** 3.5 hours billable.  Help Al debug problems UserRecord on Layout2 site.
 **** OCM 
 ***** 1 hour billable.  Meeting with OCM, VPSAS and RCI.
-*****e 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
+***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
 *** 26
 **** OCM
 ***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints based on business rules from OCM.
@@ -116,3 +116,23 @@
 ***** .5 hour non-billable.  Updated student snapshot to use 'not responsible' column.
 **** EMS (50988)
 ***** .5 hour non-billable. Responded to email to paygate-support.
+*** 28
+**** WEEKEND
+*** 29
+**** WEEKEND
+*** 30
+**** OCM
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 31
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+** August
+*** 01
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 02
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 03
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 04
+**** WEEKEND
+*** 05
+**** WEEKEND
