@@ -71,7 +71,7 @@
 ***** 1 hour billable.  Created recordset 'Conduct with Scholarship'.
 *** 20
 **** OCM
-***** 3 hours billable.  !!!!!!!!MISSING!!!!!!
+***** 3 hours billable.  Created Conduct w/Scholarship - Open Cases recordset.  Created ability for OCM staff to switch to hearing officer.
 **** RCI
 ***** 3 hours non-billable.  Created task-output.py to convert task.org into useable data.
 *** 21
