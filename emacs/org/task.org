@@ -94,7 +94,7 @@
 ***** 2.5 hours billable.  Updated PDF files from ODT templates for printable output.
 *** 25
 **** SIRS (58233)
-***** 3.5 hours billable.  Help Al debug problems UserRecord on Layout2 site.
+***** 3.5 hours billable.  Help Al debug problems with UserRecord on SIRS website.
 **** OCM 
 ***** 1 hour billable.  Meeting with OCM, VPSAS and RCI.
 ***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
@@ -102,7 +102,7 @@
 **** OCM
 ***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints based on business rules from OCM.
 ***** 2 hour billable.  Imported OCM Arrest data.
-**** SIRS (58233)
+**** NHMAPPER (59011)
 ***** .5 hour billable.  Minor corrections to PDF files.
 **** RCI
 ***** 2 hour non-billable.  Completed task-output.py.  It now supports including task ids both globally and locally.  The output has been updated to include all projects.
