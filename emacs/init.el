@@ -124,6 +124,8 @@
 
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
+                       (:name powerline :type git
+                              :url "https://github.com/milkypostman/powerline.git" )
 
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
@@ -1474,6 +1476,11 @@ Symbols matching the text at point are put first in the completion list."
                   (0 (progn (compose-region (match-beginning 1)
                                             (match-end 1) "\u2190")
                             nil)))))))
+;;;_. powerline
+(use-package powerline
+  :init (progn
+          (powerline-default)))
+
 ;;;_. js2-refactor
 (use-package js2-refactor)
 
@@ -1848,15 +1855,15 @@ activate-mark-hook"
 
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2010/03/showing-buffer-position-in-mode-line.html
-(if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
-  (progn 
-    (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
-    (scroll-bar-mode -1))                   ;; turn off the scrollbar
-  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
-  (set-scroll-bar-mode 'right))             ;; ... on the right
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://emacs-fu.blogspot.com/2010/03/showing-buffer-position-in-mode-line.html
+;; (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
+;;   (progn 
+;;     (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
+;;     (scroll-bar-mode -1))                   ;; turn off the scrollbar
+;;   (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
+;;   (set-scroll-bar-mode 'right))             ;; ... on the right
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; enable midnight mode
