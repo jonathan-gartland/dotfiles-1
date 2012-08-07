@@ -238,7 +238,6 @@
          sunrise-x-modeline
          sunrise-x-tree
          tail
-         workgroups
          xclip
          yasnippet
          whole-line-or-region
@@ -249,15 +248,6 @@
 (el-get 'sync my-el-get-packages)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; require-maybe  (http://www.emacswiki.org/cgi-bin/wiki/LocateLibrary)
-;; this is useful when this .emacs is used in an env where not all of the
-;; other stuff is available
-(defmacro require-maybe (feature &optional file)
-  "*Try to require FEATURE, but don't signal an error if `require' fails."
-  `(require ,feature ,file 'noerror)) 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; create required directories
@@ -284,14 +274,14 @@
     (ac-config-default)
     (setq ac-comphist-file  "~/.emacs.d/.cache/ac-comphist.dat")))
 
-;;;_. calfw
-(use-package calfw-cal)
-(use-package calfw-ical)
-(use-package calfw
-  :config 
-  (progn 
-    (cfw:open-ical-calendar "https://www.google.com/calendar/ical/02388ju54civ56dklbv8n8tihk%40group.calendar.google.com/private-7937a20b31137f5ab34376f3bfe7b4a0/basic.ics")
-    (cfw:open-ical-calendar "https://www.google.com/calendar/ical/stevenknight1980%40gmail.com/private-8016020c8aaedfdd7a86000c09f786e9/basic.ics")))
+;; ;;;_. calfw
+;; (use-package calfw-cal)
+;; (use-package calfw-ical)
+;; (use-package calfw
+;;   :config 
+;;   (progn 
+;;     (cfw:open-ical-calendar "https://www.google.com/calendar/ical/02388ju54civ56dklbv8n8tihk%40group.calendar.google.com/private-7937a20b31137f5ab34376f3bfe7b4a0/basic.ics")
+;;     (cfw:open-ical-calendar "https://www.google.com/calendar/ical/stevenknight1980%40gmail.com/private-8016020c8aaedfdd7a86000c09f786e9/basic.ics")))
 
 ;;;_. key-chord
 (use-package key-chord
@@ -1545,19 +1535,431 @@ Symbols matching the text at point are put first in the completion list."
     (bind-key "M-X" 'smex-major-mode-commands)
     (bind-key "C-c C-c M-x" 'smex-major-mode-commands)))
 
-;;;_. workgroups
-(use-package workgroups
-  :init
-  (progn
-    (workgroups-mode 1)
-    (setq wg-switch-on-load nil) ; don't auto switch to the first workgroup 
-   (wg-load "~/.emacs.d/.workgroups")))
+;; ;;;_. workgroups
+;; (use-package workgroups
+;;   :init
+;;   (progn
+;;     (workgroups-mode 1)
+;;     (setq wg-switch-on-load nil) ; don't auto switch to the first workgroup 
+;;     (wg-load "~/.emacs.d/.cache/workgroups")))
 
 ;;;_. desktop-save-mode
 ;(setq desktop-path "~/.emacs.d/.cache/")
 (desktop-save-mode 1)
 
-;;;_. load general settings file
+;;;_. tabber, pair-mode
+(use-package tabber)
+(use-package pair-mode)
+
+;;;_. rect-mark
+(use-package rect-mark
+  :init
+  (progn
+    (bind-key "C-x r C-SPC" 'rm-set-mark)
+    (bind-key "C-x r C-x" 'rm-exchange-point-and-mark)
+    (bind-key "C-x r C-w" 'rm-kill-region)
+    (bind-key "C-x r M-w" 'rm-kill-ring-save)
+
+    (autoload 'rm-set-mark "rect-mark"
+      "Set mark for rectangle." t)
+    (autoload 'rm-exchange-point-and-mark "rect-mark"
+      "Exchange point and mark for rectangle." t)
+    (autoload 'rm-kill-region "rect-mark"
+      "Kill a rectangular region and save it in the kill ring." t)
+    (autoload 'rm-kill-ring-save "rect-mark"
+      "Copy a rectangular region to the kill ring." t)))
+
+
+;;;_. redo
+(use-package redo)
+
+;;;_. dtrt-indent
+;; http://git.savannah.gnu.org/gitweb/?p=dtrt-indent.git;a=blob_plain;f=dtrt-indent.el;hb=HEAD
+(use-package dtrt-indent
+  :init
+  (dtrt-indent-mode 1))
+
+;;;_. uniquify
+; http://emacs-fu.blogspot.com/2009/11/making-buffer-names-unique.html
+(use-package uniquify
+  :init
+  (progn
+    (setq 
+     uniquify-buffer-name-style 'post-forward
+     uniquify-separator ":")))
+
+
+;;;_. auto-insert
+; http://www.emacswiki.org/emacs/AutoInsertMode
+(use-package autoinsert
+  :init
+  (progn
+    (auto-insert-mode 1)  ;;; Adds hook to find-files-hook
+    (add-hook 'find-file-hook 'auto-insert)
+    (setq auto-insert-directory "~/.emacs.d/templates/") ;;; Or use custom, *NOTE* Trailing slash important
+    (setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
+    (define-auto-insert "\.py" "template.py")
+    (define-auto-insert "\.pm" "template.pm")))
+
+; http://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-ring-save (before slick-copy activate compile) "When called
+  interactively with no active region, copy a single line instead."
+  (interactive (if mark-active (list (region-beginning) (region-end)) (message
+  "Copied line") (list (line-beginning-position) (line-beginning-position
+  2)))))
+
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (list (line-beginning-position)
+        (line-beginning-position 2)))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun byte-recompile-emacsd ()
+  "Byte-compilete all files in ~/.emacs.d"
+  (byte-recompile-directory '~/.emacs.d' 0 t))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Highlight mark
+; http://lists.gnu.org/archive/html/help-gnu-emacs/2003-11/msg00328.html
+; nice mark - shows mark as a highlighted 'cursor' so user 'always' 
+; sees where the mark is. Especially nice for killing a region.
+(defvar pg-mark-overlay nil
+  "Overlay to show the position where the mark is") 
+(make-variable-buffer-local 'pg-mark-overlay)
+
+(put 'pg-mark-mark 'face 'secondary-selection)
+
+(defvar pg-mark-old-position nil
+  "The position the mark was at. To be able to compare with the
+current position")
+
+(defun pg-show-mark () 
+  "Display an overlay where the mark is at. Should be hooked into 
+activate-mark-hook" 
+  (unless pg-mark-overlay 
+    (setq pg-mark-overlay (make-overlay 0 0))
+    (overlay-put pg-mark-overlay 'category 'pg-mark-mark))
+  (let ((here (mark t)))
+    (when here
+      (move-overlay pg-mark-overlay here (1+ here)))))
+
+(defadvice  exchange-point-and-mark (after pg-mark-exchange-point-and-mark)
+  "Show visual marker"
+  (pg-show-mark))
+
+(ad-activate 'exchange-point-and-mark)
+(add-hook 'activate-mark-hook 'pg-show-mark)
+
+;;;_. multi-term
+; http://www.emacswiki.org/emacs/MultiTerm
+(use-package multi-term
+  :init 
+  (setq multi-term-program "/bin/bash"))
+
+
+;;;_. shell-pop
+; http://www.emacswiki.org/emacs/ShellPop 
+(use-package shell-pop
+  :init (progn
+          (shell-pop-set-internal-mode "multi-term")
+          (shell-pop-set-internal-mode-shell "/bin/bash")
+          (bind-key "<F-8>" 'shell-pop)))
+
+
+;;;_. lusty explorer
+
+; http://www.emacswiki.org/emacs/LustyExplorer
+(use-package lusty-explorer
+  :init 
+  (progn
+    (bind-key "C-x C-f" 'lusty-file-explorer)
+    (bind-key "C-x b" 'lusty-buffer-explorer)))
+  ;; overrride the normal file-opening, buffer switching
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun tab-width-two ()
+  (setq default-tab-width 2)            ; set tab-width
+  (setq-default tab-stop-list (list 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108))
+  (setq-default indent-tabs-mode nil))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://floss.zoomquiet.org/data/20110326155829/index.html
+(use-package point-stack
+  :init
+  (progn
+    (global-set-key '[(f5)] 'point-stack-push)
+    (global-set-key '[(f6)] 'point-stack-pop)
+    (global-set-key '[(f7)] 'point-stack-forward-stack-pop)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2011/01/setting-frame-title.html
+(setq frame-title-format
+  '("" invocation-name ": "(:eval (if (buffer-file-name)
+                (abbreviate-file-name (buffer-file-name))
+                  "%b"))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
+(require 'recentf)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
+;; recent files                                                                  
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+(use-package recentf
+  :init
+  (progn
+    (bind-key "C-x C-r" 'ido-recentf-open)
+    (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
+          recentf-max-saved-items 500                                            
+          recentf-max-menu-items 60)
+    (recentf-mode t)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ZenCoding
+(use-package zencoding
+  :init
+  (progn
+    (add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
+    (add-hook 'cperl-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
+    ))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(bind-key "C-x C-;" 'comment-region)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://emacs-fu.blogspot.com/2011/05/toward-balanced-and-colorful-delimiters.html
+(use-package rainbow-delimiters
+  :init
+  (progn
+    (add-hook 'cperl-mode-hook  'rainbow-delimiters-mode)
+    (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+    (add-hook 'python-mode-hook 'rainbow-delimiters-mode)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ImenuMode
+(defun try-to-add-imenu ()
+  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
+
+(add-hook 'cperl-mode-hook 'try-to-add-imenu)
+(add-hook 'python-mode-hook 'try-to-add-imenu)
+(add-hook 'lisp-mode-hook 'try-to-add-imenu)
+(add-hook 'js2-mode-hook 'try-to-add-imenu)
+
+(bind-key "C-c =" 'imenu)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://me.in-berlin.de/~myrkr/dictionary/
+(use-package dictionary 
+    :init
+    (progn
+      (load "dictionary-init")
+      (bind-key "\C-cs" 'dictionary-search)
+      (bind-key "\C-cm" 'dictionary-match-words)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; bookmarks
+; http://www.nongnu.org/bm/
+(setq bm-restore-repository-on-load t)
+(require 'bm)
+(global-set-key (kbd "<M-f2>") 'bm-toggle)
+(global-set-key (kbd "<f2>")   'bm-next)
+(global-set-key (kbd "<S-f2>") 'bm-previous)
+ 
+;; make bookmarks persistent as default
+(setq-default bm-buffer-persistence t)
+ 
+;; Loading the repository from file when on start up.
+(add-hook' after-init-hook 'bm-repository-load)
+ 
+;; Restoring bookmarks when on file find.
+(add-hook 'find-file-hooks 'bm-buffer-restore)
+ 
+;; Saving bookmark data on killing a buffer
+(add-hook 'kill-buffer-hook 'bm-buffer-save)
+
+;; Allow cross-buffer 'next'
+(setq bm-cycle-all-buffers t)
+ 
+;; Saving the repository to file when on exit.
+;; kill-buffer-hook is not called when emacs is killed, so we
+;; must save all bookmarks first.
+(add-hook 'kill-emacs-hook '(lambda nil
+                              (bm-buffer-save-all)
+                              (bm-repository-save)))
+
+; http://www.emacswiki.org/emacs/bm-ext.el
+; (require 'bm-ext)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;http://www.emacswiki.org/emacs/tiling.el
+(use-package tiling
+  :init
+  (progn
+    ;; Windows related operations
+    ;; Split & Resize
+    (bind-key "C-x |" 'split-window-horizontally)
+    (bind-key "C-x _" 'split-window-vertically)
+    (bind-key "C-{" 'shrink-window-horizontally)
+    (bind-key "C-}" 'enlarge-window-horizontally)
+    (bind-key "C-^" 'enlarge-window-verticially)
+    ;; Navgating: Windmove uses C-<up> etc.
+    (bind-key "C-<up>" '  windmove-up)
+    (bind-key "C-<down>" 'windmove-down)
+    (bind-key "C-<right>" 'windmove-right)
+    (bind-key "C-<left>" 'windmove-left)
+    ;; Swap buffers: M-<up> etc.
+    (bind-key "M-<up>" '  buf-move-up)
+    (bind-key "M-<down>" 'buf-move-down)
+    (bind-key "M-<right>" 'buf-move-right)
+    (bind-key "M-<left>" 'buf-move-left)
+    ;; Tile
+    (bind-key "C-\\" 'tiling-cycle) ; accepts prefix number
+    (bind-key "C-M-<up>" 'tiling-tile-up)
+    (bind-key "C-M-<down>" 'tiling-tile-down)
+    (bind-key "C-M-<right>" 'tiling-tile-right)
+    (bind-key "C-M-<left>" 'tiling-tile-left)))
+
+;;;_. paredit
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ParEdit
+(use-package paredit-mode
+  :init
+  (progn
+    (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+    (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+    (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+    (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/rebox2
+(use-package rebox2
+  :init
+  (progn
+    (bind-key "M-q" 'rebox-dwim)
+    (bind-key "S-M-q" 'rebox-cycle)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://blog.gabrielsaldana.org/easy-css-editing-with-emacs/
+; CSS and Rainbow modes 
+(defun all-css-modes() (css-mode) (rainbow-mode)) 
+
+;; Load both major and minor modes in one call based on file type 
+(add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/ModeCompile
+ ;;mode-compile
+(use-package mode-compile
+  :init
+  (progn
+    (bind-key "\C-cc" 'mode-compile)
+    (bind-key "\C-ck" 'mode-compile-kill)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defconst show-local-info-path (file-truename "~/local/share/info"))
+(if (file-accessible-directory-p show-local-info-path)
+    (add-to-list 'Info-default-directory-list show-local-info-path))
+
+;;;_. Emacs Rocks
+
+;;;_. Emacs Rocks 04
+; http://www.emacswiki.org/emacs/IyGoToChar
+; iy-go-to-char - like f in Vim
+(use-package jump-char
+  :init
+  (progn
+    (bind-key "M-m" 'jump-char-forward)
+    (bind-key "M-M" 'jump-char-backward)
+
+    ;; Remap old M-m to M-i (better mnemonic for back-to-indentation)
+    ;; We lose tab-to-tab-stop, which is no big loss in my use cases.
+    (bind-key "M-i" 'back-to-indentation)))
+
+;;;_. Emacs Rocks 04
+;; Expand region (increases selected region by semantic units)
+(use-package expand-region
+  :init
+  (progn
+    (bind-key "M-'" 'er/expand-region)))
+
+;;;_. Emacs Rocks 10
+; http://www.emacswiki.org/emacs/AceJump
+(require 'ace-jump-mode)
+(bind-key "<C-c space>" 'ace-jump-mode)
+
+;; Push mark when using ido-imenu
+
+(defvar push-mark-before-goto-char nil)
+
+(defadvice goto-char (before push-mark-first activate)
+  (when push-mark-before-goto-char
+    (push-mark)))
+
+(defun add-hyper-char-to-ace-jump-word-mode (c)
+  (define-key global-map
+    (read-kbd-macro (concat "H-" (string c)))
+    `(lambda ()
+       (interactive)
+       (setq ace-jump-query-char ,c)
+       (setq ace-jump-current-mode 'ace-jump-word-mode)
+       (ace-jump-do (concat "\\b"
+                            (regexp-quote (make-string 1 ,c)))))))
+
+(loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
+(loop for c from ?Å to ?ø do (add-hyper-char-to-ace-jump-word-mode c))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; remove emacs' ability to interactive with git.  This was done because accessing remote git repo through sshfs caused major lag. 
+(delete 'Git vc-handled-backends)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://blog.printf.net/articles/tag/emacs
+(defun find-tag-at-point ()
+  "*Find tag whose name contains TAGNAME.
+  Identical to `find-tag' but does not prompt for 
+  tag when called interactively;  instead, uses 
+  tag around or before point."
+    (interactive)
+      (find-tag (if current-prefix-arg
+                    (find-tag-tag "Find tag: "))
+                (find-tag (find-tag-default))))
+(bind-key "<F-9>" 'find-tag-at-point)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; bookmarks http://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
+; bookarmks+ http://www.emacswiki.org/emacs/BookmarkPlus
+(use-package
+    :init
+  (progn
+    (bookmark-save-flag 1)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;_. load general settings
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; the modeline
@@ -1592,8 +1994,8 @@ Symbols matching the text at point are put first in the completion list."
 (fset 'yes-or-no-p 'y-or-n-p)            ; enable y/n answers to yes/no 
 
 (global-font-lock-mode t)                ; always do syntax highlighting 
-(when (require-maybe 'jit-lock)          ; enable JIT to make font-lock faster
-  (setq jit-lock-stealth-time 1))        ; new with emacs21
+;(when (require-maybe 'jit-lock)          ; enable JIT to make font-lock faster
+;  (setq jit-lock-stealth-time 1))        ; new with emacs21
 
 (set-language-environment "UTF-8")       ; prefer utf-8 for language settings
 (set-input-method nil)                   ; no funky input for normal editing;
@@ -1709,15 +2111,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'write-file-hooks 'time-stamp) ; update when saving
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
-;; recent files                                                                  
-(when (require-maybe 'recentf)
-  (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
-    recentf-max-saved-items 500                                            
-    recentf-max-menu-items 60)
-  (recentf-mode t))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; tramp, for remote access
 (setq tramp-default-method "ssh"
@@ -1732,501 +2125,19 @@ Symbols matching the text at point are put first in the completion list."
       (quote ((auto-recompile . t) 
               (outline-minor-mode . t) 
               auto-recompile outline-minor-mode)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; misc loading
-(when (require-maybe 'tabber))
-(when (require-maybe 'pair-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rect-mark 
-(when (require-maybe 'rect-mark)
-  ;; some commands for rectangular selections;
-  ;; http://www.emacswiki.org/cgi-bin/wiki/RectangleMark
-  (define-key ctl-x-map "r\C-@" 'rm-set-mark)
-  (define-key ctl-x-map [?r ?\C-\ ] 'rm-set-mark)
-  (define-key ctl-x-map "r\C-x" 'rm-exchange-point-and-mark)
-  (define-key ctl-x-map "r\C-w" 'rm-kill-region)
-  (define-key ctl-x-map "r\M-w" 'rm-kill-ring-save)
-  (define-key global-map [S-down-mouse-1] 'rm-mouse-drag-region)
-  (autoload 'rm-set-mark "rect-mark"
-    "Set mark for rectangle." t)
-  (autoload 'rm-exchange-point-and-mark "rect-mark"
-    "Exchange point and mark for rectangle." t)
-  (autoload 'rm-kill-region "rect-mark"
-    "Kill a rectangular region and save it in the kill ring." t)
-  (autoload 'rm-kill-ring-save "rect-mark"
-    "Copy a rectangular region to the kill ring." t)
-  (autoload 'rm-mouse-drag-region "rect-mark"
-    "Drag out a rectangular region with the mouse." t))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; redo 
-(when (require-maybe 'redo))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; dtrt-indent minor mode
-;; http://git.savannah.gnu.org/gitweb/?p=dtrt-indent.git;a=blob_plain;f=dtrt-indent.el;hb=HEAD
-(when (require-maybe 'dtrt-indent)
- (dtrt-indent-mode 1))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2009/11/making-buffer-names-unique.html
-(require 'uniquify) 
-(setq 
-  uniquify-buffer-name-style 'post-forward
-  uniquify-separator ":")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/AutoInsertMode
-(require 'autoinsert)
-(auto-insert-mode 1)  ;;; Adds hook to find-files-hook
-(add-hook 'find-file-hook 'auto-insert)
-(setq auto-insert-directory "~/.emacs.d/templates/") ;;; Or use custom, *NOTE* Trailing slash important
-(setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
-(define-auto-insert "\.py" "template.py")
-(define-auto-insert "\.pm" "template.pm")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
-(defadvice kill-ring-save (before slick-copy activate compile) "When called
-  interactively with no active region, copy a single line instead."
-  (interactive (if mark-active (list (region-beginning) (region-end)) (message
-  "Copied line") (list (line-beginning-position) (line-beginning-position
-  2)))))
-
-(defadvice kill-region (before slick-cut activate compile)
-  "When called interactively with no active region, kill a single line instead."
-  (interactive
-    (if mark-active (list (region-beginning) (region-end))
-      (list (line-beginning-position)
-        (line-beginning-position 2)))))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun byte-recompile-emacsd ()
-  "Byte-compilete all files in ~/.emacs.d"
-  (byte-recompile-directory '~/.emacs.d' 0 t))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
- 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Highlight mark
-; http://lists.gnu.org/archive/html/help-gnu-emacs/2003-11/msg00328.html
-; nice mark - shows mark as a highlighted 'cursor' so user 'always' 
-; sees where the mark is. Especially nice for killing a region.
-(defvar pg-mark-overlay nil
-  "Overlay to show the position where the mark is") 
-(make-variable-buffer-local 'pg-mark-overlay)
-
-(put 'pg-mark-mark 'face 'secondary-selection)
-
-(defvar pg-mark-old-position nil
-  "The position the mark was at. To be able to compare with the
-current position")
-
-(defun pg-show-mark () 
-  "Display an overlay where the mark is at. Should be hooked into 
-activate-mark-hook" 
-  (unless pg-mark-overlay 
-    (setq pg-mark-overlay (make-overlay 0 0))
-    (overlay-put pg-mark-overlay 'category 'pg-mark-mark))
-  (let ((here (mark t)))
-    (when here
-      (move-overlay pg-mark-overlay here (1+ here)))))
-
-(defadvice  exchange-point-and-mark (after pg-mark-exchange-point-and-mark)
-  "Show visual marker"
-  (pg-show-mark))
-
-(ad-activate 'exchange-point-and-mark)
-(add-hook 'activate-mark-hook 'pg-show-mark)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; http://emacs-fu.blogspot.com/2010/03/showing-buffer-position-in-mode-line.html
-;; (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
-;;   (progn 
-;;     (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
-;;     (scroll-bar-mode -1))                   ;; turn off the scrollbar
-;;   (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
-;;   (set-scroll-bar-mode 'right))             ;; ... on the right
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; enable midnight mode
-; (require 'midnight)
-;; kill everything, clean-buffer-list is very intelligent at not killing
-;; unsaved buffer.
-; (setq clean-buffer-list-kill-regexps
-;	  '(".*"))
-
-;;kill buffers if they were last disabled more than this seconds ago
-; (setq clean-buffer-list-delay-special 7200)
-
-; (setq clean-buffer-list-kill-never-buffer-names
-;      '(
-;       "*scratch*"
-;       "*Messages*"
-;       "*server*"
-;       "*Pymacs*"
-;       "trace.log"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/MultiTerm
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ShellPop 
-(require 'shell-pop)
-(shell-pop-set-internal-mode "multi-term")
-(shell-pop-set-internal-mode-shell "/bin/zsh")
-(global-set-key [f8] 'shell-pop)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/LustyExplorer
-(when (require 'lusty-explorer nil 'noerror)
-  ;; overrride the normal file-opening, buffer switching
-  (global-set-key (kbd "C-x C-f") 'lusty-file-explorer)
-  (global-set-key (kbd "C-x b")   'lusty-buffer-explorer))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun tab-width-two ()
-  (setq default-tab-width 2)            ; set tab-width
-  (setq-default tab-stop-list (list 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108))
-  (setq-default indent-tabs-mode nil))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://floss.zoomquiet.org/data/20110326155829/index.html
-(add-to-list 'load-path "~/.emacs.d/elisp/point-stack")
-(require 'point-stack)
-(global-set-key '[(f5)] 'point-stack-push)
-(global-set-key '[(f6)] 'point-stack-pop)
-(global-set-key '[(f7)] 'point-stack-forward-stack-pop)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2011/01/setting-frame-title.html
-(setq frame-title-format
-  '("" invocation-name ": "(:eval (if (buffer-file-name)
-                (abbreviate-file-name (buffer-file-name))
-                  "%b"))))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
-(require 'recentf)
- 
-;; get rid of `find-file-read-only' and replace it with something
-;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
- 
-;; enable recent files mode.
-(recentf-mode t)
- 
-; 50 files ought to be enough.
-(setq recentf-max-saved-items 50)
- 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ZenCoding
-(add-to-list 'load-path "~/.emacs.d/elisp/zencoding")
-(require 'zencoding-mode)
-(add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
-(add-hook 'cperl-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(global-set-key (kbd "C-x C-;") 'comment-region)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://code.google.com/p/autopair/
-;(add-to-list 'load-path "~/.emacs.d/elisp/autopair")
-;(require 'autopair)
-;(autopair-global-mode) ;; enable autopair in all buffers 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacs-fu.blogspot.com/2011/05/toward-balanced-and-colorful-delimiters.html
-(when (require 'rainbow-delimiters nil 'noerror) 
-  (add-hook 'cperl-mode-hook  'rainbow-delimiters-mode)
-  (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'python-mode-hook 'rainbow-delimiters-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ImenuMode
-(defun try-to-add-imenu ()
-  (condition-case nil (imenu-add-to-menubar "Imenu") (error nil)))
-
-(add-hook 'cperl-mode-hook 'try-to-add-imenu)
-(add-hook 'python-mode-hook 'try-to-add-imenu)
-(add-hook 'lisp-mode-hook 'try-to-add-imenu)
-(add-hook 'js2-mode-hook 'try-to-add-imenu)
-
-(global-set-key (kbd "C-c =") 'imenu)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://me.in-berlin.de/~myrkr/dictionary/
-(add-to-list 'load-path "~/.emacs.d/elisp/dictionary-1.8.7")
-(load "dictionary-init")
-
-;; key bindings
-(global-set-key "\C-cs" 'dictionary-search)
-(global-set-key "\C-cm" 'dictionary-match-words)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; bookmarks
-; http://www.nongnu.org/bm/
-(setq bm-restore-repository-on-load t)
-(require 'bm)
-(global-set-key (kbd "<M-f2>") 'bm-toggle)
-(global-set-key (kbd "<f2>")   'bm-next)
-(global-set-key (kbd "<S-f2>") 'bm-previous)
- 
-;; make bookmarks persistent as default
-(setq-default bm-buffer-persistence t)
- 
-;; Loading the repository from file when on start up.
-(add-hook' after-init-hook 'bm-repository-load)
- 
-;; Restoring bookmarks when on file find.
-(add-hook 'find-file-hooks 'bm-buffer-restore)
- 
-;; Saving bookmark data on killing a buffer
-(add-hook 'kill-buffer-hook 'bm-buffer-save)
-
-;; Allow cross-buffer 'next'
-(setq bm-cycle-all-buffers t)
- 
-;; Saving the repository to file when on exit.
-;; kill-buffer-hook is not called when emacs is killed, so we
-;; must save all bookmarks first.
-(add-hook 'kill-emacs-hook '(lambda nil
-                              (bm-buffer-save-all)
-                              (bm-repository-save)))
-
-; http://www.emacswiki.org/emacs/bm-ext.el
-; (require 'bm-ext)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;http://www.emacswiki.org/emacs/tiling.el
-(require 'tiling)
-;;; Windows related operations
-;; Split & Resize
-(define-key global-map (kbd "C-x |") 'split-window-horizontally)
-(define-key global-map (kbd "C-x _") 'split-window-vertically)
-(define-key global-map (kbd "C-{") 'shrink-window-horizontally)
-(define-key global-map (kbd "C-}") 'enlarge-window-horizontally)
-(define-key global-map (kbd "C-^") 'enlarge-window)
-;; Navgating: Windmove uses C-<up> etc.
-(define-key global-map (kbd "C-<up>"   ) 'windmove-up)
-(define-key global-map (kbd "C-<down>" ) 'windmove-down)
-(define-key global-map (kbd "C-<right>") 'windmove-right)
-(define-key global-map (kbd "C-<left>" ) 'windmove-left)
-;; Swap buffers: M-<up> etc.
-(define-key global-map (kbd "M-<up>"   ) 'buf-move-up)
-(define-key global-map (kbd "M-<down>" ) 'buf-move-down)
-(define-key global-map (kbd "M-<right>") 'buf-move-right)
-(define-key global-map (kbd "M-<left>" ) 'buf-move-left)
-;; Tile
-(define-key global-map (kbd "C-\\") 'tiling-cycle) ; accepts prefix number
-(define-key global-map (kbd "C-M-<up>") 'tiling-tile-up)
-(define-key global-map (kbd "C-M-<down>") 'tiling-tile-down)
-(define-key global-map (kbd "C-M-<right>") 'tiling-tile-right)
-(define-key global-map (kbd "C-M-<left>") 'tiling-tile-left)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ParEdit
-
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; ELPA
-;; (require 'package)
-;; (add-to-list 'package-archives
-;; 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; http://www.emacswiki.org/emacs/find-file-in-project.el
-;; (require 'project)
-;; (require 'find-file-in-project)
-;; (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; auctex
-;; (add-to-list 'load-path "~/.emacs.d/elpa/auctex-11.86/")
-;; (require 'auctex-autoloads)
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/MiniMap
-;(require 'minimap)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; http://www.emacswiki.org/emacs/rebox2
-;; (add-to-list 'load-path "~/.emacs.d/elisp/rebox2/")
-(require 'rebox2)
-(global-set-key [(meta q)] 'rebox-dwim)
-(global-set-key [(shift meta q)] 'rebox-cycle)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (require 'edit-server)
-;; (edit-server-start)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://blog.gabrielsaldana.org/easy-css-editing-with-emacs/
-; CSS and Rainbow modes 
-(defun all-css-modes() (css-mode) (rainbow-mode)) 
-
-;; Load both major and minor modes in one call based on file type 
-(add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/ModeCompile
- ;;mode-compile
-    (autoload 'mode-compile "mode-compile"
-      "Command to compile current buffer file based on the major mode" t)
-    (global-set-key "\C-cc" 'mode-compile)
-    (autoload 'mode-compile-kill "mode-compile"
-      "Command to kill a compilation launched by `mode-compile'" t)
-    (global-set-key "\C-ck" 'mode-compile-kill) 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defconst show-local-info-path (file-truename "~/local/share/info"))
-(if (file-accessible-directory-p show-local-info-path)
-    (add-to-list 'Info-default-directory-list show-local-info-path))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/IyGoToChar
-(require 'jump-char)
-;; iy-go-to-char - like f in Vim
-(global-set-key (kbd "M-m") 'jump-char-forward)
-(global-set-key (kbd "M-M") 'jump-char-backward)
-
-;; Remap old M-m to M-i (better mnemonic for back-to-indentation)
-;; We lose tab-to-tab-stop, which is no big loss in my use cases.
-(global-set-key (kbd "M-i") 'back-to-indentation)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacsrocks.com/e09.html
-;; Expand region (increases selected region by semantic units)
-(require 'expand-region)
-(global-set-key (kbd "M-'") 'er/expand-region)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://emacsrocks.com/e10.html
-
-; http://www.emacswiki.org/emacs/AceJump
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
-;; Push mark when using ido-imenu
-
-(defvar push-mark-before-goto-char nil)
-
-(defadvice goto-char (before push-mark-first activate)
-  (when push-mark-before-goto-char
-    (push-mark)))
-
-(defun add-hyper-char-to-ace-jump-word-mode (c)
-  (define-key global-map
-    (read-kbd-macro (concat "H-" (string c)))
-    `(lambda ()
-       (interactive)
-       (setq ace-jump-query-char ,c)
-       (setq ace-jump-current-mode 'ace-jump-word-mode)
-       (ace-jump-do (concat "\\b"
-                            (regexp-quote (make-string 1 ,c)))))))
-
-(loop for c from ?0 to ?9 do (add-hyper-char-to-ace-jump-word-mode c))
-(loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
-(loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
-(loop for c from ?Å to ?ø do (add-hyper-char-to-ace-jump-word-mode c))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; remove emacs' ability to interactive with git.  This was done because accessing remote git repo through sshfs caused major lag. 
-(delete 'Git vc-handled-backends)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://blog.printf.net/articles/tag/emacs
-(defun find-tag-at-point ()
-  "*Find tag whose name contains TAGNAME.
-  Identical to `find-tag' but does not prompt for 
-  tag when called interactively;  instead, uses 
-  tag around or before point."
-    (interactive)
-      (find-tag (if current-prefix-arg
-                    (find-tag-tag "Find tag: "))
-                (find-tag (find-tag-default))))
-(global-set-key [f9] 'find-tag-at-point)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; bookmarks http://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
-; bookarmks+ http://www.emacswiki.org/emacs/BookmarkPlus
-(require 'bookmark+)
-(bookmark-save-flag 1)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; enable autopair mode
 (autopair-global-mode)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;_. change directory to $PWD or ~
-(if (getenv "PWD")
-    (cd (getenv "PWD"))
-  (cd "~"))
 
 ;;;_. load custom-file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+; switch to ~
+(cd "~")
 
 ;; Local Variables:
 ;;   mode: emacs-lisp

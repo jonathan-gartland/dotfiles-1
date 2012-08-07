@@ -334,6 +334,12 @@
   '(
    ))
 
+(define-abbrev-table 'sr-mode-abbrev-table '())
+
+(define-abbrev-table 'sr-tree-mode-abbrev-table '())
+
+(define-abbrev-table 'sr-virtual-mode-abbrev-table '())
+
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())

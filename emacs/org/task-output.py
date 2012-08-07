@@ -15,6 +15,7 @@ from contextlib import contextmanager
 
 project_taskid_mapping = dict()
 
+
 def parseArgs(option, opt, value, parser):
     assert value is None
     done = 0
@@ -33,7 +34,7 @@ def parseArgs(option, opt, value, parser):
 
     now = datetime.now()
 
-    if len( value ) == 0:
+    if len(value) == 0:
         if option.dest == "month":
             value = { 'year': now.year, 'month': now.month }
         elif option.dest == "year":
@@ -54,7 +55,6 @@ def parseArgs(option, opt, value, parser):
     setattr(parser.values, option.dest, value)
 
     #print "option %s\t\tvalue %s\n" % ( option.dest, str( value ) )
-
 
 
 class OptionHandling( object ):
@@ -81,7 +81,7 @@ class OptionHandling( object ):
                             return week[w]
 
 
-    def getOptions( self ):
+    def getOptions(self):
         parser = OptionParser()
         parser.add_option("-w", "--week",       dest="week",        help="Task for this Week",  action="store_true" )
         parser.add_option("-m", "--month",      dest="month",       help="Task for this Month [Month Year]", action="callback", callback=parseArgs )
@@ -98,13 +98,13 @@ class OptionHandling( object ):
             exit( 1 )
 
 
-        return ( options, parser )
+        return (options, parser)
 
-    def formatDay( self, year, month, day ):
+    def formatDay(self, year, month, day ):
         return "%.4d-%.2d-%.2d" % ( int( year ), int( month ), int( day ) )
 
-    def optionHandlingAndParsing( self ):
-        ( options, parser ) = self.getOptions()
+    def optionHandlingAndParsing(self):
+        (options, parser) = self.getOptions()
 
         userName = environ[ 'USER' ]
         startDate, endDate = "", ""
@@ -211,12 +211,12 @@ def handle_project(line):
     m = re.match(r"^\*{4,4}\s(\w*)$", line)
     if m:
         try:
-            project = m.group(1)
+            project = m.group(1).strip()
             return project
         except:
             pass
 
-    m = re.match(r"^\*{4,4}\s(\w*)\s(\d*)$", line)
+    m = re.match(r"^\*{4,4}\s(\w*)\s\((\d*)\)$", line)
     if m:
         try:
             project = m.group(1)
@@ -237,7 +237,7 @@ def handle_work(line):
     m = re.match(r"^\*{5,5} ([-+]?\d*\.\d+|\d+) (?:hours|hour) (non-billable|billable)\. (.*)$", line)
     try:
         return {
-            'length' : m.group(1),
+            'length': m.group(1),
             'billable': m.group(2),
             'comment': m.group(3)}
     except:
@@ -246,14 +246,32 @@ def handle_work(line):
 def generate_entry_for_task(project, type, rs):
     table = Texttable()
     table.header(['Date', 'Duration', 'Comment'])
+    table.set_deco(Texttable.HEADER)
     table.set_cols_dtype(['t', 'f', 't'])
+    table.set_cols_align(['c', 'c', 'r'])
+    table.set_cols_width([10, 8, 40])
     table.set_precision(2)
     total = 0
+    if len(list(rs)) == 0:
+        return
+
+    if project == 'WEEKEND':
+        return
+
+    taskid = None
+    try:
+        taskid = project_taskid_mapping[project]
+    except KeyError:
+        pass
+
     for x in rs:
         total += float(x.length)
         table.add_row([x.date.isoformat(), x.length, x.comment])
 
-    print 'Project: %s Total: %.2f (%s)' % (project, total, type)
+    if taskid:
+        print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total, type)
+    else:
+        print 'Project: %s Total: %.2f (%s)' % (project, total, type)
     print table.draw() + "\n"
     
 year = None
@@ -263,8 +281,10 @@ project = None
 work = None
 taskid = None
 
-db_filename = "/:memory:"
+# db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
+# os.unlink(db_filename)
 #db_filename = "/tmp/task.sql"
+db_filename = "/:memory:"
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
 connection = connectionForURI(connection_string)
@@ -282,58 +302,60 @@ class TaskEntry(SQLObject):
 TaskEntry.createTable()
 
 
-options = OptionHandling( sys.argv )
+options = OptionHandling(sys.argv)
 ( userName, startDate, endDate ) = options.optionHandlingAndParsing()
 
 sh1 = hashlib.sha1()
 
 projects = dict()
 
+linenum = 0
 with open("task.org") as f:
     for line in f:
+        linenum += 1
         line = line.strip()
-        #        print line
+        #print "Line Number {}, Line {}".format(linenum,line)
         handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day
         project = handle_project(line) or project
-        work = handle_work(line) or work
+        work = handle_work(line) or None
 
+        if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
+            work = {
+                'length' : 0,
+                'billable': 'N',
+                'comment': ''}
+            
         if year and month and day and project and work:
-
-            if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
-                work = {
-                    'length' : 8,
-                    'billable': 'N',
-                    'comment': ''}
             
             billable = work['billable'] == 'billable'
             length = float(work['length'])
             comment = work['comment']
             date = datetime.strptime("%d %s %d" % (year, month, day), "%Y %B %d")
             hash = hashlib.sha1( str(date) + str(length) + str(billable) + project + comment.strip() ).hexdigest()
-
+            
             try:
                 taskid = project_taskid_mapping[project]
             except KeyError:
-                pass
+                taskid = None
 
             projects[project] = 1
             
             rs = TaskEntry.select(TaskEntry.q.hash == hash)
             if len(list(rs)) == 0:
-                TaskEntry(date = date,
+                te = TaskEntry(date = date,
                           hash = hash,
                           billable = billable,
                           length = length,
                           project = project,
                           taskid = taskid,
                           comment = comment.strip())
-
-
-
+                
 for project in projects.keys():
     generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
     generate_entry_for_task(project, 'Non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+
+
 
