@@ -178,6 +178,9 @@ class install(object):
     def qtile(self, install_type):
             self._createLinks([{ 'src': 'qtile', 'dst': '.config/qtile' } ])
 
+    def fonts(self, install_type):
+            self._createLinks([{ 'src': 'fonts', 'dst': '.fonts' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
