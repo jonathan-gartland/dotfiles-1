@@ -124,8 +124,6 @@
 
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
-                       (:name powerline :type git
-                              :url "https://github.com/milkypostman/powerline.git" )
 
                        (:name jump-char :type git 
                               :url "https://github.com/lewang/jump-char.git")
@@ -220,6 +218,7 @@
          package
          paredit
          point-stack
+	 powerline2
          ;; python
          python-mode
          ;; python-pep8
@@ -685,16 +684,16 @@ Symbols matching the text at point are put first in the completion list."
   (progn
     (project-def "Housing Development"
                  '((basedir "/sshfs/lithium/web/housing")
-                   (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
-                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif.R"
-                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF.R" "*.mov" "*.pdf"
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
                                      "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
                    (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
                    (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
                    (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
                    (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
                    (vcs git)
-                   (ack-args "--perl --js --html --css")
+                   (ack-args "--perl --js --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
                                    (setq flymake-perl-lib-dir "/sshfs/lithium/web/housing/perl")
@@ -2139,8 +2138,20 @@ activate-mark-hook"
 ; switch to ~
 (cd "~")
 
+; http://ergoemacs.org/emacs/organize_your_dot_emacs.html
+(defun byte-compile-current-buffer ()
+  "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
+  (interactive)
+  (when (and (eq major-mode 'emacs-lisp-mode)
+             (file-exists-p (byte-compile-dest-file buffer-file-name)))
+    (byte-compile-file buffer-file-name)))
+
+(add-hook 'after-save-hook 'byte-compile-current-buffer)
+
 ;; Local Variables:
 ;;   mode: emacs-lisp
 ;;   mode: allout
 ;;   outline-regexp: "^;;;_\\([,. ]+\\)"
 ;; End:
+
+
