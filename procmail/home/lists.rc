@@ -1,9 +1,18 @@
 
-# --- Rust mailing lists ---
+:0
+*(To|Cc):.*nodejs@googlegroups.com.*
+.Mailing\ Lists.NodeJS/
 
+# --- mu4e Mailing lists --
+:0
+* (To|Cc):.*mu-discuss@googlegroups.com.*
+.Mailing\ Lists.mu4e/
+# --- mu4e Mailing lists --
+
+# --- Rust mailing lists ---
 # Dev
 :0
-* (To:Cc):.*rust-dev@mozilla.org.*
+* (To|Cc):.*rust-dev@mozilla.org.*
 .Mailing\ Lists.Rust\ Dev/
 # --- Rust Dev mailing lists ---
 
@@ -21,7 +30,6 @@
 # ---- Fish Mailing Lists ---
 
 # ---- Scheme Lists ----
-
 # MIT Schme User List
 :0
 * ^(To|Cc):.*mit-scheme-users@gnu.org.*
@@ -32,6 +40,11 @@
 * ^(To|Cc):.*guile-user@gnu.org.*
 .Mailing\ Lists.GNU\ Guile\ User/
 
+
+# Chicken Scheme User List
+:0
+* ^(To|Cc):.*chicken-users@nongnu.org.*
+.Mailing\ Lists.Chicken\ Scheme\ User/
 # ---- Scheme Lists ----
 
 # ---- leiningen ----
