@@ -9,9 +9,8 @@ LOGFILE=$PROCMAILDIR/log/procmail
 
 
 # forward all email through spamc daemon
-#:0fw
-#| /usr/bin/spamc
-
+:0fw
+| /usr/bin/spamc
 
 # handle spam message
 INCLUDERC=$PROCMAILDIR/spam.rc
@@ -36,6 +35,11 @@ INCLUDERC=$PROCMAILDIR/hemlockforest.rc
 :0
 * ^From:.*blockbusteronline@blockbuster.com.*
 .BlockbusterOnline/
+
+# NetFlix
+:0
+* ^From:.*discship@netflix.com.*
+.Netflix/
 
 # IBD Editorials
 :0
