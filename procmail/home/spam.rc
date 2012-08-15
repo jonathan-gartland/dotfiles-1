@@ -1,19 +1,13 @@
-# $Id: spam.rc 2469 2008-04-03 12:59:08Z skk $
-
 # procmail spam.rc file
 
-# just delete spam
-#:0
-#* ^Subject:\ *\[SPAM\]
-#/dev/null
-
 :0
-* ^Subject:.*SEXUALLY-EXPLICIT:.*
-.Spam
+* ^Subject:.*SEXUALLY-EXPLICIT.*
+.Spam/
 
 :0
 * ^X-Spam-Flag:.*YES.*
-* ^X-MailScanner-SpamCheck: spam
-* ^X-Spam-Status: ^Yes$
-* ^X-MailScanner-SpamCheck: spam
+.Spam/
+
+:0
+* ^X-MailScanner-SpamCheck:spam.*
 .Spam/
