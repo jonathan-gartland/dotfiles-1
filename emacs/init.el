@@ -154,6 +154,9 @@
                        (:name geiser-git :type git
                               :url "git://git.sv.gnu.org/geiser.git")
 
+                       (:name powerline2 :type git
+                                :url "https://github.com/milkypostman/powerline")
+
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
                        ))
