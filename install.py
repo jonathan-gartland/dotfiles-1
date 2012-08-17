@@ -143,6 +143,7 @@ class install(object):
 
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
+        { 'src': 'dotfiles/perltidy', 'dst': '.perltidy' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
         { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
