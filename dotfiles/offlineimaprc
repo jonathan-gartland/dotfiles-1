@@ -1,6 +1,6 @@
 [general]
-accounts = Work,Home
-#ui = TTY.TTYUI
+accounts = Work
+ui = Blinkenlights
 maxsyncaccounts = 3
 pythonfile = ~/.offlineimap.py
 
@@ -8,7 +8,7 @@ pythonfile = ~/.offlineimap.py
 localrepository = LocalWork
 remoterepository = RemoteWork
 # Minutes between syncs
-autorefresh = .5
+autorefresh = .1
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
@@ -23,7 +23,7 @@ ssl = yes
 type = IMAP
 remotehost = zathras.sr.unh.edu
 remoteuser = skk
-remotepasseval = get_authinfo_password("zathras.sr.unh.edu", "skk@sr.unh.edu", 993, "work")
+#remotepasseval = get_authinfo_password("zathras.sr.unh.edu", "skk@sr.unh.edu", 993, "work")
 maxconnections = 1
 realdelete = no
 # Instead of closing the connection once a sync is complete, offlineimap will
@@ -32,30 +32,30 @@ realdelete = no
 # autorefresh)
 keepalive = 60
 
-[Account Home]
-localrepository = LocalHome
-remoterepository = RemoteHome
-# Minutes between syncs
-autorefresh = .5
-# Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
-# only changes were to IMAP flags
-quick = 10
-#postsynchook = ~/bin/offlineimap-postsynchook.sh
+# [Account Home]
+# localrepository = LocalHome
+# remoterepository = RemoteHome
+# # Minutes between syncs
+# autorefresh = .5
+# # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
+# # only changes were to IMAP flags
+# quick = 10
+# #postsynchook = ~/bin/offlineimap-postsynchook.sh
 
-[Repository LocalHome]
-type = Maildir
-localfolders = ~/MaildirHome
+# [Repository LocalHome]
+# type = Maildir
+# localfolders = ~/MaildirHome
 
-[Repository RemoteHome]
-ssl = yes
-type = IMAP
-remotehost = knight.cx
-remoteuser = skk
-remotepasseval = get_authinfo_password("knight.cx", "skk@knight.cx", 993, "home")
-maxconnections = 1
-realdelete = no
-# Instead of closing the connection once a sync is complete, offlineimap will
-# send empty data to the server to hold the connection open. A value of 60
-# attempts to hold the connection for a minute between syncs (both quick and
-# autorefresh)
-keepalive = 60
+# [Repository RemoteHome]
+# ssl = yes
+# type = IMAP
+# remotehost = knight.cx
+# remoteuser = skk
+# remotepasseval = get_authinfo_password("knight.cx", "skk@knight.cx", 993, "home")
+# maxconnections = 1
+# realdelete = no
+# # Instead of closing the connection once a sync is complete, offlineimap will
+# # send empty data to the server to hold the connection open. A value of 60
+# # attempts to hold the connection for a minute between syncs (both quick and
+# # autorefresh)
+# keepalive = 60
