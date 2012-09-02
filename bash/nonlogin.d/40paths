@@ -134,7 +134,7 @@ if [ -n /opt/android-sdk-linux ]; then
     export PATH="/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:$PATH"
 fi
 
-export NODE_DIR=$HOME/dot-files-forest/node-v0.8.2
+export NODE_DIR=$HOME/local/stow/node-v0.8.7
 if [ -d $NODE_DIR ]; then
     export PATH=$NODE_DIR/bin:$PATH
 fi
