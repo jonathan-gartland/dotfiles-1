@@ -153,7 +153,10 @@
 
                        (:name geiser-git :type git
                               :url "git://git.sv.gnu.org/geiser.git")
-
+                       
+                       ;; (:name gitconfig-mode :type git
+                       ;;        :url "git://gitorious.org/gitconfig-mode/gitconfig-mode.git")
+                       
                        (:name powerline2 :type git
                                 :url "https://github.com/milkypostman/powerline")
 
@@ -162,7 +165,7 @@
                        ))
 
 (if (string-match "linux" system-configuration)
-    (loop for p in '(auctex emacs-w3m magit slime swank-clojure);  pymacs rope ropemacs
+    (loop for p in '(auctex emacs-w3m magit swank-clojure);  pymacs rope ropemacs slime swank-clojure
           do (add-to-list 'el-get-sources p)))
 
 (setq my-el-get-packages  
@@ -197,11 +200,14 @@
          crontab-mode
          csv
          csv-mode
+         dtrt-indent
          dictionary
          durendal
          edit-server
          expand-region
-         geiser-git
+         ;git-emacs
+         ;gitconfig-mode
+         geiser
          google-maps
          google-weather
          helm
@@ -212,6 +218,7 @@
          json
          jump-char
          lusty-explorer
+         key-chord
          mapserver-mode
          mark-multiple
          markdown-mode
@@ -221,14 +228,17 @@
          package
          paredit
          point-stack
-	 powerline2
+         powerline2
          ;; python
          python-mode
          ;; python-pep8
          quack
          rainbow-delimiters
+;         redo
          rebox2
+         rect-mark
          smart-tab
+         smex
          sql
          sql-complete
          sqlplus
@@ -244,9 +254,9 @@
          yasnippet
          whole-line-or-region
          zencoding-mode
-         )
-
+         workgroups)    
        (mapcar 'el-get-source-name el-get-sources)))
+
 (el-get 'sync my-el-get-packages)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -285,20 +295,13 @@
 ;;     (cfw:open-ical-calendar "https://www.google.com/calendar/ical/02388ju54civ56dklbv8n8tihk%40group.calendar.google.com/private-7937a20b31137f5ab34376f3bfe7b4a0/basic.ics")
 ;;     (cfw:open-ical-calendar "https://www.google.com/calendar/ical/stevenknight1980%40gmail.com/private-8016020c8aaedfdd7a86000c09f786e9/basic.ics")))
 
-;;;_. key-chord
-(use-package key-chord
-  :init
-  (progn
-    (key-chord-define sepia-mode-map ";;" "\C-e;")
-    ))
-
-;;;_. slime
-(use-package slime
-  slime-mode
-  :init 
-  (progn
-    (autoload 'slime "slime" nil t)
-    (slime-setup '(slime-repl))))
+;; ;;;_. slime
+;; (use-package slime
+;;   slime-mode
+;;   :init 
+;;   (progn
+;;     (autoload 'slime "slime" nil t)
+;;     (slime-setup '(slime-repl))))
 
 ;;;_. clojure
 (use-package clojure-mode
@@ -357,16 +360,14 @@
      ;; This lets me say where my temp dir is.
      (setq temporary-file-directory "~/.emacs.d/.cache/")
      ;; I want to see at most the first 4 errors for a line.
-     (setq flymake-number-of-errors-to-display 4)))
+     (setq flymake-number-of-errors-to-display 4))
+  :init
+  (progn
+    (setq jshint-mode-location (expand-file-name "~/.emacs.d/el-get/jshint-mode"))
+    (require 'flymake-jshint)
+    (add-hook 'javascript-mode-hook
+              (lambda () (flymake-mode t)))))
 
-;;;_. jshint-mode
-(use-package jshint-mode
-  :config
-  '(progn
-     (setq jshint-mode-location (expand-file-name "~/dot-files-forest/jshint-mode"))
-     (require 'flymake-jshint)
-     (add-hook 'javascript-mode-hook
-               (lambda () (flymake-mode t)))))
 
 ;;;_. ibuffer
 (require 'ibuffer) 
@@ -374,7 +375,7 @@
 
 (use-package ibuffer
   :config
-  (progn 2
+  (progn 
     (setq ibuffer-saved-filter-groups
           (quote (("default"      
                    ("erma-skk"
@@ -464,8 +465,7 @@
                      (mode . emacs-lisp-mode)
                      (mode . scheme-mode)
                      ;; etc
-                     ))
-                   ))))
+                     ))))))))
 
     (add-hook 'ibuffer-mode-hook 
               '(lambda ()
@@ -509,7 +509,6 @@
       (:description "mk-project")
       (mk/proj-buffer-p buf))
     (define-key ibuffer-mode-map (kbd "/ k") 'ibuffer-filter-by-project)
-    ))
 
 ;;;_. hexrgb
 (use-package hexrgb)
@@ -611,7 +610,6 @@ Symbols matching the text at point are put first in the completion list."
     (setq ido-use-virtual-buffers t)
     ;; enable fuzzy matching
     (setq ido-enable-flex-matching t)
-    
     ))
 
 (use-package sepia
@@ -666,6 +664,13 @@ Symbols matching the text at point are put first in the completion list."
     (eldoc-add-command 'electrify-return-if-match)
     (show-paren-mode t)))
 
+;;;_. key-chord
+(use-package key-chord
+  :init
+  (progn
+    (key-chord-define sepia-mode-map ";;" "\C-e;")))
+
+
 ;;;_. mk-project
 (use-package mk-project
   :init
@@ -685,6 +690,23 @@ Symbols matching the text at point are put first in the completion list."
 
   :config
   (progn
+    (project-def "ePIP Unit Testing"
+                 '((basedir "/home/skk/epip_unit_testing/")
+                   (src-patterns ("*.py"))
+                   (ignore-patterns ("bzr/.*"))
+                   (tags-file "~/.emacs.d/.cache/epip_unit_testing/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/epip_unit_testing/files")
+                   (open-files-cache "~/.emacs.d/.cache/epip_unit_testing/open-files")
+                   (vcs git)
+                   (ack-args "--python")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
+                   (shutdown-hook nil)
+                   ))
+    
     (project-def "Housing Development"
                  '((basedir "/sshfs/lithium/web/housing")
                    (src-patterns ("*.js"  "*.pm" "*.css"))
@@ -703,24 +725,8 @@ Symbols matching the text at point are put first in the completion list."
                                    (setq perl-command "/sshfs/lithium/net/home/rcc/skk/dot-files-forest/bin/perl_syntax_checker.pl")
                                    (setq cperl-indent-level 4)))
                    (shutdown-hook (lambda ()
-                                    (setq tags-file-name nil)))))
-
-    (project-def "EPSCOR Development"
-                 '((basedir "/sshfs/lithium/web/epscor")
-                   (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
-                   (ignore-patterns nil)
-                   (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
-                   (file-list-cache "~/.emacs.d/.cache/epscor-dev/files")
-                   (open-files-cache "~/.emacs.d/.cache/epscor-dev/open-files")
-                   (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
-                   (vcs git)
-                   (ack-args "--perl --js --html --css")
-                   (compile-cmd nil)
-                   (startup-hook (lambda ()
-                                        ;                                 (setq flymake-perl-lib-dir "/sshfs/lithium/web/epscor/perl")
-                                   (setq cperl-indent-level 4)))
-                   (shutdown-hook (lambda ()
-                                    (setq tags-file-name nil)))))
+                                    (setq tags-file-name nil)))
+                   ))
 
     (project-def "NEC Live"
                  '((basedir "/sshfs/contact/web2/nec")
@@ -750,7 +756,8 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                    (setq cperl-indent-level 4)))
-                   (shutdown-hook nil)))
+                   (shutdown-hook nil)
+                   ))
 
     (project-def "NEC Development"
                  '((basedir "/sshfs/lithium/web/nec")
@@ -781,162 +788,6 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                    (setq cperl-indent-level 4)))
                    (shutdown-hook nil)))
-
-    (project-def "EPSCOR Development"
-                 '((basedir "/sshfs/lithium/web/epscor")
-                   (src-patterns ("*.js" "*.html" "*.pm" "*.css"))
-                   (ignore-patterns nil)
-                   (file-list-cache "~/.emacs.d/.cache/epscor-dev/files")
-                   (open-files-cache "~/.emacs.d/.cache/epscor-dev/open-files")
-                   (tags-file "~/.emacs.d/.cache/epscor-dev/TAGS")
-                   (vcs git)
-                   (ack-args "--perl --js --html --css")
-                   (compile-cmd nil)
-                   ;; (src-find-cmd (lambda (context)
-
-                   ;;          ; TODO: 
-                   ;;          ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                   ;;          ; 2) It'd be nice to use src-patterns and ignore-patterns
-
-                   ;;          (let* (
-                   ;;                 (hostname "lithium.sr.unh.edu")
-                   ;;                 (start-dir "/web/epscor")
-                   ;;                 (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                   ;;                                   (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                   ;;            (when (mk-proj-get-vcs-path)
-                   ;;              (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                   
-                   ;;            (concat "ssh " hostname " \"" find-cmd "\""))))
-
-                   (index-find-cmd (lambda (contet)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-
-                                     (let* (
-                                            (hostname "lithium.sr.unh.edu")
-                                            (start-dir "/web/epscor")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
-
-                   (startup-hook (lambda ()
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                                   (setq cperl-indent-level 4)))
-                   (shutdown-hook nil)))
-
-    (project-def "EPSCOR Preview"
-                 '((basedir "/sshfs/myxomatosis/web/epscor")
-                   (src-patterns ("*.js *.html *.pm *.css"))
-                   (ignore-patterns nil)
-                   (file-list-cache "~/.emacs.d/.cache/epscor-pre/files")
-                   (open-files-cache "~/.emacs.d/.cache/epscor-pre/open-files")
-                   (tags-file "~/.emacs.d/.cache/epscor-pre/TAGS")
-                   (vcs git)
-                   (ack-args "--perl --js --html --css")
-                   (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "myxomatosis.sr.unh.edu")
-                                            (start-dir "/web/epscor")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
-                   (startup-hook (lambda ()
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                                   (setq cperl-indent-level 4)))
-
-                   (shutdown-hook nil)))
-
-    (project-def "EPSCOR Test"
-                 '((basedir "/sshfs/myxomatosis/web/epscor-tnt")
-                   (src-patterns ("*.js *.html *.pm *.css"))
-                   (ignore-patterns nil)
-                   (file-list-cache "~/.emacs.d/.cache/epscor-tnt/files")
-                   (open-files-cache "~/.emacs.d/.cache/epscor-tnt/open-files")
-                   (tags-file "~/.emacs.d/.cache/epscor-tnt/TAGS")
-                   (vcs git)
-                   (ack-args "--perl --js --html --css")
-                   (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "myxomatosis.sr.unh.edu")
-                                            (start-dir "/web/epscor-tnt")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
-                   (startup-hook (lambda ()
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                                   (setq cperl-indent-level 4)))
-                   (shutdown-hook nil)))
-
-    (project-def "Housing Development"
-                 '((basedir "/sshfs/lithium/web/housing")
-                   (src-patterns ("*.js" " *.html" "*.pm" "*.css"))
-                   (ignore-patterns nil)
-                   (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
-                   (file-list-cache "~/.emacs.d/.cache/housing-dev/files")
-                   (open-files-cache "~/.emacs.d/.cache/housing-dev/open-files")
-                   (tags-file "~/.emacs.d/.cache/housing-dev/TAGS")
-                   (vcs git)
-                   (ack-args "--perl --js --html --css")
-                   (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "lithium.sr.unh.edu")
-                                            (start-dir "/web/housing")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       (setq  cmd (concat "ssh " hostname " \"" find-cmd "\""))
-                                       cmd)))
-                   (src-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                   (let* (
-                                          (hostname "lithium.sr.unh.edu")
-                                          (start-dir "/web/housing")
-                                          (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                            (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                     (when (mk-proj-get-vcs-path)
-                                       (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                     (setq  cmd (concat "ssh " hostname " \"" find-cmd "\""))
-                                     cmd)))
-
-                   (startup-hook (lambda ()
-                                   (setq tags-file-name "/sshfs/lithium/web/housing/perl/TAGS")
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                                   (setq cperl-indent-level 4)))
-                   (shutdown-hook (lambda ()
-                                    (setq tags-file-name nil)))))
 
     (project-def "Housing Preview"
                  '((basedir "/sshfs/myxomatosis/web/housing")
@@ -1104,13 +955,12 @@ Symbols matching the text at point are put first in the completion list."
 
                    ))
     ))
-
 ;;;_. mu4e
 (use-package mu4e
   :init
   (progn 
-
     (defconst mu4e-path (file-truename "~/local/share/emacs/site-lisp/mu4e/"))
+    (defconst mu4e-bin (file-truename "~/local/stow/mu/bin/mu"))
 
     (if (file-accessible-directory-p mu4e-path)
         (progn
@@ -1120,7 +970,12 @@ Symbols matching the text at point are put first in the completion list."
 
           ;; Only needed if your maildir is _not_ ~/Maildir
           (setq 
-           mu4e-maildir "/home/skk/MaildirWork"
+           mu4e-maildir "/home/skk/Maildir"
+            
+           ; set mu4e as mail-user-agent
+           mail-user-agent 'mu4e-user-agent
+           
+           mu4e-update-interval 30
 
            ;; when you want to use some external command for text->html conversion,
            ;; i.e., the 'html2text' program
@@ -1138,45 +993,40 @@ Symbols matching the text at point are put first in the completion list."
            ;; program to get mail; alternatives are 'fetchmail', 'getmail'
            ;; isync or your own shellscript. called when 'U' is pressed in
            ;; main view
-           mu4e-get-mail-command "offlineimap"
+           mu4e-get-mail-command "true"
 
            ;; location of mu binary
-           mu4e-mu-binary "/home/skk/local/bin/mu"
+           mu4e-mu-binary mu4e-bin
+           
+           ;; enable verbose/debug 
+           mu4e-debug t
+           
+           message-send-mail-function 'message-send-mail-with-sendmail
 
            ;; general emacs mail settings; used when composing e-mail
            mu4e-reply-to-address "skk@sr.unh.edu"
            user-mail-address "skk@sr.unh.edu"
            user-full-name  "Steven Knight"
 
-           ;; these must start with a "/", and must exist
-           ;; (i.e.. /home/user/Maildir/sent must exist)
-           ;; you use e.g. 'mu mkdir' to make the Maildirs if they don't
-           ;; already exist
-
            ;; below are the defaults; if they do not exist yet, mu4e will offer to
            ;; create them
            mu4e-sent-folder   "/Sent"
            mu4e-drafts-folder "/Drafts"
            mu4e-trash-folder  "/Trash")
-
-          ;; sending mail
-          (require 'smtpmail)
-          (setq message-send-mail-function 'smtpmail-send-it
-                starttls-use-gnutls t
-                smtpmail-starttls-credentials '(("blackstar.sr.unh.edu" 587 (file-truename "~/.authinfo.gpg") (file-truename "~/.authinfo.gpg")))
-                smtpmail-auth-credentials '(("blackstar.sr.unh.edu" 587 "skk@sr.unh.edu" nil))
-                smtpmail-default-smtp-server "blackstar.sr.unh.edu"
-                smtpmail-smtp-server "blackstar.sr.unh.edu"
-                smtpmail-stream-type 'ssl
-                smtpmail-smtp-service 587)
-          ))
-
-    ;; for the settings for outgoing mail consult the section 'Longer configuration'
+           (defvar mu4e-bookmarks '( 
+                   ("flag:unread AND NOT flag:trashed"     "Unread messages"        ?u)
+                   ("date:today..now AND NOT flag:trashed" "Today's messages"       ?t)
+                   ("date:7d..now AND NOT flag:trashed"    "Last 7 days"            ?w)
+                   ("flag:unread"                          "Unread messages (ALL)"  ?U)
+                   ("date:today..now"                      "Today's messages (ALL)" ?T)
+                   ("date:7d..now"                         "Last 7 days (ALL)"      ?W)))
+           ))
+    
     
     ))
 
 ;;;_. sqlplus
-(use-package sqlplus)
+    (use-package sqlplus)
 
 ;;;_. sql
 (use-package sql)
@@ -1231,7 +1081,6 @@ Symbols matching the text at point are put first in the completion list."
     ;(add-hook 'find-file-hook 'flymake-find-file-hook)
     ))
 
-
 ;;;_. ack
 (use-package ack)
 
@@ -1262,9 +1111,6 @@ Symbols matching the text at point are put first in the completion list."
       (add-hook 'python-mode-hook 'turn-on-flyspell)
       (add-hook 'text-mode-hook 'turn-on-flyspell))))
 
-;;;_. mercurial
-(use-package ahg)
-
 ;;;_. rst
 ; http://docutils.sourceforge.net/docs/user/emacs.html
 (use-package rst
@@ -1284,9 +1130,8 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. yasnippet
 (use-package yasnippet
-  :init
+  :conf
   (progn 
-
     ; Initialize Yasnippet
     (yas/initialize)
     (setq yas/use-menu 'abbreviate)
@@ -1306,11 +1151,11 @@ Symbols matching the text at point are put first in the completion list."
           '(lambda () 
              (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))
 
-;;;_. git-emacs
-(use-package git-emacs)
+;; ;;;_. git-emacs
+;; (use-package git-emacs)
 
-;;;_. gitconfig-emacs
-(use-package gitconfig-mode)
+;; ;;;_. gitconfig-emacs
+;; (use-package gitconfig-mode)
 
 ;;;_. breadcrumb
 (use-package breadcrumb
@@ -1478,7 +1323,7 @@ Symbols matching the text at point are put first in the completion list."
 (use-package js2-refactor)
 
 ;;;_. org-mode
-(use-package org-mode
+(use-package org
   :init
   (progn
     ; org-mode http://orgmode.org/org.html
@@ -1514,8 +1359,9 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. expand-region
 (use-package expand-region
-  :bind
-  ("C-=" . er/expand-region))
+  :init
+  (progn
+    (bind-key "C-=" 'er/expand-region)))
 
 ;;;_. whole-line-or-region
 (use-package whole-line-or-region)
@@ -1531,27 +1377,28 @@ Symbols matching the text at point are put first in the completion list."
 (use-package smex
   :init
   (progn
-    (setq smex-save-file (expand-file-name "~/.emacs.d/.cache/smex-items")))
-  (progn
+    (setq smex-save-file (expand-file-name "~/.emacs.d/.cache/smex-items"))
     (bind-key "M-x" 'smex)
     (bind-key "M-X" 'smex-major-mode-commands)
     (bind-key "C-c C-c M-x" 'smex-major-mode-commands)))
 
-;; ;;;_. workgroups
+;; ;; ;;;_. workgroups
+; TODO: Loading of workgroups is current broken :(
 ;; (use-package workgroups
 ;;   :init
 ;;   (progn
 ;;     (workgroups-mode 1)
+;;     (setq wg-prefix-key (kbd "C-c w"))
 ;;     (setq wg-switch-on-load nil) ; don't auto switch to the first workgroup 
 ;;     (wg-load "~/.emacs.d/.cache/workgroups")))
 
 ;;;_. desktop-save-mode
 ;(setq desktop-path "~/.emacs.d/.cache/")
-(desktop-save-mode 1)
+;(desktop-save-mode 1)
 
 ;;;_. tabber, pair-mode
-(use-package tabber)
-(use-package pair-mode)
+;(use-package tabber)
+;(use-package pair-mode)
 
 ;;;_. rect-mark
 (use-package rect-mark
@@ -1573,7 +1420,7 @@ Symbols matching the text at point are put first in the completion list."
 
 
 ;;;_. redo
-(use-package redo)
+;(use-package redo)
 
 ;;;_. dtrt-indent
 ;; http://git.savannah.gnu.org/gitweb/?p=dtrt-indent.git;a=blob_plain;f=dtrt-indent.el;hb=HEAD
@@ -1732,7 +1579,7 @@ activate-mark-hook"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/ZenCoding
-(use-package zencoding
+(use-package zencoding-mode
   :init
   (progn
     (add-hook 'sgml-mode-hook 'zencoding-mode) ;; Auto-start on any markup modes
@@ -1843,7 +1690,7 @@ activate-mark-hook"
 ;;;_. paredit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/ParEdit
-(use-package paredit-mode
+(use-package paredit
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
@@ -1955,8 +1802,8 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; bookmarks http://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
 ; bookarmks+ http://www.emacswiki.org/emacs/BookmarkPlus
-(use-package
-    :init
+(use-package bookmark+
+  :init
   (progn
     (bookmark-save-flag 1)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
