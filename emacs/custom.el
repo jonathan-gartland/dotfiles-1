@@ -29,8 +29,10 @@
  '(mk-proj-ack-cmd "~/bin/ack")
  '(nxml-child-indent 4)
  '(nxml-outline-child-indent 2)
+ '(printer-name "HP_Color_LaserJet_3800")
  '(regex-tool-backend (quote perl))
  '(scroll-bar-mode nil)
+ '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(sql-product (quote oracle))
@@ -38,7 +40,7 @@
  '(tab-always-indent nil)
  '(term-unbind-key-list (quote ("C-x" "C-c" "C-h" "C-y" "<ESC>")))
  '(tool-bar-mode nil)
- '(tramp-default-method "ssh" t))
+ '(tramp-default-method "ssh"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
