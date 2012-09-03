@@ -59,6 +59,9 @@
     "Don't use el-get for making packages available for use."))
 
 
+
+(setq el-get-verbose t)
+
 ;; Local Variables:
 ;;   mode: emacs-lisp
 ;;   mode: allout
@@ -125,34 +128,32 @@
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
 
-                       (:name jump-char :type git 
-                              :url "https://github.com/lewang/jump-char.git")
 
-                       (:name jshint-mode :type git 
-                              :url "https://github.com/daleharvey/jshint-mode.git")
+                       ;; (:name jshint-mode :type git 
+                       ;;        :url "https://github.com/daleharvey/jshint-mode.git")
 
                        ;; (:name emacs-flymake :type git 
                        ;;        :url "https://github.com/illusori/emacs-flymake.git")
                        ;;
 
                        ; ace-jump-mode2
-                       (:name ace-jump-mode :type git 
-                              :url "git://github.com/winterTTr/ace-jump-mode.git")
+                       ;; (:name ace-jump-mode :type git 
+                       ;;        :url "git://github.com/winterTTr/ace-jump-mode.git")
 
                        ; js2-refactor
                        (:name js2-refactor :type git 
                               :url "https://github.com/magnars/js2-refactor.el.git")
                        
                        ; mark-multiple
-                       (:name mark-multiple :type git
-                              :url "https://github.com/magnars/mark-multiple.el.git")
+                       ;; (:name mark-multiple :type git
+                       ;;        :url "https://github.com/magnars/mark-multiple.el.git")
                        
                        ; expand-region
-                       (:name expand-region :type git
-                              :url "git://github.com/magnars/expand-region.el.git")
+                       ;; (:name expand-region :type git
+                       ;;        :url "git://github.com/magnars/expand-region.el.git")
 
-                       (:name geiser-git :type git
-                              :url "git://git.sv.gnu.org/geiser.git")
+                       ;; (:name geiser-git :type git
+                       ;;        :url "git://git.sv.gnu.org/geiser.git")
                        
                        ;; (:name gitconfig-mode :type git
                        ;;        :url "git://gitorious.org/gitconfig-mode/gitconfig-mode.git")
@@ -223,6 +224,7 @@
          mark-multiple
          markdown-mode
          monokai-theme
+         mu ; this includes mu4e
          nrepl
          notify
          package
@@ -952,78 +954,67 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
-
                    ))
     ))
-;;;_. mu4e
-(use-package mu4e
+;;;_. mu, mu4e
+(use-package mu
   :init
   (progn 
-    (defconst mu4e-path (file-truename "~/local/share/emacs/site-lisp/mu4e/"))
     (defconst mu4e-bin (file-truename "~/local/stow/mu/bin/mu"))
 
-    (if (file-accessible-directory-p mu4e-path)
-        (progn
-          (add-to-list 'load-path mu4e-path)
-          (require 'mu4e)
-          ;; happily, below settings are all /optional/
+    ;; Only needed if your maildir is _not_ ~/Maildir
+    (setq 
+     mu4e-maildir "/home/skk/Maildir"
+     
+     ; set mu4e as mail-user-agent
+     mail-user-agent 'mu4e-user-agent
+     
+     mu4e-update-interval 30
 
-          ;; Only needed if your maildir is _not_ ~/Maildir
-          (setq 
-           mu4e-maildir "/home/skk/Maildir"
-            
-           ; set mu4e as mail-user-agent
-           mail-user-agent 'mu4e-user-agent
-           
-           mu4e-update-interval 30
+     ;; when you want to use some external command for text->html conversion,
+     ;; i.e., the 'html2text' program
+     mu4e-html2text-command "html2text"
+     
+     ;; the headers to show in the headers list -- a pair of the field + its
+     ;; width, with `nil' meaning 'unlimited' (better only use that for
+     ;; the last field. These are the defaults:
+     mu4e-headers-fields
+     '( (:date          .  25)
+        (:flags         .   6)
+        (:from          .  22)
+        (:subject       .  nil))
+     
+     ;; program to get mail; alternatives are 'fetchmail', 'getmail'
+     ;; isync or your own shellscript. called when 'U' is pressed in
+     ;; main view
+     mu4e-get-mail-command "true"
 
-           ;; when you want to use some external command for text->html conversion,
-           ;; i.e., the 'html2text' program
-           mu4e-html2text-command "html2text"
-           
-           ;; the headers to show in the headers list -- a pair of the field + its
-           ;; width, with `nil' meaning 'unlimited' (better only use that for
-           ;; the last field. These are the defaults:
-           mu4e-headers-fields
-           '( (:date          .  25)
-              (:flags         .   6)
-              (:from          .  22)
-              (:subject       .  nil))
-           
-           ;; program to get mail; alternatives are 'fetchmail', 'getmail'
-           ;; isync or your own shellscript. called when 'U' is pressed in
-           ;; main view
-           mu4e-get-mail-command "true"
+     ;; location of mu binary
+     mu4e-mu-binary mu4e-bin
+     
+     ;; enable verbose/debug 
+     mu4e-debug t
+     
+     message-send-mail-function 'message-send-mail-with-sendmail
 
-           ;; location of mu binary
-           mu4e-mu-binary mu4e-bin
-           
-           ;; enable verbose/debug 
-           mu4e-debug t
-           
-           message-send-mail-function 'message-send-mail-with-sendmail
+     ;; general emacs mail settings; used when composing e-mail
+     mu4e-reply-to-address "skk@sr.unh.edu"
+     user-mail-address "skk@sr.unh.edu"
+     user-full-name  "Steven Knight"
 
-           ;; general emacs mail settings; used when composing e-mail
-           mu4e-reply-to-address "skk@sr.unh.edu"
-           user-mail-address "skk@sr.unh.edu"
-           user-full-name  "Steven Knight"
+     ;; below are the defaults; if they do not exist yet, mu4e will offer to
+     ;; create them
+     mu4e-sent-folder   "/Sent"
+     mu4e-drafts-folder "/Drafts"
+     mu4e-trash-folder  "/Trash")
+    (defvar mu4e-bookmarks '( 
+                             ("flag:unread AND NOT flag:trashed"     "Unread messages"        ?u)
+                             ("date:today..now AND NOT flag:trashed" "Today's messages"       ?t)
+                             ("date:7d..now AND NOT flag:trashed"    "Last 7 days"            ?w)
+                             ("flag:unread"                          "Unread messages (ALL)"  ?U)
+                             ("date:today..now"                      "Today's messages (ALL)" ?T)
+                             ("date:7d..now"                         "Last 7 days (ALL)"      ?W)))))
 
-           ;; below are the defaults; if they do not exist yet, mu4e will offer to
-           ;; create them
-           mu4e-sent-folder   "/Sent"
-           mu4e-drafts-folder "/Drafts"
-           mu4e-trash-folder  "/Trash")
-           (defvar mu4e-bookmarks '( 
-                   ("flag:unread AND NOT flag:trashed"     "Unread messages"        ?u)
-                   ("date:today..now AND NOT flag:trashed" "Today's messages"       ?t)
-                   ("date:7d..now AND NOT flag:trashed"    "Last 7 days"            ?w)
-                   ("flag:unread"                          "Unread messages (ALL)"  ?U)
-                   ("date:today..now"                      "Today's messages (ALL)" ?T)
-                   ("date:7d..now"                         "Last 7 days (ALL)"      ?W)))
-           ))
-    
-    
-    ))
 
 ;;;_. sqlplus
     (use-package sqlplus)
