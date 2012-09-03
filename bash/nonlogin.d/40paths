@@ -31,8 +31,8 @@ export MANPATH="$MANPATH:$HOME/local/share/man"
 export TERMINFO="$HOME/.terminfo"
 
 # set PYTHONPATH
-python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
-export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
+#python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
+#export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
 
 # rcc
 if [ "$DNS_DOMAIN_NAME" == "rcc" ]; then
