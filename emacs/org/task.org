@@ -1,4 +1,6 @@
 # OCM: 58797
+# EMS: 50988
+# ePIP: 59333
 * 2012
 ** July
 *** 01
@@ -100,13 +102,14 @@
 ***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
 *** 26
 **** OCM
-***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints based on business rules from OCM.
+***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints base
+d on business rules from OCM.
 ***** 2 hour billable.  Imported OCM Arrest data.
 **** NHMAPPER (59011)
 ***** .5 hour billable.  Minor corrections to PDF files.
 **** RCI
 ***** 2 hour non-billable.  Completed task-output.py.  It now supports including task ids both globally and locally.  The output has been updated to include all projects.
-**** EMS (50988)
+**** EMS
 ***** .5 hour non-billable. Responded to email to paygate-support.
 *** 27
 **** OCM
@@ -114,7 +117,7 @@
 ***** 2 hours billable.  Imported OCM Arrest data.
 ***** 2 hours non-billable.  Updated Arrest/Conduct Dashbaords to include counts for acadmeic years.
 ***** .5 hour non-billable.  Updated student snapshot to use 'not responsible' column.
-**** EMS (50988)
+**** EMS
 ***** .5 hour non-billable. Responded to email to paygate-support.
 *** 28
 **** WEEKEND
@@ -136,3 +139,92 @@
 **** WEEKEND
 *** 05
 **** WEEKEND
+*** 06
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 07
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 08
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 09
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 10
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 11
+**** WEEKEND
+*** 12
+**** WEEKEND
+*** 13
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 14
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 15
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 16
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 17
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 18
+**** WEEKEND
+*** 19
+**** WEEKEND
+*** 20
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 21
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 22
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+*** 23
+***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.  OCM Deployed!
+*** 24
+***** VACATION
+*** 25
+**** WEEKEND
+*** 26
+**** WEEKEND
+*** 27
+**** OCM
+***** 3 hours non-billable.  Minor corrections based on feedback from Tyler.
+*** 28
+**** Housing
+***** 1 hour non-billable.  Corrected error when uploading student data feed.  
+**** OCM
+***** 1 hour non-billable.  Corrected error when cloning a complaint report.
+**** ePIP
+***** 4.5 hours billable.  Spent time researching/testing automated functional testing tools.  In the end I found these tools: http://watir.com/frameworks/, http://watin.org and http://seleniumhq.org.  My suggestion to aew was Selenium.  It provides a browser-based test cause/test suite creation tool and the option to run tests out side of the browser.
+*** 29
+**** OCM
+***** 4.5 hours non-billable.  Corrections to Arrest Form.
+**** Housing
+***** .5 hours non-billable.  Corrected issue with upload of students data.
+*** 30
+**** ePIP
+***** 3.5 hours billable.  Spent time learning how to create test cases and test suites with Selenium.  
+**** OCM
+***** 2.5 hours non-billable.  Corrected issue with OCM reported by Sarah.  Worked to determine cause of error with with OptimalQuery on lithium v. OptimalQuery on housing1.
+*** 31
+**** OCM
+***** 2 hours non-billable.  Meeting with Sarah.
+***** 1.5 hours billable.  Added status to three strikes report.  Waiting further information from Sarah.
+***** .5 billable.  Added new columns to Complaint List.  Violations (Not Responsible, Responsbile, Pending) and Sanctions types.
+***** 2 Corrections/bug fixes to OCM.  Sorting in Dean's Report.  Updated Conduct Tool to only show closed cases, responsbile violations, non-responsbile violations and imposed sanctions.
+** September
+*** 01
+**** WEEKEND
+*** 02
+**** WEEKEND
+*** 03
+**** HOLIDAY
+*** 04
+**** OCM
+***** 2 hours non-billable.  Corrected error with respondent auto-complete.  Corrected undefined sub-routine errors. 
+**** Housing
+***** .5 hour non-billable.  Determine cause of missing freshman student data.  (Data wasn't included in last week's update.  Blaise re-uploaded data.)
+**** EMS
+***** .5 hour non-billable. Responded to email to paygate-support@sr.unh.edu
+**** ePIP
+***** .5 hour billable.  Meet with Angela to discuss testing.
+*** 05
+**** OCM
+***** 3 hours billable.  Added complainant proxy to OCM_Uploads.  Updated complainant proxy to complaint form.  This field will allow the user to set a proxy for a given complaint form.
+**** ePIP
+***** 3 hour billable.  Start of testing process.  Time was spent creating accounts.
