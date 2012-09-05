@@ -126,6 +126,7 @@ class install(object):
 
     def dotfiles(self, install_type):
         gitconfig = ""
+        offlineimap = ""
         signature = None
 
         if install_type == None:
@@ -133,9 +134,11 @@ class install(object):
 
         if self.WORK == install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
+            offlineimap = 'dotfiles/offlineimaprc.WORK'
 
         if self.HOME == install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
+            offlineimap = 'dotfiles/offlineimaprc.HOME'
 
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
         if not os.path.exists(ssh_dir):
@@ -159,7 +162,7 @@ class install(object):
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
         { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
         { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
-        { 'src': 'dotfiles/offlineimaprc', 'dst' : '.offlineimaprc'},
+        { 'src': offlineimap, 'dst' : '.offlineimaprc'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
         if not self.options.dry_run:
