@@ -158,8 +158,8 @@
                        ;; (:name gitconfig-mode :type git
                        ;;        :url "git://gitorious.org/gitconfig-mode/gitconfig-mode.git")
                        
-                       (:name powerline2 :type git
-                                :url "https://github.com/milkypostman/powerline")
+                       ;; (:name powerline2 :type git
+                       ;;          :url "https://github.com/milkypostman/powerline")
 
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
@@ -230,7 +230,7 @@
          package
          paredit
          point-stack
-         powerline2
+;         powerline2
          ;; python
          python-mode
          ;; python-pep8
@@ -627,6 +627,7 @@ Symbols matching the text at point are put first in the completion list."
       "[\]}\)\"]"
       "If this regexp matches the text after the cursor, do an \"electric\"
   return.")
+    
 
     (defun electrify-return-if-match (arg)
       "If the text after the cursor matches `electrify-return-match' then
@@ -665,6 +666,7 @@ Symbols matching the text at point are put first in the completion list."
     (local-set-key (kbd "RET") 'electrify-return-if-match)
     (eldoc-add-command 'electrify-return-if-match)
     (show-paren-mode t)))
+
 
 ;;;_. key-chord
 (use-package key-chord
@@ -708,6 +710,29 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
                    (shutdown-hook nil)
                    ))
+    (project-def "EOS Development"
+                 '((basedir "/sshfs/lithium/web/eos-dev")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/eos-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/eos-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/eos-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/eos-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq flymake-perl-lib-dir "/sshfs/lithium/web/eos-dev/perl")
+                                   (setq perl-command "/sshfs/lithium/net/home/rcc/skk/dot-files-forest/bin/perl_syntax_checker.pl")
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))
+                   ))
     
     (project-def "Housing Development"
                  '((basedir "/sshfs/lithium/web/housing")
@@ -740,19 +765,6 @@ Symbols matching the text at point are put first in the completion list."
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "contact.sr.unh.edu")
-                                            (start-dir "/web2/nec")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -771,19 +783,6 @@ Symbols matching the text at point are put first in the completion list."
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "lithium.sr.unh.edu")
-                                            (start-dir "/web/nec")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -802,19 +801,6 @@ Symbols matching the text at point are put first in the completion list."
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "myxomatosis.sr.unh.edu")
-                                            (start-dir "/web/housing")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-src-args mk-proj-src-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -833,21 +819,6 @@ Symbols matching the text at point are put first in the completion list."
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
-
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "amnesiac.sr.unh.edu")
-                                            (start-dir "/webdev/rcc")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-ignore-args  mk-proj-ignore-patterns))))
-                                       (when (mk-proj-get-vcs-path)
-                                         (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                       
-                                       (concat "ssh " hostname " \"" find-cmd "\""))))
-
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -866,19 +837,6 @@ Symbols matching the text at point are put first in the completion list."
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
-                   (index-find-cmd (lambda (content)
-                                        ; TODO: 
-                                        ; 1) Update to use regex to split up basedir, instead of hard-coding data.
-                                        ; 2) It'd be nice to use src-patterns and ignore-patterns
-                                     (let* (
-                                            (hostname "velouria.sr.unh.edu")
-                                            (start-dir "/web/humanf")
-                                            (find-cmd (concat "cd \"" start-dir "\"; find '.' -type f "
-                                                              (mk-proj-find-cmd-ignore-args mk-proj-ignore-patterns)))))
-                                     (when (mk-proj-get-vcs-path)
-                                       (setq find-cmd (concat find-cmd " -not -path " (mk-proj-get-vcs-path))))
-                                     
-                                     (concat "ssh " hostname " \"" find-cmd "\"")))
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -962,6 +920,8 @@ Symbols matching the text at point are put first in the completion list."
   (progn 
     (defconst mu4e-bin (file-truename "~/local/stow/mu/bin/mu"))
 
+    (visual-line-mode)
+
     ;; Only needed if your maildir is _not_ ~/Maildir
     (setq 
      mu4e-maildir "/home/skk/Maildir"
@@ -1007,17 +967,26 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-sent-folder   "/Sent"
      mu4e-drafts-folder "/Drafts"
      mu4e-trash-folder  "/Trash")
-    (defvar mu4e-bookmarks '( 
-                             ("flag:unread AND NOT flag:trashed"     "Unread messages"        ?u)
-                             ("date:today..now AND NOT flag:trashed" "Today's messages"       ?t)
-                             ("date:7d..now AND NOT flag:trashed"    "Last 7 days"            ?w)
-                             ("flag:unread"                          "Unread messages (ALL)"  ?U)
-                             ("date:today..now"                      "Today's messages (ALL)" ?T)
-                             ("date:7d..now"                         "Last 7 days (ALL)"      ?W)))))
+    (setq mu4e-bookmarks (list))
 
+    (add-to-list 'mu4e-bookmarks
+                 '("flag:unread AND NOT flag:trashed AND NOT maildir:'/Spam'"
+                   "Unread messages" ?u))
+    (add-to-list 'mu4e-bookmarks
+                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed
+                    AND NOT maildir:'/Spam' AND NOT maildir:'/Trash"
+                   "Today's messages" ?t))
+    (add-to-list 'mu4e-bookmarks
+                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed
+                    AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
+                   "Last 7 days"?w))
+    (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
+    (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
+    (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
+    (global-set-key [XF86Mail] 'mu4e)))
 
 ;;;_. sqlplus
-    (use-package sqlplus)
+(use-package sqlplus)
 
 ;;;_. sql
 (use-package sql)
@@ -1305,10 +1274,10 @@ Symbols matching the text at point are put first in the completion list."
                   (0 (progn (compose-region (match-beginning 1)
                                             (match-end 1) "\u2190")
                             nil)))))))
-;;;_. powerline
-(use-package powerline
-  :init (progn
-          (powerline-default)))
+;; ;;;_. powerline
+;; (use-package powerline
+;;   :init (progn
+;;           (powerline-default)))
 
 ;;;_. js2-refactor
 (use-package js2-refactor)
@@ -1356,6 +1325,13 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. whole-line-or-region
 (use-package whole-line-or-region)
+
+;;;_. which-func
+(which-function-mode t)
+(eval-after-load "which-func"
+  '(add-to-list 'which-func-modes 'sepia-mode)
+  '(add-to-list 'which-func-modes 'org-mode)
+)
 
 ;;;_. iy-go-to-char
 (use-package iy-go-to-char
@@ -1499,7 +1475,6 @@ activate-mark-hook"
 (use-package multi-term
   :init 
   (setq multi-term-program "/bin/bash"))
-
 
 ;;;_. shell-pop
 ; http://www.emacswiki.org/emacs/ShellPop 
@@ -1875,8 +1850,6 @@ activate-mark-hook"
 
 ;; cursor
 (blink-cursor-mode 0)           ; don't blink cursor
-
-
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; File cache http://www.emacswiki.org/cgi-bin/wiki/FileNameCache
