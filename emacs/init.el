@@ -39,6 +39,7 @@
 
 ;;;_ , el-get
 
+
 (use-package el-get
   :disabled t
   :commands (el-get
@@ -58,8 +59,6 @@
   (defalias 'el-get-init 'ignore
     "Don't use el-get for making packages available for use."))
 
-
-
 (setq el-get-verbose t)
 
 ;; Local Variables:
@@ -69,15 +68,6 @@
 ;; End:
 
 ;;; emacs.el ends here
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; system type
-(defconst djcb-linux-p (or (eq system-type 'gnu/linux) (eq system-type 'linux)
-                           "Are we running on a GNU/Linux system?"))
-(defconst djcb-console-p (eq (symbol-value 'window-system) nil) 
-  "Are we in a console?")
-(defconst djcb-machine (system-name))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (require 'cl)				; common lisp goodies, loop
@@ -92,15 +82,16 @@
 
 (require 'el-get)
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/recipes")
+(add-to-list 'el-get-recipe-path "~/.emacs.d/vendor/el-get-recipes")
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
                                         ;(el-get-emacswiki-refresh)
 (setq el-get-sources '(
                        (:name hexrgb :type emacswiki)
-                                        ;                       (:name flyspell :type elpa)
+                       ; (:name flyspell :type elpa)
                        (:name flymake :type elpa)
-                                        ;                       (:name bookmark :type emacswiki)
+                       ; (:name bookmark :type emacswiki)
                        (:name tiling :type emacswiki)
                        (:name cursor-chg :type elpa)
                        (:name multi-term :type elpa)
@@ -128,41 +119,13 @@
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
 
-
-                       ;; (:name jshint-mode :type git 
-                       ;;        :url "https://github.com/daleharvey/jshint-mode.git")
-
-                       ;; (:name emacs-flymake :type git 
-                       ;;        :url "https://github.com/illusori/emacs-flymake.git")
-                       ;;
-
-                       ; ace-jump-mode2
-                       ;; (:name ace-jump-mode :type git 
-                       ;;        :url "git://github.com/winterTTr/ace-jump-mode.git")
-
                        ; js2-refactor
                        (:name js2-refactor :type git 
                               :url "https://github.com/magnars/js2-refactor.el.git")
                        
-                       ; mark-multiple
-                       ;; (:name mark-multiple :type git
-                       ;;        :url "https://github.com/magnars/mark-multiple.el.git")
-                       
-                       ; expand-region
-                       ;; (:name expand-region :type git
-                       ;;        :url "git://github.com/magnars/expand-region.el.git")
-
-                       ;; (:name geiser-git :type git
-                       ;;        :url "git://git.sv.gnu.org/geiser.git")
-                       
-                       ;; (:name gitconfig-mode :type git
-                       ;;        :url "git://gitorious.org/gitconfig-mode/gitconfig-mode.git")
-                       
-                       ;; (:name powerline2 :type git
-                       ;;          :url "https://github.com/milkypostman/powerline")
-
                        (:name mapserver-mode :type http
                               :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
+
                        ))
 
 (if (string-match "linux" system-configuration)
@@ -206,6 +169,7 @@
          durendal
          edit-server
          expand-region
+         emeteo
          ;git-emacs
          ;gitconfig-mode
          geiser
@@ -220,11 +184,12 @@
          jump-char
          lusty-explorer
          key-chord
+         offlineimap
          mapserver-mode
          mark-multiple
          markdown-mode
          monokai-theme
-         mu ; this includes mu4e
+         mu4e ; this includes mu4e
          nrepl
          notify
          package
@@ -239,6 +204,7 @@
 ;         redo
          rebox2
          rect-mark
+         sinburn-theme
          smart-tab
          smex
          sql
@@ -537,7 +503,7 @@
 (use-package lusty-explorer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                                        ; http://emacsrocks.com/e10.html
+; http://emacsrocks.com/e10.html
 
 ;; Push mark when using ido-imenu
 (defvar push-mark-before-goto-char nil)
@@ -546,7 +512,7 @@
   (when push-mark-before-goto-char
     (push-mark)))
 
-                                        ; https://gist.github.com/2360578
+; https://gist.github.com/2360578
 (defun ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
@@ -915,11 +881,9 @@ Symbols matching the text at point are put first in the completion list."
                    ))
     ))
 ;;;_. mu, mu4e
-(use-package mu
+(use-package mu4e
   :init
   (progn 
-    (defconst mu4e-bin (file-truename "~/local/stow/mu/bin/mu"))
-
     (visual-line-mode)
 
     ;; Only needed if your maildir is _not_ ~/Maildir
@@ -957,6 +921,9 @@ Symbols matching the text at point are put first in the completion list."
      
      message-send-mail-function 'message-send-mail-with-sendmail
 
+     message-citation-line-function
+          'messages-insert-formatted-citation-line
+
      ;; general emacs mail settings; used when composing e-mail
      mu4e-reply-to-address "skk@sr.unh.edu"
      user-mail-address "skk@sr.unh.edu"
@@ -970,15 +937,13 @@ Symbols matching the text at point are put first in the completion list."
     (setq mu4e-bookmarks (list))
 
     (add-to-list 'mu4e-bookmarks
-                 '("flag:unread AND NOT flag:trashed AND NOT maildir:'/Spam'"
+                 '("flag:unread AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Spam' AND NOT maildir:'/Junk'"
                    "Unread messages" ?u))
     (add-to-list 'mu4e-bookmarks
-                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed
-                    AND NOT maildir:'/Spam' AND NOT maildir:'/Trash"
+                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
                    "Today's messages" ?t))
     (add-to-list 'mu4e-bookmarks
-                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed
-                    AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
+                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
                    "Last 7 days"?w))
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
@@ -1110,12 +1075,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'emacs-lisp-mode-hook
           '(lambda () 
              (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))
-
-;; ;;;_. git-emacs
-;; (use-package git-emacs)
-
-;; ;;;_. gitconfig-emacs
-;; (use-package gitconfig-mode)
 
 ;;;_. breadcrumb
 (use-package breadcrumb
@@ -1329,9 +1288,7 @@ Symbols matching the text at point are put first in the completion list."
 ;;;_. which-func
 (which-function-mode t)
 (eval-after-load "which-func"
-  '(add-to-list 'which-func-modes 'sepia-mode)
-  '(add-to-list 'which-func-modes 'org-mode)
-)
+  '(add-to-list 'which-func-modes 'sepia-mode))
 
 ;;;_. iy-go-to-char
 (use-package iy-go-to-char
@@ -1339,6 +1296,24 @@ Symbols matching the text at point are put first in the completion list."
      (progn
        (bind-key "M-m" 'jump-char-forward)
        (bind-key "M-M" 'jump-char-backward)))
+
+(setq emacs-program-name "emacs")
+(setq emacs-program-version 'emacs-version)
+
+(setq emeteo-data-sources
+      '((portsmouth_nh
+         :region-path (america us portsmouth)
+         :uri "http://weather.noaa.gov/pub/data/observations/metar/decoded/KPSM.TXT"
+         :fetch-chain default
+         :temp-unit fahrenheit
+         :temp-unit-string "°F"
+         :name "Portsmouth NH USA"
+         :shortname "Portsmouth")))
+
+(use-package emeteo)
+(use-package emeteo-modeline)
+(emeteo-modeline)
+
 
 ;;;_. Smart M-x
 (use-package smex
@@ -1967,5 +1942,3 @@ activate-mark-hook"
 ;;   mode: allout
 ;;   outline-regexp: "^;;;_\\([,. ]+\\)"
 ;; End:
-
-

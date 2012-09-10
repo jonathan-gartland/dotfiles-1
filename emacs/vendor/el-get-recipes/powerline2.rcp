@@ -1,0 +1,6 @@
+(:name powerline2
+       :website "https://github.com/milkypostman/emacs-powerline"
+       :description "Powerline2 for Emacs"
+       :type github
+       :pkgname "milkypostman/powerline"
+       :features powerline)
