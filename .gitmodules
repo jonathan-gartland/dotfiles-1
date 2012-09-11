@@ -7,6 +7,3 @@
 [submodule "use-package"]
 	path = use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "jshint-mode"]
-	path = jshint-mode
-	url = https://github.com/daleharvey/jshint-mode.git
