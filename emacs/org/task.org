@@ -228,3 +228,17 @@ d on business rules from OCM.
 ***** 3 hours billable.  Added complainant proxy to OCM_Uploads.  Updated complainant proxy to complaint form.  This field will allow the user to set a proxy for a given complaint form.
 **** ePIP
 ***** 3 hour billable.  Start of testing process.  Time was spent creating accounts.
+*** 08
+**** WEEKEND
+*** 09
+**** WEEKEND
+*** 10
+**** ePIP
+***** 6 hours billable.  Continue work on functionality testing.  Wrote script which tranforms Medicaid data from test plan to selenium test cases.
+*** 11
+**** ePIP
+***** 4 hours billable.  Continue work on functionality testing.  Wrote script which tranforms Needy data from test plan to selenium test cases.
+**** UACC
+***** 1 hour non-billable.  Helped Allan resolve issue with LDAP access from UACC site on housing1.unh.eud.
+**** OCM
+***** 1 hour billable.  Added new feature to OCM allowing Sarah to set a custom cell phone number for her volunteers.
