@@ -328,13 +328,14 @@
      ;; This lets me say where my temp dir is.
      (setq temporary-file-directory "~/.emacs.d/.cache/")
      ;; I want to see at most the first 4 errors for a line.
-     (setq flymake-number-of-errors-to-display 4))
+     (setq flymake-number-of-errors-to-display 4)))
+
+(use-package flymake-jshint
   :init
   (progn
-    (setq jshint-mode-location (expand-file-name "~/.emacs.d/el-get/jshint-mode"))
-    (require 'flymake-jshint)
     (add-hook 'javascript-mode-hook
               (lambda () (flymake-mode t)))))
+
 
 
 ;;;_. ibuffer
@@ -913,9 +914,6 @@ Symbols matching the text at point are put first in the completion list."
      ;; main view
      mu4e-get-mail-command "true"
 
-     ;; location of mu binary
-     mu4e-mu-binary mu4e-bin
-     
      ;; enable verbose/debug 
      mu4e-debug t
      
