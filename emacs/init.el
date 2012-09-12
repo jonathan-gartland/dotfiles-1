@@ -114,8 +114,8 @@
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
+                       (:name guru-mode :type elpa)
                        (:name iy-go-to-char :type elpa)
-
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
 
@@ -175,6 +175,7 @@
          geiser
          google-maps
          google-weather
+         guru-mode
          helm
          hexrgb
          js2-mode ; TODO Added :after hook
@@ -217,7 +218,7 @@
          sunrise-x-mirror
          sunrise-x-modeline
          sunrise-x-tree
-         tomorrow-night-paradise-themt se
+         tomorrow-night-paradise-theme
          tail
          xclip
          yasnippet
@@ -347,7 +348,9 @@
     (add-hook 'javascript-mode-hook
               (lambda () (flymake-mode t)))))
 
-
+;;;_. guru-mode
+(use-package guru-mode)
+(add-hook 'prog-mode-hook (lambda () (guru-mode +1)))
 
 ;;;_. ibuffer
 (require 'ibuffer) 
