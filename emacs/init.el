@@ -217,7 +217,7 @@
          sunrise-x-mirror
          sunrise-x-modeline
          sunrise-x-tree
-         tomorrow-night-paradise-theme.
+         tomorrow-night-paradise-themt se
          tail
          xclip
          yasnippet
