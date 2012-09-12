@@ -15,7 +15,7 @@
  '(column-number-mode t)
  '(cursor-color "#657b83")
  '(custom-enabled-themes (quote (tango-dark)))
- '(custom-safe-themes (quote ("36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" "7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
+ '(custom-safe-themes (quote ("4aafea32abe07a9658d20aadcae066e9c7a53f8e3dfbd18d8fa0b26c24f9082c" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" "7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
  '(custom-theme-load-path (quote ("/home/skk/.emacs.d/el-get/" custom-theme-directory t "~/.emacs.d/themes" "~/.emacs.d/el-get/theme-sinburn")))
  '(desktop-path (quote ("~/.emacs.d/.cache/")))
  '(display-time-mode t)
