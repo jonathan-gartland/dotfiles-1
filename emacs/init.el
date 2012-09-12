@@ -231,12 +231,22 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; create required directories
-(unless (file-directory-p "~/.emacs.d/.cache")
-  (make-directory "~/.emacs.d/.cache")) 
+(defconst emacsd-cache-dir (expand-file-name "~/.emacs.d/.cache"))
+(defconst emacsd-backup-dir (expand-file-name "~/.emacs.d/.backup"))
+(defconst emacsd-image-dired-dir (expand-file-name "~/.emacs.d/.cache/image-dired"))
 
-(unless (file-directory-p "~/.emacs.d/.backup")
-  (make-directory "~/.emacs.d/.backup")) 
+;; create required directories
+(unless (file-directory-p emacsd-image-dired-dir)
+  (make-directory emacsd-image-dired-dir)) 
+
+(unless (file-directory-p emacsd-backup-dir)
+  (make-directory emacsd-backup-dir)) 
+
+(unless (file-directory-p emacsd-image-dired-dir)
+  (make-directory emacsd-image-dired-dir)) 
+
+(setq image-dired-dir emacsd-image-dired-dir)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
