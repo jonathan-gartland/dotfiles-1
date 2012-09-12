@@ -29,8 +29,8 @@
             t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/color-theme-solarized")
-(load-theme 'tango-dark)
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/el-get/color-theme-solarized")
+;(load-theme 'tango-dark)
 ;(load-theme 'solarized-light t)
 ;(load-theme 'solarized-dark t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -217,6 +217,7 @@
          sunrise-x-mirror
          sunrise-x-modeline
          sunrise-x-tree
+         tomorrow-night-paradise-theme.
          tail
          xclip
          yasnippet
