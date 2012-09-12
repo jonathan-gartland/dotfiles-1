@@ -789,6 +789,24 @@ Symbols matching the text at point are put first in the completion list."
                                    (setq cperl-indent-level 4)))
                    (shutdown-hook nil)))
 
+    (project-def "Obliterase Live"
+                 '((basedir "/sshfs/revelator/web/neat-rcc")
+                   (src-patterns ("*.js *.html *.pm *.css"))
+                   (ignore-patterns nil)
+                   (tags-file nil)
+                   (file-list-cache "~/.emacs.d/.cache/neat-rcc-live/files")
+                   (open-files-cache "~/.emacs.d/.cache/neat-rcc-live/open-files")
+                   (tags-file "~/.emacs.d/.cache/neat-rcc-live/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --html --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+                                   (setq cperl-indent-level 4)))
+                   (shutdown-hook nil)))
+
     (project-def "RCC Development"
                  '((basedir "/sshfs/amnesiac/webdev/rcc")
                    (src-patterns ("*.pm"))
@@ -825,7 +843,6 @@ Symbols matching the text at point are put first in the completion list."
                                    (setq cperl-indent-level 4)))
 
                    (shutdown-hook nil)))
-
     ;; 
     ;; Local Projects
     ;;
@@ -919,8 +936,9 @@ Symbols matching the text at point are put first in the completion list."
      ;; the last field. These are the defaults:
      mu4e-headers-fields
      '( (:date          .  25)
-        (:flags         .   6)
-        (:from          .  22)
+        (:flags         .   5)
+        (:from          .  20)
+        (:to             . 20)
         (:subject       .  nil))
      
      ;; program to get mail; alternatives are 'fetchmail', 'getmail'
@@ -933,8 +951,9 @@ Symbols matching the text at point are put first in the completion list."
      
      message-send-mail-function 'message-send-mail-with-sendmail
 
-     message-citation-line-function
-          'messages-insert-formatted-citation-line
+     message-citation-line-format "On %a, %b %d %Y %p at %R, %N wrote:"
+
+     message-citation-line-function (quote message-insert-formatted-citation-line)
 
      ;; general emacs mail settings; used when composing e-mail
      mu4e-reply-to-address "skk@sr.unh.edu"
@@ -946,6 +965,7 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-sent-folder   "/Sent"
      mu4e-drafts-folder "/Drafts"
      mu4e-trash-folder  "/Trash")
+    
     (setq mu4e-bookmarks (list))
 
     (add-to-list 'mu4e-bookmarks
@@ -960,7 +980,9 @@ Symbols matching the text at point are put first in the completion list."
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
-    (global-set-key [XF86Mail] 'mu4e)))
+    (global-set-key [XF86Mail] 'mu4e))
+  
+  )
 
 ;;;_. sqlplus
 (use-package sqlplus)
