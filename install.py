@@ -185,6 +185,9 @@ class install(object):
     def fonts(self, install_type):
             self._createLinks([{ 'src': 'fonts', 'dst': '.fonts' } ])
 
+    def terminator(self, install_type):
+            self._createLinks([{ 'src': 'terminator', 'dst': '.config/terminator' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
