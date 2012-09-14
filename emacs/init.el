@@ -118,6 +118,8 @@
                        (:name iy-go-to-char :type elpa)
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
+                       
+                       (:name flymake-perlcritic :type elpa)
 
                        ; js2-refactor
                        (:name js2-refactor :type git 
@@ -170,6 +172,8 @@
          edit-server
          expand-region
          emeteo
+         flymake-perlcritic
+         flymake-cursor
          ;git-emacs
          ;gitconfig-mode
          geiser
@@ -178,7 +182,7 @@
          guru-mode
          helm
          hexrgb
-         js2-mode ; TODO Added :after hook
+         js2-mode
          jshint-mode
          js2-refactor
          json
@@ -190,7 +194,7 @@
          mark-multiple
          markdown-mode
          monokai-theme
-         mu4e ; this includes mu4e
+         mu4e
          nrepl
          notify
          package
@@ -205,6 +209,7 @@
 ;         redo
          rebox2
          rect-mark
+         rfringe
          sinburn-theme
          smart-tab
          smex
@@ -348,9 +353,15 @@
     (add-hook 'javascript-mode-hook
               (lambda () (flymake-mode t)))))
 
-;;;_. guru-mode
-(use-package guru-mode)
-(add-hook 'prog-mode-hook (lambda () (guru-mode +1)))
+(use-package flymake-perlcritic
+  :init
+  (progn
+    (add-hook 'sepia-mode-hook
+               (lambda () (flymake-mode t)))))
+
+(use-package flymake-cursor)
+(global-set-key [XF86Back] 'flymake-goto-prev-error)
+(global-set-key [XF86Forward] 'flymake-goto-next-error)
 
 ;;;_. ibuffer
 (require 'ibuffer) 
@@ -387,6 +398,10 @@
                      (filename . "/web/housing/sql/inhall")))
                    ("Housing"
                     (filename . "/web/housing"))
+                   ("Obliterase"
+                    (or
+                     (filename . "/web/neat-rcc")
+                     (filename . "/web/neat")))
                    ("RCC"
                     (filename . "/webdev/rcc"))
                    ("EPSCoR"
@@ -797,6 +812,24 @@ Symbols matching the text at point are put first in the completion list."
                    (file-list-cache "~/.emacs.d/.cache/neat-rcc-live/files")
                    (open-files-cache "~/.emacs.d/.cache/neat-rcc-live/open-files")
                    (tags-file "~/.emacs.d/.cache/neat-rcc-live/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --html --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+                                   (setq cperl-indent-level 4)))
+                   (shutdown-hook nil)))
+
+    (project-def "Obliterase Dev"
+                 '((basedir "/sshfs/lithium/web/neat")
+                   (src-patterns ("*.js *.html *.pm *.css"))
+                   (ignore-patterns nil)
+                   (tags-file nil)
+                   (file-list-cache "~/.emacs.d/.cache/neat-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/neat-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/neat-dev/TAGS")
                    (vcs git)
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
