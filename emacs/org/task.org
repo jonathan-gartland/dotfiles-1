@@ -252,14 +252,21 @@ d on business rules from OCM.
 *** 13
 **** Obliterate 
 **** 2 hours billable.  Updated webserver to use cloud-console.obliterase.com.  Most of the changed requested by Steve Wood have been complted (email sent 09/13/2012 02:39 PM).
+**** ePIP
 ***** 4 hours billable.  Continued work on functionality testing.
-
 *** 14
 **** Obliterate 
 ***** 3 hours billable.  Created footer.  Began work on PDF generation.  Made changes to Device Logs recordset.
+**** ePIP
 ***** 3 hours billable.  Continued work on functionality testing.
-
 *** 15
 **** WEEKEND
 *** 16
 **** WEEKEND
+*** 17
+**** Obliterate 
+***** 4 hours billable.  Created Certificate generation.  Sent Steve an update.  Misc. changes to website.
+**** ePIP
+***** .5 hour billable.  Closed bugs at aew's request.
+**** OCM
+***** .5 hour non-billable.  Reviewed whether prior is set correctly all AY1213 complaints.  Sent update to Sarah.
