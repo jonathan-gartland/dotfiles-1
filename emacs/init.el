@@ -114,7 +114,6 @@
                        (:name pysmell :type elpa)
                        (:name company :type elpa)
                        (:name shell-pop :type emacswiki)
-                       (:name guru-mode :type elpa)
                        (:name iy-go-to-char :type elpa)
                        (:name monokai-theme :type elpa)
                        (:name nrepl :type elpa)
@@ -179,7 +178,6 @@
          geiser
          google-maps
          google-weather
-         guru-mode
          helm
          hexrgb
          js2-mode
