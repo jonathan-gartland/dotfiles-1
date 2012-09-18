@@ -4,4 +4,4 @@
 
 # source all login.d files
 source ~/.bash/_utils
-source-dir ~/.bash/login.d
+source-dir ~/.bash/nonlogin.d
