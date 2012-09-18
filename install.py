@@ -146,6 +146,7 @@ class install(object):
 
         self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
         { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
+        { 'src': 'dotfiles/git-prompt.conf', 'dst': '.git-prompt.conf' },
         { 'src': 'dotfiles/perltidy', 'dst': '.perltidy' },
         { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
         { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
