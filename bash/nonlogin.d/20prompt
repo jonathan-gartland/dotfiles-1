@@ -192,6 +192,6 @@
 
 # PROMPT_COMMAND=prompt_command
 
-if [ -f $HOME/dot-files-forest/git-prompt/git-prompt.sh ]; 
+if [ -f $HOME/dot-files-forest/git-prompt/git-prompt.sh ]; then
     [[ $- == *i* ]]  && . $HOME/dot-files-forest/git-prompt/git-prompt.sh
 fi
