@@ -120,6 +120,9 @@
                        
                        (:name flymake-perlcritic :type elpa)
 
+                       (:name change-inner :type github
+                              :pkgname "magnars/change-inner.el")
+                       
                        ; js2-refactor
                        (:name js2-refactor :type git 
                               :url "https://github.com/magnars/js2-refactor.el.git")
@@ -192,6 +195,7 @@
          mark-multiple
          markdown-mode
          monokai-theme
+         multiple-cursors
          mu4e
          nrepl
          notify
@@ -207,7 +211,6 @@
 ;         redo
          rebox2
          rect-mark
-         rfringe
          sinburn-theme
          smart-tab
          smex
@@ -354,6 +357,9 @@
 (use-package flymake-perlcritic
   :init
   (progn
+    (setq 
+     flymake-perlcritic-severity 2
+     flymake-perlcritic-theme) "pbp && bugs"
     (add-hook 'sepia-mode-hook
                (lambda () (flymake-mode t)))))
 
@@ -589,6 +595,15 @@ Symbols matching the text at point are put first in the completion list."
     (imenu-update-menubar)
     (ido-imenu)))
 
+;;;_. multiple-cursors
+(use-package multiple-cursors)
+
+;;;_. change-inner
+(use-package change-inner
+  :init 
+  (progn
+    (bind-key "M-i" 'change-inner)
+    (bind-key "M-o" 'change-outer)))
 
 ;;;_. ido
 (use-package ido
@@ -718,8 +733,6 @@ Symbols matching the text at point are put first in the completion list."
                    (ack-args "--perl --js --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
-                                   (setq flymake-perl-lib-dir "/sshfs/lithium/web/eos-dev/perl")
-                                   (setq perl-command "/sshfs/lithium/net/home/rcc/skk/dot-files-forest/bin/perl_syntax_checker.pl")
                                    (setq cperl-indent-level 4))
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
@@ -742,8 +755,9 @@ Symbols matching the text at point are put first in the completion list."
                    (ack-args "--perl --js --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
-                                   (setq flymake-perl-lib-dir "/sshfs/lithium/web/housing/perl")
-                                   (setq perl-command "/sshfs/lithium/net/home/rcc/skk/dot-files-forest/bin/perl_syntax_checker.pl")
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                    (setq cperl-indent-level 4)))
                    (shutdown-hook (lambda ()
                                     (setq tags-file-name nil)))
@@ -832,11 +846,21 @@ Symbols matching the text at point are put first in the completion list."
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
+                                   (setenv "PERL5LIB"
+                                           (concat
+                                            "/sshfs/lithium/usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                            "/sshfs/lithium/usr/lib/perl5/vendor_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                            "/sshfs/lithium/web/neat/perl" ":" 
+                                            "/sshfs/lithium/web/neat/cgi-bin" ":"
+                                            "/sshfs/lithium/web/perl" ":"
+                                            "/sshfs/lithium/web/perl/Lib/Layout2/Core" ":"
+                                            "/sshfs/lithium/web/perl/Lib/Libraries/Html2Pdf"  ":"
+                                            (getenv "PERL5LIB")))
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
-                                   (setq cperl-indent-level 4)))
-                   (shutdown-hook nil)))
+                                   (setq cperl-indent-level 4))
+                   (shutdown-hook nil))))
 
     (project-def "RCC Development"
                  '((basedir "/sshfs/amnesiac/webdev/rcc")
@@ -998,23 +1022,26 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-trash-folder  "/Trash")
     
     (setq mu4e-bookmarks (list))
+    
+    (flyspell-mode t)
 
     (add-to-list 'mu4e-bookmarks
-                 '("flag:unread AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Spam' AND NOT maildir:'/Junk'"
+                 '("flag:unread AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk'"
                    "Unread messages" ?u))
     (add-to-list 'mu4e-bookmarks
-                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
+                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Trash'"
                    "Today's messages" ?t))
     (add-to-list 'mu4e-bookmarks
-                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Spam' AND NOT maildir:'/Trash'"
+                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed NOT maildir:'/Junk' AND NOT maildir:'/Trash'"
                    "Last 7 days"?w))
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
-  
-  )
-
+)
+(add-hook 'message-setup-hook (lambda ()
+                                (progn
+                                  (flyspell-mode 1))))
 ;;;_. sqlplus
 (use-package sqlplus)
 
