@@ -1,0 +1,3 @@
+(:name cursor-chg 
+       :description "Change cursor dynamically, depending on the context."
+       :type elpa)

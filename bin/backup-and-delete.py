@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import shutil 
 from os import getenv, makedirs, rename
 import os

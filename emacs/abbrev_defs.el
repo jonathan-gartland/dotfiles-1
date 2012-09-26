@@ -51,6 +51,8 @@
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
+(define-abbrev-table 'checkdoc-output-mode-abbrev-table '())
+
 (define-abbrev-table 'clojure-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
@@ -157,6 +159,8 @@
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
+(define-abbrev-table 'helm-grep-mode-abbrev-table '())
+
 (define-abbrev-table 'help-mode-abbrev-table '())
 
 (define-abbrev-table 'html-mode-abbrev-table '())
@@ -170,6 +174,8 @@
 (define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
@@ -239,6 +245,8 @@
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
 
+(define-abbrev-table 'offlineimap-mode-abbrev-table '())
+
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
@@ -291,6 +299,8 @@
    ))
 
 (define-abbrev-table 'rst-toc-mode-abbrev-table '())
+
+(define-abbrev-table 'ruby-mode-abbrev-table '())
 
 (define-abbrev-table 'scheme-mode-abbrev-table '())
 

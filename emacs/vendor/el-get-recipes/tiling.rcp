@@ -1,0 +1,3 @@
+(:name tiling 
+       :description "changing window layout"
+       :type emacswiki)

@@ -86,16 +86,10 @@
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
-                                        ;(el-get-emacswiki-refresh)
+
+;(el-get-emacswiki-refresh)
+
 (setq el-get-sources '(
-                       (:name hexrgb :type emacswiki)
-                       ; (:name flyspell :type elpa)
-                       (:name flymake :type elpa)
-                       ; (:name bookmark :type emacswiki)
-                       (:name tiling :type emacswiki)
-                       (:name cursor-chg :type elpa)
-                       (:name multi-term :type elpa)
-                       (:name mk-project :type emacswiki)
                        (:name icicles :type emacswiki)
                        (:name icicles-mac :type emacswiki)
                        (:name icicles-face :type emacswiki)
@@ -107,30 +101,7 @@
                        (:name icicles-cmd2 :type emacswiki)
                        (:name icicles-doc1 :type emacswiki)
                        (:name icicles-doc2 :type emacswiki)
-                       (:name icicles-mode :type emacswiki)
-                       (:name lacarte :type emacswiki)
-                       (:name hl-line+ :type emacswiki)
-                       (:name minimap :type emacswiki)
-                       (:name pysmell :type elpa)
-                       (:name company :type elpa)
-                       (:name shell-pop :type emacswiki)
-                       (:name iy-go-to-char :type elpa)
-                       (:name monokai-theme :type elpa)
-                       (:name nrepl :type elpa)
-                       
-                       (:name flymake-perlcritic :type elpa)
-
-                       (:name change-inner :type github
-                              :pkgname "magnars/change-inner.el")
-                       
-                       ; js2-refactor
-                       (:name js2-refactor :type git 
-                              :url "https://github.com/magnars/js2-refactor.el.git")
-                       
-                       (:name mapserver-mode :type http
-                              :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
-
-                       ))
+                       (:name icicles-mode :type emacswiki)))
 
 (if (string-match "linux" system-configuration)
     (loop for p in '(auctex emacs-w3m magit swank-clojure);  pymacs rope ropemacs slime swank-clojure
@@ -166,6 +137,7 @@
          clojure-mode
          cperl-mode
          crontab-mode
+;         company
          csv
          csv-mode
          dtrt-indent
@@ -188,6 +160,7 @@
          js2-refactor
          json
          jump-char
+         icicles
          lusty-explorer
          key-chord
          offlineimap
@@ -196,6 +169,7 @@
          markdown-mode
          monokai-theme
          multiple-cursors
+         mk-project
          mu4e
          nrepl
          notify
@@ -205,6 +179,7 @@
 ;         powerline2
          ;; python
          python-mode
+         pretty-symbols-mode
          ;; python-pep8
          quack
          rainbow-delimiters
@@ -333,6 +308,14 @@
 (add-hook 'cperl-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'sepai-mode-hook 'turn-on-eldoc-mode)
 
+;;;_. pretty-symbols-mode
+(use-package pretty-symbols-mode)
+(add-hook 'sepia-mode-hook 'pretty-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook 'pretty-symbols-mode)
+(add-hook 'cperl-mode-hook 'pretty-symbols-mode)
+(add-hook 'js-mode 'pretty-symbols-mode)
+(add-hook 'python-mode 'pretty-mode)
+          
 ;;;_. flymake-mode
 (use-package flymake
   :config
@@ -362,6 +345,7 @@
      flymake-perlcritic-theme) "pbp && bugs"
     (add-hook 'sepia-mode-hook
                (lambda () (flymake-mode t)))))
+
 
 (use-package flymake-cursor)
 (global-set-key [XF86Back] 'flymake-goto-prev-error)
@@ -527,7 +511,8 @@
   (progn
     (icy-mode 1)))
 
-;;;_. lacarte
+
+;;_. lacarte
 (use-package lacarte
   :config
   (progn
@@ -1382,30 +1367,29 @@ Symbols matching the text at point are put first in the completion list."
 (eval-after-load "which-func"
   '(add-to-list 'which-func-modes 'sepia-mode))
 
-;;;_. iy-go-to-char
-(use-package iy-go-to-char
-     :init 
-     (progn
-       (bind-key "M-m" 'jump-char-forward)
-       (bind-key "M-M" 'jump-char-backward)))
+;; ;;;_. iy-go-to-char
+;; (use-package iy-go-to-char
+;;      :init 
+;;      (progn
+;;        (bind-key "M-m" 'jump-char-forward)
+;;        (bind-key "M-M" 'jump-char-backward)))
 
 (setq emacs-program-name "emacs")
 (setq emacs-program-version 'emacs-version)
 
 (setq emeteo-data-sources
-      '((portsmouth_nh
-         :region-path (america us portsmouth)
+      '((durham_nh_usa
+         :region-path (america nh durham)
          :uri "http://weather.noaa.gov/pub/data/observations/metar/decoded/KPSM.TXT"
+;	 :uri "http://weather.yahooapis.com/forecastrss?w=2394732"
          :fetch-chain default
          :temp-unit fahrenheit
          :temp-unit-string "°F"
-         :name "Portsmouth NH USA"
-         :shortname "Portsmouth")))
-
+         :name "Durham NH USA"
+         :shortname "Durham")))
 (use-package emeteo)
 (use-package emeteo-modeline)
-(emeteo-modeline)
-
+;(emeteo-modeline)
 
 ;;;_. Smart M-x
 (use-package smex
@@ -1860,6 +1844,8 @@ activate-mark-hook"
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
 (scroll-bar-mode nil)              
 (set-scroll-bar-mode 'right)
+(setq electric-pair-mode t)
+(setq electric-indent-mode t)
 (defalias 'yes-or-no-p 'y-or-n-p)        ; allow y for yes, n for no
 
 (when (fboundp 'set-fringe-mode)         ; emacs22+ 
@@ -2029,6 +2015,18 @@ activate-mark-hook"
 
 (add-hook 'after-save-hook 'byte-compile-current-buffer)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(emeteo-timeout 10))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; Local Variables:
 ;;   mode: emacs-lisp
 ;;   mode: allout
