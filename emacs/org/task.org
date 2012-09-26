@@ -270,3 +270,38 @@ d on business rules from OCM.
 ***** .5 hour billable.  Closed bugs at aew's request.
 **** OCM
 ***** .5 hour non-billable.  Reviewed whether prior is set correctly all AY1213 complaints.  Sent update to Sarah.
+*** 18
+**** RCC
+***** 1.5 hours non-billable.  Installed bugzilla on zathras to test upgrading our Bugzilla
+**** OCM
+***** 1 hours non-billable correction/bug fixes.
+**** Obliterase
+***** 1 hours billable.  Corrected Certificate.
+*** 19
+**** OCM
+***** 5 hours billable.  Templates for Hearing Decision.
+**** OCM
+***** 1 hours non-billable correction/bug fixes.
+*** 20
+**** OCM
+***** 5 hours billable.  Templates for Hearing Decision.
+**** ePIP 
+***** 1/2 hour billable.  Rebuliding MMIS.
+*** 21
+**** HOLIDAY
+*** 22
+**** WEEKEND
+*** 23
+**** WEEKEND
+*** 24
+**** HOLIDAY
+*** 25 
+**** ePIP 
+***** 1 hour billable.  Created summaries of security scan report.  Sent to summary to Even.  Sent another to teh,aew and af.
+**** OCM
+***** 2.5 hours billable.  Changes to recent police activity report (removed sentence) and add fields (full name, dob, student id and date the letter was created).
+***** 2.5 hours biilable.  Continued work on hearing decision templates. 
+*** 26
+**** OCM
+***** 3 hours non-billable.  Bug fixes to OCM.  Fixed bug to complaint form which made it impossible to add the same sanction with several sanction types.  Updated complaint form to catch invalid 'release of info requested' data.
+***** 3 hours billable.  Loading/saving of sanction templates is now working, along with sanction rationale.
