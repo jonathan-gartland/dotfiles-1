@@ -205,6 +205,7 @@
          yasnippet
          whole-line-or-region
          zencoding-mode
+         wgrep
          workgroups)    
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -315,6 +316,9 @@
 (add-hook 'cperl-mode-hook 'pretty-symbols-mode)
 (add-hook 'js-mode 'pretty-symbols-mode)
 (add-hook 'python-mode 'pretty-mode)
+
+;;;_. wgrep
+(use-package wgrep)
           
 ;;;_. flymake-mode
 (use-package flymake
@@ -347,9 +351,16 @@
                (lambda () (flymake-mode t)))))
 
 
+;;;_. flymake-cursor
 (use-package flymake-cursor)
 (global-set-key [XF86Back] 'flymake-goto-prev-error)
 (global-set-key [XF86Forward] 'flymake-goto-next-error)
+
+;;;_. edit-server
+(use-package edit-server
+  :init
+  (progn
+    (edit-server-start)))
 
 ;;;_. ibuffer
 (require 'ibuffer) 
@@ -366,6 +377,12 @@
                     (filename . "/web/nh-wetlands-mapper-dev"))
                    ("SICP"
                     (filename . "~work/SICP"))
+                   ("MedHome"
+                    (or
+                     (filename . "/web/medhome")))
+                   ("SpiceCore"
+                    (or
+                     (filename . "/web/SpiceCore")))
                    ("Housing OCM"
                     (or
                      (filename . "/web/housing/perl/HOUSING/EXT/OCM")
@@ -661,7 +678,6 @@ Symbols matching the text at point are put first in the completion list."
     (eldoc-add-command 'electrify-return-if-match)
     (show-paren-mode t)))
 
-
 ;;;_. key-chord
 (use-package key-chord
   :init
@@ -702,8 +718,50 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
-                   (shutdown-hook nil)
-                   ))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nill)))))
+    
+    (project-def "MedHome Development"
+                 '((basedir "/sshfs/lithium/web/medhome")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/medhome-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/medhome-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/medhome-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/medhome-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))))
+    (project-def "SpiceCore Development"
+                 '((basedir "/sshfs/lithium/web/spicecore")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/spicecore-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/spicecore-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/spicecore-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/spicecore-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))))
+    
     (project-def "EOS Development"
                  '((basedir "/sshfs/lithium/web/eos-dev")
                    (src-patterns ("*.js"  "*.pm" "*.css"))
@@ -1005,11 +1063,20 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-sent-folder   "/Sent"
      mu4e-drafts-folder "/Drafts"
      mu4e-trash-folder  "/Trash")
+
+    (setq mu4e-use-fancy-chars t
+        mu4e-headers-draft-mark     '("D" . "⚒ ")  ; draft
+        mu4e-headers-seen-mark      '("S" . "☑ ")  ; seen
+        mu4e-headers-unseen-mark    '("u" . "☐ ")  ; unseen
+        mu4e-headers-flagged-mark   '("F" . "⚵ ") ; flagged
+        mu4e-headers-new-mark       '("N" . "✉ ") ; new
+        mu4e-headers-replied-mark   '("R" . "↵ ")  ; replied
+        mu4e-headers-passed-mark    '("P" . "⇉ ")  ; passed
+        mu4e-headers-encrypted-mark '("x" . "⚷ ")  ; encrypted
+        mu4e-headers-signed-mark    '("s" . "✍ ")) ; signed
     
     (setq mu4e-bookmarks (list))
     
-    (flyspell-mode t)
-
     (add-to-list 'mu4e-bookmarks
                  '("flag:unread AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk'"
                    "Unread messages" ?u))
@@ -1024,9 +1091,6 @@ Symbols matching the text at point are put first in the completion list."
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
 )
-(add-hook 'message-setup-hook (lambda ()
-                                (progn
-                                  (flyspell-mode 1))))
 ;;;_. sqlplus
 (use-package sqlplus)
 
@@ -1103,10 +1167,11 @@ Symbols matching the text at point are put first in the completion list."
       (interactive)
       (flyspell-mode 1))
 
-    (when (eq system-type "gnu/linux")
+    (when (string= system-type "gnu/linux")
+      (add-hook 'message-setup-hook 'turn-on-flyspell
       (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
       (add-hook 'c++-mode-hook 'turn-on-flyspell)
-      (add-hook 'c-mode-common-hook 'turn-on-flyspell  )
+      (add-hook 'c-mode-common-hook 'turn-on-flyspell)
       (add-hook 'emacs-lisp-mode-hook 'turn-on-flyspell)
       (add-hook 'fundamental-mode-hook 'turn-on-flyspell)
       (add-hook 'message-mode-hook 'turn-on-flyspell)
@@ -1381,7 +1446,7 @@ Symbols matching the text at point are put first in the completion list."
       '((durham_nh_usa
          :region-path (america nh durham)
          :uri "http://weather.noaa.gov/pub/data/observations/metar/decoded/KPSM.TXT"
-;	 :uri "http://weather.yahooapis.com/forecastrss?w=2394732"
+   ;	 :uri "http://weather.yahooapis.com/forecastrss?w=2394732"
          :fetch-chain default
          :temp-unit fahrenheit
          :temp-unit-string "°F"
@@ -1389,7 +1454,7 @@ Symbols matching the text at point are put first in the completion list."
          :shortname "Durham")))
 (use-package emeteo)
 (use-package emeteo-modeline)
-;(emeteo-modeline)
+(emeteo-modeline)
 
 ;;;_. Smart M-x
 (use-package smex
@@ -1611,9 +1676,7 @@ activate-mark-hook"
 (use-package rainbow-delimiters
   :init
   (progn
-    (add-hook 'cperl-mode-hook  'rainbow-delimiters-mode)
-    (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-    (add-hook 'python-mode-hook 'rainbow-delimiters-mode)))
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -1844,8 +1907,6 @@ activate-mark-hook"
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
 (scroll-bar-mode nil)              
 (set-scroll-bar-mode 'right)
-(setq electric-pair-mode t)
-(setq electric-indent-mode t)
 (defalias 'yes-or-no-p 'y-or-n-p)        ; allow y for yes, n for no
 
 (when (fboundp 'set-fringe-mode)         ; emacs22+ 
