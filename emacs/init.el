@@ -1168,7 +1168,7 @@ Symbols matching the text at point are put first in the completion list."
       (flyspell-mode 1))
 
     (when (string= system-type "gnu/linux")
-      (add-hook 'message-setup-hook 'turn-on-flyspell
+      (add-hook 'message-setup-hook 'turn-on-flyspell)
       (add-hook 'c++-mode-common-hook 'turn-on-flyspell)
       (add-hook 'c++-mode-hook 'turn-on-flyspell)
       (add-hook 'c-mode-common-hook 'turn-on-flyspell)
