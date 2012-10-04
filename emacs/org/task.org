@@ -1,7 +1,12 @@
 # OCM: 58797
 # EMS: 50988
 # ePIP: 59333
-# Obliterase: XXXXX
+# Obliterase: 60023
+# SpiceCore: 59919
+# UACC: 60035
+# MedHome: 60036
+# Bugzilla: 57720
+# HCGS: 60049
 * 2012
 ** July
 *** 01
@@ -244,18 +249,18 @@ d on business rules from OCM.
 **** OCM
 ***** 1 hour billable.  Added new feature to OCM allowing Sarah to set a custom cell phone number for her volunteers.
 *** 12
-**** Obliterate 
+**** Obliterase 
 ***** 1 hour non-billable.  Meeting with Tucker, Stephen Wood and myself to discuss work for Stephen's company Obliterase.
-***** 1 hours billable.  Updated logo and lCreated favicon.ico.  Updated webserver to use management-console.obliterase.com.
+***** 1 hour billable.  Updated logo and lCreated favicon.ico.  Updated webserver to use management-console.obliterase.com.
 **** ePIP
 ***** 4 hours billable.  Continued work on functionality testing.
 *** 13
-**** Obliterate 
-**** 2 hours billable.  Updated webserver to use cloud-console.obliterase.com.  Most of the changed requested by Steve Wood have been complted (email sent 09/13/2012 02:39 PM).
+**** Obliterase 
+***** 2 hours billable.  Updated webserver to use cloud-console.obliterase.com.  Most of the changed requested by Steve Wood have been complted (email sent 09/13/2012 02:39 PM).
 **** ePIP
 ***** 4 hours billable.  Continued work on functionality testing.
 *** 14
-**** Obliterate 
+**** Obliterase 
 ***** 3 hours billable.  Created footer.  Began work on PDF generation.  Made changes to Device Logs recordset.
 **** ePIP
 ***** 3 hours billable.  Continued work on functionality testing.
@@ -264,7 +269,7 @@ d on business rules from OCM.
 *** 16
 **** WEEKEND
 *** 17
-**** Obliterate 
+**** Obliterase 
 ***** 4 hours billable.  Created Certificate generation.  Sent Steve an update.  Misc. changes to website.
 **** ePIP
 ***** .5 hour billable.  Closed bugs at aew's request.
@@ -288,20 +293,69 @@ d on business rules from OCM.
 **** ePIP 
 ***** 1/2 hour billable.  Rebuliding MMIS.
 *** 21
-**** HOLIDAY
+**** VACATION
 *** 22
 **** WEEKEND
 *** 23
 **** WEEKEND
 *** 24
-**** HOLIDAY
+**** VACATION
 *** 25 
 **** ePIP 
 ***** 1 hour billable.  Created summaries of security scan report.  Sent to summary to Even.  Sent another to teh,aew and af.
 **** OCM
-***** 2.5 hours billable.  Changes to recent police activity report (removed sentence) and add fields (full name, dob, student id and date the letter was created).
-***** 2.5 hours biilable.  Continued work on hearing decision templates. 
+***** 5 hours billable.  Changes to recent police activity report (removed sentence) and add fields (full name, dob, student id and date the letter was created).  Continued work on hearing decision templates. 
 *** 26
 **** OCM
 ***** 3 hours non-billable.  Bug fixes to OCM.  Fixed bug to complaint form which made it impossible to add the same sanction with several sanction types.  Updated complaint form to catch invalid 'release of info requested' data.
 ***** 3 hours billable.  Loading/saving of sanction templates is now working, along with sanction rationale.
+*** 27
+**** OCM
+***** 3.5 hours billable.  Spent time working on enabling ckeditor support for the rationale text-areas; encountered problems.  I'll revisit this next week.
+**** Obliterase
+***** .5 hour non-billable.  Removed 'cloud' logo.  Removed NEAT from viewLog script.
+**** ResLife
+***** 1 hour billable.  Minor updates to Job Description page.
+*** 28
+**** ePIP
+***** 2 hours billable.  Testing and verification of data entered and data reported.
+**** HCGS
+***** 3 hours billable.  Created website; loaded database from medical-home site.  Removed medical home references from HCGS.  The site is now ready.
+**** MEDHOME
+***** 1 hours billable.  Reviewed MEDHOME website with Allan.  Spent additional time reference website myself.
+*** 29
+**** WEEKEND
+*** 30
+**** WEEKEND
+** October
+*** 01
+**** MEDHOME
+***** 1 hour non-billable.  Meeting with NHIHPP to discuss the project and moving it forward.
+**** Obliterase
+***** 1.5 hours billable.  Minor updates to website.  Added images above menu.  Added logo to the left of menu.  Added text above menu.
+**** HCGS
+***** .5 hours billable.  Deployed website to preview server.
+**** SpiceCore
+***** 2 hours billable.  Setup website on lithium and myxomatosis.
+**** HOURS_MISSING
+***** 1 HOUR MISSING.
+*** 02
+**** OCM
+***** 2.5 hours non-billable.  Corrected errors with Recent Police Activity report crashing when filtering on 
+**** RCC
+***** 1 hours non-billable.  Reset AD password; this was done to access maple.unh.edu account.  Reinstalled MS Office.
+**** HealthyUNH
+***** 2.5 hours non-billable.  Started working on Healthy Fitness map.
+*** 03
+**** ResLife
+***** 1 hour billable.  Minor updates to Welcome page.
+**** ePIP 
+***** 1 hour billable.  Training on ePIP upload proceedure.
+**** HealthyUNH
+***** 4 hours non-billable.  Finished working on Healthly Fitness map.  Using jQuery and a jQuery plug-in, jquery.imagemapster to provide a multi-platform UI.
+*** 04
+**** RCC
+***** 1 hour non-billable.  Downtime due to power outage.
+***** XXXXXX hours non-billable.  Watching of UNH IT Security training videos.
+**** Housing
+***** 1 hour non-billable.  Meeting with Chris, Blaise, Allan and myself to discuss future Housing work.
