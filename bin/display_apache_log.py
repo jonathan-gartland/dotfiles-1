@@ -56,7 +56,7 @@ def get_tail_command(paths):
 
     raise CommandNotFoundError("tail")
 
-    
+
 paths = environ[ 'PATH' ].split( pathsep )
 web_paths = ( "/webdev", "/web", "/home/web", "/web1", "/web2", "/web3", "/web4", "/web5", "/home" )
 
@@ -71,7 +71,7 @@ if __name__ == "__main__" and len(argv) == 2:
             for web_path in web_paths:
                 apache_log_helper( web_path, argv[1], "error*log", cmd )
 
-    except CommandNotFoundError as e:
+    except CommandNotFoundError, e:
         print e
         sys.exit(1)
-        
+
