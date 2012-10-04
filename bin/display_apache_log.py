@@ -42,26 +42,36 @@ def apache_log_helper( web_dir_base, web_dir, filename, command ):
         _execute_command( command + " " + logfile[0] )
 
 
+class CommandNotFoundError(IOError): pass
+
+def get_tail_command(paths):
+
+    tail = findfile("tailweblog", paths)
+    if tail:
+        return tail
+
+    tail = findfile("tail", paths)
+    if tail:
+        return tail
+
+    raise CommandNotFoundError("tail")
+
+    
 paths = environ[ 'PATH' ].split( pathsep )
 web_paths = ( "/webdev", "/web", "/home/web", "/web1", "/web2", "/web3", "/web4", "/web5", "/home" )
 
 if __name__ == "__main__" and len(argv) == 2:
+    try:
+        cmd = get_tail_command(paths) + ' -f'
+        if __file__.find("accesslog") != -1:
+            for web_path in web_paths:
+                apache_log_helper( web_path, argv[1], "access*log", cmd )
 
-    if __file__.find("accesslog") != -1:
-        cmd = findfile( "tail", paths ) + " -f"
-        print "cmd %s" % cmd
-        if cmd == None:
-            print "Command Not Found: %s" % cmd
-            exit(1)
+        if __file__.find("errorlog") != -1:
+            for web_path in web_paths:
+                apache_log_helper( web_path, argv[1], "error*log", cmd )
 
-        for web_path in web_paths:
-            apache_log_helper( web_path, argv[1], "access*log", cmd )
-
-    if __file__.find("errorlog") != -1:
-        cmd = findfile( "tail", paths ) + " -f"
-        if cmd == None:
-            print "Command Not Found: %s" % cmd
-            exit(1)
-
-        for web_path in web_paths:
-            apache_log_helper( web_path, argv[1], "error*log", cmd )
+    except CommandNotFoundError as e:
+        print e
+        sys.exit(1)
+        
