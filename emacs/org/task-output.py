@@ -4,6 +4,7 @@ import re
 import sys
 import os.path
 from sqlobject import *
+from sqlobject.sqlbuilder import *
 import hashlib
 from texttable import Texttable
 from optparse import OptionParser
@@ -242,7 +243,8 @@ def handle_work(line):
             'comment': m.group(3)}
     except:
         return None
-    
+
+
 def generate_entry_for_task(project, type, rs):
     table = Texttable()
     table.header(['Date', 'Duration', 'Comment'])
@@ -251,12 +253,12 @@ def generate_entry_for_task(project, type, rs):
     table.set_cols_align(['c', 'c', 'r'])
     table.set_cols_width([10, 8, 40])
     table.set_precision(2)
-    total = 0
+    total_hours = 0    
     if len(list(rs)) == 0:
-        return
+        return (0,0)
 
     if project == 'WEEKEND':
-        return
+        return (0,0)
 
     taskid = None
     try:
@@ -265,15 +267,15 @@ def generate_entry_for_task(project, type, rs):
         pass
 
     for x in rs:
-        total += float(x.length)
+        total_hours += float(x.length)
         table.add_row([x.date.isoformat(), x.length, x.comment])
 
     if taskid:
-        print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total, type)
+        print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total_hours, type)
     else:
-        print 'Project: %s Total: %.2f (%s)' % (project, total, type)
+        print 'Project: %s Total: %.2f (%s)' % (project, total_hours, type)
     print table.draw() + "\n"
-    
+
 year = None
 month = None
 day = None
@@ -303,13 +305,15 @@ TaskEntry.createTable()
 
 
 options = OptionHandling(sys.argv)
-( userName, startDate, endDate ) = options.optionHandlingAndParsing()
+(userName, startDate, endDate) = options.optionHandlingAndParsing()
 
 sh1 = hashlib.sha1()
 
 projects = dict()
 
 linenum = 0
+total_hours = 0
+total_days = 0
 with open("task.org") as f:
     for line in f:
         linenum += 1
@@ -322,11 +326,11 @@ with open("task.org") as f:
         project = handle_project(line) or project
         work = handle_work(line) or None
 
-        if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
-            work = {
-                'length' : 0,
-                'billable': 'N',
-                'comment': ''}
+        # if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
+        #     work = {
+        #         'length' : 0,
+        #         'billable': 'N',
+        #         'comment': ''}
             
         if year and month and day and project and work:
             
@@ -352,10 +356,21 @@ with open("task.org") as f:
                           project = project,
                           taskid = taskid,
                           comment = comment.strip())
-                
+
 for project in projects.keys():
     generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
-    generate_entry_for_task(project, 'Non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+    generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
 
 
 
+select = Select(['date', 'sum(length)'], staticTables = ['task_entry'], groupBy = 'date')
+query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
+rows = connection.queryAll(query)
+
+days = hours = 0
+for row in rows:
+    days += 1
+    hours += row[1]
+    print "%s %s" % row
+
+print "Total Hours {} in Total Days {}, for {:.4} per Day".format(hours, days, round(hours / days, 2))
