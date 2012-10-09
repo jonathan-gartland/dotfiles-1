@@ -7,6 +7,7 @@
 # MedHome: 60036
 # Bugzilla: 57720
 # HCGS: 60049
+# HealthyUNH: 60059
 * 2012
 ** July
 *** 01
@@ -108,8 +109,7 @@
 ***** 2 hours non-billable.  Corrected errors Sarah encountered.  Updated OCM Privileges document.
 *** 26
 **** OCM
-***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints base
-d on business rules from OCM.
+***** .5 hour non-billable.  Updated v_ocm_student_snapshot to correctly include/exclude complaints based on business rules from OCM.
 ***** 2 hour billable.  Imported OCM Arrest data.
 **** NHMAPPER (59011)
 ***** .5 hour billable.  Minor corrections to PDF files.
@@ -182,7 +182,7 @@ d on business rules from OCM.
 *** 23
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.  OCM Deployed!
 *** 24
-***** VACATION
+**** VACATION
 *** 25
 **** WEEKEND
 *** 26
@@ -337,8 +337,8 @@ d on business rules from OCM.
 ***** .5 hours billable.  Deployed website to preview server.
 **** SpiceCore
 ***** 2 hours billable.  Setup website on lithium and myxomatosis.
-**** HOURS_MISSING
-***** 1 HOUR MISSING.
+**** HOURS_OWED
+***** 1 HOUR OWED
 *** 02
 **** OCM
 ***** 2.5 hours non-billable.  Corrected errors with Recent Police Activity report crashing when filtering on 
@@ -355,7 +355,17 @@ d on business rules from OCM.
 ***** 4 hours non-billable.  Finished working on Healthly Fitness map.  Using jQuery and a jQuery plug-in, jquery.imagemapster to provide a multi-platform UI.
 *** 04
 **** RCC
-***** 1 hour non-billable.  Downtime due to power outage.
-***** XXXXXX hours non-billable.  Watching of UNH IT Security training videos.
+***** 4 hour non-billable.  Downtime due to power outage.  Watching of UNH IT Security training videos.
 **** Housing
-***** 1 hour non-billable.  Meeting with Chris, Blaise, Allan and myself to discuss future Housing work.
+***** 1.5 hour non-billable.  Meeting with Chris, Blaise, Allan and myself to discuss future Housing work.  Created mock-up of inhall-application page using jdmenu.
+**** ResLife
+***** .5 hour billable.  Deployed latest changes to live site.
+*** 05
+**** Housing
+***** 1.5 hours non-billable.  Created two other mock-ups using jQuery UI tabs and accordion.  I sent Blaise an email with an update asking him to review them.
+**** OCM
+***** 1.5 hour non-billable.  Received email from Sarah reporting loss of privileges and cell phone numbers Thursday everything.  After reviewing log and Perl code, I think the problem is related to upload.  I'm waiting on the student feed from back.  Received email from Sarah about incorrect College for student.  After checking database, the issue is incorrect/out-of-day data; emailed Blaise.
+**** HealthyUNH
+***** 2 hour non-billable.  Minor corrections to map based on feedback from Allan.  Sent email to Stacey and Jo with update.
+**** HOURS_OWED
+***** 1 HOUR OWED
