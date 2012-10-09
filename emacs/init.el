@@ -110,10 +110,6 @@
 (setq my-el-get-packages  
       (append  
        '(
-         ; cmake-mode
-         ; bookmark+ ; HTTP 503 error
-         ; egg
-         ; pymacs
          ace-jump-mode
          ack
          auto-complete
@@ -132,7 +128,7 @@
          bookmark+-mac
          bookmark+-lit
          boxquote
-         breadcrumb
+         ; breadcrumb
          calfw
          clevercss
          clojure-mode
@@ -156,6 +152,7 @@
          google-weather
          helm
          hexrgb
+         hide-region
          js2-mode
          jshint-mode
          js2-refactor
@@ -320,7 +317,13 @@
 
 ;;;_. wgrep
 (use-package wgrep)
-          
+
+(use-package hide-region
+  :init 
+  (progn
+    (bind-key "C-c h r" 'hide-region-hide)
+    (bind-key "C-c h u" 'hide-region-hide)))
+
 ;;;_. flymake-mode
 (use-package flymake
   :config
@@ -339,6 +342,8 @@
 (use-package flymake-jshint
   :init
   (progn
+    (setenv "PATH" (concat "/home/skk/local/bin:" (getenv "PATH")))
+    (setq exec-path '("/home/skk/local/bin" "/bin/" "/usr/bin"))
     (add-hook 'javascript-mode-hook
               (lambda () (flymake-mode t)))))
 
@@ -386,6 +391,9 @@
                    ("SpiceCore"
                     (or
                      (filename . "/web/SpiceCore")))
+                   ("HealthyUNH"
+                    (or
+                     (filename . "/web/healthyunh")))
                    ("Housing OCM"
                     (or
                      (filename . "/web/housing/perl/HOUSING/EXT/OCM")
@@ -745,6 +753,28 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
                    (shutdown-hook (lambda ()
                                     (setq tags-file-name nil)))))
+
+    (project-def "HealthyUNH Development"
+                 '((basedir "/sshfs/lithium/web/healthyunh")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/healthyunh-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/healthyunh-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/healthyunh-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/healthyunh-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))))
+
     (project-def "SpiceCore Development"
                  '((basedir "/sshfs/lithium/web/spicecore")
                    (src-patterns ("*.js"  "*.pm" "*.css"))
@@ -1061,7 +1091,7 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-get-mail-command "true"
 
      ;; enable verbose/debug 
-     mu4e-debug t
+     mu4e-debug nil
      
      message-send-mail-function 'message-send-mail-with-sendmail
 
@@ -1084,8 +1114,8 @@ Symbols matching the text at point are put first in the completion list."
         mu4e-headers-draft-mark     '("D" . "⚒ ")  ; draft
         mu4e-headers-seen-mark      '("S" . "☑ ")  ; seen
         mu4e-headers-unseen-mark    '("u" . "☐ ")  ; unseen
-        mu4e-headers-flagged-mark   '("F" . "⚵ ") ; flagged
-        mu4e-headers-new-mark       '("N" . "✉ ") ; new
+        mu4e-headers-flagged-mark   '("F" . "⚵ ")  ; flagged
+        mu4e-headers-new-mark       '("N" . "✉ ")  ; new
         mu4e-headers-replied-mark   '("R" . "↵ ")  ; replied
         mu4e-headers-passed-mark    '("P" . "⇉ ")  ; passed
         mu4e-headers-encrypted-mark '("x" . "⚷ ")  ; encrypted
@@ -1094,13 +1124,13 @@ Symbols matching the text at point are put first in the completion list."
     (setq mu4e-bookmarks (list))
     
     (add-to-list 'mu4e-bookmarks
-                 '("flag:unread AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk'"
+                 '("flag:unread AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk"
                    "Unread messages" ?u))
     (add-to-list 'mu4e-bookmarks
-                 '("date:today..now AND NOT maildir:'/Sent' AND NOT flag:trashed AND NOT maildir:'/Junk' AND NOT maildir:'/Trash'"
+                 '("date:today..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash"
                    "Today's messages" ?t))
     (add-to-list 'mu4e-bookmarks
-                 '("date:7d..now AND NOT maildir:'/Sent' AND NOT flag:trashed NOT maildir:'/Junk' AND NOT maildir:'/Trash'"
+                 '("date:7d..now AND NOT maildir:/Sent AND NOT flag:trashed NOT maildir:/Junk AND NOT maildir:/Trash"
                    "Last 7 days"?w))
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
@@ -1229,22 +1259,22 @@ Symbols matching the text at point are put first in the completion list."
     ;; Map `yas/load-directory' to every element
     (mapc 'yas/load-directory yas/root-directory)))
 
-;;;_. add-hook
+;;;_. emacs-lisp-mode-hook
 (add-hook 'emacs-lisp-mode-hook
           '(lambda () 
              (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))
 
-;;;_. breadcrumb
-(use-package breadcrumb
-    :init (progn
-            (bind-key "M-o"       'bc-set)            ;; Shift-SPACE for set bookmark
-            (bind-key "M-j"       'bc-previous)       ;; M-j for jump to previous
-            (bind-key "S-M-j"     'bc-next)           ;; Shift-M-j for jump to next
-            (bind-key "M-<up>"    'bc-local-previous) ;; M-up-arrow for local previous
-            (bind-key "M-<down>"  'bc-local-next)     ;; M-down-arrow for local next
-            (bind-key "C-c j"     'bc-goto-current)   ;; C-c j for jump to current bookmark
-            (bind-key "C-x M-j"   'bc-list)           ;; C-x M-j for the bookmark menu list
-            ))
+;; ;;;_. breadcrumb
+;; (use-package breadcrumb
+;;     :init (progn
+;;             (bind-key "M-o"       'bc-set)            ;; Shift-SPACE for set bookmark
+;;             (bind-key "M-j"       'bc-previous)       ;; M-j for jump to previous
+;;             (bind-key "S-M-j"     'bc-next)           ;; Shift-M-j for jump to next
+;;             (bind-key "M-<up>"    'bc-local-previous) ;; M-up-arrow for local previous
+;;             (bind-key "M-<down>"  'bc-local-next)     ;; M-down-arrow for local next
+;;             (bind-key "C-c j"     'bc-goto-current)   ;; C-c j for jump to current bookmark
+;;             (bind-key "C-x M-j"   'bc-list)))         ;; C-x M-j for the bookmark menu list
+            
 ;;;_. js2
 (use-package js2-mode
   :init
