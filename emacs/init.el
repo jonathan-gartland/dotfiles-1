@@ -1122,7 +1122,6 @@ Symbols matching the text at point are put first in the completion list."
         mu4e-headers-signed-mark    '("s" . "✍ ")) ; signed
     
     (setq mu4e-bookmarks (list))
-    
     (add-to-list 'mu4e-bookmarks
                  '("flag:unread AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk"
                    "Unread messages" ?u))
@@ -1137,6 +1136,11 @@ Symbols matching the text at point are put first in the completion list."
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
 )
+
+(add-hook 'message-setup-hook (lambda ()
+                                (progn
+                                  (flyspell-mode 1))))
+>>>>>>> Stashed changes
 ;;;_. sqlplus
 (use-package sqlplus)
 
