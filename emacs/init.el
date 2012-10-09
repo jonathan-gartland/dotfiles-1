@@ -123,6 +123,7 @@
          auto-complete-extension
          auto-complete-yasnippet
          autopair
+         base16-theme
          bookmark+
          bookmark+-1
          bookmark+-bmu
@@ -376,7 +377,9 @@
                    ("nh-wetlands-mapper-dev"
                     (filename . "/web/nh-wetlands-mapper-dev"))
                    ("SICP"
-                    (filename . "~work/SICP"))
+                    (filename . "SICP"))
+                   ("HemlockForest"
+                    (filename . "HemlockForest"))
                    ("MedHome"
                     (or
                      (filename . "/web/medhome")))
@@ -468,7 +471,8 @@
                      (mode . emacs-lisp-mode)
                      (mode . scheme-mode)
                      ;; etc
-                     ))))))))
+                     ))))))
+    ))
 
     (add-hook 'ibuffer-mode-hook 
               '(lambda ()
@@ -990,10 +994,23 @@ Symbols matching the text at point are put first in the completion list."
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
+    (project-def "Hemlock Forest"
+                 '((basedir "~/HemlockForest/")
+                   (src-patterns ("*.rst" "Makefile"))
+                   (ignore-patterns nil)
+                   (file-list-cache "~/.emacs.d/.cache/hemlockforest/files")
+                   (open-files-cache "~/.emacs.d/.cache/hemlockforest/open-files")
+                   (tags-file "~/.emacs.d/.cache/hemlockforest/TAGS")
+                   (vcs git)
+                   (ack-args "--scheme")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
 
-                   ))
-
+    
     (project-def "NH-ePIP"
                  '((basedir "~/work/nh-epip/")
                    (src-patterns ("*.cs"))
@@ -1007,8 +1024,7 @@ Symbols matching the text at point are put first in the completion list."
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
-                   ))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
     ))
 ;;;_. mu, mu4e
 (use-package mu4e
