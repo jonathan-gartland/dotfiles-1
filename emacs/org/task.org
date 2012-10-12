@@ -8,6 +8,8 @@
 # Bugzilla: 57720
 # HCGS: 60049
 # HealthyUNH: 60059
+# RHD_InHall: 58367
+# Housing: 59032
 * 2012
 ** July
 *** 01
@@ -361,7 +363,7 @@
 **** ResLife
 ***** .5 hour billable.  Deployed latest changes to live site.
 *** 05
-**** Housing
+**** RHD_InHall
 ***** 1.5 hours non-billable.  Created two other mock-ups using jQuery UI tabs and accordion.  I sent Blaise an email with an update asking him to review them.
 **** OCM
 ***** 1.5 hour non-billable.  Received email from Sarah reporting loss of privileges and cell phone numbers Thursday everything.  After reviewing log and Perl code, I think the problem is related to upload.  I'm waiting on the student feed from back.  Received email from Sarah about incorrect College for student.  After checking database, the issue is incorrect/out-of-day data; emailed Blaise.
@@ -369,3 +371,41 @@
 ***** 2 hour non-billable.  Minor corrections to map based on feedback from Allan.  Sent email to Stacey and Jo with update.
 **** HOURS_OWED
 ***** 1 HOUR OWED
+*** 06
+**** WEEKEND
+*** 07
+**** WEEKEND
+*** 08
+**** Obliterase
+***** 3 hours billable.  Meet with Tucker to discuss updates to system wipe cert.  Completed updates and sent update to Tucker.
+*** 09
+**** NHIHPP
+***** 2 hours billable.  Created wrapper around shred command line tool.  Sent update to aew.
+***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (cacti).
+*** 10
+**** ResLife
+***** 2 hours billable.  Updated text (and space) in commitment section in application.  Added new fields to commitment records: commitment title and commitment description.
+**** SpiceCore
+***** 2 hour non-billable.  Helped Joe update the DNS record for spicecore.org.  Populated spicecore database with data from waisdivide db.  Updated all perl modules and shtml files  to use SPICECORE packages.
+**** NHIHPP
+***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (ganglia).
+
+*** 11
+**** NHIHPP
+***** 1 hours billable.  Updated nshred to print absolute rather than relative path of files.
+**** Obliterase
+***** 1.5 hour billable.  Added second logo to Obliterase.  I was unable to justify images as Steve Wood requested.  Cleared NEAT logs on database per Tucker request.
+**** RHD_InHall
+***** 1 hour non-billable.  Reviewed InHall source code to determine quote for RHD InHall assignment work.  Wrote up quote.
+**** NHIHPP
+***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (nagios).
+
+*** 12
+**** HealthyUNH
+***** 3 hours non-billable.  Meeting with Stacey, Jo, Allan and myself to discuss going from prototype to final application.  Wrote up quote as requested.  Sent quote to Jo, Stacy and Jennifer.
+**** Housing
+***** 1 hour non-billable.  Update and expanded quote from yesterday.
+**** NHIHPP
+***** 2 hours billable.  Continued and after a simple plain-text report of nshred usage.
+**** HCGS
+***** .5 hour non-billable.  Started working on quote based on summary of meeting notes from Allan.
