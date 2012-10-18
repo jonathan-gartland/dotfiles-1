@@ -15,7 +15,7 @@ fi
 export stow="$HOME/local/stow"
 
 # setup CDPATH
-export CDPATH=.:~:~/src:~/work:/web  
+export CDPATH=.:~:~/src:~/work:/web/
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
@@ -106,6 +106,10 @@ if [ $HOSTNAME == "lithium.sr.unh.edu" ]; then
 fi
 
 if [ $HOSTNAME == "myxomatosis.sr.unh.edu" ]; then
+    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+fi
+
+if [ $HOSTNAME == "housingonline.unh.edu" ]; then
     export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
 fi
 
