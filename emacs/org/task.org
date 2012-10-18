@@ -409,3 +409,38 @@
 ***** 2 hours billable.  Continued and after a simple plain-text report of nshred usage.
 **** HCGS
 ***** .5 hour non-billable.  Started working on quote based on summary of meeting notes from Allan.
+*** 13
+**** WEEKEND
+*** 14
+**** WEEKEND
+*** 15
+**** HCGS
+***** .5 hour non-billable.  Meeting with Feseha to discuss project.
+**** Obliterase
+***** 2 hours billable.  Updates to Obliterase console.
+**** UACC
+***** 1.5 hours non-billable.  Look into an issue related to access to sign-up for interviews.
+*** 16
+**** SpiceCore 
+***** 1.5 hours billable.  Corrected issues related to login.  Updated Device Logs RS to display ISO images correctly.
+**** MedHome
+***** 2 hour non-billable.  Meeting with Ashley in regards to issues with uploading of data.  Worked on determining cause of upload errors.
+**** HealthWRQS
+***** .5 hour non-billable.  Worked on transfering NHIHPP domain to RCI GoDaddy account.
+*** 17
+**** SpiceCore 
+***** 1 hour billable.  Helped Joe setup email forwarding on spicecore.  Created/setup listserv module.
+***** .5 hour non-billable.  Corrected/update alias.
+**** Obliterase
+***** 2.5 hours non-billable.  Worked on determining why the 'Status' column contains unexcpeted results for some log entries.
+**** NHIHPP
+***** 2 hours non-billable.  Installed and tested nshred util on twilight.  Minor updates to script were required.  Updated report script to support sending end-of-month reports.
+*** 18
+**** ResLife
+***** .5 hour non-billable.  Update allowing withdrawing of incomplete applications.
+**** SpiceCore 
+***** 1.5 hours billable.  Updates to several perl modules.  Corrected issue with deleting of users.
+**** Obliterase
+***** 2 hours non-billable.  Tucker and I tracked down the cause of confusion related to the 'Status' column.  Once we determine the cause I updated the DeviceLogs RS to overwrite Status and display Print based on contents of log.
+**** HCGS
+***** 2 hour non-billable.  Moved HCGS to git.  Created accounts for Rob, Kelly and Krystalynne.  Fixed issue with ForgotPassword module.
