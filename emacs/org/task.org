@@ -10,7 +10,7 @@
 # HealthyUNH: 60059
 # RHD_InHall: 58367
 # Housing: 59032
-# RCC: XXXX
+# RCC: 60130
 * 2012
 ** July
 *** 01
@@ -279,7 +279,7 @@
 **** OCM
 ***** .5 hour non-billable.  Reviewed whether prior is set correctly all AY1213 complaints.  Sent update to Sarah.
 *** 18
-**** RCC
+**** Bugzilla
 ***** 1.5 hours non-billable.  Installed bugzilla on zathras to test upgrading our Bugzilla
 **** OCM
 ***** 1 hours non-billable correction/bug fixes.
@@ -472,9 +472,11 @@
 ***** .5 hour non-billable.  Determined cause of permissions errors for Lindsay Furlong.  Linday was entering an invalid date format which caused the INSERT to die.
 **** Events
 ***** .5 hour non-billable.  Determined solution to request by Admissions. Phil and I determined that used Outlook for mail merge would be better than creating a custom solution.
-
-*** 24 ????
-
+*** 24
+**** OCM
+***** 1.5 hours non-billable.  Added column 'extended sanction date' field to sanction reports.  Added column 'complainant' to sanction reports.
+**** HCGS
+***** 4 hours billable.  Continued working on website.
 *** 25
 **** OCM
 ***** 1.5 hours non-billable.  Meeting with Sarah to discuss project, new work and minor bug fixes.
@@ -499,4 +501,8 @@
 **** CURTAILED_OPERATIONS
 *** 31
 **** SpiceCore
-***** 1 hour billable.  Deleted WAIS data from spicecore.org website.
+***** 1.5 hour billable.  Deleted WAIS data from spicecore.org website.
+**** OCM
+***** 4 hour billable.  Completed two minor billable projects for OCM.  1) Added new move-out dates (this is expandable).  2) Created new tab "Deferred Sanctions".  New privileges and privilege groups were created.
+**** Housing
+***** .5 hour non-billable.
