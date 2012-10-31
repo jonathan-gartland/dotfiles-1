@@ -10,6 +10,7 @@
 # HealthyUNH: 60059
 # RHD_InHall: 58367
 # Housing: 59032
+# RCC: XXXX
 * 2012
 ** July
 *** 01
@@ -443,4 +444,59 @@
 **** Obliterase
 ***** 2 hours non-billable.  Tucker and I tracked down the cause of confusion related to the 'Status' column.  Once we determine the cause I updated the DeviceLogs RS to overwrite Status and display Print based on contents of log.
 **** HCGS
-***** 2 hour non-billable.  Moved HCGS to git.  Created accounts for Rob, Kelly and Krystalynne.  Fixed issue with ForgotPassword module.
+***** 2 hour billable.  Moved HCGS to git.  Created accounts for Rob, Kelly and Krystalynne.  Fixed issue with ForgotPassword module.
+*** 19
+**** RCC
+***** 1 hour non-billable.  Evaluation with pfm an aew.
+**** MedHome
+***** .5 hour non-billable.  Conference call to discuss upload issue.
+**** HCGS
+***** 1 hour non-billable.  Meeting with Feseha, Rob and myself to review/discuss project.
+**** HealthyUNH 
+***** 1 hour non-billable.  Meeting with Stancy, Sam (from Campus Planning) and myself to discuss the possibility of using a live-feed from campus planning rather than a static map.
+*** 20
+**** WEEKEND
+*** 21
+**** WEEKEND
+*** 22
+**** ResLife
+***** 1 hour non-billable.  Created new field, Hiring Term, to store the term the user will be hired for.  
+**** HCGS
+***** 3.5 hour billable.  Began working on public section of the website based on Feseha's template.
+**** SpiceCore 
+***** 1.5 hours billable.  Created procmail rules, updated sendmail conf to allow emails to contact@spicecore.org to be re-directed to the spicecore team.
+*** 23
+**** HCGS
+***** 5 hours billable.  Continued working public section of the website.  At this point the menu has been created, the pages have been filled with the content that I have.  HCGS staff will need to enter content for a number of pages.
+**** OCM
+***** .5 hour non-billable.  Determined cause of permissions errors for Lindsay Furlong.  Linday was entering an invalid date format which caused the INSERT to die.
+**** Events
+***** .5 hour non-billable.  Determined solution to request by Admissions. Phil and I determined that used Outlook for mail merge would be better than creating a custom solution.
+
+*** 24 ????
+
+*** 25
+**** OCM
+***** 1.5 hours non-billable.  Meeting with Sarah to discuss project, new work and minor bug fixes.
+**** HealthyUNH
+***** 1.5 hours non-billable.  Using WMS information from Sam, I created a functional openlayers demo.
+**** HCGS
+***** 3 hours billable.  Copied and updated LOV from EPSCOR.  Created LOVs several times for address and person records.  Added additional fields to person records.  Start working on database schema for sample submission form.
+*** 26
+**** Housing
+***** .5 hour non-billable.  Setup monitor.us for housing1.
+**** HCGS
+***** 3 hours billable.  Additional improvements to public facing website.  Created (dynamic) breadcrumbs.  Updated all files Feseha will be editing.  Updated preview site.
+**** OCM
+***** 2 hours non-billable.  Bug fixed. 
+*** 27
+**** WEEKEND
+*** 28
+**** WEEKEND
+*** 29
+**** CURTAILED_OPERATIONS
+*** 30
+**** CURTAILED_OPERATIONS
+*** 31
+**** SpiceCore
+***** 1 hour billable.  Deleted WAIS data from spicecore.org website.
