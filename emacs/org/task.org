@@ -11,6 +11,9 @@
 # RHD_InHall: 58367
 # Housing: 59032
 # RCC: 60130
+# HealthWRQS: 60140
+# ResLife: 57996
+# NHIHPP: 60141
 * 2012
 ** July
 *** 01
@@ -332,7 +335,7 @@
 **** WEEKEND
 ** October
 *** 01
-**** MEDHOME
+**** MedHome
 ***** 1 hour non-billable.  Meeting with NHIHPP to discuss the project and moving it forward.
 **** Obliterase
 ***** 1.5 hours billable.  Minor updates to website.  Added images above menu.  Added logo to the left of menu.  Added text above menu.
@@ -367,7 +370,7 @@
 **** RHD_InHall
 ***** 1.5 hours non-billable.  Created two other mock-ups using jQuery UI tabs and accordion.  I sent Blaise an email with an update asking him to review them.
 **** OCM
-***** 1.5 hour non-billable.  Received email from Sarah reporting loss of privileges and cell phone numbers Thursday everything.  After reviewing log and Perl code, I think the problem is related to upload.  I'm waiting on the student feed from back.  Received email from Sarah about incorrect College for student.  After checking database, the issue is incorrect/out-of-day data; emailed Blaise.
+***** 1.5 hour non-billable.  Received email from Sarah reporting loss of privileges and cell phone numbers Thursday evening.  After reviewing log and Perl code, I think the problem is related to upload.  I'm waiting on the student feed from back.  Received email from Sarah about incorrect College for student.  After checking database, the issue is incorrect/out-of-day data; emailed Blaise.
 **** HealthyUNH
 ***** 2 hour non-billable.  Minor corrections to map based on feedback from Allan.  Sent email to Stacey and Jo with update.
 **** HOURS_OWED
@@ -376,21 +379,22 @@
 **** WEEKEND
 *** 07
 **** WEEKEND
+
 *** 08
 **** Obliterase
-***** 3 hours billable.  Meet with Tucker to discuss updates to system wipe cert.  Completed updates and sent update to Tucker.
+***** 4 hours billable.  Meet with Tucker to discuss updates to system wipe cert.  Completed updates and sent update to Tucker.
+**** HealthyUNH
+***** 1.5 hour non-billable.  Meeting with Jo, Stacy, Alan and myself to discuss project.  After meeting Allan introducted me to the various NHIHPP staff.
 *** 09
 **** NHIHPP
-***** 2 hours billable.  Created wrapper around shred command line tool.  Sent update to aew.
-***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (cacti).
+***** 5 hours billable.  Created wrapper around shred command line tool.  Sent update to aew.  Tested/researched various system monitor reporting tools (cacti).
 *** 10
 **** ResLife
 ***** 2 hours billable.  Updated text (and space) in commitment section in application.  Added new fields to commitment records: commitment title and commitment description.
 **** SpiceCore
-***** 2 hour non-billable.  Helped Joe update the DNS record for spicecore.org.  Populated spicecore database with data from waisdivide db.  Updated all perl modules and shtml files  to use SPICECORE packages.
+***** 2 hour billable.  Helped Joe update the DNS record for spicecore.org.  Populated spicecore database with data from waisdivide db.  Updated all perl modules and shtml files to use SPICECORE packages.
 **** NHIHPP
-***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (ganglia).
-
+***** 2 hour billable.  Tested/researched various system monitor reporting tools (ganglia).
 *** 11
 **** NHIHPP
 ***** 1 hours billable.  Updated nshred to print absolute rather than relative path of files.
@@ -399,8 +403,7 @@
 **** RHD_InHall
 ***** 1 hour non-billable.  Reviewed InHall source code to determine quote for RHD InHall assignment work.  Wrote up quote.
 **** NHIHPP
-***** 2 hour non-billable.  Tested/researched various system monitor reporting tools (nagios).
-
+***** 2 hour billable.  Tested/researched various system monitor reporting tools (nagios).
 *** 12
 **** HealthyUNH
 ***** 3 hours non-billable.  Meeting with Stacey, Jo, Allan and myself to discuss going from prototype to final application.  Wrote up quote as requested.  Sent quote to Jo, Stacy and Jennifer.
@@ -447,7 +450,7 @@
 ***** 2 hour billable.  Moved HCGS to git.  Created accounts for Rob, Kelly and Krystalynne.  Fixed issue with ForgotPassword module.
 *** 19
 **** RCC
-***** 1 hour non-billable.  Evaluation with pfm an aew.
+***** 1 hour non-billable.  Evaluation with pfm and aew.
 **** MedHome
 ***** .5 hour non-billable.  Conference call to discuss upload issue.
 **** HCGS
@@ -470,7 +473,7 @@
 ***** 5 hours billable.  Continued working public section of the website.  At this point the menu has been created, the pages have been filled with the content that I have.  HCGS staff will need to enter content for a number of pages.
 **** OCM
 ***** .5 hour non-billable.  Determined cause of permissions errors for Lindsay Furlong.  Linday was entering an invalid date format which caused the INSERT to die.
-**** Events
+**** EMS
 ***** .5 hour non-billable.  Determined solution to request by Admissions. Phil and I determined that used Outlook for mail merge would be better than creating a custom solution.
 *** 24
 **** OCM
