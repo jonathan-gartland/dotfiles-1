@@ -165,7 +165,7 @@ def handle_year(line):
     """
     m = re.match(r"^\*{1,1} (\d*)$", line)
     try:
-        return int(m.group(1)) 
+        return int(m.group(1))
     except:
         return None
 
@@ -183,7 +183,7 @@ def handle_project_taskid_mapping(line):
         pass
 
     return None
-    
+
 def handle_month(line):
     """
     Handle month
@@ -200,7 +200,7 @@ def handle_day(line):
     """
     m = re.match(r"^\*{3,3} (\d*)$", line)
     try:
-        return int(m.group(1)) 
+        return int(m.group(1))
     except:
         return None
 
@@ -253,7 +253,7 @@ def generate_entry_for_task(project, type, rs):
     table.set_cols_align(['c', 'c', 'r'])
     table.set_cols_width([10, 8, 40])
     table.set_precision(2)
-    total_hours = 0    
+    total_hours = 0
     if len(list(rs)) == 0:
         return (0,0)
 
@@ -331,22 +331,22 @@ with open("task.org") as f:
         #         'length' : 0,
         #         'billable': 'N',
         #         'comment': ''}
-            
+
         if year and month and day and project and work:
-            
+
             billable = work['billable'] == 'billable'
             length = float(work['length'])
             comment = work['comment']
             date = datetime.strptime("%d %s %d" % (year, month, day), "%Y %B %d")
             hash = hashlib.sha1( str(date) + str(length) + str(billable) + project + comment.strip() ).hexdigest()
-            
+
             try:
                 taskid = project_taskid_mapping[project]
             except KeyError:
                 taskid = None
 
             projects[project] = 1
-            
+
             rs = TaskEntry.select(TaskEntry.q.hash == hash)
             if len(list(rs)) == 0:
                 te = TaskEntry(date = date,
@@ -363,7 +363,6 @@ for project in projects.keys():
 
 
 
-select = Select(['date', 'sum(length)'], staticTables = ['task_entry'], groupBy = 'date')
 query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
 
@@ -374,3 +373,18 @@ for row in rows:
     print "%s %s" % row
 
 print "Total Hours {} in Total Days {}, for {:.4} per Day".format(hours, days, round(hours / days, 2))
+
+query = "SELECT billable, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY billable ORDER by 1" % (startDate, endDate)
+rows = connection.queryAll(query)
+
+billable_total = 0
+nonbillable_total = 0
+
+for row in rows:
+    if row[0] == 0:
+        billable_total = row[1]
+    else:
+        nonbillable_total = row[1]
+
+efficiency = 100 * (nonbillable_total / (billable_total + nonbillable_total))
+print "Efficiency {:.4}".format(efficiency)
