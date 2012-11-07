@@ -90,6 +90,7 @@
 ;(el-get-emacswiki-refresh)
 
 (setq el-get-sources '(
+		       (:name bookmark-plus :type github :pkgname "emacsmirror/bookmark-plus")
                        (:name icicles :type emacswiki)
                        (:name icicles-mac :type emacswiki)
                        (:name icicles-face :type emacswiki)
@@ -120,13 +121,13 @@
          auto-complete-yasnippet
          autopair
          base16-theme
-         bookmark+
-         bookmark+-1
-         bookmark+-bmu
-         bookmark+-doc
-         bookmark+-key
-         bookmark+-mac
-         bookmark+-lit
+         bookmark-plus
+         ;; bookmark+-1
+         ;; bookmark+-bmu
+         ;; bookmark+-doc
+         ;; bookmark+-key
+         ;; bookmark+-mac
+         ;; bookmark+-lit
          boxquote
          ; breadcrumb
          calfw
@@ -165,7 +166,6 @@
          mapserver-mode
          mark-multiple
          markdown-mode
-         monokai-theme
          multiple-cursors
          mk-project
          mu4e
@@ -1243,21 +1243,13 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. yasnippet
 (use-package yasnippet
-  :conf
+  :init
   (progn 
     ; Initialize Yasnippet
-    (yas/initialize)
-    (setq yas/use-menu 'abbreviate)
-
-    (yas/global-mode 1)
-
-    ; set yas/root-directory as a list, to allow for adding user snippets 
-    (setq yas/root-directory '(
-                               "~/.emacs.d/snippets"
-                               "~/.emacs.d/el-get/yasnippet/snippets"))
-
-    ;; Map `yas/load-directory' to every element
-    (mapc 'yas/load-directory yas/root-directory)))
+    (setq yas-snippet-dirs
+	  '("~/.emacs.d/snippets"
+	    "~/.emacs.d/el-get/yasnippet/snippets"))
+    (yas-global-mode 1)))
 
 ;;;_. emacs-lisp-mode-hook
 (add-hook 'emacs-lisp-mode-hook
@@ -1274,153 +1266,159 @@ Symbols matching the text at point are put first in the completion list."
 ;;             (bind-key "M-<down>"  'bc-local-next)     ;; M-down-arrow for local next
 ;;             (bind-key "C-c j"     'bc-goto-current)   ;; C-c j for jump to current bookmark
 ;;             (bind-key "C-x M-j"   'bc-list)))         ;; C-x M-j for the bookmark menu list
-            
-;;;_. js2
+
 (use-package js2-mode
   :init
   (progn
-    ; These three functions came from http://mihai.bazon.net/projects/editing-javascript-with-emacs-js2-mode.
-    (defun skk-js2-indent-function ()
-      (interactive)
-      (save-restriction
-        (widen)
-        (let* ((inhibit-point-motion-hooks t)
-               (parse-status (save-excursion (syntax-ppss (point-at-bol))))
-               (offset (- (current-column) (current-indentation)))
-               (indentation (espresso--proper-indentation parse-status))
-               node)
+    (setq yas-extra-modes 'javascript-mode)
+    ))
 
-          (save-excursion
+;;;_. js2
+;; (use-package js2-mode
+;;   :init
+;;   (progn
+;;     ; These three functions came from http://mihai.bazon.net/projects/editing-javascript-with-emacs-js2-mode
+;;     (defun skk-js2-indent-function ()
+;;       (interactive)
+;;       (save-restriction
+;;         (widen)
+;;         (let* ((inhibit-point-motion-hooks t)
+;;                (parse-status (save-excursion (syntax-ppss (point-at-bol))))
+;;                (offset (- (current-column) (current-indentation)))
+;;                (indentation (espresso--proper-indentation parse-status))
+;;                node)
 
-            ;; I like to indent case and labels to half of the tab width
-            (back-to-indentation)
-            (if (looking-at "case\\s-")
-                (setq indentation (+ indentation (/ espresso-indent-level 2))))
+;;           (save-excursion
 
-            ;; consecutive declarations in a var statement are nice if
-            ;; properly aligned, i.e:
-            ;;
-            ;; var foo = "bar",
-            ;;     bar = "foo";
-            (setq node (js2-node-at-point))
-            (when (and node
-                       (= js2-NAME (js2-node-type node))
-                       (= js2-VAR (js2-node-type (js2-node-parent node))))
-              (setq indentation (+ 4 indentation))))
+;;             ;; I like to indent case and labels to half of the tab width
+;;             (back-to-indentation)
+;;             (if (looking-at "case\\s-")
+;;                 (setq indentation (+ indentation (/ espresso-indent-level 2))))
 
-          (indent-line-to indentation)
-          (when (> offset 0) (forward-char offset)))))
+;;             ;; consecutive declarations in a var statement are nice if
+;;             ;; properly aligned, i.e:
+;;             ;;
+;;             ;; var foo = "bar",
+;;             ;;     bar = "foo";
+;;             (setq node (js2-node-at-point))
+;;             (when (and node
+;;                        (= js2-NAME (js2-node-type node))
+;;                        (= js2-VAR (js2-node-type (js2-node-parent node))))
+;;               (setq indentation (+ 4 indentation))))
 
-
-    (defun skk-indent-sexp ()
-      (interactive)
-      (save-restriction
-        (save-excursion
-          (widen)
-          (let* ((inhibit-point-motion-hooks t)
-                 (parse-status (syntax-ppss (point)))
-                 (beg (nth 1 parse-status))
-                 (end-marker (make-marker))
-                 (end (progn (goto-char beg) (forward-list) (point)))
-                 (ovl (make-overlay beg end)))
-            (set-marker end-marker end)
-            (overlay-put ovl 'face 'highlight)
-            (goto-char beg)
-            (while (< (point) (marker-position end-marker))
-              ;; don't reindent blank lines so we don't set the "buffer
-              ;; modified" property for nothing
-              (beginning-of-line)
-              (unless (looking-at "\\s-*$")
-                (indent-according-to-mode))
-              (forward-line))
-            (run-with-timer 0.5 nil '(lambda(ovl)
-                                       (delete-overlay ovl)) ovl)))))
+;;           (indent-line-to indentation)
+;;           (when (> offset 0) (forward-char offset)))))
 
 
-    (defun skk-js2-mode-hook ()
-      (require 'espresso)
-      (setq js2-basic-offset 4)
-      (setq espresso-indent-level 4
-            indent-tabs-mode nil
-            c-basic-offset 4)
-      (c-toggle-auto-state 0)
-      (c-toggle-hungry-state 1)
-      (set (make-local-variable 'indent-line-function) 'skk-js2-indent-function)
-      (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
-      (define-key js2-mode-map [(meta control \;)] 
-        '(lambda()
-           (interactive)
-           (insert "/* -----[ ")
-           (save-excursion
-             (insert " ]----- */"))
-           ))
-      (define-key js2-mode-map [(return)] 'newline-and-indent)
-      (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
-      (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
-      (define-key js2-mode-map [(control meta q)] 'skk-indent-sexp)
-      (if (featurep 'js2-highlight-vars)
-          (js2-highlight-vars-mode))
-      (message "SKK JS2 hook"))
-
-    (add-hook 'js2-mode-hook 'skk-js2-mode-hook)
+;;     (defun skk-indent-sexp ()
+;;       (interactive)
+;;       (save-restriction
+;;         (save-excursion
+;;           (widen)
+;;           (let* ((inhibit-point-motion-hooks t)
+;;                  (parse-status (syntax-ppss (point)))
+;;                  (beg (nth 1 parse-status))
+;;                  (end-marker (make-marker))
+;;                  (end (progn (goto-char beg) (forward-list) (point)))
+;;                  (ovl (make-overlay beg end)))
+;;             (set-marker end-marker end)
+;;             (overlay-put ovl 'face 'highlight)
+;;             (goto-char beg)
+;;             (while (< (point) (marker-position end-marker))
+;;               ;; don't reindent blank lines so we don't set the "buffer
+;;               ;; modified" property for nothing
+;;               (beginning-of-line)
+;;               (unless (looking-at "\\s-*$")
+;;                 (indent-according-to-mode))
+;;               (forward-line))
+;;             (run-with-timer 0.5 nil '(lambda(ovl)
+;;                                        (delete-overlay ovl)) ovl)))))
 
 
-    (setq-default js2-allow-rhino-new-expr-initializer nil)
-    (setq-default js2-auto-indent-p nil)
-    (setq-default js2-enter-indents-newline nil)
-    (setq-default js2-global-externs '("module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname"))
-    (setq-default js2-idle-timer-delay 0.1)
-    (setq-default js2-indent-on-enter-key nil)
-    (setq-default js2-mirror-mode nil)
-    (setq-default js2-strict-inconsistent-return-warning nil)
-    (setq-default js2-auto-indent-p t)
-    (setq-default js2-rebind-eol-bol-keys nil)
-    (setq-default js2-include-rhino-externs nil)
-    (setq-default js2-include-gears-externs nil)
+;;     (defun skk-js2-mode-hook ()
+;;       (require 'espresso)
+;;       (setq js2-basic-offset 4)
+;;       (setq espresso-indent-level 4
+;;             indent-tabs-mode nil
+;;             c-basic-offset 4)
+;;       (c-toggle-auto-state 0)
+;;       (c-toggle-hungry-state 1)
+;;       (set (make-local-variable 'indent-line-function) 'skk-js2-indent-function)
+;;       (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
+;;       (define-key js2-mode-map [(meta control \;)] 
+;;         '(lambda()
+;;            (interactive)
+;;            (insert "/* -----[ ")
+;;            (save-excursion
+;;              (insert " ]----- */"))
+;;            ))
+;;       (define-key js2-mode-map [(return)] 'newline-and-indent)
+;;       (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
+;;       (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
+;;       (define-key js2-mode-map [(control meta q)] 'skk-indent-sexp)
+;;       (if (featurep 'js2-highlight-vars)
+;;           (js2-highlight-vars-mode))
+;;       (message "SKK JS2 hook"))
 
-                                        ;(require 'js2-mode)
+;;     (add-hook 'js2-mode-hook 'skk-js2-mode-hook)
 
-    (define-key js2-mode-map (kbd "C-c RET jt") 'jump-to-test-file)
-    (define-key js2-mode-map (kbd "C-c RET ot") 'jump-to-test-file-other-window)
-    (define-key js2-mode-map (kbd "C-c RET js") 'jump-to-source-file)
-    (define-key js2-mode-map (kbd "C-c RET os") 'jump-to-source-file-other-window)
-    (define-key js2-mode-map (kbd "C-c RET jo") 'jump-between-source-and-test-files)
-    (define-key js2-mode-map (kbd "C-c RET oo") 'jump-between-source-and-test-files-other-window)
 
-    (defun js2-hide-test-functions ()
-      (interactive)
-      (save-excursion
-        (goto-char (point-min))
-        (ignore-errors
-          (while (re-search-forward "\"[^\"]+\": function (")
-            (js2-mode-hide-element)))))
+;;     (setq-default js2-allow-rhino-new-expr-initializer nil)
+;;     (setq-default js2-auto-indent-p nil)
+;;     (setq-default js2-enter-indents-newline nil)
+;;     (setq-default js2-global-externs '("module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname"))
+;;     (setq-default js2-idle-timer-delay 0.1)
+;;     (setq-default js2-indent-on-enter-key nil)
+;;     (setq-default js2-mirror-mode nil)
+;;     (setq-default js2-strict-inconsistent-return-warning nil)
+;;     (setq-default js2-auto-indent-p t)
+;;     (setq-default js2-rebind-eol-bol-keys nil)
+;;     (setq-default js2-include-rhino-externs nil)
+;;     (setq-default js2-include-gears-externs nil)
 
-    (define-key js2-mode-map (kbd "C-c t") 'js2-hide-test-functions)
+;;                                         ;(require 'js2-mode)
 
-    ;; js2-mode steals TAB, let's steal it back for yasnippet
-    (defun js2-tab-properly ()
-      (interactive)
-      (let ((yas/fallback-behavior 'return-nil))
-        (unless (yas/expand)
-          (indent-for-tab-command)
-          (if (looking-back "^\s*")
-              (back-to-indentation)))))
+;;     (define-key js2-mode-map (kbd "C-c RET jt") 'jump-to-test-file)
+;;     (define-key js2-mode-map (kbd "C-c RET ot") 'jump-to-test-file-other-window)
+;;     (define-key js2-mode-map (kbd "C-c RET js") 'jump-to-source-file)
+;;     (define-key js2-mode-map (kbd "C-c RET os") 'jump-to-source-file-other-window)
+;;     (define-key js2-mode-map (kbd "C-c RET jo") 'jump-between-source-and-test-files)
+;;     (define-key js2-mode-map (kbd "C-c RET oo") 'jump-between-source-and-test-files-other-window)
 
-    (define-key js2-mode-map (kbd "TAB") 'js2-tab-properly)
+;;     (defun js2-hide-test-functions ()
+;;       (interactive)
+;;       (save-excursion
+;;         (goto-char (point-min))
+;;         (ignore-errors
+;;           (while (re-search-forward "\"[^\"]+\": function (")
+;;             (js2-mode-hide-element)))))
 
-    ;; Use lambda for anonymous functions
-    (font-lock-add-keywords
-     'js2-mode `(("\\(function\\) *("
-                  (0 (progn (compose-region (match-beginning 1)
-                                            (match-end 1) "\u0192")
-                            nil)))))
+;;     (define-key js2-mode-map (kbd "C-c t") 'js2-hide-test-functions)
 
-    ;; Use right arrow for return in one-line functions
-    (font-lock-add-keywords
-     'js2-mode `(("function *([^)]*) *{ *\\(return\\) "
-                  (0 (progn (compose-region (match-beginning 1)
-                                            (match-end 1) "\u2190")
-                            nil)))))))
+;;     ;; js2-mode steals TAB, let's steal it back for yasnippet
+;;     (defun js2-tab-properly ()
+;;       (interactive)
+;;       (let ((yas/fallback-behavior 'return-nil))
+;;         (unless (yas/expand)
+;;           (indent-for-tab-command)
+;;           (if (looking-back "^\s*")
+;;               (back-to-indentation)))))
+
+;;     (define-key js2-mode-map (kbd "TAB") 'js2-tab-properly)
+
+;;     ;; Use lambda for anonymous functions
+;;     (font-lock-add-keywords
+;;      'js2-mode `(("\\(function\\) *("
+;;                   (0 (progn (compose-region (match-beginning 1)
+;;                                             (match-end 1) "\u0192")
+;;                             nil)))))
+
+;;     ;; Use right arrow for return in one-line functions
+;;     (font-lock-add-keywords
+;;      'js2-mode `(("function *([^)]*) *{ *\\(return\\) "
+;;                   (0 (progn (compose-region (match-beginning 1)
+;;                                             (match-end 1) "\u2190")
+;;                             nil)))))))
 ;; ;;;_. powerline
 ;; (use-package powerline
 ;;   :init (progn
