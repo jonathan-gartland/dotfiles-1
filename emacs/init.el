@@ -43,9 +43,11 @@
 (use-package el-get
   :disabled t
   :commands (el-get
-             el-get-install
-             el-get-update
-             el-get-list-packages)
+             ;; el-get-install
+             ;; el-get-update
+             ;; el-get-list-packages
+             
+             )
   :init
   (defvar el-get-sources nil)
 
@@ -103,7 +105,6 @@
                        (:name icicles-doc1 :type emacswiki)
                        (:name icicles-doc2 :type emacswiki)
                        (:name icicles-mode :type emacswiki)))
-
 (if (string-match "linux" system-configuration)
     (loop for p in '(auctex emacs-w3m magit swank-clojure);  pymacs rope ropemacs slime swank-clojure
           do (add-to-list 'el-get-sources p)))
@@ -139,7 +140,8 @@
          csv
          csv-mode
          dtrt-indent
-         dictionary
+;         dictionary
+         dict
          durendal
          edit-server
          expand-region
@@ -159,7 +161,6 @@
          js2-refactor
          json
          jump-char
-         icicles
          lusty-explorer
          key-chord
          offlineimap
@@ -175,8 +176,8 @@
          paredit
          point-stack
 ;         powerline2
-         ;; python
-         python-mode
+;         python
+;         python-mode
          pretty-symbols-mode
          ;; python-pep8
          quack
@@ -210,7 +211,9 @@
 (el-get 'sync my-el-get-packages)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-
+(add-to-list 'package-archives 
+	     '("melpa" . "http://melpa.milkbox.net/packages/")
+	     'APPEND)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defconst emacsd-cache-dir (expand-file-name "~/.emacs.d/.cache"))
 (defconst emacsd-backup-dir (expand-file-name "~/.emacs.d/.backup"))
@@ -315,6 +318,12 @@
 (add-hook 'js-mode 'pretty-symbols-mode)
 (add-hook 'python-mode 'pretty-mode)
 
+(use-package emacs-w3m
+  :init
+  (progn
+    (setq w3m-use-cookies t)
+    ))
+
 ;;;_. wgrep
 (use-package wgrep)
 
@@ -352,7 +361,7 @@
   (progn
     (setq 
      flymake-perlcritic-severity 2
-     flymake-perlcritic-theme) "pbp && bugs"
+     flymake-perlcritic-theme "pbp && bugs")
     (add-hook 'sepia-mode-hook
                (lambda () (flymake-mode t)))))
 
@@ -388,6 +397,12 @@
                    ("MedHome"
                     (or
                      (filename . "/web/medhome")))
+                   ("HCGS"
+                    (or
+                     (filename . "/web/hcgs")))
+                   ("UACC"
+                    (or
+                     (filename . "/web/uacc")))
                    ("SpiceCore"
                     (or
                      (filename . "/web/SpiceCore")))
@@ -525,6 +540,8 @@
       (mk/proj-buffer-p buf))
     (define-key ibuffer-mode-map (kbd "/ k") 'ibuffer-filter-by-project)
 
+(global-set-key [XF86HomePage] 'ibuffer)
+
 ;;;_. hexrgb
 (use-package hexrgb)
 
@@ -534,6 +551,8 @@
   (progn
     (toggle-hl-line-when-idle 1)))
 
+
+(add-to-list 'load-path "~/.emacs.d/vendor/icicles")
 ;;;_. icicles
 (use-package icicles
   :init
@@ -547,7 +566,7 @@
   (progn
     (global-set-key [?\M-`] 'lacarte-execute-menu-command)))
 
-
+;;_. lacarte
 (use-package lusty-explorer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -753,6 +772,47 @@ Symbols matching the text at point are put first in the completion list."
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
                    (shutdown-hook (lambda ()
                                     (setq tags-file-name nil)))))
+    (project-def "UACC Development"
+                 '((basedir "/sshfs/lithium/web/uacc")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/uacc-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/uacc-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/uacc-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/uacc-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))))
+    
+    (project-def "UACC Live"
+                 '((basedir "/sshfs/housing1/web/uacc")
+                   (src-patterns ("*.js"  "*.pm" "*.css"))
+                   (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
+                                     "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
+                                     "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
+                   (tags-file "~/.emacs.d/.cache/uacc-live/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/uacc-live/files")
+                   (open-files-cache "~/.emacs.d/.cache/uacc-live/open-files")
+                   (tags-file "~/.emacs.d/.cache/uacc-live/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (setq cperl-indent-level 4))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                   (shutdown-hook (lambda ()
+                                    (setq tags-file-name nil)))))
 
     (project-def "HealthyUNH Development"
                  '((basedir "/sshfs/lithium/web/healthyunh")
@@ -911,7 +971,7 @@ Symbols matching the text at point are put first in the completion list."
                                    (setq cperl-indent-level 4)))
                    (shutdown-hook nil)))
 
-    (project-def "Obliterase Dev"
+    (project-def "Obliterase Development"
                  '((basedir "/sshfs/lithium/web/neat")
                    (src-patterns ("*.js *.html *.pm *.css"))
                    (ignore-patterns nil)
@@ -923,21 +983,67 @@ Symbols matching the text at point are put first in the completion list."
                    (ack-args "--perl --js --html --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
-                                   (setenv "PERL5LIB"
-                                           (concat
-                                            "/sshfs/lithium/usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi/" ":"
-                                            "/sshfs/lithium/usr/lib/perl5/vendor_perl/5.8.8/i386-linux-thread-multi/" ":"
-                                            "/sshfs/lithium/web/neat/perl" ":" 
-                                            "/sshfs/lithium/web/neat/cgi-bin" ":"
-                                            "/sshfs/lithium/web/perl" ":"
-                                            "/sshfs/lithium/web/perl/Lib/Layout2/Core" ":"
-                                            "/sshfs/lithium/web/perl/Lib/Libraries/Html2Pdf"  ":"
-                                            (getenv "PERL5LIB")))
+                                   ;; (setenv "PERL5LIB"
+                                   ;;         (concat
+                                   ;;          "/sshfs/lithium/usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                   ;;          "/sshfs/lithium/usr/lib/perl5/vendor_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                   ;;          "/sshfs/lithium/web/neat/perl" ":" 
+                                   ;;          "/sshfs/lithium/web/neat/cgi-bin" ":"
+                                   ;;          "/sshfs/lithium/web/perl" ":"
+                                   ;;          "/sshfs/lithium/web/perl/Lib/Layout2/Core" ":"
+                                   ;;          "/sshfs/lithium/web/perl/Lib/Libraries/Html2Pdf"  ":"
+                                   ;;          (getenv "PERL5LIB")))
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
                                    (setq cperl-indent-level 4))
                    (shutdown-hook nil))))
+
+    (project-def "HCGS Development"
+                 '((basedir "/sshfs/lithium/web/hcgs")
+                   (src-patterns ("*.js *.html *.pm *.css"))
+                   (ignore-patterns nil)
+                   (tags-file nil)
+                   (file-list-cache "~/.emacs.d/.cache/hcgs-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/hcgs-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/hcgs-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --html --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+                                   (setq cperl-indent-level 4)))
+                   (shutdown-hook nil)))
+
+    (project-def "HCGS Preview"
+                 '((basedir "/sshfs/myxomatosis/web/hcgs")
+                   (src-patterns ("*.js *.html *.pm *.css"))
+                   (ignore-patterns nil)
+                   (tags-file nil)
+                   (file-list-cache "~/.emacs.d/.cache/hcgs-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/hcgs-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/hcgs-dev/TAGS")
+                   (vcs git)
+                   (ack-args "--perl --js --html --css")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   ;; (setenv "PERL5LIB"
+                                   ;;         (concat
+                                   ;;          "/sshfs/lithium/usr/lib/perl5/site_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                   ;;          "/sshfs/lithium/usr/lib/perl5/vendor_perl/5.8.8/i386-linux-thread-multi/" ":"
+                                   ;;          "/sshfs/lithium/web/hcgs/perl" ":" 
+                                   ;;          "/sshfs/lithium/web/perl" ":"
+                                   ;;          "/sshfs/lithium/web/perl/Lib/Layout2/Core" ":"
+                                   ;;          "/sshfs/lithium/web/perl/Lib/Libraries/Html2Pdf"  ":"
+                                   ;;          (getenv "PERL5LIB")))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)
+                                   (setq cperl-indent-level 4))
+                   (shutdown-hook nil))))
+
 
     (project-def "RCC Development"
                  '((basedir "/sshfs/amnesiac/webdev/rcc")
@@ -1091,11 +1197,11 @@ Symbols matching the text at point are put first in the completion list."
      mu4e-get-mail-command "true"
 
      ;; enable verbose/debug 
-     mu4e-debug nil
+     mu4e-debug t
      
      message-send-mail-function 'message-send-mail-with-sendmail
 
-     message-citation-line-format "On %a, %b %d %Y %p at %R, %N wrote:"
+     message-citation-line-format "On %a, %b %d %Y at %r, %N wrote:"
 
      message-citation-line-function (quote message-insert-formatted-citation-line)
 
@@ -1136,6 +1242,10 @@ Symbols matching the text at point are put first in the completion list."
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
 )
+;(use-package org-mu4e)
+
+;; (setq mu4e-compose-complete-only-person t)
+;; (setq mu4e-compose-complete-ignore-address-regexp t)
 
 ;;;_. sqlplus
 (use-package sqlplus)
@@ -1152,46 +1262,47 @@ Symbols matching the text at point are put first in the completion list."
     (setq linum-format "%d ") 
     (global-linum-mode 1)))
 
+(use-package python)
 
-;;;_. python
-(use-package python-mode
- :mode ("\\.py$" . python-mode)
-  :interpreter ("python" . python-mode)
-  :init
-  (progn
-    ;; ; pymacs
-    ;; (require 'pymacs)
-    ;; (autoload 'pymacs-load "pymacs" nil t)
-    ;; (autoload 'pymacs-eval "pymacs" nil t)
-    ;; (autoload 'pymacs-apply "pymacs")
-    ;; (autoload 'pymacs-call "pymacs")
+;; ;;;_. python
+;; (use-package python-mode
+;;  :mode ("\\.py$" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :init
+;;   (progn
+;;     ;; ; pymacs
+;;     ;; (require 'pymacs)
+;;     ;; (autoload 'pymacs-load "pymacs" nil t)
+;;     ;; (autoload 'pymacs-eval "pymacs" nil t)
+;;     ;; (autoload 'pymacs-apply "pymacs")
+;;     ;; (autoload 'pymacs-call "pymacs")
 
-    ;; ;; Initialize Rope
-    ;; (pymacs-load "ropemacs" "rope-")
-    ;; (setq ropemacs-enable-autoimport t)
-    ;; (setq ropemacs-guess-project t)
+;;     ;; ;; Initialize Rope
+;;     ;; (pymacs-load "ropemacs" "rope-")
+;;     ;; (setq ropemacs-enable-autoimport t)
+;;     ;; (setq ropemacs-guess-project t)
 
-    ;; Initialize company-mode
-    (add-hook 'python-mode-hook (lambda () 
-                                  (progn
-                                    ;(company-mode)
-                                    (set-variable 'py-indent-offset 4)
-                                    (set-variable 'py-smart-indentation nil)
-                                    (set-variable 'indent-tabs-mode nil)
-                                    (show-paren-mode 1)
-                                    (eldoc-mode 1))))
+;;     ;; Initialize company-mode
+;;     (add-hook 'python-mode-hook (lambda () 
+;;                                   (progn
+;;                                     ;(company-mode)
+;;                                     (set-variable 'py-indent-offset 4)
+;;                                     (set-variable 'py-smart-indentation nil)
+;;                                     (set-variable 'indent-tabs-mode nil)
+;;                                     (show-paren-mode 1)
+;;                                     (eldoc-mode 1))))
 
-    ;(when (load "flymake" t)
-    ;  (defun flymake-pychecker-init ()
-    ;    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-    ;                       'flymake-create-temp-inplace))
-    ;           (local-file (file-relative-name
-    ;                        temp-file
-    ;                        (file-name-directory buffer-file-name))))
-    ;      (list "pychecker"  (list local-file))))
-    ;  (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pychecker-init)))
-    ;(add-hook 'find-file-hook 'flymake-find-file-hook)
-    ))
+;;     ;(when (load "flymake" t)
+;;     ;  (defun flymake-pychecker-init ()
+;;     ;    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;     ;                       'flymake-create-temp-inplace))
+;;     ;           (local-file (file-relative-name
+;;     ;                        temp-file
+;;     ;                        (file-name-directory buffer-file-name))))
+;;     ;      (list "pychecker"  (list local-file))))
+;;     ;  (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pychecker-init)))
+;;     ;(add-hook 'find-file-hook 'flymake-find-file-hook)
+;;     ))
 
 ;;;_. ack
 (use-package ack)
@@ -1440,7 +1551,11 @@ Symbols matching the text at point are put first in the completion list."
     (setq org-mobile-inbox-for-pull "~/Projects/EPSCOR/flagged.org")
     ;; Set to <your Dropbox root directory>/MobileOrg.
     (setq org-mobile-directory "~/Dropbox/MobileOrg")))
+(global-set-key [XF86Explorer] '(lambda () (interactive) 
+                                  (switch-to-buffer (find-file "~/dot-files-forest/task/task.org"))))
 
+;;;_. calc
+(global-set-key [XF86Calculator] 'full-calc)
 
 ;;;_. scheme
 (use-package geiser)
@@ -1738,14 +1853,16 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://me.in-berlin.de/~myrkr/dictionary/
-(use-package dictionary 
-    :init
-    (progn
-      (load "dictionary-init")
-      (bind-key "\C-cs" 'dictionary-search)
-      (bind-key "\C-cm" 'dictionary-match-words)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ; http://me.in-berlin.de/~myrkr/dictionary/
+;; (use-package dictionary 
+;;     :init
+;;     (progn
+;;       (load "dictionary-init")
+;;       (bind-key "\C-cs" 'dictionary-search)
+;;       (bind-key "\C-cm" 'dictionary-match-words)))
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package dict)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; bookmarks
