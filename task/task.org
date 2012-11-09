@@ -509,3 +509,50 @@
 ***** 4 hour billable.  Completed two minor billable projects for OCM.  1) Added new move-out dates (this is expandable).  2) Created new tab "Deferred Sanctions".  New privileges and privilege groups were created.
 **** Housing
 ***** .5 hour non-billable.
+** November 
+*** 01
+**** EMS
+***** .5 hour billable.  Responded to emails to events-dev.
+**** HCGS
+***** 5.5 hours billable.  Worked on Sample Submission Form/Recordset.
+*** 02
+**** HCGS
+***** 6 hours billable.  Worked on Source Organism Form/Recordset.  Added UNH logo.
+*** 03
+**** WEEKEND
+*** 04
+**** WEEKEND
+*** 05
+**** EMS
+***** .5 hour billable.  Responded to emails to events-dev.
+**** HCGS
+***** .5 hour billable.  Deployed updates to preview site.
+**** NHIHPP
+***** 3 hour billable.  Created a cpu usage script.
+**** ResLife
+***** 2 hour non-billable.  Corrected bug with reslife website allowing creation of multiple application.
+*** 06
+**** HealthyUNH
+***** 6 hours billable.  Started working on project.  Created forms/recordsets (based on Fitness Measures) to store fitness locations and its metadata.
+*** 07
+**** OCM
+***** 2 hours non-billable.  Fixed issue with snapshot button on three strikes report.  Corrected incorrect checkbox image.
+***** 1.5 hours billable.  Added columns to Complaint Sanctions report.  Added columns to Complaint List report.  Created new recordset.
+***** 2 hours billable.  Created links (on conduct dashboard) and recordsets for MoveOut Dates and Alt. Sanction Programs.
+**** EMS
+***** .5 hour billable.  Responded to emails to events-dev.
+*** 08
+**** HealthyUNH
+***** 3 hours billable.  Completed working on project.
+**** OCM
+***** 2.5 hours billable.  Created links (on conduct dashboard) and recordsets for MoveOut Dates and Alt. Sanction Programs.
+***** .5 hours non-billable.  Tested additional LDAP access.
+*** 09
+**** HealthyUNH
+***** 5.5 hours billable.  Completed working on project.  The map is loading features from database.  The map is displaying a popup for each location from databaes.  The menu is (mostly) working.
+**** EMS
+***** .5 hour billable.  Responded to emails to events-dev.
+*** 10
+**** WEEKEND
+*** 11
+**** WEEKEND
