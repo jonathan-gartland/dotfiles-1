@@ -509,7 +509,7 @@
 ***** 4 hour billable.  Completed two minor billable projects for OCM.  1) Added new move-out dates (this is expandable).  2) Created new tab "Deferred Sanctions".  New privileges and privilege groups were created.
 **** Housing
 ***** .5 hour non-billable.
-** November 
+** November
 *** 01
 **** EMS
 ***** .5 hour billable.  Responded to emails to events-dev.
