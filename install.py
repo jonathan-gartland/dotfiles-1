@@ -190,6 +190,9 @@ class install(object):
     def terminator(self, install_type):
             self._createLinks([{ 'src': 'terminator', 'dst': '.config/terminator' } ])
 
+    def lilyterm(self, install_type):
+            self._createLinks([{ 'src': 'lilyterm', 'dst': '.config/lilyterm' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
