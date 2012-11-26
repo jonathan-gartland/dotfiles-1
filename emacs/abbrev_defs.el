@@ -320,6 +320,10 @@
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
+(define-abbrev-table 'sieve-manage-mode-abbrev-table '())
+
+(define-abbrev-table 'sieve-mode-abbrev-table '())
+
 (define-abbrev-table 'sldb-mode-abbrev-table '())
 
 (define-abbrev-table 'slime-connection-list-mode-abbrev-table '())
