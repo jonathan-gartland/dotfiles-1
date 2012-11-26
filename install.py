@@ -163,6 +163,7 @@ class install(object):
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
         { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
         { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
+        { 'src': 'dotfiles/Xdefaults', 'dst' : '.Xdefaults'},
         { 'src': offlineimap, 'dst' : '.offlineimaprc'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
