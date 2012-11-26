@@ -207,6 +207,9 @@ class install(object):
     def emacs(self, install_type):
         self._createLinks([{'src': 'emacs', 'dst': '.emacs.d'}])
 
+    def i3(self, install_type):
+        self._createLinks([{'src': 'i3', 'dst': '.i3'}])
+
     def clojure(self, install_type):
         self._createLinks([
                 {'src': 'lein', 'dst': '.lein'},

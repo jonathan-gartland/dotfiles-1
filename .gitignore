@@ -38,3 +38,6 @@ bin/.ropeproject
 # procmail
 procmail/work/log/*
 procmail/home/log/*
+
+# i3
+i3/i3log
