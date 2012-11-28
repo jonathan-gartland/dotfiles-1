@@ -27,7 +27,6 @@
  '(flymake-log-level 0)
  '(flymake-no-changes-timeout 0.5)
  '(flymake-perlcritic-severity 1)
- '(font-use-system-font t)
  '(foreground-color "#657b83")
  '(icicle-mode t)
  '(inhibit-startup-screen t)
