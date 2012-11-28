@@ -84,12 +84,13 @@ class OptionHandling( object ):
 
     def getOptions(self):
         parser = OptionParser()
-        parser.add_option("-w", "--week",       dest="week",        help="Task for this Week",  action="store_true" )
+        parser.add_option("-w", "--week",        dest="week",        help="Task for this Week",  action="store_true" )
         parser.add_option("-m", "--month",      dest="month",       help="Task for this Month [Month Year]", action="callback", callback=parseArgs )
         parser.add_option("-y", "--year",       dest="year",        help="Task for Year [ Year ]", action="callback", callback=parseArgs )
         parser.add_option("-f", "--fiscal_year",    dest="fiscal_year", help="Task for Year [ Fiscal Year ]", action="callback", callback=parseArgs )
         parser.add_option("-s", "--start_date",         dest="start_date",  help="Task for Start Date [ MM/DD/YYYY ]", action="store" )
         parser.add_option("-e", "--end_date",       dest="end_date",  help="Task for End Date [ MM/DD/YYYY ]", action="store" )
+        parser.add_option("-o", "--output_format",       dest="output_format",  help="output results in OUTPUT_FORMAT [Task | Report]", action="store" )
 
 
         (options, args) = parser.parse_args( args = self.argv )
@@ -157,7 +158,7 @@ class OptionHandling( object ):
         print "Start Date %s" % startDate
         print "  End Date %s\n" % endDate
 
-        return ( userName, startDate, endDate )
+        return ( userName, startDate, endDate, options.output_format)
 
 def handle_year(line):
     """
@@ -245,7 +246,7 @@ def handle_work(line):
         return None
 
 
-def generate_entry_for_task(project, type, rs):
+def generate_entry_for_report(project, type, rs):
     table = Texttable()
     table.header(['Date', 'Duration', 'Comment'])
     table.set_deco(Texttable.HEADER)
@@ -276,6 +277,31 @@ def generate_entry_for_task(project, type, rs):
         print 'Project: %s Total: %.2f (%s)' % (project, total_hours, type)
     print table.draw() + "\n"
 
+def generate_entry_for_task(project, type, rs):
+    taskid = None
+    try:
+        taskid = project_taskid_mapping[project]
+    except KeyError:
+        pass
+    
+    total_hours = 0
+    
+    buf = []
+
+    for x in rs:
+        buf.append("%s:\n  %s (%s)" % (x.date.isoformat(), x.comment, x.length))
+        total_hours += float(x.length)
+
+    if total_hours == 0:
+        return
+
+    if taskid:
+        print "\nProject: %s (%d) Total: %.2f (%s)" % (project, taskid, total_hours, type)
+    else:
+        print "\nProject: %s Total: %.2f (%s)" % (project, total_hours, type)
+
+    print "\n".join(buf)
+
 year = None
 month = None
 day = None
@@ -305,7 +331,7 @@ TaskEntry.createTable()
 
 
 options = OptionHandling(sys.argv)
-(userName, startDate, endDate) = options.optionHandlingAndParsing()
+(userName, startDate, endDate, outputFormat) = options.optionHandlingAndParsing()
 
 sh1 = hashlib.sha1()
 
@@ -358,9 +384,13 @@ with open("task.org") as f:
                           comment = comment.strip())
 
 for project in projects.keys():
-    generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
-    generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
-
+    if outputFormat == 'Task':
+        generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+        generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+        
+    if outputFormat == 'Report':
+        generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+        generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
 
 
 query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
