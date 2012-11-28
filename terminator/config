@@ -1,6 +1,10 @@
 [global_config]
-  title_transmit_bg_color = "#887f7f"
+  window_state = hidden
+  dbus = True
   focus = mouse
+  borderless = True
+  title_transmit_bg_color = "#887f7f"
+  tab_position = hidden
 [keybindings]
 [profiles]
   [[default]]
@@ -11,7 +15,7 @@
     use_system_font = False
     cursor_color = "#002b36"
     foreground_color = "#002b36"
-    font = Inconsolata Medium 11
+    font = Anonymous Pro 11
     word_chars = "-A-Za-z0-9,./?%&#:_@"
 [layouts]
   [[default]]
