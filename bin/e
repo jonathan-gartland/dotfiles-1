@@ -1,5 +1,4 @@
 #!/bin/bash
-
-source $HOME/.bash/nonlogin.d/40paths
-export GDK_NATIVE_WINDOWS=1
-emacsclient -a '' -c -n $*
+source $HOME/.bash/nonlogin.d/30path
+echo emacsclient -n -c $*
+emacsclient -n -c $*
