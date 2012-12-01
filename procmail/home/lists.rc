@@ -1,4 +1,9 @@
 
+
+:0
+* (To|Cc):.*i3-discuss@i3.zekjur.net.*
+.Mailing\ Lists.i3/
+
 :0
 *(To|Cc):.*nodejs@googlegroups.com.*
 .Mailing\ Lists.NodeJS/
@@ -49,7 +54,7 @@
 
 # ---- leiningen ----
 :0
-* (To|Cc):.*leiningen@googlegroups.com.*
+* (To|Cc):.*leiningen@librelist.org.*
 .Mailing\ Lists.Leiningen/
 # ---- 9/12 Project ----
 
