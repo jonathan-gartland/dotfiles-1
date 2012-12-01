@@ -1,70 +1,23 @@
-
-
+# i3-discuss
 :0
 * (To|Cc):.*i3-discuss@i3.zekjur.net.*
 .Mailing\ Lists.i3/
 
-:0
+# NodeJS
+:0 
 *(To|Cc):.*nodejs@googlegroups.com.*
 .Mailing\ Lists.NodeJS/
 
-# --- mu4e Mailing lists --
+# mu4e
 :0
 * (To|Cc):.*mu-discuss@googlegroups.com.*
 .Mailing\ Lists.mu4e/
-# --- mu4e Mailing lists --
 
-# --- Rust mailing lists ---
-# Dev
-:0
-* (To|Cc):.*rust-dev@mozilla.org.*
-.Mailing\ Lists.Rust\ Dev/
-# --- Rust Dev mailing lists ---
-
-# -- QTile Lists ---
-:0
-* (To|Cc):.*qtile-dev@googlegroups.com.*
-.Mailing\ Lists.QTile\ Dev/
-# -- QTile Dev Lists ---
-
-# ---- StumpWM Mailing Lists ---
-# StumpWM Users 
-:0
-* ^(Subject|Sender):.*\[STUMP\].*
-.Mailing\ Lists.StumpWM/
-# ---- Fish Mailing Lists ---
-
-# ---- Scheme Lists ----
-# MIT Schme User List
-:0
-* ^(To|Cc):.*mit-scheme-users@gnu.org.*
-.Mailing\ Lists.MIT\ Scheme\ User/
-
-# GNU Guile Users List
-:0
-* ^(To|Cc):.*guile-user@gnu.org.*
-.Mailing\ Lists.GNU\ Guile\ User/
-
-
-# Chicken Scheme User List
-:0
-* ^(To|Cc):.*chicken-users@nongnu.org.*
-.Mailing\ Lists.Chicken\ Scheme\ User/
-# ---- Scheme Lists ----
-
-# ---- leiningen ----
+# leinigen
 :0
 * (To|Cc):.*leiningen@librelist.org.*
 .Mailing\ Lists.Leiningen/
-# ---- 9/12 Project ----
 
-# ---- 9/12 Project ----
-:0 
-* (To|Cc):.*rochester-912-project-list@meetup.com.* 
-.Mailing\ Lists.Rochester-912-Project/
-# ---- 9/12 Project ----
-
-# ---- Python Mailing Lists ---
 # Python User
 :0
 * (To|Cc):.*python-list@python.org.*
@@ -75,112 +28,33 @@
 * (To|Cc):.*python-mode@python.org.*
 .Mailing\ Lists.Python\ Mode/
 
-# Python Devel
-:0
-* (To|Cc):.*python-dev@python.org.*
-.Mailing\ Lists.Python\ Dev/
-
-# Python Ideas
-:0
-* (To|Cc):.*python-ideas@python.org.*
-.Mailing\ Lists.Python\ Ideas/
-# ---- Python Mailing Lists ---
-
-# ---- Fish Mailing Lists ---
 # Fish Users 
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
 .Mailing\ Lists.Fish\ User/
-# ---- Fish Mailing Lists ---
 
-# ---- Glenn Beck -----
 # Glenn Beck
 :0
 * ^From:.*Glenn.*Beck.*
 .Mailing\ Lists.Glenn\ Beck/
-
 
 # The Blaze
 :0
 * ^Subject:.*News from TheBlaze.com.*
 .Mailing\ Lists.Glenn\ Beck/
 
-# ---- Glenn Beck -----
-
-# --- GNU Mailing Lists ----
-# Help
+# GNU Emails Help
 :0
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Help/
 
-# Devel
+# GNU Emails Devel
 :0
 * (To|Cc):.*emacs-devel@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Devel/
 
-# Wanderlust
-:0
-* (To|Cc):.*wl-en@ml.gentei.org.*
-.Mailing\ Lists.Wanderlust/
-# --- GNU Mailing Lists ----
-# ----- SymPy ----
-:0
-* (To|Cc):.*sympy@googlegroups.com.*
-.Mailing\ Lists.SymPy/
-# ----- SymPy ----
-
-# ----- Clojure ------
+# Clojure
 :0
 * (To|Cc):.*4clojure@googlegroups.com.*
 .Mailing\ Lists.4Clojure/
 
-:0
-* (To|Cc):.*clojure@googlegroups.com.*
-.Mailing\ Lists.Clojure/
-# ----- Clojure ------
-
-################################################################################
-# OLD PROCMAIL RULES, NO LONGER USED
-
-# # ----- Flask ------
-# :0
-# * (To|Cc):.*flask@librelist.[com|org].*
-# .Mailing\ Lists.Flask/
-# # ----- Flask ------
-
-# # ---- Haskell Cafe Mailing Lists ----
-# # Haskell Cafe
-# :0
-# * (To|Cc):.*haskell-cafe@haskell.org.*
-# .Mailing\ Lists.Haskell\ Cafe/
-# # ---- Haskell Cafe Mailing Lists ----
-
-# # ---- Debian Mailing Lists ----
-# # Debian User
-# :0
-# * (To|Cc):.*debian-user@lists.debian.org.*
-# .Mailing\ Lists.Debian\ User/
-# # ---- Debian Mailing Lists ----
-
-# # ---- Awesome User List ----
-# :0
-# * (To|Cc):.*awesome@naquadah.org.*
-# .Mailing\ Lists.Awesome\ User/
-# # ---- Awesome User List ----
-
-# # ---- XMonad User List ----
-# :0
-# * (To|Cc):.*xmonad@haskell.org.*
-# .Mailing\ Lists.xmonad/
-# # ---- XMonad User List ----
-
-# # -----  Arch Linux ---
-# :0
-# * (To|Cc):.*arch-general@archlinux.org.*
-# .Mailing\ Lists.Arch\ General/
-
-# :0
-# * (To|Cc):.*arch-announce@archlinux.org.*
-# .Mailing\ Lists.Arch\ Announce/
-# # -----  Arch Linux ---
-################################################################################
