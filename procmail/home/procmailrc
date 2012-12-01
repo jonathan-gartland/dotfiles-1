@@ -1,5 +1,3 @@
-# $Id: procmailrc 2652 2009-03-10 12:40:19Z skk $
-
 #VERBOSE=on
 VERBOSE=off
 MAILDIR=$HOME/Maildir
@@ -7,24 +5,113 @@ DEFAULT=$MAILDIR/.INBOX/
 PROCMAILDIR=$HOME/.procmail
 LOGFILE=$PROCMAILDIR/log/procmail
 
-
 # forward all email through spamc daemon
 :0fw
 | /usr/bin/spamc
 
 # handle spam message
-INCLUDERC=$PROCMAILDIR/spam.rc
+:0
+* ^Subject:.*SEXUALLY-EXPLICIT.*
+.Spam/
+
+:0
+* ^X-Spam-Flag:.*YES.*
+.Spam/
+
+:0
+* ^X-MailScanner-SpamCheck:spam.*
+.Spam/
 
 # Copy all mail now
 :0c		
 *
 .Archive/	# to Archive
 
-# handle mailing list
-INCLUDERC=$PROCMAILDIR/lists.rc
+# i3-discuss
+:0
+* (To|Cc):.*i3-discuss@i3.zekjur.net.*
+.Mailing\ Lists.i3/
+
+# NodeJS
+:0 
+*(To|Cc):.*nodejs@googlegroups.com.*
+.Mailing\ Lists.NodeJS/
+
+# mu4e
+:0
+* (To|Cc):.*mu-discuss@googlegroups.com.*
+.Mailing\ Lists.mu4e/
+
+# leinigen
+:0
+* (To|Cc):.*leiningen@librelist.org.*
+.Mailing\ Lists.Leiningen/
+
+# Python User
+:0
+* (To|Cc):.*python-list@python.org.*
+.Mailing\ Lists.Python\ User/
+
+# Python Mode
+:0
+* (To|Cc):.*python-mode@python.org.*
+.Mailing\ Lists.Python\ Mode/
+
+# Fish Users 
+:0
+* ^(Subject|Sender):.*\[fish-users\].*
+.Mailing\ Lists.Fish\ User/
+
+# Glenn Beck
+:0
+* ^From:.*Glenn.*Beck.*
+.Mailing\ Lists.Glenn\ Beck/
+
+# The Blaze
+:0
+* ^Subject:.*News from TheBlaze.com.*
+.Mailing\ Lists.Glenn\ Beck/
+
+# GNU Emails Help
+:0
+* (To|Cc):.*help-gnu-emacs@gnu.org.*
+.Mailing\ Lists.GNU\ Emacs\ Help/
+
+# GNU Emails Devel
+:0
+* (To|Cc):.*emacs-devel@gnu.org.*
+.Mailing\ Lists.GNU\ Emacs\ Devel/
+
+# Clojure
+:0
+* (To|Cc):.*4clojure@googlegroups.com.*
+.Mailing\ Lists.4Clojure/
+
 
 # handle HemlockForest
-INCLUDERC=$PROCMAILDIR/hemlockforest.rc
+:0
+* ^From:.*Judi.Angelo@executiveproperties.com.*
+.HemlockForest/
+
+:0
+* ^From:.*Judi.Angelo@executiveproperties.com.*
+.HemlockForest/
+
+:0
+* ^From:.*jason@4wallsnh.com.*
+.HemlockForest/
+
+:0
+* ^From:.*thejourneycontinues@comcast.net.*
+.HemlockForest/
+
+:0
+* ^From:.*nseddy1@yahoo.com.*
+.HemlockForest/
+
+:0
+* ^From:.*benjamin.bascom@gmail.com.*
+.HemlockForest/
 
 # eHaramony
 :0
@@ -45,11 +132,6 @@ INCLUDERC=$PROCMAILDIR/hemlockforest.rc
 :0
 * ^From:.*investors@e.investors.com.*
 .IBDEditorials/
-
-# Output from emerge/portage from home computer
-:0
-* ^From:.*portage@knight.cx.*
-.Portage/
 
 # last
 :0:
