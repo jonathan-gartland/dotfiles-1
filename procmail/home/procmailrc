@@ -27,6 +27,16 @@ LOGFILE=$PROCMAILDIR/log/procmail
 *
 .Archive/	# to Archive
 
+# Arch-Announce
+:0
+* (To|Cc):.*arch-announce@archlinux.org.*
+.Mailing\ Lists.Arch\ Announce
+
+# Arch General
+:0
+* (To|Cc):.*arch-general@archlinux.org.*
+.Mailing\ Lists.Arch\ General
+
 # i3-discuss
 :0
 * (To|Cc):.*i3-discuss@i3.zekjur.net.*
