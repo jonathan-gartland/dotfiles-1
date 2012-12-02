@@ -94,8 +94,8 @@ LOGFILE=$PROCMAILDIR/log/procmail
 
 # Clojure
 :0
-* (To|Cc):.*4clojure@googlegroups.com.*
-.Mailing\ Lists.4Clojure/
+* (To|Cc):.*clojure@googlegroups.com.*
+.Mailing\ Lists.Clojure/
 
 
 # handle HemlockForest
