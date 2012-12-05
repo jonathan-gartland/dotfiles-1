@@ -13,6 +13,7 @@ from time import *
 from datetime import datetime, date
 import calendar
 from contextlib import contextmanager
+import json
 
 project_taskid_mapping = dict()
 
@@ -134,13 +135,13 @@ class OptionHandling( object ):
             year = options.month['year'] or today.year
             month = options.month['month'] or today.month
             (weekday, length) = calendar.monthrange( int(year), int(month) )
-            startDate = self.formatDay( year, month, 01 )
+            startDate = self.formatDay( year, month, 1 )
             endDate = self.formatDay( year, month, length )
 
         elif options.year:
             year = options.year['year'] or today.year
             year = int( year )
-            startDate = self.formatDay( year, 01, 01 )
+            startDate = self.formatDay( year, 1, 1 )
             endDate = self.formatDay( year, 12, 31 )
         elif options.fiscal_year:
             fiscal_year = options.fiscal_year['fiscal_year'] or today.year
@@ -191,7 +192,7 @@ def handle_month(line):
     """
     m = re.match(r"^\*{2,2} (\w*)$", line)
     try:
-        return m.group(1)
+        return m.group(1)[1:]
     except:
         return None
 
@@ -283,9 +284,9 @@ def generate_entry_for_task(project, type, rs):
         taskid = project_taskid_mapping[project]
     except KeyError:
         pass
-    
+
     total_hours = 0
-    
+
     buf = []
 
     for x in rs:
@@ -309,10 +310,14 @@ project = None
 work = None
 taskid = None
 
-# db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
-# os.unlink(db_filename)
-#db_filename = "/tmp/task.sql"
-db_filename = "/:memory:"
+db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
+#db_filename = "/:memory:"
+try:
+    os.unlink(db_filename)
+except OSError:
+    None
+
+
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
 connection = connectionForURI(connection_string)
@@ -340,12 +345,36 @@ projects = dict()
 linenum = 0
 total_hours = 0
 total_days = 0
+
+task_entries = []
+
+class MDDict(dict):
+    def __init__(self, default=None):
+        self.default = default
+
+    def __getitem__(self, key):
+        if not self.has_key(key):
+            self[key] = self.default()
+        return dict.__getitem__(self, key)
+
+data = MDDict(dict)
+from collections import defaultdict
+from collections import Counter
+
+def multi_dimensions(n, type):
+  """ Creates an n-dimension dictionary where the n-th dimension is of type 'type'
+  """
+  if n<=1:
+    return type()
+  return defaultdict(lambda:multi_dimensions(n-1, type))
+
+
+data = dict()
+
 with open("task.org") as f:
     for line in f:
         linenum += 1
         line = line.strip()
-        #print "Line Number {}, Line {}".format(linenum,line)
-        handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day
@@ -387,7 +416,7 @@ for project in projects.keys():
     if outputFormat == 'Task':
         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
-        
+
     if outputFormat == 'Report':
         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
