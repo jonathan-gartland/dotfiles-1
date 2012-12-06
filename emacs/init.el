@@ -143,7 +143,7 @@
 ;         dictionary
          dict
          durendal
-         edit-server
+         ;edit-server
          expand-region
          emeteo
          flymake-perlcritic
@@ -153,6 +153,7 @@
          geiser
          google-maps
          google-weather
+         haskell-mode
          helm
          hexrgb
          hide-region
@@ -371,11 +372,11 @@
 (global-set-key [XF86Back] 'flymake-goto-prev-error)
 (global-set-key [XF86Forward] 'flymake-goto-next-error)
 
-;;;_. edit-server
-(use-package edit-server
-  :init
-  (progn
-    (edit-server-start)))
+;; ;;;_. edit-server
+;; (use-package edit-server
+;;   :init
+;;   (progn
+;;     (edit-server-start)))
 
 ;;;_. ibuffer
 (require 'ibuffer) 
@@ -559,6 +560,7 @@
   (progn
     (icy-mode 1)))
 
+(use-package haskell-mode)
 
 ;;_. lacarte
 (use-package lacarte
@@ -1232,10 +1234,10 @@ Symbols matching the text at point are put first in the completion list."
                  '("flag:unread AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk"
                    "Unread messages" ?u))
     (add-to-list 'mu4e-bookmarks
-                 '("date:today..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash"
+                 '("date:today..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash AND NOT maildir:/Root AND NOT maildir:/Home/Trash"
                    "Today's messages" ?t))
     (add-to-list 'mu4e-bookmarks
-                 '("date:7d..now AND NOT maildir:/Sent AND NOT flag:trashed NOT maildir:/Junk AND NOT maildir:/Trash"
+                 '("date:7d..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash AND NOT maildir:/Root AND NOT maildir:/Home/Trash"
                    "Last 7 days"?w))
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
@@ -1381,8 +1383,7 @@ Symbols matching the text at point are put first in the completion list."
 (use-package js2-mode
   :init
   (progn
-    (setq yas-extra-modes 'javascript-mode)
-    ))
+    (setq yas-extra-modes 'javascript-mode)))
 
 ;;;_. js2
 ;; (use-package js2-mode
@@ -1559,7 +1560,7 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. scheme
 (use-package geiser)
-
+(use-package quack)
 
 ;;;_. makefile-mode-hook
 (add-hook 'makefile-mode-hook
@@ -1613,7 +1614,7 @@ Symbols matching the text at point are put first in the completion list."
          :shortname "Durham")))
 (use-package emeteo)
 (use-package emeteo-modeline)
-(emeteo-modeline)
+;(emeteo-modeline)
 
 ;;;_. Smart M-x
 (use-package smex
@@ -1801,21 +1802,21 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 ;; recent files                                                                  
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to \\[find-file] a recent file"
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
 
-(use-package recentf
-  :init
-  (progn
-    (bind-key "C-x C-r" 'ido-recentf-open)
-    (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
-          recentf-max-saved-items 500                                            
-          recentf-max-menu-items 60)
-    (recentf-mode t)))
+;; (use-package recentf
+;;   :init
+;;   (progn
+;;     (bind-key "C-x C-r" 'ido-recentf-open)
+;;     (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
+;;           recentf-max-saved-items 500                                            
+;;           recentf-max-menu-items 60)
+;;     (recentf-mode t)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1900,7 +1901,7 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;http://www.emacswiki.org/emacs/tiling.el
+; http://www.emacswiki.org/emacs/tiling.el
 (use-package tiling
   :init
   (progn
