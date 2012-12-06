@@ -15,7 +15,7 @@
     use_system_font = False
     cursor_color = "#002b36"
     foreground_color = "#002b36"
-    font = Anonymous Pro 11
+    font = Anonymous Pro 10
     word_chars = "-A-Za-z0-9,./?%&#:_@"
 [layouts]
   [[default]]
