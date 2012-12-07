@@ -315,10 +315,6 @@ taskid = None
 #     os.unlink(db_filename)
 # except OSError:
 #     None
-#=======
-#db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
-#os.unlink(db_filename)
-#db_filename = "/tmp/task.sql"
 db_filename = "/:memory:"
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
