@@ -155,9 +155,8 @@ class OptionHandling( object ):
         else:
             parser.print_help()
             exit( 1 )
-
-        #print "Start Date %s" % startDate
-        #print "  End Date %s\n" % endDate
+        print "Start Date %s" % startDate
+        print "  End Date %s\n" % endDate
         return ( userName, startDate, endDate, options.output_format)
 
 def handle_year(line):
@@ -309,23 +308,12 @@ project = None
 work = None
 taskid = None
 
-<<<<<<< Updated upstream
 # db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
 # try:
 #     os.unlink(db_filename)
 # except OSError:
 #     None
 db_filename = "/:memory:"
-=======
-db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
-#db_filename = "/:memory:"
-try:
-    os.unlink(db_filename)
-except OSError:
-    None
-
-
->>>>>>> Stashed changes
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
 connection = connectionForURI(connection_string)

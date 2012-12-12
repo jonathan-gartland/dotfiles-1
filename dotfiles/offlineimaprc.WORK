@@ -33,6 +33,8 @@ realdelete = no
 # autorefresh)
 keepalive = 60
 folderfilter = lambda folder: folder not in ['Drafts']
+
+
 #cert from home
 #cert_fingerprint = 449cc3a631e562f697a2a7d08f6d285506ad2c7a
 
