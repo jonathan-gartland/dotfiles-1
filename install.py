@@ -196,6 +196,9 @@ class install(object):
     def xmonad(self, install_type):
             self._createLinks([{ 'src': 'xmonad', 'dst': '.xmonad' } ])
 
+    def awesome(self, install_type):
+            self._createLinks([{ 'src': 'awesome', 'dst': '.config/awesome' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
