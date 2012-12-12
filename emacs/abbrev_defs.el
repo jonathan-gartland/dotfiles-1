@@ -55,6 +55,8 @@
 
 (define-abbrev-table 'clojure-mode-abbrev-table '())
 
+(define-abbrev-table 'coffee-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -129,6 +131,8 @@
 
 (define-abbrev-table 'egg-log-msg-mode-abbrev-table '())
 
+(define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
+
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
@@ -158,6 +162,8 @@
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
 
@@ -199,9 +205,15 @@
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
+(define-abbrev-table 'literate-haskell-mode-abbrev-table '())
+
 (define-abbrev-table 'log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'lua-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
@@ -358,6 +370,8 @@
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
 
+(define-abbrev-table 'term-mode-abbrev-table '())
+
 (define-abbrev-table 'tetris-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
@@ -367,6 +381,8 @@
 (define-abbrev-table 'text-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-bzr-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-git-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 

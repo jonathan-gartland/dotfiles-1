@@ -10,3 +10,6 @@
 [submodule "git-prompt"]
 	path = git-prompt
 	url = https://github.com/lvv/git-prompt.git
+[submodule "vicious"]
+	path = vicious
+	url = http://git.sysphere.org/vicious

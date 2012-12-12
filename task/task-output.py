@@ -155,10 +155,8 @@ class OptionHandling( object ):
         else:
             parser.print_help()
             exit( 1 )
-
         print "Start Date %s" % startDate
         print "  End Date %s\n" % endDate
-
         return ( userName, startDate, endDate, options.output_format)
 
 def handle_year(line):
@@ -343,12 +341,36 @@ projects = dict()
 linenum = 0
 total_hours = 0
 total_days = 0
+
+task_entries = []
+
+class MDDict(dict):
+    def __init__(self, default=None):
+        self.default = default
+
+    def __getitem__(self, key):
+        if not self.has_key(key):
+            self[key] = self.default()
+        return dict.__getitem__(self, key)
+
+data = MDDict(dict)
+from collections import defaultdict
+from collections import Counter
+
+def multi_dimensions(n, type):
+  """ Creates an n-dimension dictionary where the n-th dimension is of type 'type'
+  """
+  if n<=1:
+    return type()
+  return defaultdict(lambda:multi_dimensions(n-1, type))
+
+
+data = dict()
+
 with open("task.org") as f:
     for line in f:
         linenum += 1
         line = line.strip()
-        #print "Line Number {}, Line {}".format(linenum,line)
-        handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day

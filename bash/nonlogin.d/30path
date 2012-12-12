@@ -159,3 +159,10 @@ if [ -d $HOME/.lein/bin ]; then
     export PATH=/home/skk/.lein/bin:$PATH
 fi
 
+if [ -d $HOME/.cabal/bin ]; then
+    export PATH=$PATH:~/.cabal/bin
+fi
+
+#if [ -d ~/.xmonad/bin ]; then
+#    export PATH=$PATH:~/.xmonad/bin
+#fi

@@ -137,6 +137,7 @@
          clojure-mode
          cperl-mode
          crontab-mode
+         coffee-mode
 ;         company
          csv
          csv-mode
@@ -158,11 +159,13 @@
          helm
          hexrgb
          hide-region
+         hl-line+
          js2-mode
          jshint-mode
          js2-refactor
          json
          jump-char
+         lua-mode
          lusty-explorer
          key-chord
          offlineimap
@@ -170,6 +173,8 @@
          mark-multiple
          markdown-mode
          multiple-cursors
+         multi-term
+         shell-pop
          mk-project
          mu4e
          nrepl

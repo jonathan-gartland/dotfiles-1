@@ -193,6 +193,9 @@ class install(object):
     def lilyterm(self, install_type):
             self._createLinks([{ 'src': 'lilyterm', 'dst': '.config/lilyterm' } ])
 
+    def xmonad(self, install_type):
+            self._createLinks([{ 'src': 'xmonad', 'dst': '.xmonad' } ])
+
     def zsh(self, install_type):
         self._createLinks([
         { 'src': 'zsh', 'dst' : '.zsh' },
