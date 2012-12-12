@@ -104,7 +104,7 @@ class OptionHandling( object ):
         return (options, parser)
 
     def formatDay(self, year, month, day ):
-        return "%.4d-%.2d-%.2d" % ( int( year ), int( month ), int( day ) )
+        return "%.4d-%.2d-%.2d" % ( int(year), int( month ), int( day ) )
 
     def optionHandlingAndParsing(self):
         (options, parser) = self.getOptions()
@@ -147,7 +147,7 @@ class OptionHandling( object ):
             fiscal_year = options.fiscal_year['fiscal_year'] or today.year
             fiscal_year = int( fiscal_year )
             if month >= 1 and month <= 6:
-                startDate = self.formatDay( fiscal_year-1, 07, 01 )
+                startDate = self.formatDay( fiscal_year-1, 01, 01 )
                 endDate = self.formatDay( fiscal_year, 06, 30 )
             else:
                 startDate = self.formatDay( fiscal_year, 07, 01 )
@@ -192,7 +192,7 @@ def handle_month(line):
     """
     m = re.match(r"^\*{2,2} (\w*)$", line)
     try:
-        return m.group(1)[1:]
+        return m.group(1)
     except:
         return None
 
@@ -259,8 +259,8 @@ def generate_entry_for_report(project, type, rs):
     if len(list(rs)) == 0:
         return (0,0)
 
-    if project == 'WEEKEND':
-        return (0,0)
+    # if project == 'WEEKEND':
+    #     return (0,0)
 
     taskid = None
     try:
@@ -276,7 +276,7 @@ def generate_entry_for_report(project, type, rs):
         print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total_hours, type)
     else:
         print 'Project: %s Total: %.2f (%s)' % (project, total_hours, type)
-    print table.draw() + "\n"
+    print table.draw()
 
 def generate_entry_for_task(project, type, rs):
     taskid = None
@@ -296,10 +296,10 @@ def generate_entry_for_task(project, type, rs):
     if total_hours == 0:
         return
 
-    if taskid:
-        print "\n(https://rcc.sr.unh.edu/Task/%d)\nProject: %s Total: %.2f (%s)" % (taskid, project, total_hours, type)
-    else:
-        print "\nProject: %s Total: %.2f (%s)" % (project, total_hours, type)
+    if taskid is not False:
+        print "\nhttps://rcc.sr.unh.edu/Task/%d)" % (taskid)
+
+    print "Project: %s Total: %.2f (%s)" % (project, total_hours, type)
 
     print "\n".join(buf)
 
@@ -354,6 +354,8 @@ with open("task.org") as f:
         day = handle_day(line) or day
         project = handle_project(line) or project
         work = handle_work(line) or None
+        
+        #print year, month, day, "\n"
 
         # if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
         #     work = {
@@ -395,18 +397,20 @@ for project in projects.keys():
         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
 
-print "\n\n"
-
 query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
+
+
+print "\n"
 
 days = hours = 0
 for row in rows:
     days += 1
     hours += row[1]
+    
     print "%s %s" % row
 
-print "Total Hours {} in Total Days {}, for {:.4} per Day".format(hours, days, round(hours / days, 2))
+print "Total Hours {} in Total Days {}, for {:.4} hours per Day".format(hours, days, round(hours / days, 2))
 
 query = "SELECT billable, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY billable ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
@@ -422,3 +426,12 @@ for row in rows:
 
 efficiency = 100 * (nonbillable_total / (billable_total + nonbillable_total))
 print "Efficiency {:.4}".format(efficiency)
+
+# for project in projects.keys():
+#     if outputFormat == 'Task':
+#         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+#         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+
+#     if outputFormat == 'Report':
+#         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+#         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
