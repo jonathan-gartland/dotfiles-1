@@ -1,23 +1,23 @@
-# OCM: 58797
-# EMS: 50988
-# ePIP: 59333
-# Obliterase: 60023
-# SpiceCore: 59919
-# UACC: 60035
-# MedHome: 60036
-# Bugzilla: 57720
-# HCGS: 60049
-# HealthyUNH: 60059
-# RHD_InHall: 58367
-# Housing: 59032
-# RCC: 60130
-# HealthWRQS: 60140
-# ResLife: 57996
-# NHIHPP: 60141
-# Staff Meetings: 53145
-# Redmine: 57720
 # Admissions: 60192
+# Bugzilla: 57720
+# EMS: 50988
 # EOS: 52188
+# HCGS: 60049
+# HealthWRQS: 60140
+# HealthyUNH: 60059
+# Housing: 59032
+# MedHome: 60036
+# NHIHPP: 60141
+# OCM: 58797
+# Obliterase: 60023
+# RCC: 60130
+# RHD_InHall: 58367
+# Redmine: 57720
+# ResLife: 57996
+# SpiceCore: 59919
+# Staff Meetings: 53145
+# UACC: 60035
+# ePIP: 59333
 * 2012
 ** July
 *** 01
@@ -143,40 +143,57 @@
 **** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 31
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 ** August
 *** 01
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 02
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 03
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 04
 **** WEEKEND
 *** 05
 **** WEEKEND
 *** 06
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 07
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 08
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 09
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 10
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 11
 **** WEEKEND
 *** 12
 **** WEEKEND
 *** 13
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 14
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 15
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 16
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 17
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 18
@@ -184,12 +201,18 @@
 *** 19
 **** WEEKEND
 *** 20
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 21
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
+**** OCM
 *** 22
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.
 *** 23
+**** OCM
 ***** 6 hours non-billable.  QA and testing.  Fixes documented in online Google Doc shared between Sarah and myself.  OCM Deployed!
 *** 24
 **** VACATION
@@ -642,7 +665,50 @@
 **** Redmine
 ***** .5 hours non-billable.  Restarted Redmine on kenyan.
 ** December 
-*** 01
+*** 1
 **** WEEKEND
-*** 02
+*** 2
 **** WEEKEND
+*** 3
+**** NHIHPP
+***** 2 hour billable.  Review cpu_by_user data from blackstar.  The current method of using ps to genereate the data is causing high cpu usage.  Creating a binary from python script doesn't help.  Further research leads me to the GNU Accounting Utilities http://www.gnu.org/software/acct/.  I will look into using it to generate the data.
+**** HCGS
+***** .5 hour non-billable.  Prepared for meeting with Rob.
+***** 3 hours billable.  Meet with Rob to discuss the project's status.  We discussed sending an email to the customer to re-connect.  We also discussed how we structure the sample, project and users.
+**** EMS
+***** .5 hour billable.  Responded to emails to events-dev.
+**** ResLife
+***** 1 
+*** 4
+**** HCGS
+***** 4 hours billable.  Started writing an email to Feseha Abebe-Akele.  The purpose of this email is to re-connect with HCGS as its been several weeks since I've heard from them.
+**** Bugzilla
+***** 1.75 hours non-billable.  Fixed problem with the SSL certs for the website hosting our bugzilla server.
+**** MedHome
+***** .25 hour non-billable.  Updated change the label of the button on this page (http://medical-home.unh.edu/Data/Import).
+*** 5
+**** MedHome
+***** 1 hour non-billable.  Updated query used by Year field on 'Medical Home Data Entry Form'.  Deployed change to preview and live sites.
+**** HCGS
+***** 1.5 hours billable.  Finish email and send it Feseha Abebe-Akele (and rea).
+**** ResLife
+***** 3.5 hours non-billable.  Corrected problem with Reslife.  The problem was that Reslife wasn't detecting applications from previous semesters and it wasn't offering to create Returning RA Applications.
+*** 6
+**** NHIHPP
+***** 2.5 hours billable.  Updated cpubyuser.py and cpubyuser-report.py to use data from /var/log/account/pacct (this file is created by the GNU Accounting Utilities http://www.gnu.org/software/acct/).
+**** ResLife
+***** .5 hour non-billable.  Corrected perl error when switching appfile type.  
+***** .5 hour non-billable.   Corrected problem with student not being able to accept RA position offer.  
+***** 2.5 hours non-billable.  Corrected several bugs: ResLife wasn't detecting applications previous years (in this case three years) for some students and it wasn't offering to create Returning RA Applications.  When migrating an application from New RA Application to Returning RA Application, ResLife was incorrectly setting the appfile type to 'NEW_RA'.  It should be 'Returning RA'.  This bug has been fixed.    Also, after saving the returning RA application form the student was shown a blank page -- this bug has been fixed.  The student is now shown the just saved application.
+*** 7
+**** VACATION 0 hours billable.  1 day
+*** 8
+**** WEEKEND
+*** 9
+**** WEEKEND
+*** 10
+*** 11
+**** HCGS
+***** 3 hours billable.  Responded to an email from Feseha Abebe-Akele.  Updated LoginOrRegister page.  Added content to People pages for Kelly and Moris from hcgs.unh.edu.
+**** HealthyUNH
+***** 3 hours non-billable.  Responded to an email from Stacy.  Corrected bug in menu's display of minus/plus images when opening and closing sub-menus.  Researched using alternate map layers and using feature collections.
