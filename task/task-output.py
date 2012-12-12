@@ -297,7 +297,7 @@ def generate_entry_for_task(project, type, rs):
         return
 
     if taskid:
-        print "\nProject: %s (%d) Total: %.2f (%s)" % (project, taskid, total_hours, type)
+        print "\n(https://rcc.sr.unh.edu/Task/%d)\nProject: %s Total: %.2f (%s)" % (taskid, project, total_hours, type)
     else:
         print "\nProject: %s Total: %.2f (%s)" % (project, total_hours, type)
 
@@ -310,14 +310,12 @@ project = None
 work = None
 taskid = None
 
-db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
-#db_filename = "/:memory:"
-try:
-    os.unlink(db_filename)
-except OSError:
-    None
-
-
+# db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
+# try:
+#     os.unlink(db_filename)
+# except OSError:
+#     None
+db_filename = "/:memory:"
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
 connection = connectionForURI(connection_string)
@@ -345,36 +343,12 @@ projects = dict()
 linenum = 0
 total_hours = 0
 total_days = 0
-
-task_entries = []
-
-class MDDict(dict):
-    def __init__(self, default=None):
-        self.default = default
-
-    def __getitem__(self, key):
-        if not self.has_key(key):
-            self[key] = self.default()
-        return dict.__getitem__(self, key)
-
-data = MDDict(dict)
-from collections import defaultdict
-from collections import Counter
-
-def multi_dimensions(n, type):
-  """ Creates an n-dimension dictionary where the n-th dimension is of type 'type'
-  """
-  if n<=1:
-    return type()
-  return defaultdict(lambda:multi_dimensions(n-1, type))
-
-
-data = dict()
-
 with open("task.org") as f:
     for line in f:
         linenum += 1
         line = line.strip()
+        #print "Line Number {}, Line {}".format(linenum,line)
+        handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day
@@ -421,6 +395,7 @@ for project in projects.keys():
         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
 
+print "\n\n"
 
 query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)

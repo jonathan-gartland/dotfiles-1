@@ -188,6 +188,7 @@
          ;; python-pep8
          quack
          rainbow-delimiters
+         rainbow-mode
 ;         redo
          rebox2
          rect-mark
@@ -1844,6 +1845,9 @@ activate-mark-hook"
   (progn
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(use-package rainbow-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

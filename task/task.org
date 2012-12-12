@@ -14,6 +14,10 @@
 # HealthWRQS: 60140
 # ResLife: 57996
 # NHIHPP: 60141
+# Staff Meetings: 53145
+# Redmine: 57720
+# Admissions: 60192
+# EOS: 52188
 * 2012
 ** July
 *** 01
@@ -379,7 +383,6 @@
 **** WEEKEND
 *** 07
 **** WEEKEND
-
 *** 08
 **** Obliterase
 ***** 4 hours billable.  Meet with Tucker to discuss updates to system wipe cert.  Completed updates and sent update to Tucker.
@@ -559,14 +562,14 @@
 *** 12
 **** HOLIDAY
 *** 13
-**** Events 
+**** EMS 
 ***** .5 hour billable.  Responded to emails to events-dev.
 **** OCM
 ***** .5 hour non-billable.  Created new account on HSNGDB1 for Sarah to access using Crystal Reports.
 **** HealthyUNH
 ***** 5 hour billable.  Continued working on project.
 *** 14
-**** UAC
+**** UACC
 ***** .5 hour billable.  Minor adjustment to UACC website.
 **** EOS 
 ***** .5 hour billable.  Reviewed log to determine cause of failure to send emails to some people.
@@ -577,7 +580,7 @@
 ***** 2 hour billable.  Worked on access UNH IT database over VPN.
 **** Bugzilla
 ***** 3 hours non-billable.  Installed bugzilla on new server.
-**** Events
+**** EMS
 ***** .5 hour billable.  Responded to emails to events-dev.
 **** Admissions
 ***** .5 hour billable.  Responded to request via email.
@@ -602,9 +605,9 @@
 ***** .5 hour billable.  Wiped data in admissions database containing SSNs.
 *** 21
 **** OCM
-***** 4 hours non-billable.  Fixed bug in creation of PDF for read-only incidents.  Fixed bug with incident clone feature.  Worked on fixing bugs when adding sanctions to hearing decision (with templates).  Fixed bugs with recordsets for move-out dates and alt. sanction program.  Fixed access checks for move-out dates and alt. sanction program.  Added field to complainant sanction recordset.
+***** 5 hours non-billable.  Fixed bug in creation of PDF for read-only incidents.  Fixed bug with incident clone feature.  Worked on fixing bugs when adding sanctions to hearing decision (with templates).  Fixed bugs with recordsets for move-out dates and alt. sanction program.  Fixed access checks for move-out dates and alt. sanction program.  Added field to complainant sanction recordset.
 **** Admissions
-***** .5 hour billable.  Meet with Bob and Patrick to discuss wiping of backups contains SSNs.
+***** .5 hour billable.  Met with Bob and Patrick to discuss wiping of backups contains SSNs.
 *** 22
 **** HOLIDAY
 *** 23
@@ -612,4 +615,34 @@
 *** 24
 **** WEEKEND
 *** 25
+**** WEEKEND
+*** 26
+**** HealthyUNH
+***** 6 hour billable.  Cleaned up import data.  Added ability to "page" through multiple feature pop-ups.  Added display of all feature pop-ups at a given location.
+*** 27
+**** OCM
+***** 4 hours non-billable.  Worked to debug a problem when using ckeditor within the hearing decision wizard.
+**** HealthyUNH
+***** 2 hour billable.  Updated locations, corrected minor bug with display of plus/minus icons.
+*** 28
+**** VACATION
+***** 0 hours billable.  1/2 day.
+**** OCM
+***** 3 hours non-billable.  Worked to debug a problem when using ckeditor within the hearing decision wizard.
+*** 29
+**** Staff Meetings 
+***** 2 hours non-billable.  Quarterly All Staff Meeting.
+**** OCM
+***** 3 hours non-billable.  Fixed bug between jWizard and ckeditor.  Wrote and sent update to Sarah.  Wrote email containing description new billable work.
+*** 30
+**** Housing
+***** 3 hour billable.  Worked on accessing ECG database over UNH VPN for Housing-Online.
+**** OCM
+***** 2 hours non-billable.  Corrected bug when setting completed date.  Updated how violations are saved.
+**** Redmine
+***** .5 hours non-billable.  Restarted Redmine on kenyan.
+** December 
+*** 01
+**** WEEKEND
+*** 02
 **** WEEKEND
