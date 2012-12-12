@@ -130,6 +130,7 @@
          ;; bookmark+-mac
          ;; bookmark+-lit
          boxquote
+         buffer-move
          ; breadcrumb
          calfw
          clevercss
@@ -201,11 +202,13 @@
          sunrise-x-modeline
          sunrise-x-tree
          tomorrow-night-paradise-theme
+         tiling
          tail
          xclip
          yasnippet
          whole-line-or-region
          zencoding-mode
+         window-number
          wgrep
          workgroups)    
        (mapcar 'el-get-source-name el-get-sources)))
@@ -325,6 +328,12 @@
   (progn
     (setq w3m-use-cookies t)
     ))
+
+
+(use-package window-number
+  :init
+  (progn
+    (window-number-mode)))
 
 ;;;_. wgrep
 (use-package wgrep)
@@ -568,9 +577,6 @@
   :config
   (progn
     (global-set-key [?\M-`] 'lacarte-execute-menu-command)))
-
-;;_. lacarte
-(use-package lusty-explorer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://emacsrocks.com/e10.html
@@ -1178,7 +1184,7 @@ Symbols matching the text at point are put first in the completion list."
      ; set mu4e as mail-user-agent
      mail-user-agent 'mu4e-user-agent
      
-     mu4e-update-interval 30
+     mu4e-update-interval 15
 
      ;; when you want to use some external command for text->html conversion,
      ;; i.e., the 'html2text' program
@@ -1765,11 +1771,15 @@ activate-mark-hook"
 ;;;_. lusty explorer
 
 ; http://www.emacswiki.org/emacs/LustyExplorer
-(use-package lusty-explorer
-  :init 
-  (progn
-    (bind-key "C-x C-f" 'lusty-file-explorer)
-    (bind-key "C-x b" 'lusty-buffer-explorer)))
+;; (use-package lusty-explorer
+;;   :init 
+;;   (progn
+;;     (bind-key "C-x C-f" 'lusty-file-explorer)
+;;     (bind-key "C-x b" 'lusty-buffer-explorer)))
+
+(iswitchb-mode t)
+(bind-key "C-x b" 'iswitchb-buffer)
+
   ;; overrride the normal file-opening, buffer switching
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -1912,26 +1922,32 @@ activate-mark-hook"
     ;; Windows related operations
     ;; Split & Resize
     (bind-key "C-x |" 'split-window-horizontally)
-    (bind-key "C-x _" 'split-window-vertically)
+    (bind-key "C-x _" 'split-kfwindow-vertically)
     (bind-key "C-{" 'shrink-window-horizontally)
     (bind-key "C-}" 'enlarge-window-horizontally)
     (bind-key "C-^" 'enlarge-window-verticially)
     ;; Navgating: Windmove uses C-<up> etc.
-    (bind-key "C-<up>" '  windmove-up)
-    (bind-key "C-<down>" 'windmove-down)
-    (bind-key "C-<right>" 'windmove-right)
-    (bind-key "C-<left>" 'windmove-left)
-    ;; Swap buffers: M-<up> etc.
-    (bind-key "M-<up>" '  buf-move-up)
-    (bind-key "M-<down>" 'buf-move-down)
-    (bind-key "M-<right>" 'buf-move-right)
-    (bind-key "M-<left>" 'buf-move-left)
+    (bind-key "C-c <up>" '  windmove-up)
+    (bind-key "C-c <down>" 'windmove-down)
+    (bind-key "C-c <right>" 'windmove-right)
+    (bind-key "C-c <left>" 'windmove-left)
     ;; Tile
     (bind-key "C-\\" 'tiling-cycle) ; accepts prefix number
     (bind-key "C-M-<up>" 'tiling-tile-up)
     (bind-key "C-M-<down>" 'tiling-tile-down)
     (bind-key "C-M-<right>" 'tiling-tile-right)
     (bind-key "C-M-<left>" 'tiling-tile-left)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/tiling.el
+(use-package buffer-move
+  :init
+  (progn
+    ;; Swap buffers: M-<up> etc.
+    (bind-key "M-<up>" 'buf-move-up)
+    (bind-key "M-<down>" 'buf-move-down)
+    (bind-key "M-<right>" 'buf-move-right)
+    (bind-key "M-<left>" 'buf-move-left)))
 
 ;;;_. paredit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
