@@ -177,11 +177,13 @@
          shell-pop
          mk-project
          mu4e
+         newsticker-notify
          nrepl
          notify
          package
          paredit
          point-stack
+         pomodoro
 ;         powerline2
 ;         python
 ;         python-mode
@@ -325,8 +327,14 @@
 (add-hook 'sepia-mode-hook 'pretty-symbols-mode)
 (add-hook 'emacs-lisp-mode-hook 'pretty-symbols-mode)
 (add-hook 'cperl-mode-hook 'pretty-symbols-mode)
-(add-hook 'js-mode 'pretty-symbols-mode)
+(add-hook 'js2-mode 'pretty-symbols-mode)
+(add-hook 'javascript-mode 'pretty-symbols-mode)
 (add-hook 'python-mode 'pretty-mode)
+
+
+(add-to-list 'newsticker-url-list '(("Planet Emacs" "http://planet.emacsen.org/atom.xml" nil 3600 nil)))
+(newsticker-start-ticker)
+;(use-package newsticker-notify)
 
 (use-package emacs-w3m
   :init
@@ -1256,10 +1264,13 @@ Symbols matching the text at point are put first in the completion list."
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
 )
-;(use-package org-mu4e)
 
-;; (setq mu4e-compose-complete-only-person t)
-;; (setq mu4e-compose-complete-ignore-address-regexp t)
+(use-package org-mu4e
+  :progn
+  (setq org-mu4e-convert-to-html t))
+
+;(setq mu4e-compose-complete-only-person t)
+;(setq mu4e-compose-complete-ignore-address-regexp t)
 
 ;;;_. sqlplus
 (use-package sqlplus)
