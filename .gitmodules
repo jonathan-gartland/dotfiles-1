@@ -13,3 +13,9 @@
 [submodule "vicious"]
 	path = vicious
 	url = http://git.sysphere.org/vicious
+[submodule "s.el"]
+	path = s.el
+	url = git://github.com/magnars/s.el.git
+[submodule "dash.el"]
+	path = dash.el
+	url = git://github.com/magnars/dash.el.git

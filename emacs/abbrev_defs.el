@@ -211,9 +211,7 @@
 
 (define-abbrev-table 'log-view-mode-abbrev-table '())
 
-(define-abbrev-table 'lua-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'lua-mode-abbrev-table '())
 
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
