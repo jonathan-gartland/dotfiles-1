@@ -332,8 +332,8 @@
 (add-hook 'python-mode 'pretty-mode)
 
 
-(add-to-list 'newsticker-url-list '(("Planet Emacs" "http://planet.emacsen.org/atom.xml" nil 3600 nil)))
-(newsticker-start-ticker)
+;(add-to-list 'newsticker-url-list '(("Planet Emacs" "http://planet.emacsen.org/atom.xml" nil 3600 nil)))
+;(newsticker-start-ticker)
 ;(use-package newsticker-notify)
 
 (use-package emacs-w3m
