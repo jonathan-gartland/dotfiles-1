@@ -34,8 +34,7 @@ realdelete = no
 keepalive = 60
 folderfilter = lambda folder: folder not in ['Drafts']
 
-
-#cert from home
+# work cert
 #cert_fingerprint = 449cc3a631e562f697a2a7d08f6d285506ad2c7a
 
 [Account Home]
@@ -88,6 +87,9 @@ ssl = yes
 type = IMAP
 remotehost = knight.cx
 remoteuser = skk
+# work cert
+#cert_fingerprint = 9b48f9e7c907a536a2c0eb562d16c900c5464358
+
 #remotepasseval = get_authinfo_password("knight.cx", "steven@knight.cx", 993, "work")
 maxconnections = 3
 realdelete = no
