@@ -1,5 +1,3 @@
-personal_ws-1.1 en 87 
-py
 PDA
 HCGS
 godaddy
@@ -26,6 +24,7 @@ usr
 SpiceCore
 QueryRecordsReturned
 sqlalchemy
+Feniger
 recordset
 Obliterase
 HealthyUNH
@@ -39,15 +38,15 @@ execfile
 ExampleModule
 GpsTools
 https
-dll
 jjfoerch
+dll
 DLLs
 getenv
 MedHome
 WMS
+FW
 rootDir
 downloadAs
-FW
 WeightTracking
 unselect
 RCC
@@ -60,10 +59,12 @@ yyyy
 QMainWindow
 ModifedAfter
 MAAP
+filenames
 html
 eSCAT
 QueryLimitRecords
 Google
+Uliasz
 CRMS
 hostname
 LOV
@@ -86,3 +87,4 @@ ckeditor
 NHIHPP
 CrashReportSchema
 jQuery
+py

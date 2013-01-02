@@ -1,5 +1,3 @@
-
-
 ! ! to match gnome-terminal "Linux console" scheme
 ! ! foreground/background
 ! URxvt*background: #000000
@@ -30,10 +28,10 @@
 ! URxvt.color15 : #FFFFFF\
 
 ! set font
-URxvt*font: xft:Anonymous Pro:pixelsize=15
+!URxvt*font: "xft:Consolas"
 
 ! change letter spacing
-URxvt*letterSpace: -1
+! URxvt*letterSpace: -1
 
 ! enable links 
 URxvt.perl-ext-common : default,matcher

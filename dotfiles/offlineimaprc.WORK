@@ -9,7 +9,7 @@ pythonfile = ~/.offlineimap.py
 localrepository = LocalWork
 remoterepository = RemoteWork
 # Minutes between syncs
-autorefresh = .125
+autorefresh = .5
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
@@ -34,11 +34,15 @@ realdelete = no
 keepalive = 60
 folderfilter = lambda folder: folder not in ['Drafts']
 
+
+#cert from home
+#cert_fingerprint = 449cc3a631e562f697a2a7d08f6d285506ad2c7a
+
 [Account Home]
 localrepository = LocalHome
 remoterepository = RemoteHome
 # Minutes between syncs
-autorefresh = .25
+autorefresh = .5
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10
@@ -69,7 +73,7 @@ folderfilter = lambda folder: folder not in ['Drafts']
 localrepository = LocalHomeAtWork
 remoterepository = RemoteHomeAtWork
 # Minutes between syncs
-autorefresh = .25
+autorefresh = 2
 # Number of quick-syncs between autorefreshes. Quick-syncs do not update if the
 # only changes were to IMAP flags
 quick = 10

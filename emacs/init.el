@@ -130,12 +130,14 @@
          ;; bookmark+-mac
          ;; bookmark+-lit
          boxquote
+         buffer-move
          ; breadcrumb
          calfw
          clevercss
          clojure-mode
          cperl-mode
          crontab-mode
+         coffee-mode
 ;         company
          csv
          csv-mode
@@ -143,7 +145,7 @@
 ;         dictionary
          dict
          durendal
-         edit-server
+         ;edit-server
          expand-region
          emeteo
          flymake-perlcritic
@@ -153,14 +155,17 @@
          geiser
          google-maps
          google-weather
+         haskell-mode
          helm
          hexrgb
          hide-region
+         hl-line+
          js2-mode
          jshint-mode
          js2-refactor
          json
          jump-char
+         lua-mode
          lusty-explorer
          key-chord
          offlineimap
@@ -168,13 +173,17 @@
          mark-multiple
          markdown-mode
          multiple-cursors
+         multi-term
+         shell-pop
          mk-project
          mu4e
+         newsticker-notify
          nrepl
          notify
          package
          paredit
          point-stack
+         pomodoro
 ;         powerline2
 ;         python
 ;         python-mode
@@ -182,6 +191,7 @@
          ;; python-pep8
          quack
          rainbow-delimiters
+         rainbow-mode
 ;         redo
          rebox2
          rect-mark
@@ -199,11 +209,13 @@
          sunrise-x-modeline
          sunrise-x-tree
          tomorrow-night-paradise-theme
+         tiling
          tail
          xclip
          yasnippet
          whole-line-or-region
          zencoding-mode
+         window-number
          wgrep
          workgroups)    
        (mapcar 'el-get-source-name el-get-sources)))
@@ -315,14 +327,26 @@
 (add-hook 'sepia-mode-hook 'pretty-symbols-mode)
 (add-hook 'emacs-lisp-mode-hook 'pretty-symbols-mode)
 (add-hook 'cperl-mode-hook 'pretty-symbols-mode)
-(add-hook 'js-mode 'pretty-symbols-mode)
+(add-hook 'js2-mode 'pretty-symbols-mode)
+(add-hook 'javascript-mode 'pretty-symbols-mode)
 (add-hook 'python-mode 'pretty-mode)
+
+
+;(add-to-list 'newsticker-url-list '(("Planet Emacs" "http://planet.emacsen.org/atom.xml" nil 3600 nil)))
+;(newsticker-start-ticker)
+;(use-package newsticker-notify)
 
 (use-package emacs-w3m
   :init
   (progn
     (setq w3m-use-cookies t)
     ))
+
+
+(use-package window-number
+  :init
+  (progn
+    (window-number-mode)))
 
 ;;;_. wgrep
 (use-package wgrep)
@@ -371,11 +395,11 @@
 (global-set-key [XF86Back] 'flymake-goto-prev-error)
 (global-set-key [XF86Forward] 'flymake-goto-next-error)
 
-;;;_. edit-server
-(use-package edit-server
-  :init
-  (progn
-    (edit-server-start)))
+;; ;;;_. edit-server
+;; (use-package edit-server
+;;   :init
+;;   (progn
+;;     (edit-server-start)))
 
 ;;;_. ibuffer
 (require 'ibuffer) 
@@ -559,15 +583,13 @@
   (progn
     (icy-mode 1)))
 
+(use-package haskell-mode)
 
 ;;_. lacarte
 (use-package lacarte
   :config
   (progn
     (global-set-key [?\M-`] 'lacarte-execute-menu-command)))
-
-;;_. lacarte
-(use-package lusty-explorer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://emacsrocks.com/e10.html
@@ -1175,7 +1197,7 @@ Symbols matching the text at point are put first in the completion list."
      ; set mu4e as mail-user-agent
      mail-user-agent 'mu4e-user-agent
      
-     mu4e-update-interval 30
+     mu4e-update-interval 15
 
      ;; when you want to use some external command for text->html conversion,
      ;; i.e., the 'html2text' program
@@ -1232,20 +1254,23 @@ Symbols matching the text at point are put first in the completion list."
                  '("flag:unread AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk"
                    "Unread messages" ?u))
     (add-to-list 'mu4e-bookmarks
-                 '("date:today..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash"
+                 '("date:today..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash AND NOT maildir:/Root AND NOT maildir:/Home/Trash"
                    "Today's messages" ?t))
     (add-to-list 'mu4e-bookmarks
-                 '("date:7d..now AND NOT maildir:/Sent AND NOT flag:trashed NOT maildir:/Junk AND NOT maildir:/Trash"
+                 '("date:7d..now AND NOT maildir:/Sent AND NOT flag:trashed AND NOT maildir:/Junk AND NOT maildir:/Trash AND NOT maildir:/Root AND NOT maildir:/Home/Trash"
                    "Last 7 days"?w))
     (add-to-list 'mu4e-bookmarks '("flag:unread" "Unread messages (ALL)" ?U))
     (add-to-list 'mu4e-bookmarks '("date:today..now" "Today's messages (ALL)" ?T))
     (add-to-list 'mu4e-bookmarks '("date:7d..now" "Last 7 days (ALL)" ?W))
     (global-set-key [XF86Mail] 'mu4e))
 )
-;(use-package org-mu4e)
 
-;; (setq mu4e-compose-complete-only-person t)
-;; (setq mu4e-compose-complete-ignore-address-regexp t)
+(use-package org-mu4e
+  :progn
+  (setq org-mu4e-convert-to-html t))
+
+;(setq mu4e-compose-complete-only-person t)
+;(setq mu4e-compose-complete-ignore-address-regexp t)
 
 ;;;_. sqlplus
 (use-package sqlplus)
@@ -1381,8 +1406,7 @@ Symbols matching the text at point are put first in the completion list."
 (use-package js2-mode
   :init
   (progn
-    (setq yas-extra-modes 'javascript-mode)
-    ))
+    (setq yas-extra-modes 'javascript-mode)))
 
 ;;;_. js2
 ;; (use-package js2-mode
@@ -1559,7 +1583,7 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. scheme
 (use-package geiser)
-
+(use-package quack)
 
 ;;;_. makefile-mode-hook
 (add-hook 'makefile-mode-hook
@@ -1613,7 +1637,7 @@ Symbols matching the text at point are put first in the completion list."
          :shortname "Durham")))
 (use-package emeteo)
 (use-package emeteo-modeline)
-(emeteo-modeline)
+;(emeteo-modeline)
 
 ;;;_. Smart M-x
 (use-package smex
@@ -1763,11 +1787,15 @@ activate-mark-hook"
 ;;;_. lusty explorer
 
 ; http://www.emacswiki.org/emacs/LustyExplorer
-(use-package lusty-explorer
-  :init 
-  (progn
-    (bind-key "C-x C-f" 'lusty-file-explorer)
-    (bind-key "C-x b" 'lusty-buffer-explorer)))
+;; (use-package lusty-explorer
+;;   :init 
+;;   (progn
+;;     (bind-key "C-x C-f" 'lusty-file-explorer)
+;;     (bind-key "C-x b" 'lusty-buffer-explorer)))
+
+(iswitchb-mode t)
+(bind-key "C-x b" 'iswitchb-buffer)
+
   ;; overrride the normal file-opening, buffer switching
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -1801,21 +1829,21 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 ;; recent files                                                                  
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to \\[find-file] a recent file"
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
 
-(use-package recentf
-  :init
-  (progn
-    (bind-key "C-x C-r" 'ido-recentf-open)
-    (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
-          recentf-max-saved-items 500                                            
-          recentf-max-menu-items 60)
-    (recentf-mode t)))
+;; (use-package recentf
+;;   :init
+;;   (progn
+;;     (bind-key "C-x C-r" 'ido-recentf-open)
+;;     (setq recentf-save-file "~/.emacs.d/.cache/recent-files"
+;;           recentf-max-saved-items 500                                            
+;;           recentf-max-menu-items 60)
+;;     (recentf-mode t)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1837,6 +1865,9 @@ activate-mark-hook"
   (progn
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(use-package rainbow-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1900,33 +1931,39 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;http://www.emacswiki.org/emacs/tiling.el
+; http://www.emacswiki.org/emacs/tiling.el
 (use-package tiling
   :init
   (progn
     ;; Windows related operations
     ;; Split & Resize
     (bind-key "C-x |" 'split-window-horizontally)
-    (bind-key "C-x _" 'split-window-vertically)
+    (bind-key "C-x _" 'split-kfwindow-vertically)
     (bind-key "C-{" 'shrink-window-horizontally)
     (bind-key "C-}" 'enlarge-window-horizontally)
     (bind-key "C-^" 'enlarge-window-verticially)
     ;; Navgating: Windmove uses C-<up> etc.
-    (bind-key "C-<up>" '  windmove-up)
-    (bind-key "C-<down>" 'windmove-down)
-    (bind-key "C-<right>" 'windmove-right)
-    (bind-key "C-<left>" 'windmove-left)
-    ;; Swap buffers: M-<up> etc.
-    (bind-key "M-<up>" '  buf-move-up)
-    (bind-key "M-<down>" 'buf-move-down)
-    (bind-key "M-<right>" 'buf-move-right)
-    (bind-key "M-<left>" 'buf-move-left)
+    (bind-key "C-c <up>" '  windmove-up)
+    (bind-key "C-c <down>" 'windmove-down)
+    (bind-key "C-c <right>" 'windmove-right)
+    (bind-key "C-c <left>" 'windmove-left)
     ;; Tile
     (bind-key "C-\\" 'tiling-cycle) ; accepts prefix number
     (bind-key "C-M-<up>" 'tiling-tile-up)
     (bind-key "C-M-<down>" 'tiling-tile-down)
     (bind-key "C-M-<right>" 'tiling-tile-right)
     (bind-key "C-M-<left>" 'tiling-tile-left)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; http://www.emacswiki.org/emacs/tiling.el
+(use-package buffer-move
+  :init
+  (progn
+    ;; Swap buffers: M-<up> etc.
+    (bind-key "M-<up>" 'buf-move-up)
+    (bind-key "M-<down>" 'buf-move-down)
+    (bind-key "M-<right>" 'buf-move-right)
+    (bind-key "M-<left>" 'buf-move-left)))
 
 ;;;_. paredit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

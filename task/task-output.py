@@ -13,6 +13,7 @@ from time import *
 from datetime import datetime, date
 import calendar
 from contextlib import contextmanager
+import json
 
 project_taskid_mapping = dict()
 
@@ -103,7 +104,7 @@ class OptionHandling( object ):
         return (options, parser)
 
     def formatDay(self, year, month, day ):
-        return "%.4d-%.2d-%.2d" % ( int( year ), int( month ), int( day ) )
+        return "%.4d-%.2d-%.2d" % ( int(year), int( month ), int( day ) )
 
     def optionHandlingAndParsing(self):
         (options, parser) = self.getOptions()
@@ -134,19 +135,19 @@ class OptionHandling( object ):
             year = options.month['year'] or today.year
             month = options.month['month'] or today.month
             (weekday, length) = calendar.monthrange( int(year), int(month) )
-            startDate = self.formatDay( year, month, 01 )
+            startDate = self.formatDay( year, month, 1 )
             endDate = self.formatDay( year, month, length )
 
         elif options.year:
             year = options.year['year'] or today.year
             year = int( year )
-            startDate = self.formatDay( year, 01, 01 )
+            startDate = self.formatDay( year, 1, 1 )
             endDate = self.formatDay( year, 12, 31 )
         elif options.fiscal_year:
             fiscal_year = options.fiscal_year['fiscal_year'] or today.year
             fiscal_year = int( fiscal_year )
             if month >= 1 and month <= 6:
-                startDate = self.formatDay( fiscal_year-1, 07, 01 )
+                startDate = self.formatDay( fiscal_year-1, 01, 01 )
                 endDate = self.formatDay( fiscal_year, 06, 30 )
             else:
                 startDate = self.formatDay( fiscal_year, 07, 01 )
@@ -154,10 +155,8 @@ class OptionHandling( object ):
         else:
             parser.print_help()
             exit( 1 )
-
         print "Start Date %s" % startDate
         print "  End Date %s\n" % endDate
-
         return ( userName, startDate, endDate, options.output_format)
 
 def handle_year(line):
@@ -258,8 +257,8 @@ def generate_entry_for_report(project, type, rs):
     if len(list(rs)) == 0:
         return (0,0)
 
-    if project == 'WEEKEND':
-        return (0,0)
+    # if project == 'WEEKEND':
+    #     return (0,0)
 
     taskid = None
     try:
@@ -275,7 +274,7 @@ def generate_entry_for_report(project, type, rs):
         print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total_hours, type)
     else:
         print 'Project: %s Total: %.2f (%s)' % (project, total_hours, type)
-    print table.draw() + "\n"
+    print table.draw()
 
 def generate_entry_for_task(project, type, rs):
     taskid = None
@@ -283,9 +282,9 @@ def generate_entry_for_task(project, type, rs):
         taskid = project_taskid_mapping[project]
     except KeyError:
         pass
-    
+
     total_hours = 0
-    
+
     buf = []
 
     for x in rs:
@@ -295,10 +294,10 @@ def generate_entry_for_task(project, type, rs):
     if total_hours == 0:
         return
 
-    if taskid:
-        print "\nProject: %s (%d) Total: %.2f (%s)" % (project, taskid, total_hours, type)
-    else:
-        print "\nProject: %s Total: %.2f (%s)" % (project, total_hours, type)
+    if taskid is not False:
+        print "\nhttps://rcc.sr.unh.edu/Task/%d)" % (taskid)
+
+    print "Project: %s Total: %.2f (%s)" % (project, total_hours, type)
 
     print "\n".join(buf)
 
@@ -310,8 +309,10 @@ work = None
 taskid = None
 
 # db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
-# os.unlink(db_filename)
-#db_filename = "/tmp/task.sql"
+# try:
+#     os.unlink(db_filename)
+# except OSError:
+#     None
 db_filename = "/:memory:"
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
@@ -340,17 +341,43 @@ projects = dict()
 linenum = 0
 total_hours = 0
 total_days = 0
+
+task_entries = []
+
+class MDDict(dict):
+    def __init__(self, default=None):
+        self.default = default
+
+    def __getitem__(self, key):
+        if not self.has_key(key):
+            self[key] = self.default()
+        return dict.__getitem__(self, key)
+
+data = MDDict(dict)
+from collections import defaultdict
+from collections import Counter
+
+def multi_dimensions(n, type):
+  """ Creates an n-dimension dictionary where the n-th dimension is of type 'type'
+  """
+  if n<=1:
+    return type()
+  return defaultdict(lambda:multi_dimensions(n-1, type))
+
+
+data = dict()
+
 with open("task.org") as f:
     for line in f:
         linenum += 1
         line = line.strip()
-        #print "Line Number {}, Line {}".format(linenum,line)
-        handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day
         project = handle_project(line) or project
         work = handle_work(line) or None
+        
+        #print year, month, day, "\n"
 
         # if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
         #     work = {
@@ -387,22 +414,25 @@ for project in projects.keys():
     if outputFormat == 'Task':
         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
-        
+
     if outputFormat == 'Report':
         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
 
-
 query = "SELECT date, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY date ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
+
+
+print "\n"
 
 days = hours = 0
 for row in rows:
     days += 1
     hours += row[1]
+    
     print "%s %s" % row
 
-print "Total Hours {} in Total Days {}, for {:.4} per Day".format(hours, days, round(hours / days, 2))
+print "Total Hours {} in Total Days {}, for {:.4} hours per Day".format(hours, days, round(hours / days, 2))
 
 query = "SELECT billable, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY billable ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
@@ -418,3 +448,12 @@ for row in rows:
 
 efficiency = 100 * (nonbillable_total / (billable_total + nonbillable_total))
 print "Efficiency {:.4}".format(efficiency)
+
+# for project in projects.keys():
+#     if outputFormat == 'Task':
+#         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+#         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+
+#     if outputFormat == 'Report':
+#         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))
+#         generate_entry_for_report(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']))

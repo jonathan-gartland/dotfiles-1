@@ -8,6 +8,7 @@
  '(auto-revert-interval 1)
  '(background-color "#fdf6e3")
  '(background-mode light)
+ '(blink-cursor-mode nil)
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(bookmark-save-flag t)
  '(browse-url-browser-function (quote browse-url-generic))
@@ -27,6 +28,7 @@
  '(flymake-log-level 0)
  '(flymake-no-changes-timeout 0.5)
  '(flymake-perlcritic-severity 1)
+ '(font-use-system-font nil)
  '(foreground-color "#657b83")
  '(icicle-mode t)
  '(inhibit-startup-screen t)
@@ -41,6 +43,7 @@
  '(nxml-outline-child-indent 2)
  '(offlineimap-command "offlineimap -u machineui")
  '(printer-name "HP_Color_LaserJet_3800")
+ '(quack-global-menu-p nil)
  '(regex-tool-backend (quote perl))
  '(scroll-bar-mode nil)
  '(send-mail-function (quote sendmail-send-it))
@@ -59,4 +62,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Anonymous Pro" :foundry "unknown" :slant normal :weight normal :height 99 :width normal))))
  '(which-func ((t (:foreground "blue")))))
