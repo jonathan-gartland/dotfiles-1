@@ -747,3 +747,15 @@
 ***** 2 hours billable.  Updated recordset to include timestamp column and user-selectable filter.  Worked to determine to if v_picked_rooms is correct.
 **** HealthyUNH
 ***** 2 hours billable.  Updated style of feature on map.  Spent time determing the best colors to use best on customer's request.
+* 2013
+** January
+*** 01
+**** HOLIDAY
+*** 02
+**** RCC
+***** .5 hour non-billable.  Finished setting up kosh.
+**** Housing
+***** 4.5 hours billable.  Worked on generation of temporary eligibility codes.  Created pl/sql functions to generate the codes.  Updated UploadTable to set the temproary codes.
+***** .5 hour billable.  Continued work on updates to chosen rooms report.
+**** OPAL
+***** .5 hour non-billable.  Spoke with Doug on the phone.  Updated password for opal on foghorn.  Updated user/group for ccg web site on fudd.
