@@ -1954,6 +1954,9 @@ activate-mark-hook"
     (bind-key "C-M-<right>" 'tiling-tile-right)
     (bind-key "C-M-<left>" 'tiling-tile-left)))
 
+(require 'windmove)
+(windmove-default-keybindings 'shift)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; http://www.emacswiki.org/emacs/tiling.el
 (use-package buffer-move
