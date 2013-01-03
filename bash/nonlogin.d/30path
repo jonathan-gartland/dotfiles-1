@@ -135,7 +135,7 @@ if [ -n $JAVA_HOME ]; then
 fi
 
 if [ -n /opt/android-sdk-linux ]; then
-    export PATH="/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools:$PATH"
+    export PATH="$PATH:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools"
 fi
 
 export MU4E_DIR="$HOME/dot-files-forest/emacs/el-get/mu4e"
@@ -161,6 +161,13 @@ fi
 
 if [ -d $HOME/.cabal/bin ]; then
     export PATH=$PATH:~/.cabal/bin
+fi
+
+export PYTHONUSERBASE="$HOME/.pip"
+if [ -d $HOME/.pip/bin ]; then
+    export PATH=$PATH:~/.pip/bin
+else 
+    mkdir -p $HOME/.pip/bin
 fi
 
 if [ -e $(which ruby) ]; then 
