@@ -220,10 +220,10 @@
 
 (package-initialize)
 
-(unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
-             (file-exists-p "~/.emacs.d/elpa/archives/gnu")
-             (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
-  (package-refresh-contents))
+;; (unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
+;;              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
+;;              (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
+;;   (package-refresh-contents))
 
 (defun packages-install (&rest packages)
   (mapc (lambda (package)
@@ -237,9 +237,6 @@
   (package-initialize)
   (delete-other-windows))
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
 
 ;; Install extensions if they're missing
 (defun init--install-packages ()
@@ -297,7 +294,7 @@
   (when (file-regular-p file)
     (load file)))
 
-;; ;; Fill column indicator
+;; ;; ;; Fill column indicator
 (require 'fill-column-indicator)
 (setq fci-rule-color "#111122")
 
@@ -334,6 +331,10 @@
 
 (when (file-exists-p user-emacs-directory)
   (mapc 'load (directory-files user-emacs-directory t "^setup_.*el$")))
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 
 ;(emacs-init-time)
