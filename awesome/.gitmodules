@@ -1,9 +1,0 @@
-[submodule "vicious"]
-	path = vicious
-	url = http://git.sysphere.org/vicious
-[submodule "delightful"]
-	path = delightful
-	url = git://scm.solitudo.net/delightful.git
-[submodule "awesome-themes"]
-	path = awesome-themes
-	url = git://github.com/mikar/awesome-themes.git
