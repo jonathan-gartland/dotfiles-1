@@ -295,7 +295,7 @@ def generate_entry_for_task(project, type, rs):
         return
 
     if taskid is not False:
-        print "\nhttps://rcc.sr.unh.edu/Task/%d)" % (taskid)
+        print "\nhttps://rcc.sr.unh.edu/Task/%s)" % (taskid)
 
     print "Project: %s Total: %.2f (%s)" % (project, total_hours, type)
 
@@ -376,7 +376,7 @@ with open("task.org") as f:
         day = handle_day(line) or day
         project = handle_project(line) or project
         work = handle_work(line) or None
-        
+
         #print year, month, day, "\n"
 
         # if project == 'VACATION' or project == 'WEEKEND' or project == 'HOLIDAY':
@@ -429,7 +429,7 @@ days = hours = 0
 for row in rows:
     days += 1
     hours += row[1]
-    
+
     print "%s %s" % row
 
 print "Total Hours {} in Total Days {}, for {:.4} hours per Day".format(hours, days, round(hours / days, 2))
