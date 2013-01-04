@@ -1,3 +1,0 @@
-#! /bin/sh
-cd /usr/share/conkygooglecalendar/
-$PYTHONPATH /usr/bin/python /usr/share/conkygooglecalendar/conkyGoogleCalendar.py "$@"

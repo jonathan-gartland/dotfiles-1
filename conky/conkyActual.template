@@ -1,4 +1,0 @@
-Ville: {--datatype=CN }
-Current: {--locale=es --datatype=CC --startday=0 }
-Tonight: {--locale=es --datatype=CC --night --startday=0}
-Min/Max: {--datatype=LT --startday=0}/{--datatype=HT} - Precipitation:{--datatype=PC --startday=0} 
