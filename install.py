@@ -181,23 +181,11 @@ class install(object):
             for line in fileinput.input(input):
                 output.write(line.replace("$HOME", os.environ['HOME']))
 
-    def qtile(self, install_type):
-            self._createLinks([{ 'src': 'qtile', 'dst': '.config/qtile' } ])
-
     def fonts(self, install_type):
             self._createLinks([{ 'src': 'fonts', 'dst': '.fonts' } ])
 
     def terminator(self, install_type):
             self._createLinks([{ 'src': 'terminator', 'dst': '.config/terminator' } ])
-
-    def lilyterm(self, install_type):
-            self._createLinks([{ 'src': 'lilyterm', 'dst': '.config/lilyterm' } ])
-
-    def xmonad(self, install_type):
-            self._createLinks([{ 'src': 'xmonad', 'dst': '.xmonad' } ])
-
-    def awesome(self, install_type):
-            self._createLinks([{ 'src': 'awesome', 'dst': '.config/awesome' } ])
 
     def zsh(self, install_type):
         self._createLinks([
