@@ -187,13 +187,6 @@ class install(object):
     def terminator(self, install_type):
             self._createLinks([{ 'src': 'terminator', 'dst': '.config/terminator' } ])
 
-    def zsh(self, install_type):
-        self._createLinks([
-        { 'src': 'zsh', 'dst' : '.zsh' },
-        { 'src': 'zsh/zshrc', 'dst': '.zshrc' },
-        { 'src': 'zsh/zprofile', 'dst': '.zprofile' },
-        { 'src': 'zsh/zlogout', 'dst': '.zlogout' }])
-
     def bash(self, install_type):
         self._createLinks([
         { 'src': 'bash', 'dst' : '.bash' },
