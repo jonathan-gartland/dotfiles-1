@@ -45,7 +45,7 @@
 # giggle
 [giggle]
 	main-window-maximized = false
-	main-window-geometry = 1194x1043+349+85
+	main-window-geometry = 636x1036+640+20
 	main-window-view = HistoryView
 	history-view-vpane-position = 638
 	file-view-vpane-position = 559
