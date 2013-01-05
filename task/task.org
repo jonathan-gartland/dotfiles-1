@@ -19,6 +19,8 @@
 # UACC: 60035
 # ePIP: 59333
 # SELF: 00000
+# SIRS: 58233
+# NHMAPPER: 59011
 * 2012
 ** July
 *** 01
@@ -803,3 +805,10 @@
 ***** .5 hour billable.  Continued work on updates to chosen rooms report.
 **** OPAL
 ***** .5 hour non-billable.  Spoke with Doug on the phone.  Updated password for opal on foghorn.  Updated user/group for ccg web site on fudd.
+*** 03
+**** RCC 
+***** 1 hour non-billable.  Entered task for December 2012.
+**** HCGS
+***** 2 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
+**** ResLife
+***** 2.5 hours non-billable.  Corrected a series of bugs reported by Mary.

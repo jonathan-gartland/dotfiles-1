@@ -1,11 +1,11 @@
 export ALTERNATE_EDITOR=''
 
-if [ -x $(which emacsclient) ]; then
-    export EDITOR="ew"
-    export VISUAL="e"
-    export GIT_EDITOR="ew"
-else
-    export EDITOR="vim"
-    export VISUAL="gvim"
-    export GIT_EDITOR="vim"
-fi    
+# if [ -x $(which emacsclient) ]; then
+#     export EDITOR="ew"
+#     export VISUAL="e"
+#     export GIT_EDITOR="ew"
+# else
+export EDITOR="vim"
+export VISUAL="gvim"
+export GIT_EDITOR="vim"
+#fi    

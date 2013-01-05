@@ -173,7 +173,7 @@ def handle_project_taskid_mapping(line):
     """
     Handle Project to Task ID Mapping
     """
-    m = re.match("^\#\s(\w*)\:\s(\d*)$", line)
+    m = re.match("#\s*(.*):\s*(\d*)\s*$", line)
     try:
         project = m.group(1)
         taskid = m.group(2)
@@ -181,7 +181,6 @@ def handle_project_taskid_mapping(line):
         project_taskid_mapping[project] = int(taskid)
     except:
         pass
-
     return None
 
 def handle_month(line):
@@ -271,9 +270,10 @@ def generate_entry_for_report(project, type, rs):
         table.add_row([x.date.isoformat(), x.length, x.comment])
 
     if taskid:
-        print 'Project: %s (%d) Total: %.2f (%s)' % (project, taskid, total_hours, type)
+        print 'Project: %s (%d) Total: %.2f (%d)' % (project, taskid, total_hours, type)
     else:
         print 'Project: %s Total: %.2f (%s)' % (project, total_hours, type)
+
     print table.draw()
 
 def generate_entry_for_task(project, type, rs):
@@ -282,7 +282,7 @@ def generate_entry_for_task(project, type, rs):
         taskid = project_taskid_mapping[project]
     except KeyError:
         pass
-
+    
     total_hours = 0
 
     buf = []
@@ -294,8 +294,8 @@ def generate_entry_for_task(project, type, rs):
     if total_hours == 0:
         return
 
-    if taskid is not False:
-        print "\nhttps://rcc.sr.unh.edu/Task/%s)" % (taskid)
+    if taskid:
+        print "\nhttps://rcc.sr.unh.edu/Task/%s" % (taskid)
 
     print "Project: %s Total: %.2f (%s)" % (project, total_hours, type)
 
@@ -371,6 +371,7 @@ with open("task.org") as f:
     for line in f:
         linenum += 1
         line = line.strip()
+        handle_project_taskid_mapping(line)
         year = handle_year(line) or year
         month = handle_month(line) or month
         day = handle_day(line) or day
@@ -414,6 +415,7 @@ for project in projects.keys():
     if outputFormat == 'Task':
         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
+        print "\n"
 
     if outputFormat == 'Report':
         generate_entry_for_report(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
@@ -432,8 +434,6 @@ for row in rows:
 
     print "%s %s" % row
 
-print "Total Hours {} in Total Days {}, for {:.4} hours per Day".format(hours, days, round(hours / days, 2))
-
 query = "SELECT billable, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY billable ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)
 
@@ -447,6 +447,8 @@ for row in rows:
         nonbillable_total = row[1]
 
 efficiency = 100 * (nonbillable_total / (billable_total + nonbillable_total))
+
+print "Total Hours {} (Billable: {}, Non-billable: {})in Total Days {}, for {:.4} hours per Day".format(hours, billable_total, nonbillable_total, days, round(hours / days, 2))
 print "Efficiency {:.4}".format(efficiency)
 
 # for project in projects.keys():
