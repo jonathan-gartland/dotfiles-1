@@ -207,12 +207,6 @@ class install(object):
                 {'src': 'cljr', 'dst': '.cljr'},
                 {'src': 'm2', 'dst': '.m2'}])
 
-    def fish(self, install_type):
-        self._createLinks([
-        {'src': 'fish', 'dst': '.fish' },
-        {'src': 'fish/config.fish', 'dst' : '.fishrc' },
-        {'src': 'fish/', 'dst': '.config/fish' }])
-
     def vim(self, install_type):
         self._createLinks([
             { 'src': 'vim', 'dst': '.vim' },
