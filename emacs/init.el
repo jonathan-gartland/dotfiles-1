@@ -16,8 +16,8 @@
 (defconst emacsd-image-dired-dir (expand-file-name "~/.emacs.d/.cache/image-dired"))
 
 ;; create required directories
-(unless (file-directory-p emacsd-image-dired-dir)
-  (make-directory emacsd-image-dired-dir)) 
+(unless (file-directory-p emacsd-cache-dir)
+  (make-directory emacsd-cache-dir)) 
 
 (unless (file-directory-p emacsd-backup-dir)
   (make-directory emacsd-backup-dir)) 
@@ -76,18 +76,20 @@
 
 (setq el-get-sources '(
 		       (:name bookmark-plus :type github :pkgname "emacsmirror/bookmark-plus")
-                       (:name icicles :type emacswiki)
-                       (:name icicles-mac :type emacswiki)
-                       (:name icicles-face :type emacswiki)
-                       (:name icicles-opt :type emacswiki)
-                       (:name icicles-var :type emacswiki)
-                       (:name icicles-fn :type emacswiki)
-                       (:name icicles-mcmd :type emacswiki)
-                       (:name icicles-cmd1 :type emacswiki)
-                       (:name icicles-cmd2 :type emacswiki)
-                       (:name icicles-doc1 :type emacswiki)
-                       (:name icicles-doc2 :type emacswiki)
-                       (:name icicles-mode :type emacswiki)))
+                       ;; (:name icicles :type emacswiki)
+                       ;; (:name icicles-mac :type emacswiki)
+                       ;; (:name icicles-face :type emacswiki)
+                       ;; (:name icicles-opt :type emacswiki)
+                       ;; (:name icicles-var :type emacswiki)
+                       ;; (:name icicles-fn :type emacswiki)
+                       ;; (:name icicles-mcmd :type emacswiki)
+                       ;; (:name icicles-cmd1 :type emacswiki)
+                       ;; (:name icicles-cmd2 :type emacswiki)
+                       ;; (:name icicles-doc1 :type emacswiki)
+                       ;; (:name icicles-doc2 :type emacswiki)
+                       ;; (:name icicles-mode :type emacswiki)
+))
+
 (if (string-match "linux" system-configuration)
     (loop for p in '(emacs-w3m magit swank-clojure) ;auctex pymacs rope ropemacs slime swank-clojure
           do (add-to-list 'el-get-sources p)))
@@ -140,7 +142,7 @@
 ;         google-weather
          haskell-mode
          helm
-         hexrgb
+;         hexrgb
          hide-region
          hl-line+
          idomenu
@@ -220,10 +222,10 @@
 
 (package-initialize)
 
-;; (unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
-;;              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
-;;              (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
-;;   (package-refresh-contents))
+ (unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
+              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
+             (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
+  (package-refresh-contents))
 
 (defun packages-install (&rest packages)
   (mapc (lambda (package)
