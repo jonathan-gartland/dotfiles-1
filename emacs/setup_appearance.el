@@ -5,9 +5,7 @@
 
 (set-face-background 'region "#464740")
 
-;; Highlight current line
-(global-hl-line-mode 1)
-
+;
 ;; Customize background color of lighlighted line
 (set-face-background 'hl-line "#222222")
 
@@ -35,7 +33,10 @@
   (turn-off-tool-bar)
   (tooltip-mode -1)
   (turn-off-tool-bar)
-  (blink-cursor-mode -1))
+  (blink-cursor-mode -1)
+  ; Highlight current line
+  (global-hl-line-mode 1)
+  )
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
