@@ -1,10 +1,11 @@
 (use-package python)
 
-(defconst python_mode_path (file-truename "~/.emacs.d/vendor/python-mode.el-6.1.0"))
+;; (defconst python_mode_path (file-truename "~/.emacs.d/vendor/python-mode.el-6.1.0"))
 
-(add-to-list 'load-path python_mode_path) 
-(setq py-install-directory python_mode_path)
-(require 'python-mode)
+;; (add-to-list 'load-path python_mode_path) 
+;; (setq py-install-directory python_mode_path)
+;;(require 'python-mode)
+
 
 ;; ;;;_. python
 ;; (use-package python-mode
