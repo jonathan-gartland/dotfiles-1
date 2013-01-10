@@ -1,10 +1,7 @@
-style=1tbs
+style=java
 indent=spaces=4
 indent-classes
 indent-switches
 fill-empty-lines
 brackets=break
-pad=oper
-one-line=keep-statements
-one-line=keep-blocks
 convert-tabs
