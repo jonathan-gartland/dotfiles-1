@@ -7,8 +7,9 @@
 set $mod Mod4
 
 # programs to run at startup
-exec synergys
-exec xautolock -time 3 -locker -secure
+exec --no-startup-id synergys
+exec --no-startup-id xautolock -time 3 -locker -secure
+exec --no-startup-id dbus-launch
 
 # The nvidia driver only provides support for Xinerama instead of RandR.
 force_xinerama yes
