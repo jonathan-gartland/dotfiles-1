@@ -8,19 +8,19 @@
 # Housing: 59032
 # MedHome: 60036
 # NHIHPP: 60141
+# NHMAPPER: 59011
 # OCM: 58797
 # Obliterase: 60023
 # RCC: 60130
 # RHD_InHall: 58367
 # Redmine: 57720
 # ResLife: 57996
+# SELF: 00000
+# SIRS: 58233
 # SpiceCore: 59919
 # StaffMeetings: 53145
 # UACC: 60035
-# ePIP: 59333
-# SELF: 00000
-# SIRS: 58233
-# NHMAPPER: 59011
+# ePIP: 59333           
 * 2012
 ** July
 *** 01
@@ -249,6 +249,7 @@
 ***** 1.5 hours billable.  Added status to three strikes report.  Waiting further information from Sarah.
 ***** .5 billable.  Added new columns to Complaint List.  Violations (Not Responsible, Responsbile, Pending) and Sanctions types.
 ***** 2 Corrections/bug fixes to OCM.  Sorting in Dean's Report.  Updated Conduct Tool to only show closed cases, responsbile violations, non-responsbile violations and imposed sanctions.
+
 ** September
 *** 01
 **** WEEKEND
@@ -363,6 +364,7 @@
 **** WEEKEND
 *** 30
 **** WEEKEND
+
 ** October
 *** 01
 **** MedHome
@@ -793,6 +795,7 @@
 **** WEEKEND
 *** 31
 **** VACATION 0 hours billable.  1 day
+
 * 2013
 ** January
 *** 01
@@ -812,3 +815,28 @@
 ***** 2 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
 **** ResLife
 ***** 2.5 hours non-billable.  Corrected a series of bugs reported by Mary.
+*** 05
+**** WEEKEND
+*** 06 
+**** WEEKEND
+*** 07
+**** ResLife
+***** .5 hour non-billable.  Responded to email regarding returning RA uploading their essays.
+**** HCGS
+***** 5 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
+*** 08
+**** HCGS
+***** 4 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
+**** NHIHPP
+***** 2 hours billable.  Updated cpubyuser.py to handle different output from dump-acct.
+*** 09
+**** ResLife
+***** .25 hours non-billable.  Updated to allow returning RA with status GPA_OK to upload essays.
+**** Housing
+***** 1.5 hours billable.  Updated temp eligibility codes.  Added checkbox to enable/disable generation of temp codes.
+**** NHIHPP
+***** 2 hours billable.  Updated cpubyuser.py to handle different output from dump-acct.
+**** HCGS
+***** 1.5 hours billable.  Began working on the Home page for logged in users.  This page is moddled after the home page from EMS.
+**** EOS
+***** .75 hour non-billable.  Responded to email regarding an extraneous new-line in message.  I wasn't able to determine the cause.
