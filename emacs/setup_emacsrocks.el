@@ -71,12 +71,12 @@ Symbols matching the text at point are put first in the completion list."
 (use-package expand-region
   :init
   (progn
-    (bind-key "M-'" 'er/expand-region)))
+    (bind-key "C-=" 'er/expand-region)))
 
 ;;;_. Emacs Rocks 10
 ; http://www.emacswiki.org/emacs/AceJump
 (require 'ace-jump-mode)
-(bind-key "<C-c space>" 'ace-jump-mode)
+(bind-key "C-c space" 'ace-jump-mode)
 
 ;; Push mark when using ido-imenu
 
