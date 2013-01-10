@@ -142,6 +142,7 @@
 ;         google-weather
          haskell-mode
          helm
+         hexview-mode
 ;         hexrgb
          hide-region
          hl-line+
