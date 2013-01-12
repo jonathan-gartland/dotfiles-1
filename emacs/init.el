@@ -168,13 +168,14 @@
          ;newsticker-notify
          nrepl
          notify
-         org-mode
+         ;org-mode
          package
          paredit
          point-stack
 ;         powerline2
 ;         python
 ;         python-mode
+         python_mode_fgallina
          pretty-symbols-mode
          pomodoro
 ;; python-pep8
@@ -225,10 +226,10 @@
 
 (package-initialize)
 
- (unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
-              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
-             (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
-  (package-refresh-contents))
+;(unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
+;              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
+;             (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
+;  (package-refresh-contents))
 
 (defun packages-install (&rest packages)
   (mapc (lambda (package)
