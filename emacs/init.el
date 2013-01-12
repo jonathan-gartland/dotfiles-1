@@ -123,6 +123,7 @@
          cperl-mode
          ;crontab-mode
          coffee-mode
+         color-theme-solarized
 ;         company
          csv
          csv-mode
@@ -175,7 +176,8 @@
 ;         python
 ;         python-mode
          pretty-symbols-mode
-         ;; python-pep8
+         pomodoro
+;; python-pep8
          quack
          rainbow-delimiters
          rainbow-mode
@@ -341,4 +343,3 @@
 
 
 ;(emacs-init-time)
-
