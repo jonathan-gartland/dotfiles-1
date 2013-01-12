@@ -40,7 +40,7 @@
 
      ;; when you want to use some external command for text->html conversion,
      ;; i.e., the 'html2text' program
-     mu4e-html2text-command "html2text"
+     mu4e-html2text-command "/home/skk/dot-files-forest/html2text/html2text.py"
      
      ;; the headers to show in the headers list -- a pair of the field + its
      ;; width, with `nil' meaning 'unlimited' (better only use that for
