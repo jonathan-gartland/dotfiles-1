@@ -53,5 +53,4 @@
     (eldoc-add-command 'electrify-return-if-match)
     (show-paren-mode t)))
 
-;(provide 'setup_perl)
-
+(provide 'setup_perl)
