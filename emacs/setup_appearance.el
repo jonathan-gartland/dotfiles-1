@@ -14,6 +14,11 @@
 
 (set-face-foreground 'font-lock-warning-face "#ff6666")
 
+
+
+(load-theme 'solarized-light t)
+
+
 ;; org-mode colors
 (setq org-todo-keyword-faces
       '(
