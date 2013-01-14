@@ -840,3 +840,15 @@
 ***** 1.5 hours billable.  Began working on the Home page for logged in users.  This page is moddled after the home page from EMS.
 **** EOS
 ***** .75 hour non-billable.  Responded to email regarding an extraneous new-line in message.  I wasn't able to determine the cause.
+
+*** 12
+**** WEEKEND
+*** 13
+**** WEEKEND
+*** 13
+**** RCC
+***** .5 hour non-billable.  Monthly RCC staff meeting.
+**** RCC
+***** 2 hours non-billable.  De-provisioning Bill's Computer Accounts
+**** Housing
+***** .5 hour billable.  Updated upload to hold students with holds.  Discussed status of changes with aew.
