@@ -840,15 +840,27 @@
 ***** 1.5 hours billable.  Began working on the Home page for logged in users.  This page is moddled after the home page from EMS.
 **** EOS
 ***** .75 hour non-billable.  Responded to email regarding an extraneous new-line in message.  I wasn't able to determine the cause.
-
+*** 10
+**** HCGS
+***** 4 hours billable.  Finished changes based on feedback from HCGS.
+*** 11
+**** OCM
+***** .5 hour non-billable.  Added columns to Complaint list.
+**** ResLife
+***** .5 hour billable.  Corrected the application date for a few applications which were incorrect.
+**** HCGS
+***** 1.5 hours non-billable.  Meet with Rob to discuss the project and review any outstanding TODO items.
+***** 1.5 hours billable.  Started working on items from my meeting with Rob.
 *** 12
 **** WEEKEND
 *** 13
 **** WEEKEND
 *** 13
 **** RCC
-***** .5 hour non-billable.  Monthly RCC staff meeting.
-**** RCC
-***** 2 hours non-billable.  De-provisioning Bill's Computer Accounts
+***** .75 hour non-billable.  Monthly RCC staff meeting.
+***** 2.5 hours non-billable.  De-provisioning Bill's Computer Accounts
+***** .75 hour non-billable.  Began the process of moving into Bill's office.
 **** Housing
 ***** .5 hour billable.  Updated upload to hold students with holds.  Discussed status of changes with aew.
+**** HCGS
+***** 1 hour billable.  Updated home with new submission link.  Corrected validiation of sample name.
