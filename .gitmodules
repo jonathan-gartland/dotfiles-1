@@ -21,4 +21,4 @@
 	url = https://github.com/aaronsw/html2text.git
 [submodule "bash-git-prompt"]
 	path = bash-git-prompt
-	url = https://github.com/magicmonty/bash-git-prompt
+	url = https://github.com/skk/bash-git-prompt
