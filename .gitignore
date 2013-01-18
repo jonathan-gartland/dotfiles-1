@@ -39,5 +39,9 @@ bin/.ropeproject
 procmail/work/log/*
 procmail/home/log/*
 
+# bash-git-prompt
+bash/gitprompt.py
+bash/gitstatus.py
+
 # i3
 i3/i3log
