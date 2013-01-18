@@ -193,7 +193,10 @@ class install(object):
         { 'src': 'bash/bashrc', 'dst': '.bashrc' },
         { 'src': 'bash/inputrc', 'dst': '.inputrc' },
         { 'src': 'bash/bash_profile', 'dst': '.bash_profile' },
-        { 'src': 'bash/bash_logout', 'dst': '.bash_logout' }])
+        { 'src': 'bash/bash_logout', 'dst': '.bash_logout' },
+        { 'src': 'bash-git-prompt/gitprompt.sh', 'dst': '.bash/gitprompt.sh' },
+        { 'src': 'bash-git-prompt/gitstatus.py', 'dst': '.bash/gitstatus.py' }])
+
 
     def emacs(self, install_type):
         self._createLinks([{'src': 'emacs', 'dst': '.emacs.d'}])
