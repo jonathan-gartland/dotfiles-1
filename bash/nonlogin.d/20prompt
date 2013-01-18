@@ -6,3 +6,20 @@
 if [ -f $HOME/.bash/gitprompt.sh ]; then
    . $HOME/.bash/gitprompt.sh
 fi
+
+set_window_title() {
+    echo -ne "\e]2;$*\a"
+}
+
+update_window_title() {
+    set_window_title "${HOSTNAME%%.*}:${PWD/$HOME/~}"
+}
+
+OLD_PROMPT_COMMAND=$PROMPT_COMMAND
+
+new_prompt_command()
+{
+    $OLD_PROMPT_COMMAND
+    update_window_title
+}
+PROMPT_COMMAND=new_prompt_command
