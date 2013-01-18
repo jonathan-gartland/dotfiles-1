@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-from __future__ import print_function
+# http://packages.python.org/six/
+from six import print_
 
 # change those symbols to whatever you prefer
 symbols = {'ahead of': '↑·', 'behind': '↓·', 'prehash':':'}
@@ -73,4 +74,4 @@ out = '\n'.join([
 	changed,
 	untracked,
 	clean])
-print(out)
+print_(out)
