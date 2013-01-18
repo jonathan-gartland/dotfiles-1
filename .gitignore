@@ -43,7 +43,7 @@ procmail/work/log/*
 procmail/home/log/*
 
 # bash-git-prompt
-bash/gitprompt.py
+bash/gitprompt.sh
 bash/gitstatus.py
 
 # i3
