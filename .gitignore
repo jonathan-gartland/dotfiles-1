@@ -7,6 +7,9 @@ emacs/.backup/
 emacs/.cache/
 emacs/el-get
 emacs/el-get/*
+emacs/elpa
+emacs/url
+emacs/auto-save-list
 
 # vim
 vim/.netrwhist
