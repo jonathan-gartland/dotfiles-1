@@ -5,23 +5,6 @@
 export HOSTNAME=$(/usr/bin/env hostname -f)
 export DNS_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -y)
 
-#set xterm title
-#case "$TERM" in
-#  xterm | xterm-color)
-#    XTERM_TITLE='\[\e]0;\W@\u@\H\a\]'
-#  ;;
-#esac
-
-setWindowTitle() {
-    echo -ne "\e]2;$*\a"
-}
-
-updateWindowTitle() {
-    setWindowTitle "${HOSTNAME%%.*}:${PWD/$HOME/~}"
-}
-PROMPT_COMMAND=updateWindowTitle
-updateWindowTitle
-
 # Enable options
 shopt -s autocd
 shopt -s cdable_vars
