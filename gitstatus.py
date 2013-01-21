@@ -10,6 +10,7 @@ symbols = {'ahead of': '↑·', 'behind': '↓·', 'prehash':':'}
 from subprocess import Popen, PIPE
 
 import sys
+
 gitsym = Popen(['git', 'symbolic-ref', 'HEAD'], stdout=PIPE, stderr=PIPE)
 branch, error = gitsym.communicate()
 
@@ -41,6 +42,8 @@ else:
 
 remote = ''
 
+shortsha1 = Popen(['git','rev-parse','--short','HEAD'], stdout=PIPE).communicate()[0].strip().decode('utf-8')
+
 if not branch: # not on any branch
 	branch = symbols['prehash']+ Popen(['git','rev-parse','--short','HEAD'], stdout=PIPE).communicate()[0][:-1]
 else:
@@ -67,11 +70,12 @@ if remote == "":
 	remote = '.'
 
 out = '\n'.join([
-    str(branch),
+        str(branch),
 	str(remote),
 	staged,
 	conflicts,
 	changed,
 	untracked,
-	clean])
+	clean,
+        str(shortsha1)])
 print_(out)
