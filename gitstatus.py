@@ -11,6 +11,15 @@ from subprocess import Popen, PIPE
 
 import sys
 
+
+try:
+    _, error = Popen(['git'], stdout=PIPE, stderr=PIPE).communicate()
+except OSError, e:
+    out = '\n'.join(['' * 8])
+    sys.stderr.write("\nCannnot find git!  Either your $PATH is incorrect or you need to install git.\n")
+    print_(out)
+    sys.exit(1)
+
 gitsym = Popen(['git', 'symbolic-ref', 'HEAD'], stdout=PIPE, stderr=PIPE)
 branch, error = gitsym.communicate()
 
