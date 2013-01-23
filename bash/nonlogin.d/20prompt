@@ -1,4 +1,5 @@
 export __GIT_PROMPT_DIR="$HOME/dot-files-forest/bash-git-prompt/"
 export __GITPROMPT_STYLE_SHA1_HOSNTAME=1
+export __GITPROMPT_SET_TERM_TITLE=1
 
 . $HOME/dot-files-forest/bash-git-prompt/gitprompt.sh
