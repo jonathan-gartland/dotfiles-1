@@ -1,5 +1,6 @@
 __GIT_PROMPT_DIR=${__GIT_PROMPT_DIR:-"~/.bash"}
 __GITPROMPT_STYLE_SHA1_HOSNTAME=${__GITPROMPT_STYLE_SHA1_HOSNTAME:-"0"}
+__GITPROMPT_SET_TERM_TITLE=${__GITPROMPT_SET_TERM_TITLE:-"0"}
 
 # Colors
 # Reset
@@ -158,7 +159,10 @@ function setGitPromptSha1Hostname() {
 	  PROMPT_MIDDLE="$blue\u@\h$ResetColor $cyan$dir$ResetColor"
 	  PROMPT_END="$cyan>$ResetColor "
     fi
-	PS1="$PROMPT_START$PROMPT_MIDDLE$PROMPT_END"
+    PS1="$PROMPT_START$PROMPT_MIDDLE$PROMPT_END"
+    if [ "$__GITPROMPT_STYLE_SHA1_HOSNTAME" -eq "1" ]; then
+        set_window_title "${HOSTNAME%%.*}:${PWD/$HOME/~}"
+    fi
 }
 
 function cwd_truncate {
@@ -208,3 +212,7 @@ if [ "$__GITPROMPT_STYLE_SHA1_HOSNTAME" -eq "1" ]; then
 else
   PROMPT_COMMAND=setGitPrompt
 fi
+
+set_window_title() {
+    echo -ne "\e]2;$*\a"
+}
