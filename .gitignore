@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # repo wide
 *.pyc
 \#*.*\#
@@ -48,3 +49,8 @@ bash/gitstatus.py
 
 # i3
 i3/i3log
+=======
+# ignore caches
+__pycache__
+*.pyc
+>>>>>>> 7559e4d8baa27e67bf250e0cf9bb5c9fb3f76c24
