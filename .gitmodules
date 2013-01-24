@@ -7,9 +7,6 @@
 [submodule "use-package"]
 	path = use-package
 	url = https://github.com/jwiegley/use-package.git
-[submodule "git-prompt"]
-	path = git-prompt
-	url = https://github.com/lvv/git-prompt.git
 [submodule "s.el"]
 	path = s.el
 	url = git://github.com/magnars/s.el.git
