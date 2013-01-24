@@ -2,6 +2,7 @@
   :init
   (progn 
 
+    ;; TODO: Move this to a el-get recipe
     (defconst sepia-path (file-truename "~/.emacs.d/vendor/Sepia-0.992_01"))
     (add-to-list 'load-path sepia-path)
     (setq sepia-perl5lib (list (expand-file-name (concat sepia-path "/lib"))))
