@@ -282,7 +282,7 @@ def generate_entry_for_task(project, type, rs):
         taskid = project_taskid_mapping[project]
     except KeyError:
         pass
-    
+
     total_hours = 0
 
     buf = []
@@ -446,9 +446,9 @@ for row in rows:
     else:
         nonbillable_total = row[1]
 
-efficiency = 100 * (nonbillable_total / (billable_total + nonbillable_total))
+efficiency = 100 * (billable_total / (billable_total + nonbillable_total))
 
-print "Total Hours {} (Billable: {}, Non-billable: {})in Total Days {}, for {:.4} hours per Day".format(hours, billable_total, nonbillable_total, days, round(hours / days, 2))
+print "Total Hours {} (Billable: {}, Non-billable: {}) in Total Days {}, for {:.4} hours per Day".format(hours, billable_total, nonbillable_total, days, round(hours / days, 2))
 print "Efficiency {:.4}".format(efficiency)
 
 # for project in projects.keys():
