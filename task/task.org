@@ -21,6 +21,8 @@
 # StaffMeetings: 53145
 # UACC: 60035
 # ePIP: 59333           
+# WJA_DV: 60327
+# WJA_AS: 60327
 * 2012
 ** July
 *** 01
@@ -855,12 +857,132 @@
 **** WEEKEND
 *** 13
 **** WEEKEND
-*** 13
-**** RCC
+*** 14
+**** StaffMeetings
 ***** .75 hour non-billable.  Monthly RCC staff meeting.
+**** RCC
 ***** 2.5 hours non-billable.  De-provisioning Bill's Computer Accounts
 ***** .75 hour non-billable.  Began the process of moving into Bill's office.
 **** Housing
 ***** .5 hour billable.  Updated upload to hold students with holds.  Discussed status of changes with aew.
 **** HCGS
 ***** 1 hour billable.  Updated home with new submission link.  Corrected validiation of sample name.
+*** 15
+**** StaffMeetings
+***** 1 hour non-billable.  Weekly Programming Group meeting.
+**** NHIHPP 
+***** 1 hour non-billable.  Meeting with Jo, Stacey, Allan and myself to discuss remaining issues with Healthy UNH Meeting Map project. 
+*** 16
+**** RCC
+***** .5 hour non-billable.  Read through Phil's document on RCC Source Revision Control System Standardization.
+**** HCGS 
+***** 3 hour billable.  Continued work on issues from Meeting.  I hope to have an update ready for Thursday.
+**** Housing
+***** 1 hour billable.  Updated view used by picked rooms report.  Updated Upload tool to handle students on hold correctly.
+*** 17
+**** Housing
+***** .5 hour billable.  Worked on issue related to not generating of temp codes for Babcock residents.
+**** RCC
+***** 1.5 hour non-billable.  Moved fudd up to Annette Schloss's office.  Moved hard-drives to Machine Room.  Spoke to Jenniffer about swaping phone wall-jacks.
+**** HCGS
+***** 2.5 hours billable.  Created privileges and add added privilege checking to modules (project, source organism and sample submission).  Updated preview site.
+**** NHIHPP
+***** 1 hour billable.  Worked on correcting issues reported by Jo and Stacey.
+*** 18
+**** Housing
+***** 2.5 hours non-billable.  Pre-meeting and meeting on Real-time view of Banner data for RCI Housing app.
+**** OCM
+***** 3 hours non-billable.  Meeting with OCM to discuss outstanding bugs, remaining work for HDWTs and summery work.
+*** 19
+**** WEEKEND
+*** 20
+**** WEEKEND
+*** 21
+**** HOLIDAY
+*** 22
+**** StaffMeetings
+***** 1 hour non-billable.  Weekly Programming Group meeting.
+**** OCM
+***** 1.5 hour billable.  Added year to calendar tool.  Added student id and incident datetime to various admin-level recordsets.
+***** 1.5 hour non-billable.  Fixed bug in 'Find Student' tool when the student's name contains an apostrophe.  Determined the cause of two complaints which were missing their case numbers.
+**** Housing
+***** 1 hour billable.  Continued worked on accessing ECG database for Housing-Online.  I was able to connect to the database from the housing1.unh.edu.  I reset my password and I can now login.  We'll still need to work on how to access these database from RCC's systems.
+*** 23
+**** OCM
+***** 3 hours non-billable.  Corrected bugs: Loop-hole which allowed complaints to remove their complaints regardless of status.  Changed Complaint form to always save case number, rather than only when it is received.  Changed conduct dashboard to go directly to complaint if the respondent count is 0.  Searching by complaint from conduct dashboard wasn't working.
+***** 1 hours billable.  Allow complainants to remove their new complaints.  
+**** Housing
+***** 1.5 hour billable.  Updated pl/sql functions to resolve issue with 'Babcock Residents should not get temp codes'.  Worked on resolving issues with teams being disbanded on occinfo upload and invited team members being removed from team.
+*** 24
+**** HealthyUNH
+***** 4 hours billable.  Worked on implmentating changes based on meeting from 01/14/2013.
+**** Housing
+***** 2.5 hour billable.  Updated pl/sql functions to resolve issue with 'Babcock Residents should not get temp codes'.  Worked on resolving issues with teams being disbanded on occinfo upload and invited team members being removed from team.
+
+*** 25
+
+*** 26
+**** WEEKEND
+*** 27
+**** WEEKEND
+*** 28
+**** OCM
+***** 2.5 hour non-billable.  Worked on correcting issues with missing/incorrect complaints view-able for college dean user.
+**** NHIHPP
+***** .5 hour non-billable.  Emailed NHIHPP with sample reports.
+**** Housing
+***** 2.5 hour billable.  Updated Column BUILDING_ASSIGNMENT to use correct term.  Dynamically change the page title on in-hall tool.  Updated chosen room report.  Updated temp. elg. code generation.
+*** 29
+**** OCM
+***** .5 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+***** 1 hour non-billable.  Updated complaint list and removed view,edit and print buttons for college deans for any complaints they didn't create.
+***** .5 hour non-billable.  Fixed incorrect Date on VForms.  
+***** 1.5 hour non-billable.  Corrected behavior of Conduct Dashboard seen by Donna Han.
+**** Housing
+***** 1 hour non-billable.  Fixed incorrect occupancy count in in-hall tool.
+**** StaffMeetings
+***** 1 hour non-billable.  Weekly Programming Group meeting.
+*** 30
+**** OCM
+***** .5 hour non-billable.  Fixed two bugs Sarah reported.
+***** 1 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+***** 1.25 hours non-billable.  Testing cloning bug reported by Sarah.
+**** RCC
+***** .75 hour non-billable.  Worked on merging my three git repos in the housing project (OCM, ResLife, InHall Tool) into a single housing git repo.  The merge work and my commit history for all three projects was retained.
+
+**** HealthyUNH
+***** .5 hour non-billable.  Phone call with Stacy to help her with cordinate creation.  Fixed bug with feature modifcation using Firefox.
+**** ResLife
+***** .5 hour non-billable.  Fixed incorrect application date on return ra application.
+**** Housing
+***** .5 hour billable.  Tested banner view connection.
+**** HCGS
+***** 1 hour billable.  Meeting with HCGS.
+*** 31
+**** HCGS
+***** .5 hour billable.  Had cname and db created.
+**** OCM
+***** 1 hour non-billable.  Fixed bug with cloning v-forms.  When the clone was saved, the sanctions would be disappearing from the parent.
+***** 1 hour non-billable.  Determined cause of issue when saving HDW and fixed bug.
+***** 1 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+**** HealthyUNH
+***** 1.5 hours billable.  Worked merging the fitness map into Layout.
+**** WJA_AS
+***** 1 hour non-billable.  Corrected to determine cause of failure to send forgot password email.
+** February
+*** 01
+**** ePIP
+***** .75 hour billable.  Worked with Allan and Angela to upload ePIP data.
+**** HealthyUNH
+***** .25 hour non-billable.  Fixed problem with loading data on website.
+***** 3.5 hour billable.  Reformatted fitness-map page to match site.  Added 'x of y' to feature pop-up.
+**** OCM
+***** .5 hour non-billable.  Fixed bug with HDW not loading welcome msg step correctly.
+**** WJA_AS
+***** .5 hour non-billable.  Exchanged emails with customer and determined the cause.
+**** WJA_DV
+***** .5 hour non-billable.  Responded to email from DV.
+*** 02
+**** WEEKEND
+*** 03
+**** WEEKEND
