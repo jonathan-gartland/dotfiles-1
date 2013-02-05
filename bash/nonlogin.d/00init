@@ -3,7 +3,8 @@
 # We'll use these elsewhere
 
 export HOSTNAME=$(/usr/bin/env hostname -f)
-export DNS_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -y)
+export YP_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -y)
+export DNS_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -d)
 
 # Enable options
 shopt -s autocd
