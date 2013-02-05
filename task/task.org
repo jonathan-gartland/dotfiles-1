@@ -808,7 +808,7 @@
 **** Housing
 ***** 4.5 hours billable.  Worked on generation of temporary eligibility codes.  Created pl/sql functions to generate the codes.  Updated UploadTable to set the temproary codes.
 ***** .5 hour billable.  Continued work on updates to chosen rooms report.
-**** OPAL
+**** WJA_DV
 ***** .5 hour non-billable.  Spoke with Doug on the phone.  Updated password for opal on foghorn.  Updated user/group for ccg web site on fudd.
 *** 03
 **** RCC 
@@ -816,7 +816,12 @@
 **** HCGS
 ***** 2 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
 **** ResLife
-***** 2.5 hours non-billable.  Corrected a series of bugs reported by Mary.
+***** 3 hours non-billable.  Corrected a series of bugs reported by Mary.
+*** 04
+**** SELF
+***** 0 hours non-billable.  MISSING HOURS!!!
+**** Housing
+***** 1.5 hours billable.  Worked on fixing issues with temp. elg. code generation and OCCINFO upload.
 *** 05
 **** WEEKEND
 *** 06 
@@ -825,10 +830,10 @@
 **** ResLife
 ***** .5 hour non-billable.  Responded to email regarding returning RA uploading their essays.
 **** HCGS
-***** 5 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
+***** 5.5 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
 *** 08
 **** HCGS
-***** 4 hours billable.  Restared work on project.  Begin by making changes based on feedback from HCGS.
+***** 4 hours billable.  Continued working on changes based on feedback from HCGS.
 **** NHIHPP
 ***** 2 hours billable.  Updated cpubyuser.py to handle different output from dump-acct.
 *** 09
@@ -876,14 +881,14 @@
 **** RCC
 ***** .5 hour non-billable.  Read through Phil's document on RCC Source Revision Control System Standardization.
 **** HCGS 
-***** 3 hour billable.  Continued work on issues from Meeting.  I hope to have an update ready for Thursday.
+***** 4 hour billable.  Continued work on issues from Meeting.  I hope to have an update ready for Thursday.
 **** Housing
 ***** 1 hour billable.  Updated view used by picked rooms report.  Updated Upload tool to handle students on hold correctly.
 *** 17
 **** Housing
 ***** .5 hour billable.  Worked on issue related to not generating of temp codes for Babcock residents.
 **** RCC
-***** 1.5 hour non-billable.  Moved fudd up to Annette Schloss's office.  Moved hard-drives to Machine Room.  Spoke to Jenniffer about swaping phone wall-jacks.
+***** 2 hour non-billable.  Moved fudd up to Annette Schloss's office.  Moved hard-drives to Machine Room.  Spoke to Jenniffer about swaping phone wall-jacks.
 **** HCGS
 ***** 2.5 hours billable.  Created privileges and add added privilege checking to modules (project, source organism and sample submission).  Updated preview site.
 **** NHIHPP
@@ -892,7 +897,7 @@
 **** Housing
 ***** 2.5 hours non-billable.  Pre-meeting and meeting on Real-time view of Banner data for RCI Housing app.
 **** OCM
-***** 3 hours non-billable.  Meeting with OCM to discuss outstanding bugs, remaining work for HDWTs and summery work.
+***** 3.5 hours non-billable.  Meeting with OCM to discuss outstanding bugs, remaining work for HDWTs and summery work.
 *** 19
 **** WEEKEND
 *** 20
@@ -918,9 +923,13 @@
 ***** 4 hours billable.  Worked on implmentating changes based on meeting from 01/14/2013.
 **** Housing
 ***** 2.5 hour billable.  Updated pl/sql functions to resolve issue with 'Babcock Residents should not get temp codes'.  Worked on resolving issues with teams being disbanded on occinfo upload and invited team members being removed from team.
-
 *** 25
-
+**** Housing
+***** 1 hour billable.  Corrected recordset at Blaise's request.
+**** OCM
+***** 1 hour billable.  Deployed updates to live site.
+**** HealthyUNH
+***** 1 hour billable.  Deployed updates to live site.
 *** 26
 **** WEEKEND
 *** 27
@@ -949,7 +958,6 @@
 ***** 1.25 hours non-billable.  Testing cloning bug reported by Sarah.
 **** RCC
 ***** .75 hour non-billable.  Worked on merging my three git repos in the housing project (OCM, ResLife, InHall Tool) into a single housing git repo.  The merge work and my commit history for all three projects was retained.
-
 **** HealthyUNH
 ***** .5 hour non-billable.  Phone call with Stacy to help her with cordinate creation.  Fixed bug with feature modifcation using Firefox.
 **** ResLife
@@ -986,3 +994,12 @@
 **** WEEKEND
 *** 03
 **** WEEKEND
+*** 04
+**** HCGS
+***** 3 hour billable.  Meeting and training sessions with Feseha.  Finished deployment to live site.  Created Google Custom Searches for dev, pre and live.
+**** OCM
+***** 2.5 hours non-billable.  Determined cause of data lose in HDW.  
+**** EMS
+***** .5 hour non-billable. Responded to email to events-dev.
+**** RCC 
+***** 1 hour non-billable.  Entered task for January 2012.
