@@ -2,12 +2,9 @@
 (use-package flyspell
   :init
   (progn
-    (defun turn-on-flyspell ()
-      "Force flyspell-mode on using a positive argument. For use in hooks."
-      (interactive)
-      (flyspell-mode 1))
-
     (when is-linux
-      (add-hook 'fundamental-mode-hook 'turn-on-flyspell))))
+      (add-hook 'fundamental-mode-hook 
+                (lambda () 
+                  (flyspell-mode 1))))))
 
 ;(provide 'setup_flyspell)
