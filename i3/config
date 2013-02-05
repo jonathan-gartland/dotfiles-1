@@ -122,6 +122,7 @@ bindsym $mod+Shift+Control+l exec i3lock
 
 # cutpass
 bindsym $mod+c exec ~/bin/qCutpass
+bindsym $mod+t exec ~/.i3/dmenu_ssh.sh
 
 
 # Make the currently focused window a scratchpad

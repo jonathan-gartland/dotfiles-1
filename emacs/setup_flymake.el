@@ -23,11 +23,13 @@
 (use-package flymake-perlcritic
   :init
   (progn
-    (setq 
-     flymake-perlcritic-severity 2
-     flymake-perlcritic-theme "pbp && bugs")
+    (setq flymake-perlcritic-profile "~/.perlcriticrc")
     (add-hook 'sepia-mode-hook
-               (lambda () (flymake-mode t)))))
+              (lambda () 
+                (setq 
+                 flymake-perlcritic-severity 2
+                 flymake-perlcritic-theme "pbp && bugs")
+                (flymake-mode t)))))
 
 
 ;;;_. flymake-cursor

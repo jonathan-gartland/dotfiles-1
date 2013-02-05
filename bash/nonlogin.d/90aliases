@@ -39,7 +39,7 @@ alias ssh='ssh -C -Y'
 alias scp='scp -C'
 
 # rcc
-if [[ "$DNS_DOMAIN_NAME" == "rcc" || "$DNS_DOMAIN_NAME" == "eos" || $DNS_DOMAIN_NAME == "sr.unh.edu" ]]; then
+if [[ "$YP_DOMAIN_NAME" == "rcc" || "$YP_DOMAIN_NAME" == "eos" || "$DNS_DOMAIN_NAME" == "sr.unh.edu" ]]; then
     setup_was_env
     setup_oracle_env
 
