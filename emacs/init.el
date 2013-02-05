@@ -138,6 +138,7 @@
          flymake-cursor
          ;git-emacs
          ;gitconfig-mode
+         git-modeline
          geiser
 ;         google-maps
 ;         google-weather
@@ -150,7 +151,7 @@
          idomenu
          js2-mode
          jshint-mode
-         ;js2-refactor
+         ;js2-refactorr 
          json
          jump-char        
          lua-mode
@@ -250,6 +251,12 @@
    (cons 'icicles melpa)
    (cons 'pomodoro melpa)
    (cons 'wgrep melpa)
+   (cons 'flycheck melpa)
+   (cons 'find-file-in-project melpa)
+   (cons 'org melpa)
+   (cons 'solarized-theme melpa)
+   (cons 'projectile melpa)
+   (cons 'helm melpa)
    ))
    ;; (cons 'exec-path-from-shell melpa)
    ;; (cons 'magit melpa)
@@ -341,6 +348,5 @@
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
-
 
 ;(emacs-init-time)
