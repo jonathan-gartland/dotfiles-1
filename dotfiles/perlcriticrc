@@ -1,0 +1,3 @@
+theme =     'bugs or pbp or cosmetic'
+exclude =   Variables::ProhibitPackageVars Miscellanea::RequireRcsKeywords Modules::RequireVersionVar ValuesAndExpressions::ProhibitInterpolationOfLiterals ControlStructures::ProhibitUnlessBlocks ValuesAndExpressions::ProhibitImplicitNewlines Subroutines::RequireFinalReturn Modules::RequireFilenameMatchesPackage NamingConventions::Capitalization
+severity =  4
