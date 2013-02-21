@@ -1,0 +1,1 @@
+(provide 'setyp_flycheck)
