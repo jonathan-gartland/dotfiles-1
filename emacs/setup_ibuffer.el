@@ -69,6 +69,8 @@
                      (filename . "/web2/nec")))
                    ("Emacs Config"
                     (filename . "emacs"))
+                   ("scm-prompt"
+                    (filename . "scm-prompt/*"))
                    ("University Calculus"
                     (filename . "~/TextBookSummaries/UniversityCalculus"))
                    ("NHIHPP"
