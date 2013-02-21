@@ -463,9 +463,25 @@
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) )))))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
+    
+    
+    (project-def "scm-prompt"
+                 '((basedir "~/scm-prompt/")
+                   (src-patterns ("*.md" "*.pl" "*.pm"))
+                   (ignore-patterns nil)
+                   (file-list-cache "~/.emacs.d/.cache/scm-prompt/files")
+                   (open-files-cache "~/.emacs.d/.cache/scm-prompt/open-files")
+                   (tags-file "~/.emacs.d/.cache/scm-prompt/TAGS")
+                   (vcs git)
+                   (ack-args "--scheme")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
 
-))
+    ))
 
 
 ;(provide 'setup_mkproject)

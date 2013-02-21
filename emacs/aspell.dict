@@ -1,4 +1,4 @@
-personal_ws-1.1 en 95 
+personal_ws-1.1 en 97 
 py
 PDA
 HCGS
@@ -72,6 +72,7 @@ cnames
 QueryLimitRecords
 Google
 Uliasz
+varity
 CRMS
 hostname
 LOV
@@ -91,6 +92,7 @@ argv
 yasnippet
 BeanViewer
 ckeditor
+Moreau
 NHIHPP
 CrashReportSchema
 jQuery
