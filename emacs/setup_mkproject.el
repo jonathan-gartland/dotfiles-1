@@ -59,26 +59,27 @@
                    (shutdown-hook (lambda ()
                                     (setq tags-file-name nill)))))
     
-    (project-def "MedHome Development"
-                 '((basedir "/sshfs/lithium/web/medhome")
+    (project-def "NCEMRR Development"
+                 '((basedir "/sshfs/lithium/web/ncemrr")
                    (src-patterns ("*.js"  "*.pm" "*.css"))
                    (ignore-patterns ("*.png" "*.jpg" "*.gif" "*.gif"
                                      "*.PNG" "*.JPG" "*.GIF" "*.GIF" "*.mov" "*.pdf"
                                      "htdocs/ckeditor/*.*" "*.pkb" "*.pks"))
-                   (tags-file "~/.emacs.d/.cache/medhome-dev/TAGS")
-                   (file-list-cache "~/.emacs.d/.cache/medhome-dev/files")
-                   (open-files-cache "~/.emacs.d/.cache/medhome-dev/open-files")
-                   (tags-file "~/.emacs.d/.cache/medhome-dev/TAGS")
+                   (tags-file "~/.emacs.d/.cache/ncemrr-dev/TAGS")
+                   (file-list-cache "~/.emacs.d/.cache/ncemrr-dev/files")
+                   (open-files-cache "~/.emacs.d/.cache/ncemrr-dev/open-files")
+                   (tags-file "~/.emacs.d/.cache/ncemrr-dev/TAGS")
                    (vcs git)
                    (ack-args "--perl --js --css")
                    (compile-cmd nil)
                    (startup-hook (lambda ()
-                                   (setq cperl-indent-level 4))
+                                   (setq cperl-indent-level 4)
+                                   (make-directory (expand-file-name "~/.emacs.d/.cache/ncemrr-dev"))
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
                    (shutdown-hook (lambda ()
-                                    (setq tags-file-name nil)))))
+                                    (setq tags-file-name nil)))))  
     (project-def "UACC Development"
                  '((basedir "/sshfs/lithium/web/uacc")
                    (src-patterns ("*.js"  "*.pm" "*.css"))
@@ -417,9 +418,7 @@
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))
-
-                   ))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
 
     (project-def "SICP"
                  '((basedir "~/work/SICP/")
@@ -464,8 +463,9 @@
                    (startup-hook (lambda ()
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
-                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
-    ))
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) )))))
+
+))
 
 
 ;(provide 'setup_mkproject)
