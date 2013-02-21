@@ -138,7 +138,7 @@
          flymake-cursor
          ;git-emacs
          ;gitconfig-mode
-         git-modeline
+         ;git-modeline
          geiser
 ;         google-maps
 ;         google-weather
@@ -257,6 +257,7 @@
    (cons 'solarized-theme melpa)
    (cons 'projectile melpa)
    (cons 'helm melpa)
+   (cons 'evil melpa)
    ))
    ;; (cons 'exec-path-from-shell melpa)
    ;; (cons 'magit melpa)
