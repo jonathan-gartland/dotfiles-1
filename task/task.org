@@ -6,6 +6,7 @@
 # HealthWRQS: 60140
 # HealthyUNH: 60059
 # Housing: 59032
+# NCEMRR: 60338
 # MedHome: 60036
 # NHIHPP: 60141
 # NHMAPPER: 59011
@@ -20,9 +21,9 @@
 # SpiceCore: 59919
 # StaffMeetings: 53145
 # UACC: 60035
-# ePIP: 59333           
-# WJA_DV: 60327
 # WJA_AS: 60327
+# WJA_DV: 60327
+# ePIP: 59333           
 * 2012
 ** July
 *** 01
@@ -251,7 +252,6 @@
 ***** 1.5 hours billable.  Added status to three strikes report.  Waiting further information from Sarah.
 ***** .5 billable.  Added new columns to Complaint List.  Violations (Not Responsible, Responsbile, Pending) and Sanctions types.
 ***** 2 Corrections/bug fixes to OCM.  Sorting in Dean's Report.  Updated Conduct Tool to only show closed cases, responsbile violations, non-responsbile violations and imposed sanctions.
-
 ** September
 *** 01
 **** WEEKEND
@@ -797,7 +797,6 @@
 **** WEEKEND
 *** 31
 **** VACATION 0 hours billable.  1 day
-
 * 2013
 ** January
 *** 01
@@ -891,7 +890,7 @@
 ***** 2 hour non-billable.  Moved fudd up to Annette Schloss's office.  Moved hard-drives to Machine Room.  Spoke to Jenniffer about swaping phone wall-jacks.
 **** HCGS
 ***** 2.5 hours billable.  Created privileges and add added privilege checking to modules (project, source organism and sample submission).  Updated preview site.
-**** NHIHPP
+**** HealthyUNH
 ***** 1 hour billable.  Worked on correcting issues reported by Jo and Stacey.
 *** 18
 **** Housing
@@ -1003,3 +1002,88 @@
 ***** .5 hour non-billable. Responded to email to events-dev.
 **** RCC 
 ***** 1 hour non-billable.  Entered task for January 2012.
+*** 05
+**** StaffMeetings
+***** 1.5 hours non-billable.  Weekly Programming Group meeting.
+**** OCM
+***** 2 hours non-billable.  Added display of rendered HTML on step 2.
+**** HCGS
+***** 1.5 hours billable.  Corrections/Updates based on feedback from 02/04/2013 meeting.
+**** RCC
+***** 2 hours non-billable.  Moved computers,monitors to new cubicle.
+*** 06
+**** Housing
+***** 2 hour billable.  Deployed to new live.  Corrected bugs.
+**** OCM
+***** .5 hour non-billable.  Fixed class not being pulled when using 'Find Student'.
+***** 1.5 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+**** NCEMRR
+***** 1.5 hours billable.  Asked for cnames.  Created NCEMRR from MedHome.  Imported into git.
+**** ResLife
+***** .5 hour non-billable.  Increased the number of points available for off-campus interview.
+*** 07
+**** StaffMeetings
+***** 1 hours non-billable.  Quarterly All Staff Meeting.
+**** ePIP
+***** .5 hour non-billable.  ePIP Meeting.
+**** HealthyUNH
+***** 2.25 hours billable.  Implemented new features requested by NHIHPP.
+**** OCM
+***** .25 hours non-billable.  Fixed bug with incorrect grouping of sanctions in HDW.
+**** Housing
+***** 2 hours billable.  Implemented new features requested by Blaise.  Worked to determine why it wasn't working for some pidms.
+*** 08
+**** CURTAILED_OPERATIONS (1 day)
+*** 09
+**** WEEKEND
+*** 10
+**** WEEKEND
+*** 11
+**** Housing
+***** 2 hour billable.  
+**** ResLife
+***** .25 hour non-billable.  Removed duplicate adjectives in RL_WILD_ADJECTIVES.
+**** NCEMRR
+***** 2 hour non-billable.  Had cnames renamed.  Had databases users created.  Changed references to MEDHOME/MEDHOME2 to NCEMRR.
+
+*** 12
+**** StaffMeetings
+***** .75 hours non-billable.  Weekly Programming Group meeting.
+**** Housing
+***** 1.5 hours non-billable.  Merged changes between dev and pre sites.  Pushed updated preview site to live.
+**** OCM
+***** 1.5 hour billable.  HDW updates.
+***** 1 hour non-billable.  Corrections for term semester.  Created new OCM settings field 'current semester code'.
+*** 13 
+**** Housing
+***** 8 hours non-billable.  Fixed/corrected issue with temporary eligibility code.
+*** 14
+**** NHIHPP 
+***** 1 hour non-billable.  Meeting with Chris White to discuss/review the status of resource monitoring project and to additional functionality.
+**** ResLife
+***** .5 hour non-billable.  Corrected calcuation error in column 'Rec. Score'.
+**** OCM
+*** 15
+**** HealthyUNH
+***** .75 hour billable.  Deployed HealtyUNH to live Site!
+*** 16
+**** WEEKEND
+*** 17
+**** WEEKEND
+*** 18
+**** StaffMeetings
+***** 1 hour non-billable.  Monthly RCC staff meeting.
+**** Housing
+***** 1.5 hour non-billable.  Signup
+**** OCM
+***** 1.5 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+*** 19
+**** StaffMeetings
+***** 1.25 hours non-billable.  Weekly Programming Group meeting.
+**** OCM
+**** .75 hour non-billable.  Imported missing v-form review columns.
+**** 2 hours non-billable.  Finished rough-draft of OCM Summer 2013 RFC.
+*** 20
+**** OCM
+**** 
+
