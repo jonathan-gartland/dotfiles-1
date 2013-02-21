@@ -16,7 +16,8 @@
  '(c-default-style (quote ((c-mode . "k&r") (c++-mode . "k&r") (java-mode . "java") (awk-mode . "awk"))))
  '(column-number-mode t)
  '(cursor-color "#657b83")
- '(custom-safe-themes (quote ("1e1f299f8f536d13a8e47be55a46d24be5715ef2ea38ecd7b4e509deb199e706" "4aafea32abe07a9658d20aadcae066e9c7a53f8e3dfbd18d8fa0b26c24f9082c" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" "7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes (quote ("36a309985a0f9ed1a0c3a69625802f87dee940767c9e200b89cdebdb737e5b29" "1e1f299f8f536d13a8e47be55a46d24be5715ef2ea38ecd7b4e509deb199e706" "4aafea32abe07a9658d20aadcae066e9c7a53f8e3dfbd18d8fa0b26c24f9082c" "36afe64261e1de73fcfadedf154e4bc2c9ec1969bde0c21798d31366897bc4d2" "a7816e280688829bde537faf2a1ec736d383ce6d97e39e1439d65d153143c2fa" "d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" "7fe1e3de3e04afc43f9a3d3a8d38cd0a0efd9d4c" "d14db41612953d22506af16ef7a23c4d112150e5" default)))
  '(custom-theme-load-path (quote ("/home/skk/.emacs.d/el-get/" custom-theme-directory t "~/.emacs.d/themes" "~/.emacs.d/el-get/theme-sinburn")))
  '(desktop-path (quote ("~/.emacs.d/.cache/")))
  '(display-time-mode t)
@@ -29,6 +30,8 @@
  '(flymake-perlcritic-severity 1)
  '(font-use-system-font nil)
  '(foreground-color "#657b83")
+ '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
+ '(highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
  '(icicle-mode t)
  '(inhibit-startup-screen t)
  '(ispell-personal-dictionary "~/.emacs.d/aspell.dict")
@@ -62,4 +65,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Anonymous Pro" :foundry "unknown" :slant normal :weight normal :height 99 :width normal))))
- '(which-func ((t (:foreground "blue")))))
+ '(which-func ((t (:inherit mode-line)))))
