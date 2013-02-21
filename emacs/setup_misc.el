@@ -4,9 +4,9 @@
 
 (use-package haskell-mode)
 
-(use-package sqlplus)
+;(use-package sqlplus)
 
-(use-package sql)
+;(use-package sql)
 
 (use-package ack)
 
