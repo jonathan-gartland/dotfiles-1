@@ -23,7 +23,8 @@
 # UACC: 60035
 # WJA_AS: 60327
 # WJA_DV: 60327
-# ePIP: 59333           
+# ePIP: 59333          
+# CCOM: 60394
 * 2012
 ** July
 *** 01
@@ -1054,6 +1055,9 @@
 **** OCM
 ***** 1.5 hour billable.  HDW updates.
 ***** 1 hour non-billable.  Corrections for term semester.  Created new OCM settings field 'current semester code'.
+      
+**** OCM
+
 *** 13 
 **** Housing
 ***** 8 hours non-billable.  Fixed/corrected issue with temporary eligibility code.
@@ -1066,6 +1070,9 @@
 *** 15
 **** HealthyUNH
 ***** .75 hour billable.  Deployed HealtyUNH to live Site!
+**** OCM
+***** 4 hours billablle.  Worked on adding features described in 02/12/2013 email.
+
 *** 16
 **** WEEKEND
 *** 17
@@ -1081,9 +1088,59 @@
 **** StaffMeetings
 ***** 1.25 hours non-billable.  Weekly Programming Group meeting.
 **** OCM
-**** .75 hour non-billable.  Imported missing v-form review columns.
-**** 2 hours non-billable.  Finished rough-draft of OCM Summer 2013 RFC.
+***** .75 hour non-billable.  Imported missing v-form review columns.
+***** 2 hours non-billable.  Finished rough-draft of OCM Summer 2013 RFC.
+***** 2 hours billablle.  Worked on adding features described in 02/12/2013 email.      
 *** 20
+**** ResLife 
+***** .5 Corrected issue with how score are calculated.
+***** 3 hour non-billable.  Corrected issues.  Added/removed columns.
+*** 21 
+***** 3 hour non-billable.  Added additional import scripts to pull missing data.  Added generation of priv/privgroup for docs from db.
+*** 22
+**** RCC
+***** 2 hours non-billable.  Meeting with AEW and PFM.
 **** OCM
-**** 
+***** 3 hour non-billable.  Corrected issues.  Added/removed columns.
+*** 23
+**** WEEKEND
+*** 24
+**** WEEKEND
+*** 25
+**** OCM 
+***** 3 hour non-billable.  Additional testing of HDW.
+*** 26
+**** CCOM
+***** 1 hour non-billable.  Setting working on setting up drupal.
+**** OCM
+***** 1 hour non-billable - testing.
+**** Events 
+***** .5 hour non-billable.  Receibed ems support email.  Tested Events in IE to help determine cause of issue the user is reporting.
+*** 27
+**** OCM
+***** 2 hour non-billable.  Corrections/updates to OCM.
+**** CCOM
+***** 3 hours non-billable.  Worked on setting up Drupal.  Encountered php errors when using MySQL has a db backend.
+**** Events
+***** .5 hours non-billable.  Responded to email support request.
+*** 28
+**** Housing
+***** .5 hours non-billable.  Fixed bugs with In-hall sign-up application.
+**** NHIHPP
+***** 4 hour billable.  Worked on creating script to import user connection and system information.
+***** .5 hour non-billablle.  Updated nshred to use additional options.
+** March
+*** 01
+**** OCM
+***** deployment.
+**** NCEMRR
+***** meeting 1 hour.
+****  EOS
 
+**** RCC
+***** .25 hour non-billable.  Meeting with PFM.
+*** 02
+**** WEEKEND
+*** 03
+**** WEEKEND
+     
