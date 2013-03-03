@@ -70,7 +70,9 @@
                    ("Emacs Config"
                     (filename . "emacs"))
                    ("scm-prompt"
-                    (filename . "scm-prompt/*"))
+                    (filename . "scm-prompt"))
+                   ("dmenu_ssh"
+                    (filename . "dmenu_ssh"))
                    ("University Calculus"
                     (filename . "~/TextBookSummaries/UniversityCalculus"))
                    ("NHIHPP"
