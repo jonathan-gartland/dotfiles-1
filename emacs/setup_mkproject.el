@@ -480,6 +480,21 @@
                                    (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
                                    (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
+    (project-def "dmenu-ssh"
+                 '((basedir "~/dmenu_ssh/")
+                   (src-patterns ("*.md" "*.pl" "*.pm"))
+                   (ignore-patterns nil)
+                   (file-list-cache "~/.emacs.d/.cache/dmenu_ssh/files")
+                   (open-files-cache "~/.emacs.d/.cache/dmenu_ssh/open-files")
+                   (tags-file "~/.emacs.d/.cache/dmenu_ssh/TAGS")
+                   (vcs git)
+                   (ack-args "--scheme")
+                   (compile-cmd nil)
+                   (startup-hook (lambda ()
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-file-list-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-open-files-cache)) t)
+                                   (make-directory (file-name-directory (expand-file-name mk-proj-tags-file)) t)))))
+
 
     ))
 
