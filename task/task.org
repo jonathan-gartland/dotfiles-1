@@ -9,6 +9,7 @@
 # NCEMRR: 60338
 # MedHome: 60036
 # NHIHPP: 60141
+# SysMon: 60421
 # NHMAPPER: 59011
 # OCM: 58797
 # Obliterase: 60023
@@ -25,6 +26,7 @@
 # WJA_DV: 60327
 # ePIP: 59333          
 # CCOM: 60394
+
 * 2012
 ** July
 *** 01
@@ -1079,7 +1081,7 @@
 **** Housing
 ***** 1.5 hour non-billable.  Signup
 **** OCM
-***** 1.5 hour non-billable.  Continued work on OCM Summer 2013 RFC.
+****l 1.5 hour non-billable.  Continued work on OCM Summer 2013 RFC.
 *** 19
 **** StaffMeetings
 ***** 1.25 hours non-billable.  Weekly Programming Group meeting.
@@ -1140,3 +1142,24 @@
 **** WEEKEND
 *** 03
 **** WEEKEND
+
+*** 04
+**** Housing
+***** .5 hour non-billable.
+
+**** SysMon
+***** 1 hour billable.  Worked on user connection script.
+***** 2 hours billable.  Worked on diskquota script.
+***** 1 hour non-billable.  Meeting with Jo and Stacey to discuss unh walking map.
+      
+*** 05
+**** SysMon
+***** 1 hour billable.  Updates to sysmon scripts 
+      
+**** StaffMeetings
+***** .50 hours non-billable.  Weekly Programming Group meeting.
+**** SysMon
+***** 2 hours billable.  Completed a
+
+**** HealthyUNH
+***** .25 hour non-billable.  Re-imported fitness data.
