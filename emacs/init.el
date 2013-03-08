@@ -244,6 +244,26 @@
   (package-initialize)
   (delete-other-windows))
 
+; from https://github.com/MaskRay/dotemacs/blob/master/cofi-util.el
+(defmacro require-and-exec (feature &optional &rest body)
+  "Require the feature and execute body if it was successfull loaded."
+  (declare (indent 1))
+  `(if (require ,feature nil 'noerror)
+       (progn ,@body)
+     (message (format "%s not loaded" ,feature))))
+
+(defmacro pour-lists (place &rest lists)
+  "Append `LISTS' in front of list at `PLACE'."
+  `(setq ,place (append ,@lists ,place)))
+
+(require-and-exec 'package
+  (package-initialize)
+  (dolist (package '(
+                     egg
+                     graphene
+                     ))
+    (unless (package-installed-p package)
+      (package-install package))))
 
 ;; Install extensions if they're missing
 (defun init--install-packages ()
