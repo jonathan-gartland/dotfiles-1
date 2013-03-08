@@ -131,9 +131,19 @@
 
 (define-abbrev-table 'egg-log-msg-mode-abbrev-table '())
 
+(define-abbrev-table 'eieio-custom-mode-abbrev-table '())
+
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-list-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-mode-abbrev-table '())
+
+(define-abbrev-table 'ert-results-mode-abbrev-table '())
+
+(define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
@@ -142,6 +152,8 @@
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
+
+(define-abbrev-table 'g-app-mode-abbrev-table '())
 
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
 
@@ -180,6 +192,8 @@
 (define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
@@ -265,6 +279,8 @@
 
 (define-abbrev-table 'perl-mode-abbrev-table '())
 
+(define-abbrev-table 'php-mode-abbrev-table '())
+
 (define-abbrev-table 'pike-mode-abbrev-table
   '(
    ))
@@ -277,7 +293,9 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'python-pep8-mode-abbrev-table '())
 
@@ -354,9 +372,7 @@
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'sql-mode-abbrev-table '())
 
 (define-abbrev-table 'sr-mode-abbrev-table '())
 
