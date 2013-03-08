@@ -1142,37 +1142,36 @@
 **** WEEKEND
 *** 03
 **** WEEKEND
-
 *** 04
 **** Housing
-***** .5 hour non-billable.
-
+***** .5 hour non-billable.  Checked into In-Hall sign-up issue.
 **** SysMon
 ***** 1 hour billable.  Worked on user connection script.
 ***** 2 hours billable.  Worked on diskquota script.
 ***** 1 hour non-billable.  Meeting with Jo and Stacey to discuss unh walking map.
-      
+**** HealthyUNH
+***** 1 hour non-billable.  Worked on quote for Walking Map project.
 *** 05
 **** SysMon
-***** 1 hour billable.  Updates to sysmon scripts 
-      
+***** 4 hours billable.  Updates to sysmon scripts.  Completed documentation describing the tables and their columns used.
 **** StaffMeetings
 ***** .50 hours non-billable.  Weekly Programming Group meeting.
-**** SysMon
-***** 2 hours billable.  Completed a
-
 **** HealthyUNH
 ***** .25 hour non-billable.  Re-imported fitness data.
+**** EOS
+***** .75 hour non-billable. Worked to determine if I could obtain image size information during upload.
       
 *** 06
 **** NCEMRR
-***** 1 hours non-billable. quote.
-      
+***** 2.25 hours non-billable. Started quote for project.  Read through the documents provided by NHIHPP.
 **** HealthyUNH
-***** 3 hours billable.
-      
+***** 3 hours billable.  Began working on project.
+**** RCC
+***** .75 hour non-billable.  Meeting with Wendy and Pat.
 *** 07
 **** NCEMRR
-***** 3 hours non-billable.  Quote.
-
-
+***** 3 hours non-billable.  Worked on Quote for project.  Finished it, sent to Jo after review by Allan.
+**** Bugzilla
+***** .25 hour non-billable.  Created accounts for Ashley Peters.
+**** HealthyUNH 
+***** 1.75 hour billable. Continued working on project.
