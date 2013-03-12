@@ -56,6 +56,7 @@ function setmenu {
     menu="$menu $([ "$dmenu_caseinsens" == '1' ] && echo '-i') $([ "$dmenu_onbottom" == '1' ] && echo '-b') -nb $dmenu_bg -nf $dmenu_fg -sb $dmenu_sbg -sf $dmenu_sfg"
 }
 
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 file=1
 config_file="preferences"
 config_dir="$XDG_CONFIG_HOME/dmenfm"
