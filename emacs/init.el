@@ -81,15 +81,11 @@
     markdown-mode
     multiple-cursors
     multi-term
-    ;mk-project
     nrepl
     notify
-    ;paredit
     graphene
-    ;python_mode_fgallina
     pretty-symbols-mode
     pomodoro
-    ; python-pep8
     quack
     rainbow-delimiters
     rainbow-mode
@@ -112,7 +108,11 @@
     pretty-symbols-mode
     wgrep
     mode-compile
-    magit pomodoro evil  solarized-theme)
+    magit
+    pomodoro
+    espresso-theme
+    evil
+    solarized-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun packages-installed-p ()
@@ -129,83 +129,6 @@
   (dolist (p packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-;(package-initialize)
-
-;(unless (and (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
-;              (file-exists-p "~/.emacs.d/elpa/archives/gnu")
-;             (file-exists-p "~/.emacs.d/elpa/archives/melpa"))
-;  (package-refresh-contents))
-
-;; (defun packages-install (&rest packages)
-;;   (mapc (lambda (package)
-;;           (let ((name (car package))
-;;                 (repo (cdr package)))
-;;             (when (not (package-installed-p name))
-;;               (let ((package-archives (list repo)))
-;;                 (package-initialize)
-;;                 (package-install name)))))
-;;         packages)
-;;   (package-initialize)
-;;   (delete-other-windows))
-
-;; ; from https://github.com/MaskRay/dotemacs/blob/master/cofi-util.el
-;; (defmacro require-and-exec (feature &optional &rest body)
-;;   "Require the feature and execute body if it was successfull loaded."
-;;   (declare (indent 1))
-;;   `(if (require ,feature nil 'noerror)
-;;        (progn ,@body)
-;;      (message (format "%s not loaded" ,feature))))
-
-;; (defmacro pour-lists (place &rest lists)
-;;   "Append `LISTS' in front of list at `PLACE'."
-;;   `(setq ,place (append ,@lists ,place)))
-
-;; (require-and-exec 'package
-;;   (package-initialize)
-;;   (dolist (package '(
-;;                      egg
-;;                      graphene
-;;                      ))
-;;     (unless (package-installed-p package)
-;;       (package-install package))))
-
-;; ;; Install extensions if they're missing
-;; (defun init--install-packages ()
-;;   (packages-install
-;;    (cons 'icicles melpa)
-;;    (cons 'pomodoro melpa)
-;;    (cons 'wgrep melpa)
-;;    (cons 'flycheck melpa)
-;;    (cons 'find-file-in-project melpa)
-;;    (cons 'org melpa)
-;;    (cons 'solarized-theme melpa)
-;;    (cons 'projectile melpa)
-;;    (cons 'helm melpa)
-;;    (cons 'evil melpa)
-;;    ))
-;;    ;; (cons 'exec-path-from-shell melpa)
-   ;; (cons 'magit melpa)
-   ;; (cons 'paredit melpa)
-   ;; (cons 'gist melpa)
-   ;; (cons 'htmlize melpa)
-   ;; (cons 'elisp-slime-nav melpa)
-   ;; (cons 'elnode marmalade)
-   ;; (cons 'slime-js marmalade)
-   ;; (cons 'git-commit-mode melpa)
-   ;; (cons 'gitconfig-mode melpa)
-   ;; (cons 'gitignore-mode melpa)
-   ;; (cons 'clojure-mode melpa)
-   ;; (cons 'clojure-test-mode melpa)
-   ;; (cons 'nrepl melpa)))
-;; (defun init-install-packages ())
-;; (condition-case nil
-;;     (init-install-packages)
-;;   (error
-;;    (package-refresh-contents)
-;;    (init-install-packages)))
-;; (defun init-install-packages ())
-;; (defun init-install-packages ())
 
 ;; Write backup files to own directory
 (setq backup-directory-alist 
@@ -258,7 +181,7 @@
 ;; (diminish 'yas/minor-mode)
 
 (when (file-exists-p (concat user-emacs-directory "lib"))
-  (mapc 'load (directory-files user-emacs-directory t "^setup_.*el$")))
+  (mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$")))
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
