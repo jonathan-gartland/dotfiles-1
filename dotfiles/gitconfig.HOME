@@ -52,3 +52,5 @@
 [cola]
 	fontdiff = DejaVu Sans Mono,10,-1,5,50,0,0,0,0,0
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
+[push]
+	default = simple
