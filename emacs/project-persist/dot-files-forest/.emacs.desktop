@@ -2,9 +2,9 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon Mar 11 20:39:09 2013
+;; Created Tue Mar 12 13:21:44 2013
 ;; Desktop file format version 206
-;; Emacs version 24.2.1
+;; Emacs version 24.3.1
 
 ;; Global section:
 (setq desktop-missing-file-warning nil)
@@ -13,16 +13,27 @@
 (setq search-ring '("mu" "packages-" "smooth" "hanoi" "CENTER" "zoom" "panT" "Fitness" "Fitnesss" " " "\"" "type=\"" "\"" "type" "HOUSING::PIDM" "HOUSING::"))
 (setq regexp-search-ring '("point-s" "shell-pop" "lu" "hide-reg" "hex" "prelu" "\\_<src_location_def\\_>" "id" "SysM" "NHI" "hash" "Ski" "?" "line" "Heal" "SQL"))
 (setq register-alist nil)
-(setq file-name-history '("/home/skk/dot-files-forest/emacs/setup_autocomplete.el" "/home/skk/dot-files-forest/emacs/init.el" "~/.i3/config" "~/dmenu_ssh/src/main.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Xterm.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Storable.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "/sshfs/lithium/web/medhome/perl/MEDHOME/EXT/Data/Import.pm" "/home/skk/work/NCEMMR/GPRO-Abstract-Datatypes.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient-Ranking.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Provider.xsd" "/home/skk/data20.jsp" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/GetFeatureInfo.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationFeatures.pm" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/js/walkingmap.js" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationsAsNavLists.pm" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/index.html" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/Config.pm"))
+(setq file-name-history '("/home/skk/dot-files-forest/.projectile" "/home/skk/dot-files-forest/emacs/setup_autocomplete.el" "/home/skk/dot-files-forest/emacs/init.el" "~/.i3/config" "~/dmenu_ssh/src/main.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Xterm.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Storable.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "/sshfs/lithium/web/medhome/perl/MEDHOME/EXT/Data/Import.pm" "/home/skk/work/NCEMMR/GPRO-Abstract-Datatypes.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient-Ranking.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Provider.xsd" "/home/skk/data20.jsp" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/GetFeatureInfo.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationFeatures.pm" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/js/walkingmap.js" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationsAsNavLists.pm" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/index.html"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/home/skk/dot-files-forest/emacs/setup_autocomplete.el"
-  "setup_autocomplete.el"
-  'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
-  274
-  '(274 nil)
+  nil
+  "healthyunh"
+  'dired-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
+  659
+  '(659 nil)
+  t
+  '("/sshfs/lithium/web/healthyunh/")
+  '((truncate-lines)))
+
+(desktop-create-buffer 206
+  "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/NameDefs.pm"
+  "NameDefs.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  1926
+  '(1833 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
@@ -31,18 +42,29 @@
   "/home/skk/dot-files-forest/emacs/init.el"
   "init.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
-  8591
-  '(8593 nil)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  4858
+  '(4858 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
+  "/home/skk/dot-files-forest/.projectile"
+  ".projectile"
+  'fundamental-mode
+  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
+  29
+  '(30 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
   "/home/skk/.emacs.d/el-get/package/elpa/project-persist-20130120.2048/project-persist-autoloads.el"
   "project-persist-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   866
   '(nil nil)
   nil
@@ -53,7 +75,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/sr-speedbar-20090723.435/sr-speedbar-autoloads.el"
   "sr-speedbar-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   187
   '(nil nil)
   nil
@@ -64,7 +86,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/smex-20120915.2041/smex-autoloads.el"
   "smex-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   372
   '(nil nil)
   nil
@@ -75,7 +97,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/multi-web-mode-20130205.2044/multi-web-mode-autoloads.el"
   "multi-web-mode-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   485
   '(nil nil)
   nil
@@ -86,7 +108,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/smartparens-20130218.1817/smartparens-autoloads.el"
   "smartparens-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   3675
   '(nil nil)
   nil
@@ -97,7 +119,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/ac-dabbrev-20091116.1626/ac-dabbrev-autoloads.el"
   "ac-dabbrev-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   185
   '(nil nil)
   nil
@@ -108,7 +130,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/popup-20130117.1954/popup-autoloads.el"
   "popup-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   170
   '(nil nil)
   nil
@@ -119,7 +141,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/auto-complete-20130209.651/auto-complete-autoloads.el"
   "auto-complete-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   467
   '(nil nil)
   nil
@@ -130,7 +152,7 @@
   "/home/skk/.emacs.d/el-get/package/elpa/graphene-20130118.918/graphene-autoloads.el"
   "graphene-autoloads.el"
   'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode pretty-symbols-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   743
   '(nil nil)
   nil
@@ -141,7 +163,7 @@
   "/home/skk/dot-files-forest/install.py"
   "install.py"
   'python-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode rainbow-delimiters-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode project-persist-mode projectile-mode linum-mode rainbow-delimiters-mode window-number-mode yas-minor-mode)
   1
   '(nil nil)
   nil
@@ -152,7 +174,7 @@
   "/home/skk/.bm-repository"
   ".bm-repository"
   'fundamental-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode yas-minor-mode autopair-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
   61
   '(nil nil)
   nil
@@ -163,54 +185,54 @@
   "/home/skk/.emacs.d/el-get/package/elpa/archives/ELPA/archive-contents"
   " *http tromey.com:80*"
   'fundamental-mode
-  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode projectile-mode window-number-mode)
   11669
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . raw-text-unix)))
+  '((buffer-file-coding-system . raw-text-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
   "/home/skk/.emacs.d/el-get/package/elpa/archives/gnu/archive-contents"
   " *http elpa.gnu.org:80*"
   'fundamental-mode
-  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
-  4303
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode projectile-mode window-number-mode)
+  4241
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . raw-text-unix)))
+  '((buffer-file-coding-system . raw-text-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
   "/home/skk/.emacs.d/el-get/package/elpa/archives/marmalade/archive-contents"
   " *http marmalade-repo.org:80*"
   'fundamental-mode
-  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
-  62167
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
+  59726
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . raw-text-unix)))
+  '((buffer-file-coding-system . raw-text-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
   "/home/skk/.emacs.d/el-get/package/elpa/archives/SC/archive-contents"
   " *http joseito.republika.pl:80*"
   'fundamental-mode
-  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode projectile-mode window-number-mode)
   2192
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . raw-text-unix)))
+  '((buffer-file-coding-system . raw-text-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
   "/home/skk/.emacs.d/el-get/package/elpa/archives/melpa/archive-contents"
   " *http melpa.milkbox.net:80*"
   'fundamental-mode
-  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
-  89201
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode projectile-mode window-number-mode)
+  83708
   '(nil nil)
   nil
   nil
-  '((buffer-file-coding-system . raw-text-unix)))
+  '((buffer-file-coding-system . raw-text-unix) (truncate-lines)))
 

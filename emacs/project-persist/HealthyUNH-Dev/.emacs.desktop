@@ -1,0 +1,73 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Mar 12 12:54:59 2013
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("paging" "$" "content_re" "content" "rain" "text:" "ajax s" "OCM College " "College Dean" "display_feat" "Pop" "multi" "logger" "vector_layer" "fitness-map" "type"))
+(setq regexp-search-ring '("\\_<out_options\\_>" "\\_<highlight_report\\_>" "modifyFe" "\\_<ModifyFeature\\_>" "ModifyFe" "\\_<paging\\_>" "\\_<content_resize\\_>" "content_re" "content_" "is_fe" "hide_feature" "COLLEGE" "Reporting" "CEPS" "CollegeDean" "College Dean"))
+(setq register-alist nil)
+(setq file-name-history '("/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/LocationList.pm" "/home/skk/.emacs.d/lib/setup_appearance.el" "/home/skk/dot-files-forest/emacs/init.el" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/index.html" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationFeatures.pm" "/sshfs/lithium/web/medhome/perl/MEDHOME/EXT/Data/Details.pm" "/home/skk/.emacs.d/setup_buffermove.el" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/LocationFeatures.pm" "~/dot-files-forest/task/task.org" "/sshfs/lithium/web/healthyunh/htdocs/js/create_logger_log4javascript.js" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/../WalkingMap/LocationsAsNavLists.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/../FitnessMap/GetFeatureInfo.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/../WalkingMap/GetFeatureInfo.pm" "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/walkingmap.js" "/sshfs/lithium/web/healthyunh/htdocs/fitnessmap/fitnessmap.js" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/../WalkingMap/LocationsAsNavLists.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/LocationsAsNavLists.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/NameDefs.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/NameDef.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/../FitnessMap/LocationList.pm" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/WalkingMapRecord.pm" "~/work/NCEMRR-Docs/ACO-GPRO-Patient.xsd" "/home/skk/.i3/config" "/sshfs/lithium/web/medhome/perl/MEDHOME/EXT/Data/Import.pm" "/home/skk/work/NCEMMR/GPRO-Abstract-Datatypes.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Patient-Ranking.xsd" "/home/skk/work/NCEMMR/ACO-GPRO-Provider.xsd" "/home/skk/data20.jsp" "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/WalkingMap/GetFeatureInfo.pm"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/walkingmap.js"
+  "walkingmap.js"
+  'js2-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode rainbow-delimiters-mode rainbow-mode window-number-mode yas-minor-mode)
+  14286
+  '(14235 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/sshfs/lithium/web/healthyunh/perl/HUMOR/EXT/FitnessMap/LocationsAsNavLists.pm"
+  "LocationsAsNavLists.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  1479
+  '(1479 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/sshfs/lithium/web/healthyunh/htdocs/walkingmap/index.html"
+  "index.html"
+  'html-mode
+  '(auto-fill-mode abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode multi-web-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode zencoding-mode)
+  1400
+  '(323 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (fill-column . 78) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/.emacs.d/lib/setup_appearance.el"
+  "setup_appearance.el"
+  'emacs-lisp-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode rainbow-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  1042
+  '(22 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/dot-files-forest/emacs/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  4524
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
