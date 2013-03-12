@@ -16,6 +16,7 @@
  '(c-default-style (quote ((c-mode . "k&r") (c++-mode . "k&r") (java-mode . "java") (awk-mode . "awk"))))
  '(column-number-mode t)
  '(cursor-color "#657b83")
+ '(custom-safe-themes (quote ("f38dd27d6462c0dac285aa95ae28aeb7df7e545f8930688c18960aeaf4e807ed" "1760322f987b57884e38f4076ac586c27566a1d7ed421b67843c8c98a1501e3a" default)))
  '(desktop-path (quote ("~/.emacs.d/.cache/")))
  '(display-time-mode t)
  '(emeteo-timeout 10)

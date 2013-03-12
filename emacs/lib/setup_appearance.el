@@ -43,6 +43,8 @@
   (global-hl-line-mode 1)
   )
 
+(rainbow-mode t)
+
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
 ;; Ditch them scrollbars

@@ -112,6 +112,8 @@
     pomodoro
     espresso-theme
     evil
+    cyberpunk-theme
+    underwater-theme
     solarized-theme)
   "A list of packages to ensure are installed at launch.")
 
