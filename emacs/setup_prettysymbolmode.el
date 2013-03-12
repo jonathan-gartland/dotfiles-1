@@ -7,5 +7,5 @@
 (add-hook 'javascript-mode 'pretty-symbols-mode)
 (add-hook 'python-mode 'pretty-mode)
 
-;(provide 'setup_prettysymbolmode)
+(provide 'setup_prettysymbolmode)
 
