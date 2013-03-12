@@ -1,4 +1,16 @@
-((("color-theme" .
+((("new" .
+   [1 0 0])
+  ("package" .
+   [1 0 0 0 0 0 0])
+  ("use-package" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("pretty-symbols-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("pretty-symbol" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 1])
+  ("color-theme" .
    [0 0 0 0 0 0 0 0 0 0 1])
   ("autoload" .
-   [0 0 0 0 0 0 0 1])))
+   [0 0 0 0 0 0 0 1])
+  ("mode-compile" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])))

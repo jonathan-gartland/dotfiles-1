@@ -8,3 +8,4 @@
     (setq auto-insert-query nil) ;;; If you don't want to be prompted before insertion
     (define-auto-insert "\.py" "template.py")
     (define-auto-insert "\.pm" "template.pm")))
+
