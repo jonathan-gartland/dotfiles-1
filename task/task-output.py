@@ -415,7 +415,7 @@ with open("task.org") as f:
                           comment = comment.strip())
                 #print te
 
-for project in projects.keys():
+for project in sorted(projects.keys()):
     if outputFormat == 'Task':
         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
