@@ -275,11 +275,6 @@ activate-mark-hook"
               auto-recompile outline-minor-mode)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; enable autopair mode
-(autopair-global-mode)
-
-
 ; switch to ~
 (cd "~")
 
