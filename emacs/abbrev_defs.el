@@ -163,6 +163,10 @@
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
 
+(define-abbrev-table 'gitconfig-mode-abbrev-table '())
+
+(define-abbrev-table 'gitignore-mode-abbrev-table '())
+
 (define-abbrev-table 'global-abbrev-table '())
 
 (define-abbrev-table 'gnus-article-edit-mode-abbrev-table '())
@@ -293,7 +297,9 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'python-pep8-mode-abbrev-table '())
 
