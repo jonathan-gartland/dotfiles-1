@@ -23,7 +23,6 @@
 
 
 ;; Set up load path
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
 (require 'use-package)
@@ -61,8 +60,10 @@
     fill-column-indicator
     flymake-perlcritic
     flymake-cursor
+    textmate
+    gitignore-mode
     ;git-emacs
-    ;gitconfig-mode
+    gitconfig-mode
     ;git-modeline
     geiser
     haskell-mode
@@ -171,9 +172,9 @@
            (cd p) (normal-top-level-add-subdirs-to-load-path)) vendor-load-path)
 
 ;; ;; Emacs server
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;; (require 'server)
+;; (unless (server-running-p)
+;;   (server-start))
 
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)

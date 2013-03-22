@@ -1,3 +1,5 @@
+(use-package textmate)
+
 (add-hook 'text-mode-hook
           (lambda ()
             (interactive)
