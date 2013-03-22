@@ -46,6 +46,7 @@
   '(
     ace-jump-mode
     ack
+    ack-and-a-half
     boxquote
     buffer-move
     clojure-mode
