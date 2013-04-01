@@ -5,8 +5,7 @@
 # HCGS: 60049
 # HealthWRQS: 60140
 # HealthyUNH_FitnessMap: 60059
-# HealthyUNH_WalkingMap
-60428
+# HealthyUNH_WalkingMap: 60428
 # Housing: 59032
 # NCEMRR: 60338
 # MedHome: 60036
@@ -28,7 +27,11 @@
 # WJA_DV: 60327
 # ePIP: 59333          
 # CCOM: 60394
-
+# Layout3: 60453
+# Task60455: 60455
+# Task60458: 60458
+# Task60463: 60463
+# PicturePost: 60466
 * 2012
 ** July
 *** 01
@@ -1194,3 +1197,73 @@
 ***** .5 hour non-billable.  Fixed bug when saving complaint form without DOB.
 **** HealthyUNH_WalkingMap
 ***** 3 hours billable.  Continued working on project.  At this point the following features are done:  map, list of buildings, (un)-selecting of buildings (on both map and list) to show pop-up window with info and the admin interface is done.
+      
+*** 13
+*** 14
+      
+*** 15
+**** SICK
+*** 16
+**** WEEKEND
+*** 17
+**** WEEKEND
+*** 18
+**** CURTAILED_OPERATIONS
+
+*** 19
+
+*** 20
+
+*** 21
+**** WJA_AS
+***** .5 hour non-billable.  Meeting with Annette to discuss update to PicturePost.
+***** 1 hour non-billable.  Review Picture site and source code.
+
+*** 22
+**** RCC
+***** .25 hour non-billable.  Meeting with PFM.
+**** WJA_AS
+***** 3 hour non-billable.  Worked on quote.
+**** OCM
+***** .5 hour non-billable.  Fixed bug with removeal of violations not saving.
+**** HealthyUNH_WalkingMap
+***** 1 hour non-billable.  Spoke with Stracy about walking map.
+**** Layout3
+
+*** 23
+**** WEEKEND
+*** 24
+**** WEEKEND
+*** 25
+**** Layout3
+**** Task60455
+***** 1 hour billable. Windows XP won't boot.  The BIOS reported that it couldn't find the primary hard drive.  Chris will be buying a new hard drive.
+**** Task60458
+***** 1 hour billable.  Determined that it is possible to update oXygen.  Installed all updates for Fedora 17.  Asked Alison if updating to 14.2 is okay.
+     
+*** 26
+**** Task60458
+***** .25 hour billable.  Updated oXygen to version 14.2
+**** StaffMeetings
+***** .75 hours non-billable.  Weekly Programming Group meeting.
+**** WJA_AS
+***** 1 hour non-billable.  Finished quote; sent to AEW for review.  Updated quote based on aew's review.  Sent to Annette.
+**** Obliterase
+***** .25 hour billable.  Meeting with Steve to be recorded for Kickstarter video.
+**** Task60463
+    
+*** 27
+**** PicturePost
+***** 5 hour billable.  Started work.
+**** RCC
+***** 1 hour non-billable.  Meeting with PFM, AEW and Pat.
+
+*** 28
+**** Task60458
+***** .25 hour billable.  Allison had a problem starting Oxygen.  The menu include referneces to Oxygen 13.  I created a link in the panel to Oxygen 14.2.
+**** OCM
+***** 1 hour non-billable.  Added college to Three Strike Report.
+**** RCC
+***** .5 hour non-billable.  Meeting with PFM, AEW and Pat.
+**** PicturePost
+***** 5 hour billable.  Started work.
