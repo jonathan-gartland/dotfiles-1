@@ -1137,12 +1137,12 @@
 ** March
 *** 01
 **** OCM
-***** deployment.
+***** 2 hour non-billable.  Deployment.
 **** NCEMRR
-***** meeting 1 hour.
-****  EOS
+***** 1 hour non-billable.  Meeting.
 **** RCC
 ***** .25 hour non-billable.  Meeting with PFM.
+**** EOS
 *** 02
 **** WEEKEND
 *** 03
@@ -1197,9 +1197,22 @@
 ***** .5 hour non-billable.  Fixed bug when saving complaint form without DOB.
 **** HealthyUNH_WalkingMap
 ***** 3 hours billable.  Continued working on project.  At this point the following features are done:  map, list of buildings, (un)-selecting of buildings (on both map and list) to show pop-up window with info and the admin interface is done.
-      
 *** 13
+**** HealthyUNH_WalkingMap
+***** 4 hours billable.  Continued working on project.
+**** WJA_AS
+***** 1 hour non-billable.  Looked into issues with data set 20 on EOS Webster.
 *** 14
+**** RCC
+***** .5 hour non-billable.  Responded to question from Tad.
+**** WJA_AS
+***** 1 hour non-billable.  Corrected issues with DataSet 20 on EOS Webster.
+**** HCGS
+***** .5 hour non-billable.  Meet with Feseha Abebe-Akele to review updating html pages using Layout.  Added image to HCGS site.
+**** EOS
+***** .5 hour non-billable.  Created SwRI group on EOS site.      
+**** OCM
+***** .5 hour non-billable.  Corrected bug I noticed on OCM site.
       
 *** 15
 **** SICK
@@ -1209,55 +1222,58 @@
 **** WEEKEND
 *** 18
 **** CURTAILED_OPERATIONS
-
 *** 19
-
 *** 20
-
+**** SysMon
+***** 3 hour non-billable.  Worked on quote for sys-monitoring work, part 2.
+**** HealthyUNH_WalkingMap
+***** 2 hours non-billable.  Updates based on code review.
+**** Bugzilla
+***** .5 hour non-billable.  Re-created password reset token for Kimberly.Persson@unh.edu.
 *** 21
 **** WJA_AS
 ***** .5 hour non-billable.  Meeting with Annette to discuss update to PicturePost.
-***** 1 hour non-billable.  Review Picture site and source code.
-
+***** 1.5 hour non-billable.  Review Picture site and source code.
+**** EOS
+***** 2 hours billable.  Updated Spheres Online category in EOS Intranet.  Removed CCRC and CSRC groups.
+**** HealthyUNH_WalkingMap
+***** 1 hour billable.  Finished up work on project.  Sent email with update to Stacey.
 *** 22
 **** RCC
 ***** .25 hour non-billable.  Meeting with PFM.
 **** WJA_AS
-***** 3 hour non-billable.  Worked on quote.
+***** 4 hour non-billable.  Worked on quote.
 **** OCM
 ***** .5 hour non-billable.  Fixed bug with removeal of violations not saving.
 **** HealthyUNH_WalkingMap
 ***** 1 hour non-billable.  Spoke with Stracy about walking map.
-**** Layout3
-
 *** 23
 **** WEEKEND
 *** 24
 **** WEEKEND
 *** 25
-**** Layout3
 **** Task60455
 ***** 1 hour billable. Windows XP won't boot.  The BIOS reported that it couldn't find the primary hard drive.  Chris will be buying a new hard drive.
 **** Task60458
 ***** 1 hour billable.  Determined that it is possible to update oXygen.  Installed all updates for Fedora 17.  Asked Alison if updating to 14.2 is okay.
-     
 *** 26
+**** Task60463
+***** 2.5 hours non-billable.  Research tools to update samba passwords for users without the ability to login.
+**** OCM
+***** .5 hour non-billable.  Corrected Witness field.
 **** Task60458
 ***** .25 hour billable.  Updated oXygen to version 14.2
 **** StaffMeetings
 ***** .75 hours non-billable.  Weekly Programming Group meeting.
 **** WJA_AS
-***** 1 hour non-billable.  Finished quote; sent to AEW for review.  Updated quote based on aew's review.  Sent to Annette.
+***** 1.5 hour non-billable.  Finished quote; sent to AEW for review.  Updated quote based on aew's review.  Sent to Annette.
 **** Obliterase
 ***** .25 hour billable.  Meeting with Steve to be recorded for Kickstarter video.
-**** Task60463
-    
 *** 27
 **** PicturePost
-***** 5 hour billable.  Started work.
+***** 5 hour billable.  Started working on project.
 **** RCC
 ***** 1 hour non-billable.  Meeting with PFM, AEW and Pat.
-
 *** 28
 **** Task60458
 ***** .25 hour billable.  Allison had a problem starting Oxygen.  The menu include referneces to Oxygen 13.  I created a link in the panel to Oxygen 14.2.
@@ -1266,4 +1282,16 @@
 **** RCC
 ***** .5 hour non-billable.  Meeting with PFM, AEW and Pat.
 **** PicturePost
-***** 5 hour billable.  Started work.
+***** 5 hour billable.  Continued working on project.
+*** 29
+**** PicturePost
+***** 5 hour billable.  Continued working on project.
+**** RCC
+***** 2 hours non-billable.  Cleaned out old office.
+*** 30 
+**** WEEKEND
+*** 31 
+**** WEEKEND
+** April
+*** 01
+**** VACATION
