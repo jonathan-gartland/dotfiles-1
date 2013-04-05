@@ -1,4 +1,10 @@
-# $Id: rcc.rc 2649 2009-03-10 12:37:59Z skk $
+:0
+* ^Subject:.*SheepDog.*
+.Systems.SheepDot/
+
+:0
+* ^Subject:^.*SheepDog:.*
+.SheepDog/
 
 # RCC emails
 # Staff email
@@ -21,7 +27,7 @@
 .Ops/
 
 :0
-* ^(To|Cc):.*(rcc-ops|ops|rccops|rcc)@sr.unh.edu.*
+* ^(To|Cc):.*(rcc-ops|ops|rccops|rcc|support)@sr.unh.edu.*
 .Ops/
 
 # Email sent to addresses other than the "Ops" addresses above, but still should be put into the .Ops/ maildir.
@@ -46,10 +52,6 @@
 :0
 * ^(To|CC):.*pat.council@lists.unh.edu.*
 .Staff/
-
-:0
-* ^Subject:.*SheepDog.*
-.Systems.SheepDot/
 
 # catch messages from Al's personal email address
 :0

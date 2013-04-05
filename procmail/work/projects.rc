@@ -4,6 +4,16 @@
 # Active Projects
 # 
 
+# ePIP 
+:0 
+* ^From:.*admin@nhmedicaidepip.com.*
+.Projects.NHIHPP.ePIP/
+
+# ePIP 
+:0 
+* ^From:.*epip-info@spork.sr.unh.edu.*
+.Projects.NHIHPP.ePIP/
+
 # CRMS
 
 # CRMS Nightly Build 
@@ -54,19 +64,26 @@
 # Events email
 :0
 * ^(To|Cc):.*(events|Events)-dev@sr.unh.edu.*
-.Projects\ \(Mothballed\).Events/
+.Projects.Events/
 
 :0
 * ^(To|Cc):.*Events-Dev.*
-.Projects\ \(Mothballed\).Events/
+.Projects.Events/
 
 :0
 * ^(To|Cc):.*paygate-support@sr.unh.edu.*
-.Projects\ \(Mothballed\).Events/
+.Projects.Events/
 
 # PSMP
 
 # PSMP email
 :0
 * ^(To|Cc):.*psmp-team@sr.unh.edu.*
-.Projects\ (Mothballed).PSMP/
+.Projects.PSMP/
+
+
+# Housing
+
+:0
+* ^(Subject):.*Housing SignUp.*
+.Projects.Housing.SignUp/
