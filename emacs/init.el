@@ -97,7 +97,6 @@
     smex
     sql
     smooth-scrolling
-    sunrise-commander
     undo-tree
     xclip
     yasnippet
