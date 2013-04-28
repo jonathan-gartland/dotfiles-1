@@ -71,6 +71,8 @@
                     (filename . "emacs"))
                    ("scm-prompt"
                     (filename . "scm-prompt"))
+                   ("4clojure"
+                    (filename . "4clojure"))
                    ("dmenu_ssh"
                     (filename . "dmenu_ssh"))
                    ("University Calculus"
