@@ -21,6 +21,8 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
+(define-abbrev-table 'asm-mode-abbrev-table '())
+
 (define-abbrev-table 'awk-mode-abbrev-table
   '(
    ))
@@ -179,6 +181,8 @@
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
 
+(define-abbrev-table 'haskell-cabal-mode-abbrev-table '())
+
 (define-abbrev-table 'haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
@@ -231,6 +235,24 @@
 
 (define-abbrev-table 'lua-mode-abbrev-table '())
 
+(define-abbrev-table 'magit-branch-manager-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-commit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-diff-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-reflog-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-stash-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-status-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
+
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
 (define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
@@ -260,6 +282,10 @@
 (define-abbrev-table 'mu4e-raw-view-mode-abbrev-table '())
 
 (define-abbrev-table 'mu4e-view-mode-abbrev-table '())
+
+(define-abbrev-table 'nrepl-connections-buffer-mode-abbrev-table '())
+
+(define-abbrev-table 'nrepl-mode-abbrev-table '())
 
 (define-abbrev-table 'nroff-mode-abbrev-table '())
 
