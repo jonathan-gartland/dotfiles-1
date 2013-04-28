@@ -7,10 +7,6 @@
   (progn 
     (setq ibuffer-saved-filter-groups
           (quote (("default"      
-                   ("erma-skk"
-                    (filename . "/web/erma-skk"))
-                   ("nh-wetlands-mapper-dev"
-                    (filename . "/web/nh-wetlands-mapper-dev"))
                    ("SICP"
                     (filename . "SICP"))
                    ("HemlockForest"
@@ -18,56 +14,7 @@
                    ("MedHome"
                     (or
                      (filename . "/web/medhome")))
-                   ("HCGS"
-                    (or
-                     (filename . "/web/hcgs")))
-                   ("UACC"
-                    (or
-                     (filename . "/web/uacc")))
-                   ("SpiceCore"
-                    (or
-                     (filename . "/web/SpiceCore")))
-                   ("HealthyUNH"
-                    (or
-                     (filename . "/web/healthyunh")))
-                   ("Housing OCM"
-                    (or
-                     (filename . "/web/housing/perl/HOUSING/EXT/OCM")
-                     (filename . "/web/housing/htdocs/js/ocm")
-                     (filename . "/web/housing/htdocs/css/ocm")
-                     (filename . "/web/housing/sql/ocm")))
-                   ("Housing ResLife"
-                    (or
-                     (filename . "/web/housing/perl/HOUSING/EXT/ResLife")
-                     (filename . "/web/housing/htdocs/js/reslife")
-                     (filename . "/web/housing/htdocs/css/reslife")
-                     (filename . "/web/housing/sql/reslife")))
-                   ("Housing InHall"
-                    (or
-                     (filename . "/web/housing/perl/HOUSING/EXT/Assignments/InHall")
-                     (filename . "/web/housing/htdocs/js/inhall")
-                     (filename . "/web/housing/htdocs/css/inhall")
-                     (filename . "/web/housing/sql/inhall")))
-                   ("Housing"
-                    (filename . "/web/housing"))
-                   ("Obliterase"
-                    (or
-                     (filename . "/web/neat-rcc")
-                     (filename . "/web/neat")))
-                   ("RCC"
-                    (filename . "/webdev/rcc"))
-                   ("EPSCoR"
-                    (or
-                     (filename . "/web/epscor")
-                     (filename . "/web/perl/Lib/EPSCOR")))
-                   ("UPS"
-                    (filename . "~/work/ups"))
-                   ("NEC"
-                    (or
-                     (filename . "/web/nec")
-                     (filename . "/web1/nec")
-                     (filename . "/web2/nec")))
-                   ("Emacs Config"
+                   "Emacs Config"
                     (filename . "emacs"))
                    ("scm-prompt"
                     (filename . "scm-prompt"))
@@ -77,8 +24,6 @@
                     (filename . "dmenu_ssh"))
                    ("University Calculus"
                     (filename . "~/TextBookSummaries/UniversityCalculus"))
-                   ("NHIHPP"
-                    (filename . "/web/perl/Lib/NHIHPP"))
                    ("DotFilesForest"
                     (filename . "dot-files-forest"))
                    ("version control" 
