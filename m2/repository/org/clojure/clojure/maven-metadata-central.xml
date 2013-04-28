@@ -3,8 +3,8 @@
   <groupId>org.clojure</groupId>
   <artifactId>clojure</artifactId>
   <versioning>
-    <latest>1.5.0-beta1</latest>
-    <release>1.5.0-beta1</release>
+    <latest>1.5.1</latest>
+    <release>1.5.1</release>
     <versions>
       <version>1.0.0</version>
       <version>1.1.0</version>
@@ -40,7 +40,27 @@
       <version>1.5.0-alpha6</version>
       <version>1.5.0-alpha7</version>
       <version>1.5.0-beta1</version>
+      <version>1.5.0-beta2</version>
+      <version>1.5.0-beta7</version>
+      <version>1.5.0-beta8</version>
+      <version>1.5.0-beta9</version>
+      <version>1.5.0-beta10</version>
+      <version>1.5.0-beta11</version>
+      <version>1.5.0-beta12</version>
+      <version>1.5.0-beta13</version>
+      <version>1.5.0-RC1</version>
+      <version>1.5.0-RC2</version>
+      <version>1.5.0-RC3</version>
+      <version>1.5.0-RC4</version>
+      <version>1.5.0-RC5</version>
+      <version>1.5.0-RC6</version>
+      <version>1.5.0-RC14</version>
+      <version>1.5.0-RC15</version>
+      <version>1.5.0-RC16</version>
+      <version>1.5.0-RC17</version>
+      <version>1.5.0</version>
+      <version>1.5.1</version>
     </versions>
-    <lastUpdated>20121023005254</lastUpdated>
+    <lastUpdated>20130310182910</lastUpdated>
   </versioning>
 </metadata>
