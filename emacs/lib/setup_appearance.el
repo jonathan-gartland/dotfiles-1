@@ -39,8 +39,10 @@
   (tooltip-mode -1)
   (turn-off-tool-bar)
   (blink-cursor-mode -1)
+  ; Don't highlight current line
+  (global-hl-line-mode 0)
   ; Highlight current line
-  (global-hl-line-mode 1)
+  ; (global-hl-line-mode 1)
   )
 
 (rainbow-mode t)
