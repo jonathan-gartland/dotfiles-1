@@ -15,7 +15,7 @@ fi
 export stow="$HOME/local/stow"
 
 # setup CDPATH
-export CDPATH=.:~:~/src:~/work:/web/
+export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
