@@ -11,10 +11,7 @@
                     (filename . "SICP"))
                    ("HemlockForest"
                     (filename . "HemlockForest"))
-                   ("MedHome"
-                    (or
-                     (filename . "/web/medhome")))
-                   "Emacs Config"
+                   ("Emacs Config"
                     (filename . "emacs"))
                    ("scm-prompt"
                     (filename . "scm-prompt"))
