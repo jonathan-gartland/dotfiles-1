@@ -15,7 +15,7 @@ fi
 export stow="$HOME/local/stow"
 
 # setup CDPATH
-export CDPATH=.:~:~/src:~/work:/web/
+export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
 # TODO: rewrite addToCDPATH.fish so that I can add /web* and perhaps other directories
 
 # setup PATH
@@ -33,6 +33,8 @@ export TERMINFO="$HOME/.terminfo"
 # set PYTHONPATH
 #python_version=$(/usr/bin/env python -c "import sys;print 'python' + str(sys.version_info[0]) + '.' + str(sys.version_info[1])")
 #export PYTHONPATH="$HOME/.emacs.d/python/lib/$python_version/site-packages/:$HOME/local/lib/$python_version/site-packages/:$HOME/local/stow/lib/:$HOME/dot-files-forest/.lib/lib/$python_version/site-packages/"
+
+export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 
 # rcc
 if [ "$DNS_DOMAIN_NAME" == "rcc" ]; then
@@ -63,28 +65,25 @@ if [ $HOSTNAME == "zathras.sr.unh.edu" ]; then
     export JRE_HOME="$JAVA_HOME"
     export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
-    
-    # Database aliases
-    export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 
     export CDPATH=$CDPATH:~/CRMS
 fi
 
 if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
-    export JAVA_HOME="/usr/local/java/jdk1.7.0_04"
+    #export JAVA_HOME="/usr/local/java/jdk1.7.0_04"
+    export JAVA_HOME="/usr/local/java/jdk1.6.0_26"
     export JRE_HOME="$JAVA_HOME"
     export PRINTER="Color-LaserJet-3800"
     export MAILDIR="$HOME/Maildir"
     export CDPATH=$CDPATH:~/CRMS
     # Database aliases
-    export ORACLE_COMMAND="$HOME/bin/pysql.sh"
     export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
 
     # add cabal/bin to PATH
     #export PATH=$HOME/.cabal/bin:$PATH
-
+    
     # source autojump init file
-#    source /etc/profile.d/autojump.zsh
+    # source /etc/profile.d/autojump.zsh
 fi
 
 if [ $HOSTNAME == "kona.sr.unh.edu" ]; then

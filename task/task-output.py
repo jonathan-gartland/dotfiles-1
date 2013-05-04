@@ -5,6 +5,7 @@ import sys
 import os.path
 from sqlobject import *
 from sqlobject.sqlbuilder import *
+from sqlobject.dberrors import OperationalError
 import hashlib
 from texttable import Texttable
 from optparse import OptionParser
@@ -147,11 +148,11 @@ class OptionHandling( object ):
             fiscal_year = options.fiscal_year['fiscal_year'] or today.year
             fiscal_year = int( fiscal_year )
             if month >= 1 and month <= 6:
-                startDate = self.formatDay( fiscal_year-1, 01, 01 )
-                endDate = self.formatDay( fiscal_year, 06, 30 )
+                startDate = self.formatDay( fiscal_year-1, 1, 1 )
+                endDate = self.formatDay( fiscal_year, 6, 30 )
             else:
-                startDate = self.formatDay( fiscal_year, 07, 01 )
-                endDate = self.formatDay( fiscal_year+1, 06, 30 )
+                startDate = self.formatDay( fiscal_year, 7, 1 )
+                endDate = self.formatDay( fiscal_year+1, 6, 30 )
         else:
             parser.print_help()
             exit( 1 )
@@ -310,9 +311,9 @@ taskid = None
 
 # db_filename = os.path.join( os.path.dirname(os.path.abspath(__file__)), "task.sql")
 # try:
-#     os.unlink(db_filename)
+#      os.unlink(db_filename)
 # except OSError:
-#     None
+#      None
 db_filename = "/:memory:"
 connection_string = "sqlite:" + db_filename
 #connection_string += '?debug=True'
@@ -328,8 +329,10 @@ class TaskEntry(SQLObject):
     hash = StringCol()
     taskid = IntCol()
 
-TaskEntry.createTable()
-
+try:
+    TaskEntry.createTable()
+except OperationalError:
+    pass
 
 options = OptionHandling(sys.argv)
 (userName, startDate, endDate, outputFormat) = options.optionHandlingAndParsing()
@@ -410,8 +413,9 @@ with open("task.org") as f:
                           project = project,
                           taskid = taskid,
                           comment = comment.strip())
+                #print te
 
-for project in projects.keys():
+for project in sorted(projects.keys()):
     if outputFormat == 'Task':
         generate_entry_for_task(project, 'Billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 1 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
         generate_entry_for_task(project, 'non-billable', TaskEntry.select(""" date between '%s' and '%s' AND billable = 0 AND project = '%s'""" % (startDate, endDate, project), orderBy=['date']) )
@@ -432,7 +436,8 @@ for row in rows:
     days += 1
     hours += row[1]
 
-    print "%s %s" % row
+    #print row
+    print "%s %s" % (row[0], row[1])
 
 query = "SELECT billable, sum(length) FROM task_entry WHERE date between '%s' and '%s' GROUP BY billable ORDER by 1" % (startDate, endDate)
 rows = connection.queryAll(query)

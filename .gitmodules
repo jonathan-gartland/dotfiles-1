@@ -1,12 +1,12 @@
 [submodule "hub"]
 	path = hub
-	url = https://github.com/defunkt/hub.git
+	url = git://github.com/defunkt/hub.git
 [submodule "scm_breeze"]
 	path = scm_breeze
-	url = https://github.com/ndbroadbent/scm_breeze.git
+	url = git://github.com/ndbroadbent/scm_breeze.git
 [submodule "use-package"]
 	path = use-package
-	url = https://github.com/jwiegley/use-package.git
+	url = git://github.com/jwiegley/use-package.git
 [submodule "s.el"]
 	path = s.el
 	url = git://github.com/magnars/s.el.git
@@ -15,7 +15,7 @@
 	url = git://github.com/magnars/dash.el.git
 [submodule "html2text"]
 	path = html2text
-	url = https://github.com/aaronsw/html2text.git
+	url = git://github.com/aaronsw/html2text.git
 [submodule "bash-git-prompt"]
 	path = bash-git-prompt
 	url = git@github.com:skk/bash-git-prompt.git

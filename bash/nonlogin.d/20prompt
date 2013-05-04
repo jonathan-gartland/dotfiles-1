@@ -1,12 +1,21 @@
 # -*- mode: shell-script -*-
 
-export __GIT_PROMPT_DIR="$HOME/dot-files-forest/bash-git-prompt/"
-export __GITPROMPT_STYLE_SHA1_HOSNTAME=1
-export __GITPROMPT_USE_PERL=1
-export __GITPROMPT_SET_TERM_TITLE=1
-. $HOME/dot-files-forest/bash-git-prompt/gitprompt.sh
+#export __GIT_PROMPT_DIR="$HOME/dot-files-forest/bash-git-prompt/"
+#export __GITPROMPT_STYLE_SHA1_HOSNTAME=0
+#export __GITPROMPT_USE_PERL=0
+#export __GITPROMPT_SET_TERM_TITLE=0
+#. $HOME/dot-files-forest/bash-git-prompt/gitprompt.sh
 
-#function prompt_command {
-#    export PS1=$(~/scm-prompt/scm-prompt.pl)
-#}
-#export PROMPT_COMMAND=prompt_command
+#export __GIT_PROMPT_DIR=/tmp/bash-git-prompt
+#. /tmp/bash-git-prompt/gitprompt.sh
+
+function set_window_title() {
+    echo -ne "\e]2;$*\a"
+}
+
+function prompt_command {
+    set_window_title "${HOSTNAME%%.*}:${PWD/$HOME/~}"
+    export PS1=$(~/Projects/scm-prompt/scm-prompt.pl)
+}
+export PROMPT_COMMAND=prompt_command
+

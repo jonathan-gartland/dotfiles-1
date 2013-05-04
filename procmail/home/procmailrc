@@ -54,7 +54,11 @@ LOGFILE=$PROCMAILDIR/log/procmail
 
 # leinigen
 :0
-* (To|Cc):.*leiningen@librelist.org.*
+* (To|Cc):.*leiningen@librelist.(com|org).*
+.Mailing\ Lists.Leiningen/
+
+:0
+* (To|Cc):.*leiningen@googlegroups.com.*
 .Mailing\ Lists.Leiningen/
 
 # Python User
@@ -96,6 +100,15 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * (To|Cc):.*clojure@googlegroups.com.*
 .Mailing\ Lists.Clojure/
+
+:0 
+* ^(To|Cc):.*ruby-talk@ruby-lang.org.*
+.Mailing\ Lists.Ruby\ Talk/
+
+# Evil
+:0
+* ^(To|Cc):.*implementations-list@lists.ourproject.org.*
+.Mailing\ Lists.GNU\ Emacs\ Evil/
 
 
 # handle HemlockForest
@@ -142,6 +155,7 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^From:.*investors@e.investors.com.*
 .IBDEditorials/
+
 
 # last
 :0:

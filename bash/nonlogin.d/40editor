@@ -1,3 +1,5 @@
+# -*- mode: shell-script -*-
+
 export ALTERNATE_EDITOR=''
 export EDITOR="mg"
 export VISUAL="mg"

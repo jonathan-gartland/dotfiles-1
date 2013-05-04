@@ -4,5 +4,6 @@
     [clj-ns-browser "1.3.0"]
     [marmaduke/commons-math-3 "3"]
     [org.clojure/data.json "0.2.0"]
+    [lein-exec "0.3.0"]
 ]}}
 

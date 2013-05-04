@@ -1,7 +1,4 @@
 # -*- mode: shell-script -*-
 
-# ~/.bash_profile is executed by bash(1) for login shells.
-
-# source all login.d files
 source ~/.bash/_utils
 source-dir ~/.bash/nonlogin.d

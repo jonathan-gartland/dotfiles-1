@@ -21,6 +21,8 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
+(define-abbrev-table 'asm-mode-abbrev-table '())
+
 (define-abbrev-table 'awk-mode-abbrev-table
   '(
    ))
@@ -131,9 +133,19 @@
 
 (define-abbrev-table 'egg-log-msg-mode-abbrev-table '())
 
+(define-abbrev-table 'eieio-custom-mode-abbrev-table '())
+
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-list-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'erc-mode-abbrev-table '())
+
+(define-abbrev-table 'ert-results-mode-abbrev-table '())
+
+(define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
@@ -143,6 +155,8 @@
 
 (define-abbrev-table 'fundmental-mode-abbrev-table '())
 
+(define-abbrev-table 'g-app-mode-abbrev-table '())
+
 (define-abbrev-table 'gdb-script-mode-abbrev-table '())
 
 (define-abbrev-table 'geiser-messages-mode-abbrev-table '())
@@ -150,6 +164,10 @@
 (define-abbrev-table 'geiser-repl-mode-abbrev-table '())
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'gitconfig-mode-abbrev-table '())
+
+(define-abbrev-table 'gitignore-mode-abbrev-table '())
 
 (define-abbrev-table 'global-abbrev-table '())
 
@@ -162,6 +180,8 @@
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
 (define-abbrev-table 'gud-mode-abbrev-table '())
+
+(define-abbrev-table 'haskell-cabal-mode-abbrev-table '())
 
 (define-abbrev-table 'haskell-mode-abbrev-table '())
 
@@ -180,6 +200,8 @@
 (define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
 
@@ -213,6 +235,24 @@
 
 (define-abbrev-table 'lua-mode-abbrev-table '())
 
+(define-abbrev-table 'magit-branch-manager-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-commit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-diff-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-log-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-reflog-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-stash-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-status-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-wazzup-mode-abbrev-table '())
+
 (define-abbrev-table 'makefile-automake-mode-abbrev-table '())
 
 (define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
@@ -243,6 +283,10 @@
 
 (define-abbrev-table 'mu4e-view-mode-abbrev-table '())
 
+(define-abbrev-table 'nrepl-connections-buffer-mode-abbrev-table '())
+
+(define-abbrev-table 'nrepl-mode-abbrev-table '())
+
 (define-abbrev-table 'nroff-mode-abbrev-table '())
 
 (define-abbrev-table 'nxml-mode-abbrev-table '())
@@ -265,6 +309,8 @@
 
 (define-abbrev-table 'perl-mode-abbrev-table '())
 
+(define-abbrev-table 'php-mode-abbrev-table '())
+
 (define-abbrev-table 'pike-mode-abbrev-table
   '(
    ))
@@ -277,7 +323,9 @@
 
 (define-abbrev-table 'prog-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'python-pep8-mode-abbrev-table '())
 
@@ -354,9 +402,7 @@
 
 (define-abbrev-table 'speedbar-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'sql-mode-abbrev-table '())
 
 (define-abbrev-table 'sr-mode-abbrev-table '())
 

@@ -1,0 +1,29 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sat Apr 20 18:41:50 2013
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("sunri" "HLA"))
+(setq regexp-search-ring '("Student" "section" "Last up" "tex" "EPS" "EPSCOR" "5pt" "Work" "Side" "Programm" "10pt" "hla" "\\_<TUB\\_>" "\\_<tub\\_>" "\\_<facty\\_>" "\\_<tub\\_>"))
+(setq register-alist nil)
+(setq file-name-history '("/home/skk/resume/resume.tex" "/home/skk/resume/resume_skk.tex" "/home/skk/resume/resume.tex" "/home/skk/.emacs.d/lib/setup_haskell.el" "/home/skk/haskell/doubleMe.hs" "/home/skk/.emacs.d/init.el"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/skk/resume/resume.tex"
+  "resume.tex"
+  'latex-mode
+  '(auto-fill-mode abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
+  4040
+  '(4041 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (fill-column . 78) (truncate-lines)))
+

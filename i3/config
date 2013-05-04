@@ -26,8 +26,8 @@ font xft:Anonymous Pro
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
-#lilyterm
+bindsym $mod+Return exec lilyterm
+bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -35,6 +35,9 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec /home/skk/.cabal/bin/yeganesh
+
+# dmenu_ssh
+bindsym $mod+t exec ~/dmenu_ssh/bin/dmenu_ssh.pl
 
 # change focus
 bindsym $mod+j focus left
@@ -120,11 +123,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # lock screen using i3lock
 bindsym $mod+Shift+Control+l exec i3lock
 
-# cutpass
-bindsym $mod+c exec ~/bin/qCutpass
-bindsym $mod+t exec ~/.i3/dmenu_ssh.sh
-
-
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
@@ -162,7 +160,7 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status --config ~/.i3/i3status.conf
         tray_output output
-        status_command xmobar  ~/.i3/xmobar.conf
+        status_command xmobar ~/.i3/xmobar.conf
 }
 
 ipc-socket ~/.i3/i3-ipc.sock
@@ -171,10 +169,8 @@ ipc-socket ~/.i3/i3-ipc.sock
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
 bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
-bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
-
-
+#bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
+#bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 
 

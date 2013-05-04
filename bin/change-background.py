@@ -39,11 +39,37 @@ class GConfClient( object ):
         def set_background (self, background):
                 self.__client__.set_string ("/desktop/gnome/background/picture_filename", background)
 
+class FehClient(object):
+        def __init__(self):
+                pass
+
+        def get_background(self):
+                return ""
+
+        def set_background(self, background):
+                _execute_command("feh --bg-center " + background)
+                
+                
+def _execute_command( command ):
+    from subprocess import call
+    try:
+        #print >>sys.stderr, "Command:\n%s" % command
+        #retcode = 0
+        retcode = call(command, shell=True)
+
+        if retcode < 0:
+            print >>sys.stderr, "Child was terminated by signal", -retcode
+
+    except OSError, e:
+            print >>sys.stderr, "Execution failed:", e
+      
+
 
 background_dir = backgrounds
 
 if os.path.isdir( background_dir ):
-    client = GConfClient()
+    #client = GConfClient()
+    client = FehClient()
 
     dir_items = os.listdir( background_dir )
     items = []

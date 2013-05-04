@@ -39,7 +39,7 @@
     co = checkout
     df = diff
     lg = log -p
-    show-graph = log --graph --abbrev-commit --pretty=oneline        
+    show-graph = log --graph --abbrev-commit --pretty=oneline
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
 # giggle
@@ -56,5 +56,6 @@
 [cola]
 	fontdiff = DejaVu Sans Mono,10,-1,5,50,0,0,0,0,0
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
+
 [push]
 	default = simple
