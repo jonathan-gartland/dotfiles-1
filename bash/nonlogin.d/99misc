@@ -6,6 +6,10 @@
 # good less
 export LESS='-FSRX'
 
+# swtich to 256 color xterm if using "xterm" 
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
 
 # colorize output from man
 # http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
@@ -16,8 +20,6 @@ export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
-
-
 
 # set default umask
 umask 002
