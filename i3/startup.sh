@@ -1,3 +1,3 @@
 #!/bin/bash
-synergys
-eval $(dbus-launch --auto-syntax)
+#synergys
+#eval $(dbus-launch --auto-syntax)

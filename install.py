@@ -154,7 +154,7 @@ class install(object):
         { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
         { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
         { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
-        { 'src': 'dotfiles/.perlcriticrc', 'dst' : '.perlcriticrc'},
+        { 'src': 'dotfiles/perlcriticrc', 'dst' : '.perlcriticrc'},
         { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
         { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
         { 'src': 'dotfiles/Xdefaults', 'dst' : '.Xdefaults'},

@@ -24,7 +24,7 @@
   :init
   (progn
     (setq flymake-perlcritic-profile "~/.perlcriticrc")
-    (add-hook 'sepia-mode-hook
+    (add-hook 'cperl-mode-hook
               (lambda () 
                 (setq 
                  flymake-perlcritic-severity 2

@@ -44,6 +44,7 @@
 (defvar packages
   '(
     ace-jump-mode
+    pkgbuild-mode
     ack
     ack-and-a-half
     boxquote
@@ -115,6 +116,8 @@
     evil
     cyberpunk-theme
     underwater-theme
+    smartparens
+    soothe-theme
     solarized-theme)
   "A list of packages to ensure are installed at launch.")
 

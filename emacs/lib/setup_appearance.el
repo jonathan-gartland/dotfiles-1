@@ -5,19 +5,17 @@
 
 (set-face-background 'region "#464740")
 
-;
 ;; Customize background color of lighlighted line
 (set-face-background 'hl-line "#222222")
 
 ;; Highlight in yasnippet
 ;(set-face-background 'yas/field-highlight-face "#333399")
-
 (set-face-foreground 'font-lock-warning-face "#ff6666")
 
 
 
-(load-theme 'solarized-light t)
-
+;(load-theme 'solarized-light t)
+(load-theme 'soothe)
 
 ;; org-mode colors
 (setq org-todo-keyword-faces
@@ -58,12 +56,23 @@
 ;; set default font
 ;;(setq font-use-system-font t)
 
-(when is-windows-nt
- (set-default-font
-   "-outline-Consolas-normal-r-normal-normal-*-*-*-*-*-*-*-*"))
-
 (when is-linux 
-  (set-default-font "Anonymous Pro 10"))
+  (custom-set-faces 
+   '(default ((t (:family "Envy Code R"
+                  :foundry "unknown"
+                  :slant normal
+                  :weight normal
+                  :height 90
+                  :width normal))))))
+
+(when is-windows-nt
+  (custom-set-faces 
+   '(default ((t (:family "Consolas"
+                  :foundry "unknown"
+                  :slant normal
+                  :weight normal
+                  :height 100
+                  :width normal))))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; the modeline

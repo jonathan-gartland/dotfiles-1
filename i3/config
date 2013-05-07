@@ -20,7 +20,8 @@ font xft:Junction Bold 8.5
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec lilyterm
+#bindsym $mod+Return exec lilyterm
+bindsym $mod+Return exec terminator
 bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
 
 # kill focused window
