@@ -14,8 +14,8 @@
 
 
 
-;(load-theme 'solarized-light t)
-(load-theme 'soothe)
+(load-theme 'solarized-light t)
+;(load-theme 'soothe)
 
 ;; org-mode colors
 (setq org-todo-keyword-faces

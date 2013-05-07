@@ -16,7 +16,7 @@
  '(c-default-style (quote ((c-mode . "k&r") (c++-mode . "k&r") (java-mode . "java") (awk-mode . "awk"))))
  '(column-number-mode t)
  '(cursor-color "#657b83")
- '(custom-safe-themes (quote ("f38dd27d6462c0dac285aa95ae28aeb7df7e545f8930688c18960aeaf4e807ed" "1760322f987b57884e38f4076ac586c27566a1d7ed421b67843c8c98a1501e3a" default)))
+ '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "8c5ffc9848db0f9ad4e296fa3cba7f6ea3b0e4e00e8981a59592c99d21f99471" "f38dd27d6462c0dac285aa95ae28aeb7df7e545f8930688c18960aeaf4e807ed" "1760322f987b57884e38f4076ac586c27566a1d7ed421b67843c8c98a1501e3a" default)))
  '(desktop-path (quote ("~/.emacs.d/.cache/")))
  '(display-time-mode t)
  '(emeteo-timeout 10)
@@ -28,6 +28,7 @@
  '(flymake-perlcritic-severity 1)
  '(font-use-system-font nil)
  '(foreground-color "#657b83")
+ '(fringe-mode 4 nil (fringe))
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
  '(icicle-mode t)
@@ -62,5 +63,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Anonymous Pro" :foundry "unknown" :slant normal :weight normal :height 99 :width normal))))
+ '(default ((t (:family "Envy Code R" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
  '(which-func ((t (:inherit mode-line)))))
