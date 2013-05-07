@@ -27,11 +27,6 @@ bin/.eg.git
 bin/eg
 bin/.xask.git
 bin/xask.py
-bin/.cutpass.bzr
-bin/cutpass.py
-bin/qCutpass.py
-bin/cutpass
-bin/qCutpass
 bin/xask
 
 # rope-projects
