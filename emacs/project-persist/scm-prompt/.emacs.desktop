@@ -1,0 +1,194 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue May  7 12:10:56 2013
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("Deja"))
+(setq regexp-search-ring '("\\^" "^" "entry" ".git" "shell_" "\\/" "\\" "\\_<SHELL\\_>" "shell" "sh" "term" "li" "font" "\\_<filename\\_>" "termin" "\\_<format_colored_text\\_>"))
+(setq register-alist nil)
+(setq file-name-history '("/home/skk/Projects/scm-prompt/lib/SCM/Git.pm" "/home/skk/Projects/scm-prompt/lib/SCM/Base.pm" "/home/skk/Projects/scm-prompt/lib/SCM/Git.pm" "/home/skk/Projects/scm-prompt/lib/Shell/Base.pm" "/home/skk/.perlcriticrc" "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/PromptWithCwdTrackingInfoHostnameSHA1.pm" "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/PromptWithCwdTrackingInfo.pm" "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/Base.pm" "/home/skk/Projects/scm-prompt/lib/Theme/Base.pm" "/home/skk/Projects/scm-prompt/lib/SCM/Git.pm" "/home/skk/Projects/scm-prompt/lib/SCM/Base.pm" "/home/skk/Projects/scm-prompt/lib/Shell/Base.pm" "/home/skk/Projects/scm-prompt/lib/SCM/Git.pm" "/home/skk/Projects/scm-prompt/lib/scm_prompt.pm" "/home/skk/.perlcriticrc" "/home/skk/Projects/scm-prompt/lib/SCM/Git.pm" "/home/skk/dot-files-forest/install.py" "/home/skk/.emacs.d/lib/setup_flymake.el" "/home/skk/.emacs.d/lib/setup_perl.el" "/home/skk/.emacs.d/lib/setup_archlinux.el" "/home/skk/.emacs.d/init.el" "/home/skk/aur/perl-devel-stacktrace/PKGBUILD" "/home/skk/.bash/nonlogin.d/99misc" "/home/skk/aur/perl-ppi/PKGBUILD" "/home/skk/.i3/config" "/home/skk/Projects/scm-prompt/lib/scm_prompt.pm" "/home/skk/Projects/scm-prompt/scm-prompt.pl" "/home/skk/Projects/scm-prompt/README.md" "/home/skk/Projects/scm-prompt/lib/SCM/Base.pm" "/home/skk/Projects/scm-prompt/lib/Base.pm"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/Base.pm"
+  "Base.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  597
+  '(600 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/SCM/Git.pm"
+  "Git.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  3673
+  '(1694 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/scm_prompt.pm"
+  "scm_prompt.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  2456
+  '(2456 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Shell/Base.pm"
+  "Base.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  1279
+  '(1255 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/SCM/Base.pm"
+  "Base.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  862
+  '(923 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/.perlcriticrc"
+  ".perlcriticrc"
+  'fundamental-mode
+  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
+  567
+  '(568 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/skk/.emacs.d/lib/setup_flymake.el"
+  "setup_flymake.el"
+  'emacs-lisp-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  635
+  '(636 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/PromptWithCwdTrackingInfoHostnameSHA1.pm"
+  "PromptWithCwdTrackingInfoHostnameSHA1.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  3207
+  '(3207 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Theme/GitBash/PromptWithCwdTrackingInfo.pm"
+  "PromptWithCwdTrackingInfo.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  980
+  '(1622 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Theme/Base.pm"
+  "Base.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode flymake-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  736
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/.emacs.d/lib/setup_perl.el"
+  "setup_perl.el"
+  'emacs-lisp-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  506
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/.i3/config"
+  "config"
+  'conf-space-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
+  771
+  '(1006 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/scm-prompt.pl"
+  "scm-prompt.pl"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  695
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/README.md"
+  "README.md"
+  'markdown-mode
+  '(auto-fill-mode abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode)
+  2194
+  '(2194 nil)
+  nil
+  nil
+  '((tab-width . 4) (buffer-file-coding-system . utf-8-unix) (fill-column . 78) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/lib/Base.pm"
+  "Base.pm"
+  'cperl-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode zencoding-mode pretty-symbols-mode)
+  584
+  '(882 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/home/skk/Projects/scm-prompt/Doxyfile"
+  "Doxyfile"
+  'fundamental-mode
+  '(abbrev-mode global-visual-line-mode override-global-mode global-auto-revert-mode project-persist-mode window-number-mode)
+  1941
+  '(1940 t)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
