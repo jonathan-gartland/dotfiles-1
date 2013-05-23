@@ -113,4 +113,8 @@
 (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.jsp$" . nxml-mode))
 
+;; R 
+(add-to-list 'auto-mode-alist '("\\.R" . r-mode))
+(add-to-list 'auto-mode-alist '("\\.r" . r-mode))
+
 (provide 'mode-mappings)
