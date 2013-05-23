@@ -14,8 +14,9 @@
 
 
 
-(load-theme 'solarized-light t)
-;(load-theme 'soothe)
+;(load-theme 'solarized-light t)
+(load-theme 'soothe)
+;(load-theme 'grandshell t)
 
 ;; org-mode colors
 (setq org-todo-keyword-faces
@@ -56,23 +57,23 @@
 ;; set default font
 ;;(setq font-use-system-font t)
 
-(when is-linux 
-  (custom-set-faces 
-   '(default ((t (:family "Envy Code R"
-                  :foundry "unknown"
-                  :slant normal
-                  :weight normal
-                  :height 90
-                  :width normal))))))
+;; (when is-linux 
+;;   (custom-set-faces 
+;;    '(default ((t (:family "Anonymous Pro"
+;;                   :foundry "unknown"
+;;                   :slant normal
+;;                   :weight normal
+;;                   :height 100
+;;                   :width normal))))))
 
-(when is-windows-nt
-  (custom-set-faces 
-   '(default ((t (:family "Consolas"
-                  :foundry "unknown"
-                  :slant normal
-                  :weight normal
-                  :height 100
-                  :width normal))))))
+;; (when is-windows-nt
+;;   (custom-set-faces 
+;;    '(default ((t (:family "Consolas"
+;;                   :foundry "unknown"
+;;                   :slant normal
+;;                   :weight normal
+;;                   :height 100
+;;                   :width normal))))))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; the modeline
@@ -138,6 +139,13 @@
 ;; cursor
 (blink-cursor-mode 0)           ; don't blink cursor
 
+(use-package smart-mode-line
+  :init
+  (progn
+    (add-hook 'after-init-hook 'sml/setup)))
 
-;(provide 'setup_appearance)
+(use-package indent-guide
+  :init (progn
+          (indent-guide-set-delay 1)))
 
+(provide 'setup_appearance)
