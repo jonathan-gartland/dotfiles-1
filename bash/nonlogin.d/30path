@@ -36,106 +36,100 @@ export TERMINFO="$HOME/.terminfo"
 
 export ORACLE_COMMAND="$HOME/bin/pysql.sh"
 
-# rcc
-if [ "$DNS_DOMAIN_NAME" == "rcc" ]; then
-    # svn variables
-    export svndemo="https://svn.sr.unh.edu/svn/demo/"
-    export svnskk="https://svn.sr.unh.edu/svn/skk/"
-    export svnevents="https://svn.sr.unh.edu/svn/Events/"
-    export svnescat="https://svn.sr.unh.edu/svn/eSCAT/"
-    export svncrms="https://svn.sr.unh.edu/svn/CRMS/"
-    export svntv="https://svn.sr.unh.edu/svn/TwinView/"
-    export svneos="https://svn.sr.unh.edu/svn/EOS/"
-    export svnseagrant="https://svn.sr.unh.edu/svn/SeaGrant/"
-    export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
-    export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
-    export svnerma="https://erma-svn.sr.unh.edu/svn/"
-    export PATH="$HOME/local/$(uname -m)/bin:$PATH"
-    export MANPATH="$MANPATH:$HOME/local/$(uname -m)/man"
-fi
+# # rcc
+# if [ "$DNS_DOMAIN_NAME" == "rcc" ]; then
+#     # svn variables
+#     export svndemo="https://svn.sr.unh.edu/svn/demo/"
+#     export svnskk="https://svn.sr.unh.edu/svn/skk/"
+#     export svnevents="https://svn.sr.unh.edu/svn/Events/"
+#     export svnescat="https://svn.sr.unh.edu/svn/eSCAT/"
+#     export svncrms="https://svn.sr.unh.edu/svn/CRMS/"
+#     export svntv="https://svn.sr.unh.edu/svn/TwinView/"
+#     export svneos="https://svn.sr.unh.edu/svn/EOS/"
+#     export svnseagrant="https://svn.sr.unh.edu/svn/SeaGrant/"
+#     export svnproject54="https://svn.sr.unh.edu/svn/Project54/"
+#     export svnsharedperlmodules="https://svn.sr.unh.edu/svn/SharedPerlModules/"
+#     export svnerma="https://erma-svn.sr.unh.edu/svn/"
+#     export PATH="$HOME/local/$(uname -m)/bin:$PATH"
+#     export MANPATH="$MANPATH:$HOME/local/$(uname -m)/man"
+# fi
 
-# stuff for zathras.sr.unh.edu
-if [ $HOSTNAME == "zathras.sr.unh.edu" ]; then
-    # Environmental variablles
-    export ECLIPSE_HOME="/usr/local/eclipse"
-    export PYTHONDOCS="/usr/share/doc/python-docs-2.6/html/"
-    export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+# # stuff for zathras.sr.unh.edu
+# if [ $HOSTNAME == "zathras.sr.unh.edu" ]; then
+#     # Environmental variablles
+#     export ECLIPSE_HOME="/usr/local/eclipse"
+#     export PYTHONDOCS="/usr/share/doc/python-docs-2.6/html/"
+#     export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
 
-    export JAVA_HOME="/usr/local/java/IBMJava16"
-    export JRE_HOME="$JAVA_HOME"
-    export PRINTER="Color-LaserJet-3800"
-    export MAILDIR="$HOME/Maildir"
+#     export JAVA_HOME="/usr/local/java/IBMJava16"
+#     export JRE_HOME="$JAVA_HOME"
+#     export PRINTER="Color-LaserJet-3800"
+#     export MAILDIR="$HOME/Maildir"
 
-    export CDPATH=$CDPATH:~/CRMS
-fi
+#     export CDPATH=$CDPATH:~/CRMS
+# fi
 
-if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
-    #export JAVA_HOME="/usr/local/java/jdk1.7.0_04"
-    export JAVA_HOME="/usr/local/java/jdk1.6.0_26"
-    export JRE_HOME="$JAVA_HOME"
-    export PRINTER="Color-LaserJet-3800"
-    export MAILDIR="$HOME/Maildir"
-    export CDPATH=$CDPATH:~/CRMS
-    # Database aliases
-    export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
+# if [ $HOSTNAME == "kosh.sr.unh.edu" ]; then
+#     #export JAVA_HOME="/usr/local/java/jdk1.7.0_04"
+#     export JAVA_HOME="/usr/local/java/jdk1.6.0_26"
+#     export JRE_HOME="$JAVA_HOME"
+#     export PRINTER="Color-LaserJet-3800"
+#     export MAILDIR="$HOME/Maildir"
+#     export CDPATH=$CDPATH:~/CRMS
+#     # Database aliases
+#     export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
 
-    # add cabal/bin to PATH
-    #export PATH=$HOME/.cabal/bin:$PATH
+#     # add cabal/bin to PATH
+#     #export PATH=$HOME/.cabal/bin:$PATH
     
-    # source autojump init file
-    # source /etc/profile.d/autojump.zsh
-fi
+#     # source autojump init file
+#     # source /etc/profile.d/autojump.zsh
+# fi
 
-if [ $HOSTNAME == "kona.sr.unh.edu" ]; then
-    export JAVA_HOME="/usr/local/java/IBMJava16"
-    export JRE_HOME="$JAVA_HOME"
-fi
+# if [ $HOSTNAME == "kona.sr.unh.edu" ]; then
+#     export JAVA_HOME="/usr/local/java/IBMJava16"
+#     export JRE_HOME="$JAVA_HOME"
+# fi
 
-if [ $HOSTNAME == "spoo.sr.unh.edu" ]; then
-    export JAVA_HOME="/usr/local/java/IBMJava16"
-    export JRE_HOME="$JAVA_HOME"
-fi
+# if [ $HOSTNAME == "spoo.sr.unh.edu" ]; then
+#     export JAVA_HOME="/usr/local/java/IBMJava16"
+#     export JRE_HOME="$JAVA_HOME"
+# fi
 
-if [ $HOSTNAME == "long.sr.unh.edu" ]; then
-    export PATH="/usr/lib/postgresql/8.3/bin:$PATH"
-fi
+# if [ $HOSTNAME == "long.sr.unh.edu" ]; then
+#     export PATH="/usr/lib/postgresql/8.3/bin:$PATH"
+# fi
 
-if [ $HOSTNAME == "lithium.sr.unh.edu" ]; then
-    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
-fi
+# if [ $HOSTNAME == "lithium.sr.unh.edu" ]; then
+#     export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+# fi
 
-if [ $HOSTNAME == "myxomatosis.sr.unh.edu" ]; then
-    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
-fi
+# if [ $HOSTNAME == "myxomatosis.sr.unh.edu" ]; then
+#     export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+# fi
 
-if [ $HOSTNAME == "housingonline.unh.edu" ]; then
-    export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
-fi
+# if [ $HOSTNAME == "housingonline.unh.edu" ]; then
+#     export CDPATH="$CDPATH:/web/housing/perl/HOUSING/EXT:/web/epscor/perl/web_perl_lib"
+# fi
 
 if [ $HOSTNAME == "falcon" ]; then
-    export svnroot="file:///home/svn/skk/"
-    export svnmusic="file:///home/svn/music/"
     export MAILDIR="$HOME/Maildir"
-    export JAVA_HOME="/usr/local/java/IBMJava16"
-    export JRE_HOME="$JAVA_HOME"
-    export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
+    #export JAVA_HOME="/usr/local/java/IBMJava16"
+    #export JRE_HOME="$JAVA_HOME"
+    #export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
     export PATH="$HOME/local/bin:$PATH"
 fi
 
-if [ -n $JAVA_HOME ]; then
+# if [ -n $JAVA_HOME ]; then
 
-    if [ -d $JAVA_HOME/bin ]; then
-        export PATH="$JAVA_HOME/bin:$PATH"
-    fi
+#     if [ -d $JAVA_HOME/bin ]; then
+#         export PATH="$JAVA_HOME/bin:$PATH"
+#     fi
 
-    if [ -d $JAVA_HOME/jre/bin ]; then
-        export PATH="$JAVA_HOME/jre/bin:$PATH"
-    fi
-fi
-
-if [ -n /opt/android-sdk-linux ]; then
-    export PATH="$PATH:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/platform-tools"
-fi
+#     if [ -d $JAVA_HOME/jre/bin ]; then
+#         export PATH="$JAVA_HOME/jre/bin:$PATH"
+#     fi
+# fi
 
 export MU4E_DIR="$HOME/dot-files-forest/emacs/el-get/mu4e"
 if [ -d "$MU4E_DIR/mu"  ]; then
@@ -143,15 +137,15 @@ if [ -d "$MU4E_DIR/mu"  ]; then
     export MANPATH=$MANPATH:"$MU4E_DIR/man"
 fi
 
-export NODE_DIR=$HOME/local/stow/node-v0.8.7
-if [ -d $NODE_DIR ]; then
-    export PATH=$NODE_DIR/bin:$PATH
-fi
+# export NODE_DIR=$HOME/local/stow/node-v0.8.7
+# if [ -d $NODE_DIR ]; then
+#     export PATH=$NODE_DIR/bin:$PATH
+# fi
 
-# add ~/.cljr/bin to path
-if [ -d $HOME/.cljr/bin ]; then
-    export PATH=/home/skk/.cljr/bin:$PATH
-fi
+# # add ~/.cljr/bin to path
+# if [ -d $HOME/.cljr/bin ]; then
+#     export PATH=/home/skk/.cljr/bin:$PATH
+# fi
 
 # add ~/.lein/bin to path
 if [ -d $HOME/.lein/bin ]; then
@@ -162,20 +156,25 @@ if [ -d $HOME/.cabal/bin ]; then
     export PATH=$PATH:~/.cabal/bin
 fi
 
-export PYTHONUSERBASE="$HOME/.pip"
-if [ -d $HOME/.pip/bin ]; then
-    export PATH=$PATH:~/.pip/bin
-else 
-    mkdir -p $HOME/.pip/bin
+if [ -d /usr/bin/site_perl ]; then
+    export PATH=/usr/bin/site_perl:$PATH
 fi
 
-if [ -e $(which ruby) ]; then 
-    gems_dir=$(ruby -rubygems -e "puts Gem.user_dir")
-    if [ -d "$gems_dir/bin" ]; then
-        export PATH=$PATH:$gems_dir/bin
-    fi
+export PERLBREW_HOME=~/perl5
+if [ -f  ~/perl5/etc/bashrc ]; then
+    source ~/perl5/etc/bashrc
 fi
 
-#if [ -d ~/.xmonad/bin ]; then
-#    export PATH=$PATH:~/.xmonad/bin
-#fi
+# export PYTHONUSERBASE="$HOME/.pip"
+# if [ -d $HOME/.pip/bin ]; then
+#     export PATH=$PATH:~/.pip/bin
+# else 
+#     mkdir -p $HOME/.pip/bin
+# fi
+
+# if [ -e $(which ruby) ]; then 
+#     gems_dir=$(ruby -rubygems -e "puts Gem.user_dir")
+#     if [ -d "$gems_dir/bin" ]; then
+#         export PATH=$PATH:$gems_dir/bin
+#     fi
+# f
