@@ -70,6 +70,11 @@ if [ "$HOSTNAME" == "kosh.sr.unh.edu" ]; then
     export PRINTER=HP_Color_LaserJet_3800
 fi
 
+# stuff for home
+if [ "$HOSTNAME" == "falcon" ]; then
+    export PRINTER=HP_LaserJet_1020
+fi
+
 # stuff for falcon
 if [ -x $(which pacman) ]; then
     # Pacman alias examples
