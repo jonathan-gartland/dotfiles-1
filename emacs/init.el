@@ -43,6 +43,9 @@
 
 (defvar packages
   '(
+    s
+    dash
+
     ace-jump-mode
     pkgbuild-mode
     ack
@@ -57,6 +60,7 @@
     csharp-mode
     dtrt-indent
     durendal
+    ess
     expand-region
     fill-column-indicator
     flymake-perlcritic
@@ -102,7 +106,7 @@
     xclip
     yasnippet
     whole-line-or-region
-    zencoding-mode
+    simplezen
     window-number
     window-number
     projectile
@@ -120,6 +124,9 @@
     soothe-theme
     solarized-theme)
   "A list of packages to ensure are installed at launch.")
+
+(require 's)
+(require 'dash)
 
 (defun packages-installed-p ()
   (loop for p in packages
