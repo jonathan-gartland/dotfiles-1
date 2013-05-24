@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Fri May 24 15:06:58 2013
+;; Created Fri May 24 15:23:22 2013
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -13,15 +13,26 @@
 (setq search-ring '("magi" "mu" "packages-" "smooth" "hanoi" "CENTER" "zoom" "panT" "Fitness" "Fitnesss" " " "\"" "type=\"" "\"" "type" "HOUSING::PIDM"))
 (setq regexp-search-ring '("zen" "font" "mode" "i" "autop" "An" "font" "load" "point-s" "shell-pop" "lu" "hide-reg" "hex" "prelu" "\\_<src_location_def\\_>" "id"))
 (setq register-alist '((24)))
-(setq file-name-history '("/home/skk/dot-files-forest/emacs/elpa/s-20130514.1942/s.el" "/home/skk/test.html" "/home/skk/.emacs.d/lib/setup_zencoding.el" "/home/skk/.emacs.d/lib/setup_emacsrocks.el" "/home/skk/.emacs.d/lib/setup_archlinux.el" "/home/skk/.emacs.d/elpa/pkgbuild-mode-20120214.2332/pkgbuild-mode.el" "/home/skk/.emacs.d/init.el" "/home/skk/aur/perlconsole/PKGBUILD" "/home/skk/dot-files-forest/emacs/lib/setup_magit.el" "/home/skk/.emacs.d/elpa/graphene-20130422.1848/graphene.el" "/home/skk/dot-files-forest/emacs/custom.el" "/home/skk/dot-files-forest/emacs/lib/setup_appearance.el" "/home/skk/dot-files-forest/test.html" "/home/skk/dot-files-forest/emacs/lib/setupo_smartparens.el" "/home/skk/dot-files-forest/private.txt" "/home/skk/dot-files-forest/emacs/lib/setup_autoinsertmode.el" "/home/skk/dot-files-forest/emacs/custom.el" "/home/skk/dot-files-forest/.projectile" "/home/skk/dot-files-forest/emacs/setup_autocomplete.el" "/home/skk/dot-files-forest/emacs/init.el" "~/.i3/config" "~/dmenu_ssh/src/main.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm"))
+(setq file-name-history '("/home/skk/dot-files-forest/bash/nonlogin.d/20prompt" "/home/skk/dot-files-forest/emacs/elpa/s-20130514.1942/s.el" "/home/skk/test.html" "/home/skk/.emacs.d/lib/setup_zencoding.el" "/home/skk/.emacs.d/lib/setup_emacsrocks.el" "/home/skk/.emacs.d/lib/setup_archlinux.el" "/home/skk/.emacs.d/elpa/pkgbuild-mode-20120214.2332/pkgbuild-mode.el" "/home/skk/.emacs.d/init.el" "/home/skk/aur/perlconsole/PKGBUILD" "/home/skk/dot-files-forest/emacs/lib/setup_magit.el" "/home/skk/.emacs.d/elpa/graphene-20130422.1848/graphene.el" "/home/skk/dot-files-forest/emacs/custom.el" "/home/skk/dot-files-forest/emacs/lib/setup_appearance.el" "/home/skk/dot-files-forest/test.html" "/home/skk/dot-files-forest/emacs/lib/setupo_smartparens.el" "/home/skk/dot-files-forest/private.txt" "/home/skk/dot-files-forest/emacs/lib/setup_autoinsertmode.el" "/home/skk/dot-files-forest/emacs/custom.el" "/home/skk/dot-files-forest/.projectile" "/home/skk/dot-files-forest/emacs/setup_autocomplete.el" "/home/skk/dot-files-forest/emacs/init.el" "~/.i3/config" "~/dmenu_ssh/src/main.pm" "~/dmenu_ssh/src/dmenusshmain.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/DMenu.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm" "~/dmenu_ssh/src/DMenuSSH/TTY/Base.pm" "~/dmenu_ssh/src/DMenuSSH/DataSource/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Base.pm" "~/dmenu_ssh/src/DMenuSSH/Launcher/Base.pm"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/skk/dot-files-forest/bash/nonlogin.d/20prompt"
+  "20prompt"
+  'sh-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode rainbow-delimiters-mode window-number-mode yas-minor-mode)
+  59
+  '(384 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
 (desktop-create-buffer 206
   "/home/skk/.emacs.d/init.el"
   "init.el"
   'emacs-lisp-mode
   '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
-  2741
+  2700
   '(2741 nil)
   nil
   nil
