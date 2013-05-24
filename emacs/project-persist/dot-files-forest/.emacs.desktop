@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Wed May 22 18:58:46 2013
+;; Created Fri May 24 15:06:58 2013
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -17,15 +17,15 @@
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/home/skk/test.html"
-  "test.html"
-  'html-mode
-  '(auto-fill-mode abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode multi-web-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode zencoding-mode)
-  168
-  '(168 nil)
+  "/home/skk/.emacs.d/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
+  2741
+  '(2741 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix) (fill-column . 78) (truncate-lines)))
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
   "/home/skk/dot-files-forest/emacs/elpa/s-20130514.1942/s.el"
@@ -39,23 +39,23 @@
   '((buffer-file-coding-system . utf-8-unix) (truncate-lines)))
 
 (desktop-create-buffer 206
+  "/home/skk/test.html"
+  "test.html"
+  'html-mode
+  '(auto-fill-mode abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode multi-web-mode project-persist-mode projectile-mode linum-mode window-number-mode yas-minor-mode zencoding-mode)
+  144
+  '(144 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (fill-column . 78) (truncate-lines)))
+
+(desktop-create-buffer 206
   "/home/skk/.emacs.d/lib/setup_zencoding.el"
   "setup_zencoding.el"
   'emacs-lisp-mode
   '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
   266
   '(493 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
-
-(desktop-create-buffer 206
-  "/home/skk/.emacs.d/init.el"
-  "init.el"
-  'emacs-lisp-mode
-  '(abbrev-mode visual-line-mode global-visual-line-mode override-global-mode global-auto-revert-mode undo-tree-mode auto-complete-mode smartparens-mode project-persist-mode projectile-mode linum-mode eldoc-mode rainbow-delimiters-mode window-number-mode yas-minor-mode pretty-symbols-mode)
-  2705
-  '(2418 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
