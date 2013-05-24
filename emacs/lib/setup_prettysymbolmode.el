@@ -1,11 +1,11 @@
-(use-package pretty-symbols)
-
-(add-hook 'sepia-mode-hook 'pretty-symbols-mode)
-(add-hook 'emacs-lisp-mode-hook 'pretty-symbols-mode)
-(add-hook 'cperl-mode-hook 'pretty-symbols-mode)
-(add-hook 'js2-mode 'pretty-symbols-mode)
-(add-hook 'javascript-mode 'pretty-symbols-mode)
-(add-hook 'python-mode 'pretty-mode)
+(use-package pretty-symbols
+  :init (progn
+    (add-hook 'sepia-hook 'pretty-symbols)
+    (add-hook 'emacs-lisp-hook 'pretty-symbols)
+    (add-hook 'cperl-hook 'pretty-symbols)
+    (add-hook 'js2 'pretty-symbols)
+    (add-hook 'javascript 'pretty-symbols)
+    (add-hook 'python 'pretty-symbols)))
 
 (provide 'setup_prettysymbolmode)
 
