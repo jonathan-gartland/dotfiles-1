@@ -1,4 +1,4 @@
-;;;_. flyspell
+
 (use-package flyspell
   :init
   (progn
@@ -7,4 +7,4 @@
                 (lambda () 
                   (flyspell-mode 1))))))
 
-;(provide 'setup_flyspell)
+(provide 'setup_flyspell)

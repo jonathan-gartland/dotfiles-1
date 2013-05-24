@@ -24,9 +24,9 @@
 
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
-(require 'use-package)
-(require 'bind-key)
+;; (add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
+;; (require 'use-package)
+;; (require 'bind-key)
 
 ; common lisp goodies, loop
 (require 'cl)			
@@ -45,6 +45,7 @@
   '(
     s
     dash
+    use-package
 
     ace-jump-mode
     pkgbuild-mode
@@ -127,6 +128,8 @@
 
 (require 's)
 (require 'dash)
+(require 'use-package)
+(require 'bind-key)
 
 (defun packages-installed-p ()
   (loop for p in packages
