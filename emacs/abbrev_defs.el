@@ -3,6 +3,8 @@
 
 (define-abbrev-table 'Custom-mode-abbrev-table '())
 
+(define-abbrev-table 'ack-and-a-half-mode-abbrev-table '())
+
 (define-abbrev-table 'ack-mode-abbrev-table '())
 
 (define-abbrev-table 'ahg-command-mode-abbrev-table '())
@@ -314,6 +316,8 @@
 (define-abbrev-table 'pike-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'pkgbuild-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
