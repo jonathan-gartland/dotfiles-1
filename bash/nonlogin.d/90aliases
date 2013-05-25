@@ -76,7 +76,7 @@ if [ "$HOSTNAME" == "falcon" ]; then
 fi
 
 # stuff for falcon
-if [ -x $(which pacman) ]; then
+if [ -x $(which pacman 2> /dev/null) ]; then
     # Pacman alias examples
     alias pacupg='sudo pacman -Syu'        # Synchronize with repositories before upgrading packages that are out of date on the local system.
     alias pacin='sudo pacman -S'           # Install specific package(s) from the repositories
