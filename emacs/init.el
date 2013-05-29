@@ -24,9 +24,9 @@
 
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
-(require 'use-package)
-(require 'bind-key)
+;; (add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
+;; (require 'use-package)
+;; (require 'bind-key)
 
 ; common lisp goodies, loop
 (require 'cl)			
@@ -41,11 +41,22 @@
 
 (setq url-http-attempt-keepalives nil)
 
+;; From technomancy's emacs-starter-kit
+;; You can keep system- or user-specific customizations here
+(setq esk-system-config (concat user-emacs-directory system-name ".el")
+      esk-user-config (concat user-emacs-directory user-login-name ".el"))
+
+(progn
+  (when (file-exists-p esk-system-config) (load esk-system-config))
+  (when (file-exists-p esk-user-config) (load esk-user-config)))
+
 (defvar packages
   '(
     s
     dash
+    use-package
 
+    change-inner
     ace-jump-mode
     pkgbuild-mode
     ack
@@ -125,13 +136,15 @@
     solarized-theme)
   "A list of packages to ensure are installed at launch.")
 
-(require 's)
-(require 'dash)
-
 (defun packages-installed-p ()
   (loop for p in packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
+
+(require 's)
+(require 'dash)
+(require 'use-package)
+(require 'bind-key)
 
 (unless (packages-installed-p)
   ;; check for new packages (package versions)

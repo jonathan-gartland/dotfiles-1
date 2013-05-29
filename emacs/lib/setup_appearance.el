@@ -15,7 +15,7 @@
 
 
 ;(load-theme 'solarized-light t)
-(load-theme 'soothe)
+(load-theme 'soothe t)
 ;(load-theme 'grandshell t)
 
 ;; org-mode colors
@@ -144,8 +144,8 @@
   (progn
     (add-hook 'after-init-hook 'sml/setup)))
 
-(use-package indent-guide
-  :init (progn
-          (indent-guide-set-delay 1)))
+;; (use-package indent-guide
+;;   :init (progn
+;;           (indent-guide-set-delay 1)))
 
 (provide 'setup_appearance)
