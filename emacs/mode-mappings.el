@@ -117,4 +117,7 @@
 (add-to-list 'auto-mode-alist '("\\.R$" . R-mode))
 (add-to-list 'auto-mode-alist '("\\.r$" . R-mode))
 
+(add-to-list 'auto-mode-alist '("\\CMakeList.txt$" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake$" . cmake-mode))
+
 (provide 'mode-mappings)
