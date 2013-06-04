@@ -148,11 +148,11 @@ fi
 # fi
 
 # add ~/.lein/bin to path
-if [ -d $HOME/.lein/bin ]; then
+if [ -d "$HOME/.lein/bin" ]; then
     export PATH=/home/skk/.lein/bin:$PATH
 fi
 
-if [ -d $HOME/.cabal/bin ]; then
+if [ -d "$HOME/.cabal/bin" ]; then
     export PATH=$PATH:~/.cabal/bin
 fi
 
@@ -160,7 +160,7 @@ if [ -d /usr/bin/site_perl ]; then
     export PATH=/usr/bin/site_perl:$PATH
 fi
 
-export PERLBREW_HOME=~/perl5
+export PERLBREW_HOME="~/perl5"
 if [ -f  ~/perl5/etc/bashrc ]; then
     source ~/perl5/etc/bashrc
 fi
