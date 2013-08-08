@@ -7,6 +7,7 @@ function set_window_title() {
 function prompt_command {
    if [ -f ~/Projects/scm-prompt/scm-prompt.pl ]; then
        exit_status=$?
+       #export PS1="[\u@\h \W]\$ "
        export PS1=$(~/Projects/scm-prompt/scm-prompt.pl $exit_status)
    else
        export PS1="[\u@\h \W]\$ "
