@@ -185,6 +185,8 @@
 
 (define-abbrev-table 'haskell-cabal-mode-abbrev-table '())
 
+(define-abbrev-table 'haskell-menu-mode-abbrev-table '())
+
 (define-abbrev-table 'haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
@@ -330,6 +332,8 @@
 (define-abbrev-table 'python-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'python-pep8-mode-abbrev-table '())
 
