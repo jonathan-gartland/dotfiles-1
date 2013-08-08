@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
 import sys, os.path, types, optparse, fileinput
 
@@ -208,7 +208,7 @@ class install(object):
 
     def vim(self, install_type):
         self._createLinks([
-            { 'src': 'vim', 'dst': '.vim' },
+            { 'src': 'vimrc', 'dst': '.vim_runtime' },
             { 'src': 'vim/vimrc', 'dst': '.vimrc' }])
 
     def gnupg(self, install_type):
