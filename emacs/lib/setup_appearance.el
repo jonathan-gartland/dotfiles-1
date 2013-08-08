@@ -15,8 +15,12 @@
 
 
 ;(load-theme 'solarized-light t)
-(load-theme 'soothe t)
+;(load-theme 'soothe t)
+;(load-theme 'spolsky)
 ;(load-theme 'grandshell t)
+;(load-theme 'grandshell t)
+(require 'ample-theme)
+(ample-theme)
 
 ;; org-mode colors
 (setq org-todo-keyword-faces

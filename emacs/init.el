@@ -67,6 +67,7 @@
     cperl-mode
     coffee-mode
     color-theme-solarized
+    grandshell-theme
     csv-mode
     csharp-mode
     dtrt-indent
@@ -76,6 +77,7 @@
     fill-column-indicator
     flymake-perlcritic
     flymake-cursor
+    sublime-themes
     textmate
     gitignore-mode
     ;git-emacs
