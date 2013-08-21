@@ -2,9 +2,12 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+exec --no-startup-id xmodmap /home/skk/.Xmodmap
+
 # Mod1 --> Alt Key
 # Mod4 --> Win Key
 set $mod Mod4
+#set $mod Mode_switch
 
 # programs to run at startup
 exec --no-startup-id xautolock -time 3 -locker -secure
@@ -155,7 +158,7 @@ bindsym $mod+r mode "resize"
 bar {
         #status_command i3status --config ~/.i3/i3status.conf
         tray_output output
-        status_command xmobar ~/.i3/xmobar.conf
+        status_command /home/skk/.cabal/bin/xmobar ~/.i3/xmobar.conf
 }
 
 ipc-socket ~/.i3/i3-ipc.sock
