@@ -1,40 +1,141 @@
-! ! to match gnome-terminal "Linux console" scheme
-! ! foreground/background
-! URxvt*background: #000000
-! URxvt*foreground: #ffffff
-! ! black
-! URxvt.color0  : #000000
-! URxvt.color8  : #555555
-! ! red
-! URxvt.color1  : #AA0000
-! URxvt.color9  : #FF5555
-! ! green
-! URxvt.color2  : #00AA00
-! URxvt.color10 : #55FF55
-! ! yellow
-! URxvt.color3  : #AA5500
-! URxvt.color11 : #FFFF55
-! ! blue
-! URxvt.color4  : #0000AA
-! URxvt.color12 : #5555FF
-! ! magenta
-! URxvt.color5  : #AA00AA
-! URxvt.color13 : #FF55FF
-! ! cyan
-! URxvt.color6  : #00AAAA
-! URxvt.color14 : #55FFFF
-! ! white
-! URxvt.color7  : #AAAAAA
-! URxvt.color15 : #FFFFFF\
+! general settings
+URxvt*saveline:         15000
+URxvt*termName:         rxvt-256color
+URxvt*iso14755:         false
+URxvt.perl-lib:         /home/skk/.rxvt/perl-ext
 
-! set font
-!URxvt*font: "xft:Consolas"
 
-! change letter spacing
-! URxvt*letterSpace: -1
+! appearance
+URxvt*depth:            32
+URxvt*background:       #FFFFDD
+URxvt*foreground:       #000000
+URxvt.underlineColor:   #4682B4
+URxvt.highlightColor:   #4682B4
+URxvt.throughColor:     Blue
+URxvt*cursorColor:      Green
+URxvt*cursorColor2:     Black
+URxvt*scrollBar:        false
+URxvt*scrollBar_right:  false
+URxvt*internalBorder:   0
+URxvt*externalBorder:   0
 
-! enable links 
-URxvt.perl-ext-common : default,matcher
-URxvt.urlLauncher     : google-chrome
-URxvt.matcher.button  : 1
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
+
+! fonts
+Xft.dpi:                96
+Xft.antialias:          true
+Xft.hinting:            true
+Xft.hintstyle:          hintslight
+URxvt*letterSpace: 	    -2
+Xft.size:		        9
+URxvt*font:                 xft:Source Code Pro:regular:size=9
+!URxvt*font:                 xft:Monaco for Powerline:regular:size=9
+!URxvt*imFont:               xft:Monaco for Powerline:regular:size=9
+!URxvt*boldFont:             xft:Monaco for Powerline:bold:size=9
+!URxvt*italicFont:           xft:Monaco for Powerline:italic:size=9
+!URxvt*boldItalicFont:       xft:Monaco for Powerline:bold:italic:size=9
+!URxvt*font:             xft:Droid Sans Mono Dotted for Powerline:size=9:regular
+!URxvt*boldFont:         xft:Droid Sans Mono Dotted for Powerline:size=9:bold
+!URxvt*itallicFont:      xft:Droid Sans Mono Dotted for Powerline:size=9:itallic
+! run :.!fc-list | grep <font-name>
+
+! perl extensions
+URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
+!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
+
+! macros for clipboard and selection
+URxvt.copyCommand:      xclip -i -selection clipboard
+URxvt.pasteCommand:     xclip -o -selection clipboard
+URxvt.keysym.M-c:       perl:clipboard:copy
+URxvt.keysym.m-v:       perl:clipboard:paste
+URxvt.keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.urlLauncher:      google-chrome
+URxvt.underlineURLs:    true
+URvxt.urlButton:        1
+
+! tabbed
+URxvt.tabbed.tabbar-fg: 4
+URxvt.tabbed.tabbar-bg: 16
+URxvt.tabbed.tab-fg:    15
+URxvt.tabbed.tab-bg:    4
+
+URxvt*buffered:         false
+
+! TODO
+! xrdb -load ~/Xdefaults
+
+
 
