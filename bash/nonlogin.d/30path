@@ -172,9 +172,9 @@ fi
 #     mkdir -p $HOME/.pip/bin
 # fi
 
-# if [ -e $(which ruby) ]; then 
-#     gems_dir=$(ruby -rubygems -e "puts Gem.user_dir")
-#     if [ -d "$gems_dir/bin" ]; then
-#         export PATH=$PATH:$gems_dir/bin
-#     fi
-# f
+if [ -e $(which ruby) ]; then
+    gems_dir=$(ruby -rubygems -e "puts Gem.user_dir")
+    if [ -d "$gems_dir/bin" ]; then
+        export PATH=$PATH:$gems_dir/bin
+    fi
+ fi
