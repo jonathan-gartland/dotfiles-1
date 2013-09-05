@@ -56,6 +56,7 @@
     dash
     use-package
 
+    ag
     change-inner
     ace-jump-mode
     pkgbuild-mode
