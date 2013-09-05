@@ -4,7 +4,11 @@
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # good less
-export LESS='-FSRX'
+#export LESS='-FSRX'
+
+export PAGER=~/bin/vimpager
+alias less=$PAGER
+alias zless=$PAGER
 
 # swtich to 256 color xterm if using "xterm" 
 if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
