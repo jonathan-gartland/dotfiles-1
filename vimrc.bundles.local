@@ -1,0 +1,7 @@
+
+" vim +BundleInstall! +BundleClean +q
+
+Bundle 'git@github.com:sjl/clam.vim.git'
+Bundle 'git@github.com:chriskempson/base16-vim.git'
+Bundle 'rking/ag.vim'
+Bundle 'wting/rust.vim'

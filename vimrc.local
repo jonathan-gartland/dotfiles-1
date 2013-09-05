@@ -1,0 +1,23 @@
+
+if has('gui_running')
+    color solarized
+    "set guifont=Inconsolata\ 10
+    set guifont=Anonymous\ Pro\ for\ Powerline\ 10
+    let g:solarized_contrast="high"    "default value is normal
+    let g:solarized_visibility="high"    "default value is normal
+else
+    let g:solarized_termcolors=16
+    color solarized
+endif
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
