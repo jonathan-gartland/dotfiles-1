@@ -2,7 +2,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id xmodmap /home/skk/.Xmodmap
 
 # Mod1 --> Alt Key
 # Mod4 --> Win Key
@@ -10,22 +9,24 @@ set $mod Mod4
 #set $mod Mode_switch
 
 # programs to run at startup
-exec --no-startup-id xautolock -time 3 -locker -secure
+exec --no-startup-id /usr/bin/xmodmap /home/skk/.Xmodmap
+exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources 
+exec --no-startup-id /usr/bin/xautolock -time 3 -locker -secure
 exec --no-startup-id /home/skk/.i3/startup.sh
 
 # The nvidia driver only provides support for Xinerama instead of RandR.
 force_xinerama yes
 
 # Font for window titles. 
-font xft:Junction Bold 8.5 
+font xft:Source Sans Pro 8.5 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec lilyterm
-bindsym $mod+Return exec terminator
-bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
+bindsym $mod+Return exec rxvt
+#bindsym $mod+Return exec terminator
+#bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
