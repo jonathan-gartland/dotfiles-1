@@ -4,3 +4,12 @@
 [submodule "vimrc"]
 	path = vimrc
 	url = https://github.com/amix/vimrc
+[submodule "friendly-find"]
+	path = friendly-find
+	url = git@github.com:sjl/friendly-find.git
+[submodule "spf13-vim"]
+	path = spf13-vim
+	url = git@github.com:spf13/spf13-vim.git
+[submodule "vimpager"]
+	path = vimpager
+	url = git@github.com:rkitover/vimpager.git
