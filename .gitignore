@@ -28,6 +28,9 @@ bin/eg
 bin/.xask.git
 bin/xask.py
 bin/xask
+bin/ffind
+bin/vimcat
+bin/vimpager
 
 # rope-projects
 bin/.ropeproject
