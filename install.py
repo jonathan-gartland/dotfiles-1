@@ -157,7 +157,7 @@ class install(object):
         { 'src': 'dotfiles/perlcriticrc', 'dst' : '.perlcriticrc'},
         { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
         { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
-        { 'src': 'dotfiles/Xdefaults', 'dst' : '.Xdefaults'},
+        { 'src': 'dotfiles/Xresources', 'dst' : '.Xresources'},
         { 'src': offlineimap, 'dst' : '.offlineimaprc'},
         { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
 
@@ -184,6 +184,21 @@ class install(object):
     def lilyterm(self, install_type):
             self._createLinks([{ 'src': 'lilyterm', 'dst': '.config/lilyterm' } ])
 
+    def awesome(self, install_type):
+        self._createLinks(
+            [{
+                'src': 'awesome',
+                'dst': '.config/awesome'
+            }]
+        )
+    def rxvt(self, install_type):
+        self._createLinks(
+            [{
+                'src': 'rxvt',
+                'dst': '.rxvt'
+            }]
+        )
+
     def bash(self, install_type):
         self._createLinks([
         { 'src': 'bash', 'dst' : '.bash' },
@@ -197,6 +212,9 @@ class install(object):
     def emacs(self, install_type):
         self._createLinks([{'src': 'emacs', 'dst': '.emacs.d'}])
 
+    def ffind(self, install_type):
+        self._createLinks([{'src': 'friendly-find/ffind', 'dst': 'bin/ffind'}])
+
     def i3(self, install_type):
         self._createLinks([{'src': 'i3', 'dst': '.i3'}])
 
@@ -208,8 +226,17 @@ class install(object):
 
     def vim(self, install_type):
         self._createLinks([
-            { 'src': 'vimrc', 'dst': '.vim_runtime' },
-            { 'src': 'vim/vimrc', 'dst': '.vimrc' }])
+            # { 'src': 'vimrc', 'dst': '.vim_runtime' },
+            # { 'src': 'vim/vimrc', 'dst': '.vimrc' },
+            { 'src': 'vimrc.local', 'dst': '.vimrc.local'},
+            { 'src': 'vimrc.bundles.local', 'dst': '.vimrc.bundles.local'},
+        ])
+
+    def vimpager(self, install_type):
+        self._createLinks([
+            {'src': 'vimpager/vimpager', 'dst': 'bin/vimpager'},
+            {'src': 'vimpager/vimcat', 'dst': 'bin/vimcat'},
+        ])
 
     def gnupg(self, install_type):
         self._createLinks([
