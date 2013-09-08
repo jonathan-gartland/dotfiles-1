@@ -1,15 +1,15 @@
 [submodule "scm_breeze"]
 	path = scm_breeze
-	url = git://github.com/ndbroadbent/scm_breeze.git
+	url = git:@github.com:ndbroadbent/scm_breeze.git
 [submodule "vimrc"]
 	path = vimrc
-	url = https://github.com/amix/vimrc
-[submodule "friendly-find"]
-	path = friendly-find
-	url = git@github.com:sjl/friendly-find.git
+	url = git@github.com:amix/vimrc.git
 [submodule "spf13-vim"]
 	path = spf13-vim
 	url = git@github.com:spf13/spf13-vim.git
+[submodule "friendly-find"]
+	path = friendly-find
+	url = git@github.com:sjl/friendly-find.git
 [submodule "vimpager"]
 	path = vimpager
 	url = git@github.com:rkitover/vimpager.git
