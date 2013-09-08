@@ -1,22 +1,23 @@
 #!/usr/bin/env python
 
-import sys, os.path, types, optparse, fileinput
+import sys, os.path, optparse, fileinput
+from event import event
 
 def get_parser(arguments):
     usage = "usage: %prog [options] other|home|work"
     parser = optparse.OptionParser(usage = usage)
 
-    parser.add_option("-v", "--verbose", dest="verbose",  default=False,
-                      help="Print lots of debugging information",  action="store_true")
+    parser.add_option("-v", "--verbose", dest="verbose", default=False,
+                      help="Print lots of debugging information", action="store_true")
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
-                      help="Don't actually run any commands; just print them.",  action="store_true")
+                      help="Don't actually run any commands; just print them.", action="store_true")
     parser.add_option("-f", "--force", dest="force", default=False,
                       help="Ignore existing files/directories.", action="store_true")
     parser.add_option("-d", "--dst_dir", dest="dst_dir", default=os.environ['HOME'],
-                      help="Set destination base directory (defaulting to: %s)" % os.environ['HOME'],
+                      help="LinkSet destination base directory (defaulting to: %s)" % os.environ['HOME'],
                       action="store")
     parser.add_option("-s", "--src_dst", dest="src_dir", default=os.getcwd(),
-                      help="Set source base directory (defaulting to: %s)" % os.getcwd(),
+                      help="LinkSet source base directory (defaulting to: %s)" % os.getcwd(),
                       action="store")
 
     (options, args) = parser.parse_args(args = arguments)
@@ -34,15 +35,49 @@ def run(argv):
     else:                             install_type = None
 
     basedir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    installer = install(basedir, options)
-
-    for key in install.__dict__.keys():
-        if not key.startswith('_') and \
-               type(install.__dict__[key]) == types.FunctionType:
-            method = install.__dict__[key].__get__(installer, install)
-            method(install_type)
+    install(basedir, options, install_type).createLinks()
 
     return 0
+
+class Link(object):
+
+    def __init__(self, src, dst):
+        self.src = src
+        self.dst = dst
+
+    def __repr__(self):
+        return "class: %s, src: %s, dst: %s\n" % (self.__class__, self.src, self.dst)
+
+    @event
+    def pre_link_event(self):
+        #print self.src, self.dst, 'pre_link_event', "\n"
+        None
+
+    @event
+    def post_link_event(self):
+        #print self.src, self.dst, 'post_link_event', "\n"
+        None
+
+class LinkSet(set):
+
+    def __init__(self, *args):
+        super(LinkSet, self).__init__(args)
+
+    @event
+    def pre_link_event(self):
+        #print self.src, self.dst, 'pre_link_event', "\n"
+        None
+
+    @event
+    def post_link_event(self):
+        #print self.src, self.dst, 'post_link_event', "\n"
+        None
+
+    def __repr__(self):
+        return "class: %s\n" % (self.__class__)
+
+def handler(self):
+    print self, "handler \n"
 
 class install(object):
 
@@ -60,11 +95,12 @@ class install(object):
         except OSError, e:
                 print >>stderr, "Execution failed:", e
 
-    def __init__(self, basedir, options):
+    def __init__(self, basedir, options, install_type):
         self.basedir = basedir
         self.options = options
+        self.install_type = install_type
 
-    def _createLinks(self, args):
+    def _createLinks(self, arg):
 
         dst_directory = self.options.dst_dir
         src_directory = self.options.src_dir
@@ -76,93 +112,98 @@ class install(object):
             print "Source Directory: %s" % src_directory
             print "Destination Directory: %s" % dst_directory
 
-        for arg in args:
-           src = os.path.join( src_directory, arg[ 'src' ] )
-           dst = os.path.join( dst_directory, arg[ 'dst' ] )
+        src = os.path.join( src_directory, arg.src )
+        dst = os.path.join( dst_directory, arg.dst )
 
-           if self.options.verbose:
-               print "argument: %s" % arg
-               print "src: %s, dst: %s" % (src,dst)
-               print "ln -sf %s %s" % ( src, dst )
+        if self.options.verbose:
+            print "src: %s, dst: %s" % (src, dst)
+            print "ln -sf %s %s" % (src, dst)
 
-           # remove existing Link
-           if os.path.exists( dst ) or self.options.force:
-               try:
-                   if self.options.verbose:
-                       print "Removing Exsting Link: %s" % ( dst )
+        # remove existing Link
+        if os.path.exists( dst ) or self.options.force:
+            try:
+                if self.options.verbose:
+                    print "Removing Existing Link: %s" % ( dst )
 
-                   if not self.options.dry_run:
-                       os.remove( dst )
-               except OSError:
-                   pass
+                if not self.options.dry_run:
+                    os.remove( dst )
+            except OSError:
+                pass
 
-           # create new Link
-           print "Creating Link: %s" % (dst)
-           try:
-               if self.options.verbose:
-                   print "Creating Link: %s" % (dst)
-               if not self.options.dry_run:
-                   os.symlink( src, dst )
-           except OSError:
-               pass
+            # create new Link
+            print "Creating Link: %s" % (dst)
+            try:
+                if self.options.verbose:
+                    print "Creating Link: %s" % (dst)
+                if not self.options.dry_run:
+                    os.symlink( src, dst )
+            except OSError:
+                pass
 
     def _git(self, url, path):
         return "git clone %s %s" % (url,path)
 
-    def _bzr(self, url, path):
-        return "bzr checkout %s %s" % (url, path)
+    def createLinks(self):
+        all_links = self.links()
+        for k,v in all_links.items():
+            for link in v:
+                #link.pre_link_event += handler
+                #link.post_link_event += handler
 
-    def bin(self, install_type):
-        if not self.options.dry_run:
-            self._createLinks([ {'src': 'bin',
-                                 'dst': 'bin' } ])
+                #link.pre_link_event()
+                self._createLinks(link)
+                #link.post_link_event()
 
-    def dotfiles(self, install_type):
+    def links(self):
+        bin = LinkSet( Link('bin', 'bin') )
+
         gitconfig = ""
         offlineimap = ""
         signature = None
 
-        if install_type == None:
+        if self.install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
 
-        if self.WORK == install_type:
+        if self.WORK == self.install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
             offlineimap = 'dotfiles/offlineimaprc.WORK'
 
-        if self.HOME == install_type:
+        if self.HOME == self.install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
             offlineimap = 'dotfiles/offlineimaprc.HOME'
 
+        # TODO: move to pre-creation hook
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
         if not os.path.exists(ssh_dir):
             os.makedir(ssh_dir)
 
-        self._createLinks([{'src': 'dotfiles', 'dst': '.dotfiles' },
-        { 'src': 'dotfiles/astylerc', 'dst': '.astylerc' },
-        { 'src': 'dotfiles/git-prompt.conf', 'dst': '.git-prompt.conf' },
-        { 'src': 'dotfiles/perltidy', 'dst': '.perltidy' },
-        { 'src': 'dotfiles/screenrc', 'dst': '.screenrc' },
-        { 'src': 'dotfiles/muttrc', 'dst': '.muttrc' },
-        { 'src': 'dotfiles/sqliterc', 'dst': '.sqliterc'  },
-        { 'src': 'dotfiles/abcde.conf', 'dst': '.abcde.conf'  },
-        { 'src':  gitconfig, 'dst': '.gitconfig' },
-        { 'src': 'dotfiles/signature.HOME', 'dst': '.signature.home' },
-        { 'src': 'dotfiles/signature.WORK', 'dst': '.signature.work' },
-        { 'src': 'dotfiles/signature.WORK.HTML', 'dst': '.signature.work.html' },
-        { 'src': 'dotfiles/authinfo.HOME.gpg', 'dst': '.authinfo.home' },
-        { 'src': 'dotfiles/authinfo.WORK.gpg', 'dst': '.authinfo.work' },
-        { 'src': 'dotfiles/ssh_config', 'dst' : '.ssh/config'},
-        { 'src': 'dotfiles/login.sql', 'dst' : 'login.sql'},
-        { 'src': 'dotfiles/git.scmbrc', 'dst' : '.git.scmbrc'},
-        { 'src': 'dotfiles/perlcriticrc', 'dst' : '.perlcriticrc'},
-        { 'src': 'dotfiles/scmbrc', 'dst' : '.scmbrc'},
-        { 'src': 'dotfiles/offlineimap.py', 'dst' : '.offlineimap.py'},
-        { 'src': 'dotfiles/Xresources', 'dst' : '.Xresources'},
-        { 'src': offlineimap, 'dst' : '.offlineimaprc'},
-        { 'src': 'dotfiles/xbindkeysrc', 'dst': '.xbindkeysrc'  }])
+        dotfiles = LinkSet(
+            Link('dotfiles','.dotfiles'),
+            Link('dotfiles/astylerc','.astylerc'),
+            Link('dotfiles/git-prompt.conf','.git-prompt.conf'),
+            Link('dotfiles/perltidy','.perltidy'),
+            Link('dotfiles/screenrc','.screenrc'),
+            Link('dotfiles/muttrc','.muttrc'),
+            Link('dotfiles/sqliterc','.sqliterc' ),
+            Link('dotfiles/abcde.conf','.abcde.conf' ),
+            Link( gitconfig,'.gitconfig'),
+            Link('dotfiles/signature.HOME','.signature.home'),
+            Link('dotfiles/signature.WORK','.signature.work'),
+            Link('dotfiles/signature.WORK.HTML','.signature.work.html'),
+            Link('dotfiles/authinfo.HOME.gpg','.authinfo.home'),
+            Link('dotfiles/authinfo.WORK.gpg','.authinfo.work'),
+            Link('dotfiles/ssh_config', '.ssh/config'),
+            Link('dotfiles/login.sql', 'login.sql'),
+            Link('dotfiles/git.scmbrc', '.git.scmbrc'),
+            Link('dotfiles/perlcriticrc', '.perlcriticrc'),
+            Link('dotfiles/scmbrc', '.scmbrc'),
+            Link('dotfiles/offlineimap.py', '.offlineimap.py'),
+            Link('dotfiles/Xresources', '.Xresources'),
+            Link(offlineimap, '.offlineimaprc'),
+            Link('dotfiles/xbindkeysrc','.xbindkeysrc'))
 
+        # TODO: move to post-creation hook
         if not self.options.dry_run:
-            #pwd = os.path.dirname(os.path.abspath(__file__))
             pwd = self.options.src_dir
             input = os.path.join(pwd, "dotfiles/logrotate.conf")
             output_filename = os.path.join(self.options.dst_dir, ".logrotate.conf")
@@ -175,89 +216,78 @@ class install(object):
             for line in fileinput.input(input):
                 output.write(line.replace("$HOME", os.environ['HOME']))
 
-    def fonts(self, install_type):
-            self._createLinks([{ 'src': 'fonts', 'dst': '.fonts' } ])
+        fonts = LinkSet(Link('fonts','.fonts'))
 
-    def terminator(self, install_type):
-            self._createLinks([{ 'src': 'terminator', 'dst': '.config/terminator' } ])
+        terminator = LinkSet(Link('terminator','.config/terminator'))
 
-    def lilyterm(self, install_type):
-            self._createLinks([{ 'src': 'lilyterm', 'dst': '.config/lilyterm' } ])
+        lilyterm = LinkSet(Link('lilyterm','.config/lilyterm'))
 
-    def awesome(self, install_type):
-        self._createLinks(
-            [{
-                'src': 'awesome',
-                'dst': '.config/awesome'
-            }]
-        )
-    def rxvt(self, install_type):
-        self._createLinks(
-            [{
-                'src': 'rxvt',
-                'dst': '.rxvt'
-            }]
-        )
+        awesome = LinkSet(Link('awesome','.config/awesome'))
 
-    def bash(self, install_type):
-        self._createLinks([
-        { 'src': 'bash', 'dst' : '.bash' },
-        { 'src': 'bash/bashrc', 'dst': '.bashrc' },
-        { 'src': 'bash/inputrc', 'dst': '.inputrc' },
-        { 'src': 'bash/bash_profile', 'dst': '.bash_profile' },
-        { 'src': 'bash/bash_logout', 'dst': '.bash_logout' },
-        { 'src': 'scm_breeze', 'dst' : '.scm_breeze' },])
+        rxvt = LinkSet(Link('rxvt','.rxvt'))
 
+        bash = LinkSet(
+            Link('bash', '.bash'),
+            Link('bash/bashrc','.bashrc'),
+            Link('bash/inputrc','.inputrc'),
+            Link('bash/bash_profile','.bash_profile'),
+            Link('bash/bash_logout','.bash_logout'),
+            Link('scm_breeze', '.scm_breeze'))
 
-    def emacs(self, install_type):
-        self._createLinks([{'src': 'emacs', 'dst': '.emacs.d'}])
+        emacs = LinkSet(Link('emacs','.emacs.d'))
 
-    def ffind(self, install_type):
-        self._createLinks([{'src': 'friendly-find/ffind', 'dst': 'bin/ffind'}])
+        # TODO: Add pre-link creation hook to clone repo
+        ffind = LinkSet(Link('friendly-find/ffind','bin/ffind'))
 
-    def i3(self, install_type):
-        self._createLinks([{'src': 'i3', 'dst': '.i3'}])
+        i3 = LinkSet(Link('i3','.i3'))
 
-    def clojure(self, install_type):
-        self._createLinks([
-                {'src': 'lein', 'dst': '.lein'},
-                {'src': 'cljr', 'dst': '.cljr'},
-                {'src': 'm2', 'dst': '.m2'}])
+        clojure = LinkSet(Link('lein','.lein'), Link('cljr','.cljr'), Link('m2','.m2'))
 
-    def vim(self, install_type):
-        self._createLinks([
-            # { 'src': 'vimrc', 'dst': '.vim_runtime' },
-            # { 'src': 'vim/vimrc', 'dst': '.vimrc' },
-            { 'src': 'vimrc.local', 'dst': '.vimrc.local'},
-            { 'src': 'vimrc.bundles.local', 'dst': '.vimrc.bundles.local'},
-        ])
+        vim = LinkSet(
+            # Link('vimrc','.vim_runtime'),
+            # Link('vim/vimrc','.vimrc'),
+            Link('vimrc.local','.vimrc.local'),
+            Link('vimrc.bundles.local','.vimrc.bundles.local'))
 
-    def vimpager(self, install_type):
-        self._createLinks([
-            {'src': 'vimpager/vimpager', 'dst': 'bin/vimpager'},
-            {'src': 'vimpager/vimcat', 'dst': 'bin/vimcat'},
-        ])
+        # TODO: Add pre-link creation hook to clone repo
+        vimpager = LinkSet(
+            Link('vimpager/vimpager','bin/vimpager'),
+            Link('vimpager/vimcat','bin/vimcat'))
 
-    def gnupg(self, install_type):
-        self._createLinks([
-            {'src': 'gnupg', 'dst': '.gnupg'}
-            ])
+        gnupg = LinkSet(Link('gnupg','.gnupg'))
 
-    def bazaar(self, install_type):
-        self._createLinks([
-            {'src': 'bazaar', 'dst': '.bazaar'}
-            ])
+        bazaar = LinkSet(Link('bazaar','.bazaar'))
 
-    def procmail(self, install_type):
-        if self.WORK == install_type:
-            self._createLinks([
-                {'src': 'procmail/work', 'dst': '.procmail' },
-                {'src': 'procmail/work/procmailrc', 'dst': '.procmailrc' }])
+        procmail = None
+        if self.WORK == self.install_type:
+            procmail = LinkSet(
+                Link('procmail/work','.procmail'),
+                Link('procmail/work/procmailrc','.procmailrc'))
 
-        if self.HOME == install_type:
-            self._createLinks([
-                {'src': 'procmail/home', 'dst': '.procmail' },
-                {'src': 'procmail/home/procmailrc', 'dst': '.procmailrc' }])
+        if self.HOME == self.install_type:
+            procmail = LinkSet(
+                Link('procmail/home','.procmail'),
+                Link('procmail/home/procmailrc','.procmailrc'))
+
+        return {
+            'awesome' : awesome,
+            'bash' : bash,
+            'bazaar' : bazaar,
+            'bin' : bin,
+            'clojure' : clojure,
+            'dotfiles' : dotfiles,
+            'emacs' : emacs,
+            'ffind' : ffind,
+            'fonts' : fonts,
+            'gnupg' : gnupg,
+            'i3' : i3,
+            'lilyterm' : lilyterm,
+            'procmail' : procmail,
+            'rxvt' : rxvt,
+            'terminator': terminator,
+            'vimpager' : vimpager,
+            'vim' : vim,
+        }
 
 if __name__ == '__main__':
     sys.exit(run(sys.argv))
