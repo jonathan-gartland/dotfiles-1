@@ -222,8 +222,6 @@ class install(object):
 
         lilyterm = LinkSet(Link('lilyterm','.config/lilyterm'))
 
-        awesome = LinkSet(Link('awesome','.config/awesome'))
-
         rxvt = LinkSet(Link('rxvt','.rxvt'))
 
         bash = LinkSet(
@@ -270,7 +268,6 @@ class install(object):
                 Link('procmail/home/procmailrc','.procmailrc'))
 
         return {
-            'awesome' : awesome,
             'bash' : bash,
             'bazaar' : bazaar,
             'bin' : bin,
