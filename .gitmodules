@@ -1,9 +1,6 @@
 [submodule "scm_breeze"]
 	path = scm_breeze
 	url = git:@github.com:ndbroadbent/scm_breeze.git
-[submodule "vimrc"]
-	path = vimrc
-	url = git@github.com:amix/vimrc.git
 [submodule "spf13-vim"]
 	path = spf13-vim
 	url = git@github.com:spf13/spf13-vim.git
