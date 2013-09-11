@@ -1,4 +1,27 @@
 #!/usr/bin/python -tt
+#
+# Copyright 2004-2006 Nathaniel W. Turner <nate@houseofnate.net>
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
 
 """
 USAGE
@@ -64,7 +87,7 @@ EXAMPLES
   cleanup-maildir --keep-flagged-threads trash 'Lists.debian-devel'
 """
 
-__version__ = "0.2.3"
+__version__ = "0.3.0"
 # $Id$
 # $URL$
 
@@ -107,8 +130,6 @@ class MaildirWriter(object):
             self.path = path
         self.logger = logging.getLogger('MaildirWriter')
 
-        print "MaildirWriter.path => %s" % self.path
-
     def deliver(self, msg, path=None):
         """Deliver a message to a Maildir
 
@@ -121,7 +142,7 @@ class MaildirWriter(object):
         if self.path == None or not os.path.isdir(self.path):
             raise ValueError, 'Path does not exist'
         tryCount = 1
-        srcFile = msg.fp._file.name;
+        srcFile = msg.getFilePath();
         (dstName, tmpFile, newFile, dstFile) = (None, None, None, None)
         while 1:
             try:
@@ -176,17 +197,23 @@ class MaildirMessage(rfc822.Message):
     Has extra Maildir-specific attributes
     """
 
+    def getFilePath(self):
+        if sys.hexversion >= 0x020500F0:
+            return self.fp._file.name
+        else:
+            return self.fp.name
+
     def isFlagged(self):
         """return true if the message is flagged as important"""
         import re
-        fname = self.fp._file.name
+        fname = self.getFilePath()
         if re.search(r':.*F', fname) != None:
             return True
         return False
 
     def getFlags(self):
         """return the flag part of the message's filename"""
-        parts = self.fp._file.name.split(':')
+        parts = self.getFilePath().split(':')
         if len(parts) == 2:
             return parts[1]
         return None
@@ -195,7 +222,7 @@ class MaildirMessage(rfc822.Message):
         """return true if the message is marked as unread"""
         # XXX should really be called isUnread
         import re
-        fname = self.fp._file.name
+        fname = self.getFilePath()
         if re.search(r':.*S', fname) != None:
             return False
         return True
@@ -246,7 +273,7 @@ class MaildirMessage(rfc822.Message):
     def getDateRecd(self):
         """Get the time the message was received"""
         # XXX check that stat returns time in UTC, fix if not
-        return os.stat(self.fp._file.name)[8]
+        return os.stat(self.getFilePath())[8]
 
     def getDateSentOrRecd(self):
         """Get the time the message was sent, fall back on time received"""
@@ -368,12 +395,12 @@ class MaildirCleaner(object):
                                  (fakeMsg, i), msg)
                         if not self.isTrialRun:
                             self.trashWriter.deliver(msg)
-                            os.unlink(msg.fp._file.name)
+                            os.unlink(msg.getFilePath())
                     elif mode == 'delete':
                         self.log(logging.INFO, "%sDeleting #%d (old)" % 
                                  (fakeMsg, i), msg)
                         if not self.isTrialRun:
-                            os.unlink(msg.fp._file.name)
+                            os.unlink(msg.getFilePath())
                     else: # mode == 'archive'
                         # Determine subfolder path
                         mdate = time.gmtime(msg.getDateSentOrRecd())
@@ -396,7 +423,7 @@ class MaildirCleaner(object):
                                 mkMaildir(sfPath)
                             # Deliver
                             self.__mdWriter.deliver(msg, sfPath)
-                            os.unlink(msg.fp._file.name)
+                            os.unlink(msg.getFilePath())
                     self.stats[mode] += 1
                 else:
                     self.log(logging.DEBUG, "Keeping #%d (fresh)" % i, msg)
