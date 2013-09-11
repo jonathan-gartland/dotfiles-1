@@ -22,49 +22,80 @@ LOGFILE=$PROCMAILDIR/log/procmail
 * ^X-MailScanner-SpamCheck:spam.*
 .Spam/
 
-# Copy all mail now
-:0c		
-*
-.Archive/	# to Archive
-
-# Arch-Announce
+# UNH Parking News
 :0
-* (To|Cc):.*arch-announce@archlinux.org.*
-.Mailing\ Lists.Arch\ Announce/
+* ^To:.*Parking.News@lists.unh.edu.*
+/dev/null
 
-# Arch General
+# I don't need these messages
 :0
-* (To|Cc):.*arch-general@archlinux.org.*
-.Mailing\ Lists.Arch\ General/
+* ^Subject:.*Build failed in Jenkins: perl5-threaded.*
+/dev/null
+
+# or these
+:0
+* ^Subject:.*Smoke [blead].*
+/dev/null
+
+# or these
+:0
+* ^Subject:.*Perl 5 Commit Summary.*
+/dev/null
+
+# Haskell Beginners
+:0
+* (To|Cc):.*beginners@haskell.org.*
+.Mailing\ Lists.Haskell\ Beginners/
+
+# Haskell Cafe
+:0
+* (To|Cc):.*haskell-cafe@haskell.org.*
+.Mailing\ Lists.Haskell\ Cafe/
+
+# xmonad
+:0
+* (To|Cc):.*xmonad@haskell.org.*
+.Mailing\ Lists.xmonad/
+
+# awesome users
+:0
+* (To|Cc):.*awesome@naquadah.org.*
+.Mailing\ Lists.Awesome\ Users/
+
+# awesome devel
+:0
+* (To|Cc):.*awesome-devel@naquadah.org.*
+.Mailing\ Lists.Awesome\ Devel/
+
+# Debian User
+:0
+* (To|Cc):.*debian-user@lists.debian.org.*
+.Mailing\ Lists.Debian\ User/
+
+# Debian Announce
+:0
+* (To|Cc):.*debian-announce@lists.debian.org.*
+.Mailing\ Lists.Debian\ Announce/
+
+# Debian News
+:0
+* (To|Cc):.*debian-nEws@lists.debian.org.*
+.Mailing\ Lists.Debian\ News/
+
+# Rust
+:0
+* (To|Cc):.*rust-dev@mozilla.org.*
+.Mailing\ Lists.Rust\ Dev/
 
 # i3-discuss
 :0
 * (To|Cc):.*i3-discuss@i3.zekjur.net.*
 .Mailing\ Lists.i3/
 
-# NodeJS
-:0 
-*(To|Cc):.*nodejs@googlegroups.com.*
-.Mailing\ Lists.NodeJS/
-
 # mu4e
 :0
 * (To|Cc):.*mu-discuss@googlegroups.com.*
 .Mailing\ Lists.mu4e/
-
-# leinigen
-:0
-* (To|Cc):.*leiningen@librelist.(com|org).*
-.Mailing\ Lists.Leiningen/
-
-:0
-* (To|Cc):.*leiningen@googlegroups.com.*
-.Mailing\ Lists.Leiningen/
-
-# Python User
-:0
-* (To|Cc):.*python-list@python.org.*
-.Mailing\ Lists.Python\ User/
 
 # Python Mode
 :0
@@ -96,55 +127,61 @@ LOGFILE=$PROCMAILDIR/log/procmail
 * (To|Cc):.*emacs-devel@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Devel/
 
-# Clojure
+# vim user
 :0
-* (To|Cc):.*clojure@googlegroups.com.*
-.Mailing\ Lists.Clojure/
+* ^(To|Cc):.*vim_use@googlegroups.com.*
+.Mailing\ Lists.Vim\ User/
 
-:0 
-* ^(To|Cc):.*ruby-talk@ruby-lang.org.*
-.Mailing\ Lists.Ruby\ Talk/
+# vim user
+:0
+* ^(To|Cc):.*vim@vim.org.*
+.Mailing\ Lists.Vim\ User/
 
 # Evil
 :0
 * ^(To|Cc):.*implementations-list@lists.ourproject.org.*
 .Mailing\ Lists.GNU\ Emacs\ Evil/
 
+# spf13-vim
+:0
+* ^(To|Cc):.*spf13-vim-discuss@googlegroups.com.*
+.Mailing\ Lists.spf13\ Vim/
+
+# ledger
+:0
+* ^(To|Cc):.*ledger-cli@googlegroups.com.*
+.Mailing\ Lists.Ledger/
+
+# Copy all mail now
+:0c		
+*
+.Archives/	# to Archives
 
 # handle HemlockForest
 :0
-* ^From:.*Judi.Angelo@executiveproperties.com.*
+* ^(From|To|Cc):.*Judi.Angelo@executiveproperties.com.*
 .HemlockForest/
 
 :0
-* ^From:.*Judi.Angelo@executiveproperties.com.*
+* ^(From|To|Cc):.*jason@4wallsnh.com.*
 .HemlockForest/
 
 :0
-* ^From:.*jason@4wallsnh.com.*
+* ^(From|To|Cc):.*nseddy1@yahoo.com.*
 .HemlockForest/
 
 :0
-* ^From:.*thejourneycontinues@comcast.net.*
+* ^(From|To|Cc):.*Shaf12345@aol.com.*
 .HemlockForest/
 
 :0
-* ^From:.*nseddy1@yahoo.com.*
-.HemlockForest/
-
-:0
-* ^From:.*benjamin.bascom@gmail.com.*
+* ^(From|To|Cc):.*benjamin.bascom@gmail.com.*
 .HemlockForest/
 
 # eHaramony
 :0
 * ^From:.*ehsupport@eharmony.com.*
 .eHarmony/
-
-# BlockbusterOnline
-:0
-* ^From:.*blockbusteronline@blockbuster.com.*
-.BlockbusterOnline/
 
 # NetFlix
 :0
@@ -156,6 +193,22 @@ LOGFILE=$PROCMAILDIR/log/procmail
 * ^From:.*investors@e.investors.com.*
 .IBDEditorials/
 
+# Jobs
+:0
+* ^From:.*jagent-feedback@monster.com.*
+.Jobs/
+
+:0
+* ^From:.*jagent@route.monster.com.*
+.Jobs/
+
+:0
+* ^From:.*jobalerts@jobserious.com.*
+.Jobs/
+
+:0
+* ^From:.*balerts@site.careerbuilder.com.*
+.Jobs/
 
 # last
 :0:
