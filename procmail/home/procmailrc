@@ -5,7 +5,7 @@ DEFAULT=$MAILDIR/.INBOX/
 PROCMAILDIR=$HOME/.procmail
 LOGFILE=$PROCMAILDIR/log/procmail
 
-# forward all email through spamc daemon
+# forward all email through spamc daemon {{{1
 :0fw
 | /usr/bin/spamc
 
@@ -21,143 +21,153 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^X-MailScanner-SpamCheck:spam.*
 .Spam/
+# }}}1
 
-# UNH Parking News
-:0
-* ^To:.*Parking.News@lists.unh.edu.*
-/dev/null
-
-# I don't need these messages
-:0
-* ^Subject:.*Build failed in Jenkins: perl5-threaded.*
-/dev/null
-
-# or these
-:0
-* ^Subject:.*Smoke [blead].*
-/dev/null
-
-# or these
-:0
-* ^Subject:.*Perl 5 Commit Summary.*
-/dev/null
-
-# Haskell Beginners
+# Haskell Beginners {{{1
 :0
 * (To|Cc):.*beginners@haskell.org.*
 .Mailing\ Lists.Haskell\ Beginners/
+# }}}1
 
-# Haskell Cafe
+# Haskell Cafe {{{1
 :0
 * (To|Cc):.*haskell-cafe@haskell.org.*
 .Mailing\ Lists.Haskell\ Cafe/
+# }}}1
 
-# xmonad
+# xmonad {{{1
 :0
 * (To|Cc):.*xmonad@haskell.org.*
 .Mailing\ Lists.xmonad/
+# }}}1
 
-# awesome users
+# awesome users {{{1
 :0
 * (To|Cc):.*awesome@naquadah.org.*
 .Mailing\ Lists.Awesome\ Users/
+# }}}1
 
-# awesome devel
+# awesome devel {{{1
 :0
 * (To|Cc):.*awesome-devel@naquadah.org.*
 .Mailing\ Lists.Awesome\ Devel/
+# }}}1
 
-# Debian User
+# Debian User {{{1
 :0
 * (To|Cc):.*debian-user@lists.debian.org.*
 .Mailing\ Lists.Debian\ User/
+# }}}1
 
-# Debian Announce
+# Debian Announce {{{1
 :0
 * (To|Cc):.*debian-announce@lists.debian.org.*
 .Mailing\ Lists.Debian\ Announce/
+# }}}1
 
-# Debian News
+# Debian News {{{1
 :0
 * (To|Cc):.*debian-nEws@lists.debian.org.*
 .Mailing\ Lists.Debian\ News/
+# }}}1
 
-# Rust
+# Rust {{{1
 :0
 * (To|Cc):.*rust-dev@mozilla.org.*
 .Mailing\ Lists.Rust\ Dev/
+# }}}1
 
-# i3-discuss
+# i3-discus {{{1s
 :0
 * (To|Cc):.*i3-discuss@i3.zekjur.net.*
 .Mailing\ Lists.i3/
+# }}}1
 
-# mu4e
+# mu4e {{{1
 :0
 * (To|Cc):.*mu-discuss@googlegroups.com.*
 .Mailing\ Lists.mu4e/
+# }}}1
 
-# Python Mode
+# Python Mode {{{1
 :0
 * (To|Cc):.*python-mode@python.org.*
 .Mailing\ Lists.Python\ Mode/
+# }}}1
 
-# Fish Users 
+# Fish Users  {{{1
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
 .Mailing\ Lists.Fish\ User/
+# }}}1
 
-# Glenn Beck
+# Glenn Beck {{{1
 :0
 * ^From:.*Glenn.*Beck.*
 .Mailing\ Lists.Glenn\ Beck/
+# }}}1
 
-# The Blaze
+# The Blaze {{{1
 :0
 * ^Subject:.*News from TheBlaze.com.*
 .Mailing\ Lists.Glenn\ Beck/
+# }}}1
 
-# GNU Emails Help
+# GNU Emacs Help {{{1
 :0
 * (To|Cc):.*help-gnu-emacs@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Help/
+# }}}1
 
-# GNU Emails Devel
+# GNU Emacs Devel {{{1
 :0
 * (To|Cc):.*emacs-devel@gnu.org.*
 .Mailing\ Lists.GNU\ Emacs\ Devel/
+# }}}1
 
-# vim user
+# vim user {{{1
 :0
 * ^(To|Cc):.*vim_use@googlegroups.com.*
 .Mailing\ Lists.Vim\ User/
+# }}}1
 
-# vim user
+# ruby talk {{{1
+:0
+* ^(To|Cc):.*ruby-talk@ruby-lang.org.*
+.Mailing\ Lists.Ruby\ Talk/
+# }}}1
+
+# vim user {{{1
 :0
 * ^(To|Cc):.*vim@vim.org.*
 .Mailing\ Lists.Vim\ User/
+# }}}1
 
-# Evil
+# Evil {{{1
 :0
 * ^(To|Cc):.*implementations-list@lists.ourproject.org.*
 .Mailing\ Lists.GNU\ Emacs\ Evil/
+# }}}1
 
-# spf13-vim
+# spf13-vim {{{1
 :0
 * ^(To|Cc):.*spf13-vim-discuss@googlegroups.com.*
 .Mailing\ Lists.spf13\ Vim/
+# }}}1
 
-# ledger
+# ledger {{{1
 :0
 * ^(To|Cc):.*ledger-cli@googlegroups.com.*
 .Mailing\ Lists.Ledger/
+# }}}1
 
-# Copy all mail now
+# Copy all mail now {{{1
 :0c		
 *
 .Archives/	# to Archives
+# }}}1
 
-# handle HemlockForest
+# handle HemlockForest {{{1
 :0
 * ^(From|To|Cc):.*Judi.Angelo@executiveproperties.com.*
 .HemlockForest/
@@ -177,21 +187,25 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^(From|To|Cc):.*benjamin.bascom@gmail.com.*
 .HemlockForest/
+# }}}1
 
 # eHaramony
 :0
 * ^From:.*ehsupport@eharmony.com.*
 .eHarmony/
+# }}}1
 
 # NetFlix
 :0
 * ^From:.*discship@netflix.com.*
 .Netflix/
+# }}}1
 
 # IBD Editorials
 :0
 * ^From:.*investors@e.investors.com.*
 .IBDEditorials/
+# }}}1
 
 # Jobs
 :0
@@ -209,6 +223,7 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^From:.*balerts@site.careerbuilder.com.*
 .Jobs/
+# }}}1
 
 # last
 :0:
