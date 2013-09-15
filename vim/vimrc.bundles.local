@@ -7,3 +7,8 @@ Bundle 'rking/ag.vim'
 Bundle 'wting/rust.vim'
 
 Bundle 'skk/VimCalc'
+
+Bundle 'chriskempson/base16-vim'
+Bundle 'chriskempson/tomorrow-theme'
+
+Bundle 'hukl/Smyck-Color-Scheme'

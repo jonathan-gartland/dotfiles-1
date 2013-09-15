@@ -1,5 +1,13 @@
 if has('gui_running')
-    colorscheme solarized
+    if isdirectory("~/.vim/bundle/tomorrow-theme/vim/")
+        set runtimepath+=~/.vim/bundle/tomorrow-theme/vim/
+        colorscheme Tomorrow-Night
+        "colorscheme smyck
+    else
+        colorscheme solarized
+    endif
+
+    set guioptions-=m       " Remove the menu
     set guifont=Anonymous\ Pro\ for\ Powerline\ 10
     let g:solarized_contrast="high"    "default value is normal
     let g:solarized_visibility="high"    "default value is normal
@@ -8,7 +16,6 @@ else
 endif
 
 if !exists("vimpager")
-
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
 
@@ -33,12 +40,44 @@ if !exists("vimpager")
 
 endif
 
-
-
 if has("autocmd")
   " Highlight TODO, FIXME, NOTE, etc.
   if v:version > 701
     autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
     autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
   endif
+
+  autocmd BufRead .procmailrc set foldmethod=marker filetype=procmail
 endif
+
+" Maps to make handling windows a bit easier
+noremap <silent> <leader>ml <C-W>L
+noremap <silent> <leader>mk <C-W>K
+noremap <silent> <leader>mh <C-W>H
+noremap <silent> <leader>mj <C-W>J
+
+
+"From http://nvie.com/posts/how-i-boosted-my-vim/
+nnoremap ; :
+
+" Edit the vimrc file
+nmap <silent> <leader>ev :e ~/.vimrc.local<CR>
+nmap <silent> <leader>sv :so ~/.vimrc.local<CR>
+
+
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+" Command - T options
+let g:CommandTMaxFiles=0
+
+:cnoremap <C-A> <Home>
+:cnoremap <C-F> <Right>
+:cnoremap <C-B> <Left>
+:cnoremap <Esc>b <S-Left>
+:cnoremap <Esc>f <S-Right>
+
+set runtimepath+=~/src/vim-i3-config/
+
+let g:syntastic_ruby_checkers = ['rubocop']
+
+autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
