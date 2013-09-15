@@ -12,3 +12,4 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'chriskempson/tomorrow-theme'
 
 Bundle 'hukl/Smyck-Color-Scheme'
+Bundle 'zeis/vim-kolor'
