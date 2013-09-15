@@ -1,7 +1,0 @@
-#!/bin/sh
-xprop -name emacs >/dev/null 2>/dev/null
-if [ "$?" = "1" ]; then
-    emacsclient -t "$*"
-else
-    emacsclient -c -n "$*"
-fi
