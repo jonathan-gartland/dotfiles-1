@@ -56,6 +56,7 @@
     dash
     use-package
 
+    ample-theme
     ag
     change-inner
     ace-jump-mode
