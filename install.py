@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python2
 
 import sys, os.path, optparse, fileinput
 from event import event
@@ -242,6 +242,7 @@ class install(object):
         clojure = LinkSet(Link('lein','.lein'), Link('cljr','.cljr'), Link('m2','.m2'))
 
         vim = LinkSet(
+            Link('vim/after','vim/after'),
             Link('vim/vimrc.basic.vim','.vimrc'),
             Link('vim/vimrc.local','.vimrc.local'),
             Link('vim/vimrc.bundles.local','.vimrc.bundles.local'))
