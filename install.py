@@ -242,10 +242,9 @@ class install(object):
         clojure = LinkSet(Link('lein','.lein'), Link('cljr','.cljr'), Link('m2','.m2'))
 
         vim = LinkSet(
-            Link('vimrc','.vim_runtime'),
-            Link('vim/vimrc','.vimrc'),
-            Link('vimrc.local','.vimrc.local'),
-            Link('vimrc.bundles.local','.vimrc.bundles.local'))
+            Link('vim/vimrc.basic.vim','.vimrc'),
+            Link('vim/vimrc.local','.vimrc.local'),
+            Link('vim/vimrc.bundles.local','.vimrc.bundles.local'))
 
         # TODO: Add pre-link creation hook to clone repo
         vimpager = LinkSet(
