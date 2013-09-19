@@ -2,3 +2,5 @@
 
 source ~/.bash/_utils
 source-dir ~/.bash/nonlogin.d
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
