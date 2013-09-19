@@ -245,6 +245,7 @@ class install(object):
             Link('vim/after','vim/after'),
             Link('vim/vimrc.basic.vim','.vimrc'),
             Link('vim/vimrc.local','.vimrc.local'),
+            Link('vim/vimrc.before.local','.vimrc.before.local'),
             Link('vim/vimrc.bundles.local','.vimrc.bundles.local'))
 
         # TODO: Add pre-link creation hook to clone repo
