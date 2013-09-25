@@ -19,6 +19,7 @@ force_xinerama yes
 
 # Font for window titles. 
 font xft:Source Sans Pro 8.5 
+set barfont "xft:Source Sans Pro 8.5""
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -156,11 +157,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        #status_command i3status --config ~/.i3/i3status.conf
-        tray_output output
-        status_command /home/skk/.cabal/bin/xmobar ~/.i3/xmobar.conf
-}
+#bar {
+#        #status_command i3status --config ~/.i3/i3status.conf
+#        tray_output output
+#        status_command /home/skk/.cabal/bin/xmobar ~/.i3/xmobar.conf
+#}
 
 ipc-socket ~/.i3/i3-ipc.sock
 
@@ -172,4 +173,23 @@ bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
 #bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 #bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position bottom
+    font $barfont
+    status_command i3status --config ~/.i3/i3status.conf
+    colors {
+        background #073642
+        statusline #eee8d5
+        focused_workspace #cb4b16 #cb4b16 #eee8d5
+        active_workspace #cb4b16 #cb4b16 #eee8d5
+        inactive_workspace #b58900 #b58900 #eee8d5
+    }
+}
 
+# class                 border  backgr. text    indicator
+client.focused          #859900 #859900 #fdf6e3 #2e9ef4
+client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
+client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
+#
