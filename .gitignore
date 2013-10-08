@@ -45,3 +45,6 @@ bash/gitstatus.py
 
 # i3
 i3/i3log
+
+# mutt
+mutt/temp/*
