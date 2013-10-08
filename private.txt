@@ -1,3 +1,9 @@
 List of files which should be kept in a private github repo.
 
 fonts/*
+
+mutt/muttrc                 # muttrc contains email address information
+msmtp.authinfo.HOME.gpg     # encrypted password
+mutt/unhrcc-smtp.cert       # UNH/RCC cert
+
+gnugpg/*                    # gpg related keys
