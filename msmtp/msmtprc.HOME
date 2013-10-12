@@ -1,0 +1,13 @@
+account blackstar
+host blackstar.sr.unh.edu
+port 587
+protocol smtp
+auth on
+from steven@knight.cx
+user skk
+passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg"
+tls on
+tls_trust_file ~/.mutt/unhrcc-smtp.cert
+tls_min_dh_prime_bits 512
+
+account default : blackstar
