@@ -18,4 +18,6 @@ Bundle 'itchyny/lightline.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'Shougo/vimfiler.vim'
 Bundle 'Shougo/vimfiler.vim'
-
+Bundle 'wincent/Command-T'
+Bundle 'sjl/badwolf'
+Bundle 'bling/vim-bufferline'
