@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # https://clauswitt.com/customizing-the-zsh-prompt-with-oh-my-zsh-themes.html
-ZSH_THEME="clauswitt"
+ZSH_THEME="ys"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
