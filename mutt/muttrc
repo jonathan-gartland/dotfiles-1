@@ -165,3 +165,11 @@ set from     = "steven@knight.cx"
 set sendmail = "/usr/bin/msmtp -a blackstar"
 set sendmail_wait = 0
 unset record
+
+## Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
+
+# load gnupg configuration
+#source ~/.mutt/mutt-gnupg
