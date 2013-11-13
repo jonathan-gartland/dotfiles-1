@@ -34,4 +34,4 @@ shopt -s promptvars
 
 [ -s  "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh" ] && source "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh"
 
-[ -s  "$HOME/.bash/completions/git" ] && source "$HOME/.bash/completions/git"
+source-dir "$HOME/.bash/completions/" 
