@@ -48,3 +48,6 @@ i3/i3log
 
 # mutt
 mutt/temp/*
+
+# zsh
+oh-my-zsh
