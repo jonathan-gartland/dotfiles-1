@@ -160,6 +160,7 @@ class install(object):
         gitconfig = ""
         offlineimap = ""
         signature = None
+        msmtprc = None
 
         if self.install_type == None:
             gitconfig = 'dotfiles/gitconfig.NONE'
@@ -167,10 +168,12 @@ class install(object):
         if self.WORK == self.install_type:
             gitconfig = 'dotfiles/gitconfig.WORK'
             offlineimap = 'dotfiles/offlineimaprc.WORK'
+            msmtprc = 'msmtprc/msmtprc.WORK'
 
         if self.HOME == self.install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
             offlineimap = 'dotfiles/offlineimaprc.HOME'
+            msmtprc = 'msmtp/msmtprc.HOME'
 
         # TODO: move to pre-creation hook
         ssh_dir = os.path.join(self.options.dst_dir, ".ssh")
@@ -183,7 +186,6 @@ class install(object):
             Link('dotfiles/git-prompt.conf','.git-prompt.conf'),
             Link('dotfiles/perltidy','.perltidy'),
             Link('dotfiles/screenrc','.screenrc'),
-            Link('dotfiles/muttrc','.muttrc'),
             Link('dotfiles/sqliterc','.sqliterc' ),
             Link('dotfiles/abcde.conf','.abcde.conf' ),
             Link( gitconfig,'.gitconfig'),
@@ -224,6 +226,16 @@ class install(object):
 
         rxvt = LinkSet(Link('rxvt','.rxvt'))
 
+        abook = LinkSet(Link('abook','.abook'))
+
+        mutt = LinkSet(
+                Link('mutt','.mutt'),
+                Link('mutt/muttrc','.muttrc'))
+
+        msmtp = LinkSet(
+                Link(msmtprc, '.msmtprc'),
+                Link('msmtp/msmtp.authinfo.HOME.gpg','.msmtp.authinfo.home.gpg'))
+
         bash = LinkSet(
             Link('bash', '.bash'),
             Link('bash/bashrc','.bashrc'),
@@ -239,7 +251,9 @@ class install(object):
 
         i3 = LinkSet(Link('i3','.i3'))
 
-        clojure = LinkSet(Link('lein','.lein'), Link('cljr','.cljr'), Link('m2','.m2'))
+        clojure = LinkSet(Link('lein','.lein'),
+            Link('cljr','.cljr'),
+            Link('m2','.m2'))
 
         vim = LinkSet(
             Link('vim/after','vim/after'),
@@ -256,6 +270,12 @@ class install(object):
         gnupg = LinkSet(Link('gnupg','.gnupg'))
 
         bazaar = LinkSet(Link('bazaar','.bazaar'))
+
+        zsh = LinkSet(Link('zsh','.zsh'),
+            Link('zsh/clauswitt.zsh-theme',
+                '.oh-my-zsh/themes/clauswitt.zsh-theme'),
+            Link('oh-my-zsh', '.oh-my-zsh'),
+            Link('zsh/zshrc', '.zshrc'))
 
         procmail = None
         if self.WORK == self.install_type:
@@ -279,12 +299,16 @@ class install(object):
             'fonts' : fonts,
             'gnupg' : gnupg,
             'i3' : i3,
+            'mutt': mutt,
+            'msmtp': msmtp,
+            'abook': abook,
             'lilyterm' : lilyterm,
             'procmail' : procmail,
             'rxvt' : rxvt,
             'terminator': terminator,
             'vimpager' : vimpager,
             'vim' : vim,
+            'zsh': zsh
         }
 
 if __name__ == '__main__':
