@@ -54,3 +54,5 @@
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
 [push]
 	default = simple
+[github]
+	user = skk
