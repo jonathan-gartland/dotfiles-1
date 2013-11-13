@@ -51,3 +51,6 @@ mutt/temp/*
 
 # zsh
 oh-my-zsh
+
+# sublime
+dot-files-forest.sublime-workspace
