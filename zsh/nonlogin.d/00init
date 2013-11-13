@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+
+# We'll use these elsewhere
+
+export HOSTNAME=$(/usr/bin/env hostname -f)
+#export YP_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -y)
+#export DNS_DOMAIN_NAME=$(/usr/bin/env dnsdomainname -d)
+
+#[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+#[ -s  "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh" ] && source "$HOME/.bash/bash-completion/etc/profile.d/bash_completion.sh"
+
+#source-dir "$HOME/.bash/completions/" 

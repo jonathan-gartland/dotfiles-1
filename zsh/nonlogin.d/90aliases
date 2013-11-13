@@ -1,0 +1,42 @@
+# -*- mode: shell-script -*-
+
+# color support in diff
+if [ -x /usr/bin/colordiff ]; then
+    case "$TERM" in
+	xterm-color|xterm-256color) alias diff=colordiff ;;
+    esac
+fi
+
+alias cp='cp -i'
+alias df='df -h'
+alias du='du -h'
+alias grep='grep --with-filename --line-number --color=auto --ignore-case'
+alias la='ls -al'	 # show hidden files
+alias lc='ls -lcr'	# sort by change time
+alias lk='ls -lSr'	# sort by size
+alias ll='ls -l'
+alias lm='ls -al |less'	    # pipe through 'more'
+alias lR='ls -lR'	 # recursive ls
+alias lr='ls -ltr'	# sort by date DSC
+alias ls='ls -hF --color'			 # add colors for filetype recognition
+alias lC='ls -hF --color=never'			 # add colors for filetype recognition
+alias lt='ls -lt'	# sort by date ASC
+alias lu='ls -lur'	# sort by access time
+alias lx='ls -lXB'	# sort by extension
+alias mkdir='mkdir -p'
+alias more='less'
+alias mv='mv -i'
+alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
+alias putty='set TERM=putty'
+alias rm='rm -i'
+alias today='date +%F'
+alias todayISO1806='date -u +"%FT%TZ"'
+alias tree='tree -Csuh'	    # nice alternative to 'ls'
+alias watch='watch -n 1'
+alias ssh='ssh -C -Y'
+alias scp='scp -C'
+
+# stuff for home
+if [ "$HOSTNAME" = "falcon" ]; then
+    export PRINTER=HP_LaserJet_1020
+fi
