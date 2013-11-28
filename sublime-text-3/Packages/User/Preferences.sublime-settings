@@ -1,0 +1,122 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete_selector": "source, text",
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip"
+	],
+	"bold_folder_labels": true,
+	"caret_style": "solid",
+	"color_scheme": "Packages/Appealr/appealr-color-scheme.tmTheme",
+	"colored_folder_glyphs": true,
+	"default_line_ending": "unix",
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"draw_minimap_border": true,
+	"ensure_newline_at_eof_on_save": true,
+	"fallback_encoding": "UTF-8",
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		".DS_Store",
+		"*.class",
+		"*.psd",
+		"*.db",
+		"cache.properties",
+		"*.map",
+		"*.orig"
+	],
+	"folder_exclude_patterns":
+	[
+		".git",
+		".bundle",
+		".sass-cache",
+		".svn",
+		".hg"
+	],
+	"font_face": "Hermit",
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 8,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"margin": 4,
+	"match_brackets": true,
+	"match_brackets_angle": true,
+	"match_brackets_braces": true,
+	"match_brackets_content": true,
+	"match_brackets_square": true,
+	"rulers":
+	[
+		80
+	],
+	"sidebar_folders": true,
+	"soda_classic_tabs": false,
+	"soda_folder_icons": false,
+	"spell_check": true,
+	"tab_size": 4,
+	"theme": "Soda Dark 3.sublime-theme",
+	"todo":
+	{
+		"case_sensitive": false,
+		"core_patterns":
+		{
+			"CHANGED": "CHANGED[\\s]*?:+(?P<changed>.*)$",
+			"FIXME": "FIX ?ME[\\s]*?:+(?P<fixme>.*)$",
+			"NOTE": "NOTE[\\s]*?:+(?P<note>.*)$",
+			"TODO": "TODO[\\s]*?:+(?P<todo>.*)$"
+		},
+		"file_exclude_patterns":
+		[
+		],
+		"folder_exclude_patterns":
+		[
+		],
+		"patterns":
+		{
+		},
+		"result_title": "TODO Results"
+	},
+	"trim_trailing_white_space_on_save": false,
+	"vintage_start_in_command_mode": true,
+	"wrap_width": 80
+}
