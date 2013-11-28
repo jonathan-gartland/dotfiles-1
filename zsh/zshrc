@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(autojump colorize colored-man copydir copyfile cp git git-extras
          git-flow github git-hubflow git-remote-branch gnu-utils history
          command-not-found python ruby history-substring-search
-         rvm ssh-agent themes)
+         rvm ssh-agent themes sublime)
 
 source $ZSH/oh-my-zsh.sh
 
