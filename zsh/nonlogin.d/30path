@@ -1,26 +1,25 @@
 # -*- mode: shell-script -*-
 
-#if [ -x $(which most) ]; then
-#    export PAGER=most
-if [ -x $(which less) ]; then
-    export PAGER=less 
+if [ -x $(which most) ]; then
+    export PAGER=most
+elif [ -x $(which less) ]; then
+    export PAGER=less
 elif [ -x $(which more) ]; then
     export PAGER=more
 fi
 
 export stow="$HOME/local/stow"
 
-# setup CDPATH
 export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
 
-export PATH="$HOME/local/bin:$HOME/bin:$PATH"
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin"
+export PATH="$PATH:$HOME/local/bin:$HOME/bin"
+#export PATH="$PATH:/usr/local/bin:/usr/bin:/bin"
 
-if [ $(id -u) -eq 0 ]; then
-    export PATH="/sbin:/usr/sbin:$PATH"
-else
-    export PATH="$PATH:/usr/sbin:/sbin"
-fi
+#if [ $(id -u) -eq 0 ]; then
+#    export PATH="/sbin:/usr/sbin:$PATH"
+#else
+#    export PATH="$PATH:/usr/sbin:/sbin"
+#fi
 
 export MANPATH="$MANPATH:$HOME/local/share/man"
 export TERMINFO="$HOME/.terminfo"
