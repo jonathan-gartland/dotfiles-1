@@ -8,17 +8,21 @@ def get_parser(arguments):
     parser = optparse.OptionParser(usage = usage)
 
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
-                      help="Print lots of debugging information", action="store_true")
+        help="Print lots of debugging information",
+        action="store_true")
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
-                      help="Don't actually run any commands; just print them.", action="store_true")
+        help="Don't actually run any commands; just print them.",
+        action="store_true")
     parser.add_option("-f", "--force", dest="force", default=False,
-                      help="Ignore existing files/directories.", action="store_true")
-    parser.add_option("-d", "--dst_dir", dest="dst_dir", default=os.environ['HOME'],
-                      help="LinkSet destination base directory (defaulting to: %s)" % os.environ['HOME'],
-                      action="store")
+        help="Ignore existing files/directories.",
+        action="store_true")
+    parser.add_option("-d", "--dst_dir", dest="dst_dir",
+        default=os.environ['HOME'],
+        help="LinkSet destination base directory (defaulting to: %s)" %
+        os.environ['HOME'], action="store")
     parser.add_option("-s", "--src_dst", dest="src_dir", default=os.getcwd(),
-                      help="LinkSet source base directory (defaulting to: %s)" % os.getcwd(),
-                      action="store")
+        help="LinkSet source base directory (defaulting to: %s)" % os.getcwd(),
+        action="store")
 
     (options, args) = parser.parse_args(args = arguments)
     return (options, args, parser)
@@ -46,7 +50,8 @@ class Link(object):
         self.dst = dst
 
     def __repr__(self):
-        return "class: %s, src: %s, dst: %s\n" % (self.__class__, self.src, self.dst)
+        return "class: %s, src: %s, dst: %s\n" % (self.__class__, self.src,
+            self.dst)
 
     @event
     def pre_link_event(self):
@@ -271,11 +276,14 @@ class install(object):
 
         bazaar = LinkSet(Link('bazaar','.bazaar'))
 
+        sublime_text = LinkSet(Link('sublime-text-3','.config/sublime-text-3'))
+
         zsh = LinkSet(Link('zsh','.zsh'),
             Link('zsh/clauswitt.zsh-theme',
                 '.oh-my-zsh/themes/clauswitt.zsh-theme'),
             Link('oh-my-zsh', '.oh-my-zsh'),
-            Link('zsh/zshrc', '.zshrc'))
+            Link('zsh/zshrc', '.zshrc'),
+            Link('zsh/zlogin', '.zlogin'))
 
         procmail = None
         if self.WORK == self.install_type:
@@ -305,6 +313,7 @@ class install(object):
             'lilyterm' : lilyterm,
             'procmail' : procmail,
             'rxvt' : rxvt,
+            'sublime-text' : sublime_text,
             'terminator': terminator,
             'vimpager' : vimpager,
             'vim' : vim,
