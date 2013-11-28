@@ -1,14 +1,14 @@
 # -*- mode: shell-script -*-
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # good less
-#export LESS='-FSRX'
+export LESS='-FSRX'
 
-export PAGER=~/bin/vimpager
-alias less=$PAGER
-alias zless=$PAGER
+#export PAGER=~/bin/vimpager
+#alias less=$PAGER
+#alias zless=$PAGER
 
 # switch to 256 color xterm if using "xterm"
 if [ -n "$DISPLAY" -a "$TERM" = "xterm" ]; then
