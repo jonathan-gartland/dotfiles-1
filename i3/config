@@ -25,8 +25,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec rxvt
-bindsym $mod+Return exec gnome-terminal
-#bindsym $mod+Return exec terminator
+#bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec terminator
 #bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
 
 bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
