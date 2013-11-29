@@ -16,10 +16,35 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(autojump colorize colored-man copydir copyfile cp git git-extras
-         git-flow github git-hubflow git-remote-branch gnu-utils history
-         command-not-found python ruby history-substring-search
-         rvm ssh-agent themes sublime)
+plugins=(autojump
+		archlinux
+		bundler
+		colored-man
+		colorize
+		command-not-found
+		copydir
+		copyfile
+		cp
+		git
+		git-extras
+        git-flow
+        git-hubflow
+        git-remote-branch
+        github
+        gnu-utils
+        history
+        command-not-found
+        python
+        rails4
+        rsync
+        ruby
+        history-substring-search
+        rvm
+        ssh-agent
+        themes
+        thor
+        tmux
+        sublime)
 
 source $ZSH/oh-my-zsh.sh
 
