@@ -13,6 +13,7 @@ DST_DIR = ENV['HOME']
 SRC_DIR = File.absolute_path(File.join(Dir.getwd, '..'))
 
 module Installer
+  # [todo] - Add top-level class documentation comment.
   class CommandParser
     include Mixlib::CLI
 
@@ -59,11 +60,9 @@ module Installer
     option :log_level,
            short: '-l LEVEL',
            long: '--log_level LEVEL',
-           description: 'Set the log level: debug, info (default), warn, error,
-                         fatal' ,
-           required: false,
-           default: :info,
-           proc: proc { |l| l.to_sym }
+           description: 'Set the log level: debug, info (default), warn,' +
+                        'error, fatal' ,
+           required: false
 
     option :install_type,
            short: '-t INSTALL_TYPE',
@@ -76,7 +75,9 @@ module Installer
            short: '-V',
            long: '--version',
            description: 'version',
-           boolean: true
+           boolean: false,
+           proc: proc { puts "Installer: #{Installer::Version::VERSION}\n" },
+           exit: 0
 
     option :help,
            short: '-h',
@@ -88,23 +89,18 @@ module Installer
            exit: 0
   end
 
+  # [todo] - Add top-level class documentation comment.
   class CLI
     def self.execute(argv)
       cli = CommandParser.new
       cli.parse_options(argv)
 
-      cli.parse_options(['--help']) unless argv.length == 0
-
-      if cli.config[:version]
-        puts "Installer: #{Installer::Version::VERSION}\n"
-        exit 0
+      if cli.config[:verbose] && !cli.config[:log_level]
+        cli.config[:log_level] = :debug
+      elsif cli.config[:log_level].nil?
+        cli.config[:log_level] = :info
       end
 
-     Installer::Log.level = cli.config[:verbose] ? Logger::DEBUG : Logger::INFO
-
-      if cli.config[:log_level]
-        Installer::Log.level = Mixlib::Log::LEVELS[cli.config[:log_level]]
-      end
       Installer::Install.new(cli.config).create_links
     end
   end
