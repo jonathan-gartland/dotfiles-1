@@ -17,16 +17,16 @@ COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(autojump
-		archlinux
-		bundler
-		colored-man
-		colorize
-		command-not-found
-		copydir
-		copyfile
-		cp
-		git
-		git-extras
+        archlinux
+        bundler
+        colored-man
+        colorize
+        command-not-found
+        copydir
+        copyfile
+        cp
+        git
+        git-extras
         git-flow
         git-hubflow
         git-remote-branch
@@ -35,7 +35,7 @@ plugins=(autojump
         history
         command-not-found
         python
-        rails4
+        #rails
         rsync
         ruby
         history-substring-search
