@@ -19,7 +19,7 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "solid",
-	"color_scheme": "Packages/Appealr/appealr-color-scheme.tmTheme",
+	"color_scheme": "Packages/Noen-color-scheme/Neon.tmTheme",
 	"colored_folder_glyphs": true,
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
@@ -59,18 +59,22 @@
 		".svn",
 		".hg"
 	],
-	"font_face": "Hermit",
+	"font_face": "Cousine",
 	"font_options":
 	[
-		"subpixel_antialias"
+		"subpixel_antialias",
+		"directwrite"
 	],
-	"font_size": 8,
-	"highlight_line": true,
+	"font_size": 9,
+	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"SearchInProject",
+		"Theme - Cobalt2",
 		"Markdown",
-		"vintage"
+		"vintage",
+		"Themr"
 	],
 	"indent_guide_options":
 	[
@@ -116,6 +120,7 @@
 		},
 		"result_title": "TODO Results"
 	},
+	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
 	"vintage_start_in_command_mode": true,
 	"wrap_width": 80
