@@ -51,15 +51,15 @@ module Installer
       msmtprc = nil
 
       if install_type == :work
-        gitconfig = 'dotfiles/gitconfig.work'
-        offlineimap = 'dotfiles/offlineimaprc.work'
-        msmtprc = 'msmtprc/msmtprc.work'
+        gitconfig = 'dotfiles/gitconfig.WORK'
+        offlineimap = 'dotfiles/offlineimaprc.WORK'
+        msmtprc = 'msmtprc/msmtprc.WORK'
       end
 
       if install_type == :home
-        gitconfig = 'dotfiles/gitconfig.home'
-        offlineimap = 'dotfiles/offlineimaprc.home'
-        msmtprc = 'msmtp/msmtprc.home'
+        gitconfig = 'dotfiles/gitconfig.HOME'
+        offlineimap = 'dotfiles/offlineimaprc.HOME'
+        msmtprc = 'msmtp/msmtprc.HOME'
       end
 
       # [todo] - move creation of '.ssh' to pre-creation hook
@@ -161,10 +161,12 @@ module Installer
       Link.new('sublime-text-3', '.config/sublime-text-3'))
 
       zsh = LinkSet.new(Link.new('zsh', '.zsh'),
+      # [todo] - .oh-my-zsh needs to be created before the next link but its not
+      # being created
+                        Link.new('oh-my-zsh', '.oh-my-zsh'),
                         Link.new(
                           'zsh/clauswitt.zsh-theme',
                           '.oh-my-zsh/themes/clauswitt.zsh-theme'),
-                        Link.new('oh-my-zsh', '.oh-my-zsh'),
                         Link.new('zsh/zshrc', '.zshrc'),
                         Link.new('zsh/zlogin', '.zlogin'))
 
