@@ -13,21 +13,7 @@ export stow="$HOME/local/stow"
 export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
 
 export PATH="$PATH:$HOME/local/bin:$HOME/bin"
-#export PATH="$PATH:/usr/local/bin:/usr/bin:/bin"
-
-#if [ $(id -u) -eq 0 ]; then
-#    export PATH="/sbin:/usr/sbin:$PATH"
-#else
-#    export PATH="$PATH:/usr/sbin:/sbin"
-#fi
 
 export MANPATH="$MANPATH:$HOME/local/share/man"
 export TERMINFO="$HOME/.terminfo"
 export ORACLE_COMMAND="$HOME/bin/pysql.sh"
-
-#if [ $HOSTNAME == "falcon" ]; then
-#    export MAILDIR="$HOME/Maildir"
-#    #export JAVA_HOME="/usr/local/java/IBMJava16"
-#    #export JRE_HOME="$JAVA_HOME"
-#    #export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig/"
-#fi
