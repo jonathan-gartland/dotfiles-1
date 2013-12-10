@@ -87,6 +87,8 @@ module Installer
         Link.new('dotfiles/scmbrc', '.scmbrc'),
         Link.new('dotfiles/offlineimap.py', '.offlineimap.py'),
         Link.new('dotfiles/Xresources', '.Xresources'),
+        Link.new('dotfiles/tmux.conf', '.tmux.conf'),
+        Link.new('dotfiles/fonts.conf', '.fonts.conf'),
         Link.new(offlineimap, '.offlineimaprc'),
         Link.new('dotfiles/xbindkeysrc', '.xbindkeysrc'))
 
@@ -180,8 +182,6 @@ module Installer
       end
 
       bin = LinkSet.new(Link.new('bin', 'bin'))
-
-      puts "bash links #{bash.links}"
 
       {
       bash: bash,

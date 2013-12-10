@@ -25,13 +25,13 @@ module Installer
            boolean: true,
            default: false
 
-    option :verbose,
-           short: '-v',
-           long: '--verbose',
-           description: 'Print lots of debugging information',
-           required: false,
-           boolean: true,
-           default: false
+    # option :verbose,
+    #        short: '-v',
+    #        long: '--verbose',
+    #        description: 'Print lots of debugging information',
+    #        required: false,
+    #        boolean: true,
+    #        default: false
 
     option :force,
            short: '-f',
@@ -95,12 +95,10 @@ module Installer
       cli = CommandParser.new
       cli.parse_options(argv)
 
-      if cli.config[:verbose] && !cli.config[:log_level]
-        cli.config[:log_level] = :debug
-      elsif cli.config[:log_level].nil?
+      if cli.config[:log_level].nil?
         cli.config[:log_level] = :info
       end
-
+      Installer::Log::level(cli.config[:log_level].to_sym)
       Installer::Install.new(cli.config).create_links
     end
   end
