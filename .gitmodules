@@ -13,3 +13,6 @@
 [submodule "lain"]
 	path = lain
 	url = git://github.com/copycat-killer/lain.git
+[submodule "zsh-vcs-prompt"]
+	path = zsh-vcs-prompt
+	url = git@github.com:yonchu/zsh-vcs-prompt.git
