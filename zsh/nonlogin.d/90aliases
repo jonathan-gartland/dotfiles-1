@@ -10,7 +10,8 @@ fi
 alias cp='cp -i'
 alias df='df -h'
 alias du='du -h'
-alias grep='grep --with-filename --line-number --color=auto --ignore-case'
+alias grep='grep --color=auto --ignore-case'
+alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
 alias la='ls -al'	 # show hidden files
 alias lc='ls -lcr'	# sort by change time
 alias lk='ls -lSr'	# sort by size
