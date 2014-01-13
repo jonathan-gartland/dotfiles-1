@@ -3,7 +3,8 @@
 require 'installer/log'
 
 module Installer
-  # [todo] - Add top-level class documentation comment.
+  # This class holds the source and destination of a link and can create a link
+  # between the two.
   class Link
     attr_accessor :src, :dst
 
@@ -25,49 +26,54 @@ module Installer
     end
 
     def create_link(options)
-      verbose = options[:verbose]
-      force = options[:force]
-      dry_run = options[:dry_run]
-      dst_directory = options[:dst_dir]
-      src_directory = options[:src_dir]
+      _create_destintation_dir(options)
 
-      FileUtils.mkdir_p(dst_directory) unless File.exists?(dst_directory)
+      source = File.join(options[:src_directory], src)
+      destination = File.join(options[:dst_directory], dst)
 
-      if verbose
-        Log.debug("src_dir #{src_directory} src #{src}\n")
-        Log.debug("dst_dir #{dst_directory} dst #{dst}\n")
-      end
-
-      source = File.join(src_directory, src)
-      destination = File.join(dst_directory, dst)
-
-      if verbose
+      if options[:verbose]
         Log.debug("source: #{source}, destination: #{destination}")
         Log.debug("src: #{src}, dst: #{dst}")
         Log.debug("ln -sf #{source} #{destination}")
         Log.debug("about to create link #{source} to #{destination}")
       end
 
-      if File.exist?(destination) || force
-        Log.debug("Removing existing link #{destination}") if verbose
+      _remove_existing_link(destination, options)
+      _create_link(destination, options)
+    end
 
-        unless dry_run
-          if File.directory?(destination)
-            Log.debug("rm_r (dir) destination #{destination}")
-            FileUtils.rm_r(destination)
-          else
-            Log.debug("rm (file) destination #{destination}")
-            FileUtils.rm(destination)
-          end
+    private
+
+      def _create_destintation_dir(options)
+        FileUtils.mkdir_p(options[:dst_directory]) unless File.exists?(options[:dst_directory])
+
+        if options[:verbose]
+          Log.debug("src_dir #{options[:src_directory]} src #{src}\n")
+          Log.debug("dst_dir #{options[:dst_directory]} dst #{dst}\n")
         end
       end
 
-      Log.info("Creating Link: #{destination}")
+      def _create_link(destination, options)
+        Log.info("Creating Link: #{destination}")
 
-      unless dry_run
-        Log.debug("ln_sf source #{source} to destination #{destination}")
-        FileUtils.ln_sf(source, destination)
+        unless dry_run
+          Log.debug("ln_sf source #{source} to destination #{destination}")
+          FileUtils.ln_sf(source, destination)
+        end
       end
-    end
+
+      def _remove_existing_link(destination, options)
+        if File.exist?(destination) || options[:force]
+          Log.debug("Removing existing link #{destination}") if options[:verbose]
+
+          unless options[:dry_run]
+            if File.directory?(destination)
+              FileUtils.rm_r(destination)
+            else
+              FileUtils.rm(destination)
+            end
+          end
+        end
+      end
   end
 end

@@ -13,7 +13,7 @@ DST_DIR = ENV['HOME']
 SRC_DIR = File.absolute_path(File.join(Dir.getwd, '..'))
 
 module Installer
-  # [todo] - Add top-level class documentation comment.
+  # This class the command line parser for Installer.
   class CommandParser
     include Mixlib::CLI
 
@@ -24,14 +24,6 @@ module Installer
            required: false,
            boolean: true,
            default: false
-
-    # option :verbose,
-    #        short: '-v',
-    #        long: '--verbose',
-    #        description: 'Print lots of debugging information',
-    #        required: false,
-    #        boolean: true,
-    #        default: false
 
     option :force,
            short: '-f',
@@ -89,16 +81,14 @@ module Installer
            exit: 0
   end
 
-  # [todo] - Add top-level class documentation comment.
+  # This class provides the command line interface for Installer.
   class CLI
     def self.execute(argv)
       cli = CommandParser.new
       cli.parse_options(argv)
 
-      if cli.config[:log_level].nil?
-        cli.config[:log_level] = :info
-      end
-      Installer::Log::level(cli.config[:log_level].to_sym)
+      cli.config[:log_level] = :info if cli.config[:log_level].nil?
+      Installer::Log.level(cli.config[:log_level].to_sym)
       Installer::Install.new(cli.config).create_links
     end
   end

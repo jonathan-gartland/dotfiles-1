@@ -3,7 +3,7 @@
 require 'mixlib/log'
 
 module Installer
-  # [todo] - Add top-level class documentation comment.
+  # This class provides a project-wide logger.
   class Log
     extend Mixlib::Log
   end

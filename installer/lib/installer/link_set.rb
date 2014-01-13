@@ -3,7 +3,7 @@
 require 'set'
 
 module Installer
-  # [todo] - Add top-level class documentation comment.
+  # This class holds a set of links.
   class LinkSet
     include Enumerable
 
