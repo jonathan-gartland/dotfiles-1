@@ -12,6 +12,8 @@ exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources
 exec --no-startup-id gpg-agent --daemon --enable-ssh-support --write-env-file "${HOME}/.gpg-agent-info"
 exec --no-startup-id /usr/bin/gnome-session
 #exec --no-startup-id /usr/bin/feh --bg-fill /home/skk/.i3/hubble_ultra_deep_field.jpg
+exec --no-startup-id urxvtd
+exec --no-startup-id pasystray
 
 # The nvidia driver only provides support for Xinerama instead of RandR.
 force_xinerama no
@@ -23,14 +25,12 @@ font pango:Sans 8
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec rxvt
+bindsym $mod+Return exec urxvt
 #bindsym $mod+Return exec gnome-terminal
 #bindsym $mod+Return exec terminator
-bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec terminology
 #bindsym $mod+Shift+Return exec ~/.i3/dmenufm.sh
-
-bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -125,15 +125,19 @@ bindsym $mod+Shift+e exec i3-nagbar -m "Session menu" -b "Quit" "i3-msg -t comma
 
 # lock screen using i3lock
 #bindsym $mod+Shift+Control+l exec i3lock
-bindsym $mod+Shift+Control+l exec xflock4
+#bindsym $mod+Shift+Control+l exec xflock4
+bindsym $mod+Shift+Control+l exec "gnome-screensaver-command --lock"
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+#bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
 bindsym $mod+r mode "resize"
+
+# https://github.com/proxypoke/quickswitch-for-i3
+bindsym $mod+q exec quickswitch.py
 
 ipc-socket ~/.i3/i3-ipc.sock
 
