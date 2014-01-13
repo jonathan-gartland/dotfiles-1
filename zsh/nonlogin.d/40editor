@@ -1,11 +1,9 @@
-# -*- mode: shell-script -*-
-
 export GIT_EDITOR=vim
 export EDITOR=vim
 export VISUAL=vim
 
 # use Sublime Text if available
-if [ -x $(which subl) ]; then
-    export VISUAL=subl
-    export GIT_EDITOR=subl
-fi
+#if [ -x $(which subl) ]; then
+#    export VISUAL=subl
+#    export GIT_EDITOR=subl
+#fi

@@ -1,5 +1,3 @@
-# -*- mode: shell-script -*-
-
 # # keep history file between sessions
 #export HISTTIMEFORMAT="%H:%M > "
 #export HISTIGNORE="&:bg:fg:ll:h"

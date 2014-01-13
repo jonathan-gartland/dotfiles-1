@@ -1,5 +1,3 @@
-# -*- mode: shell-script -*-
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -11,8 +9,8 @@ export LESS='-FSRX'
 #alias zless=$PAGER
 
 # switch to 256 color xterm if using "xterm"
-if [ -n "$DISPLAY" -a "$TERM" = "xterm" ]; then
-    export TERM=xterm-256color
+if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
+    export TERM=rxvt-256color
 fi
 
 # colorize output from man
