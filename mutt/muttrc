@@ -48,34 +48,55 @@ hdr_order from: to: cc: date: subject:  # and in this order
 ##### knightcx specific settings ############
 set mbox_type = Maildir
 
-set folder = "~/Maildir/knightcx/"
+#set folder = "~/Maildir/knightcx/"
+set folder = "imaps://knight.cx"
 
 # Default inbox.
-set spoolfile = "~/Maildir/knightcx/INBOX/"
+#set spoolfile = "~/Maildir/knightcx/INBOX/"
+set spoolfile = "imaps://knight.cx/INBOX"
 
 # Other special folders.
-set mbox      = "~/Maildir/knightcx/INBOX/"
-set postponed = "~/Maildir/knightcx/Drafts/"
-set record    = "~/Maildir/knightcx/Sent/"
+set mbox      = "imaps://knight.cx/Maildir/knightcx/INBOX/"
+set postponed = "imaps://knight.cx/Maildir/knightcx/Drafts/"
+set record    = "imaps://knight.cx/Maildir/knightcx/Sent/"
 
 ## folders
 mailboxes +INBOX/ \
           +HemlockForest/ \
+          +ArchGeneral/ \
+          +EclimDev/ \
+          +EclimUser/ \
+          +FishUser/ \
+          +MuttUser/ \
+          +i3/ \
+          +Ledger/ \
+          +MuttUser/ \
+          +RubyTalk/ \
+          +TmuxUser/ \
+          +GlennBeck/ \
+          +Ting/ \
           +Jobs/ \
-          +Mailing\ Lists.Eclim\ Dev/ \
-          +Mailing\ Lists.Eclim\ User/ \
-          +Mailing\ Lists.Fish\ User/ \
-          +Mailing\ Lists.Mutt\ User/ \
-          +Mailing\ Lists.i3/ \
-          +Mailing\ Lists.Ledger/ \
-          +Mailing\ Lists.Ruby\ Talk/ \
-          +Mailing\ Lists.spf13\ Vim/ \
-          +Mailing\ Lists.Vim\ User/ \
-          +Mailing\ Lists.Glenn\ Beck/ \
-          +Netflix/ \
-          +eHarmony/ \
-          +IBDEditorials/ \
           +Sent/ \
+
+set message_cachedir = ~/.mutt/cache
+set header_cache = ~/.mutt/cache
+
+# activate TLS if available on the server
+# set ssl_starttls=yes
+# always use SSL when connecting to a server
+# set ssl_force_tls=yes
+# Don't wait to enter mailbox manually
+# unset imap_passive
+# Automatically poll subscribed mailboxes for new mail (new in 1.5.11)
+# set imap_check_subscribed
+# Reduce polling frequency to a sane level
+set mail_check=1
+# And poll the current mailbox more often (not needed with IDLE in post 1.5.11)
+set timeout=1
+# keep a cache of headers for faster loading (1.5.9+?)
+#set header_cache=~/.hcache
+# Display download progress every 5K
+set net_inc=5
 
 #### knightcx specific settings ############
 
@@ -162,7 +183,7 @@ set editor = "vim"                   # Use terminal Vim to compose email.
 
 # Sending Mail Options
 set from     = "steven@knight.cx"
-set sendmail = "/usr/bin/msmtp -a blackstar"
+set sendmail = "/usr/bin/msmtp -a skk"
 set sendmail_wait = 0
 unset record
 
