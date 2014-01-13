@@ -1,0 +1,21 @@
+
+{
+    "reraise_exceptions": true,
+
+    "debug_enable": true,
+
+    "syntaxes": [
+        {
+            "name": "Git Config",
+            "rules": [
+                {"file_name": ".*gitconfig\\.\\w*$"}
+            ]
+        },
+        {
+            "name": "ShellScript/Shell-Unix-Generic",
+            "rules": [
+                {"file_name": ".*zsh\/.*$"}
+            ]
+        }
+    ]
+}
