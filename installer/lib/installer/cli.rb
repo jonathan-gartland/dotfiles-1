@@ -1,95 +1,87 @@
 # encoding: utf-8
 
-require 'pp'
-require 'logger'
-
-require 'mixlib/cli'
-require 'mixlib/log'
+require "docopt"
 
 require 'installer/version'
 require 'installer/install'
-
-DST_DIR = ENV['HOME']
-SRC_DIR = File.absolute_path(File.join(Dir.getwd, '..'))
+require 'installer/log'
 
 module Installer
-  # This class the command line parser for Installer.
-  class CommandParser
-    include Mixlib::CLI
-
-    option :dry_run,
-           short: '-n',
-           long: '--dry-run',
-           description: 'Perform a trial run with no changes made',
-           required: false,
-           boolean: true,
-           default: false
-
-    option :force,
-           short: '-f',
-           long: '--force',
-           description: 'Ignore existing files/directories',
-           required: false,
-           boolean: true,
-           default: false
-
-    option :dst_dir,
-           short: '-d DST_DIR',
-           long: '--dst-dsr DST_DIR',
-           description: "destination base directory (default: #{DST_DIR})",
-           required: true,
-           boolean: false,
-           default: DST_DIR
-
-    option :src_dir,
-           short: '-s SRC_DIR',
-           long: '--src-dir SRC_DIR',
-           description: "source base directory (default: #{SRC_DIR})",
-           required: true,
-           default: SRC_DIR,
-           boolean: false
-
-    option :log_level,
-           short: '-l LEVEL',
-           long: '--log_level LEVEL',
-           description: 'Set the log level: debug, info (default), warn,' +
-                        'error, fatal' ,
-           required: false
-
-    option :install_type,
-           short: '-t INSTALL_TYPE',
-           long: '--install-type INSTALL_TYPE',
-           description: 'Set the install type: home, work',
-           required: true,
-           proc: proc { |l| l.to_sym }
-
-    option :version,
-           short: '-V',
-           long: '--version',
-           description: 'version',
-           boolean: false,
-           proc: proc { puts "Installer: #{Installer::Version::VERSION}\n" },
-           exit: 0
-
-    option :help,
-           short: '-h',
-           long: '--help',
-           description: 'Help',
-           on: :tail,
-           boolean: true,
-           show_options: true,
-           exit: 0
-  end
-
   # This class provides the command line interface for Installer.
   class CLI
-    def self.execute(argv)
-      cli = CommandParser.new
-      cli.parse_options(argv)
+    include Installer::Logging
 
-      cli.config[:log_level] = :info if cli.config[:log_level].nil?
-      Installer::Log.level(cli.config[:log_level].to_sym)
-      Installer::Install.new(cli.config).create_links
+    attr_accessor :filename
+    attr_reader :srcdir
+    attr_reader :dstdir
+
+    def initialize(filename)
+      @filename = filename
+      @dstdir = ENV['HOME']
+      @srcdir = File.absolute_path(File.join(Dir.getwd, '..'))
+    end
+
+    def docopt(filename, srcdir, dstdir)
+    #[-s SRC_DIR | --src-dir=SRC_DIR] | [-d DST_DIR | --dst-dir=DST_DIR] ]
+    #-d DST_DIR, --dst-dir=DST_DIR     destination base directory (default: #{dstdir})
+    #-s SRC_DIR, --src-dir=SRC_DIR     source base directory (default: #{srcdir})
+doc = <<DOCOPT
+Usage:
+  #{filename} [options] <INSTALL_TYPE>
+
+Options:
+    -n, --dry-run             Perform a trial run with no changes made
+    -f, --force               Ignore existing files/directories
+    -q, --quiet               Suppress output
+    -v, --verbose             Output extra information
+    --version                 Version
+    -h, --help                Help
+
+INSTALL_TYPE: HOME | WORK | home | work
+
+DOCOPT
+    end
+
+    def parse_opts
+      Docopt::docopt(docopt(filename, srcdir, dstdir),
+            version: "Installer: #{Installer::Version::VERSION}")
+    rescue Docopt::Exit => e
+      puts e.message
+      exit 0
+    end
+
+    def normalize_opts(opts)
+      opts["--dst-dir"] = dstdir if opts["--dst-dir"].nil?
+      opts["--src-dir"] = srcdir if opts["--src-dir"].nil?
+
+      newopts = {}
+
+      opts.each do |key, value|
+        newkey = key.gsub(/^--/, '')
+        newkey = newkey.gsub("\-", "_")
+        newkey = newkey.gsub("<", "")
+        newkey = newkey.gsub(">", "")
+        newkey = newkey.gsub("INSTALL_TYPE", "install_type")
+        newopts[newkey] = value
+      end
+      newopts
+    end
+
+    def handle_verbose_and_quiet(opts)
+      if opts["verbose"]
+        logger.level = Logger::DEBUG
+      elsif opts["quiet"]
+        logger.level = Logger::WARN
+      else
+        logger.level = Logger::INFO
+      end
+    end
+
+    def execute
+      opts = parse_opts
+      opts = normalize_opts(opts)
+      handle_verbose_and_quiet(opts)
+      Installer::Install.new(opts).create_links
     end
   end
 end
