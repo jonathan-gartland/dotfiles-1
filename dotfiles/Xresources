@@ -13,6 +13,8 @@ URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
 URxvt.urlLauncher: google-chrome
 URxvt.matcher.button: 1
+URxvt.iconFile: /usr/share/icons/Faenza/apps/scalable/terminal.svg
+URxvt*loginShell: true
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  chromium
