@@ -9,13 +9,14 @@ require 'installer/link_set'
 module Installer
   # [todo] - Add top-level class documentation comment.
   class Install
+    include Installer::Logging
     attr_reader :dry_run, :verbose, :dst_dir, :src_dir,
                 :log_level, :install_type, :force
 
     def initialize(options)
       options.each do |k, v|
-        Log.debug("#{k} --> #{v}")
-        instance_variable_set("@#{k}", v) unless v.nil?
+       logger.debug("log #{k} --> #{v}")
+       instance_variable_set("@#{k}", v) unless v.nil?
       end
     end
 
@@ -35,10 +36,10 @@ module Installer
     # [todo] - split and move linkset.link.each block to LinkSet class
     def create_links
       links.each_pair do |key, linkset|
-        Log.debug("key #{key}, linkset #{linkset}")
+        logger.debug("key #{key}, linkset #{linkset}")
         linkset.links.each do |link|
-          Log.debug("#{link}")
-          link.create_link(force: force, verbose: verbose,
+          logger.debug("#{link}")
+          link.create_link(force: force, verbose: verbose, dry_run: dry_run,
                            dst_dir: dst_dir, src_dir: src_dir)
         end
       end
@@ -48,12 +49,12 @@ module Installer
       gitconfig = 'dotfiles/gitconfig.NONE'
       offlineimap = nil
 
-      if install_type == :work
+      if install_type == "work"
         gitconfig = 'dotfiles/gitconfig.WORK'
         offlineimap = 'dotfiles/offlineimaprc.WORK'
       end
 
-      if install_type == :home
+      if install_type == "home"
         gitconfig = 'dotfiles/gitconfig.HOME'
         offlineimap = 'dotfiles/offlineimaprc.HOME'
       end
@@ -76,8 +77,8 @@ module Installer
         Link.new('dotfiles/signature.work.HTML', '.signature.work.html'),
         Link.new('dotfiles/authinfo.home.gpg', '.authinfo.home'),
         Link.new('dotfiles/authinfo.work.gpg', '.authinfo.work'),
-        Link.new('dotfiles/ssh_config', '.ssh/config'), 
-       Link.new('dotfiles/login.sql', 'login.sql'),
+        Link.new('dotfiles/ssh_config', '.ssh/config'),
+        Link.new('dotfiles/login.sql', 'login.sql'),
         Link.new('dotfiles/git.scmbrc', '.git.scmbrc'),
         Link.new('dotfiles/perlcriticrc', '.perlcriticrc'),
         Link.new('dotfiles/scmbrc', '.scmbrc'),
@@ -107,7 +108,7 @@ module Installer
       dotfiles
     end
 
-    def font
+    def fonts
       LinkSet.new(Link.new('fonts', '.fonts'))
     end
 
@@ -133,24 +134,25 @@ module Installer
     end
 
     def msmtp
-      msmtprc = nil
-
-      msmtprc = 'msmtprc/msmtprc.WORK' if install_type == :work
-      msmtprc = 'msmtp/msmtprc.HOME' if install_type == :home
-
-      LinkSet.new(Link.new(msmtprc, '.msmtprc'),
-                  Link.new('msmtp/msmtp.authinfo.HOME.gpg',
-                           '.msmtp.authinfo.HOME.gpg'))
+      if install_type == "work"
+        LinkSet.new(Link.new('msmtprc/msmtprc.WORK', '.msmtprc'),
+                    Link.new('msmtp/msmtp.authinfo.HOME.gpg',
+                            '.msmtp.authinfo.HOME.gpg'))
+      elsif install_type == "home"
+        LinkSet.new(Link.new('msmtprc/msmtprc.HOME', '.msmtprc'),
+                    Link.new('msmtp/msmtp.authinfo.HOME.gpg',
+                            '.msmtp.authinfo.HOME.gpg'))
+      end
     end
 
     def bash
       LinkSet.new(
-      Link.new('bash', '.bash'),
-      Link.new('bash/bashrc', '.bashrc'),
-      Link.new('bash/inputrc', '.inputrc'),
-      Link.new('bash/bash_profile', '.bash_profile'),
-      Link.new('bash/bash_logout', '.bash_logout'),
-      Link.new('scm_breeze', '.scm_breeze'))
+        Link.new('bash', '.bash'),
+        Link.new('bash/bashrc', '.bashrc'),
+        Link.new('bash/inputrc', '.inputrc'),
+        Link.new('bash/bash_profile', '.bash_profile'),
+        Link.new('bash/bash_logout', '.bash_logout'),
+        Link.new('scm_breeze', '.scm_breeze'))
     end
 
     def emacs
@@ -208,13 +210,13 @@ module Installer
     end
 
     def procmail
-      if install_type == :work
+      if install_type == "work"
         return LinkSet.new(
                 Link.new('procmail/work', '.procmail'),
                 Link.new('procmail/work/procmailrc', '.procmailrc'))
       end
 
-      if install_type == :home
+      if install_type == "home"
         LinkSet.new(
           Link.new('procmail/home', '.procmail'),
           Link.new('procmail/home/procmailrc', '.procmailrc'))
@@ -229,7 +231,7 @@ module Installer
       LinkSet.new(Link.new('awesome', '.config/awesome'),
                   Link.new('lain', '.config/awesome/lain'),
                   # [todo] - treesome needs to be checkout before creating link
-                  Link.new('treesome'), '.config/awesome/treesome'))
+                  Link.new('treesome', '.config/awesome/treesome'))
     end
 
     def links
