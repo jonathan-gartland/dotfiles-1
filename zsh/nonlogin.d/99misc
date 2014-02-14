@@ -25,3 +25,7 @@ export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 # set default umask
 umask 002
+
+if [ $HOSTNAME = "falcon.skk" ]; then
+    export PRINTER=HP_LaserJet_1020
+fi
