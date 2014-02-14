@@ -36,12 +36,10 @@ module Installer
 
       _create_destintation_dir(options)
 
-      if options[:verbose]
-        logger.debug("source: #{source}, destination: #{destination}")
-        logger.debug("src: #{src}, dst: #{dst}")
-        logger.debug("ln -sf #{source} #{destination}")
-        logger.debug("about to create link #{source} to #{destination}")
-      end
+      logger.debug("source: #{source}, destination: #{destination}")
+      logger.debug("src: #{src}, dst: #{dst}")
+      logger.debug("ln -sf #{source} #{destination}")
+      logger.debug("about to create link #{source} to #{destination}")
 
       _remove_existing_link(destination, options)
       _create_link(destination, options)
@@ -54,10 +52,8 @@ module Installer
           FileUtils.mkdir_p(options[:dst_directory]) unless File.exists?(options[:dst_directory])
         end
 
-        if options[:verbose]
-          logger.debug("src_dir #{options[:src_directory]} src #{src}\n")
-          logger.debug("dst_dir #{options[:dst_directory]} dst #{dst}\n")
-        end
+        logger.debug("src_dir #{options[:src_directory]} src #{src}\n")
+        logger.debug("dst_dir #{options[:dst_directory]} dst #{dst}\n")
       end
 
       def _create_link(destination, options)
@@ -71,7 +67,7 @@ module Installer
 
       def _remove_existing_link(destination, options)
         if File.exist?(destination) || options[:force]
-          logger.debug("Removing existing link #{destination}") if options[:verbose]
+          logger.debug("Removing existing link #{destination}")
 
           unless options[:dry_run]
             if File.directory?(destination)
