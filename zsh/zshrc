@@ -21,6 +21,7 @@ plugins=(autojump
         bundler
         colored-man
         colorize
+        command-aliases
         command-not-found
         copydir
         copyfile
@@ -56,3 +57,6 @@ source $HOME/.zsh/nonlogin.d/40editor
 source $HOME/.zsh/nonlogin.d/80functions
 source $HOME/.zsh/nonlogin.d/90aliases
 source $HOME/.zsh/nonlogin.d/99misc
+source $HOME/.zsh/nonlogin.d/100-gpg-agent.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

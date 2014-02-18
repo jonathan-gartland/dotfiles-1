@@ -45,6 +45,10 @@ bash/gitstatus.py
 
 # awesome
 awesome/lain
+awesome/treesome
+
+# gpg
+gnupg/gpg-agent.env
 
 # i3
 i3/i3log

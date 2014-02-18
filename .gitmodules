@@ -16,3 +16,6 @@
 [submodule "zsh-vcs-prompt"]
 	path = zsh-vcs-prompt
 	url = git@github.com:yonchu/zsh-vcs-prompt.git
+[submodule "treesome"]
+	path = treesome
+	url = git@github.com:RobSis/treesome.git

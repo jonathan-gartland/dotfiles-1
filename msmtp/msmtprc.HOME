@@ -1,13 +1,14 @@
-account blackstar
-host blackstar.sr.unh.edu
-port 587
+account skk
+host knight.cx
 protocol smtp
+domain knight.cx
 auth on
+port 587
 from steven@knight.cx
 user skk
-passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg"
 tls on
-tls_trust_file ~/.mutt/unhrcc-smtp.cert
-tls_min_dh_prime_bits 512
+tls_starttls on
+passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg"
+tls_fingerprint f8:ab:40:c0:49:2d:af:23:14:45:6a:9a:65:ba:1a:a4:81:b0:a8:52
 
-account default : blackstar
+account default : skk

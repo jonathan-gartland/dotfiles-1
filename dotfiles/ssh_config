@@ -5,3 +5,6 @@ Host *
    ControlMaster auto
    ControlPath ~/.ssh/master-%r@%h\:%p
    HashKnownHosts no
+
+Host gateway
+    User root

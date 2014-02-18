@@ -1,6 +1,3 @@
-# -*- mode: shell-script -*-
-
-
 source ~/dot-files-forest/zsh-vcs-prompt/zshrc.sh
 ZSH_VCS_PROMPT_ENABLE_CACHING='true'
 RPROMPT='$(vcs_super_info)'

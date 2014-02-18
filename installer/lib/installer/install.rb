@@ -9,13 +9,14 @@ require 'installer/link_set'
 module Installer
   # [todo] - Add top-level class documentation comment.
   class Install
-    attr_reader :dry_run, :verbose, :dst_dir, :src_dir, :log_level,
-                :install_type, :force
+    include Installer::Logging
+    attr_reader :dry_run, :verbose, :dst_dir, :src_dir,
+                :log_level, :install_type, :force
 
     def initialize(options)
       options.each do |k, v|
-        Log.debug("#{k} --> #{v}")
-        instance_variable_set("@#{k}", v) unless v.nil?
+       logger.debug("log #{k} --> #{v}")
+       instance_variable_set("@#{k}", v) unless v.nil?
       end
     end
 
@@ -35,31 +36,27 @@ module Installer
     # [todo] - split and move linkset.link.each block to LinkSet class
     def create_links
       links.each_pair do |key, linkset|
-        Log.debug("key #{key}, linkset #{linkset}")
+        logger.debug("key #{key}, linkset #{linkset}")
         linkset.links.each do |link|
-          Log.debug("#{link}")
-          link.create_link(force: force, verbose: verbose,
+          logger.debug("#{link}")
+          link.create_link(force: force, verbose: verbose, dry_run: dry_run,
                            dst_dir: dst_dir, src_dir: src_dir)
         end
       end
     end
 
-    # [todo] - split links method into bash, ssh, dotfiles, fonts, terminator, etc ... methods
-    def links
+    def dotfiles
       gitconfig = 'dotfiles/gitconfig.NONE'
       offlineimap = nil
-      msmtprc = nil
 
-      if install_type == :work
+      if install_type == "work"
         gitconfig = 'dotfiles/gitconfig.WORK'
         offlineimap = 'dotfiles/offlineimaprc.WORK'
-        msmtprc = 'msmtprc/msmtprc.WORK'
       end
 
-      if install_type == :home
+      if install_type == "home"
         gitconfig = 'dotfiles/gitconfig.HOME'
         offlineimap = 'dotfiles/offlineimaprc.HOME'
-        msmtprc = 'msmtp/msmtprc.HOME'
       end
 
       # [todo] - move creation of '.ssh' to pre-creation hook
@@ -108,105 +105,143 @@ module Installer
         end
       end
 
-      fonts = LinkSet.new(Link.new('fonts', '.fonts'))
+      dotfiles
+    end
 
-      terminator = LinkSet.new(Link.new('terminator', '.config/terminator'))
+    def fonts
+      LinkSet.new(Link.new('fonts', '.fonts'))
+    end
 
-      lilyterm = LinkSet.new(Link.new('lilyterm', '.config/lilyterm'))
+    def terminator
+      LinkSet.new(Link.new('terminator', '.config/terminator'))
+    end
 
-      rxvt = LinkSet.new(Link.new('rxvt', '.rxvt'))
+    def lilyterm
+      LinkSet.new(Link.new('lilyterm', '.config/lilyterm'))
+    end
 
-      abook = LinkSet.new(Link.new('abook', '.abook'))
+    def rxvt
+      LinkSet.new(Link.new('rxvt', '.rxvt'))
+    end
 
-      mutt = LinkSet.new(
-        Link.new('mutt', '.mutt'),
-        Link.new('mutt/muttrc', '.muttrc'))
+    def abook
+      LinkSet.new(Link.new('abook', '.abook'))
+    end
 
-      msmtp = LinkSet.new(
-        Link.new(msmtprc, '.msmtprc'),
-        Link.new('msmtp/msmtp.authinfo.home.gpg', '.msmtp.authinfo.home.gpg'))
+    def mutt
+      LinkSet.new(Link.new('mutt', '.mutt'),
+                  Link.new('mutt/muttrc', '.muttrc'))
+    end
 
-      bash = LinkSet.new(
+    def msmtp
+      if install_type == "work"
+        LinkSet.new(Link.new('msmtprc/msmtprc.WORK', '.msmtprc'),
+                    Link.new('msmtp/msmtp.authinfo.HOME.gpg',
+                            '.msmtp.authinfo.HOME.gpg'))
+      elsif install_type == "home"
+        LinkSet.new(Link.new('msmtprc/msmtprc.HOME', '.msmtprc'),
+                    Link.new('msmtp/msmtp.authinfo.HOME.gpg',
+                            '.msmtp.authinfo.HOME.gpg'))
+      end
+    end
+
+    def bash
+      LinkSet.new(
         Link.new('bash', '.bash'),
         Link.new('bash/bashrc', '.bashrc'),
         Link.new('bash/inputrc', '.inputrc'),
         Link.new('bash/bash_profile', '.bash_profile'),
         Link.new('bash/bash_logout', '.bash_logout'),
         Link.new('scm_breeze', '.scm_breeze'))
+    end
 
-      emacs = LinkSet.new(Link.new('emacs', '.emacs.d'))
+    def emacs
+      LinkSet.new(Link.new('emacs', '.emacs.d'))
+    end
 
-      # TODO: Add pre-link creation hook to clone repo
-      ffind = LinkSet.new(Link.new('friendly-find/ffind', 'bin/ffind'))
+    # [todo] - Add pre-link creation hook to clone repo
+    def ffind
+      LinkSet.new(Link.new('friendly-find/ffind', 'bin/ffind'))
+    end
 
-      i3 = LinkSet.new(Link.new('i3', '.i3'))
+    def i3
+      LinkSet.new(Link.new('i3', '.i3'))
+    end
 
-      clojure = LinkSet.new(Link.new('lein', '.lein'),
-                            Link.new('cljr', '.cljr'),
-                            Link.new('m2', '.m2'))
+    def clojure
+      LinkSet.new(Link.new('lein', '.lein'),
+                  Link.new('cljr', '.cljr'),
+                  Link.new('m2', '.m2'))
+    end
 
-      vim = LinkSet.new(Link.new('vim/vimrc.basic.vim', '.vimrc'))
+    def vim
+      LinkSet.new(Link.new('vim/vimrc.basic.vim', '.vimrc'))
+    end
 
-      # TODO: Add pre-link creation hook to clone repo
-      vimpager = LinkSet.new(
+    # [todo] - Add pre-link creation hook to clone repo
+    def vimpager
+      LinkSet.new(
         Link.new('vimpager/vimpager', 'bin/vimpager'),
         Link.new('vimpager/vimcat', 'bin/vimcat'))
+    end
 
-      gnupg = LinkSet.new(Link.new('gnupg', '.gnupg'))
+    def gnupg
+      LinkSet.new(Link.new('gnupg', '.gnupg'))
+    end
 
-      bazaar = LinkSet.new(Link.new('bazaar', '.bazaar'))
+    def bazaar
+      LinkSet.new(Link.new('bazaar', '.bazaar'))
+    end
 
-      # [todo] - Added creation of .config to pre-link event hook
-      sublime_text = LinkSet.new(
-      Link.new('sublime-text-3', '.config/sublime-text-3'))
+    # [todo] - Added creation of .config to pre-link event hook
+    def sublime_text
+      LinkSet.new(Link.new('sublime-text-3', '.config/sublime-text-3'))
+    end
 
-      zsh = LinkSet.new(Link.new('zsh', '.zsh'),
-      # [todo] - .oh-my-zsh needs to be created before the next link but its not
-      # being created
-                        Link.new('oh-my-zsh', '.oh-my-zsh'),
-                        Link.new(
-                          'zsh/clauswitt.zsh-theme',
-                          '.oh-my-zsh/themes/clauswitt.zsh-theme'),
-                        Link.new('zsh/zshrc', '.zshrc'),
-                        Link.new('zsh/zlogin', '.zlogin'))
+    def zsh
+    # [todo] - .oh-my-zsh needs to be created
+    # before the next link but its not being created
+      LinkSet.new(Link.new('zsh', '.zsh'),
+                  Link.new('oh-my-zsh', '.oh-my-zsh'),
+                  Link.new('zsh/clauswitt.zsh-theme',
+                           '.oh-my-zsh/themes/clauswitt.zsh-theme'),
+                  Link.new('zsh/zshrc', '.zshrc'),
+                  Link.new('zsh/zlogin', '.zlogin'))
+    end
 
-      procmail = nil
-      if install_type == :work
-        procmail = LinkSet.new(
-        Link.new('procmail/work', '.procmail'),
-        Link.new('procmail/work/procmailrc', '.procmailrc'))
+    def procmail
+      if install_type == "work"
+        return LinkSet.new(
+                Link.new('procmail/work', '.procmail'),
+                Link.new('procmail/work/procmailrc', '.procmailrc'))
       end
 
-      if install_type == :home
-        procmail = LinkSet.new(
-        Link.new('procmail/home', '.procmail'),
-        Link.new('procmail/home/procmailrc', '.procmailrc'))
+      if install_type == "home"
+        LinkSet.new(
+          Link.new('procmail/home', '.procmail'),
+          Link.new('procmail/home/procmailrc', '.procmailrc'))
       end
+    end
 
-      bin = LinkSet.new(Link.new('bin', 'bin'))
+    def bin
+      LinkSet.new(Link.new('bin', 'bin'))
+    end
 
+    def awesome
+      LinkSet.new(Link.new('awesome', '.config/awesome'),
+                  Link.new('lain', '.config/awesome/lain'),
+                  # [todo] - treesome needs to be checkout before creating link
+                  Link.new('treesome', '.config/awesome/treesome'))
+    end
+
+    def links
       {
-      bash: bash,
-      bazaar: bazaar,
-      bin: bin,
-      clojure: clojure,
-      dotfiles: dotfiles,
-      emacs: emacs,
-      ffind: ffind,
-      fonts: fonts,
-      gnupg: gnupg,
-      i3: i3,
-      mutt: mutt,
-      msmtp: msmtp,
-      abook: abook,
-      lilyterm: lilyterm,
-      procmail: procmail,
-      rxvt: rxvt,
-      sublime_text: sublime_text,
-      terminator: terminator,
-      vimpager: vimpager,
-      vim: vim,
-      zsh: zsh
+        awesome: awesome, bash: bash, bazaar: bazaar, bin: bin, zsh: zsh,
+        dotfiles: dotfiles, emacs: emacs, ffind: ffind, fonts: fonts,
+        gnupg: gnupg, mutt: mutt, msmtp: msmtp, abook: abook, vim: vim,
+        procmail: procmail, rxvt: rxvt, sublime_text: sublime_text, i3: i3,
+        terminator: terminator, vimpager: vimpager, lilyterm: lilyterm,
+        clojure: clojure
       }
     end
   end
