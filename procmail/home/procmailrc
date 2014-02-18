@@ -5,7 +5,7 @@ DEFAULT=$MAILDIR/.INBOX/
 PROCMAILDIR=$HOME/.procmail
 LOGFILE=$PROCMAILDIR/log/procmail
 
-# forward all email through spamc daemon {{{1
+# forward all email through spam daemon 
 :0fw
 | /usr/bin/spamc
 
@@ -21,153 +21,112 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^X-MailScanner-SpamCheck:spam.*
 .Spam/
-# }}}1
 
-# Haskell Beginners {{{1
+
+# eclim-user 
 :0
-* (To|Cc):.*beginners@haskell.org.*
-.Mailing\ Lists.Haskell\ Beginners/
-# }}}1
+* (To|Cc):.*eclim-user@googlegroups.com.*
+.Mailing\ Lists.Eclim\ User/
 
-# Haskell Cafe {{{1
+
+# eclim-dev 
 :0
-* (To|Cc):.*haskell-cafe@haskell.org.*
-.Mailing\ Lists.Haskell\ Cafe/
-# }}}1
+* (To|Cc):.*eclim-dev@googlegroups.com.*
+.Mailing\ Lists.Eclim\ Dev/
 
-# xmonad {{{1
+
+# arch-general 
 :0
-* (To|Cc):.*xmonad@haskell.org.*
-.Mailing\ Lists.xmonad/
-# }}}1
+* (To|Cc):.*arch-general@archlinux.org.*
+.Mailing\ Lists.Arch\ General/
 
-# awesome users {{{1
+# arch-dev-public 
+:0
+* (To|Cc):.*arch-dev-public@archlinux.org.*
+.Mailing\ Lists.Arch\ Dev\ Public/
+
+# arch-announce 
+:0
+* (To|Cc):.*arch-announce@archlinux.org.*
+.Mailing\ Lists.Arch\ Announce/
+
+
+# American Express
+:0
+* (From):.*American Express.*
+.AmericanExpress/
+
+# Tmux User 
+:0
+* (To|Cc):.*tmux-users@lists.sourceforge.net.*
+.Mailing\ Lists.Tmux\ User/
+
+
+# Awesome User 
 :0
 * (To|Cc):.*awesome@naquadah.org.*
-.Mailing\ Lists.Awesome\ Users/
-# }}}1
+.Mailing\ Lists.AwesomeWM\ User/
 
-# awesome devel {{{1
+
+# Awesome Dev 
 :0
 * (To|Cc):.*awesome-devel@naquadah.org.*
-.Mailing\ Lists.Awesome\ Devel/
-# }}}1
+.Mailing\ Lists.AwesomeWM\ Dev/
 
-# Debian User {{{1
+
+# Mutt User 
 :0
-* (To|Cc):.*debian-user@lists.debian.org.*
-.Mailing\ Lists.Debian\ User/
-# }}}1
+* (To|Cc):.*mutt-users@mutt.org.*
+.Mailing\ Lists.Mutt\ User/
 
-# Debian Announce {{{1
-:0
-* (To|Cc):.*debian-announce@lists.debian.org.*
-.Mailing\ Lists.Debian\ Announce/
-# }}}1
 
-# Debian News {{{1
-:0
-* (To|Cc):.*debian-nEws@lists.debian.org.*
-.Mailing\ Lists.Debian\ News/
-# }}}1
-
-# Rust {{{1
-:0
-* (To|Cc):.*rust-dev@mozilla.org.*
-.Mailing\ Lists.Rust\ Dev/
-# }}}1
-
-# i3-discus {{{1s
+# i3-discuss 
 :0
 * (To|Cc):.*i3-discuss@i3.zekjur.net.*
 .Mailing\ Lists.i3/
-# }}}1
 
-# mu4e {{{1
-:0
-* (To|Cc):.*mu-discuss@googlegroups.com.*
-.Mailing\ Lists.mu4e/
-# }}}1
 
-# Python Mode {{{1
-:0
-* (To|Cc):.*python-mode@python.org.*
-.Mailing\ Lists.Python\ Mode/
-# }}}1
-
-# Fish Users  {{{1
+# Fish User 
 :0
 * ^(Subject|Sender):.*\[fish-users\].*
 .Mailing\ Lists.Fish\ User/
-# }}}1
 
-# Glenn Beck {{{1
+
+# Glenn Beck 
 :0
 * ^From:.*Glenn.*Beck.*
 .Mailing\ Lists.Glenn\ Beck/
-# }}}1
 
-# The Blaze {{{1
+
+# The Blaze 
 :0
-* ^Subject:.*News from TheBlaze.com.*
+* ^From:.*News.*from.*TheBlaze.*
 .Mailing\ Lists.Glenn\ Beck/
-# }}}1
 
-# GNU Emacs Help {{{1
+# The Blaze 
 :0
-* (To|Cc):.*help-gnu-emacs@gnu.org.*
-.Mailing\ Lists.GNU\ Emacs\ Help/
-# }}}1
+* ^From:.*FireWire.*from.*TheBlaze.*
+.Mailing\ Lists.Glenn\ Beck/
 
-# GNU Emacs Devel {{{1
-:0
-* (To|Cc):.*emacs-devel@gnu.org.*
-.Mailing\ Lists.GNU\ Emacs\ Devel/
-# }}}1
-
-# vim user {{{1
-:0
-* ^(To|Cc):.*vim_use@googlegroups.com.*
-.Mailing\ Lists.Vim\ User/
-# }}}1
-
-# ruby talk {{{1
+# ruby talk 
 :0
 * ^(To|Cc):.*ruby-talk@ruby-lang.org.*
 .Mailing\ Lists.Ruby\ Talk/
-# }}}1
 
-# vim user {{{1
-:0
-* ^(To|Cc):.*vim@vim.org.*
-.Mailing\ Lists.Vim\ User/
-# }}}1
 
-# Evil {{{1
-:0
-* ^(To|Cc):.*implementations-list@lists.ourproject.org.*
-.Mailing\ Lists.GNU\ Emacs\ Evil/
-# }}}1
-
-# spf13-vim {{{1
-:0
-* ^(To|Cc):.*spf13-vim-discuss@googlegroups.com.*
-.Mailing\ Lists.spf13\ Vim/
-# }}}1
-
-# ledger {{{1
+# ledger 
 :0
 * ^(To|Cc):.*ledger-cli@googlegroups.com.*
 .Mailing\ Lists.Ledger/
-# }}}1
 
-# Copy all mail now {{{1
+
+# Archive remaining messages 
 :0c		
 *
 .Archives/	# to Archives
-# }}}1
 
-# handle HemlockForest {{{1
+
+# handle HemlockForest 
 :0
 * ^(From|To|Cc):.*Judi.Angelo@executiveproperties.com.*
 .HemlockForest/
@@ -223,7 +182,10 @@ LOGFILE=$PROCMAILDIR/log/procmail
 :0
 * ^From:.*balerts@site.careerbuilder.com.*
 .Jobs/
-# }}}1
+
+:0
+* ^From:.*JobAlerts@CyberCoders.com.*
+.Jobs/
 
 # last
 :0:
