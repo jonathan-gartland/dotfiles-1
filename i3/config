@@ -10,18 +10,23 @@ set $mod Mod4
 # programs to run at startup
 exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources
 exec --no-startup-id /usr/bin/gnome-session
-exec --no-startup-id urxvtd -q -f -o
+exec --no-startup-id /usr/bin/terminols
 exec --no-startup-id pasystray
 
 # Start thunderbird, subl3, cantata and chromium on specific workspaces.
 # Starting additional instances will be started on the current workspace.
-exec --no-startup-id i3-msg 'workspace 5; exec cantata'
-exec --no-startup-id i3-msg 'workspace 4; exec thunderbird'
-exec --no-startup-id i3-msg 'workspace 2; exec subl3'
-exec --no-startup-id i3-msg 'workspace 1; exec chromium'
+# exec --no-startup-id i3-msg 'workspace 5; exec cantata'
+# exec --no-startup-id i3-msg 'workspace 4; exec thunderbird'
+# exec --no-startup-id i3-msg 'workspace 2; exec subl3'
+# exec --no-startup-id i3-msg 'workspace 1; exec chromium'
 
 # The nvidia driver only provides support for Xinerama instead of RandR.
-#force_xinerama no
+#force_xinerama on
+
+#hide_edge_borders both
+#new_window none
+#new_float none
+#for_window [class="^.*"] border pixel 1
 
 # Font for window titles.
 font pango:Sans 8
