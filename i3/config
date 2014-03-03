@@ -162,7 +162,8 @@ bar {
     position bottom
     font pango:Sans 8
     #status_command i3status --config ~/.i3/i3status.conf
-    status_command py3status -c ~/.i3/i3status.conf
+    #status_command py3status -c ~/.i3/i3status.conf
+    status_command i3blocks -c ~/.i3/i3blocks.conf
     tray_output primary
     colors {
         background #073642
