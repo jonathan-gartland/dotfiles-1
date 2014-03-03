@@ -131,8 +131,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec i3-nagbar -m "Session menu" -b "Quit" "i3-msg -t command exit" -b "Restart" "sudo reboot" -b "Halt" "sudo halt" -b "Suspend" "sudo systemctl suspend"
 
 # lock screen using i3lock and suspend machine
-bindsym $mod+Shift+Control+l exec "i3lock --no-unlock-indicator --pointer=win --image=/home/skk/Pictures/hs-2012-37-a-full_jpg.png; sudo systemctl suspend"
+bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/Pictures/hs-2012-37-a-full_jpg.png; sudo systemctl suspend"
 
+# lock screen using i3lock
 bindsym $mod+Control+l exec "i3lock --image=/home/skk/Pictures/hs-2012-37-a-full_jpg.png"
 
 # Make the currently focused window a scratchpad
