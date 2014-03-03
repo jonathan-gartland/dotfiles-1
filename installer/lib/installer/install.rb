@@ -250,7 +250,7 @@ module Installer
         gnupg: gnupg, mutt: mutt, msmtp: msmtp, abook: abook, vim: vim,
         procmail: procmail, rxvt: rxvt, sublime_text: sublime_text, i3: i3,
         terminator: terminator, vimpager: vimpager, lilyterm: lilyterm,
-        clojure: clojure
+        clojure: clojure, fish: fish, terminol: terminol
       }
     end
   end
