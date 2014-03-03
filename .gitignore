@@ -78,3 +78,5 @@ sublime-text-3/Packages/User/Package Control.ca-certs/
 #sublime-text-3/Packages/Theme - Cobalt2
 #sublime-text-3/Packages/i3wm-sublime
 gnupg/gpg-agent.env.fish
+.tags
+.tags_sorted_by_file
