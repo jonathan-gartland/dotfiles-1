@@ -19,11 +19,12 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "solid",
-	"color_scheme": "Packages/Funky-Neon-Color-Scheme/Funky Neon.tmTheme",
+	"color_scheme": "Packages/User/Funky Neon (SL).tmTheme",
 	"colored_folder_glyphs": true,
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
 	"draw_minimap_border": true,
+	"enable_tab_scrolling": false,
 	"ensure_newline_at_eof_on_save": true,
 	"fallback_encoding": "UTF-8",
 	"file_exclude_patterns":
@@ -51,7 +52,6 @@
 		"*.map",
 		"*.orig"
 	],
-	"enable_tab_scrolling": false,
 	"folder_exclude_patterns":
 	[
 		".git",
@@ -60,7 +60,6 @@
 		".svn",
 		".hg"
 	],
-	//"font_face": "Cousine",
 	"font_face": "Envy Code R",
 	"font_options":
 	[
@@ -72,18 +71,11 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"SearchInProject",
-		"VintageousOrigami",
-		"SublimeLinter-csslint",
-		"SublimeLinter",
-		"Theme - Spacegray",
-		"vintage",
 		"Markdown",
-		"Theme - itg.flat",
-		"Themr",
-		"AdvancedNewFile",
-		"Theme - Cobalt2",
-		"SublimeLinter-jshint"
+		"SearchInProject",
+		"Vintageous",
+		"Origami",
+		"vintage"
 	],
 	"indent_guide_options":
 	[
@@ -107,7 +99,7 @@
 	"soda_folder_icons": false,
 	"spell_check": true,
 	"tab_size": 4,
-	"theme": "Devastate.sublime-theme",
+	"theme": "Watson.sublime-theme",
 	"todo":
 	{
 		"case_sensitive": false,
@@ -127,7 +119,8 @@
 		"patterns":
 		{
 		},
-		"result_title": "TODO Results"
+		"result_title": "TODO Results",
+		"theme": "Watson.sublime-theme"
 	},
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,

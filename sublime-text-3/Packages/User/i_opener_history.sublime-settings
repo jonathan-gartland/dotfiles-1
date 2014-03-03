@@ -8,6 +8,13 @@
 		"~/.config/awesome/launchbar/",
 		"~/.config/awesome/launchbar.lua",
 		"/usr/share/doc/vimpc/help.txt",
-		"/etc/xdg/awesome/rc.lua"
+		"/etc/xdg/awesome/rc.lua",
+		"~/dot-files-forest/i3/config",
+		"~/test.html",
+		"resume.css",
+		"~/Projects/resume/resume.css",
+		"Makefile",
+		"./Makefile",
+		"~/.oh-my-zsh/plugins/git/git.plugin.zsh"
 	]
 }
