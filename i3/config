@@ -35,14 +35,14 @@ font pango:Sans 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
-bindsym $mod+Shift+Return exec "urxvtd -f -o"
+bindsym $mod+Return exec terminolc
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -z -fn 'Sans-8'"
+bindsym $mod+Shift+d exec dmenu_run
 
 # dmenu_ssh
 bindsym $mod+t exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
