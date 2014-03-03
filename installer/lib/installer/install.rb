@@ -198,6 +198,11 @@ module Installer
       LinkSet.new(Link.new('sublime-text-3', '.config/sublime-text-3'))
     end
 
+    def fish
+    # [todo] - .oh-my-fish needs to be created
+        LinkSet.new(Link.new('oh-my-fish', '.oh-my-fish'))
+    end
+
     def zsh
     # [todo] - .oh-my-zsh needs to be created
     # before the next link but its not being created
