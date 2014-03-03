@@ -239,6 +239,10 @@ module Installer
                   Link.new('treesome', '.config/awesome/treesome'))
     end
 
+    def terminol
+      LinkSet.new(Link.new('terminol', '.config/terminol'))
+    end
+
     def links
       {
         awesome: awesome, bash: bash, bazaar: bazaar, bin: bin, zsh: zsh,
