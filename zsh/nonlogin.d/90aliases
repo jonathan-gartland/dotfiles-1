@@ -35,6 +35,7 @@ alias watch='watch -n 1'
 alias ssh='ssh -C -Y'
 alias scp='scp -C'
 alias tmux='tmux -f ~/.tmux.conf'
+alias gofish='fish -l'
 
 # stuff for home
 if [ "$HOSTNAME" = "falcon" ]; then
