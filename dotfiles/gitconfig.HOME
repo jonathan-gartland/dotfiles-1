@@ -104,6 +104,9 @@
     show-graph = log --graph --abbrev-commit --pretty=oneline
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
+    # from http://www.reddit.com/r/git/comments/1zcyua/looking_to_start_a_project_with_git/cfsmmtp
+    first=commit --allow-empty -m 'Create empty, initial commit'
+
 # giggle
 [giggle]
 	main-window-maximized = false
