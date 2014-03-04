@@ -19,7 +19,7 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "solid",
-	"color_scheme": "Packages/User/Funky Neon (SL).tmTheme",
+	"color_scheme": "Packages/User/Neon (SL).tmTheme",
 	"colored_folder_glyphs": true,
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
@@ -71,11 +71,11 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
-		"SearchInProject",
 		"Vintageous",
+		"vintage",
+		"Markdown",
 		"Origami",
-		"vintage"
+		"SearchInProject"
 	],
 	"indent_guide_options":
 	[
