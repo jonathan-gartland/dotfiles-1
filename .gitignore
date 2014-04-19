@@ -60,6 +60,7 @@ mutt/temp/*
 dot-files-forest.sublime-workspace
 
 sublime-text-3/Cache/
+sublime-text-3/Backup/
 sublime-text-3/Index/
 sublime-text-3/Installed Packages/
 sublime-text-3/Local/
