@@ -3,6 +3,7 @@
 	[
 		"AdvancedNewFile",
 		"All Autocomplete",
+		"ApplySyntax",
 		"AutoWidth",
 		"BufferScroll",
 		"Colorcoder",
@@ -24,7 +25,6 @@
 		"iOpener",
 		"LineEndings",
 		"LiveReload",
-		"Lua Dev",
 		"Markdown Extended",
 		"Markdown Preview",
 		"MarkdownEditing",
@@ -38,13 +38,10 @@
 		"Predawn",
 		"RubyTest",
 		"SCSS",
-		"Search in Project",
-		"SearchInProject",
 		"SideBarEnhancements",
 		"SmartMarkdown",
 		"Sublime Bookmarks",
 		"sublime-github",
-		"sublime-tmux-syntax-highlight",
 		"SublimeCodeIntel",
 		"SublimeGit",
 		"SublimeLinter",
@@ -65,11 +62,5 @@
 	],
 	"repositories":
 	[
-		"https://github.com/wesbos/cobalt2/",
-		"https://github.com/wesbos/cobalt2.git",
-		"https://github.com/wesbos/cobalt2",
-		"https://github.com/skk/i3wm-sublime.git",
-		"https://github.com/keqh/sublime-tmux-syntax-highlight",
-		"https://github.com/facelessuser/ApplySyntax/tree/ST3"
 	]
 }
