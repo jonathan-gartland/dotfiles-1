@@ -75,15 +75,15 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"vintage",
 		"Origami",
-		"SearchInProject",
-		"Vintageous",
-		"Markdown",
-		"CTags",
 		"SublimeGit",
+		"Markdown",
+		"Funky-Neon-Color-Scheme",
+		"vintage",
+		"SearchInProject",
 		"VintageousOrigami",
-		"Funky-Neon-Color-Scheme"
+		"Vintageous",
+		"CTags"
 	],
 	"indent_guide_options":
 	[
