@@ -22,7 +22,9 @@ class PlainTasksBase(sublime_plugin.TextCommand):
             self.done_tasks_bullet = self.view.settings().get('done_tasks_bullet')
             self.canc_tasks_bullet = self.view.settings().get('cancelled_tasks_bullet')
             self.before_date_space = ' '
-        self.before_tasks_bullet_spaces = ' ' * self.view.settings().get('before_tasks_bullet_margin')
+        translate_tabs_to_spaces = self.view.settings().get('translate_tabs_to_spaces')
+        self.before_tasks_bullet_spaces = ' ' * self.view.settings().get('before_tasks_bullet_margin') if translate_tabs_to_spaces else '\t'
+        self.tasks_bullet_space = self.view.settings().get('tasks_bullet_space', ' ' if translate_tabs_to_spaces else '\t')
         self.date_format = self.view.settings().get('date_format')
         if self.view.settings().get('done_tag') or self.taskpaper_compatible:
             self.done_tag = "@done"
@@ -49,22 +51,22 @@ class PlainTasksNewCommand(PlainTasksBase):
             current_scope  = self.view.scope_name(line.a)
             if 'item' in current_scope:
                 grps = not_empty_line.groups()
-                line_contents = self.view.substr(line) + '\n' + grps[0] + self.open_tasks_bullet + ' '
+                line_contents = self.view.substr(line) + '\n' + grps[0] + self.open_tasks_bullet + self.tasks_bullet_space
             elif 'header' in current_scope and not self.view.settings().get('header_to_task'):
                 grps = not_empty_line.groups()
-                line_contents = self.view.substr(line) + '\n' + grps[0] + self.before_tasks_bullet_spaces + self.open_tasks_bullet + ' '
+                line_contents = self.view.substr(line) + '\n' + grps[0] + self.before_tasks_bullet_spaces + self.open_tasks_bullet + self.tasks_bullet_space
             elif 'separator' in current_scope:
                 grps = not_empty_line.groups()
-                line_contents = self.view.substr(line) + '\n' + grps[0] + self.before_tasks_bullet_spaces + self.open_tasks_bullet + ' '
+                line_contents = self.view.substr(line) + '\n' + grps[0] + self.before_tasks_bullet_spaces + self.open_tasks_bullet + self.tasks_bullet_space
             elif not ('header' and 'separator') in current_scope or self.view.settings().get('header_to_task'):
                 if not_empty_line:
                     grps = not_empty_line.groups()
-                    line_contents = (grps[0] if len(grps[0]) > 0 else self.before_tasks_bullet_spaces) + self.open_tasks_bullet + ' ' + grps[1]
+                    line_contents = (grps[0] if len(grps[0]) > 0 else self.before_tasks_bullet_spaces) + self.open_tasks_bullet + self.tasks_bullet_space + grps[1]
                 elif empty_line: # only whitespaces
                     grps = empty_line.groups()
-                    line_contents = grps[0] + self.open_tasks_bullet + ' '
+                    line_contents = grps[0] + self.open_tasks_bullet + self.tasks_bullet_space
                 else: # completely empty, no whitespaces
-                    line_contents = self.before_tasks_bullet_spaces + self.open_tasks_bullet + ' '
+                    line_contents = self.before_tasks_bullet_spaces + self.open_tasks_bullet + self.tasks_bullet_space
             else:
                 print('oops, need to improve PlainTasksNewCommand')
             self.view.replace(edit, line, line_contents)
@@ -89,15 +91,10 @@ class PlainTasksCompleteCommand(PlainTasksBase):
         except:
             done_line_end = ' %s%s%s' % (self.done_tag, self.before_date_space, datetime.now().strftime(self.date_format))
         offset = len(done_line_end)
-        if self.taskpaper_compatible:
-            rom = '^(\s*)-(\s*[^\b]*\s*)(?!\s@(done|cancelled)).*$'
-            rdm = '^(\s*)-(\s*[^\b]*?\s*)(?=\s@done).*$'
-            rcm = '^(\s*)-(\s*[^\b]*?\s*)(?=\s@cancelled).*$'
-        else:
-            rom = '^(\s*)(?:\[\s\]|.)(\s*.*)$'
-            rdm = '^(\s*)(?:\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
-            rcm = '^(\s*)(?:\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
-        started = '^\s*[^\b]*?\s*@started(\([\d\w,\.:\-\/ @]*\)).*$'
+        rom = r'^(\s*)(\[\s\]|.)(\s*.*)$'
+        rdm = r'^(\s*)(\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
+        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
+        started = r'^\s*[^\b]*?\s*@started(\([\d\w,\.:\-\/ @]*\)).*$'
         for region in self.view.sel():
             line = self.view.line(region)
             line_contents = self.view.substr(line).rstrip()
@@ -109,9 +106,10 @@ class PlainTasksCompleteCommand(PlainTasksBase):
             if 'pending' in current_scope:
                 grps = open_matches.groups()
                 eol = self.view.insert(edit, line.end(), done_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[1].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2].rstrip())
                 self.view.replace(edit, line, replacement)
                 if started_matches:
+                    eol -= len(grps[1]) - len(self.done_tasks_bullet)
                     self.calc_end_start_time(self, edit, line, started_matches.group(1), done_line_end, eol)
             elif 'header' in current_scope:
                 eol = self.view.insert(edit, line.end(), done_line_end)
@@ -121,13 +119,13 @@ class PlainTasksCompleteCommand(PlainTasksBase):
                 self.view.insert(edit, line.begin() + len(indent.group(1)), '%s ' % self.done_tasks_bullet)
             elif 'completed' in current_scope:
                 grps = done_matches.groups()
-                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[1].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2].rstrip())
                 self.view.replace(edit, line, replacement)
                 offset = -offset
             elif 'cancelled' in current_scope:
                 grps = canc_matches.groups()
                 self.view.insert(edit, line.end(), done_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[1].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.done_tasks_bullet, grps[2].rstrip())
                 self.view.replace(edit, line, replacement)
                 offset = -offset
         self.view.sel().clear()
@@ -139,7 +137,7 @@ class PlainTasksCompleteCommand(PlainTasksBase):
     @staticmethod
     def calc_end_start_time(self, edit, line, started_matches, done_line_end, eol, tag='lasted'):
         start = datetime.strptime(started_matches, self.date_format)
-        end = datetime.strptime(done_line_end.replace(' @done ', '').replace(' @cancelled ', ''), self.date_format)
+        end = datetime.strptime(done_line_end.replace('@done', '').replace('@cancelled', '').strip(), self.date_format)
         self.view.insert(edit, line.end() + eol, ' @%s(%s)' % (tag, str(end - start)))
 
 
@@ -151,14 +149,9 @@ class PlainTasksCancelCommand(PlainTasksBase):
         except:
             canc_line_end = ' %s%s%s' % (self.canc_tag,self.before_date_space, datetime.now().strftime(self.date_format))
         offset = len(canc_line_end)
-        if self.taskpaper_compatible:
-            rom = '^(\s*)-(\s*[^\b]*\s*)(?!\s@(done|cancelled)).*$'
-            rdm = '^(\s*)-(\s*[^\b]*?\s*)(?=\s@done).*$'
-            rcm = '^(\s*)-(\s*[^\b]*?\s*)(?=\s@cancelled).*$'
-        else:
-            rom = '^(\s*)(?:\[\s\]|.)(\s*.*)$'
-            rdm = '^(\s*)(?:\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
-            rcm = '^(\s*)(?:\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
+        rom = r'^(\s*)(\[\s\]|.)(\s*.*)$'
+        rdm = r'^(\s*)(\[x\]|.)(\s*[^\b]*?\s*)(?=\s@done|@project|\s\(|$).*$'
+        rcm = r'^(\s*)(\[\-\]|.)(\s*[^\b]*?\s*)(?=\s@cancelled|@project|\s\(|$).*$'
         started = '^\s*[^\b]*?\s*@started(\([\d\w,\.:\-\/ @]*\)).*$'
         for region in self.view.sel():
             line = self.view.line(region)
@@ -171,9 +164,10 @@ class PlainTasksCancelCommand(PlainTasksBase):
             if 'pending' in current_scope:
                 grps = open_matches.groups()
                 eol = self.view.insert(edit, line.end(), canc_line_end)
-                replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[1].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2].rstrip())
                 self.view.replace(edit, line, replacement)
                 if started_matches:
+                    eol -= len(grps[1]) - len(self.canc_tasks_bullet)
                     PlainTasksCompleteCommand.calc_end_start_time(self, edit, line, started_matches.group(1), canc_line_end, eol, tag='wasted')
             elif 'header' in current_scope:
                 eol = self.view.insert(edit, line.end(), canc_line_end)
@@ -182,14 +176,14 @@ class PlainTasksCancelCommand(PlainTasksBase):
                 indent = re.match('^(\s*)\S', line_contents, re.U)
                 self.view.insert(edit, line.begin() + len(indent.group(1)), '%s ' % self.canc_tasks_bullet)
             elif 'completed' in current_scope:
-                pass
+                sublime.status_message('You cannot cancel what have been done, can you?')
                 # grps = done_matches.groups()
-                # replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[1].rstrip())
+                # replacement = u'%s%s%s' % (grps[0], self.canc_tasks_bullet, grps[2].rstrip())
                 # self.view.replace(edit, line, replacement)
                 # offset = -offset
             elif 'cancelled' in current_scope:
                 grps = canc_matches.groups()
-                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[1].rstrip())
+                replacement = u'%s%s%s' % (grps[0], self.open_tasks_bullet, grps[2].rstrip())
                 self.view.replace(edit, line, replacement)
                 offset = -offset
         self.view.sel().clear()
@@ -241,7 +235,7 @@ class PlainTasksArchiveCommand(PlainTasksBase):
                     else:
                         eol = (self.before_tasks_bullet_spaces +
                                match_task.group(1) + # bullet
-                               (' ' if pr else '') + pr + (':' if pr else '') +
+                               (self.tasks_bullet_space if pr else '') + pr + (':' if pr else '') +
                                match_task.group(2) + # very task
                                '\n')
                 else:
@@ -369,9 +363,10 @@ class PlainTasksOpenLinkCommand(sublime_plugin.TextCommand):
                     self._current_res.append((name, line, col))
         else:
             fn = fn.replace('/', os.sep)
-            for folder in win.folders():
+            all_folders = win.folders() + [os.path.dirname(v.file_name()) for v in win.views() if v.file_name()]
+            for folder in set(all_folders):
                 for root, dirnames, filenames in os.walk(folder):
-                    filenames = [os.path.join(root, f) for f in filenames] + [v.file_name() for v in win.views() if v.file_name()]
+                    filenames = [os.path.join(root, f) for f in filenames]
                     for name in filenames:
                         if name.lower().endswith(fn.lower()):
                             self._current_res.append((name, line if line else 0, col if col else 0))
@@ -390,7 +385,7 @@ class PlainTasksOpenLinkCommand(sublime_plugin.TextCommand):
             fn, sym, line, col, text = match.group('fn', 'sym', 'line', 'col', 'text')
             self.show_panel_or_open(fn, sym, line, col, text)
             if text:
-                sublime.set_timeout(lambda:self.find_text(self.opened_file, text, line), 50)
+                sublime.set_timeout(lambda: self.find_text(self.opened_file, text, line), 300)
 
     def find_text(self, view, text, line):
         result = view.find(text, view.sel()[0].a if line else 0, sublime.LITERAL)
