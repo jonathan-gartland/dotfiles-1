@@ -75,15 +75,9 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Origami",
-		"SublimeGit",
 		"Markdown",
-		"Funky-Neon-Color-Scheme",
 		"vintage",
-		"SearchInProject",
-		"VintageousOrigami",
-		"Vintageous",
-		"CTags"
+		"LiveReload"
 	],
 	"indent_guide_options":
 	[
@@ -118,7 +112,7 @@
 	"spell_check": true,
 	"tab_size": 4,
 	"tabs_small": true,
-	"theme": "predawn.sublime-theme",
+	"theme": "Watson.sublime-theme",
 	"todo":
 	{
 		"case_sensitive": false,
@@ -144,6 +138,7 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
+	"vintageous_use_ctrl_keys": true,
 	"word_wrap": false,
 	"wrap_width": 80
 }
