@@ -1,0 +1,3 @@
+# Don't create docs as this shows the install process.
+gem: --no-ri 
+#gem: --no-rdoc --no-ri 
