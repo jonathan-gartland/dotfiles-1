@@ -6,9 +6,9 @@
 # good less
 #export LESS='-FSRX'
 
-export PAGER=~/bin/vimpager
-alias less=$PAGER
-alias zless=$PAGER
+export PAGER=less
+#alias less=$PAGER
+#alias zless=$PAGER
 
 # swtich to 256 color xterm if using "xterm" 
 if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
