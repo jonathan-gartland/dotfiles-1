@@ -18,11 +18,15 @@
 		"*.zip"
 	],
 	"bold_folder_labels": true,
-	"caret_style": "solid",
-	"color_scheme": "Packages/User/Neon (SL).tmTheme",
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Colorcoder/Neon (SL) (Colorcode).tmTheme",
 	"colored_folder_glyphs": true,
+	"copy_with_empty_selection": false,
 	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
+	"drag_text": false,
 	"draw_minimap_border": true,
 	"enable_tab_scrolling": false,
 	"ensure_newline_at_eof_on_save": true,
@@ -71,11 +75,9 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintageous",
-		"vintage",
 		"Markdown",
-		"Origami",
-		"SearchInProject"
+		"vintage",
+		"LiveReload"
 	],
 	"indent_guide_options":
 	[
@@ -88,17 +90,28 @@
 	"match_brackets": true,
 	"match_brackets_angle": true,
 	"match_brackets_braces": true,
-	"match_brackets_content": true,
+	"match_brackets_content": false,
 	"match_brackets_square": true,
+	"match_selection": false,
+	"match_tags": false,
+	"open_files_in_new_window": false,
+	"original_color_scheme": "Packages/User/Neon (SL).tmTheme",
+	"overlay_scroll_bars": "enabled",
+	"preview_on_click": false,
 	"rulers":
 	[
 		80
 	],
+	"scroll_past_end": true,
+	"scroll_speed": 5.0,
+	"show_full_path": false,
 	"sidebar_folders": true,
+	"sidebar_small": true,
 	"soda_classic_tabs": false,
 	"soda_folder_icons": false,
 	"spell_check": true,
 	"tab_size": 4,
+	"tabs_small": true,
 	"theme": "Watson.sublime-theme",
 	"todo":
 	{
@@ -123,7 +136,9 @@
 		"theme": "Watson.sublime-theme"
 	},
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": false,
+	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
+	"vintageous_use_ctrl_keys": true,
+	"word_wrap": false,
 	"wrap_width": 80
 }
