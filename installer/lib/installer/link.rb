@@ -60,8 +60,8 @@ module Installer
         logger.info("Creating Link: #{destination}")
 
         unless options[:dry_run]
-          logger.debug("ln_sf source #{source} to destination #{destination}")
-          FileUtils.ln_sf(source, destination)
+          logger.debug("ln_sf source #{options[:src_directory]} to destination #{options[:dst_directory]}")
+          FileUtils.ln_sf(options[:src_directory], options[:dst_directory])
         end
       end
 
