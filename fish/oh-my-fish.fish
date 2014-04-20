@@ -8,9 +8,10 @@ set fish_theme syl20bnr
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
 # Example format: set fish_plugins autojump bundler
 #
-set -x Z_SCRIPT_PATH $HOME/src/z/z.sh
+#set -x Z_SCRIPT_PATH $HOME/src/z/z.sh
 
-set fish_plugins autojump bundler rvm sublime archlinux z
+set fish_plugins autojump bundler rvm sublime archlinux
+# z
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
