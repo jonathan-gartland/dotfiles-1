@@ -3,15 +3,22 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 
-# Mod1 --> Alt Key
-# Mod4 --> Win Key
-set $mod Mod4
-
 # programs to run at startup
-exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources
+#exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources
 exec --no-startup-id /usr/bin/gnome-session
 exec --no-startup-id /usr/bin/terminols
 exec --no-startup-id pasystray
+
+# Make Caps Lock an additional Hyper
+#exec --no-startup-id setxkbmap -option caps:hyper
+# Caps Locking is disabled with Caps Lock key 
+#exec --no-startup-id setxkbmap -option caps:none
+
+#exec --no-startup-id /home/skk/setxkbmap.sh
+
+# Mod1 --> Alt Key
+# Mod4 --> Win Key
+set $mod Mod4
 
 # Start thunderbird, subl3, cantata and chromium on specific workspaces.
 # Starting additional instances will be started on the current workspace.
@@ -35,13 +42,14 @@ font pango:Sans 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminolc
+bindsym $mod+Return exec terminol
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -z -fn 'Sans-8'"
+bindsym $mod+d exec j4-dmenu-desktop
+#--dmenu="dmenu -fn 'Sans-8'"
 bindsym $mod+Shift+d exec dmenu_run
 
 # dmenu_ssh
