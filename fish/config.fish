@@ -16,6 +16,11 @@ set -x GIT_EDITOR vim
 set -x EDITOR vim
 set -x VISUAL vim
 
+# add ~/.cabal/bin if available
+if test -d "$HOME/.cabal/bin"
+    set -x PATH $PATH "$HOME/.cabal/bin"
+end
+
 # colorize output from man
 # http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode
