@@ -75,9 +75,10 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"vintage",
-		"LiveReload"
+		"LiveReload",
+		"TrailingSpaces",
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
