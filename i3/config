@@ -4,14 +4,12 @@
 
 
 # programs to run at startup
-#exec --no-startup-id /usr/bin/xrdb /home/skk/.Xresources
-exec --no-startup-id /usr/bin/gnome-session
-exec --no-startup-id /usr/bin/terminols
 exec --no-startup-id pasystray
+exec --no-startup-id start-pulseaudio-x11
 
 # Make Caps Lock an additional Hyper
 #exec --no-startup-id setxkbmap -option caps:hyper
-# Caps Locking is disabled with Caps Lock key 
+# Caps Locking is disabled with Caps Lock key
 #exec --no-startup-id setxkbmap -option caps:none
 
 #exec --no-startup-id /home/skk/setxkbmap.sh
