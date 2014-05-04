@@ -7,7 +7,7 @@ from time import time
 
 HOST = "localhost"
 PORT = 6600
-PLAY_FORMAT = "%s: %t (%n/%p, %e/%l)"
+PLAY_FORMAT = "%s: %a %l %t (%n/%p, %e/%l)"
 STOP_FORMAT = "%s: %p"
 #PLAY_FORMAT = "%s [%h%r%1]: %t (%n/%p, %e/%l)"
 #STOP_FORMAT = "%s [%h%r%1]: %p"
@@ -22,7 +22,9 @@ class Py3status:
 
     def mpdstat(self, json, config):
         self._update()
-        if self.status['state'] != 'stop':
+        if self.conn.playlist() == []:
+            outstr = ""
+        elif self.status['state'] != 'stop':
             outstr = self._do_format(PLAY_FORMAT)
         else:
             outstr = self._do_format(STOP_FORMAT)
