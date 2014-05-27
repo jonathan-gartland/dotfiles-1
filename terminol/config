@@ -1,8 +1,9 @@
-#set font-name "Envy Code R"
-set font-name "Anonymice Powerline"
+set font-name "Sauce Code Powerline"
 set font-size 11
 
 set color-scheme zenburn-dark
+set cursor-text-color           #000000
+set cursor-fill-color           #d13a82
 
 set map-on-bell                 false
 set urgent-on-bell              false
