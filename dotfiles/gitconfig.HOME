@@ -118,9 +118,13 @@
 
 # cola
 [cola]
-	fontdiff = DejaVu Sans Mono,10,-1,5,50,0,0,0,0,0
+	fontdiff = Envy Code R,10,-1,5,50,0,0,0,0,0
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
+	tabwidth = 4
 [push]
 	default = simple
 [github]
 	user = skk
+[gui]
+	editor = gvim
+	historybrowser = gitk
