@@ -21,6 +21,10 @@ if test -d "$HOME/.cabal/bin"
     set -x PATH $PATH "$HOME/.cabal/bin"
 end
 
+if test -d "/usr/bin/core_perl"
+    set -x PATH $PATH "/usr/bin/core_perl"
+end
+
 # colorize output from man
 # http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
 set -x LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode
@@ -32,7 +36,7 @@ set -x LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
 set -x LESS_TERMCAP_us (printf '\e[04;38;5;200m') # enter underline mode
 
 if test $HOSTNAME = "falcon.skk"
-    set -x PRINTER HP_LaserJet_1020_2
+    set -x PRINTER HP_LaserJet_1020
 end
 
 ## aliases
