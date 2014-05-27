@@ -7,8 +7,8 @@ set fish_path $HOME/.oh-my-fish
 #
 #set -x Z_SCRIPT_PATH $HOME/src/z/z.sh
 
-set fish_plugins autojump bundler rvm sublime archlinux
-# z
+source ~/dot-files-forest/z-fish/z.fish
+set fish_plugins autojump bundler rvm sublime archlinux git
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish

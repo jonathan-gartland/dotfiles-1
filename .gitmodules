@@ -4,3 +4,6 @@
 [submodule "powerline-shell"]
 	path = powerline-shell
 	url = git@github.com:milkbikis/powerline-shell.git
+[submodule "z-fish"]
+	path = z-fish
+	url = git@github.com:roryokane/z-fish.git
