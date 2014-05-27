@@ -15,7 +15,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-source ~/dot-files-forest/zsh-vcs-prompt/zshrc.sh
+#source ~/dot-files-forest/zsh-vcs-prompt/zshrc.sh
 
 plugins=(autojump
         archlinux
@@ -61,3 +61,5 @@ source $HOME/.zsh/nonlogin.d/80functions
 source $HOME/.zsh/nonlogin.d/90aliases
 source $HOME/.zsh/nonlogin.d/99misc
 source $HOME/.zsh/nonlogin.d/100-gpg-agent.sh
+
+source $HOME/dot-files-forest/zsh/clauswitt.zsh-theme
