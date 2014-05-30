@@ -3,11 +3,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 
-# Make Caps Lock an additional Hyper
-#exec --no-startup-id setxkbmap -option caps:hyper
-# Caps Locking is disabled with Caps Lock key
-#exec --no-startup-id setxkbmap -option caps:none
-
 # Mod1 --> Alt Key
 # Mod4 --> Win Key
 set $mod Mod4
@@ -34,7 +29,7 @@ font pango:Sans 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminol
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
