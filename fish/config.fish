@@ -37,6 +37,7 @@ set -x LESS_TERMCAP_us (printf '\e[04;38;5;200m') # enter underline mode
 
 if test $HOSTNAME = "falcon.skk"
     set -x PRINTER HP_LaserJet_1020
+    alias reset_home_printer="sudo sed -i -e ‘/StateMessage .*lpd failed/d’ -e ‘s/State Stopped/State Idle/’ /etc/cups/printers.conf"
 end
 
 ## aliases
