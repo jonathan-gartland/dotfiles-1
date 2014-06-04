@@ -18,6 +18,7 @@
 		"FileModifyStatus",
 		"fish-shell",
 		"Function Name Display",
+		"FuzzyFilePath",
 		"Git Config",
 		"Gitignore",
 		"Glue",
@@ -58,12 +59,14 @@
 		"SublimeLinter-ruby",
 		"SyncedSideBar",
 		"Terminal",
+		"Theme - Aprosopo",
 		"Theme - Watson",
 		"Tmux",
 		"VintageEx",
 		"Vintageous",
 		"VintageousOrigami",
 		"XMPFilter",
+		"Zeal",
 		"Zen Tabs"
 	],
 	"repositories":
