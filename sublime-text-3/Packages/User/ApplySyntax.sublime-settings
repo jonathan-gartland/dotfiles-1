@@ -16,6 +16,12 @@
             "rules": [
                 {"file_name": ".*zsh\/.*$"}
             ]
+        },
+        {
+            "name": "INI",
+            "rules": [
+                {"file_name": "i3blocks.conf"}
+            ]
         }
     ]
 }
