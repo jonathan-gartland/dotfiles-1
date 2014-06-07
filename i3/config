@@ -1,26 +1,22 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
+# i3 config file
 
 # Mod1 --> Alt Key
 # Mod4 --> Win Key
 set $mod Mod4
+set $control ~/.i3/workspace_controller.py
 
-# Start thunderbird, subl3, cantata and chromium on specific workspaces.
-# Starting additional instances will be started on the current workspace.
-# exec --no-startup-id i3-msg 'workspace 5; exec cantata'
-# exec --no-startup-id i3-msg 'workspace 4; exec thunderbird'
-# exec --no-startup-id i3-msg 'workspace 2; exec subl3'
-# exec --no-startup-id i3-msg 'workspace 1; exec chromium'
+# start dmenu (a program launcher)
+bindsym $mod+d exec i3-dmenu-desktop
 
-# The nvidia driver only provides support for Xinerama instead of RandR.
-#force_xinerama on
+#--dmenu="dmenu -fn 'Sans-8'"
+bindsym $mod+Shift+d exec dmenu_run
 
-#hide_edge_borders both
-#new_window none
-#new_float none
-#for_window [class="^.*"] border pixel 1
+# dmenu_ssh
+#bindsym $mod+t exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
+bindsym $mod+p exec i3-dmenu-desktop
+
+# start a terminal
+bindsym $mod+Return exec urxvt
 
 # Font for window titles.
 font pango:Sans 8
@@ -28,19 +24,8 @@ font pango:Sans 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvtc
-
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop
-#--dmenu="dmenu -fn 'Sans-8'"
-bindsym $mod+Shift+d exec dmenu_run
-
-# dmenu_ssh
-bindsym $mod+t exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
 
 # change focus
 bindsym $mod+j focus left
@@ -134,43 +119,48 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# session menu
-bindsym $mod+Shift+e exec i3-nagbar -m "Session menu" -b "Quit" "i3-msg -t command exit" -b "Restart" "sudo reboot" -b "Halt" "sudo halt" -b "Suspend" "sudo systemctl suspend"
+# exit
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen using i3lock and suspend machine
-bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/Pictures/hs-2012-37-a-full_jpg.png; sudo systemctl suspend"
+bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/dot-files-forest/nasa_hubble_ultra_deep_field_2014.jpg; sudo systemctl suspend"
 
 # lock screen using i3lock
-bindsym $mod+Control+l exec "i3lock --image=/home/skk/Pictures/hs-2012-37-a-full_jpg.png"
-
-# Make the currently focused window a scratchpad
-#bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Control+l exec "i3lock --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.jpg"
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
-
 bindsym $mod+r mode "resize"
 
 # https://github.com/proxypoke/quickswitch-for-i3
 bindsym $mod+q exec quickswitch.py
 
-ipc-socket ~/.i3/i3-ipc.sock
+# dynamic tagging feature
+bindsym Mod4+t exec i3-msg workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
+bindsym Mod4+Shift+t exec i3-msg move container to workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
 
-# pulse audio volume control
-#bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -- '-5%'
-#bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 -- '+5%'
-#bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume 0 0
-#bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
-#bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
-#bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+# toggle workspace
+bindsym Mod4+z workspace back_and_forth
+
+# marks
+bindsym Mod4+m exec i3-input -F 'mark %s' -P 'Mark name: '
+bindsym Mod4+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+# volume keys
+bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+
+bindsym XF86AudioLowerVolume exec amixer sset Master 2%-
+bindsym XF86AudioMute exec amixer sset Master toggle
+# other keys
+bindsym XF86Mail exec thunderbird -compose
+bindsym XF86Explorer exec google-chrome
+bindsym XF86HomePage exec marlin
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     position bottom
-    font pango:Sans 8
-    #status_command py3status -c ~/.i3/i3status.conf
-    status_command i3blocks -c ~/.i3/i3blocks.conf
+    font pango:Source Code Sans 8
+    status_command python ~/.i3/i3pystatus_conf.py
     tray_output primary
     colors {
         background #073642
@@ -185,6 +175,3 @@ bar {
 client.focused          #859900 #859900 #fdf6e3 #2e9ef4
 client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
 client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
-
-
-#for_window [class="Steam"] floating enable
