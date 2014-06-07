@@ -29,7 +29,6 @@ status.register("disk", path="/", format="/ {used}/{total}G [{avail}G]",)
 # Shows disk usage of /home
 status.register("disk", path="/home", format="/home {used}/{total}G [{avail}G]")
 
-
 # Shows pulseaudio default sink volume
 status.register("pulseaudio", format="♪{volume}",)
 
@@ -49,17 +48,30 @@ status.register("weather",
     colorize=True,
     format="{current_temp}")
 
+def get_imap_password(fname):
+    with open(fname) as f:
+        content = f.read().splitlines()
+        if len(content) > 0:
+            return content[0]
+
+        return ""
+
+
+from os.path import join, expanduser
+password=get_imap_password(join(expanduser("~"), ".i3", "imap_password.txt"))
+
 # shows unread message count on INBOX
 status.register("mail",
+    hide_if_null = False,
+    email_client = "/usr/bin/thunderbird",
     backends=[ imap.IMAP(
              # port and ssl are the defaults
              port=993, ssl=True,
              host="knight.cx",
              username="skk",
-             password="",
+             password = password
             )])
 status.run()
-
 
 
 # This would also display a desktop notification (via dbus) if the percentage

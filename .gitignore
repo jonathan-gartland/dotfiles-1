@@ -52,6 +52,7 @@ gnupg/gpg-agent.env
 
 # i3
 i3/i3log
+i3/imap_password.txt
 
 # mutt
 mutt/temp/*
