@@ -6,6 +6,7 @@
 	editor = subl -w
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     pager=less
+    mode = progress
 
 # change colors
 [color]
