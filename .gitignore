@@ -78,6 +78,8 @@ sublime-text-3/Packages/Rails/
 sublime-text-3/Packages/SublimeCodeIntel/
 sublime-text-3/Packages/SublimeLinter/
 sublime-text-3/Packages/Terminal/
+sublime-text-3/Packages/Colorcoder/firstrun
+sublime-text-3/Packages/Ruby Debugger
 sublime-text-3/sublimeBookmarks.pickle
 
 # GPG
@@ -86,4 +88,3 @@ gnupg/gpg-agent.env.fish
 # ctags
 .tags
 .tags_sorted_by_file
-sublime-text-3/Packages/Colorcoder/firstrun
