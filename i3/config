@@ -3,23 +3,38 @@
 # Mod1 --> Alt Key
 # Mod4 --> Win Key
 set $mod Mod4
-set $control ~/.i3/workspace_controller.py
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop
-
-#--dmenu="dmenu -fn 'Sans-8'"
+# start a program launcher
+bindsym $mod+p exec i3-dmenu-desktop
 bindsym $mod+Shift+d exec dmenu_run
 
 # dmenu_ssh
-#bindsym $mod+t exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
-bindsym $mod+p exec i3-dmenu-desktop
+bindsym $mod+c exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
 
 # start a terminal
 bindsym $mod+Return exec urxvt
 
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock screen using i3lock and suspend machine
+bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/dot-files-forest/nasa_hubble_ultra_deep_field_2014.jpg; sudo systemctl suspend"
+
+# lock screen using i3lock
+bindsym $mod+Control+l exec "i3lock --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.jpg"
+
+# https://github.com/proxypoke/quickswitch-for-i3
+bindsym $mod+q exec quickswitch.py
+
+# dynamic tagging feature
+bindsym $mod+t exec i3-msg workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
+bindsym $mod+Shift+t exec i3-msg move container to workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
+
 # Font for window titles.
-font pango:Sans 8
+font pango:Source Code Pro 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -116,35 +131,16 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# lock screen using i3lock and suspend machine
-bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/dot-files-forest/nasa_hubble_ultra_deep_field_2014.jpg; sudo systemctl suspend"
-
-# lock screen using i3lock
-bindsym $mod+Control+l exec "i3lock --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.jpg"
-
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 bindsym $mod+r mode "resize"
 
-# https://github.com/proxypoke/quickswitch-for-i3
-bindsym $mod+q exec quickswitch.py
-
-# dynamic tagging feature
-bindsym Mod4+t exec i3-msg workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
-bindsym Mod4+Shift+t exec i3-msg move container to workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
-
 # toggle workspace
-bindsym Mod4+z workspace back_and_forth
+bindsym $mod+z workspace back_and_forth
 
 # marks
-bindsym Mod4+m exec i3-input -F 'mark %s' -P 'Mark name: '
-bindsym Mod4+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
+bindsym $mod+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # volume keys
 bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+
