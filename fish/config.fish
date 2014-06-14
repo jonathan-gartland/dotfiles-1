@@ -38,6 +38,7 @@ set -x LESS_TERMCAP_us (printf '\e[04;38;5;200m') # enter underline mode
 if test $HOSTNAME = "falcon"
     set -x PRINTER HP_LaserJet_1020
     alias reset_home_printer="sudo sed -i -e ‘/StateMessage .*lpd failed/d’ -e ‘s/State Stopped/State Idle/’ /etc/cups/printers.conf"
+    alias kill_subl3="pkill subl3; pkill plugin-host"
 end
 
 ## aliases
@@ -100,7 +101,6 @@ end
 umask 002
 
 ## gpg-agent
-
 if test $EUID -ne 0
     set -l envfile "$HOME/.gnupg/gpg-agent.env"
     set -l envfile_fish "$HOME/.gnupg/gpg-agent.env.fish"
