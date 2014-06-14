@@ -3,12 +3,12 @@ host knight.cx
 protocol smtp
 domain knight.cx
 auth on
-port 587
+port 465
 from steven@knight.cx
 user skk
 tls on
 tls_starttls on
-passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg"
+passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg 2> /dev/null"
 tls_fingerprint f8:ab:40:c0:49:2d:af:23:14:45:6a:9a:65:ba:1a:a4:81:b0:a8:52
 
 account default : skk
