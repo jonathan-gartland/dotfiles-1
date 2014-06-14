@@ -63,3 +63,20 @@ source $HOME/.zsh/nonlogin.d/99misc
 source $HOME/.zsh/nonlogin.d/100-gpg-agent.sh
 
 source $HOME/dot-files-forest/zsh/clauswitt.zsh-theme
+
+
+function powerline_precmd() {
+    export PS1="$(~/dot-files-forest/powerline-shell/powerline-shell.py $? --shell zsh --mode flat 2> /dev/null)"
+}
+
+function install_powerline_precmd() {
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+   
+    precmd_functions+=(powerline_precmd)
+}
+
+install_powerline_precmd
