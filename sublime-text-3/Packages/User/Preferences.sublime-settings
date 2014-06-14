@@ -72,13 +72,13 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 9,
+	"font_size": 8,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"vintage",
+		"Markdown",
 		"LiveReload"
 	],
 	"indent_guide_options":
