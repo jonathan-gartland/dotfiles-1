@@ -27,6 +27,9 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
+# load LS colors
+eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -45,35 +48,22 @@ source ~/.zsh/functions.zsh
 
 ## aliases
 
-alias cp='cp -i'
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color=auto --ignore-case'
 alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
-alias la='ls -al'	 # show hidden files
-alias lc='ls -lcr'	# sort by change time
-alias lk='ls -lSr'	# sort by size
 alias ll='ls -l'
-alias lm='ls -al |less'	    # pipe through 'more'
-alias lR='ls -lR'	 # recursive ls
-alias lr='ls -ltr'	# sort by date DSC
-alias ls='ls -hF --color'			 # add colors for filetype recognition
-alias lC='ls -hF --color=never'			 # add colors for filetype recognition
-alias lt='ls -lt'	# sort by date ASC
-alias lu='ls -lur'	# sort by access time
-alias lx='ls -lXB'	# sort by extension
+alias lm='ls -al |less'	    # pipe through 'less'
+alias lR='ls -lR'	        # recursive ls
+alias ls='ls -hF --color'   # add colors for filetype recognition
 alias mkdir='mkdir -p'
 alias more='less'
-alias mv='mv -i'
 alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
 alias putty='set TERM=putty'
-alias rm='rm -i'
 alias today='date +%F'
 alias todayISO1806='date -u +"%FT%TZ"'
 alias tree='tree -Csuh'	    # nice alternative to 'ls'
 alias watch='watch -n 1'
-alias ssh='ssh -C -Y'
-alias scp='scp -C'
 alias tmux='tmux -f ~/.tmux.conf'
 
 # # From http://justinlilly.com/dotfiles/zsh.html
