@@ -72,7 +72,7 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 8,
+	"font_size": 9,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -108,7 +108,7 @@
 	],
 	"scroll_past_end": true,
 	"scroll_speed": 5.0,
-	"show_full_path": false,
+	"show_full_path": true,
 	"sidebar_folders": true,
 	"sidebar_small": true,
 	"spell_check": true,
