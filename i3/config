@@ -6,7 +6,7 @@ set $mod Mod4
 
 # start a program launcher
 bindsym $mod+p exec i3-dmenu-desktop
-bindsym $mod+Shift+d exec dmenu_run
+bindsym $mod+Shift+p exec dmenu_run
 
 # dmenu_ssh
 bindsym $mod+c exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
