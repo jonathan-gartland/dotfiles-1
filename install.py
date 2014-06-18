@@ -4,7 +4,7 @@ import sys, os.path, optparse, fileinput
 from event import event
 
 def get_parser(arguments):
-    usage = "usage: %prog [options] other|home|work"
+    usage = "usage: %prog [options] home|work"
     parser = optparse.OptionParser(usage = usage)
 
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
@@ -167,14 +167,6 @@ class install(object):
         signature = None
         msmtprc = None
 
-        if self.install_type == None:
-            gitconfig = 'dotfiles/gitconfig.NONE'
-
-        if self.WORK == self.install_type:
-            gitconfig = 'dotfiles/gitconfig.WORK'
-            offlineimap = 'dotfiles/offlineimaprc.WORK'
-            msmtprc = 'msmtprc/msmtprc.WORK'
-
         if self.HOME == self.install_type:
             gitconfig = 'dotfiles/gitconfig.HOME'
             offlineimap = 'dotfiles/offlineimaprc.HOME'
@@ -195,10 +187,6 @@ class install(object):
             Link('dotfiles/abcde.conf','.abcde.conf' ),
             Link( gitconfig,'.gitconfig'),
             Link('dotfiles/signature.HOME','.signature.home'),
-            Link('dotfiles/signature.WORK','.signature.work'),
-            Link('dotfiles/signature.WORK.HTML','.signature.work.html'),
-            Link('dotfiles/authinfo.HOME.gpg','.authinfo.home'),
-            Link('dotfiles/authinfo.WORK.gpg','.authinfo.work'),
             Link('dotfiles/ssh_config', '.ssh/config'),
             Link('dotfiles/login.sql', 'login.sql'),
             Link('dotfiles/git.scmbrc', '.git.scmbrc'),
@@ -225,14 +213,6 @@ class install(object):
 
         fonts = LinkSet(Link('fonts','.fonts'))
 
-        terminator = LinkSet(Link('terminator','.config/terminator'))
-
-        lilyterm = LinkSet(Link('lilyterm','.config/lilyterm'))
-
-        rxvt = LinkSet(Link('rxvt','.rxvt'))
-
-        abook = LinkSet(Link('abook','.abook'))
-
         mutt = LinkSet(
                 Link('mutt','.mutt'),
                 Link('mutt/muttrc','.muttrc'))
@@ -251,21 +231,11 @@ class install(object):
 
         emacs = LinkSet(Link('emacs','.emacs.d'))
 
-        # TODO: Add pre-link creation hook to clone repo
-        ffind = LinkSet(Link('friendly-find/ffind','bin/ffind'))
+        fish = LinkSet(Link('fish', '.config/fish'))
 
         i3 = LinkSet(Link('i3','.i3'))
 
-        clojure = LinkSet(Link('lein','.lein'),
-            Link('cljr','.cljr'),
-            Link('m2','.m2'))
-
-        vim = LinkSet(
-            Link('vim/after','vim/after'),
-            Link('vim/vimrc.basic.vim','.vimrc'),
-            Link('vim/vimrc.local','.vimrc.local'),
-            Link('vim/vimrc.before.local','.vimrc.before.local'),
-            Link('vim/vimrc.bundles.local','.vimrc.bundles.local'))
+        vim = LinkSet(Link('vim/vimrc.basic.vim','.vimrc'))
 
         # TODO: Add pre-link creation hook to clone repo
         vimpager = LinkSet(
@@ -279,43 +249,30 @@ class install(object):
         sublime_text = LinkSet(Link('sublime-text-3','.config/sublime-text-3'))
 
         zsh = LinkSet(Link('zsh','.zsh'),
-            Link('zsh/clauswitt.zsh-theme',
-                '.oh-my-zsh/themes/clauswitt.zsh-theme'),
             Link('oh-my-zsh', '.oh-my-zsh'),
             Link('zsh/zshrc', '.zshrc'),
             Link('zsh/zlogin', '.zlogin'))
-
-        procmail = None
-        if self.WORK == self.install_type:
-            procmail = LinkSet(
-                Link('procmail/work','.procmail'),
-                Link('procmail/work/procmailrc','.procmailrc'))
 
         if self.HOME == self.install_type:
             procmail = LinkSet(
                 Link('procmail/home','.procmail'),
                 Link('procmail/home/procmailrc','.procmailrc'))
+        else:
+            procmail = None
 
         return {
             'bash' : bash,
-            'bazaar' : bazaar,
             'bin' : bin,
-            'clojure' : clojure,
             'dotfiles' : dotfiles,
             'emacs' : emacs,
-            'ffind' : ffind,
+            'fish' : fish,
             'fonts' : fonts,
             'gnupg' : gnupg,
             'i3' : i3,
             'mutt': mutt,
             'msmtp': msmtp,
-            'abook': abook,
-            'lilyterm' : lilyterm,
             'procmail' : procmail,
-            'rxvt' : rxvt,
             'sublime-text' : sublime_text,
-            'terminator': terminator,
-            'vimpager' : vimpager,
             'vim' : vim,
             'zsh': zsh
         }
