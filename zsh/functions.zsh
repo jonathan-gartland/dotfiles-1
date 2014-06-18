@@ -1,3 +1,4 @@
+
 function _zsh_run_command # "Local zsh function to run a command"
 {
     if [[ $1 != '' ]]; then
@@ -16,7 +17,7 @@ function _print_helper
 
 function text1p
 {
-    a2ps_options="--portrait --columns=1" 
+    a2ps_options="--portrait --columns=1"
     if [[ $2 == '' ]]; then
         _print_helper $a2ps_options $1
     else
@@ -26,7 +27,7 @@ function text1p
 
 function text1r
 {
-    a2ps_options="--landscape --columns=1" 
+    a2ps_options="--landscape --columns=1"
     if [[ $2 == '' ]]; then
         _print_helper $a2ps_options $1
     else
@@ -36,7 +37,7 @@ function text1r
 
 function text2p
 {
-    a2ps_options="--landscape --columns=2" 
+    a2ps_options="--landscape --columns=2"
     if [[ $2 == '' ]]; then
         _print_helper $a2ps_options $1
     else
@@ -52,10 +53,10 @@ function BackupAndDelete
 function create_maildir # "Create a Maildir directory"
 {
     if [[ -d $MAILDIR ]]; then
-        if [[ $1 != '' ]]; then 
-	        mkdir -m 700 $MAILDIR/.$argv[1]/{,tmp,new,cur}
+        if [[ $1 != '' ]]; then
+            mkdir -m 700 $MAILDIR/.$argv[1]/{,tmp,new,cur}
         fi
-    fi 
+    fi
 }
 
 function setup_was_env
@@ -163,3 +164,14 @@ ips () {
     ifconfig | grep "inet " | awk '{ print $2 }'
 }
 
+# color support in diff
+if [ -x /usr/bin/colordiff ]; then
+    case "$TERM" in
+    xterm-color|xterm-256color) alias diff=colordiff ;;
+    esac
+fi
+
+# Create and than change into it
+mkcd() {
+    mkdir $1 && cd $1
+}

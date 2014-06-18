@@ -1,82 +1,107 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-ZSH_THEME="mh"
+# local oh-my-zsh
+source ~/.zsh/oh-my-zsh.zsh
 
-# Set to this to use case-sensitive completion
-CASE_SENSITIVE="true"
+# ## set env. variables
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-#source ~/dot-files-forest/zsh-vcs-prompt/zshrc.sh
-
-plugins=(autojump
-        archlinux
-        bundler
-        colored-man
-        colorize
-        command-aliases
-        command-not-found
-        copydir
-        copyfile
-        cp
-        git
-        git-extras
-        git-flow
-        git-hubflow
-        git-remote-branch
-        github
-        gnu-utils
-        history
-        command-not-found
-        python
-        #rails
-        rsync
-        ruby
-        history-substring-search
-        rvm
-        ssh-agent
-        themes
-        thor
-        tmux
-        sublime
-        z
-        )
-
-source $ZSH/oh-my-zsh.sh
-
-source $HOME/.zsh/nonlogin.d/00init
-source $HOME/.zsh/nonlogin.d/10history
-source $HOME/.zsh/nonlogin.d/20prompt
-source $HOME/.zsh/nonlogin.d/30path
-source $HOME/.zsh/nonlogin.d/40editor
-source $HOME/.zsh/nonlogin.d/80functions
-source $HOME/.zsh/nonlogin.d/90aliases
-source $HOME/.zsh/nonlogin.d/99misc
-source $HOME/.zsh/nonlogin.d/100-gpg-agent.sh
-
-source $HOME/dot-files-forest/zsh/clauswitt.zsh-theme
+export HOSTNAME=$(/usr/bin/env hostname -f)
+export PAGER=less
+export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
+export MANPATH="$MANPATH:$HOME/local/share/man"
+export TERMINFO="$HOME/.terminfo"
+export GIT_EDITOR=vim
+export EDITOR=vim
+export VISUAL=vim
+export PATH=$PATH:$HOME/local/bin:$HOME/bin
+export stow="$HOME/local/stow"
 
 
-function powerline_precmd() {
-    export PS1="$(~/dot-files-forest/powerline-shell/powerline-shell.py $? --shell zsh --mode flat 2> /dev/null)"
-}
+# colorize output from man
+# http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
+export LESS='-FSRX'
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode
+export LESS_TERMCAP_md=$(printf '\e[01;38;5;75m') # enter double-bright mode
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
-function install_powerline_precmd() {
-    for s in "${precmd_functions[@]}"; do
-        if [ "$s" = "powerline_precmd" ]; then
-            return
-        fi
-    done
-   
-    precmd_functions+=(powerline_precmd)
-}
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-install_powerline_precmd
+# switch to 256 color xterm if using "xterm"
+if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
+    export TERM=rxvt-256color
+fi
+
+# ## local settings
+if [ -r ~/.zsh/local/$HOSTNAME.zsh ]; then
+    source ~/.zsh/local/$HOSTNAME.zsh
+fi
+
+# load functions
+source ~/.zsh/functions.zsh
+
+## aliases
+
+alias cp='cp -i'
+alias df='df -h'
+alias du='du -h'
+alias grep='grep --color=auto --ignore-case'
+alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
+alias la='ls -al'	 # show hidden files
+alias lc='ls -lcr'	# sort by change time
+alias lk='ls -lSr'	# sort by size
+alias ll='ls -l'
+alias lm='ls -al |less'	    # pipe through 'more'
+alias lR='ls -lR'	 # recursive ls
+alias lr='ls -ltr'	# sort by date DSC
+alias ls='ls -hF --color'			 # add colors for filetype recognition
+alias lC='ls -hF --color=never'			 # add colors for filetype recognition
+alias lt='ls -lt'	# sort by date ASC
+alias lu='ls -lur'	# sort by access time
+alias lx='ls -lXB'	# sort by extension
+alias mkdir='mkdir -p'
+alias more='less'
+alias mv='mv -i'
+alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
+alias putty='set TERM=putty'
+alias rm='rm -i'
+alias today='date +%F'
+alias todayISO1806='date -u +"%FT%TZ"'
+alias tree='tree -Csuh'	    # nice alternative to 'ls'
+alias watch='watch -n 1'
+alias ssh='ssh -C -Y'
+alias scp='scp -C'
+alias tmux='tmux -f ~/.tmux.conf'
+
+# # From http://justinlilly.com/dotfiles/zsh.html
+alias svim="sudo vim" # Run vim as super user
+
+# From http://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+
+## completions
+
+## misc
+
+# # set default umask
+umask 002
+
+## gpg-agent
+# if [ $EUID -ne 0 ] ; then
+#     envfile="$HOME/.gnupg/gpg-agent.env"
+#     if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
+#         eval "$(cat "$envfile")"
+#     else
+#         eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+#     fi
+#     export GPG_AGENT_INFO  # the env file does not contain the export statement
+#     export SSH_AUTH_SOCK   # enable gpg-agent for ssh
+# fi
+
