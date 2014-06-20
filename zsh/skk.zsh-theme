@@ -54,4 +54,4 @@ RPROMPT='$(vcs_super_info) %{$fg[white]%}$(rvm_prompt_info)$(node_prompt_info)%{
 
 PROMPT='
 %{$fg[cyan]%}[%~% ]
-%{$fg[magenta]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} %B$%b '
+%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %B$%b '
