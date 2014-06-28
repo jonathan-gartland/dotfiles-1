@@ -1,5 +1,5 @@
 if [ $HOSTNAME = "falcon" ]; then
-    export PRINTER=HP_LaserJet_1020_2
+    export PRINTER=HP_LaserJet_1020
     alias reset_home_printer="sudo sed -i -e ‘/StateMessage .*lpd failed/d’ -e ‘s/State Stopped/State Idle/’ /etc/cups/printers.conf"
     alias kill_subl3="pkill subl3; pkill plugin-host"
 
