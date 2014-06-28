@@ -30,7 +30,7 @@ status.register("disk", path="/", format="/ {total}G-{used}G={avail}G",round_siz
 status.register("disk", path="/home", format="/home {total}G-{used}G={avail}G",round_size=0)
 
 # Shows pulseaudio default sink volume
-status.register("pulseaudio", format="♪{volume}",)
+status.register("pulseaudio", format="♪{volume} {muted}",)
 
 # shows CPU Usage as a bar
 #status.register("cpu_usage_bar",
@@ -38,7 +38,7 @@ status.register("pulseaudio", format="♪{volume}",)
 
 # Shows mpd status
 status.register("mpd",
-    format="{title}{status}{album}",
+    format="{artist} ─ {album} ─ {title}  {status}",
     status={
         "pause": "▷",
         "play": "▶",
@@ -52,17 +52,17 @@ status.register("weather",
     colorize=True,
     format="{current_temp}")
 
-def get_imap_password(fname):
-    with open(fname) as f:
+def get_imap_password(*path):
+    from os.path import join, expanduser
+    filepath = expanduser(join(*path))
+
+    with open(filepath) as f:
         content = f.read().splitlines()
         if len(content) > 0:
             return content[0]
 
         return ""
 
-
-from os.path import join, expanduser
-password=get_imap_password(join(expanduser("~"), ".i3", "imap_password.txt"))
 
 # shows unread message count on INBOX
 status.register("mail",
@@ -73,7 +73,7 @@ status.register("mail",
              port=993, ssl=True,
              host="knight.cx",
              username="skk",
-             password = password
+             password = get_imap_password("~", ".i3", "imap_password.txt")
             )])
 status.run()
 
