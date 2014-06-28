@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-#ZSH_THEME="superjarin"
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -12,7 +9,7 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(autojump archlinux
          bundler
-         colored-man colorize command-aliases command-not-found copydir copyfile cp command-not-found
+         colored-man colorize common-aliases command-not-found copydir copyfile cp command-not-found
          dirhistory
          gpg-agent gem git git-prompt git-extras git-flow git-hubflow git-remote-branch github gnu-utils
          history history-substring-search
@@ -34,3 +31,4 @@ source $HOME/dot-files-forest/zsh/skk.zsh-theme
 node_prompt_info() {
    echo ""
 }
+
