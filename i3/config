@@ -97,11 +97,11 @@ set $ws1 1: Web
 set $ws2 2: Subl
 set $ws3 3: Term
 set $ws4 4: Term
-set $ws5 5: Mail
-set $ws6 6: Music
+set $ws5 5: Term
+set $ws6 6: Term
 set $ws7 7: Misc
-set $ws8 8: Misc
-set $ws9 9: Misc
+set $ws8 8: Mail
+set $ws9 9: Music
 set $ws10 10: Steam
 
 # switch to workspace
