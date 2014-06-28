@@ -21,10 +21,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # lock screen using i3lock and suspend machine
-bindsym $mod+Shift+Control+l exec "i3lock --image=/home/skk/dot-files-forest/nasa_hubble_ultra_deep_field_2014.jpg; sudo systemctl suspend"
+bindsym $mod+Shift+Control+l exec "i3lock --tile --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.png; sudo systemctl suspend"
 
 # lock screen using i3lock
-bindsym $mod+Control+l exec "i3lock --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.jpg"
+bindsym $mod+Control+l exec "i3lock --tile --image=/home/skk/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.png"
 
 # https://github.com/proxypoke/quickswitch-for-i3
 bindsym $mod+q exec quickswitch.py
