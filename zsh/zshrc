@@ -54,7 +54,8 @@ alias grep='grep --color=auto --ignore-case'
 alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
 alias ll='ls -l'
 alias lm='ls -al |less'	    # pipe through 'less'
-alias lR='ls -lR'	        # recursive ls
+alias lR='ls -l'	        # recursive ls
+alias lr='ls -ltr'          # sort by date DSC
 alias ls='ls -hF --color'   # add colors for filetype recognition
 alias mkdir='mkdir -p'
 alias more='less'
@@ -82,3 +83,25 @@ alias ..5="cd ../../../../.."
 
 # set default umask
 umask 002
+
+# load (optional) percol
+function exists { which $1 &> /dev/null }
+
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+fi
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# load scm_breeze
+[ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
