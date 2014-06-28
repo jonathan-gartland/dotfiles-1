@@ -142,11 +142,16 @@ bindsym $mod+z workspace back_and_forth
 bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
 bindsym $mod+g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
-# volume keys
+# audio keys
 bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 2%-
 bindsym XF86AudioMute exec amixer sset Master toggle
-# other keys
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+# app keys
+bindsym XF86Tools exec ario
 bindsym XF86Mail exec thunderbird -compose
 bindsym XF86Explorer exec google-chrome
 bindsym XF86HomePage exec marlin
