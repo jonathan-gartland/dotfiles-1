@@ -188,7 +188,6 @@ class install(object):
             Link( gitconfig,'.gitconfig'),
             Link('dotfiles/signature.HOME','.signature.home'),
             Link('dotfiles/ssh_config', '.ssh/config'),
-            Link('dotfiles/login.sql', 'login.sql'),
             Link('dotfiles/git.scmbrc', '.git.scmbrc'),
             Link('dotfiles/perlcriticrc', '.perlcriticrc'),
             Link('dotfiles/scmbrc', '.scmbrc'),
