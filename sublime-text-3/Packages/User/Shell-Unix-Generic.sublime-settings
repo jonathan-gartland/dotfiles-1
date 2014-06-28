@@ -1,7 +1,17 @@
 {
-    "extensions":
-    [
-    ],
-    "margin": 4,
-    "tab_size": 4
+	"apply_syntax_extensions":
+	[
+		"sh",
+		"zsh",
+		"bash"
+	],
+	"extensions":
+	[
+		"git.scmbrc",
+		"zsh",
+		"bash",
+		"sh"
+	],
+	"margin": 4,
+	"tab_size": 4
 }

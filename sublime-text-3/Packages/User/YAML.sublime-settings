@@ -1,1 +1,16 @@
-{ "margin": 2, "tab_size": 2 }
+{
+	"apply_syntax_extensions":
+	[
+		"yml",
+		"yml.dist",
+		".gemrc"
+	],
+	"extensions":
+	[
+		"yml",
+		"yml.dist",
+		".gemrc"
+	],
+	"margin": 2,
+	"tab_size": 2
+}

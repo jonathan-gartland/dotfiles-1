@@ -1,0 +1,28 @@
+{
+	"Git Config":
+	[
+		".gitconfig",
+		".gitmodules",
+		"gitconfig.HOME",
+		".gitattributes"
+	],
+	"Git Ignore":
+	[
+		".gitignore"
+	],
+	"INI":
+	[
+		".npmrc",
+		".gitconfig",
+		"ini.dist",
+		".gitignore",
+		".gitattributes"
+	],
+	"Shell-Unix-Generic":
+	[
+		"git.scmbrc",
+		"bash",
+		"zsh",
+		"sh"
+	]
+}
