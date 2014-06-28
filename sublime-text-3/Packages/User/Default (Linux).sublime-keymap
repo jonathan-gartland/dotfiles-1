@@ -3,6 +3,16 @@
     { "keys": ["super+shift+v"], "command": "paste" },
 
     { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
-    { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} }
+    { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
 
+    {
+        "keys": ["f1"],
+        "command": "chain",
+        "args": {
+            "commands": [
+                ["dired", {"immediate": true}],
+                ["toggle_mode"]
+            ]
+        }
+    }
 ]
