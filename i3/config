@@ -9,7 +9,7 @@ bindsym $mod+p exec i3-dmenu-desktop
 bindsym $mod+Shift+p exec dmenu_run
 
 # dmenu_ssh
-bindsym $mod+c exec ~/src/dmenu_ssh/bin/dmenu_ssh.pl
+bindsym $mod+c exec ~/Projects/dmenu_ssh/bin/dmenu_ssh.pl
 
 # start a terminal
 bindsym $mod+Return exec urxvt
