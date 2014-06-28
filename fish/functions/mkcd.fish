@@ -1,3 +1,3 @@
 function mkcd -e "Create and than change into it"
-    mkdir $argv; cd $argv
+    mkdir $argv; and cd $argv
 end
