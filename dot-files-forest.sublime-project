@@ -1,4 +1,8 @@
 {
+    "settings": {
+        "convert_tabspaces_on_save": true
+    },
+
 	"folders":
 	[
 		{
