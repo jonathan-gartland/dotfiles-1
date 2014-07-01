@@ -13,9 +13,53 @@ node_prompt_info() {
     echo "[$node_prompt]"
 }
 
-get_pwd() {
-  echo "${PWD/$HOME/~}"
+#function prompt_pwd {
+#    echo $PWD | sed -e "s|^$HOME|~|"
+#}
+
+function prompt_char {
+    if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
+
+# get_pwd() {
+
+#     local basedir_name=$(basename $(prompt_pwd))
+
+#     # pwd
+#     # The pwd segment format is X:P(C) where:
+#     #   X is either home or /
+#     #   P is the current working path basename (name of the current directory)
+#     #   C is the depth of the path starting from X
+#     # If the pwd is home or / then the prompt format is simplified to 'home' or
+#     # '/' without the current directory and depth.
+#     local ps_pwd=""
+#     if [[ -z "$ps_git" ]]; then
+#         local depth=$(echo $(pwd) | cut -d "/" --output-delimiter=" " -f 1- | wc -w)
+#         local in_home=$(echo $(pwd) | grep ~)
+#         if [[ -n "$in_home" ]]; then
+#           ps_pwd="home"
+#         else
+#           ps_pwd="/"
+#         fi
+#         if [ "$(echo $(pwd))" != "~" -a "$(echo $(pwd))" != "/" ]; then
+#           ps_pwd="$ps_pwd:$basedir_name"
+#           if [[ -n "$in_home" ]]; then
+#             ((depth-=2))
+#           fi
+#           ps_pwd="$ps_pwd($depth)"
+#         fi
+#     fi
+#     #echo "$ps_pwd"
+
+#     echo '%{$fg[red]%}%30<...<%~%<<%{$reset_color%}'
+
+#     #echo "${PWD/$HOME/~}"
+
+#     # Prints out the current working directory in fishy-style.
+#     #echo $(pwd | perl -pe "s|^$HOME|~|g; s|/([^/])[^/]*(?=/)|/\$1|g")
+# }
+
+# For example, '~/projects/dotfiles' becomes '~/p/dotfiles'
 
 source ~/dot-files-forest/zsh-vcs-prompt/zshrc.sh
 
@@ -52,6 +96,21 @@ ZSH_VCS_PROMPT_GIT_FORMATS+='%{%F{green}%}#j%{%f%b%}]'
 
 RPROMPT='$(vcs_super_info) %{$fg[white]%}$(rvm_prompt_info)$(node_prompt_info)%{$reset_color%} $EPS1'
 
+local TERMWIDTH
+(( TERMWIDTH = ${COLUMNS} - 1 ))
+#echo "TERMWIDTH $TERMWIDTH"
+
+local PWDLEN=0
+PWDLEN=${#${(S%%)$(pwd)//$~zero/}}
+#echo "PWDLEN $PWDLEN"
+
+if [[ $TERMWIDTH -gt $PWDLEN ]]; then
+    ((PWDLEN=$TERMWIDTH - $PWDLEN - 2)) # why 3? We have these extra chars: [ ]
+fi
+
+#echo "PWDLEN $PWDLEN"
+
 PROMPT='
-%{$fg[cyan]%}[%~% ]
-%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %B$%b '
+%{$fg[cyan]%}[%$PWDLEN<...<%~%<<%{$reset_color%}]
+%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %B$(prompt_char)%b '
+
