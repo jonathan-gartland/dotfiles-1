@@ -63,9 +63,11 @@ alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
 alias putty='set TERM=putty'
 alias today='date +%F'
 alias todayISO1806='date -u +"%FT%TZ"'
-alias tree='tree -Csuh'	    # nice alternative to 'ls'
+alias tree='tree -Csuh'         # nice alternative to 'ls'
 alias watch='watch -n 1'
 alias tmux='tmux -f ~/.tmux.conf'
+
+alias dff='cd ~/dot-files-forest'
 
 # # From http://justinlilly.com/dotfiles/zsh.html
 alias svim="sudo vim" # Run vim as super user
