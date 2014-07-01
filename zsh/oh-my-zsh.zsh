@@ -9,7 +9,7 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(autojump archlinux
          bundler
-         colored-man colorize common-aliases command-not-found copydir copyfile cp command-not-found
+         colored-man colorize common-aliases command-not-found copydir copyfile cp
          dirhistory
          gpg-agent gem git git-prompt git-extras git-flow git-hubflow git-remote-branch github gnu-utils
          history history-substring-search
