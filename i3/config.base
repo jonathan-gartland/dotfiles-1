@@ -4,6 +4,13 @@
 # Mod4 --> Win Key
 set $mod Mod4
 
+# Start thunderbird, subl3, cantata and chromium on specific workspaces.
+# Starting additional instances will be started on the current workspace.
+# exec --no-startup-id i3-msg 'workspace 5; exec cantata'
+# exec --no-startup-id i3-msg 'workspace 4; exec thunderbird'
+# exec --no-startup-id i3-msg 'workspace 2; exec subl3'
+# exec --no-startup-id i3-msg 'workspace 1; exec chromium'
+
 # start a program launcher
 bindsym $mod+p exec i3-dmenu-desktop
 bindsym $mod+Shift+p exec dmenu_run
@@ -97,10 +104,10 @@ set $ws1 1: Web
 set $ws2 2: Subl
 set $ws3 3: Term
 set $ws4 4: Term
-set $ws5 5: Term
+set $ws5 5: Mail
 set $ws6 6: Term
 set $ws7 7: Misc
-set $ws8 8: Mail
+set $ws8 8: Misc
 set $ws9 9: Music
 set $ws10 10: Steam
 
@@ -156,23 +163,11 @@ bindsym XF86Mail exec thunderbird -compose
 bindsym XF86Explorer exec google-chrome
 bindsym XF86HomePage exec marlin
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+
 bar {
-    position bottom
     font pango:Source Code Sans 8
     status_command python ~/.i3/i3pystatus_conf.py
-    tray_output primary
-    colors {
-        background #073642
-        statusline #eee8d5
-        focused_workspace  #cb4b16 #cb4b16 #eee8d5
-        active_workspace   #cb4b16 #cb4b16 #eee8d5
-        inactive_workspace #b58900 #b58900 #eee8d5
-    }
+    # $i3-theme-bar
 }
 
-# class                 border  backgr. text    indicator
-client.focused          #859900 #859900 #fdf6e3 #2e9ef4
-client.focused_inactive #268bd2 #268bd2 #fdf6e3 #484e50
-client.unfocused        #333333 #93a1a1 #fdf6e3 #292d2e
+# $i3-theme-window
