@@ -1,9 +1,6 @@
 [submodule "powerline-shell"]
 	path = powerline-shell
 	url = git@github.com:milkbikis/powerline-shell.git
-[submodule "git-flow-completion"]
-	path = git-flow-completion
-	url = git@github.com:bobthecow/git-flow-completion.git
 [submodule "zsh-vcs-prompt"]
 	path = zsh-vcs-prompt
 	url = git@github.com:yonchu/zsh-vcs-prompt.git
