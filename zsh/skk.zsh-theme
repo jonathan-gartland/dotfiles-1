@@ -96,21 +96,7 @@ ZSH_VCS_PROMPT_GIT_FORMATS+='%{%F{green}%}#j%{%f%b%}]'
 
 RPROMPT='$(vcs_super_info) %{$fg[white]%}$(rvm_prompt_info)$(node_prompt_info)%{$reset_color%} $EPS1'
 
-local TERMWIDTH
-(( TERMWIDTH = ${COLUMNS} - 1 ))
-#echo "TERMWIDTH $TERMWIDTH"
-
-local PWDLEN=0
-PWDLEN=${#${(S%%)$(pwd)//$~zero/}}
-#echo "PWDLEN $PWDLEN"
-
-if [[ $TERMWIDTH -gt $PWDLEN ]]; then
-    ((PWDLEN=$TERMWIDTH - $PWDLEN - 2)) # why 3? We have these extra chars: [ ]
-fi
-
-#echo "PWDLEN $PWDLEN"
-
 PROMPT='
-%{$fg[cyan]%}[%$PWDLEN<...<%~%<<%{$reset_color%}]
+%{$fg[cyan]%}[%d]
 %{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %B$(prompt_char)%b '
 
