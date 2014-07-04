@@ -87,13 +87,13 @@ alias ..5="cd ../../../../.."
 
 ## completions
 
-if test -f ~/dot-files-forest/git-flow-completion/git.fish
-    source ~/dot-files-forest/git-flow-completion/git.fish
-end
-
-if test -d ~/dot-files-forest/fish-nuggets/completions
-    source ~/dot-files-forest/fish-nuggets/completions/*
-end
+#if test -f ~/dot-files-forest/git-flow-completion/git.fish
+#    source ~/dot-files-forest/git-flow-completion/git.fish
+#end
+#
+#if test -d ~/dot-files-forest/fish-nuggets/completions
+#    source ~/dot-files-forest/fish-nuggets/completions/*
+#end
 
 ## misc
 
