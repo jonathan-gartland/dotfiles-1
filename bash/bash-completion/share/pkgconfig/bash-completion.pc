@@ -1,9 +1,0 @@
-prefix=/home/skk/dot-files-forest/bash/bash-completion-2.0/../bash-completion
-compatdir=${prefix}/etc/bash_completion.d
-completionsdir=${prefix}/share/bash-completion/completions
-helpersdir=${prefix}/share/bash-completion/helpers
-
-Name: bash-completion
-Description: programmable completion for the bash shell
-URL: http://bash-completion.alioth.debian.org/
-Version: 2.0
