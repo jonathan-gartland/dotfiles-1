@@ -7,11 +7,12 @@ CASE_SENSITIVE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(autojump archlinux
+ plugins=(autojump archlinux
          bundler
          colored-man colorize common-aliases command-not-found copydir copyfile cp
-         dirhistory
-         gpg-agent gem git git-prompt git-extras git-flow git-hubflow git-remote-branch github gnu-utils
+         dirhistory docker
+         gpg-agent gem gnu-utils
+         git git-extras git-flow git-hubflow git-remote-branch github
          history history-substring-search
          python
          rails rsync ruby rvm
