@@ -53,8 +53,8 @@ alias du='du -h'
 alias grep='grep --color=auto --ignore-case'
 alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
 alias ll='ls -l'
-alias lm='ls -al |less'	    # pipe through 'less'
-alias lR='ls -l'	        # recursive ls
+alias lm='ls -al |less'     # pipe through 'less'
+alias lR='ls -l'            # recursive ls
 alias lr='ls -ltr'          # sort by date DSC
 alias ls='ls -hF --color'   # add colors for filetype recognition
 alias mkdir='mkdir -p'
@@ -66,7 +66,7 @@ alias todayISO1806='date -u +"%FT%TZ"'
 alias tree='tree -Csuh'         # nice alternative to 'ls'
 alias watch='watch -n 1'
 alias tmux='tmux -f ~/.tmux.conf'
-
+alias ln='ln -v'
 alias dff='cd ~/dot-files-forest'
 
 # # From http://justinlilly.com/dotfiles/zsh.html
@@ -78,6 +78,22 @@ alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
+
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+alias -g ONE="| awk '{ print \$1}'"
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+# Bundler
+alias b="bundle"
+
+# Rails
+alias migrate="rake db:migrate db:rollback && rake db:migrate"
+alias m="migrate"
+alias rk="rake"
+alias s="rspec"
 
 ## completions
 
@@ -107,3 +123,6 @@ fi
 
 # load scm_breeze
 [ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
+
+# load fasd
+[ -s $(which fasd) ] && eval "$(fasd --init auto)"
