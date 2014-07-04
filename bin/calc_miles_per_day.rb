@@ -10,7 +10,7 @@ def parse_args
     Calculate miles driven per day.
 
     Usage:
-      #{__FILE__} <start_date> <current_milage>
+      #{__FILE__} <current_milage>
       #{__FILE__} -h | --help
 
     Options:
@@ -28,10 +28,11 @@ DOCOPT
 end
 
 
+START_DATE = Date.parse("2010-01-07")
+START_MILEAGE = 67481
+
 opts = parse_args
-start_date = Date.parse(opts["<start_date>"])
-today = Date.today
 current_milage = opts["<current_milage>"].to_i
 
-mpd =  current_milage / (today - start_date)
-puts "MPD #{mpd.to_f}"
+mpd = (current_milage - START_MILEAGE) / (Date.today - START_DATE)
+puts printf("%3.2f", mpd.to_f)
