@@ -1,15 +1,6 @@
-[submodule "oh-my-fish"]
-	path = oh-my-fish
-	url = git://github.com/bpinto/oh-my-fish.git
 [submodule "powerline-shell"]
 	path = powerline-shell
 	url = git@github.com:milkbikis/powerline-shell.git
-[submodule "z-fish"]
-	path = z-fish
-	url = git@github.com:roryokane/z-fish.git
-[submodule "fish-nuggets"]
-	path = fish-nuggets
-	url = git@github.com:zmalltalker/fish-nuggets.git
 [submodule "git-flow-completion"]
 	path = git-flow-completion
 	url = git@github.com:bobthecow/git-flow-completion.git
