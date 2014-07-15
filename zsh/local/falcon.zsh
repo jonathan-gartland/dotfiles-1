@@ -11,4 +11,6 @@ if [ $HOSTNAME = "falcon" ]; then
     if [ -d "/usr/bin/core_perl" ]; then
         export PATH=$PATH:"/usr/bin/core_perl"
     fi
+
+    export BROWSER=google-chrome-stable
 fi
