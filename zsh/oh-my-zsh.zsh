@@ -12,7 +12,7 @@ COMPLETION_WAITING_DOTS="true"
          colored-man colorize common-aliases command-not-found copydir copyfile cp
          dirhistory docker
          gpg-agent gem gnu-utils
-         git git-extras git-flow git-hubflow git-remote-branch github
+         git git-extras git-flow git-flow-avh git-hubflow git-remote-branch github
          history history-substring-search
          python
          rails rsync ruby rvm
