@@ -24,10 +24,10 @@ status.register("mem", format="{avail_mem} GiB", divisor=1024**3)
 # Shows disk usage of /
 # Format:
 # 42/128G [86G]
-status.register("disk", path="/", format="/ {total}G-{used}G={avail}G",round_size=0)
+status.register("disk", path="/", format="/ {avail}G",round_size=0)
 
 # Shows disk usage of /home
-status.register("disk", path="/home", format="/home {total}G-{used}G={avail}G",round_size=0)
+status.register("disk", path="/home", format="/home {avail}G",round_size=0)
 
 # Shows pulseaudio default sink volume
 status.register("pulseaudio", format="♪{volume} {muted}",)
