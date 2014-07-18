@@ -5,6 +5,7 @@
 import subprocess
 from i3pystatus import Status
 from i3pystatus.mail import imap
+from utils import get_imap_password, which
 
 status = Status(standalone=True)
 
@@ -36,14 +37,15 @@ status.register("pulseaudio", format="♪{volume} {muted}",)
 #status.register("cpu_usage_bar",
 #        format="{usage_bar}")
 
-# Shows mpd status
-status.register("mpd",
-    format="{artist} ─ {album} ─ {title}  {status}",
-    status={
-        "pause": "▷",
-        "play": "▶",
-        "stop": "◾",
-    },)
+if which("mpd"):
+    # Shows mpd status
+    status.register("mpd",
+        format="{artist} ─ {album} ─ {title}  {status}",
+        status={
+            "pause": "▷",
+            "play": "▶",
+            "stop": "◾",
+        },)
 
 # shows weather info
 status.register("weather",
@@ -51,18 +53,6 @@ status.register("weather",
     units="imperial",
     colorize=True,
     format="{current_temp}")
-
-def get_imap_password(*path):
-    from os.path import join, expanduser
-    filepath = expanduser(join(*path))
-
-    with open(filepath) as f:
-        content = f.read().splitlines()
-        if len(content) > 0:
-            return content[0]
-
-        return ""
-
 
 # shows unread message count on INBOX
 status.register("mail",
