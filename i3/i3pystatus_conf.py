@@ -67,31 +67,6 @@ status.register("mail",
             )])
 status.run()
 
-
-# This would also display a desktop notification (via dbus) if the percentage
-# goes below 5 percent while discharging. The block will also color RED.
-#status.register("battery",
-#    format="{status}/{consumption:.2f}W {percentage:.2f}% [{percentage_design:.2f}%] {remaining:%E%hh:%Mm}",
-#    alert=True,
-#    alert_percentage=5,
-#    status={
-#        "DIS": "↓",
-#        "CHR": "↑",
-#        "FULL": "=",
-#    },)
-
-# This would look like this:
-# Discharging 6h:51m
-#status.register("battery",
-#    format="{status} {remaining:%E%hh:%Mm}",
-#    alert=True,
-#    alert_percentage=5,
-#    status={
-#        "DIS":  "Discharging",
-#        "CHR":  "Charging",
-#        "FULL": "Bat full",
-#    },)
-
 # Displays whether a DHCP client is running
 #status.register("runwatch",
 #    name="DHCP",
