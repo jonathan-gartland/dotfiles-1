@@ -1,9 +1,13 @@
 {
-    "draw_centered": true,
-    "line_numbers": false,
-    "wrap_width": 98,
-    "auto_width": true,
-    "rulers":
-    [
-    ]
+	"auto_width": true,
+	"draw_centered": true,
+	"extensions":
+	[
+		"rdoc"
+	],
+	"line_numbers": false,
+	"rulers":
+	[
+	],
+	"wrap_width": 98
 }
