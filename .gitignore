@@ -65,13 +65,16 @@ sublime-text-3/Backup/
 sublime-text-3/Index/
 sublime-text-3/Installed Packages/
 sublime-text-3/Local/
+sublime-text-3/sublimeBookmarks.pickle
+sublime-text-3/Settings/BufferScroll.bin.gz
+
 sublime-text-3/Packages/User/Package Control.last-run
 sublime-text-3/Packages/User/Package Control.ca-list
 sublime-text-3/Packages/User/Package Control.ca-bundle
 sublime-text-3/Packages/User/Package Control.system-ca-bundle
 sublime-text-3/Packages/User/Package Control.cache/
 sublime-text-3/Packages/User/Package Control.ca-certs/
-sublime-text-3/Settings/BufferScroll.bin.gz
+
 sublime-text-3/Packages/HTML/
 sublime-text-3/Packages/PlainTasks/
 sublime-text-3/Packages/PyV8/
@@ -81,7 +84,8 @@ sublime-text-3/Packages/SublimeLinter/
 sublime-text-3/Packages/Terminal/
 sublime-text-3/Packages/Colorcoder/firstrun
 sublime-text-3/Packages/Ruby Debugger
-sublime-text-3/sublimeBookmarks.pickle
+sublime-text-3/Packages/EasyMotion
+sublime-text-3/Packages/i3wm-sublime
 sublime-text-3/Packages/User/i_opener_history.sublime-settings
 
 # GPG
