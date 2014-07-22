@@ -4,7 +4,7 @@ source ~/.zsh/oh-my-zsh.zsh
 
 # ## set env. variables
 
-export HOSTNAME=$(/usr/bin/env hostname -f)
+export HOSTNAME=$(/usr/bin/env hostname)
 export PAGER=less
 export CDPATH=.:~:~/src:~/work:/web/:~/Projects/
 export MANPATH="$MANPATH:$HOME/local/share/man"
@@ -26,9 +26,6 @@ export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
-
-# load LS colors
-eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -118,11 +115,11 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # load scm_breeze
 [ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
 
 # load fasd
-[ -s $(which fasd) ] && eval "$(fasd --init auto)"
+[[ -s $(which fasd) ]] && eval "$(fasd --init auto)"
+
+# load LS colors
+[[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
