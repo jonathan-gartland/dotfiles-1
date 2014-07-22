@@ -115,9 +115,6 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# load scm_breeze
-[ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
-
 # load fasd
 [[ -s $(which fasd) ]] && eval "$(fasd --init auto)"
 
