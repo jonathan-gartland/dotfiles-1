@@ -2,6 +2,8 @@
 	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
 	"aprosopo_dark_blue": true,
+	"aprosopo_show_tab_close_buttons": true,
+	"aprosopo_sidebar_tree_medium": true,
 	"auto_complete_selector": "source, text",
 	"binary_file_patterns":
 	[
@@ -23,7 +25,7 @@
 	"caret_extra_width": 1,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Colorcoder/Neon (Colorcode).tmTheme",
+	"color_scheme": "Packages/Colorcoder/Neon (Colorcode) (SL) (Colorcode).tmTheme",
 	"colored_folder_glyphs": true,
 	"copy_with_empty_selection": false,
 	"default_line_ending": "unix",
@@ -72,13 +74,13 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 9,
+	"font_size": 8,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"vintage",
 		"Markdown",
+		"vintage",
 		"LiveReload"
 	],
 	"indent_guide_options":
@@ -99,7 +101,7 @@
 	"match_selection": false,
 	"match_tags": false,
 	"open_files_in_new_window": false,
-	"original_color_scheme": "Packages/Neon Color Scheme/Neon.tmTheme",
+	"original_color_scheme": "Packages/User/Neon (Colorcode) (SL).tmTheme",
 	"overlay_scroll_bars": "enabled",
 	"preview_on_click": false,
 	"rulers":
@@ -113,7 +115,6 @@
 	"sidebar_small": true,
 	"spell_check": true,
 	"tab_size": 4,
-	"tabs_small": true,
 	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
