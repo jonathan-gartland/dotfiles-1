@@ -3,14 +3,22 @@ rvm_prompt_info() {
     if [[ -s ~/.rvm/scripts/rvm ]] ; then
         rvm_prompt="$(~/.rvm/bin/rvm-prompt)"
     fi
-    echo "[$rvm_prompt]"
+    if [[ -n "$rvm_prompt" ]]; then
+        echo "[$rvm_prompt]"
+    else
+        echo ""
+    fi
 }
 
 node_prompt_info() {
     if which node > /dev/null; then
         node_prompt="node $(node -v)"
     fi
-    echo "[$node_prompt]"
+    if [[ -n "$node_prompt" ]]; then
+        echo "[$node_prompt]"
+    else
+        echo ""
+    fi
 }
 
 #function prompt_pwd {
