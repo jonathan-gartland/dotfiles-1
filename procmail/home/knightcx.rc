@@ -1,0 +1,10 @@
+# knight.cx
+:0
+* (From):.*nobody@localhost.*
+.knightcx/
+
+:0
+* (From):.*root@knight.cx.*
+.knightcx/
+
+# vim: filetype=procmail syntax=procmail

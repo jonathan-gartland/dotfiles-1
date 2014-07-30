@@ -2,191 +2,24 @@
 VERBOSE=off
 MAILDIR=$HOME/Maildir
 DEFAULT=$MAILDIR/.INBOX/
-PROCMAILDIR=$HOME/.procmail
-LOGFILE=$PROCMAILDIR/log/procmail
+PMDIR=$HOME/.procmail
+LOGFILE=$PMDIR/log/procmail
 
-# forward all email through spam daemon 
-:0fw
-| /usr/bin/spamc
+INCLUDERC=$PMDIR/spam.rc
+INCLUDERC=$PMDIR/mailing_lists.rc
+INCLUDERC=$PMDIR/github.rc
+INCLUDERC=$PMDIR/jobs.rc
+INCLUDERC=$PMDIR/hemlock_forest.rc
+INCLUDERC=$PMDIR/knightcx.rc
+INCLUDERC=$PMDIR/misc.rc
 
-# handle spam message
-:0
-* ^Subject:.*SEXUALLY-EXPLICIT.*
-.Spam/
-
-:0
-* ^X-Spam-Flag:.*YES.*
-.Spam/
-
-:0
-* ^X-MailScanner-SpamCheck:spam.*
-.Spam/
-
-
-# eclim-user 
-:0
-* (To|Cc):.*eclim-user@googlegroups.com.*
-.Mailing\ Lists.Eclim\ User/
-
-
-# eclim-dev 
-:0
-* (To|Cc):.*eclim-dev@googlegroups.com.*
-.Mailing\ Lists.Eclim\ Dev/
-
-
-# arch-general 
-:0
-* (To|Cc):.*arch-general@archlinux.org.*
-.Mailing\ Lists.Arch\ General/
-
-# arch-dev-public 
-:0
-* (To|Cc):.*arch-dev-public@archlinux.org.*
-.Mailing\ Lists.Arch\ Dev\ Public/
-
-# arch-announce 
-:0
-* (To|Cc):.*arch-announce@archlinux.org.*
-.Mailing\ Lists.Arch\ Announce/
-
-
-# American Express
-:0
-* (From):.*American Express.*
-.AmericanExpress/
-
-# Tmux User 
-:0
-* (To|Cc):.*tmux-users@lists.sourceforge.net.*
-.Mailing\ Lists.Tmux\ User/
-
-
-# Awesome User 
-:0
-* (To|Cc):.*awesome@naquadah.org.*
-.Mailing\ Lists.AwesomeWM\ User/
-
-
-# Awesome Dev 
-:0
-* (To|Cc):.*awesome-devel@naquadah.org.*
-.Mailing\ Lists.AwesomeWM\ Dev/
-
-
-# Mutt User 
-:0
-* (To|Cc):.*mutt-users@mutt.org.*
-.Mailing\ Lists.Mutt\ User/
-
-
-# i3-discuss 
-:0
-* (To|Cc):.*i3-discuss@i3.zekjur.net.*
-.Mailing\ Lists.i3/
-
-
-# Fish User 
-:0
-* ^(Subject|Sender):.*\[fish-users\].*
-.Mailing\ Lists.Fish\ User/
-
-
-# Glenn Beck 
-:0
-* ^From:.*Glenn.*Beck.*
-.Mailing\ Lists.Glenn\ Beck/
-
-
-# The Blaze 
-:0
-* ^From:.*News.*from.*TheBlaze.*
-.Mailing\ Lists.Glenn\ Beck/
-
-# The Blaze 
-:0
-* ^From:.*FireWire.*from.*TheBlaze.*
-.Mailing\ Lists.Glenn\ Beck/
-
-# ruby talk 
-:0
-* ^(To|Cc):.*ruby-talk@ruby-lang.org.*
-.Mailing\ Lists.Ruby\ Talk/
-
-
-# ledger 
-:0
-* ^(To|Cc):.*ledger-cli@googlegroups.com.*
-.Mailing\ Lists.Ledger/
-
-
-# Archive remaining messages 
-:0c		
+# Archive remaining messages
+:0c
 *
-.Archives/	# to Archives
-
-
-# handle HemlockForest 
-:0
-* ^(From|To|Cc):.*Judi.Angelo@executiveproperties.com.*
-.HemlockForest/
-
-:0
-* ^(From|To|Cc):.*jason@4wallsnh.com.*
-.HemlockForest/
-
-:0
-* ^(From|To|Cc):.*nseddy1@yahoo.com.*
-.HemlockForest/
-
-:0
-* ^(From|To|Cc):.*Shaf12345@aol.com.*
-.HemlockForest/
-
-:0
-* ^(From|To|Cc):.*benjamin.bascom@gmail.com.*
-.HemlockForest/
-# }}}1
-
-# eHaramony
-:0
-* ^From:.*ehsupport@eharmony.com.*
-.eHarmony/
-# }}}1
-
-# NetFlix
-:0
-* ^From:.*discship@netflix.com.*
-.Netflix/
-# }}}1
-
-# IBD Editorials
-:0
-* ^From:.*investors@e.investors.com.*
-.IBDEditorials/
-# }}}1
-
-# Jobs
-:0
-* ^From:.*jagent-feedback@monster.com.*
-.Jobs/
-
-:0
-* ^From:.*jagent@route.monster.com.*
-.Jobs/
-
-:0
-* ^From:.*jobalerts@jobserious.com.*
-.Jobs/
-
-:0
-* ^From:.*balerts@site.careerbuilder.com.*
-.Jobs/
-
-:0
-* ^From:.*JobAlerts@CyberCoders.com.*
-.Jobs/
+.Archives/ # to Archives
 
 # last
 :0:
 $DEFAULT
+
+# vim: filetype=procmail syntax=procmail

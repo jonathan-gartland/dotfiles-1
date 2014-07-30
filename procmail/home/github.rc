@@ -1,0 +1,19 @@
+# github
+
+:0
+* (To|Cc):.*fish-shell@noreply.github.com.*
+.github/fish-shell/
+
+:0
+* (To|Cc):.*elvish@noreply.github.com.*
+.github/elvish/
+
+:0
+* (To|Cc):.*i3pystatus@noreply.github.com.*
+.github/i3pystatus/
+
+:0
+* ^From:.*support@github.com.*
+.github/
+
+# vim: filetype=procmail syntax=procmail

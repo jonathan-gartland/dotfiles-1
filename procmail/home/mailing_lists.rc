@@ -1,0 +1,56 @@
+# arch-general
+:0
+* (To|Cc):.*arch-general@archlinux.org.*
+.Mailing\ Lists.Arch\ General/
+
+# arch-dev-public
+:0
+* (To|Cc):.*arch-dev-public@archlinux.org.*
+.Mailing\ Lists.Arch\ Dev\ Public/
+
+# arch-announce
+:0
+* (To|Cc):.*arch-announce@archlinux.org.*
+.Mailing\ Lists.Arch\ Announce/
+
+# Rust Dev
+:0
+* (To|Cc):.*rust-dev@mozilla.org.*
+.Mailing\ Lists.Rust\ Dev/
+
+# i3-discuss
+:0
+* (To|Cc):.*i3-discuss@i3.zekjur.net.*
+.Mailing\ Lists.i3/
+
+# Fish User
+:0
+* (To|Cc):.*fish-users@lists.sourceforge.net.*
+.Mailing\ Lists.Fish\ User/
+
+# neovim
+:0
+* ^(To|Cc):.*neovim@googlegroups.com.*
+.Mailing\ Lists.neovim/
+
+# The Blaze
+:0
+* ^From:.*News.*from.*TheBlaze.*
+.Mailing\ Lists.Glenn\ Beck/
+
+# The Blaze
+:0
+* ^From:.*FireWire.*from.*TheBlaze.*
+.Mailing\ Lists.Glenn\ Beck/
+
+# ruby talk
+:0
+* ^(To|Cc):.*ruby-talk@ruby-lang.org.*
+.Mailing\ Lists.Ruby\ Talk/
+
+# Ruby on Rails
+:0
+* ^(To|Cc):.*rubyonrails-talk@googlegroups.com.*
+.Mailing\ Lists.Ruby\ On\ Rails/
+
+# vim: filetype=procmail syntax=procmail

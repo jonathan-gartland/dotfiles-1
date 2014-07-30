@@ -1,0 +1,18 @@
+# handle HemlockForest
+:0
+* ^(From|To|Cc):.*Judi.Angelo@executiveproperties.com.*
+.HemlockForest/
+
+:0
+* ^(From|To|Cc):.*jason@4wallsnh.com.*
+.HemlockForest/
+
+:0
+* ^(From|To|Cc):.*nseddy1@yahoo.com.*
+.HemlockForest/
+
+:0
+* ^(From|To|Cc):.*Shaf12345@aol.com.*
+.HemlockForest/
+
+# vim: filetype=procmail syntax=procmail

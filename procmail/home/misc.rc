@@ -1,0 +1,39 @@
+# American Express
+:0
+* (From):.*American Express.*
+.AmericanExpress/
+
+# Amazon
+:0
+* (From):.*@amazon.com.*
+.Amazon/
+
+# Glenn Beck
+:0
+* ^From:.*Glenn.*Beck.*
+.Glenn\ Beck/
+
+:0
+* ^(From):.*daily-digest@todoist.com.*
+.Todoist/
+
+:0
+* ^(From):.*josh@sublimetexttips.com.*
+.Sublime\ Text/
+
+# eHaramony
+:0
+* ^From:.*userservices@eharmony.com.*
+.eHarmony/
+
+# NetFlix
+:0
+* ^From:.*discship@netflix.com.*
+.Netflix/
+
+# IBD Editorials
+:0
+* ^From:.*investors@e.investors.com.*
+.IBDEditorials/
+
+# vim: filetype=procmail syntax=procmail

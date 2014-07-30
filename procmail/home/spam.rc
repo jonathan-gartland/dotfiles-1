@@ -1,0 +1,18 @@
+# forward all email through spam daemon
+:0fw
+| /usr/bin/spamc
+
+# handle spam message
+:0
+* ^Subject:.*SEXUALLY-EXPLICIT.*
+.Spam/
+
+:0
+* ^X-Spam-Flag:.*YES.*
+.Spam/
+
+:0
+* ^X-MailScanner-SpamCheck:spam.*
+.Spam/
+
+# vim: filetype=procmail syntax=procmail
