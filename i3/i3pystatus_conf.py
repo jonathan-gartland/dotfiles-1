@@ -62,7 +62,7 @@ status.register("mail",
              # port and ssl are the defaults
              port=993, ssl=True,
              host="knight.cx",
-             username="skk",
+             username="steven",
              password = get_imap_password("~", ".i3", "imap_password.txt")
             )])
 status.run()
