@@ -2,11 +2,10 @@
 " vim +BundleInstall! +BundleClean +q
 
 Bundle 'sjl/clam.vim'
-Bundle 'chriskempson/base16-vim'
 Bundle 'rking/ag.vim'
 Bundle 'wting/rust.vim'
 
-Bundle 'skk/VimCalc'
+" Bundle 'skk/VimCalc'
 
 Bundle 'chriskempson/base16-vim'
 Bundle 'chriskempson/tomorrow-theme'
@@ -16,8 +15,11 @@ Bundle 'zeis/vim-kolor'
 Bundle 'itchyny/landscape.vim'
 Bundle 'itchyny/lightline.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'Shougo/vimfiler.vim'
-Bundle 'Shougo/vimfiler.vim'
 Bundle 'wincent/Command-T'
 Bundle 'sjl/badwolf'
-Bundle 'bling/vim-bufferline'
+
+" Bundle 'Shougo/vimfiler.vim'
+" Bundle 'bling/vim-bufferline'
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-ruby/vim-ruby'
