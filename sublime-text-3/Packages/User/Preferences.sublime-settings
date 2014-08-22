@@ -60,6 +60,7 @@
 		"*.map",
 		"*.orig"
 	],
+   "findreplace_small": true,
 	"folder_exclude_patterns":
 	[
 		".git",
