@@ -74,13 +74,13 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 8,
+	"font_size": 9,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"vintage",
+		"Markdown",
 		"LiveReload"
 	],
 	"indent_guide_options":
@@ -112,10 +112,13 @@
 	"scroll_speed": 5.0,
 	"show_full_path": true,
 	"sidebar_folders": true,
-	"sidebar_small": true,
+	"sidebar_xsmall": true,
 	"spell_check": true,
 	"tab_size": 4,
-	"theme": "Aprosopo Dark@st3.sublime-theme",
+	//"theme": "Aprosopo Dark@st3.sublime-theme",
+	"tabs_small": true,
+	"theme": "predawn.sublime-theme",
+	"findreplace_small": true,
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
