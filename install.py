@@ -190,7 +190,7 @@ class install(object):
             Link('dotfiles/ssh_config', '.ssh/config'),
             Link('dotfiles/git.scmbrc', '.git.scmbrc'),
             Link('dotfiles/perlcriticrc', '.perlcriticrc'),
-            Link('dotfiles/scmbrc', '.scmbrc'),
+#            Link('dotfiles/scmbrc', '.scmbrc'),
             Link('dotfiles/offlineimap.py', '.offlineimap.py'),
             Link('dotfiles/Xresources', '.Xresources'),
             Link(offlineimap, '.offlineimaprc'),
@@ -234,7 +234,11 @@ class install(object):
 
         i3 = LinkSet(Link('i3','.i3'))
 
-        vim = LinkSet(Link('vim/vimrc.basic.vim','.vimrc'))
+        vim = LinkSet(
+		Link('vim/after','vim/after'),
+            	Link('vim/vimrc.basic.vim','.vimrc'),
+            	Link('vim/vimrc.local','.vimrc.local'),
+            	Link('vim/vimrc.bundles.local','.vimrc.bundles.local')))
 
         # TODO: Add pre-link creation hook to clone repo
         vimpager = LinkSet(
@@ -250,6 +254,11 @@ class install(object):
         zsh = LinkSet(Link('zsh','.zsh'),
             Link('oh-my-zsh', '.oh-my-zsh'),
             Link('zsh/zshrc', '.zshrc'),
+            Link('zsh/zshenv', '.zshenv'),
+            Link('zsh/zlogout', '.zlogout'),
+            Link('zsh/zprofile', '.zprofile'),
+            Link('prezto', '.zprezto'),
+            Link('zsh/zpreztorc', '.zpreztorc'),
             Link('zsh/zlogin', '.zlogin'))
 
         if self.HOME == self.install_type:
