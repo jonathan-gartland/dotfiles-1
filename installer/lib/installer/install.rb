@@ -1,4 +1,7 @@
 # encoding: utf-8
+#
+# NOTE: Merge any changes from install.py
+#
 
 require 'fileutils'
 
