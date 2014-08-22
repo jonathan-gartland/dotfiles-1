@@ -1,6 +1,6 @@
 {
-	"extensions":
-	[
-		"config"
-	]
+    "extensions":
+    [
+        "config", "config.base"
+    ]
 }
