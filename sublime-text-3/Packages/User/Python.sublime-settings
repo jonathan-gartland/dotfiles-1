@@ -1,4 +1,5 @@
 {
+	"auto_complete_triggers": [{"selector": "source.python", "characters": "."}],
 	"apply_syntax_extensions":
 	[
 		"pyw",
