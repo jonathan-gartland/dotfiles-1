@@ -1,10 +1,5 @@
 colorscheme badwolf
 
-if has('gui_running')
-    "set guioptions-=m                   " Remove the menu
-     set guifont=Anonymous\ Pro\ for\ Powerline\ 10
-endif
-
 if !exists("vimpager")
     " powerline symbols
     let g:airline_left_sep = ''
@@ -61,3 +56,11 @@ set runtimepath+=~/Projects/vim-i3-config/
 set runtimepath+=~/.msmtp
 
 let g:airline_theme='badwolf'
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+
+colorscheme badwolf
+
+if has('gui_running')
+    "set guioptions-=m                   " Remove the menu
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ Ultra-Light\ 8
+endif
