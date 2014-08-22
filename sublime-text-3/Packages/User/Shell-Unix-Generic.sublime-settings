@@ -7,10 +7,11 @@
 	],
 	"extensions":
 	[
-		"git.scmbrc",
 		"zsh",
+		"git.scmbrc",
+		"sh",
 		"bash",
-		"sh"
+		"zlogin"
 	],
 	"margin": 4,
 	"tab_size": 4
