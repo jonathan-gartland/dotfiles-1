@@ -9,12 +9,6 @@ if !exists("vimpager")
 endif
 
 if has("autocmd")
-    " Highlight TODO, FIXME, NOTE, etc.
-    if v:version > 701
-        autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
-        autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-    endif
-
     autocmd BufRead .procmailrc set foldmethod=marker filetype=procmail
     autocmd BufNewFile, BufRead Gemfile set filetype=ruby
 
@@ -28,7 +22,6 @@ noremap <silent> <leader>mk <C-W>K
 noremap <silent> <leader>mh <C-W>H
 noremap <silent> <leader>mj <C-W>J
 
-
 "From http://nvie.com/posts/how-i-boosted-my-vim/
 nnoremap ; :
 
@@ -36,11 +29,7 @@ nnoremap ; :
 nmap <silent> <leader>ev :e ~/.vimrc.local<CR>
 nmap <silent> <leader>sv :so ~/.vimrc.local<CR>
 
-
 nmap <silent> <leader>/ :nohlsearch<CR>
-
-" Command - T options
-"let g:CommandTMaxFiles=0
 
 :cnoremap <C-A> <Home>
 :cnoremap <C-F> <Right>
@@ -48,19 +37,49 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 :cnoremap <Esc>b <S-Left>
 :cnoremap <Esc>f <S-Right>
 
-
 let g:syntastic_ruby_checkers = ['rubocop']
 set laststatus=2
 
-set runtimepath+=~/Projects/vim-i3-config/
-set runtimepath+=~/.msmtp
-
 let g:airline_theme='badwolf'
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 
 colorscheme badwolf
 
 if has('gui_running')
     "set guioptions-=m                   " Remove the menu
-    set guifont=Source\ Code\ Pro\ for\ Powerline\ Ultra-Light\ 8
+    set guifont=monoOne\ 8
 endif
+
+let g:project_use_nerdtree = 1
+set rtp+=~/.vim/bundle/vim-project/
+
+call project#rc("~/Projects")
+Project 'simple_virtual_machine'
+Project 'resume'
+Project 'romg'
+Project 'HemlockForest'
+
+call project#rc("~/")
+Project 'dot-files-forest'
+Project 'Dropbox'
+
+" From http://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+
+" My preference with using buffers. See `:h hidden` for more details
+set hidden
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
