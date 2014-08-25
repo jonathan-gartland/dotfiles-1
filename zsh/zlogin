@@ -3,4 +3,4 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # load scm_breeze
-[ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
+#[ -s "/home/skk/.scm_breeze/scm_breeze.sh" ] && source "/home/skk/.scm_breeze/scm_breeze.sh"
