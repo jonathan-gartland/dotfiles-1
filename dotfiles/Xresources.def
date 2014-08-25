@@ -8,7 +8,7 @@
 URxvt*buffered: true
 URxvt*cursorBlink: false
 URxvt*underlineColor: yellow
-URxvt*font: xft:Source Code Pro for Powerline:size=8:antialias=true
+URxvt*font: xft:monoOne:size=8:antialias=true
 URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
@@ -100,3 +100,5 @@ URxvt*color15:                 S_base3
 ! ############################################
 
 URxvt*cursorColor:           #d13a82
+
+! vim: set filetype=xdefaults :
