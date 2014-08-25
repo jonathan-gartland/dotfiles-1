@@ -235,10 +235,9 @@ class install(object):
         i3 = LinkSet(Link('i3','.i3'))
 
         vim = LinkSet(
-		Link('vim/after','vim/after'),
-            	Link('vim/vimrc.basic.vim','.vimrc'),
-            	Link('vim/vimrc.local','.vimrc.local'),
-            	Link('vim/vimrc.bundles.local','.vimrc.bundles.local')))
+               Link('vim/vimrc.local','.vimrc.local'),
+               Link('vim/vimrc.bundles.local','.vimrc.bundles.local'),
+               Link('vim/vimrc.before.local','.vimrc.before.local'))
 
         # TODO: Add pre-link creation hook to clone repo
         vimpager = LinkSet(
@@ -267,6 +266,9 @@ class install(object):
                 Link('procmail/home/procmailrc','.procmailrc'))
         else:
             procmail = None
+
+        print "Install spf13:\n"
+        print "sh <(curl https://j.mp/spf13-vim3 -L)\n"
 
         return {
             'bash' : bash,
