@@ -1,25 +1,21 @@
-
 " vim +BundleInstall! +BundleClean +q
 
+" A lightweight Vim plugin for working with shell commands.
 Bundle 'sjl/clam.vim'
+
+" Vim plugin for the_silver_searcher ag
 Bundle 'rking/ag.vim'
-Bundle 'wting/rust.vim'
 
-" Bundle 'skk/VimCalc'
-
-Bundle 'chriskempson/base16-vim'
-Bundle 'chriskempson/tomorrow-theme'
-
-Bundle 'hukl/Smyck-Color-Scheme'
-Bundle 'zeis/vim-kolor'
+" color schemes
 Bundle 'itchyny/landscape.vim'
-Bundle 'itchyny/lightline.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'wincent/Command-T'
 Bundle 'sjl/badwolf'
 
-" Bundle 'Shougo/vimfiler.vim'
-" Bundle 'bling/vim-bufferline'
+" https://github.com/amiorin/vim-project
+Bundle 'amiorin/vim-project'
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'vim-ruby/vim-ruby'
+" textobj for ruby
+Bundle 'tek/vim-textobj-ruby'
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
