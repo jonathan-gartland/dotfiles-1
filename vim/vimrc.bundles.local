@@ -7,11 +7,12 @@ Bundle 'sjl/clam.vim'
 Bundle 'rking/ag.vim'
 
 " color schemes
-Bundle 'itchyny/landscape.vim'
 Bundle 'sjl/badwolf'
 
 " https://github.com/amiorin/vim-project
 Bundle 'amiorin/vim-project'
+Bundle 'mhinz/vim-startify'
+Bundle 'thoughtbot/vim-rspec'
 
 " textobj for ruby
 Bundle 'tek/vim-textobj-ruby'
