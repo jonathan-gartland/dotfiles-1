@@ -1,12 +1,10 @@
 
+# PKG
+
 adobe-source-code-pro-fonts
 adobe-source-sans-pro-fonts
 adobe-source-serif-pro-fonts
 
 # AUR
-ttf-anonymous-pro-minus                 https://aur.archlinux.org/packages/ttf-anonymous-pro-minus/
-ttf-win7-fonts-autodownload             https://aur.archlinux.org/packages/ttf-win7-fonts-autodownload/
-ttf-inconsolata-dz-powerline            https://aur.archlinux.org/packages/ttf-inconsolata-dz-powerline/
-source-code-pro-fonts-powerline         https://aur.archlinux.org/packages/otf-source-code-pro-powerline-git/
 
-ttf-envy-code-r                         https://aur.archlinux.org/packages/ttf-envy-code-r/
+aur/ttf-monoone-git                     https://aur.archlinux.org/packages/ttf-monoone-git/
