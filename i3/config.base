@@ -41,7 +41,7 @@ bindsym $mod+t exec i3-msg workspace $(~/.i3/get_workspace_options.sh | dmenu -b
 bindsym $mod+Shift+t exec i3-msg move container to workspace $(~/.i3/get_workspace_options.sh | dmenu -b)
 
 # Font for window titles.
-font pango:Source Code Pro 8
+font pango:MonoOne 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -165,7 +165,7 @@ bindsym XF86HomePage exec marlin
 
 
 bar {
-    font pango:Source Code Sans 8
+    font pango:MonoOne 8
     status_command python ~/.i3/i3pystatus_conf.py
     # $i3-theme-bar
 }
