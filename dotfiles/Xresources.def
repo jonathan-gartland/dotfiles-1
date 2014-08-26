@@ -26,79 +26,74 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 
-
-! From https://raw.githubusercontent.com/solarized/xresources/master/solarized
-! Solarized color scheme for the X Window System
-!
-! http://ethanschoonover.com/solarized
-
-
-! Common
-
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
-
-
-! Dark
-
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
-
-! Light
-
-! #define S_base03        #fdf6e3
-! #define S_base02        #eee8d5
-! #define S_base01        #93a1a1
-! #define S_base00        #839496
-! #define S_base0         #657b83
-! #define S_base1         #586e75
-! #define S_base2         #073642
-! #define S_base3         #002b36
-
-
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
-
-URxvt*background:              S_base03
-URxvt*foreground:              S_base0
-URxvt*fading:                  20
-URxvt*fadeColor:               S_base03
-URxvt*cursorColor:             S_base1
-URxvt*pointerColorBackground:  S_base01
-URxvt*pointerColorForeground:  S_base1
-
-URxvt*color0:                  S_base02
-URxvt*color1:                  S_red
-URxvt*color2:                  S_green
-URxvt*color3:                  S_yellow
-URxvt*color4:                  S_blue
-URxvt*color5:                  S_magenta
-URxvt*color6:                  S_cyan
-URxvt*color7:                  S_base2
-URxvt*color8:                  S_base03
-URxvt*color9:                  S_orange
-URxvt*color10:                 S_base01
-URxvt*color11:                 S_base00
-URxvt*color12:                 S_base0
-URxvt*color13:                 S_violet
-URxvt*color14:                 S_base1
-URxvt*color15:                 S_base3
-! ############################################
-
 URxvt*cursorColor:           #d13a82
+
+! https://raw.githubusercontent.com/dmedvinsky/badwolf.xdefaults/master/xdefaults.colors
+! X11 colors pieced together by Dmitry Medvinsky.
+! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
+! vim: fdm=marker
+
+! Colors definition {{{
+#define   plain            #f8f6f2
+#define   snow             #ffffff
+#define   coal             #000000
+
+#define   brightgravel     #d9cec3
+#define   lightgravel      #998f84
+#define   gravel           #857f78
+#define   mediumgravel     #666462
+#define   deepgravel       #45413b
+#define   deepergravel     #35322d
+#define   darkgravel       #242321
+#define   blackgravel      #1c1b1a
+#define   blackestgravel   #141413
+
+#define   dalespale        #fade3e
+#define   dirtyblonde      #f4cf86
+#define   taffy            #ff2c4b
+#define   saltwatertaffy   #8cffba
+#define   tardis           #0a9dff
+#define   orange           #ffa724
+#define   lime             #aeee00
+#define   dress            #ff9eb8
+#define   toffee           #b88853
+#define   coffee           #c7915b
+#define   darkroast        #88633f
+! }}}
+
+
+! Resourses {{{
+URxvt*background:  blackgravel
+URxvt*foreground:  plain
+!URxvt*cursorColor: lime
+URxvt*scrollColor: deepgravel
+URxvt*fadeColor:   snow
+URxvt*fading:      20
+
+!        black
+URxvt*color0:      blackestgravel
+URxvt*color8:      coal
+!        red
+URxvt*color1:      taffy
+URxvt*color9:      taffy
+!        green
+URxvt*color2:      lime
+URxvt*color10:     lime
+!        yellow
+URxvt*color3:      dalespale
+URxvt*color11:     orange
+!        blue
+URxvt*color4:      tardis
+URxvt*color12:     tardis
+!        magenta
+URxvt*color5:      dress
+URxvt*color13:     dress
+!        cyan
+URxvt*color6:      saltwatertaffy
+URxvt*color14:     saltwatertaffy
+!        white
+URxvt*color7:      brightgravel
+URxvt*color15:     snow
+! }}}
 
 ! vim: set filetype=xdefaults :
