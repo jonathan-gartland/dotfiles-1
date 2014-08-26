@@ -14,6 +14,8 @@ if has("autocmd")
 
     autocmd BufRead msmtprc, .msmtprc set filetype=msmtp
     autocmd BufRead .muttrc set filetype=muttrc
+
+    set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 endif
 
 " Maps to make handling windows a bit easier
