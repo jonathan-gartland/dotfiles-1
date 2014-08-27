@@ -193,6 +193,7 @@ class install(object):
 #            Link('dotfiles/scmbrc', '.scmbrc'),
             Link('dotfiles/offlineimap.py', '.offlineimap.py'),
             Link('dotfiles/Xresources', '.Xresources'),
+            Link('dotfiles/rvmrc', '.rvmrc'),
             Link(offlineimap, '.offlineimaprc'),
             Link('dotfiles/xbindkeysrc','.xbindkeysrc'))
 

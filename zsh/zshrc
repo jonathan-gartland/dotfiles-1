@@ -1,6 +1,61 @@
+# load antigen
+source ~/dot-files-forest/antigen/antigen.zsh
 
-# local oh-my-zsh
-source ~/.zsh/oh-my-zsh.zsh
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+    archlinux
+    autojump
+    colored-man
+    colorize
+    common-aliases
+    gem
+    git
+    git-flow
+    gpg-agent
+    history
+    history-substring-search
+    rails
+    ruby
+    rvm
+    ssh-agent
+    sudo
+    systemd
+    vundle
+    z
+
+    zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+# https://github.com/sindresorhus/pure
+#antigen bundle sindresorhus/pure
+
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+#antigen theme ~/dot-files-forest/zsh/skk.zsh-theme
+
+BULLETTRAIN_TIME_SHOW=false
+BULLETTRAIN_CONTEXT_SHOW=true
+BULLETTRAIN_EXIT_SHOW=true
+BULLETTRAIN_RVM_SHOW=true
+BULLETTRAIN_PROMPT_CHAR="❯"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
+BULLETTRAIN_RVM_FG=black
+
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_time
+  prompt_virtualenv
+  #prompt_nvm
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_rvm
+  prompt_end
+}
+
+antigen apply
 
 # ## set env. variables
 
@@ -28,7 +83,7 @@ export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" 
 
 # switch to 256 color xterm if using "xterm"
 if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
@@ -55,9 +110,7 @@ alias lR='ls -l'            # recursive ls
 alias lr='ls -ltr'          # sort by date DSC
 alias ls='ls -hF --color'   # add colors for filetype recognition
 alias mkdir='mkdir -p'
-alias more='less'
 alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
-alias putty='set TERM=putty'
 alias today='date +%F'
 alias todayISO1806='date -u +"%FT%TZ"'
 alias tree='tree -Csuh'         # nice alternative to 'ls'
@@ -68,8 +121,6 @@ alias dff='cd ~/dot-files-forest'
 
 # # From http://justinlilly.com/dotfiles/zsh.html
 alias svim="sudo vim" # Run vim as super user
-
-alias vim_bundle_update='vim +BundleInstall! +BundleClean +q'
 
 # From http://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
 alias ..="cd .."

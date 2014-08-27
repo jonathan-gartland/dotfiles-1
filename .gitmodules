@@ -16,3 +16,6 @@
 [submodule "scm_breeze"]
 	path = scm_breeze
 	url = git@github.com:ndbroadbent/scm_breeze.git
+[submodule "antigen"]
+	path = antigen
+	url = https://github.com/zsh-users/antigen.git
