@@ -57,6 +57,11 @@ build_prompt() {
 
 antigen apply
 
+# use local pacman 
+if [[ -x $(which etckeeper) && -x $(which ~/bin/pacman-etckeeper) ]]; then
+    alias pacman=pacman-etckeeper
+fi
+
 # ## set env. variables
 
 export HOSTNAME=$(/usr/bin/env hostname)

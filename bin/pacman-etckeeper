@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo etckeeper pre-install && sudo pacman  "$@" && sudo etckeeper post-install
+
