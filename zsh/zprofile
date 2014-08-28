@@ -1,27 +1,4 @@
 #
-# Executes commands at login pre-zshrc.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-#
-# Browser
-#
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-#
-# Editors
-#
-
-#export EDITOR='nano'
-#export VISUAL='nano'
-#export PAGER='less'
-
-#
 # Language
 #
 
@@ -37,29 +14,20 @@ fi
 typeset -gU cdpath fpath mailpath path
 
 # Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
+cdpath=(
+  $HOME
+  $HOME/src
+  $HOME/work
+  $HOME/Projects
+   $cdpath
+)
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin}
+  $HOME/local/bin
+  $HOME/bin
   $path
 )
-
-#
-# Less
-#
-
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-# Set the Less input preprocessor.
-if (( $+commands[lesspipe.sh] )); then
-  export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
-fi
 
 #
 # Temporary Files
@@ -73,4 +41,52 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
+fi
+
+# set env. variables
+
+export HOSTNAME=$(/usr/bin/env hostname)
+export PAGER=less
+export MANPATH="$MANPATH:$HOME/local/share/man"
+
+#
+# Editors
+#
+export GIT_EDITOR=vim
+export EDITOR=vim
+export VISUAL=vim
+
+export stow="$HOME/local/stow"
+
+#
+# less
+#
+# colorize output from man
+# http://www.tuxarena.com/2012/04/tutorial-colored-man-pages-how-it-works/
+export LESS='-FSRX'
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode
+export LESS_TERMCAP_md=$(printf '\e[01;38;5;75m') # enter double-bright mode
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" 
+
+#
+# Term
+#
+
+# switch to 256 color xterm if using "xterm"
+if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
+    export TERM=rxvt-256color
+fi
+
+#
+# local settings
+#
+if [ -r ~/.zsh/local/$HOSTNAME.zsh ]; then
+    source ~/.zsh/local/$HOSTNAME.zsh
 fi
