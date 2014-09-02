@@ -1,11 +1,14 @@
+(source "elpy" "http://jorgenschaefer.github.io/packages/")
 (source gnu)
 (source melpa)
 
+; Add more packages from https://github.com/ajtulloch/dots/blob/master/emacs/Cask
+
+(depends-on "elpy")
 (depends-on "ace-jump-mode")
 (depends-on "ack")
 (depends-on "ack-and-a-half")
 (depends-on "ag")
-(depends-on "ample-theme")
 (depends-on "ample-zen-theme")
 (depends-on "auto-complete")
 (depends-on "bind-key")
@@ -111,3 +114,4 @@
 (depends-on "xclip")
 (depends-on "yasnippet")
 (depends-on "bm")
+(depends-on "helm")
