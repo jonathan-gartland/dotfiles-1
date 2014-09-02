@@ -17,6 +17,8 @@ Bundle 'thoughtbot/vim-rspec'
 " textobj for ruby
 Bundle 'tek/vim-textobj-ruby'
 
+Bundle 'davidhalter/jedi-vim'
+
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
