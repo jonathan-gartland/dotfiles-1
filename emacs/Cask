@@ -117,3 +117,6 @@
 (depends-on "helm")
 (depends-on "auto-complete")
 (depends-on "jedi")
+(depends-on "muttrc-mode")
+
+
