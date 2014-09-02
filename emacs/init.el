@@ -67,8 +67,7 @@
 ;(diminish 'yas/minor-mode)
 
 (require 'use-package)
-(when (file-exists-p (concat user-emacs-directory "lib"))
-  (mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$")))
+(mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$"))
 
 ;; Keep emacs Custom-settings in separate file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
