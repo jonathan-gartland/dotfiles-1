@@ -5,7 +5,7 @@ domain knight.cx
 auth on
 port 465
 from steven@knight.cx
-user skk
+user steven
 tls on
 tls_starttls on
 passwordeval "gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg 2> /dev/null"
