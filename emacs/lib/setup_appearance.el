@@ -14,13 +14,8 @@
 
 
 
-;(load-theme 'solarized-light t)
-;(load-theme 'soothe t)
-;(load-theme 'spolsky)
-;(load-theme 'grandshell t)
-;(load-theme 'grandshell t)
-(require 'ample-theme)
-(ample-theme)
+(require 'ample-zen-theme)
+(load-theme 'ample-zen 1)
 
 ;; org-mode colors
 (setq org-todo-keyword-faces
@@ -33,21 +28,17 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;; No menu bars
-;(menu-bar-mode -1)
-
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (set-default-font "MonoOne-10")
+  (set-default-font "monoOne 10")
+  (setq graphene-default-font "monoOne 10")
+  (setq graphene-fixed-pitch-font "monoOne 10")
+  (setq graphene-variable-pitch-font "Source Sans Pro 10")
   (turn-off-tool-bar)
   (tooltip-mode -1)
   (turn-off-tool-bar)
   (blink-cursor-mode -1)
-  ; Don't highlight current line
-  (global-hl-line-mode 0)
-  ; Highlight current line
-  ; (global-hl-line-mode 1)
-  )
+  (global-hl-line-mode 0))
 
 (rainbow-mode t)
 
