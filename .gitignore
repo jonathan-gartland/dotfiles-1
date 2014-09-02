@@ -5,6 +5,7 @@
 # emacs
 emacs/.backup/
 emacs/.cache/
+emacs/.cask/
 emacs/elpa
 emacs/url
 emacs/auto-save-list
