@@ -121,4 +121,6 @@
 (add-to-list 'auto-mode-alist '("\\CMakeList.txt$" . cmake-mode))
 (add-to-list 'auto-mode-alist '("\\.cmake$" . cmake-mode))
 
+(add-to-list 'auto-mode-alist '("mutt/muttrc$" . muttrc-mode))
+
 (provide 'mode-mappings)
