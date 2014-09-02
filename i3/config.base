@@ -101,7 +101,7 @@ bindsym $mod+a focus parent
 
 # workspace definitions
 set $ws1 1: Web
-set $ws2 2: vim
+set $ws2 2: Dev
 set $ws3 3: Term
 set $ws4 4: Term
 set $ws5 5: Mail
