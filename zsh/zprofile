@@ -26,6 +26,7 @@ cdpath=(
 path=(
   $HOME/local/bin
   $HOME/bin
+  $HOME/.cask/bin
   $path
 )
 
