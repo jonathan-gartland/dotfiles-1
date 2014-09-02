@@ -21,144 +21,14 @@
 
 (setq image-dired-dir emacsd-image-dired-dir)
 
+(require 'cask (expand-file-name "~/.cask/cask.el"))
+(cask-initialize)
+(require 'pallet)
 
-;; Set up load path
-(add-to-list 'load-path user-emacs-directory)
-;; (add-to-list 'load-path (expand-file-name "~/dot-files-forest/use-package"))
-;; (require 'use-package)
-;; (require 'bind-key)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ; common lisp goodies, loop
-(require 'cl)			
-
-;; Add marmalade to package repos
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
-
-(setq url-http-attempt-keepalives nil)
-
-;; From technomancy's emacs-starter-kit
-;; You can keep system- or user-specific customizations here
-(setq esk-system-config (concat user-emacs-directory system-name ".el")
-      esk-user-config (concat user-emacs-directory user-login-name ".el"))
-
-(progn
-  (when (file-exists-p esk-system-config) (load esk-system-config))
-  (when (file-exists-p esk-user-config) (load esk-user-config)))
-
-(defvar packages
-  '(
-    s
-    dash
-    use-package
-
-    ample-theme
-    ag
-    change-inner
-    ace-jump-mode
-    pkgbuild-mode
-    ack
-    ack-and-a-half
-    boxquote
-    buffer-move
-    clojure-mode
-    cperl-mode
-    coffee-mode
-    color-theme-solarized
-    grandshell-theme
-    csv-mode
-    csharp-mode
-    dtrt-indent
-    durendal
-    ess
-    expand-region
-    fill-column-indicator
-    flymake-perlcritic
-    flymake-cursor
-    sublime-themes
-    textmate
-    gitignore-mode
-    ;git-emacs
-    gitconfig-mode
-    ;git-modeline
-    geiser
-    haskell-mode
-    hexrgb
-    hl-line+
-    idomenu
-    js2-mode
-    ;jshint-mode
-    ;js2-refactor
-    json
-    jump-char        
-    lua-mode
-    ;lusty-explorer
-    key-chord
-    offlineimap
-    mark-multiple
-    markdown-mode
-    multiple-cursors
-    multi-term
-    nrepl
-    notify
-    graphene
-    pretty-symbols-mode
-    pomodoro
-    quack
-    rainbow-delimiters
-    rainbow-mode
-    rebox2
-    rect-mark
-    smart-tab
-    smex
-    sql
-    smooth-scrolling
-    undo-tree
-    xclip
-    yasnippet
-    whole-line-or-region
-    simplezen
-    window-number
-    window-number
-    projectile
-    yasnippet
-    pretty-symbols-mode
-    wgrep
-    mode-compile
-    magit
-    pomodoro
-    espresso-theme
-    evil
-    cyberpunk-theme
-    underwater-theme
-    smartparens
-    soothe-theme
-    solarized-theme)
-  "A list of packages to ensure are installed at launch.")
-
-(defun packages-installed-p ()
-  (loop for p in packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
-
-(require 's)
-(require 'dash)
-(require 'use-package)
-(require 'bind-key)
-
-(unless (packages-installed-p)
-  ;; check for new packages (package versions)
-  (message "%s" "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; install the missing packages
-  (dolist (p packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(require 'cl)
 
 ;; Write backup files to own directory
 (setq backup-directory-alist 
@@ -178,38 +48,25 @@
 ;; Map files to modes
 (require 'mode-mappings)
 
-;; allow loading of dash and s libraries 
-(add-to-list 'load-path (expand-file-name "~/dot-files-forest/s.el"))
-(add-to-list 'load-path (expand-file-name "~/dot-files-forest/dash.el"))
-
 ;; Functions (load all files in defuns-dir)
 (setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
 (dolist (file (directory-files defuns-dir t "\\w+"))
   (when (file-regular-p file)
     (load file)))
 
-;; ;; ;; Fill column indicator
+; Fill column indicator
 (require 'fill-column-indicator)
 (setq fci-rule-color "#111122")
-
-(defconst vendor-load-path '("~/.emacs.d/vendor/")) ;; my elisp directories
-(mapcar '(lambda(p)
-           (add-to-list 'load-path p) 
-           (cd p) (normal-top-level-add-subdirs-to-load-path)) vendor-load-path)
-
-;; ;; Emacs server
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
 
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-;; ;; Diminish modeline clutter
-;; (require 'diminish)
-;; (diminish 'yas/minor-mode)
+; Diminish modeline clutter
+;(require 'diminish)
+;(diminish 'yas/minor-mode)
 
+(require 'use-package)
 (when (file-exists-p (concat user-emacs-directory "lib"))
   (mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$")))
 
