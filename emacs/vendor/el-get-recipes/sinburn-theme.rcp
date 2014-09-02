@@ -1,5 +1,0 @@
-( :name sinburn-theme
-  :description "Sinburn theme for Emacs"
-  :type github
-  :pkgname "djcb/sinburn"
-)

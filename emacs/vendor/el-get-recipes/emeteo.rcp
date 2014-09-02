@@ -1,4 +1,0 @@
-(:name emeteo
- :description "An Emacs Interface To Meteorological Data"
- :type github
- :pkgname "emacsmirror/emeteo")

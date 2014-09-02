@@ -1,5 +1,0 @@
-(:name mapserver-mode
-       :type http
-       :description "Major mode for editing UMN MapServer files"
-       :url "http://www.mobilegeographics.com/mapserver/mapserver-mode.el")
-

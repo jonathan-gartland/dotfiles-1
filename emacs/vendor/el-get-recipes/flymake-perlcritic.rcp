@@ -1,3 +1,0 @@
-(:name flymake-perlcritic
-       :description "Perl::Critic plugin for Emacs Flymake mode"
-       :type elpa)

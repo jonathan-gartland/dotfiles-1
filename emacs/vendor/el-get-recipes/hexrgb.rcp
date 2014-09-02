@@ -1,3 +1,0 @@
-(:name hexrgb
-       :description "Functions to manipulate colors, including RGB hex strings."
-       :type emacswiki)

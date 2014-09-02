@@ -1,3 +1,0 @@
-(:name pysmell
-       :description "PySmell is a python IDE completion helper."
-       :type elpa)

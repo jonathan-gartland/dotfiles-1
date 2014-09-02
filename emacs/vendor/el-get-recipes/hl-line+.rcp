@@ -1,3 +1,0 @@
-(:name hl-line+
-       :description "Extensions to hl-line.el."
-       :type emacswiki)

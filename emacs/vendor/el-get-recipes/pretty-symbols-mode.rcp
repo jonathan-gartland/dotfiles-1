@@ -1,5 +1,0 @@
-(:name pretty-symbols-mode
- :website https://github.com/drothlis/pretty-symbols
- :description "Emacs minor mode for drawing multi-character tokens as Unicode glyphs."
- :type github
- :pkgname "drothlis/pretty-symbols")

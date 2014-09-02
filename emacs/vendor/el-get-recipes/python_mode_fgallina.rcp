@@ -1,5 +1,0 @@
-(:name python_mode_fgallina
-       :description "A new python-mode for emacs by Fabián Ezequiel Gallina"
-       :type github
-       :pkgname "fgallina/python.el")
-
