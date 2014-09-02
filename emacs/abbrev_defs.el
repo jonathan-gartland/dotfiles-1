@@ -137,6 +137,8 @@
 
 (define-abbrev-table 'eieio-custom-mode-abbrev-table '())
 
+(define-abbrev-table 'elpy-refactor-mode-abbrev-table '())
+
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
@@ -151,7 +153,11 @@
 
 (define-abbrev-table 'eshell-mode-abbrev-table '())
 
+(define-abbrev-table 'evil-command-window-mode-abbrev-table '())
+
 (define-abbrev-table 'finder-mode-abbrev-table '())
+
+(define-abbrev-table 'flycheck-error-list-mode-abbrev-table '())
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
@@ -166,6 +172,10 @@
 (define-abbrev-table 'geiser-repl-mode-abbrev-table '())
 
 (define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'git-commit-mode-abbrev-table '())
+
+(define-abbrev-table 'git-rebase-mode-abbrev-table '())
 
 (define-abbrev-table 'gitconfig-mode-abbrev-table '())
 
@@ -190,6 +200,8 @@
 (define-abbrev-table 'haskell-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-moccur-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
@@ -241,6 +253,8 @@
 
 (define-abbrev-table 'magit-branch-manager-mode-abbrev-table '())
 
+(define-abbrev-table 'magit-cherry-mode-abbrev-table '())
+
 (define-abbrev-table 'magit-commit-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-diff-mode-abbrev-table '())
@@ -248,6 +262,10 @@
 (define-abbrev-table 'magit-log-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-log-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-mode-abbrev-table '())
+
+(define-abbrev-table 'magit-process-mode-abbrev-table '())
 
 (define-abbrev-table 'magit-reflog-mode-abbrev-table '())
 
@@ -445,6 +463,8 @@
 (define-abbrev-table 'vc-hg-outgoing-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'web-mode-abbrev-table '())
 
 (define-abbrev-table 'xml-mode-abbrev-table '())
 
