@@ -15,18 +15,18 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the the list of directories that cd searches.
 cdpath=(
-  $HOME
-  $HOME/src
-  $HOME/work
-  $HOME/Projects
-   $cdpath
+  ~
+  ~/src
+  ~/work
+  ~/Projects
+  $cdpath
 )
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  $HOME/local/bin
-  $HOME/bin
-  $HOME/.cask/bin
+  ~/local/bin
+  ~/bin
+  ~/.cask/bin
   $path
 )
 
@@ -48,7 +48,7 @@ fi
 
 export HOSTNAME=$(/usr/bin/env hostname)
 export PAGER=less
-export MANPATH="$MANPATH:$HOME/local/share/man"
+export MANPATH="$MANPATH:~/local/share/man"
 
 #
 # Editors
@@ -57,7 +57,7 @@ export GIT_EDITOR=vim
 export EDITOR=vim
 export VISUAL=vim
 
-export stow="$HOME/local/stow"
+export stow="~/local/stow"
 
 #
 # less
@@ -82,12 +82,12 @@ export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 # switch to 256 color xterm if using "xterm"
 if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
-    export TERM=rxvt-256color
+  export TERM=rxvt-256color
 fi
 
 #
 # local settings
 #
 if [ -r ~/.zsh/local/$HOSTNAME.zsh ]; then
-    source ~/.zsh/local/$HOSTNAME.zsh
+  source ~/.zsh/local/$HOSTNAME.zsh
 fi
