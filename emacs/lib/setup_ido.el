@@ -1,7 +1,10 @@
-(use-package ido
+(use-package flx-ido
   :init
   (progn
     (bind-key "C-x C-i" 'ido-imenu)
+    (ido-mode 1)
+    (ido-everywhere 1)
+    (flx-ido-mode 1)
     (setq ido-create-new-buffer (quote never))
     (setq ido-enable-flex-matching t)
     (setq ido-enable-last-directory-history nil)
