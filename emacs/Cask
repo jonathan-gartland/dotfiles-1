@@ -115,3 +115,5 @@
 (depends-on "yasnippet")
 (depends-on "bm")
 (depends-on "helm")
+(depends-on "auto-complete")
+(depends-on "jedi")
