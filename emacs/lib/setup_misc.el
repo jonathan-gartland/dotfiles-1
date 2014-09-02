@@ -202,14 +202,12 @@ activate-mark-hook"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; bookmarks http://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
 ; bookarmks+ http://www.emacswiki.org/emacs/BookmarkPlus
-(use-package bookmark+
-  :init
-  (progn
-    (bookmark-save-flag 1)))
+(use-package bookmark+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; bookmarks
+;; Bookmarks
+(setq bookmark-save-flag 1)
 (setq bookmark-default-file "~/.emacs.d/.cache/bookmarks")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
