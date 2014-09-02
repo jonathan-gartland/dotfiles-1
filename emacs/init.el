@@ -1,6 +1,3 @@
-
-; TODO use cask (https://github.com/cask/cask) to manage packages
-
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
 (setq is-mac (equal system-type 'darwin))
