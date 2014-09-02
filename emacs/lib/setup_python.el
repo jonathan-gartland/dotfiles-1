@@ -1,1 +1,3 @@
-(use-package python)
+(elpy-enable)
+
+(provide 'setup_python)
