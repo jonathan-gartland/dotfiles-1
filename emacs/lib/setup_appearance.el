@@ -38,7 +38,7 @@
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (set-default-font "Anonymous Pro-10")
+  (set-default-font "MonoOne-10")
   (turn-off-tool-bar)
   (tooltip-mode -1)
   (turn-off-tool-bar)
