@@ -149,8 +149,10 @@
   (progn
     (add-hook 'after-init-hook 'sml/setup)))
 
-;; (use-package indent-guide
-;;   :init (progn
-;;           (indent-guide-set-delay 1)))
+(use-package indent-guide
+  :init
+  (progn
+    (indent-guide-global-mode)))
+
 
 (provide 'setup_appearance)
