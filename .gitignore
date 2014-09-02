@@ -11,6 +11,7 @@ emacs/url
 emacs/auto-save-list
 emacs/.graphene-geometry
 emacs/project-persist/*/.emacs.desktop*
+emacs/.python-environments
 
 # vim
 vim/.netrwhist
