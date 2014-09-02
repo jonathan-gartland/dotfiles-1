@@ -48,19 +48,17 @@ hdr_order from: to: cc: date: subject:  # and in this order
 ##### knightcx specific settings ############
 set mbox_type = Maildir
 
-#set folder = "~/Maildir/knightcx/"
-set folder = "imaps://knight.cx"
+set folder = "~/Maildir/"
 
 # Default inbox.
-#set spoolfile = "~/Maildir/knightcx/INBOX/"
-set spoolfile = "imaps://knight.cx/INBOX"
+set spoolfile = "~/Maildir/INBOX/"
 
 # Other special folders.
-set mbox      = "imaps://knight.cx/Maildir/knightcx/INBOX/"
-set postponed = "imaps://knight.cx/Maildir/knightcx/Drafts/"
-set record    = "imaps://knight.cx/Maildir/knightcx/Sent/"
+set mbox      = "~/Maildir/INBOX/"
+set postponed = "~/Maildir/Drafts/"
+set record    = "~/Maildir/Sent/"
 
-## folders
+# folders
 mailboxes +INBOX/ \
           +HemlockForest/ \
           +ArchGeneral/ \
