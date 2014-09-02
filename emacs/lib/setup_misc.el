@@ -106,9 +106,6 @@ activate-mark-hook"
 ;;     (bind-key "C-x C-f" 'lusty-file-explorer)
 ;;     (bind-key "C-x b" 'lusty-buffer-explorer)))
 
-(iswitchb-mode t)
-(bind-key "C-x b" 'iswitchb-buffer)
-
   ;; overrride the normal file-opening, buffer switching
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
