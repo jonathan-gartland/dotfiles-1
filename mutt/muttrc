@@ -61,16 +61,15 @@ set record    = "~/Maildir/Sent/"
 # folders
 mailboxes +INBOX/ \
           +HemlockForest/ \
-          +ArchGeneral/ \
-          +EclimDev/ \
-          +EclimUser/ \
-          +FishUser/ \
-          +MuttUser/ \
-          +i3/ \
-          +Ledger/ \
-          +MuttUser/ \
-          +RubyTalk/ \
-          +TmuxUser/ \
+          Mailing\ Lists.Arch\ Announce/ \
+          +Mailing\ Lists.Arch\ Dev\ Public/ \
+          +Mailing\ Lists.Arch\ General/ \
+          +Mailing\ Lists.Fish\ User/ \
+          +Mailing\ Lists.Glenn\ Beck/ \
+          +Mailing\ Lists.i3/ \
+          +Mailing\ Lists.neovim/ \
+          +Mailing\ Lists.Ruby\ Talk/ \
+          +Mailing\ Lists.Rust\ Dev/ \
           +GlennBeck/ \
           +Ting/ \
           +Jobs/ \
@@ -181,8 +180,8 @@ set editor = "vim"                   # Use terminal Vim to compose email.
 
 # Sending Mail Options
 set from     = "steven@knight.cx"
-set sendmail = "/usr/bin/msmtp -a skk"
-set sendmail_wait = 0
+set smtp_url="smtp://steven@knight.cx:587/"
+set smtp_pass="gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg 2> /dev/null"
 unset record
 
 ## Abook
