@@ -8,6 +8,7 @@ emacs/.graphene-geometry
 emacs/project-persist/*/.emacs.desktop*
 emacs/.python-environments
 emacs/.persistence
+emacs/backups
 
 # vim
 vim/.netrwhist
@@ -56,6 +57,7 @@ i3/config
 
 # mutt
 mutt/temp/*
+mutt/certificates
 
 # sublime
 dot-files-forest.sublime-workspace
