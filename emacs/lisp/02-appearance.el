@@ -21,49 +21,27 @@
   (blink-cursor-mode -1)
   (global-hl-line-mode 0))
 
-;; Make zooming affect frame instead of buffers
-;(require 'zoom-frm)
+ (setq highlight-changes-colors (quote ("#d33682" "#6c71c4"))
+       highlight-tail-colors (quote (("#073642" . 0) ("#546E00" . 20) ("#00736F" . 30) ("#00629D" . 50) ("#7B6000" . 60) ("#8B2C02" . 70) ("#93115C" . 85) ("#073642" . 100))))
 
-;; set default font
-;;(setq font-use-system-font t)
-
-;; (when is-linux 
-;;   (custom-set-faces 
-;;    '(default ((t (:family "Anonymous Pro"
-;;                   :foundry "unknown"
-;;                   :slant normal
-;;                   :weight normal
-;;                   :height 100
-;;                   :width normal))))))
-
-;; (when is-windows-nt
-;;   (custom-set-faces 
-;;    '(default ((t (:family "Consolas"
-;;                   :foundry "unknown"
-;;                   :slant normal
-;;                   :weight normal
-;;                   :height 100
-;;                   :width normal))))))
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; the modeline
-;; (line-number-mode t)                     ; show line numbers
-;; (column-number-mode t)                   ; show column numbers
-;; (when (fboundp size-indication-mode)      
-;;   (size-indication-mode t))              ; show file size (emacs 22+)
-;; (display-time-mode 1)                    ; don't show the time
-;; ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; the modeline
+(line-number-mode t)                     ; show line numbers
+(column-number-mode t)                   ; show column numbers
+(when (fboundp size-indication-mode)      
+  (size-indication-mode t))              ; show file size (emacs 22+)
+(display-time-mode 0)                    ; don't show the time
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; general settings
-;; (icomplete-mode t)                       ; completion in minibuffer
-;; (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
-;; (scroll-bar-mode nil)              
-;; (set-scroll-bar-mode 'right)
-;; (defalias 'yes-or-no-p 'y-or-n-p)        ; allow y for yes, n for no
+(icomplete-mode t)                       ; completion in minibuffer
+(setq icomplete-prospects-height 2)      ; don't spam my minibuffer
+(scroll-bar-mode nil)              
+(set-scroll-bar-mode 'right)
+(defalias 'yes-or-no-p 'y-or-n-p)        ; allow y for yes, n for no
 
-;; (when (fboundp 'set-fringe-mode)         ; emacs22+ 
-;;   (set-fringe-mode 1))                   ; space left of col1 in pixels
+(when (fboundp 'set-fringe-mode)         ; emacs22+ 
+  (set-fringe-mode 1))                   ; space left of col1 in pixels
 
 ;; (transient-mark-mode t)                  ; make the current 'selection' visible
 ;; (delete-selection-mode t)                ; delete the selection with a keypress
@@ -88,13 +66,8 @@
 ;; (when (fboundp file-name-shadow-mode)    ; emacs22+
 ;;   (file-name-shadow-mode 1))             ; be smart about filenames in minbuffer
 
-;; (setq inhibit-startup-message t         ; don't show ...    
-;;       inhibit-startup-echo-area-message t) ; ... startup messages
-
-(setq savehist-additional-variables    ;; also save...
-      '(search-ring regexp-search-ring)    ;; ... my search entries
-      savehist-file "~/.emacs.d/.cache/savehist") ;; keep my home clean
-(savehist-mode t)                      ;; do customization before activate
+(setq inhibit-startup-message t         ; don't show ...    
+      inhibit-startup-echo-area-message t) ; ... startup messages
 
 ;; (setq default-tab-width 4)            ; set tab-width
 ;; (setq-default tab-stop-list (list 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108))

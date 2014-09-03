@@ -4,8 +4,9 @@
 
 (require 'auto-complete-config)
 
+(setq ac-comphist-file emacs-acomphistfile-file)
+(add-to-list 'ac-dictionary-directories emacs-autocompletedict)
 
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 (setq ac-auto-start nil)
 (setq ac-quick-help-delay 0.5)

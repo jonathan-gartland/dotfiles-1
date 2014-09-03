@@ -1,8 +1,9 @@
 (use-package buffer-move
   :init
   (progn
-    (bind-key "M-<up>" 'buf-move-up)
-    (bind-key "M-<down>" 'buf-move-down)
-    (bind-key "M-<right>" 'buf-move-right)
-    (bind-key "M-<left>" 'buf-move-left)))
+    (bind-key "C-S-<up>" 'buf-move-up)
+    (bind-key "C-S-<down>" 'buf-move-down)
+    (bind-key "C-S-<right>" 'buf-move-right)
+    (bind-key "C-S-<left>" 'buf-move-left)
+))
 ;(provide 'setup_buffermove)
