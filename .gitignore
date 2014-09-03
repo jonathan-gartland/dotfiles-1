@@ -3,15 +3,11 @@
 \#*.*\#
 
 # emacs
-emacs/.backup/
-emacs/.cache/
 emacs/.cask/
-emacs/elpa
-emacs/url
-emacs/auto-save-list
 emacs/.graphene-geometry
 emacs/project-persist/*/.emacs.desktop*
 emacs/.python-environments
+emacs/.persistence
 
 # vim
 vim/.netrwhist
