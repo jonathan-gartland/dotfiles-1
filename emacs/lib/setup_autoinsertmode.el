@@ -9,3 +9,4 @@
     (define-auto-insert "\.py" "template.py")
     (define-auto-insert "\.pm" "template.pm")))
 
+(provide 'setup_autoinsertmode)
