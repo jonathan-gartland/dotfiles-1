@@ -27,7 +27,7 @@ set thorough_search      # strip headers and eval mimes before searching
 # Sidebar Patch --------------------------------------
 set sidebar_delim   = '  │'
 set sidebar_visible = yes
-set sidebar_width   = 32
+set sidebar_width   = 42
 color sidebar_new color221 color233
 
 
@@ -181,7 +181,6 @@ set editor = "vim"                   # Use terminal Vim to compose email.
 # Sending Mail Options
 set from     = "steven@knight.cx"
 set smtp_url="smtp://steven@knight.cx:587/"
-set smtp_pass="gpg --no-tty --batch -d -q ~/.msmtp.authinfo.home.gpg 2> /dev/null"
 unset record
 
 ## Abook
