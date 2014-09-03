@@ -17,6 +17,7 @@
 
 (defconst user-projectile-cache-file (expand-file-name "projectile.cache" emacs-persistence-directory))
 (defconst user-projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" emacs-persistence-directory))
+(defconst user-graphene-geometry-file (expand-file-name "graphene-geometry" emacs-persistence-directory))
 
 ;; create required directories
 (unless (file-directory-p emacs-persistence-directory)
