@@ -43,13 +43,13 @@
 (setq save-place-file (concat emacsd-cache-dir "places"))
 
 ;; Lets start with a smattering of sanity
-(require 'sane-defaults)
+;(require 'sane-defaults)
 
 ;; Map files to modes
-(require 'mode-mappings)
+;(require 'mode-mappings)
 
 ;; Functions (load all files in defuns-dir)
-(setq defuns-dir (expand-file-name "defuns" user-emacs-directory))
+(setq defuns-dir (expand-file-name "lisp/defuns" user-emacs-directory))
 (dolist (file (directory-files defuns-dir t "\\w+"))
   (when (file-regular-p file)
     (load file)))
@@ -67,10 +67,12 @@
 ;(diminish 'yas/minor-mode)
 
 (require 'use-package)
-(mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$"))
+;(mapc 'load (directory-files (concat user-emacs-directory "lib") t "^setup_.*el$"))
+
+(mapc 'load (directory-files (concat user-emacs-directory "lisp") t "^[0-9]+.*\.el$"))
 
 ;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;(load custom-file)
 
 ;(emacs-init-time)

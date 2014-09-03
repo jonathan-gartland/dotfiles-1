@@ -1,30 +1,7 @@
 (use-package hexrgb)
-
-(use-package wgrep)
-
-(use-package haskell-mode)
-
-;(use-package sqlplus)
-
-;(use-package sql)
-
 (use-package ack)
-
 (use-package whole-line-or-region)
-
-(use-package csharp-mode)
-
-; http://docutils.sourceforge.net/docs/user/emacs.html
-(use-package rst)
-
-(use-package nxml-mode)
-
 (use-package idomenu)
-
-;;;_. emacs-lisp-mode-hook
-(add-hook 'emacs-lisp-mode-hook
-          '(lambda () 
-             (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))
 
 ;;;_. calc
 (global-set-key [XF86Calculator] 'full-calc)

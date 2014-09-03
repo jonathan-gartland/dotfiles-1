@@ -75,8 +75,10 @@ Symbols matching the text at point are put first in the completion list."
 
 ;;;_. Emacs Rocks 10
 ; http://www.emacswiki.org/emacs/AceJump
-(require 'ace-jump-mode)
-(bind-key "C-c space" 'ace-jump-mode)
+(use-package ace-jump-mode
+  :init
+  (progn
+    (bind-key "C-c " 'ace-jump-mode)))
 
 ;; Push mark when using ido-imenu
 

@@ -7,4 +7,4 @@
 (add-hook 'lisp-mode-hook 'try-to-add-imenu)
 (add-hook 'js2-mode-hook 'try-to-add-imenu)
 
-(bind-key "C-c =" 'imenu)
+;(bind-key "C-c =" 'imenu)
