@@ -2,6 +2,9 @@
 (use-package ack)
 (use-package whole-line-or-region)
 (use-package idomenu)
+(use-package key-chord)
+(use-package pomodoro)
+(which-function-mode t)
 
 ;;;_. calc
 (global-set-key [XF86Calculator] 'full-calc)
