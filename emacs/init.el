@@ -8,7 +8,7 @@
 (cask-initialize)
 (require 'pallet)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ; common lisp goodies, loop
 (require 'cl)
@@ -22,4 +22,5 @@
 (require 'use-package)
 (mapc 'load (directory-files (concat user-emacs-directory "lisp") t "^[0-9]+.*\.el$"))
 
+(setq custom-file (expand-file-name "lisp/100-custom.el" user-emacs-directory))
 ;(emacs-init-time)
