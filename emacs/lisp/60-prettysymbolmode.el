@@ -6,5 +6,3 @@
     (add-hook 'javascript 'pretty-symbols)
     (add-hook 'python 'pretty-symbols)))
 
-(provide 'setup_prettysymbolmode)
-

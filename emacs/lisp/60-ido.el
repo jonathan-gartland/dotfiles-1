@@ -17,5 +17,3 @@
     ;; enable fuzzy matching
     (setq ido-enable-flex-matching t)
     ))
-
-;(provide 'setup_ido)

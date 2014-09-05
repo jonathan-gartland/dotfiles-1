@@ -183,6 +183,3 @@ activate-mark-hook"
 
 (setq image-dired-dir user-image-dired-dir)
 (setq ido-save-directory-list-file emacs-ido-last-file)
-
-(provide 'setup_misc)
-

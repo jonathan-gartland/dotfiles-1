@@ -22,6 +22,3 @@
     (setq jedi:setup_keys t)
 
     (add-hook 'python-mode-hook 'jedi:setup)))
-
-
-(provide 'setup_python)

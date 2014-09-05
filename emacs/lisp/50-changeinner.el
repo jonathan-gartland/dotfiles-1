@@ -3,5 +3,4 @@
   (progn
     (bind-key "M-i" 'change-inner)
     (bind-key "M-o" 'change-outer)))
-;(provide 'setup_changeinner)
 

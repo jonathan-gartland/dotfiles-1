@@ -103,5 +103,3 @@ Symbols matching the text at point are put first in the completion list."
 (loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
 (loop for c from ?Å to ?ø do (add-hyper-char-to-ace-jump-word-mode c))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;(provide 'setup_emacsrocks)

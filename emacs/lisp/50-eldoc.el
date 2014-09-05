@@ -4,5 +4,3 @@
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'cperl-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'sepai-mode-hook 'turn-on-eldoc-mode)
-
-;(provide 'setup_eldoc)

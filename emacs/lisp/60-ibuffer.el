@@ -110,6 +110,3 @@
     ;; (define-key ibuffer-mode-map (kbd "/ k") 'ibuffer-filter-by-project)
 
 (global-set-key [XF86HomePage] 'ibuffer)
-
-;(provide 'setup_ibuffer)
-

@@ -5,4 +5,3 @@
     ; update linum's format
     (setq linum-format "%d ") 
     (global-linum-mode 1)))
-;(provide 'setup_linum)

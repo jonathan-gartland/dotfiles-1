@@ -4,5 +4,3 @@
 
 (use-package gitignore-mode)
 (use-package gitconfig-mode)
-
-(provide 'setup_git)

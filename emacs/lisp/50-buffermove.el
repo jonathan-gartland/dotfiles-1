@@ -6,4 +6,3 @@
     (bind-key "C-S-<right>" 'buf-move-right)
     (bind-key "C-S-<left>" 'buf-move-left)
 ))
-;(provide 'setup_buffermove)

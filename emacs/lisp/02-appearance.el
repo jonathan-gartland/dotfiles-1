@@ -94,6 +94,3 @@
   :init
   (progn
     (indent-guide-global-mode)))
-
-
-(provide 'setup_appearance)

@@ -6,5 +6,3 @@
       (add-hook 'fundamental-mode-hook 
                 (lambda () 
                   (flyspell-mode 1))))))
-
-(provide 'setup_flyspell)

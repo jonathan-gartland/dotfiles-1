@@ -42,5 +42,3 @@
 
 
 (setq webjump-sites (append '(webjump-sites)))
-
-(provide 'setup_webjump)

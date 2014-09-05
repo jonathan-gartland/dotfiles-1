@@ -1,7 +1,3 @@
-;;; shortcuts --- Summary
-;;; Commentary:
-;;; Code:
-
 (defun uniq-lines (start end)
   "Removes duplicate lines from the selected region."
   (interactive "*r")
@@ -142,6 +138,3 @@ Assumes that the frame is only split into two."
 
 ;(global-unset-key (kbd "\C-x\C-n"))
 ;(global-unset-key (kbd "C-x m"))
-
-(provide '02-shortcuts)
-;;; 02-shortcuts.el ends here

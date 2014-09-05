@@ -89,6 +89,3 @@
 
 ;(setq mu4e-compose-complete-only-person t)
 ;(setq mu4e-compose-complete-ignore-address-regexp t)
-
-(provide 'setup_mu4e)
-
