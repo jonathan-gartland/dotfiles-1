@@ -20,7 +20,6 @@
 
 (setq auto-save-list-file-prefix emacs-autosavelistfileprefix-dir)
 
-(use-package setup_settings)
 ; Fill column indicator
 (use-package fill-column-indicator
   :init
