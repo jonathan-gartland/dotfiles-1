@@ -1,5 +1,5 @@
 [user]
-    name = Steven Knight
+	name = Steven Knight
     email = steven@knight.cx
 
 [core]
@@ -121,7 +121,7 @@
 
 # cola
 [cola]
-	fontdiff = Envy Code R,10,-1,5,50,0,0,0,0,0
+	fontdiff = monoOne,10,-1,5,50,0,0,0,0,0
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
 	tabwidth = 4
 [push]
