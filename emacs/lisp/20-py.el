@@ -6,6 +6,9 @@
 ;; (setq jedi:complete-on-dot t)
 ;; (setq jedi:setup_keys t)
 
+;; TODO check out traad https://github.com/abingham/traad
+;; Traad is a client-server approach to using the rope Python refactory library.
+
 (use-package elpy
   :init
   (progn
