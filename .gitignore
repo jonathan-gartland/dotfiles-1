@@ -58,6 +58,7 @@ i3/config
 # mutt
 mutt/temp/*
 mutt/certificates
+mutt/cache
 
 # sublime
 dot-files-forest.sublime-workspace
