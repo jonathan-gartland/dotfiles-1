@@ -1,4 +1,4 @@
 (use-package magit
   :init
   (progn
-    ebind-key "C-x C-g" 'magit-status)))
+    (bind-key "C-x C-g" 'magit-status)))
