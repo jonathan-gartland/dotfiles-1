@@ -11,14 +11,6 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-default-font "monoOne 10")
-  (setq graphene-default-font "monoOne 10")
-  (setq graphene-fixed-pitch-font "monoOne 10")
-  (setq graphene-variable-pitch-font "Source Sans Pro 10")
-  (turn-off-tool-bar)
-  (scroll-bar-mode -1)
-  (tooltip-mode -1)
-  (turn-off-tool-bar)
-  (blink-cursor-mode -1)
   (global-hl-line-mode 0))
 
  (setq highlight-changes-colors (quote ("#d33682" "#6c71c4"))
