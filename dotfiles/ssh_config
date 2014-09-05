@@ -1,16 +1,19 @@
 Host *
-   Compression yes
-   ForwardX11 yes
-   ForwardX11Trusted yes
-   ControlMaster auto
-   ControlPath ~/.ssh/master-%r@%h\:%p
-   HashKnownHosts no
+  Compression yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  ControlMaster auto
+  ControlPath ~/.ssh/master-%r@%h\:%p
+  HashKnownHosts no
 
 Host gateway
-    User root
+  User root
 
 Host 192.168.1.1
   User root
 
 Host knight.cx
+  User steven
+
+Host 69.164.222.236
   User steven
