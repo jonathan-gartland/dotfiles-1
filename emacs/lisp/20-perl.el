@@ -9,8 +9,9 @@
 
 (set (make-local-variable 'eldoc-documentation-function)
      'my-cperl-eldoc-documentation-function)
+
+(add-hook 'cperl-mode-hook 'eldoc-mode)
+
 (setq cperl-indent-level 4)
-(turn-on-eldoc-mode)
 (local-set-key (kbd "RET") 'electrify-return-if-match)
-(eldoc-add-command 'electrify-return-if-match)
 (show-paren-mode t)
