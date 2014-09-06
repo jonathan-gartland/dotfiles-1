@@ -6,14 +6,15 @@
 (use-package pomodoro)
 (which-function-mode t)
 
+(use-package project-explorer)
+
 ;;;_. calc
 (global-set-key [XF86Calculator] 'full-calc)
 
 ;; ;;;_. iy-go-to-char
 ;; (use-package iy-go-to-char
 ;;      :init 
-;;      (progn
-;;        (bind-key "M-m" 'jump-char-forward)
+;;      (progn ;;        (bind-key "M-m" 'jump-char-forward)
 ;;        (bind-key "M-M" 'jump-char-backward)))
 
 ; http://emacs-fu.blogspot.com/2009/11/copying-lines-without-selecting-them.html
@@ -62,15 +63,6 @@ activate-mark-hook"
 
 (ad-activate 'exchange-point-and-mark)
 (add-hook 'activate-mark-hook 'pg-show-mark)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; http://www.emacswiki.org/emacs/LustyExplorer
-;; (use-package lusty-explorer
-;;   :init
-;;   (progn
-;;     (bind-key "C-x C-f" 'lusty-file-explorer)
-;;     (bind-key "C-x b" 'lusty-buffer-explorer)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun tab-width-two ()
   (setq default-tab-width 2)            ; set tab-width
