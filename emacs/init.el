@@ -25,7 +25,3 @@
 (mapc 'load (directory-files (expand-file-name "lisp/hosts" user-emacs-directory) t "^.*\.el$"))
 
 (setq custom-file (expand-file-name "lisp/99-custom.el" user-emacs-directory))
-
-;; (add-hook 'after-init-hook (lambda ()
-;; 			     (setq initial-scratch-message
-;;                  (message "Startup time: %s" (emacs-init-time)))))
