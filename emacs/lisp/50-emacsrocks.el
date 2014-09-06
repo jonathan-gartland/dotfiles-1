@@ -1,5 +1,3 @@
-; http://emacsrocks.com/e10.html
-
 ;; Push mark when using ido-imenu
 (defvar push-mark-before-goto-char nil)
 
@@ -15,7 +13,7 @@ Symbols matching the text at point are put first in the completion list."
   (imenu--make-index-alist)
   (let ((name-and-pos '())
         (symbol-names '()))
-    (flet ((addsymbols (symbol-list)
+    (cl-flet ((addsymbols (symbol-list)
                        (when (listp symbol-list)
                          (dolist (symbol symbol-list)
                            (let ((name nil) (position nil))
@@ -40,8 +38,7 @@ Symbols matching the text at point are put first in the completion list."
       (when symbol-at-point
         (let* ((regexp (concat (regexp-quote symbol-at-point) "$"))
                (matching-symbols (delq nil (mapcar (lambda (symbol)
-                                                     (if (string-match regexp symbol) symbol))
-                                                   symbol-names))))
+                                                     (if (string-match regexp symbol) symbol)) symbol-names))))
           (when matching-symbols
             (sort matching-symbols (lambda (a b) (> (length a) (length b))))
             (mapc (lambda (symbol) (setq symbol-names (cons symbol (delete symbol symbol-names))))
@@ -71,17 +68,24 @@ Symbols matching the text at point are put first in the completion list."
 (use-package expand-region
   :init
   (progn
-    (bind-key "C-=" 'er/expand-region)))
+    (evil-leader/set-key "=" 'er/expand-region)))
 
 ;;;_. Emacs Rocks 10
 ; http://www.emacswiki.org/emacs/AceJump
 (use-package ace-jump-mode
   :init
   (progn
-    (bind-key "C-c " 'ace-jump-mode)))
+    (evil-leader/set-key "j" 'ace-jump-mode)))
+
+(use-package ace-jump-buffer
+  :init  
+  (progn
+    (evil-leader/set-key "b" 'ace-jump-buffer)))
+
+(add-hook 'ace-jump-buffer-hook 
+          (lambda () (indent-guide-mode nil)))
 
 ;; Push mark when using ido-imenu
-
 (defvar push-mark-before-goto-char nil)
 
 (defadvice goto-char (before push-mark-first activate)
