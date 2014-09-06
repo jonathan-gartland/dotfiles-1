@@ -2,8 +2,8 @@
 ;(set-face-background 'yas/field-highlight-face "#333399")
 ;(set-face-foreground 'font-lock-warning-face "#ff6666")
 
-(require 'ample-zen-theme)
-(load-theme 'ample-zen 1)
+(use-package ample-zen-theme
+  :init (load-theme 'ample-zen 1))
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
