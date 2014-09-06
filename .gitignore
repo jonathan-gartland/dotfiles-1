@@ -9,6 +9,7 @@ emacs/project-persist/*/.emacs.desktop*
 emacs/.python-environments
 emacs/.persistence
 emacs/backups
+*.elc
 
 # vim
 vim/.netrwhist
