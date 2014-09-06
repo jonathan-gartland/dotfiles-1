@@ -21,6 +21,7 @@ antigen bundles <<EOBUNDLES
     systemd
     vundle
     z
+    emacs
 
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
@@ -98,8 +99,6 @@ alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
-alias e="$EDITOR"
-alias v="$VISUAL"
 
 # Bundler
 alias b="bundle"
