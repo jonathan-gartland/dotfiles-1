@@ -236,7 +236,7 @@ class install(object):
         i3 = LinkSet(Link('i3','.i3'))
 
         vim = LinkSet(
-               Link('vim/after', '.vim/after')
+               Link('vim/after', '.vim/after'),
                Link('vim/vimrc.local','.vimrc.local'),
                Link('vim/vimrc.bundles.local','.vimrc.bundles.local'),
                Link('vim/vimrc.before.local','.vimrc.before.local'))
