@@ -190,7 +190,6 @@ class install(object):
             Link('dotfiles/ssh_config', '.ssh/config'),
             Link('dotfiles/git.scmbrc', '.git.scmbrc'),
             Link('dotfiles/perlcriticrc', '.perlcriticrc'),
-#            Link('dotfiles/scmbrc', '.scmbrc'),
             Link('dotfiles/offlineimap.py', '.offlineimap.py'),
             Link('dotfiles/Xresources', '.Xresources'),
             Link('dotfiles/rvmrc', '.rvmrc'),
