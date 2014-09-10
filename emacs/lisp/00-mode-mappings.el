@@ -24,3 +24,6 @@
 
 ;; Mutt
 (add-to-list 'auto-mode-alist '("mutt/muttrc$" . muttrc-mode))
+
+(add-to-list 'auto-mode-alist '("zsh/z.*$" . shell-script-mode))
+
