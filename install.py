@@ -3,6 +3,16 @@
 import sys, os.path, optparse, fileinput
 from event import event
 
+import os, errno
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else: raise
+
 def get_parser(arguments):
     usage = "usage: %prog [options] home|work"
     parser = optparse.OptionParser(usage = usage)
@@ -251,6 +261,10 @@ class install(object):
 
         sublime_text = LinkSet(Link('sublime-text-3','.config/sublime-text-3'))
 
+        tmux = LinkSet(Link('tmux', '.tmux'),
+                       Link('tmux/plugins', '.tmux/plugins'),
+                       Link('tpm', '.tmux/plugins/tpm'))
+
         zsh = LinkSet(Link('zsh','.zsh'),
             Link('zsh/zshrc', '.zshrc'),
             Link('zsh/zshenv', '.zshenv'),
@@ -282,7 +296,8 @@ class install(object):
             'procmail' : procmail,
             'sublime-text' : sublime_text,
             'vim' : vim,
-            'zsh': zsh
+            'zsh': zsh,
+            'tmux': tmux
         }
 
 if __name__ == '__main__':
