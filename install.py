@@ -219,7 +219,7 @@ class install(object):
 
         msmtp = LinkSet(
                 Link(msmtprc, '.msmtprc'),
-                Link('msmtp/msmtp.authinfo.HOME.gpg','.msmtp.authinfo.home.gpg'))
+                Link('msmtp/msmtp.authinfo.HOME.gpg','.msmtp.authinfo.HOME.gpg'))
 
         bash = LinkSet(
             Link('bash', '.bash'),
