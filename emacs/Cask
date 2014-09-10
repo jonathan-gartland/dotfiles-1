@@ -37,6 +37,7 @@
 (depends-on "evil-leader")
 (depends-on "evil-matchit")
 (depends-on "evil-surround")
+(depends-on "evil-nerd-commenter")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
@@ -55,7 +56,6 @@
 (depends-on "graphene")
 (depends-on "hexrgb")
 (depends-on "highlight-indentation")
-(depends-on "hl-line+")
 (depends-on "idle-highlight-mode")
 (depends-on "ido-vertical-mode")
 (depends-on "idomenu")
@@ -111,4 +111,4 @@
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "xclip")
-(depends-on "project-explorer")
+
