@@ -36,17 +36,6 @@
     (local-unset-key [tab]) ; unset from (kbd "<tab>")
     (local-set-key (kbd "TAB") command))) ; bind to (kbd "TAB")
 
-(defun comment-or-uncomment-region-or-line ()
-  "Comments or uncomments the region or the current line if there's no active region."
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)
-    (next-logical-line)))
-
-
 (defun toggle-frame-split ()
     "If the frame is split vertically, split it horizontally or vice versa.
 Assumes that the frame is only split into two."
