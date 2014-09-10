@@ -252,13 +252,10 @@ class install(object):
         sublime_text = LinkSet(Link('sublime-text-3','.config/sublime-text-3'))
 
         zsh = LinkSet(Link('zsh','.zsh'),
-            Link('oh-my-zsh', '.oh-my-zsh'),
             Link('zsh/zshrc', '.zshrc'),
             Link('zsh/zshenv', '.zshenv'),
             Link('zsh/zlogout', '.zlogout'),
             Link('zsh/zprofile', '.zprofile'),
-            Link('prezto', '.zprezto'),
-            Link('zsh/zpreztorc', '.zpreztorc'),
             Link('zsh/zlogin', '.zlogin'))
 
         if self.HOME == self.install_type:
