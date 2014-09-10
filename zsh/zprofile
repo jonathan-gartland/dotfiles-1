@@ -14,21 +14,10 @@ fi
 typeset -gU cdpath fpath mailpath path
 
 # Set the the list of directories that cd searches.
-cdpath=(
-  ~
-  ~/src
-  ~/work
-  ~/Projects
-  $cdpath
-)
+cdpath=(~ ~/src ~/work ~/dot-files-forest ~/Projects $cdpath)
 
 # Set the list of directories that Zsh searches for programs.
-path=(
-  ~/local/bin
-  ~/bin
-  ~/.cask/bin
-  $path
-)
+path=(~/local/bin ~/bin ~/.cask/bin $path)
 
 #
 # Temporary Files

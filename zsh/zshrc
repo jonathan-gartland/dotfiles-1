@@ -1,7 +1,11 @@
 # load antigen
 source ~/dot-files-forest/antigen/antigen.zsh
 
+cdpath_backup=$cdpath
+
 antigen use oh-my-zsh
+
+cdpath=($cdpath $cdpath_backup)
 
 antigen bundles <<EOBUNDLES
     archlinux
@@ -21,17 +25,11 @@ antigen bundles <<EOBUNDLES
     systemd
     vundle
     z
-    emacs
 
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
-# https://github.com/sindresorhus/pure
-#antigen bundle sindresorhus/pure
-
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-
-#antigen theme ~/dot-files-forest/zsh/skk.zsh-theme
 
 BULLETTRAIN_TIME_SHOW=false
 BULLETTRAIN_CONTEXT_SHOW=true
