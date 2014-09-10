@@ -8,11 +8,10 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-; https://github.com/ajtulloch/dots/tree/master/emacs
-
 ; common lisp goodies, loop
 (require 'cl)
 
+; load use-package
 (require 'use-package)
 
 ; Load setup/init files
@@ -25,3 +24,10 @@
 (mapc 'load (directory-files (expand-file-name "lisp/hosts" user-emacs-directory) t "^.*\.el$"))
 
 (setq custom-file (expand-file-name "lisp/99-custom.el" user-emacs-directory))
+
+; switch to HOME
+(cd (getenv "HOME"))
+
+(add-hook 'after-init-hook (lambda ()
+                             (setq initial-scratch-message
+                                   (message "Startup time: %s" (emacs-init-time)))))
