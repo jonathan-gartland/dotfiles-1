@@ -1,6 +1,6 @@
 ### -*- mode: makefile-gmake -*-
 
-DIRS	    = el-get elpa .
+DIRS	      = . .cask
 SPECIAL	    = 
 INIT_SOURCE = $(wildcard *.el)
 LIB_SOURCE  = $(wildcard lib/*.el) $(wildcard lisp/*.el) $(wildcard site-lisp/*.el)
