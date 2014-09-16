@@ -77,10 +77,17 @@ Symbols matching the text at point are put first in the completion list."
   (progn
     (evil-leader/set-key "j" 'ace-jump-mode)))
 
+; https://github.com/waymondo/ace-jump-buffer
 (use-package ace-jump-buffer
   :init  
   (progn
     (evil-leader/set-key "b" 'ace-jump-buffer)))
+
+; https://github.com/abo-abo/ace-window
+(use-package ace-window
+  :init
+  (progn
+    (global-set-key (kbd "M-p") 'ace-window)))
 
 (add-hook 'ace-jump-buffer-hook 
           (lambda () (indent-guide-mode nil)))
