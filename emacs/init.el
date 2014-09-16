@@ -15,7 +15,7 @@
 (require 'use-package)
 
 ; Load setup/init files
-(mapc 'load (directory-files (expand-file-name "lisp" user-emacs-directory) t "^[0-9]+.*\.el$"))
+(mapc 'load (directory-files (expand-file-name "lisp" user-emacs-directory) t "^[a-zA-Z0-9-]+\.el$"))
 
 ; Load defuns
 (mapc 'load (directory-files (expand-file-name "lisp/defuns" user-emacs-directory) t "^.*\.el$"))
