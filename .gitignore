@@ -97,3 +97,6 @@ gnupg/gpg-agent.env.fish
 # ctags
 .tags
 .tags_sorted_by_file
+
+# tmux
+tmux/plugins
