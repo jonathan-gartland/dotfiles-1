@@ -2,34 +2,40 @@
 
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
 
-
-# Make Caps Lock an additional Hyper
-setxkbmap -option caps:hyper
-# Caps Locking is disabled with Caps Lock key
-setxkbmap -option caps:none
-
-# Start GNOME Keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-# You probably need to do this too:
-export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
-
-eval $(dbus-launch --sh-syntax --exit-with-session)
-export DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
+#env > $HOME/xprofile.env
 
 # update x resources db
 xrdb -merge ~/.Xresources
 
-# set background
-feh --bg-center ~/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.png
-
-# start pulseaudio
-start-pulseaudio-x11 &
-
-# start pulseaudio systray
-pasystray &
-
-# Loading drpobox via https://wiki.archlinux.org/index.php/dropbox#Run_as_a_daemon_with_systemd_user
-#dropboxd &
-
 # start urxvtd
 /usr/bin/urxvtd -q -f -o
+
+if [ "$DESKTOP_SESSION" = 'i3' ];  then
+
+    # Make Caps Lock an additional Hyper
+    setxkbmap -option caps:hyper
+    # Caps Locking is disabled with Caps Lock key
+    setxkbmap -option caps:none
+
+    # Start GNOME Keyring
+    eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+    # You probably need to do this too:
+    export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+
+    eval $(dbus-launch --sh-syntax --exit-with-session)
+    export DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
+
+    # set background
+    feh --bg-center ~/dot-files-forest/misc/nasa_hubble_ultra_deep_field_2014.png
+
+    # start pulseaudio
+    start-pulseaudio-x11 &
+
+    # start pulseaudio systray
+    pasystray &
+
+    # Loading drpobox via https://wiki.archlinux.org/index.php/dropbox#Run_as_a_daemon_with_systemd_user
+    #dropboxd &
+    dropbox start &
+
+fi
