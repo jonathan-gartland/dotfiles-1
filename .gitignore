@@ -9,6 +9,8 @@ emacs/project-persist/*/.emacs.desktop*
 emacs/.python-environments
 emacs/.persistence
 emacs/backups
+emacs/elpa
+emacs/output
 *.elc
 
 # vim
