@@ -1,11 +1,13 @@
 # load antigen
 source ~/dot-files-forest/antigen/antigen.zsh
 
-cdpath_backup=$cdpath
+# save cdpath as loading oh-my-zsh will reset it
+cdpath_backup=($cdpath)
 
 antigen use oh-my-zsh
 
-cdpath=($cdpath $cdpath_backup)
+# restore cdpath
+cdpath=($cdpath_backup)
 
 antigen bundles <<EOBUNDLES
     archlinux
