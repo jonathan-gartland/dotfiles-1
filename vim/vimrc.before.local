@@ -9,5 +9,5 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 runtime macros/matchit.vim
 
-let g:spf13_bundle_groups=['general', 'writing', 'programming', 'ruby', 'python', 'javascript', 'html', 'misc', 'youcompleteme']
+let g:spf13_bundle_groups=['general', 'writing', 'programming', 'misc']
 
