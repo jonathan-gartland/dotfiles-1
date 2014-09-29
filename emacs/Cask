@@ -44,7 +44,7 @@
 (depends-on "evil-matchit")
 (depends-on "evil-nerd-commenter")
 (depends-on "evil-surround")
-
+(depends-on "project-explorer")
 (depends-on "evil-numbers")
 (depends-on "evil-visualstar")
 (depends-on "evil-nerd-commenter")
@@ -52,7 +52,6 @@
 (depends-on "evil-matchit")
 (depends-on "evil-exchange")
 (depends-on "evil-jumper")
-
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "eyebrowse")
