@@ -8,6 +8,7 @@
 
 (use-package i3wm-emacs)
 
+;; https://github.com/sabof/project-explorer
 (use-package project-explorer)
 
 (use-package smart-mode-line
