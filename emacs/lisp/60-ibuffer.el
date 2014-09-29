@@ -1,11 +1,10 @@
-(require 'ibuffer) 
-(require 'ibuf-ext)
-
 (use-package ibuffer
   :config
   (progn 
     (setq ibuffer-saved-filter-groups
           (quote (("default"      
+                   ("resume"
+                    (filename . "resume"))
                    ("HemlockForest"
                     (filename . "HemlockForest"))
                    ("Emacs Config"
@@ -64,3 +63,5 @@
     (setq ibuffer-show-empty-filter-groups nil)
 
     (global-set-key [XF86HomePage] 'ibuffer)))
+
+(use-package ibuf-ext)
