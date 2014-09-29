@@ -60,7 +60,7 @@
 		"*.map",
 		"*.orig"
 	],
-   "findreplace_small": true,
+	"findreplace_small": true,
 	"folder_exclude_patterns":
 	[
 		".git",
@@ -75,13 +75,14 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 9,
+	"font_size": 8,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"vintage",
 		"Markdown",
+		"Gitignore",
 		"LiveReload"
 	],
 	"indent_guide_options":
@@ -116,10 +117,8 @@
 	"sidebar_xsmall": true,
 	"spell_check": true,
 	"tab_size": 4,
-	//"theme": "Aprosopo Dark@st3.sublime-theme",
 	"tabs_small": true,
-	"theme": "predawn.sublime-theme",
-	"findreplace_small": true,
+	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
