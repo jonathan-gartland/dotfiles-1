@@ -10,7 +10,7 @@ from utils import get_imap_password, which
 status = Status(standalone=True)
 
 # Displays clock
-status.register("clock", format="%a %-d %b %Y %X",)
+status.register("clock", format="%a %-d %b %Y %H:%M")
 
 # Shows the average load of the 1, 5 and 15 minutes
 # (the default value for format is used)
