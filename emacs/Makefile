@@ -30,6 +30,8 @@ fullclean: clean
 
 html:
 	@echo Creating html...
+	rm -rf ./output
+	cp -a ./.output ./output
 	@TERM=xterm-256color $(EMACS) -Q -nw --kill --eval \
 	"(progn \
 	(package-initialize) \
