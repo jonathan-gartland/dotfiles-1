@@ -6,6 +6,8 @@
 (use-package pomodoro)
 (which-function-mode t)
 
+(use-package i3wm-emacs)
+
 (use-package project-explorer)
 
 (use-package smart-mode-line
@@ -29,6 +31,8 @@
           (setq save-place-file user-save-place-file)
           (setq-default save-place t))) 
 
+; https://github.com/wasamasa/eyebrowse
+(use-package eyebrowse)
 
 ; http://emacs-fu.blogspot.com/2011/01/setting-frame-title.html
 (setq frame-title-format
@@ -106,7 +110,9 @@
 (setq tab-always-indent nil)
 
 (use-package ample-zen-theme
-  :init (load-theme 'ample-zen 1))
+  :init (load-theme 'lush 1)
+  ;:init (load-theme 'ample-zen 1)
+  )
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
