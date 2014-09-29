@@ -1,4 +1,5 @@
 List of files which should be kept in a private github repo.
+BFG: http://rtyley.github.io/bfg-repo-cleaner/
 
 fonts/
 misc/
@@ -7,4 +8,5 @@ mutt/muttrc                 # muttrc contains email address information
 msmtp.authinfo.HOME.gpg     # encrypted password
 mutt/unhrcc-smtp.cert       # UNH/RCC cert
 
+ssh/id_rsa
 gnugpg/*                    # gpg related keys
