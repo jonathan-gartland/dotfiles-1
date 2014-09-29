@@ -1,7 +1,7 @@
 ### -*- mode: makefile-gmake -*-
 
 DIRS	      = . .cask
-SPECIAL	    = 
+SPECIAL	    =
 INIT_SOURCE = $(wildcard *.el)
 LIB_SOURCE  = $(wildcard lib/*.el) $(wildcard lisp/*.el) $(wildcard site-lisp/*.el)
 TARGET	    = $(patsubst %.el,%.elc, $(LIB_SOURCE))
@@ -12,21 +12,8 @@ BATCH_LOAD  = $(EMACS_BATCH) $(MY_LOADPATH)
 
 all: $(SPECIAL) $(TARGET)
 	for dir in $(DIRS); do \
-	    $(BATCH_LOAD) -f batch-byte-recompile-directory $$dir; \
+		$(BATCH_LOAD) -f batch-byte-recompile-directory $$dir; \
 	done
-
-#cus-dirs.el: Makefile $(LIB_SOURCE)
-#	$(EMACS_BATCH) -l cus-dep -f custom-make-dependencies $(DIRS)
-#	mv cus-load.el cus-dirs.el
-
-#autoloads.el: Makefile autoloads.in $(LIB_SOURCE)
-#	cp -p autoloads.in autoloads.el
-#	-rm -f autoloads.elc
-#	$(EMACS_BATCH) -l $(shell pwd)/autoloads -l easy-mmode \
-#	    -f generate-autoloads $(shell pwd)/autoloads.el $(DIRS) \
-#	    $(shell find $(DIRS) -maxdepth 1 -type d -print)
-#
-#autoloads.elc: autoloads.el
 
 %.elc: %.el
 	$(BATCH_LOAD) -l load-path -f batch-byte-compile $<
@@ -40,5 +27,18 @@ clean:
 
 fullclean: clean
 	rm -f $(TARGET)
+
+html:
+	@echo Creating html...
+	@TERM=xterm-256color $(EMACS) -Q -nw --kill --eval \
+	"(progn \
+	(package-initialize) \
+	(require 'org) \
+	(setq org-confirm-babel-evaluate nil) \
+	(find-file \"skkemacs.org\") \
+	(org-export-to-file 'html \"./output/skkemacs.html\") \
+	)"
+	@echo Done.
+
 
 ### Makefile ends here
