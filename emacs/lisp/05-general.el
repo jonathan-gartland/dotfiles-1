@@ -14,7 +14,9 @@
 (use-package smart-mode-line
   :init
   (progn
-    (add-hook 'after-init-hook 'sml/setup)))
+    (add-hook 'after-init-hook 'sml/setup)
+    (sml/apply-theme 'light)
+  ))
 
 (use-package indent-guide
   :init
@@ -110,10 +112,10 @@
 
 (setq tab-always-indent nil)
 
-(use-package ample-zen-theme
-  :init (load-theme 'lush 1)
-  ;:init (load-theme 'ample-zen 1)
-  )
+;(use-package grandshell-theme
+;  :init (load-theme 'grandshell 1))
+(use-package moe-theme
+    :init (load-theme 'moe-dark t))
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
