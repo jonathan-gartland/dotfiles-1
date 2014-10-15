@@ -81,7 +81,7 @@
 (depends-on "js2-refactor")
 (depends-on "jump-char")
 (depends-on "key-chord")
-(depends-on "lush-theme")
+(depends-on "grandshell-theme")
 (depends-on "magit")
 (depends-on "mark-multiple")
 (depends-on "markdown-mode")
@@ -131,3 +131,4 @@
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "i3wm-emacs" :git "https://github.com/skk/i3wm-emacs")
+(depends-on "moe-theme")
