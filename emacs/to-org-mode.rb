@@ -47,6 +47,7 @@ def clean_file(content)
 end
 
 def read_and_write_file(file, filepath)
+  puts "filepath #{filepath}"
   content = File.read(filepath).rstrip
   content = clean_file(content)
   file.write([section_header(filepath),
