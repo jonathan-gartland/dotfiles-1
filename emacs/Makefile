@@ -36,6 +36,7 @@ html:
 	"(progn \
 	(package-initialize) \
 	(require 'org) \
+	(load-theme 'adwaita t) \
 	(setq org-confirm-babel-evaluate nil) \
 	(find-file \"skkemacs.org\") \
 	(org-export-to-file 'html \"./output/skkemacs.html\") \
