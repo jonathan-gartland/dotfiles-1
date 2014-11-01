@@ -21,9 +21,16 @@
 ; melpa-stable to ensure version match between cider and cider-nrepl.
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+              '("melpa-stable" . "http://staple.melpa.org/packages/") t)
+(add-to-list 'package-archives
+              '("melpa" . "http://melpa.org/packages/") t)
+;(add-to-list 'package-archives
+;              '("elpy" . "http://jorgenschaefer.github.io/packages/") t)
 (package-refresh-contents)
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (unless (package-installed-p 'cider)
   (package-install 'cider))
@@ -32,9 +39,9 @@
   (package-install 'clojure-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'cask (expand-file-name "~/.cask/cask.el"))
-(cask-initialize)
-(require 'pallet)
+;(require 'cask (expand-file-name "~/.cask/cask.el"))
+;(cask-initialize)
+;(require 'pallet)
 
 ; common lisp goodies
 (require 'cl)
@@ -42,8 +49,12 @@
 ; load use-package
 (require 'use-package)
 
+(use-package dash :ensure dash)
+(use-package s :ensure s)
+(use-package f :ensure f)
+
 ; set custom-file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name "~/dot-files-forest/emacs/custom.el"))
 (load custom-file)
 
 (add-hook 'after-init-hook (lambda ()
@@ -53,26 +64,22 @@
 
 * 00-default-dirs-and-files
 #+BEGIN_SRC emacs-lisp
-;; TODO move lisp/00-default-dirs-and-files.el (or 02-settings.el ?)
 (defconst emacs-persistence-directory (expand-file-name ".persistence" user-emacs-directory))
 (defconst user-backup-dir (expand-file-name "backup" emacs-persistence-directory))
 (defconst user-image-dired-dir (expand-file-name "image-dired" emacs-persistence-directory))
-
 (defconst user-save-place-file (expand-file-name "places" emacs-persistence-directory))
-(defconst emacs-autosavelistfileprefix-dir (expand-file-name "auto-save-list" emacs-persistence-directory))
-(defconst emacs-tramp-dir (expand-file-name "tramp" emacs-persistence-directory))
-(defconst emacs-ido-last-file (expand-file-name "ido-last" emacs-persistence-directory))
-(defconst emacs-savehist-file (expand-file-name "savehist" emacs-persistence-directory))
-(defconst emacs-recentfiles-file (expand-file-name "recent-files" emacs-persistence-directory))
-(defconst emacs-smexsavefile-file (expand-file-name "smex-items" emacs-persistence-directory))
-
-(defconst emacs-acomphistfile-file (expand-file-name "ac-comphist.dat" emacs-persistence-directory))
-(defconst emacs-autocompletedict (expand-file-name "ac-dict" emacs-persistence-directory))
-(defconst emacs-abbrevdefs-file (expand-file-name "abbrev_defs.el" emacs-persistence-directory))
-
+(defconst user-tramp-dir (expand-file-name "tramp" emacs-persistence-directory))
+(defconst user-ido-last-file (expand-file-name "ido-last" emacs-persistence-directory))
+(defconst user-savehist-file (expand-file-name "savehist" emacs-persistence-directory))
+(defconst user-recentfiles-file (expand-file-name "recent-files" emacs-persistence-directory))
+(defconst user-acomphistfile-file (expand-file-name "ac-comphist.dat" emacs-persistence-directory))
+(defconst user-autocompletedict (expand-file-name "ac-dict" emacs-persistence-directory))
+(defconst user-abbrevdefs-file (expand-file-name "abbrev_defs.el" emacs-persistence-directory))
 (defconst user-projectile-cache-file (expand-file-name "projectile.cache" emacs-persistence-directory))
 (defconst user-projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" emacs-persistence-directory))
 (defconst user-graphene-geometry-file (expand-file-name "graphene-geometry" emacs-persistence-directory))
+(defconst user-project-persist-settings-dir (expand-file-name "~/dot-files-forest/emacs/project-persist")) 
+(defconst user-emacs-yasnippet-dir (expand-file-name "~/dot-files-forest/emacs/snippets/"))
 
 ;; create required directories
 (unless (file-directory-p emacs-persistence-directory)
@@ -83,26 +90,16 @@
 
 (unless (file-directory-p user-image-dired-dir)
   (make-directory user-image-dired-dir))
-
-;(defconst emacs-saveplacefile-file (concat emacs-persistence-directory "/places"))
-;(defconst emacs-autosavelistfileprefix-dir (concat emacs-persistence-directory "/auto-save-list"))
-;(defconst emacs-tramp-dir (concat emacs-persistence-directory "/tramp"))
-;(defconst emacs-ido-last-file (concat emacs-persistence-directory "/ido-last"))
-;(defconst emacs-savehist-file (concat emacs-persistence-directory "/savehist"))
-;(defconst emacs-recentfiles-file (concat emacs-persistence-directory "/recent-files"))
-;(defconst emacs-smexsavefile-file (concat emacs-persistence-directory "/smex-items"))
-
-;(defconst emacs-acomphistfile-file (concat emacs-persistence-directory "/ac-comphist.dat"))
-;(defconst emacs-autocompletedict (concat emacs-persistence-directory "/ac-dict")
-;(defconst emacs-abbrevdefs-file (concat emacs-persistence-directory "/abbrev_defs.el"))
 #+END_SRC
 
 * 00-mode-mappings
 #+BEGIN_SRC emacs-lisp
 ;; YAML
-(autoload 'yaml-mode "yaml-mode")
+(use-package yaml-mode :ensure yaml-mode
+:init
+(progn
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("jsTestDriver\\.conf$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("jsTestDriver\\.conf$" . yaml-mode))))
 
 ;; offlineimaprc
 (add-to-list 'auto-mode-alist '("\\.offlineimaprc$" . conf-mode))
@@ -131,6 +128,8 @@
 
 * 00-sane-defaults
 #+BEGIN_SRC emacs-lisp
+(use-package better-defaults :ensure better-defaults)
+
 ;; Allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard t)
 
@@ -197,9 +196,6 @@
 ;; Don't break lines for me, please
 (setq-default truncate-lines t)
 
-;; Keep cursor away from edges when scrolling up/down
-(require 'smooth-scrolling)
-
 ;; org-mode: Don't ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
 (setq org-replace-disputed-keys t)
 
@@ -209,6 +205,7 @@
 ;; Represent undo-history as an actual tree (visualize with C-x u)
 (setq undo-tree-mode-lighter "")
 (use-package undo-tree
+  :ensure undo-tree
   :init (global-undo-tree-mode))
 
 ;; Sentences do not need double spaces to end. Period.
@@ -237,27 +234,14 @@
 
 * 01-graphene
 #+BEGIN_SRC emacs-lisp
-
-;; (use-package graphene
-;;   :init 
-;;   (progn
-;;     (setq graphene-speedbar-auto nil
-;;           graphene-geometry-file user-graphene-geometry-file
-;;           projectile-cache-file user-projectile-cache-file
-;;           projectile-known-projects-file user-projectile-known-projects-file)
-;;     (projectile-global-mode)))
-;; ;
-
-(add-hook 'after-init-hook 
-          (lambda ()
-            (use-package graphene
+(use-package graphene 
+              :ensure graphene
               :init 
               (progn
                 (setq graphene-speedbar-auto nil
+                      project-persist-settings-dir user-project-persist-settings-dir
                       graphene-geometry-file user-graphene-geometry-file
-                      projectile-cache-file user-projectile-cache-file
-                      projectile-known-projects-file user-projectile-known-projects-file)
-                (projectile-global-mode)))))
+)))
 #+END_SRC
 
 * 02-shortcuts
@@ -400,86 +384,119 @@ Assumes that the frame is only split into two."
            ; Load yasnippet first to avoid precedence issues
            (lambda () 
              (use-package yasnippet
+               :ensure yasnippet
                :init
                (progn
+                 (setq yas-snippet-dirs (append yas-snippet-dirs
+                                                user-emacs-yasnippet-dir))
                  (yas-global-mode 1)))))
 
 ; load auto-complete-config
- (add-hook 'after-init-hook
-           (lambda () 
-             (use-package auto-complete-config
-               :init
-               (progn
-                  (setq ac-comphist-file emacs-acomphistfile-file)
-                  (setq ac-auto-start nil)
-                  (setq ac-quick-help-delay 0.5)
-
-                  (add-to-list 'ac-dictionary-directories emacs-autocompletedict)
-                  (ac-config-default)
-                  (ac-set-trigger-key "TAB")
-                  (define-key ac-mode-map  [(control tab)] 'auto-complete)
-                  (setq-default ac-sources '(ac-source-yasnippet
-                                             ac-source-abbrev
-                                             ac-source-dictionary
-                                             ac-source-words-in-same-mode-buffers))
-                  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
-                  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-                  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
-                  (add-hook 'css-mode-hook 'ac-css-mode-setup)
-                  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-                  (global-auto-complete-mode t)))))
+; (add-hook 'after-init-hook
+;           (lambda () 
+;             (use-package auto-complete-config
+;               :ensure auto-complete
+;               :init
+;               (progn
+;                  (setq ac-comphist-file user-acomphistfile-file)
+;                  (setq ac-auto-start nil)
+;                  (setq ac-quick-help-delay 0.5)
+;
+;                  (add-to-list 'ac-dictionary-directories user-autocompletedict)
+;                  (ac-config-default)
+;                  (ac-set-trigger-key "TAB")
+;                  (define-key ac-mode-map  [(control tab)] 'auto-complete)
+;                  (setq-default ac-sources '(ac-source-yasnippet
+;                                             ac-source-abbrev
+;                                             ac-source-dictionary
+;                                             ac-source-words-in-same-mode-buffers))
+;                  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
+;                  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+;                  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
+;                  (add-hook 'css-mode-hook 'ac-css-mode-setup)
+;                  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+;                  (global-auto-complete-mode t)))))
 #+END_SRC
 
 * 05-general
 #+BEGIN_SRC emacs-lisp
-(use-package hexrgb)
-(use-package ack)
-(use-package whole-line-or-region)
-(use-package idomenu)
-(use-package key-chord)
-(use-package pomodoro)
+(use-package csv-mode :ensure csv-mode)
+
+(use-package ctable :ensure ctable)
+
+(use-package epc :ensure epc)
+
+(use-package epl :ensure epl)
+
+(use-package popup :ensure popup)
+
+(use-package popwin :ensure popwin)
+
+(use-package whole-line-or-region :ensure whole-line-or-region)
+
+(use-package muttrc-mode :ensure muttrc-mode)
+
+(use-package offlineimap :ensure offlineimap)
+
+(use-package idomenu :ensure idomenu)
+
+(use-package key-chord :ensure key-chord)
+
+(use-package pomodoro :ensure pomodoro)
+
+(use-package smex :ensure smex)
+
+(use-package smartparens :ensure smartparens)
+
+(use-package window-number :ensure window-number)
+
+(use-package rich-minority :ensure rich-minority)
+
+(use-package rsense :ensure rsense)
+
 (which-function-mode t)
 
-(use-package i3wm-emacs)
+;(use-package i3wm-emacs)
 
 ;; https://github.com/sabof/project-explorer
-(use-package project-explorer)
-
-(use-package smart-mode-line
-  :init
-  (progn
-    (add-hook 'after-init-hook 'sml/setup)
-    (sml/apply-theme 'light)
-  ))
+(use-package project-explorer
+   :ensure project-explorer)
 
 (use-package indent-guide
+  :ensure indent-guide
   :init
   (progn
     (indent-guide-global-mode)))
 
+(use-package aggressive-indent
+  :ensure aggressive-indent
+  :init 
+  (progn 
+    (global-aggressive-indent-mode 0)
+    (add-to-list 'aggressive-indent-excluded-modes 'html-mode)))
+
 (use-package fill-column-indicator
+  :ensure fill-column-indicator
   :init
   (progn
     (setq fci-rule-character-color "#1c1c1c"
           fci-rule-color "#1c1c1c")))
 
 (use-package saveplace
+  :ensure saveplace
   :init (progn
-          (setq save-place-file user-save-place-file)
+;          (setq save-place-file user-save-place-file)
           (setq-default save-place t)))
 
 ; https://github.com/wasamasa/eyebrowse
-(use-package eyebrowse)
+(use-package eyebrowse
+   :ensure eyebrowse)
 
 ; http://emacs-fu.blogspot.com/2011/01/setting-frame-title.html
 (setq frame-title-format
   '("" invocation-name ": "(:eval (if (buffer-file-name)
                 (abbreviate-file-name (buffer-file-name))
                   "%b"))))
-
-; remove emacs' ability to interactive with git.  This was done
-; because accessing remote git repo through sshfs caused major lag.
-(delete 'Git vc-handled-backends)
 
 ; http://blog.printf.net/articles/tag/emacs
 (defun find-tag-at-point ()
@@ -501,7 +518,7 @@ Assumes that the frame is only split into two."
 
 ;;  abbrevs (emacs will automagically expand abbreviations)
 (setq abbrev-file-name                ; tell emacs where to read abbrev
-      emacs-abbrevdefs-file)    ; definitions from...
+      user-abbrevdefs-file)          ; definitions from...
 (abbrev-mode t)                       ; enable abbrevs (abbreviations) ...
 (when (file-exists-p abbrev-file-name)
   (quietly-read-abbrev-file))         ;  don't tell
@@ -516,11 +533,11 @@ Assumes that the frame is only split into two."
   kept-new-versions 2
   kept-old-versions 5
   delete-old-versions t)
-(setq backup-directory-alist `((".*" . ,user-backup-dir)))
+;(setq backup-directory-alist `((".*" . ,user-backup-dir)))
 
 ; tramp, for remote access
 (setq tramp-default-method "ssh"
-      tramp-persistency-file-name emacs-tramp-dir
+      tramp-persistency-file-name user-tramp-dir
       tramp-verbose 10)
 
 ;; safe locals; we mark these as 'safe', so emacs22+ won't give us annoying
@@ -531,11 +548,11 @@ Assumes that the frame is only split into two."
               auto-recompile outline-minor-mode)))
 
 (setq image-dired-dir user-image-dired-dir)
-(setq ido-save-directory-list-file emacs-ido-last-file)
+(setq ido-save-directory-list-file user-ido-last-file)
 
 (setq savehist-additional-variables       ;; also save...
       '(search-ring regexp-search-ring)   ;; ... my search entries
-      savehist-file emacs-savehist-file)  ;; keep my home clean
+      savehist-file user-savehist-file)  ;; keep my home clean
 (savehist-mode t)                         ;; do customization before activate
 
 ;; Run at full power please
@@ -546,10 +563,29 @@ Assumes that the frame is only split into two."
 
 (setq tab-always-indent nil)
 
-;(use-package grandshell-theme
-;  :init (load-theme 'grandshell 1))
-(use-package moe-theme
-    :init (load-theme 'moe-dark t))
+; powerline - https://github.com/milkypostman/powerline
+;(use-package powerline
+;  :ensure powerline)
+
+; moe-theme - https://github.com/kuanyui/moe-theme.el
+;(use-package moe-theme
+;  :ensure moe-theme
+;  :init (progn
+;    (load-theme 'moe-dark t)
+;    (moe-theme-set-color 'blue) 
+;    (powerline-moe-theme)))
+
+(use-package grandshell-theme
+  :ensure grandshell-theme
+  :init (progn
+    (load-theme 'grandshell t)))
+
+(use-package smart-mode-line
+  :ensure smart-mode-line
+  :init (progn
+    (sml/setup)
+    (sml/apply-theme 'automatic)
+))
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -566,29 +602,18 @@ Assumes that the frame is only split into two."
 (setq visible-bell nil)
 #+END_SRC
 
+* 06-projectile
+#+BEGIN_SRC emacs-lisp
+(use-package projectile :ensure projectile
+      :init 
+       (progn
+        (projectile-global-mode)
+        (setq projectile-cache-file user-projectile-cache-file
+              projectile-known-projects-file user-projectile-known-projects-file)))
+#+END_SRC
+
 * 10-evil
 #+BEGIN_SRC emacs-lisp
-; https://gitorious.org/evil/pages/Home
-; https://github.com/timcharper/evil-surround
-(use-package evil-surround
-  :init (global-evil-surround-mode 1))
-
-; https://github.com/cofi/evil-leader
-(use-package evil-leader
-  :init
-  (progn
-    (evil-leader/set-leader "\\")
-    (global-evil-leader-mode 1)))
-
-; https://github.com/redguardtoo/evil-matchit
-(use-package evil-matchit
-  :init 
-  (progn
-    (global-evil-matchit-mode 1)
-    (evil-define-key 'normal evil-matchit-mode-map
-      "%" 'evilmi-jump-items)
-))
-
 (defcustom dotemacs-evil-state-modes
   '(
     ;fundamental-mode
@@ -605,6 +630,7 @@ Assumes that the frame is only split into two."
 
 ; https://gitorious.org/evil
 (use-package evil
+  :ensure evil
   :init
   (progn
     (evil-mode 1)
@@ -637,6 +663,30 @@ Assumes that the frame is only split into two."
     (add-to-list 'load-path evil-nerd-commenter-path)
   (message "Unable to add evil-nerd-commenter %s to load-path" evil-nerd-commenter-path))
 
+; https://gitorious.org/evil/pages/Home
+; https://github.com/timcharper/evil-surround
+(use-package evil-surround
+  :ensure evil-surround
+  :init (global-evil-surround-mode 1))
+
+; https://github.com/cofi/evil-leader
+(use-package evil-leader
+  :ensure evil-leader
+  :init
+  (progn
+    (evil-leader/set-leader "\\")
+    (global-evil-leader-mode 1)))
+
+; https://github.com/redguardtoo/evil-matchit
+(use-package evil-matchit
+  :ensure evil-matchit
+  :init 
+  (progn
+    (global-evil-matchit-mode 1)
+    (evil-define-key 'normal evil-matchit-mode-map
+      "%" 'evilmi-jump-items)
+))
+
 ; https://github.com/redguardtoo/evil-nerd-commenter
 (use-package evil-nerd-commenter
   :init
@@ -652,6 +702,7 @@ Assumes that the frame is only split into two."
 
 
 (use-package evil-jumper
+  :ensure evil-jumper
   :init
   (progn
     (setq evil-jumper-auto-center t)
@@ -659,10 +710,14 @@ Assumes that the frame is only split into two."
     (setq evil-jumper-auto-save-interval 3600)
 ))
 
-(use-package evil-numbers)
-(use-package evil-visualstar)
-(use-package evil-indent-textobject)
+(use-package evil-numbers
+  :ensure evil-numbers)
+(use-package evil-visualstar
+  :ensure evil-visualstar)
+(use-package evil-indent-textobject
+  :ensure evil-indent-textobject)
 (use-package evil-exchange
+  :ensure evil-exchange
   :init
   (progn
     (evil-exchange-install)
@@ -673,6 +728,7 @@ Assumes that the frame is only split into two."
 #+BEGIN_SRC emacs-lisp
 
 (use-package flyspell
+  :ensure flyspell
   :init
   (progn
     (when is-linux
@@ -685,11 +741,11 @@ Assumes that the frame is only split into two."
 #+BEGIN_SRC emacs-lisp
 ; https://github.com/magit/git-modes
 
-(use-package git-commit-mode)
-(use-package git-rebase-mode)
-(use-package gitconfig-mode)
-(use-package gitignore-mode)
-(use-package gitattributes-mode)
+(use-package git-commit-mode :ensure git-commit-mode)
+(use-package git-rebase-mode :ensure git-rebase-mode)
+(use-package gitconfig-mode :ensure gitconfig-mode)
+(use-package gitignore-mode :ensure gitignore-mode)
+(use-package gitattributes-mode :ensure gitattributes-mode)
 #+END_SRC
 
 * 20-clojure
@@ -697,6 +753,7 @@ Assumes that the frame is only split into two."
 
 ; https://github.com/clojure-emacs/clojure-mode
 (use-package clojure-mode
+  :ensure clojure-mode
   :init
   (progn
     (add-hook 'clojure-mode-hook 'paredit-mode)
@@ -714,15 +771,16 @@ Assumes that the frame is only split into two."
     ))
 
 ; https://github.com/clojure-emacs/ac-cider
-(use-package ac-cider
-  :init
-  (progn
-    (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-    (add-hook 'cider-mode-hook 'ac-cider-setup)
-    (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-    (eval-after-load "auto-complete"
-      '(add-to-list 'ac-modes 'cider-mode))
-    ))
+;(use-package ac-cider
+;  :ensure ac-cider
+;  :init
+;  (progn
+;    (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+;    (add-hook 'cider-mode-hook 'ac-cider-setup)
+;    (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+;    (eval-after-load "auto-complete"
+;      '(add-to-list 'ac-modes 'cider-mode))
+;    ))
 #+END_SRC
 
 * 20-css
@@ -733,6 +791,8 @@ Assumes that the frame is only split into two."
 
 ;; Load both major and minor modes in one call based on file type 
 (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes))
+
+(use-package scss-mode :ensure scss-mode)
 #+END_SRC
 
 * 20-el
@@ -750,26 +810,31 @@ Assumes that the frame is only split into two."
 #+BEGIN_SRC emacs-lisp
 ; http://web-mode.org/
 (use-package web-mode
+:ensure web-mode
              :init
              (progn
-               (setq web-mode-ac-sources-alist
-                     '(("css" . (ac-source-css-property))
-                       ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+               ;(setq web-mode-ac-sources-alist
+               ;      '(("css" . (ac-source-css-property))
+               ;        ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
                      
                (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-               (add-to-list 'auto-mode-alist '("\\.css" . web-mode))
                (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-               
-               ; https://github.com/smihica/emmet-mode
-               (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-               (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
                ))
+
+; https://github.com/smihica/emmet-mode
+(use-package emmet-mode :ensure emmet-mode
+:init 
+(progn
+  (add-hook 'sgml-mode-hook 'emmet-mode) 
+  (add-hook 'css-mode-hook  'emmet-mode)))
+
+
 #+END_SRC
 
 * 20-js
 #+BEGIN_SRC emacs-lisp
-(use-package js2-mode)
-(use-package js2-refactor)
+(use-package js2-mode :ensure js2-mode)
+(use-package js2-refactor :ensure js2-refactor)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook (lambda ()
@@ -787,12 +852,14 @@ Assumes that the frame is only split into two."
 ;; TODO check out traad https://github.com/abingham/traad
 ;; Traad is a client-server approach to use the rope Python refactory library.
 
-(use-package elpy
-  :init
-  (progn
-    (elpy-enable)))
+;(use-package elpy
+;:ensure elpy
+;  :init
+;  (progn
+;    (elpy-enable)))
 
 (use-package jedi
+:ensure jedi
   :init
   (progn
     (bind-key "C-c /" 'jedi:get-in-function-call)
@@ -801,13 +868,17 @@ Assumes that the frame is only split into two."
     ;; Start completion at method dot
     (setq jedi:complete-on-dot t)
     (setq jedi:setup_keys t)
+    (add-hook 'python-mode-hook 'auto-complete-mode)
     (add-hook 'python-mode-hook 'eldoc-mode)
     (add-hook 'python-mode-hook 'jedi:setup)))
+(use-package pyenv-mode :ensure pyenv-mode)
+(use-package python-environment :ensure python-environment)
 #+END_SRC
 
 * 20-rst
 #+BEGIN_SRC emacs-lisp
 (use-package rst
+:ensure rst
   :init
   (progn
     (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
@@ -815,22 +886,35 @@ Assumes that the frame is only split into two."
 #+END_SRC
 
 * 20-rust
-(use-package rust-mode)
+#+BEGIN_SRC emacs-lisp
+(use-package rust-mode :ensure rust-mode)
+#+END_SRC
 * 20-ruby
 #+BEGIN_SRC emacs-lisp
 ;; robe - https://github.com/dgutov/robe
 (use-package robe
+:ensure robe
   :init
   (progn
-    (push 'company-robe company-backends)
-))
+    (push 'company-robe company-backends)))
+
+;; inf-ruby - https://github.com/nonsequitur/inf-ruby  
+(use-package inf-ruby
+:ensure inf-ruby
+;  :init
+;  (progn
+;    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
+;    (add-to-list 'ac-modes 'inf-ruby-mode))
+;    (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
+)
 
 ;; Ruby - https://github.com/zenspider/enhanced-ruby-mode
 (use-package enh-ruby-mode 
+:ensure enh-ruby-mode
   :init
   (progn
     (add-hook 'enh-ruby-mode-hook 'robe-mode)
-    (add-to-list 'ac-modes 'enh-ruby-mode)
+    ;(add-to-list 'ac-modes 'enh-ruby-mode)
     (setq robe-turn-on-eldoc t)
     (inf-ruby-minor-mode +1)
 
@@ -841,17 +925,11 @@ Assumes that the frame is only split into two."
     (add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("Gemfile" . enh-ruby-mode))
     (add-to-list 'auto-mode-alist '("capfile" . enh-ruby-mode))
-    (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
+    (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode)))
 )
 
-;; inf-ruby - https://github.com/nonsequitur/inf-ruby  
-(use-package  inf-ruby
-  :init
-  (progn
-    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
-    (add-to-list 'ac-modes 'inf-ruby-mode))
-    (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete)
-))
+;(use-package ac-inf-ruby :ensure ac-inf-ruby)
+
 #+END_SRC
 
 * 20-textmode
@@ -864,15 +942,24 @@ Assumes that the frame is only split into two."
             ))
 #+END_SRC
 
+* 20-coffee
+#+BEGIN_SRC emacs-lisp
+(use-package coffee-mode :ensure coffee-mode)
+#+END_SRC
+* 20-markdown
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode :ensure markdown-mode)
+#+END_SRC
 * 30-flycheck
 #+BEGIN_SRC emacs-lisp
-
+(use-package flycheck :ensure flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 #+END_SRC
 
 * 30-magit
 #+BEGIN_SRC emacs-lisp
 (use-package magit
+:ensure magit
   :init
   (progn
     (bind-key "C-x C-g" 'magit-status)))
@@ -881,6 +968,7 @@ Assumes that the frame is only split into two."
 * 30-paredit
 #+BEGIN_SRC emacs-lisp
 (use-package paredit
+:ensure paredit
   :init
   (progn
     (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
@@ -889,11 +977,14 @@ Assumes that the frame is only split into two."
     (add-hook 'lisp-mode-hook 'paredit-mode)
     (add-hook 'lisp-interaction-mode-hook 'paredit-mode)
     (add-hook 'scheme-mode-hook 'paredit-mode)))
+(use-package paredit-everywhere
+  :ensure paredit-everywhere)
 #+END_SRC
 
 * 50-buffermove
 #+BEGIN_SRC emacs-lisp
 (use-package buffer-move
+:ensure buffer-move
   :init
   (progn
     (bind-key "C-S-<up>" 'buf-move-up)
@@ -906,12 +997,13 @@ Assumes that the frame is only split into two."
 * 50-changeinner
 #+BEGIN_SRC emacs-lisp
 (use-package change-inner
+:ensure change-inner
   :init 
   (progn
     (bind-key "M-i" 'change-inner)
     (bind-key "M-o" 'change-outer)))
 #+END_SRC
-
+  
 * 50-diminish
 #+BEGIN_SRC emacs-lisp
 ;(require 'diminish)
@@ -998,6 +1090,7 @@ Symbols matching the text at point are put first in the completion list."
 ; http://www.emacswiki.org/emacs/IyGoToChar
 ; iy-go-to-char - like f in Vim
 (use-package jump-char
+  :ensure jump-char
   :init
   (progn
     (bind-key "M-m" 'jump-char-forward)
@@ -1010,6 +1103,7 @@ Symbols matching the text at point are put first in the completion list."
 ;;;_. Emacs Rocks 04
 ;; Expand region (increases selected region by semantic units)
 (use-package expand-region
+  :ensure expand-region
   :init
   (progn
     (evil-leader/set-key "=" 'er/expand-region)))
@@ -1023,12 +1117,14 @@ Symbols matching the text at point are put first in the completion list."
 
 ; https://github.com/waymondo/ace-jump-buffer
 (use-package ace-jump-buffer
+  :ensure ace-jump-buffer
   :init  
   (progn
     (evil-leader/set-key "b" 'ace-jump-buffer)))
 
 ; https://github.com/abo-abo/ace-window
 (use-package ace-window
+  :ensure ace-window
   :init
   (progn
     (global-set-key (kbd "M-p") 'ace-window)))
@@ -1063,6 +1159,7 @@ Symbols matching the text at point are put first in the completion list."
 * 50-linum
 #+BEGIN_SRC emacs-lisp
 (use-package linum
+  :ensure linum
   :init
   (progn
     ; enable display of line-numbers to left of buffer,
@@ -1074,6 +1171,7 @@ Symbols matching the text at point are put first in the completion list."
 * 60-ibuffer
 #+BEGIN_SRC emacs-lisp
 (use-package ibuffer
+  :ensure ibuffer
   :config
   (progn 
     (setq ibuffer-saved-filter-groups
@@ -1082,6 +1180,8 @@ Symbols matching the text at point are put first in the completion list."
                     (filename . "resume"))
                    ("HemlockForest"
                     (filename . "HemlockForest"))
+                   ("SimpleVirtualMachine"
+                    (filename . "simple-virtual-machine"))
                    ("Emacs Config"
                     (filename . "emacs"))
                    ("dmenu_ssh"
@@ -1144,24 +1244,27 @@ Symbols matching the text at point are put first in the completion list."
 
 * 60-ido
 #+BEGIN_SRC emacs-lisp
+(use-package ido-vertical-mode :ensure ido-vertical-mode :init (ido-vertical-mode))
+(use-package flx :ensure flx)
 (use-package flx-ido
+  :ensure flx-ido
   :init
   (progn
     ;(bind-key "C-x C-i" 'ido-imenu)
     (flx-ido-mode 1)
-    (ido-vertical-mode)
     (setq ido-use-faces nil)))
 #+END_SRC
 
 * 60-multiplecursors
 #+BEGIN_SRC emacs-lisp
-(use-package multiple-cursors)
+(use-package multiple-cursors :ensure multiple-cursors)
 #+END_SRC
 
 * 60-multiterm
 #+BEGIN_SRC emacs-lisp
 ; http://www.emacswiki.org/emacs/MultiTerm
 (use-package multi-term
+  :ensure multi-term
   :init
   (setq multi-term-program "/bin/zsh"))
 #+END_SRC
@@ -1169,6 +1272,7 @@ Symbols matching the text at point are put first in the completion list."
 * 60-prettysymbolmode
 #+BEGIN_SRC emacs-lisp
 (use-package pretty-symbols
+  :ensure pretty-symbols
   :init (progn
     (add-hook 'emacs-lisp-hook 'pretty-symbols)
     (add-hook 'cperl-hook 'pretty-symbols)
@@ -1181,21 +1285,23 @@ Symbols matching the text at point are put first in the completion list."
 #+BEGIN_SRC emacs-lisp
 ; http://emacs-fu.blogspot.com/2011/05/toward-balanced-and-colorful-delimiters.html
 (use-package rainbow-delimiters
+  :ensure rainbow-delimiters
   :init
   (progn
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 
-(use-package rainbow-mode)
+(use-package rainbow-mode :ensure rainbow-mode)
 #+END_SRC
 
 * 60-recentf
 #+BEGIN_SRC emacs-lisp
 ; Save a list of recent files visited. (open recent file with C-x f)
 (use-package recentf
+:ensure recentf
   :init
   (progn
     (bind-key "C-x C-r" 'ido-recentf-open)
-    (setq recentf-save-file emacs-recentfiles-file
+    (setq recentf-save-file user-recentfiles-file
           recentf-max-saved-items 500
           recentf-max-menu-items 60)
     (recentf-mode t)))
@@ -1220,9 +1326,14 @@ Symbols matching the text at point are put first in the completion list."
      uniquify-separator ":")))
 #+END_SRC
 
+* 70-editorconfig
+#+BEGIN_SRC emacs-lisp
+(use-package editorconfig :ensure editorconfig)
+#+END_SRC
+
 * 80-esup
 #+BEGIN_SRC emacs-lisp
-(use-package esup)
+(use-package esup :ensure esup)
 #+END_SRC
 
 * 95-localhost
