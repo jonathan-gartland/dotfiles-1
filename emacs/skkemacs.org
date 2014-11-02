@@ -658,11 +658,6 @@ Assumes that the frame is only split into two."
       (add-hook 'post-command-hook (lambda () (my-evil-modeline-change default-color))))
 ))
 
-(defconst evil-nerd-commenter-path (expand-file-name (substitute-in-file-name "$HOME/src/evil-nerd-commenter")))
-(if (file-directory-p evil-nerd-commenter-path)
-    (add-to-list 'load-path evil-nerd-commenter-path)
-  (message "Unable to add evil-nerd-commenter %s to load-path" evil-nerd-commenter-path))
-
 ; https://gitorious.org/evil/pages/Home
 ; https://github.com/timcharper/evil-surround
 (use-package evil-surround
@@ -689,6 +684,7 @@ Assumes that the frame is only split into two."
 
 ; https://github.com/redguardtoo/evil-nerd-commenter
 (use-package evil-nerd-commenter
+  :ensure evil-nerd-commenter
   :init
   (progn
     (evil-leader/set-key
