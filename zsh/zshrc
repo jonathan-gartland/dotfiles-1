@@ -26,6 +26,7 @@ antigen bundles <<EOBUNDLES
     sudo
     systemd
     vundle
+    virtualenvwrapper
     z
 
     zsh-users/zsh-syntax-highlighting
@@ -37,9 +38,11 @@ BULLETTRAIN_TIME_SHOW=false
 BULLETTRAIN_CONTEXT_SHOW=true
 BULLETTRAIN_EXIT_SHOW=true
 BULLETTRAIN_RVM_SHOW=true
+BULLETTRAIN_VIRTUALENV_SHOW=true
 BULLETTRAIN_PROMPT_CHAR="❯"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
 BULLETTRAIN_RVM_FG=black
+BULLETTRAIN_VIRTUALENV_FG=black
 
 build_prompt() {
   RETVAL=$?
@@ -51,6 +54,7 @@ build_prompt() {
   prompt_dir
   prompt_git
   prompt_rvm
+  prompt_virtualenv
   prompt_end
 }
 

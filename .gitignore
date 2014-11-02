@@ -12,6 +12,7 @@ emacs/backups
 emacs/elpa
 emacs/output
 *.elc
+skkemacs.el
 
 # vim
 vim/.netrwhist
