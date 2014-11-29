@@ -5,14 +5,14 @@
 # handle spam message
 :0
 * ^Subject:.*SEXUALLY-EXPLICIT.*
-.Spam/
+.Junk/
 
 :0
 * ^X-Spam-Flag:.*YES.*
-.Spam/
+.Junk/
 
 :0
 * ^X-MailScanner-SpamCheck:spam.*
-.Spam/
+.Junk/
 
 # vim: filetype=procmail syntax=procmail

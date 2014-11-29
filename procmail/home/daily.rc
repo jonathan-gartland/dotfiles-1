@@ -1,0 +1,120 @@
+# Allrecipes
+:0
+* (From):.*email@allrecipes.com.*
+.Daily/Allrecipes/
+
+# Morning Jolt
+:0 B:
+* Morning Jolt
+.Daily/MorningJolt/
+
+# knight.cx
+:0
+* (From):.*nobody@localhost.*
+.Daily/knightcx/
+
+:0
+* (From):.*root@knight.cx.*
+.Daily/knightcx/
+
+# IBD Editorials
+:0
+* ^From:.*investors@e.investors.com.*
+.Daily/IBDEditorials/
+
+# Twitchy
+:0
+* ^From:.*updates@twitchymail.com.*
+.Daily/Twitchy/
+
+# Todoist
+:0
+* ^(From):.*daily-digest@todoist.com.*
+.Daily/Todoist/
+
+# Jobs
+:0
+* ^(From):.*jagent-feedback@monster.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*alert@email1-beyond.com.* | ^(From):.*alert@email2-beyond.com.* | ^(From):.*alert@email3-beyond.com.* | ^(From):.*alert@email4-beyond.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*JobMatch@email.*-beyond.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*job1@email03-employgoal.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*jagent@route.monster.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*jobalerts@jobserious.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*balerts@site.careerbuilder.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*JobAlerts@CyberCoders.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*jobs@alerts.cybercoders.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*noreply_alerts@ziprecruiter.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*jobs.simplyhired.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*noreply@jobmonkeymail.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*noreply@glassdoor.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*marketing@itjobcafe.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*noreply-zr-startwire@ziprecruiter.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*noreply@postjobfree.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*alerts@jobsreport.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*jobplanner@startwire.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*info@jobdiagnosis.com.*
+.Daily/Jobs/
+
+:0
+* ^(From):.*alert@startwire.com.*| ^(From):.*WindhamProfessionals@jobs.net.*
+.Daily/Jobs/
+
+#:0
+#* ^(From):.*WindhamProfessionals@jobs.net.*
+#.Daily/Jobs/
+
+# vim: filetype=procmail syntax=procmail
