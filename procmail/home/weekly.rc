@@ -1,0 +1,27 @@
+# JS Weekly News
+:0
+* ^From:.*jsw@peterc.org.*
+.Weekly/JavascriptNews/
+
+# Python Weekly News
+:0
+* ^From:.*rahul@pythonweekly.com.*
+.Weekly/PythonNews/
+
+# Ruby Weekly News
+:0
+* ^From:.*rw@peterc.org.*
+.Weekly/RubyNews/
+
+# Goldberg File
+:0 B:
+* The Goldberg File
+.Weekly/GoldbergFile/
+
+# Sublime Text
+:0
+* ^(From):.*josh@sublimetexttips.com.*
+.Weekly/Sublime\ Text/
+
+
+# vim: filetype=procmail syntax=procmail

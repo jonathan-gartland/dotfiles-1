@@ -1,0 +1,42 @@
+
+# Allstate
+:0
+* ^From:.*allstate@service.allstate.com.*
+.Bills/Allstate/
+
+# PSNH
+:0
+* ^From:.*PSNHREQ@PSNH.COM.*
+.Bills/PSNH/
+
+# Amazon
+:0
+* (From):.*@amazon.com.*
+.Bills/Amazon/
+
+# Ting
+:0
+* ^From:.*help@ting.com.*
+.Bills.Ting/
+
+# American Express
+:0
+* (From):.*American Express.*
+.Bills/AmericanExpress/
+
+# Github
+:0
+* ^From:.*support@github.com.*
+.Bills/github/
+
+# Comcast
+:0
+* (From):.*online.communications@alerts.comcast.net.*
+.Bills/Comcast/
+
+# E-ZPass
+:0
+* (From):.*postmaster@e-statements.ezpassnh.com.*
+.Bills/E-ZPass/
+
+# vim: filetype=procmail syntax=procmail

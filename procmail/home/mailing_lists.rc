@@ -48,9 +48,17 @@
 * ^(To|Cc):.*ruby-talk@ruby-lang.org.*
 .Mailing\ Lists.Ruby\ Talk/
 
-# Ruby on Rails
+# python list
 :0
-* ^(To|Cc):.*rubyonrails-talk@googlegroups.com.*
-.Mailing\ Lists.Ruby\ On\ Rails/
+* ^(To|Cc):.*python-list@python.org.*
+.Mailing\ Lists.Python\ List/
+
+:0
+* ^(To|Cc):.*emacs-devel@gnu.org.*
+.Mailing\ Lists.Emacs\ Dev/
+
+:0
+* ^(To|Cc):.*help-gnu-emacs@gnu.org.*
+.Mailing\ Lists.Emacs\ Users/
 
 # vim: filetype=procmail syntax=procmail
