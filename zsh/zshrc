@@ -6,6 +6,12 @@ cdpath_backup=($cdpath)
 
 antigen use oh-my-zsh
 
+# grep: warning: GREP_OPTIONS is deprecated; please use an alias or script
+# Waiting for oh-my-zsh
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS
+
+
 # restore cdpath
 cdpath=($cdpath_backup)
 
@@ -21,16 +27,17 @@ antigen bundles <<EOBUNDLES
     gpg-agent
     rails
     ruby
-    rvm
     ssh-agent
     sudo
     systemd
     vundle
-    virtualenvwrapper
     z
 
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
+
+#rvm
+#virtualenvwrapper
 
 antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
@@ -44,12 +51,21 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
 BULLETTRAIN_RVM_FG=black
 BULLETTRAIN_VIRTUALENV_FG=black
 
+
+enable_rvm() {
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    antigen bundle rvm 
+}
+
+enable_virtualenv() {
+    antigen bundle virtualenvwrapper
+}
+
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_time
   prompt_virtualenv
-  #prompt_nvm
   prompt_context
   prompt_dir
   prompt_git
@@ -60,7 +76,8 @@ build_prompt() {
 
 antigen apply
 
-# use local pacman 
+
+# use local pacman
 if [[ -x $(which etckeeper) && -x $(which ~/bin/pacman-etckeeper) ]]; then
     alias pacman=pacman-etckeeper
 fi
@@ -141,3 +158,43 @@ fi
 
 # load LS colors
 [[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
+
+
+# # http://superuser.com/questions/521657/zsh-automatically-set-environment-variables-for-a-directory
+# function chpwd_profiles() {
+#     local profile context
+#     local -i reexecute
+
+#     context=":chpwd:profiles:$PWD"
+#     zstyle -s "$context" profile profile || profile='default'
+#     zstyle -T "$context" re-execute && reexecute=1 || reexecute=0
+
+#     if (( ${+parameters[CHPWD_PROFILE]} == 0 )); then
+#         typeset -g CHPWD_PROFILE
+#         local CHPWD_PROFILES_INIT=1
+#         (( ${+functions[chpwd_profiles_init]} )) && chpwd_profiles_init
+#     elif [[ $profile != $CHPWD_PROFILE ]]; then
+#         (( ${+functions[chpwd_leave_profile_$CHPWD_PROFILE]} )) \
+#             && chpwd_leave_profile_${CHPWD_PROFILE}
+#     fi
+#     if (( reexecute )) || [[ $profile != $CHPWD_PROFILE ]]; then
+#         (( ${+functions[chpwd_profile_$profile]} )) && chpwd_profile_${profile}
+#     fi
+
+#     CHPWD_PROFILE="${profile}"
+#     return 0
+# }
+# chpwd_functions=( ${chpwd_functions} chpwd_profiles )
+
+# zstyle ':chpwd:profiles:/home/skk/Projects/simple_virtual_machine(|/|/*)' SVM
+# zstyle ':chpwd:profiles:~/Projects/simple_virtual_machine(|/|/*)' SVM
+
+
+# chpwd_profile_SVM() {
+#     print "profile ${profile}"
+#     [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
+#     print "chpwd(): Switching to profile: $profile"
+#     # antigen bundle virtualenvwrapper
+# }
+
+
