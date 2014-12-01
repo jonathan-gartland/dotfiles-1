@@ -16,12 +16,7 @@
 (setq is-linux (equal system-type 'gnu/linux))
 (setq is-windows-nt (equal system-type 'windows-nt))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Install packages cider and clojure-mode manually from
-; melpa-stable to ensure version match between cider and cider-nrepl.
 (require 'package)
-(add-to-list 'package-archives
-              '("melpa-stable" . "http://staple.melpa.org/packages/") t)
 (add-to-list 'package-archives
               '("melpa" . "http://melpa.org/packages/") t)
 ;(add-to-list 'package-archives
@@ -31,17 +26,6 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-
-(unless (package-installed-p 'cider)
-  (package-install 'cider))
-
-(unless (package-installed-p 'clojure-mode)
-  (package-install 'clojure-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;(require 'cask (expand-file-name "~/.cask/cask.el"))
-;(cask-initialize)
-;(require 'pallet)
 
 ; common lisp goodies
 (require 'cl)
@@ -79,7 +63,8 @@
 (defconst user-projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" emacs-persistence-directory))
 (defconst user-graphene-geometry-file (expand-file-name "graphene-geometry" emacs-persistence-directory))
 (defconst user-project-persist-settings-dir (expand-file-name "~/dot-files-forest/emacs/project-persist")) 
-(defconst user-emacs-yasnippet-dir (expand-file-name "~/dot-files-forest/emacs/snippets/"))
+(defconst user-emacs-yasnippet-dir (expand-file-name "~/dot-files-forest/emacs/snippets"))
+(defconst user-emacs-vendor-dir (expand-file-name "~/dot-files-forest/emacs/vendor"))
 
 ;; create required directories
 (unless (file-directory-p emacs-persistence-directory)
@@ -387,35 +372,12 @@ Assumes that the frame is only split into two."
                :ensure yasnippet
                :init
                (progn
-                 (setq yas-snippet-dirs (append yas-snippet-dirs
-                                                user-emacs-yasnippet-dir))
-                 (yas-global-mode 1)))))
+                  (setq yas-snippet-dirs (append yas-snippet-dirs
+                                                '(user-emacs-yasnippet-dir)))
+                  (setq yas-snippet-dirs (remove "~/.emacs.d/snippets" yas-snippet-dirs))
 
-; load auto-complete-config
-; (add-hook 'after-init-hook
-;           (lambda () 
-;             (use-package auto-complete-config
-;               :ensure auto-complete
-;               :init
-;               (progn
-;                  (setq ac-comphist-file user-acomphistfile-file)
-;                  (setq ac-auto-start nil)
-;                  (setq ac-quick-help-delay 0.5)
-;
-;                  (add-to-list 'ac-dictionary-directories user-autocompletedict)
-;                  (ac-config-default)
-;                  (ac-set-trigger-key "TAB")
-;                  (define-key ac-mode-map  [(control tab)] 'auto-complete)
-;                  (setq-default ac-sources '(ac-source-yasnippet
-;                                             ac-source-abbrev
-;                                             ac-source-dictionary
-;                                             ac-source-words-in-same-mode-buffers))
-;                  (add-hook 'emacs-lisp-mode-hook 'ac-emacs-lisp-mode-setup)
-;                  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-;                  (add-hook 'ruby-mode-hook 'ac-ruby-mode-setup)
-;                  (add-hook 'css-mode-hook 'ac-css-mode-setup)
-;                  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-;                  (global-auto-complete-mode t)))))
+                  (yas-global-mode 1)
+                  (global-auto-complete-mode t)))))
 #+END_SRC
 
 * 05-general
@@ -430,7 +392,7 @@ Assumes that the frame is only split into two."
 
 (use-package popup :ensure popup)
 
-(use-package popwin :ensure popwin)
+(use-package popwin :ensure popwin :init (popwin-mode 1))
 
 (use-package whole-line-or-region :ensure whole-line-or-region)
 
@@ -453,6 +415,10 @@ Assumes that the frame is only split into two."
 (use-package rich-minority :ensure rich-minority)
 
 (use-package rsense :ensure rsense)
+
+(use-package ag :ensure ag)
+
+(use-package ack-and-a-half :ensure ack-and-a-half)
 
 (which-function-mode t)
 
@@ -612,18 +578,26 @@ Assumes that the frame is only split into two."
               projectile-known-projects-file user-projectile-known-projects-file)))
 #+END_SRC
 
+* 07-guide-key
+  :PROPERTIES:
+  :ORDERED:  t
+  :END:
+#+BEGIN_SRC emacs-lisp
+(use-package guide-key
+  :ensure guide-key
+  :init (progn
+    (setq guide-key/idle-delay 0.5
+          guide-key/text-scale-amount -2
+
+          guide-key/guide-key-sequence '("C-c p"   ; projectile
+                                         "C-c P"   ; project-persist
+                                        (org-mode "C-c C-x")))
+    (guide-key-mode 1)))
+#+END_SRC
 * 10-evil
 #+BEGIN_SRC emacs-lisp
 (defcustom dotemacs-evil-state-modes
-  '(
-    ;fundamental-mode
-    text-mode
-    prog-mode
-    ;dired-mode
-    ;comint-mode
-    ;log-edit-mode
-    ;compilation-mode
-)
+  '(text-mode prog-mode)
   "List of modes that should start up in Evil state."
   :type '(repeat (symbol))
   :group 'dotemacs)
@@ -719,7 +693,6 @@ Assumes that the frame is only split into two."
     (evil-exchange-install)
 ))
 #+END_SRC
-
 * 10-flyspell
 #+BEGIN_SRC emacs-lisp
 
@@ -742,41 +715,6 @@ Assumes that the frame is only split into two."
 (use-package gitconfig-mode :ensure gitconfig-mode)
 (use-package gitignore-mode :ensure gitignore-mode)
 (use-package gitattributes-mode :ensure gitattributes-mode)
-#+END_SRC
-
-* 20-clojure
-#+BEGIN_SRC emacs-lisp
-
-; https://github.com/clojure-emacs/clojure-mode
-(use-package clojure-mode
-  :ensure clojure-mode
-  :init
-  (progn
-    (add-hook 'clojure-mode-hook 'paredit-mode)
-    (add-hook 'clojure-mode-hook 'subword-mode)
-    (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-    ))
-
-; https://github.com/clojure-emacs/cider
-(use-package cider
-  :init
-  (progn
-    (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-    (add-hook 'cider-mode-hook 'disable-evil-mode)
-    (setq nrepl-hide-special-buffers t)
-    ))
-
-; https://github.com/clojure-emacs/ac-cider
-;(use-package ac-cider
-;  :ensure ac-cider
-;  :init
-;  (progn
-;    (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-;    (add-hook 'cider-mode-hook 'ac-cider-setup)
-;    (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-;    (eval-after-load "auto-complete"
-;      '(add-to-list 'ac-modes 'cider-mode))
-;    ))
 #+END_SRC
 
 * 20-css
@@ -841,18 +779,23 @@ Assumes that the frame is only split into two."
 #+BEGIN_SRC emacs-lisp
 ;; org-mode
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(add-hook 'org-mode-hook 'rainbow-mode)
+(add-hook 'org-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'org-mode-hook 'paredit-mode)
 #+END_SRC
 
 * 20-py
 #+BEGIN_SRC emacs-lisp
 ;; TODO check out traad https://github.com/abingham/traad
-;; Traad is a client-server approach to use the rope Python refactory library.
+;; Traad is a client-server approach to use the rope Python refactor library.
 
 ;(use-package elpy
 ;:ensure elpy
 ;  :init
 ;  (progn
-;    (elpy-enable)))
+;    (elpy-enable)
+;    (add-hook 'python-mode-hook 'auto-complete-mode)
+;    ))
 
 (use-package jedi
 :ensure jedi
@@ -867,6 +810,7 @@ Assumes that the frame is only split into two."
     (add-hook 'python-mode-hook 'auto-complete-mode)
     (add-hook 'python-mode-hook 'eldoc-mode)
     (add-hook 'python-mode-hook 'jedi:setup)))
+ 
 (use-package pyenv-mode :ensure pyenv-mode)
 (use-package python-environment :ensure python-environment)
 #+END_SRC
@@ -896,13 +840,12 @@ Assumes that the frame is only split into two."
 
 ;; inf-ruby - https://github.com/nonsequitur/inf-ruby  
 (use-package inf-ruby
-:ensure inf-ruby
+    :ensure inf-ruby)
 ;  :init
 ;  (progn
 ;    (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
 ;    (add-to-list 'ac-modes 'inf-ruby-mode))
-;    (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
-)
+;    (define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete)
 
 ;; Ruby - https://github.com/zenspider/enhanced-ruby-mode
 (use-package enh-ruby-mode 
@@ -945,6 +888,10 @@ Assumes that the frame is only split into two."
 * 20-markdown
 #+BEGIN_SRC emacs-lisp
 (use-package markdown-mode :ensure markdown-mode)
+#+END_SRC
+* 20-restclient
+#+BEGIN_SRC emacs-lisp
+(use-package restclient :ensure restclient)
 #+END_SRC
 * 30-flycheck
 #+BEGIN_SRC emacs-lisp
@@ -1286,7 +1233,10 @@ Symbols matching the text at point are put first in the completion list."
   (progn
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)))
 
-(use-package rainbow-mode :ensure rainbow-mode)
+(use-package rainbow-mode :ensure rainbow-mode
+   :init
+  (progn
+    (add-hook 'prog-mode-hook 'rainbow-mode)))
 #+END_SRC
 
 * 60-recentf
@@ -1321,7 +1271,6 @@ Symbols matching the text at point are put first in the completion list."
      uniquify-buffer-name-style 'post-forward
      uniquify-separator ":")))
 #+END_SRC
-
 * 70-editorconfig
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig :ensure editorconfig)
