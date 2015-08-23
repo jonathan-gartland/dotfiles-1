@@ -7,3 +7,6 @@
 [submodule "tpm"]
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "hammerspoon"]
+	path = hammerspoon
+	url = git@github.com:Linell/hammerspoon-config.git
