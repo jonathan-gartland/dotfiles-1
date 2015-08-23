@@ -1,4 +1,8 @@
 {
-    "margin": 4,
-    "tab_size": 4
+	"extensions":
+	[
+		"html.erb"
+	],
+	"margin": 4,
+	"tab_size": 4
 }

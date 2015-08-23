@@ -10,13 +10,23 @@
 	[
 		".gitignore"
 	],
+	"HTML (Rails)":
+	[
+		"html.erb"
+	],
 	"INI":
 	[
-		".npmrc",
+		".gitattributes",
 		".gitconfig",
-		"ini.dist",
 		".gitignore",
-		".gitattributes"
+		".npmrc",
+		"ini.dist"
+	],
+	"JSON":
+	[
+		".csslintrc",
+		".jscsrc",
+		".jshintrc"
 	],
 	"Shell-Unix-Generic":
 	[
