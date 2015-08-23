@@ -13,70 +13,81 @@ antigen use oh-my-zsh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
+export HOMEBREW_GITHUB_API_TOKEN=f4f09dc15dce213977f8def81db6c03a1d6b5569
 
 # restore cdpath
 cdpath=($cdpath_backup)
 
 antigen bundles <<EOBUNDLES
-    archlinux
+    brew
+    brew-cask
+    debian
+
     autojump
     colored-man
     colorize
     common-aliases
-    debian
-    gem
     git
     git-flow
     mercurial
-    gpg-agent
+
+    gem
     rails
     ruby
+
     ssh-agent
     sudo
     systemd
     vundle
+    virtualenvwrapper
     z
 
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
+#    nojhan/liquidprompt
 
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+LP_ENABLE_SVN=false
+LP_ENABLE_BZR=false
+LP_ENABLE_POSSIL=false
+LP_ENABLE_TIME=false
+
+#gpg-agent
 #rvm
-#virtualenvwrapper
 
-# antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+BULLETTRAIN_TIME_SHOW=false
+BULLETTRAIN_CONTEXT_SHOW=true
+BULLETTRAIN_EXIT_SHOW=true
+BULLETTRAIN_RVM_SHOW=true
+BULLETTRAIN_VIRTUALENV_SHOW=true
+BULLETTRAIN_PROMPT_CHAR="❯"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
+BULLETTRAIN_RVM_FG=black
+BULLETTRAIN_VIRTUALENV_FG=black
+BULLETTRAIN_VIRTUALENV_SHOW=show
 
-# BULLETTRAIN_TIME_SHOW=false
-# BULLETTRAIN_CONTEXT_SHOW=true
-# BULLETTRAIN_EXIT_SHOW=true
-# BULLETTRAIN_RVM_SHOW=true
-# BULLETTRAIN_VIRTUALENV_SHOW=true
-# BULLETTRAIN_PROMPT_CHAR="❯"
-# ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
-# BULLETTRAIN_RVM_FG=black
-# BULLETTRAIN_VIRTUALENV_FG=black
-# BULLETTRAIN_VIRTUALENV_SHOW=show
+enable_rvm() {
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    antigen bundle rvm
+}
 
-# enable_rvm() {
-#     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-#     antigen bundle rvm 
-# }
+enable_virtualenv() {
+    antigen bundle virtualenvwrapper
+}
 
-# enable_virtualenv() {
-#     antigen bundle virtualenvwrapper
-# }
-# 
-# build_prompt() {
-#   RETVAL=$?
-#   prompt_status
-#   prompt_time
-#   prompt_virtualenv
-#   prompt_context
-#   prompt_dir
-#   prompt_git
-#   prompt_rvm
-#   prompt_virtualenv
-#   prompt_end
-# }
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_time
+  prompt_virtualenv
+  prompt_context
+  prompt_dir
+  prompt_git
+  prompt_virtualenv
+  prompt_end
+}
+# prompt_rvm
 
 antigen apply
 
@@ -99,11 +110,11 @@ alias df='df -h'
 alias du='du -h'
 alias grep='grep --color=auto --ignore-case'
 alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
+alias ls='gls -hF --color'   # add colors for filetype recognition
 alias ll='ls -l'
 alias lm='ls -al |less'     # pipe through 'less'
 alias lR='ls -l'            # recursive ls
 alias lr='ls -ltr'          # sort by date DSC
-alias ls='ls -hF --color'   # add colors for filetype recognition
 alias mkdir='mkdir -p'
 alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
 alias today='date +%F'
@@ -205,4 +216,18 @@ fi
 #     # antigen bundle virtualenvwrapper
 # }
 
+# Python
+export PYTHONSTARTUP=$HOME/dot-files-forest/dotfiles/pythonstartup.py
 
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+
+# See http://www.doughellmann.com/docs/virtualenvwrapper/
+export WORKON_HOME=$HOME/.virtualenvs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_RESPECT_VIRTUALENV=true
+export VIRTUALENV_USE_DISTRIBUTE=True
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
