@@ -1,13 +1,15 @@
 {
-    "settings": {
-        "convert_tabspaces_on_save": true
-    },
-
 	"folders":
 	[
 		{
-			"follow_symlinks": true,
 			"path": "."
 		}
-	]
+	],
+	"settings":
+	{
+		"FuzzyFilePath":
+		{
+		},
+		"convert_tabspaces_on_save": true
+	}
 }
