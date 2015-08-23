@@ -11,7 +11,8 @@
 		"git.scmbrc",
 		"sh",
 		"bash",
-		"zlogin"
+		"zlogin",
+		"zshrc"
 	],
 	"margin": 4,
 	"tab_size": 4
