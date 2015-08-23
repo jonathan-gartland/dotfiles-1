@@ -1,4 +1,17 @@
 {
+	"added_words":
+	[
+		"Onboarding",
+		"screenshots",
+		"multicard",
+		"casefile",
+		"creditcard",
+		"testpromo",
+		"configurator",
+		"cashbot",
+		"datapoints",
+		"cashbot's"
+	],
 	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
 	"aprosopo_dark_blue": true,
@@ -69,7 +82,7 @@
 		".svn",
 		".hg"
 	],
-	"font_face": "monoOne",
+	"font_face": "Input Mono",
 	"font_options":
 	[
 		"subpixel_antialias",
@@ -80,10 +93,10 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
-		"LiveReload",
+		"Gitignore",
 		"vintage",
-		"Gitignore"
+		"Markdown",
+		"LiveReload"
 	],
 	"indent_guide_options":
 	[
