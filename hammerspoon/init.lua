@@ -139,17 +139,17 @@ function _move_window_right(f, max)
 end
 
 function _move_window_up(f, max)
-    f.x = max.x + (max.w / 2)
+    f.x = max.x
     f.y = max.y
-    f.w = max.w / 2
+    f.w = max.w
     f.h = max.h / 2
     return f
 end
 
 function _move_window_down(f, max)
-    f.x = max.x + (max.w / 2)
+    f.x = max.x
     f.y = max.y + (max.h / 2)
-    f.w = max.w / 2
+    f.w = max.w
     f.h = max.h / 2
     return f
 end
