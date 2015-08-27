@@ -121,20 +121,25 @@ hs.hotkey.bind(cmd_opt_shift, '\\', function() toggle_muted() end)
 -- hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
 -- hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
 
+function inspect(label, var)
+    print(label .. ": " .. hs.inspect(var))
+end
 
-function _move_window_left(f, max)
+function _move_window_right(f, max)
     f.x = max.x + (max.w / 2)
     f.y = max.y
     f.w = max.w / 2
     f.h = max.h
+    inspect("f", f)
     return f
 end
 
-function _move_window_right(f, max)
+function _move_window_left(f, max)
     f.x = max.x
     f.y = max.y
     f.w = max.w / 2
     f.h = max.h
+    inspect("f", f)
     return f
 end
 
@@ -143,6 +148,7 @@ function _move_window_up(f, max)
     f.y = max.y
     f.w = max.w
     f.h = max.h / 2
+    inspect("f", f)
     return f
 end
 
@@ -151,8 +157,18 @@ function _move_window_down(f, max)
     f.y = max.y + (max.h / 2)
     f.w = max.w
     f.h = max.h / 2
+    inspect("f", f)
     return f
 end
+
+function move_window_within_grid(new_grid_fn)
+    if hs.window.focusedWindow() then
+        hs.grid.adjustFocusedWindow(new_grid_fn)
+    else
+        hs.alert.show("No active window")
+    end
+end
+
 
 function move_window_on_screen(new_frame_fn)
     if hs.window.focusedWindow() then
@@ -166,10 +182,37 @@ function move_window_on_screen(new_frame_fn)
     end
 end
 
+-- function _move_window_left(grid)
+--     inspect("grid", grid)
+--     return grid
+-- end
+
+-- function _move_window_right(grid)
+--     inspect("grid", grid)
+--     return grid
+-- end
+
+-- function _move_window_up(grid)
+--     inspect("grid", grid)
+--     return grid
+-- end
+
+-- function _move_window_down(grid)
+--     inspect("grid", grid)
+--     return grid
+-- end
+
+
 hs.hotkey.bind(opt_cmd_ctril, 'j', function() move_window_on_screen(_move_window_left) end)
 hs.hotkey.bind(opt_cmd_ctril, 'k', function() move_window_on_screen(_move_window_down) end)
 hs.hotkey.bind(opt_cmd_ctril, 'l', function() move_window_on_screen(_move_window_up) end)
 hs.hotkey.bind(opt_cmd_ctril, ';', function() move_window_on_screen(_move_window_right) end)
+
+-- hs.hotkey.bind(opt_cmd_ctril, 'j', function() move_window_within_grid(_move_window_left) end)
+-- hs.hotkey.bind(opt_cmd_ctril, 'k', function() move_window_within_grid(_move_window_down) end)
+-- hs.hotkey.bind(opt_cmd_ctril, 'l', function() move_window_within_grid(_move_window_up) end)
+-- hs.hotkey.bind(opt_cmd_ctril, ';', function() move_window_within_grid(_move_window_right) end)
+
 
 function reload_config(files)
     hs.reload()
