@@ -103,3 +103,6 @@ gnupg/gpg-agent.env.fish
 
 # tmux
 tmux/plugins
+
+# intellij idea
+.idea/*
