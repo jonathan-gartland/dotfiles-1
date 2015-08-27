@@ -14,3 +14,9 @@ Host 192.168.1.1
 
 Host knight.cx
   User steven
+
+Host bastion.qa.cashstar.net
+    User sknight
+
+Host bastion.semi.cashstar.net
+    User sknight
