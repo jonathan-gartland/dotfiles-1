@@ -10,3 +10,6 @@
 [submodule "hammerspoon"]
 	path = hammerspoon
 	url = git@github.com:Linell/hammerspoon-config.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/skk/dotbot.git
