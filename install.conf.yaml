@@ -1,12 +1,68 @@
+%YAML 1.0
+---
+
+# Config file for https://github.com/anishathalye/dotbot
+# workon dotbot
+# cd ~/dot-files-forest
+# ./dotbot/bin/dotbot -d . -c install.conf.yaml
+
 - clean: ['~']
 
+- shell:
+  - git submodule update --init --recursive
+  - cd ~/ && curl 'https://j.mp/spf13-vim3' -L > spf13-vim.sh && sh spf13-vim.sh && rm -f spf13-vim.sh
+  - git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
 - link:
-    ~/.dotfiles: ''
-    ~/.tmux.conf: tmux.conf
     # Need to clone vim spf13 git repo
     # http://vim.spf13.com/
-    ~/.vim: vim/
-    ~/.vimrc: vimrc
 
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    ~/.Xresources: dotfiles/Xresources
+    ~/.abcde.conf: dotfiles/abcde.conf
+    ~/.astylerc: dotfiles/astylerc
+    ~/.bash: bash
+    ~/.bash_logout: bash/bash_logout
+    ~/.bash_profile: bash/bash_profile
+    ~/.bashrc: bash/bashrc
+    ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
+    ~/.cask: /usr/local/Cellar/cask/0.7.2_1
+    ~/.dotfiles: dotfiles
+    ~/.emacs.skk: emacs/.emacs
+    ~/.fonts: fonts
+    ~/.git-prompt.conf: dotfiles/git-prompt.conf
+    ~/.git.scmbrc: dotfiles/git.scmbrc
+    ~/.gitconfig: dotfiles/gitconfig.WORK
+    ~/.hammerspoon: hammerspoon
+    ~/.hgrc: dotfiles/hgrc.WORK
+    ~/.i3: i3
+    ~/.inputrc: bash/inputrc
+    ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
+    ~/.msmtprc: msmtp/msmtprc.HOME
+    ~/.mutt: mutt
+    ~/.muttrc: mutt/muttrc
+    ~/.offlineimap.py: dotfiles/offlineimap.py
+    ~/.offlineimaprc: dotfiles/offlineimaprc.HOME
+    ~/.perlcriticrc: dotfiles/perlcriticrc
+    ~/.perltidy: dotfiles/perltidy
+    ~/.procmail: procmail/home
+    ~/.procmailrc: procmail/home/procmailrc
+    ~/.rvmrc: dotfiles/rvmrc
+    ~/.screenrc: dotfiles/screenrc
+    ~/.signature.home: dotfiles/signature.HOME
+    ~/.sqliterc: dotfiles/sqliterc
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: /Users/steven.knight/.spf13-vim-3/.vimrc
+    ~/.vimrc.before: /Users/steven.knight/.spf13-vim-3/.vimrc.before
+    ~/.vimrc.before.local: vim/vimrc.before.local
+    ~/.vimrc.bundles: /Users/steven.knight/.spf13-vim-3/.vimrc.bundles
+    ~/.vimrc.bundles.local: vim/vimrc.bundles.local
+    ~/.vimrc.local: vim/vimrc.local
+    ~/.xbindkeysrc: dotfiles/xbindkeysrc
+    ~/.zlogin: zsh/zlogin.zsh
+    ~/.zlogout: zsh/zlogout.zsh
+    ~/.zprofile: zsh/zprofile.zsh
+    ~/.zsh: zsh
+    ~/.zshenv: zsh/zshenv.zsh
+    ~/.zshrc: zsh/zshrc.zsh
+    ~/bin: bin/
