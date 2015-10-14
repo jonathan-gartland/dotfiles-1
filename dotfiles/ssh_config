@@ -20,3 +20,6 @@ Host bastion.qa.cashstar.net
 
 Host bastion.semi.cashstar.net
     User sknight
+
+Host falcon
+	User skk
