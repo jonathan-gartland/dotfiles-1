@@ -109,3 +109,19 @@ fi
 mkcd() {
     mkdir $1 && cd $1
 }
+
+clone_spf13() {
+  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
+}
+
+update_spf13() {
+  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
+}
+
+clone_spaceemacs() {
+  (cd ~ && git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d)
+}
+
+update_spaceemacs() {
+  (cd ~/.emacs.d && git pull --recurse-submodules)
+}
