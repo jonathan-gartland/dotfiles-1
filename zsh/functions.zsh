@@ -45,66 +45,6 @@ function text2p
     fi
 }
 
-function BackupAndDelete
-{
-    ~/bin/backup-and-delete.py "$*"
-}
-
-function create_maildir # "Create a Maildir directory"
-{
-    if [[ -d $MAILDIR ]]; then
-        if [[ $1 != '' ]]; then
-            mkdir -m 700 $MAILDIR/.$argv[1]/{,tmp,new,cur}
-        fi
-    fi
-}
-
-function setup_was_env
-{
-    if [[ -f "/opt/IBM/setup_was/setup_was.py" ]]; then
-        eval "$(/opt/IBM/setup_was/setup_was.py)"
-    fi
-}
-
-function setup_oracle_env
-{
-    if [[ -r /usr/local/setup/oracle ]]; then
-        eval "$(~/bin/convert_csh_setup_file.py < /usr/local/setup/oracle)"
-    fi
-
-    if [[ -r /usr/local/oracle/setup ]]; then
-        eval "$(~/bin/convert_csh_setup_file.py < /usr/local/oracle/setup)"
-    fi
-}
-
-function sql
-{
-    /usr/bin/python $HOME/work/SQL/sql.py $*
-}
-
-function start_synergy
-{
-    killall -9 synergys
-    synergys
-}
-
-function stowdir
-{
-    echo $stow/$(basename $PWD)
-}
-
-function stowdir_local
-{
-    stowdir=/usr/local/stow/$(basename $PWD)
-    echo $stowdir
-}
-
-function switch_was_tail_to_emacs
-{
-     export WAS_TAIL_ARGS=" "
-     export WAS_TAIL_COMMAND=$HOME/bin/e
-}
-
 function mount_sshfs
 {
     if [[ $1 != '' ]]; then
@@ -115,12 +55,6 @@ function mount_sshfs
     mkdir -p /sshfs/$hostname
     sshfs skk@$hostname:/ /sshfs/$hostname
 }
-
-function mkcd
-{
-    mkdir $1 && cd $1
-}
-
 
 # From http://justinlilly.com/dotfiles/zsh.html
 function dls () {
