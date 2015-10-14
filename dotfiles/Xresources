@@ -1,7 +1,9 @@
+
 !
 ! After updating this file run:
 ! cpp -P ~/dot-files-forest/dotfiles/Xresources.def > ~/dot-files-forest/dotfiles/Xresources
 !
+
 ! urxvt
 URxvt*buffered: true
 URxvt*cursorBlink: false
@@ -11,53 +13,78 @@ URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*loginShell: true
-Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
+Urxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
 URxvt.urlLauncher: google-chrome
 URxvt.matcher.button: 1
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher: chromium
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  chromium
 URxvt.url-select.underline: true
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt*cursorColor: #d13a82
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt*cursorColor:           #d13a82
+
+! https://raw.githubusercontent.com/dmedvinsky/badwolf.xdefaults/master/xdefaults.colors
 ! X11 colors pieced together by Dmitry Medvinsky.
 ! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
 ! vim: fdm=marker
+
 ! Colors definition {{{
+
+
+
+
+
+
+
 ! }}}
-! Resourses {{{
-URxvt*background: #1c1b1a
-URxvt*foreground: #f8f6f2
+
+
+
+Intensity   0       1   2       3           4       5       6       7
+Normal      Black   Red Green   Yellow[12]  Blue    Magenta Cyan    White
+
+Intensity   8       9   10      11          12      13      14      15
+Bright      Black   Red Green   Yellow      Blue    Magenta Cyan    White
+
+
+! Resources {{{
+URxvt*background:  #1c1b1a
+URxvt*foreground:  #f8f6f2
 !URxvt*cursorColor: #aeee00
 URxvt*scrollColor: #45413b
-URxvt*fadeColor: #ffffff
-URxvt*fading: 20
-! black
-URxvt*color0: #141413
-URxvt*color8: #000000
-! red
-URxvt*color1: #ff2c4b
-URxvt*color9: #ff2c4b
-! green
-URxvt*color2: #aeee00
-URxvt*color10: #aeee00
-! yellow
-URxvt*color3: #fade3e
-URxvt*color11: #ffa724
-! blue
-URxvt*color4: #0a9dff
-URxvt*color12: #0a9dff
-! magenta
-URxvt*color5: #ff9eb8
-URxvt*color13: #ff9eb8
-! cyan
-URxvt*color6: #8cffba
-URxvt*color14: #8cffba
-! white
-URxvt*color7: #d9cec3
-URxvt*color15: #ffffff
+URxvt*fadeColor:   #ffffff
+URxvt*fading:      20
+
+!        black
+URxvt*color0:      #141413
+URxvt*color8:      #000000
+!        red
+URxvt*color1:      #ff2c4b
+URxvt*color9:      #ff2c4b
+!        green
+URxvt*color2:      #aeee00
+URxvt*color10:     #aeee00
+!        yellow
+URxvt*color3:      #fade3e
+URxvt*color11:     #ffa724
+!        blue
+URxvt*color4:      #0a9dff
+URxvt*color12:     #0a9dff
+!        magenta
+URxvt*color5:      #ff9eb8
+URxvt*color13:     #ff9eb8
+!        cyan
+URxvt*color6:      #8cffba
+URxvt*color14:     #8cffba
+!        white
+URxvt*color7:      #d9cec3
+URxvt*color15:     #ffffff
 ! }}}
+
 ! vim: set filetype=xdefaults :
+
