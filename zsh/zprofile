@@ -2,6 +2,8 @@
 # Language
 #
 
+DOTSPATH="~/.zsh"
+
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
@@ -63,7 +65,7 @@ export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" 
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #
 # Term
