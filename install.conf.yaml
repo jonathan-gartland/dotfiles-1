@@ -1,0 +1,12 @@
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.tmux.conf: tmux.conf
+    # Need to clone vim spf13 git repo
+    # http://vim.spf13.com/
+    ~/.vim: vim/
+    ~/.vimrc: vimrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
