@@ -1,12 +1,14 @@
 
 -- TODO
--- 1) Use Spectacle's keyboard shortcuts
--- 2) Add shortcuts for play, pause, step for iTunes
-
+-- 1) Done - Use Spectacle's keyboard shortcuts
+-- 2) DONE - Add shortcuts for play, pause, step for iTunes
+-- 3) Move FireFox to second monitor using hs.application.watcher
+-- 4) start_iterm() will fail with an error if iTerm isn't running.
+-- 5) Keyboard shortcut to kill all Firefox instances
 
 -- Set up hotkey combinations
-local ctril_opt_shift = {"ctrl", "alt", "shift"}
-local opt_cmd_ctril = { "alt", "cmd", "ctrl"}
+local ctrl_opt_shift = {"ctrl", "alt", "shift"}
+local opt_cmd_ctrl = { "alt", "cmd", "ctrl"}
 local cmd_opt_shift = {"cmd", "alt", "shift"}
 
 -- Set grid size.
@@ -27,13 +29,34 @@ function toggle_muted()
     output_device:setMuted(not is_muted)
 
     is_muted = output_device:muted()
-    hs.alert.show("is_muted: " .. tostring(is_muted), 1)
+    if is_muted then
+        hs.alert.show("Muted")
+    else
+        hs.alert.show("Unmuted")
+    end
 end
 
 function set_volume(vol_delta)
     local output_device = hs.audiodevice.defaultOutputDevice()
     local current_volume = hs.audiodevice.current().volume
-    output_device:setVolume(current_volume + vol_delta)
+
+    -- hs.alert.show('vol_delta ' .. vol_delta)
+    -- hs.alert.show('current_vol ' .. current_volume)
+
+    -- extra_vol_delta = volumeIncrement - (current_volume % volumeIncrement)
+    -- hs.alert.show("extra_vol_delta " .. extra_vol_delta, 1)
+
+    new_volume = current_volume + vol_delta
+    -- hs.alert.show("new_volume " .. new_volume, 1)
+
+    -- new_volume = current_volume + vol_delta
+    -- hs.alert.show("2new_volume " .. new_volume, 1)
+
+    -- local new_volume = current_volume + (volumeIncrement - (current_volume % volumeIncrement)) + vol_delta;
+    -- hs.alert.show("new_volume " .. new_volume, 1)
+
+    output_device:setVolume(new_volume)
+    -- hs.alert.show("Volume: " .. output_device:volume(), 1)
     hs.alert.show("Volume: " .. output_device:volume(), 1)
 end
 
@@ -69,60 +92,8 @@ function move_focused_window(fn)
     end
 end
 
-hs.hotkey.bind(opt_cmd_ctril, 'return', function () start_iterm() end)
-
--- hs.hotkey.bind(ctril_opt_shift, ';', function() hs.grid.snap(hs.window.focusedWindow()) end)
--- hs.hotkey.bind(ctril_opt_shift, "'", function() hs.fnutils.map(hs.window.visibleWindows(), hs.grid.snap) end)
-
--- hs.hotkey.bind(opt_cmd_ctril,      '=', function() hs.grid.adjustWidth(1)   end)
--- hs.hotkey.bind(opt_cmd_ctril,      '-', function() hs.grid.adjustWidth(-1)  end)
--- hs.hotkey.bind(cmd_opt_shift, '=', function() hs.grid.adjustHeight(1)  end)
--- hs.hotkey.bind(cmd_opt_shift, '-', function() hs.grid.adjustHeight(-1) end)
-
--- hs.hotkey.bind(cmd_opt_shift, 'left',  function() hs.window.focusedWindow():focusWindowWest()  end)
--- hs.hotkey.bind(cmd_opt_shift, 'right', function() hs.window.focusedWindow():focusWindowEast()  end)
--- hs.hotkey.bind(cmd_opt_shift, 'up',    function() hs.window.focusedWindow():focusWindowNorth() end)
--- hs.hotkey.bind(cmd_opt_shift, 'down',  function() hs.window.focusedWindow():focusWindowSouth() end)
-
-hs.hotkey.bind(opt_cmd_ctril, 'M', hs.grid.maximizeWindow)
-
--- move window to next screen
-hs.hotkey.bind(opt_cmd_ctril, 'N', hs.grid.pushWindowNextScreen)
-
--- move window to prev screen
-hs.hotkey.bind(opt_cmd_ctril, 'P', hs.grid.pushWindowPrevScreen)
-
--- move window left
--- hs.hotkey.bind(opt_cmd_ctril, 'J', hs.grid.pushWindowLeft)
--- move window down
--- hs.hotkey.bind(opt_cmd_ctril, 'K', hs.grid.pushWindowDown)
--- move window up
--- hs.hotkey.bind(opt_cmd_ctril, 'L', hs.grid.pushWindowUp)
--- move window right
--- hs.hotkey.bind(opt_cmd_ctril, ';', hs.grid.pushWindowRight)
-
-hs.hotkey.bind(opt_cmd_ctril, 'U', hs.grid.resizeWindowTaller)
-hs.hotkey.bind(opt_cmd_ctril, 'O', hs.grid.resizeWindowWider)
-hs.hotkey.bind(opt_cmd_ctril, 'I', hs.grid.resizeWindowThinner)
-hs.hotkey.bind(opt_cmd_ctril, 'Y', hs.grid.resizeWindowShorter)
-
-hs.hotkey.bind(ctril_opt_shift, 'space', hs.itunes.displayCurrentTrack)
-hs.hotkey.bind(ctril_opt_shift, 'P',     hs.itunes.play)
-hs.hotkey.bind(ctril_opt_shift, 'O',     hs.itunes.pause)
-hs.hotkey.bind(ctril_opt_shift, 'N',     hs.itunes.next)
-hs.hotkey.bind(ctril_opt_shift, 'I',     hs.itunes.previous)
-
-hs.hotkey.bind(cmd_opt_shift, ']', function() set_volume( volumeIncrement ) end)
-hs.hotkey.bind(cmd_opt_shift, '[', function() set_volume( -1 * volumeIncrement ) end)
-hs.hotkey.bind(cmd_opt_shift, '\\', function() toggle_muted() end)
-
--- hs.hotkey.bind(cmd_opt_shift, 'j', function() move_focused_window(hs.window.focusWindowWest) end)
--- hs.hotkey.bind(cmd_opt_shift, 'k', function() move_focused_window(hs.window.focusWindowEast) end)
--- hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
--- hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
-
 function inspect(label, var)
-    print(label .. ": " .. hs.inspect(var))
+    -- print(label .. ": " .. hs.inspect(var))
 end
 
 function _move_window_right(f, max)
@@ -203,15 +174,84 @@ end
 -- end
 
 
-hs.hotkey.bind(opt_cmd_ctril, 'j', function() move_window_on_screen(_move_window_left) end)
-hs.hotkey.bind(opt_cmd_ctril, 'k', function() move_window_on_screen(_move_window_down) end)
-hs.hotkey.bind(opt_cmd_ctril, 'l', function() move_window_on_screen(_move_window_up) end)
-hs.hotkey.bind(opt_cmd_ctril, ';', function() move_window_on_screen(_move_window_right) end)
+hs.hotkey.bind(opt_cmd_ctrl, 'return', function () start_iterm() end)
 
--- hs.hotkey.bind(opt_cmd_ctril, 'j', function() move_window_within_grid(_move_window_left) end)
--- hs.hotkey.bind(opt_cmd_ctril, 'k', function() move_window_within_grid(_move_window_down) end)
--- hs.hotkey.bind(opt_cmd_ctril, 'l', function() move_window_within_grid(_move_window_up) end)
--- hs.hotkey.bind(opt_cmd_ctril, ';', function() move_window_within_grid(_move_window_right) end)
+-- hs.hotkey.bind(ctrl_opt_shift, ';', function() hs.grid.snap(hs.window.focusedWindow()) end)
+-- hs.hotkey.bind(ctrl_opt_shift, "'", function() hs.fnutils.map(hs.window.visibleWindows(), hs.grid.snap) end)
+
+-- hs.hotkey.bind(opt_cmd_ctrl,      '=', function() hs.grid.adjustWidth(1)   end)
+-- hs.hotkey.bind(opt_cmd_ctrl,      '-', function() hs.grid.adjustWidth(-1)  end)
+-- hs.hotkey.bind(cmd_opt_shift, '=', function() hs.grid.adjustHeight(1)  end)
+-- hs.hotkey.bind(cmd_opt_shift, '-', function() hs.grid.adjustHeight(-1) end)
+
+hs.hotkey.bind(cmd_opt_shift, 'left',  function() hs.window.focusedWindow():focusWindowWest()  end)
+hs.hotkey.bind(cmd_opt_shift, 'right', function() hs.window.focusedWindow():focusWindowEast()  end)
+hs.hotkey.bind(cmd_opt_shift, 'up',    function() hs.window.focusedWindow():focusWindowNorth() end)
+hs.hotkey.bind(cmd_opt_shift, 'down',  function() hs.window.focusedWindow():focusWindowSouth() end)
+
+hs.hotkey.bind(opt_cmd_ctrl, 'M', hs.grid.maximizeWindow)
+
+-- move window to next screen
+hs.hotkey.bind(opt_cmd_ctrl, 'N', hs.grid.pushWindowNextScreen)
+
+-- move window to prev screen
+hs.hotkey.bind(opt_cmd_ctrl, 'P', hs.grid.pushWindowPrevScreen)
+
+-- move window left
+-- hs.hotkey.bind(opt_cmd_ctrl, 'J', hs.grid.pushWindowLeft)
+-- move window down
+-- hs.hotkey.bind(opt_cmd_ctrl, 'K', hs.grid.pushWindowDown)
+-- move window up
+-- hs.hotkey.bind(opt_cmd_ctrl, 'L', hs.grid.pushWindowUp)
+-- move window right
+-- hs.hotkey.bind(opt_cmd_ctrl, ';', hs.grid.pushWindowRight)
+
+hs.hotkey.bind(opt_cmd_ctrl, 'U', hs.grid.resizeWindowTaller)
+hs.hotkey.bind(opt_cmd_ctrl, 'O', hs.grid.resizeWindowWider)
+hs.hotkey.bind(opt_cmd_ctrl, 'I', hs.grid.resizeWindowThinner)
+hs.hotkey.bind(opt_cmd_ctrl, 'Y', hs.grid.resizeWindowShorter)
+
+hs.hotkey.bind(ctrl_opt_shift, 'space', hs.itunes.displayCurrentTrack)
+hs.hotkey.bind(ctrl_opt_shift, 'P',     hs.itunes.play)
+hs.hotkey.bind(ctrl_opt_shift, 'O',     hs.itunes.pause)
+hs.hotkey.bind(ctrl_opt_shift, 'N',     hs.itunes.next)
+hs.hotkey.bind(ctrl_opt_shift, 'I',     hs.itunes.previous)
+
+hs.hotkey.bind(ctrl_opt_shift, ']', function() set_volume( volumeIncrement ) end)
+hs.hotkey.bind(ctrl_opt_shift, '[', function() set_volume( -1 * volumeIncrement ) end)
+hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
+
+-- rename to shift_focus
+hs.hotkey.bind(cmd_opt_shift, 'j', function() move_focused_window(hs.window.focusWindowWest) end)
+hs.hotkey.bind(cmd_opt_shift, 'k', function() move_focused_window(hs.window.focusWindowEast) end)
+hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
+hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
+
+
+hs.hotkey.bind(opt_cmd_ctrl, 'j', function() move_window_on_screen(_move_window_left) end)
+hs.hotkey.bind(opt_cmd_ctrl, 'k', function() move_window_on_screen(_move_window_down) end)
+hs.hotkey.bind(opt_cmd_ctrl, 'l', function() move_window_on_screen(_move_window_up) end)
+hs.hotkey.bind(opt_cmd_ctrl, ';', function() move_window_on_screen(_move_window_right) end)
+
+hs.hotkey.bind(cmd_opt_shift, 'j', function() move_window_within_grid(_move_window_left) end)
+hs.hotkey.bind(cmd_opt_shift, 'k', function() move_window_within_grid(_move_window_down) end)
+hs.hotkey.bind(cmd_opt_shift, 'l', function() move_window_within_grid(_move_window_up) end)
+hs.hotkey.bind(cmd_opt_shift, ';', function() move_window_within_grid(_move_window_right) end)
+
+hs.hotkey.bind(opt_cmd_ctrl, 'L', function() hs.caffeinate.lockScreen() end)
+
+-- hs.hotkey.bind(opt_cmd_ctrl, 'z', function()
+
+-- hs.mjomatic.go({
+-- "CCCCCCCCCCCCCCCCCCCCCCCC",
+-- "CCCCCCCCCCCCCCCCCCCCCCCC",
+-- "SSSSSSSSSSSSSSSSSSSSSSSS",
+-- "SSSSSSSSSSSSSSSSSSSSSSSS",
+-- "",
+-- "C Google Chrome",
+-- "S Sublime Text 3"})
+
+-- end)
 
 
 function reload_config(files)
@@ -220,3 +260,18 @@ function reload_config(files)
 end
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 hs.alert.show("Hammerspoon, at your service.", 3)
+
+-- appwatcher = hs.application.watcher.new(function(name, event_type, app)
+--     -- inspect("name", name)
+--     -- inspect("event_type", event_type)
+--     -- inspect("app", app)
+
+--     if name == "Firefox" then
+--         print("calling unhide, hide")
+--         local pid = app:pid()
+--         print(pid)
+--         app:unhide()
+--         app:hide()
+--     end
+-- end)
+-- appwatcher:start()
