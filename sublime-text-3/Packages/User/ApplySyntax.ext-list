@@ -1,10 +1,10 @@
 {
 	"Git Config":
 	[
+		".gitattributes",
 		".gitconfig",
 		".gitmodules",
-		"gitconfig.HOME",
-		".gitattributes"
+		"gitconfig.HOME"
 	],
 	"Git Ignore":
 	[
@@ -30,9 +30,9 @@
 	],
 	"Shell-Unix-Generic":
 	[
-		"git.scmbrc",
 		"bash",
-		"zsh",
-		"sh"
+		"git.scmbrc",
+		"sh",
+		"zsh"
 	]
 }

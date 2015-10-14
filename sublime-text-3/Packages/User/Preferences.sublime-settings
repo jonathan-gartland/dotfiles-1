@@ -10,7 +10,8 @@
 		"configurator",
 		"cashbot",
 		"datapoints",
-		"cashbot's"
+		"cashbot's",
+		"Unmuted"
 	],
 	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
@@ -38,7 +39,7 @@
 	"caret_extra_width": 1,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Colorcoder/Neon (Colorcode) (SL) (Colorcode).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Today (SL).tmTheme",
 	"colored_folder_glyphs": true,
 	"copy_with_empty_selection": false,
 	"default_line_ending": "unix",
@@ -88,15 +89,16 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 10,
+	"font_size": 13,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Gitignore",
-		"vintage",
+		"LiveReload",
 		"Markdown",
-		"LiveReload"
+		"vintage",
+		"VintageEx"
 	],
 	"indent_guide_options":
 	[
@@ -131,7 +133,7 @@
 	"spell_check": true,
 	"tab_size": 4,
 	"tabs_small": true,
-	"theme": "Aprosopo Dark@st3.sublime-theme",
+	"theme": "Devastate.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,

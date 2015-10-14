@@ -1,6 +1,8 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"VintageEx"
 	],
 	"installed_packages":
 	[
@@ -16,16 +18,20 @@
 		"Colorcoder",
 		"Conky.tmLanguage",
 		"CTags",
+		"Devastate",
 		"DictionaryAutoComplete",
 		"Dotfiles Syntax Highlighting",
 		"EasyMotion",
 		"Edit Preferences",
+		"Elixir",
+		"ElixirSublime",
 		"Emmet",
 		"Expand Tabs on Save",
 		"FileBrowser",
 		"FileModifyStatus",
 		"FileSystem Autocompletion",
 		"fish-shell",
+		"Fix Mac Path",
 		"Function Name Display",
 		"FuzzyFilePath",
 		"Git Config",
@@ -66,6 +72,7 @@
 		"SublimeCodeIntel",
 		"SublimeGit",
 		"SublimeLinter",
+		"SublimeLinter-contrib-elixirc",
 		"SublimeLinter-csslint",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
@@ -77,6 +84,7 @@
 		"Theme - Aprosopo",
 		"Theme - Flatgrammer",
 		"Tmux",
+		"Today Color Scheme",
 		"VintageEx",
 		"Vintageous",
 		"VintageousOrigami",
