@@ -4,5 +4,6 @@ ssh = ssh -C
 
 [extensions]
 color=
-churn=
 convert=
+record=
+
