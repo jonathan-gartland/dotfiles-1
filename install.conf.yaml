@@ -45,12 +45,12 @@
     ~/.sqliterc: dotfiles/sqliterc
     ~/.tmux: tmux
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.vimrc: /Users/steven.knight/.spf13-vim-3/.vimrc
-    ~/.vimrc.before: /Users/steven.knight/.spf13-vim-3/.vimrc.before
-    ~/.vimrc.before.local: vim/vimrc.before.local
-    ~/.vimrc.bundles: /Users/steven.knight/.spf13-vim-3/.vimrc.bundles
-    ~/.vimrc.bundles.local: vim/vimrc.bundles.local
+    ~/.vimrc: spf13-vim-3/.vimrc
+    ~/.vimrc.bundles: spf13-vim-3/.vimrc.bundles
+    ~/.vimrc.before: spf13-vim-3/.vimrc.before
     ~/.vimrc.local: vim/vimrc.local
+    ~/.vimrc.before.local: vim/vimrc.before.local
+    ~/.vimrc.bundles.local: vim/vimrc.bundles.local
     ~/.xbindkeysrc: dotfiles/xbindkeysrc
     ~/.zlogin: zsh/zlogin.zsh
     ~/.zlogout: zsh/zlogout.zsh
