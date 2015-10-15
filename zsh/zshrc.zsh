@@ -1,6 +1,5 @@
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
-
 # load antigen
 source ~/dot-files-forest/antigen/antigen.zsh
 
@@ -107,11 +106,18 @@ source ~/.zsh/functions.zsh
 
 ## aliases
 
+platform=$(uname -s)
+
+if [ $platform = 'Darwin' ]; then
+    alias ls='gls -hF --color'   # add colors for filetype recognition
+else
+    alias ls='ls -hF --color'   # add colors for filetype recognition
+fi
+
 alias df='df -h'
 alias du='du -h'
 alias grep='grep --color=auto --ignore-case'
 alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
-alias ls='gls -hF --color'   # add colors for filetype recognition
 alias ll='ls -l'
 alias lm='ls -al |less'     # pipe through 'less'
 alias lR='ls -l'            # recursive ls
@@ -220,10 +226,9 @@ fi
 # Python
 export PYTHONSTARTUP=$HOME/dot-files-forest/dotfiles/pythonstartup.py
 
-if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-  source /usr/local/bin/virtualenvwrapper.sh
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
-
 
 # See http://www.doughellmann.com/docs/virtualenvwrapper/
 export WORKON_HOME=$HOME/.virtualenvs
