@@ -1,0 +1,9 @@
+:0
+* ^From:.*pullrequests-reply@bitbucket.org.*
+! steven.knight@cashstar.com
+
+:0
+* ^From:.*notifications-noreply@bitbucket.org.*
+! steven.knight@cashstar.com
+
+# vim: filetype=procmail syntax=procmail

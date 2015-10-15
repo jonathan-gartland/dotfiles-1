@@ -1,4 +1,9 @@
 # Jobs
+
+:0
+* ^(From):.*ziprecruiter.com.*
+.Jobs/
+
 :0
 * ^(From):.*jagent-feedback@monster.com.*
 .Jobs/
@@ -20,7 +25,7 @@
 .Jobs/
 
 :0
-* ^(From):.*noreply_alerts@ziprecruiter.com.*
+* ^(From):.*alerts@ziprecruiter.com.*
 .Jobs/
 
 :0

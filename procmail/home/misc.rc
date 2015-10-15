@@ -1,0 +1,5 @@
+:0
+* ^From:.*match.com.*
+.Match/
+
+# vim: filetype=procmail syntax=procmail

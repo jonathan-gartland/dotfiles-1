@@ -11,6 +11,9 @@ INCLUDERC=$PMDIR/hemlock_forest.rc
 INCLUDERC=$PMDIR/daily.rc
 INCLUDERC=$PMDIR/weekly.rc
 INCLUDERC=$PMDIR/bills.rc
+INCLUDERC=$PMDIR/misc.rc
+INCLUDERC=$PMDIR/cashstar.rc
+
 
 # Archive remaining messages
 :0c
