@@ -46,9 +46,9 @@
     ~/.tmux: tmux
     ~/.tmux.conf: tmux/tmux.conf
     ~/.spf13-vim: spf13-vim
-    ~/.vimrc: spf13-vim/.vimrc
-    ~/.vimrc.bundles: spf13-vim/.vimrc.bundles
-    ~/.vimrc.before: spf13-vim/.vimrc.before
+    # ~/.vimrc: spf13-vim/.vimrc
+    # ~/.vimrc.bundles: spf13-vim/.vimrc.bundles
+    # ~/.vimrc.before: spf13-vim/.vimrc.before
     ~/.vimrc.local: vim/vimrc.local
     ~/.vimrc.before.local: vim/vimrc.before.local
     ~/.vimrc.bundles.local: vim/vimrc.bundles.local
