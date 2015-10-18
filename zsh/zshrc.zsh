@@ -47,54 +47,7 @@ antigen bundles <<EOBUNDLES
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
-# antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-
-# LP_ENABLE_SVN=false
-# LP_ENABLE_BZR=false
-# LP_ENABLE_POSSIL=false
-# LP_ENABLE_TIME=false
-
-#gpg-agent
-#rvm
-
-# BULLETTRAIN_TIME_SHOW=false
-# BULLETTRAIN_CONTEXT_SHOW=true
-# BULLETTRAIN_EXIT_SHOW=true
-# BULLETTRAIN_RVM_SHOW=true
-# BULLETTRAIN_VIRTUALENV_SHOW=true
-# BULLETTRAIN_PROMPT_CHAR="❯"
-# ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{magenta}✭%F{black}"
-# BULLETTRAIN_RVM_FG=black
-# BULLETTRAIN_VIRTUALENV_FG=black
-# BULLETTRAIN_VIRTUALENV_SHOW=show
-
-# enable_rvm() {
-#     [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-#     antigen bundle rvm
-# }
-
-# enable_virtualenv() {
-#   antigen bundle virtualenvwrapper
-# }
-
-# build_prompt() {
-#   RETVAL=$?
-#   prompt_status
-#   prompt_time
-#   prompt_virtualenv
-#   prompt_context
-#   prompt_dir
-#   prompt_git
-#   prompt_virtualenv
-#   prompt_end
-# }
-# prompt_rvm
-
 antigen apply
-
-# if [[ -f /usr/share/zsh/site-contrib/powerline.zsh ]]; then
-#     . /usr/share/zsh/site-contrib/powerline.zsh
-# fi
 
 # use local pacman
 if [[ -x $(which etckeeper) && -x $(which ~/bin/pacman-etckeeper) ]]; then
@@ -107,12 +60,6 @@ source ~/.zsh/functions.zsh
 ## aliases
 
 platform=$(uname -s)
-
-if [ $platform = 'Darwin' ]; then
-    alias ls='gls -hF --color'   # add colors for filetype recognition
-else
-    alias ls='ls -hF --color'   # add colors for filetype recognition
-fi
 
 alias df='df -h'
 alias du='du -h'
@@ -242,19 +189,20 @@ export MYSQL_PS1="\u@\h [\d]> "
 
 # strict control over source order
 sources=(
-#  'hub'
+    'hub'
 #  'path'
 #  'rbenv'
 #  'chruby'
-  'vcsinfo'
-  'prompt'
+  # 'vcsinfo'
+  'bullet-train.zsh-theme'
+#  'prompt'
 #  'completions'
 #  'zle'
 #  'highlight'
 #  'functions'
-#  'alias'
-#  'linux'
-#  'osx'
+    'alias'
+    'linux'
+    'osx'
 #  'gtags'
 #  'gnome-keyring'
 )
