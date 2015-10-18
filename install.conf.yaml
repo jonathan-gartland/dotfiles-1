@@ -11,6 +11,7 @@
 - link:
     ~/.Xresources: dotfiles/Xresources
     ~/.abcde.conf: dotfiles/abcde.conf
+    ~/.spacemacs: dotfiles/spacemacs
     ~/.astylerc: dotfiles/astylerc
     ~/.bash: bash
     ~/.bash_logout: bash/bash_logout
