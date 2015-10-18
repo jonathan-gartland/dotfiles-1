@@ -1,4 +1,4 @@
-time1=$(gdate +%s.%N)
+# time1=$(gdate +%s.%N)
 
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
@@ -63,7 +63,7 @@ fi
 # restore cdpath
 cdpath+=($cdpath_backup)
 
-time2=$(gdate +%s.%N)
-let "delta_time=$time2 - $time1"
+# time2=$(gdate +%s.%N)
+# let "delta_time=$time2 - $time1"
 # echo "Elapsed Time $delta_time"
 
