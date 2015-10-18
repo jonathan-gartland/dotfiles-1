@@ -1,3 +1,5 @@
+time1=$(gdate +%s.%N)
+
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
 # load antigen
@@ -8,21 +10,7 @@ cdpath_backup=($cdpath)
 
 antigen use oh-my-zsh
 
-# grep: warning: GREP_OPTIONS is deprecated; please use an alias or script
-# Waiting for oh-my-zsh
-alias grep="grep $GREP_OPTIONS"
-unset GREP_OPTIONS
-
-export HOMEBREW_GITHUB_API_TOKEN=f4f09dc15dce213977f8def81db6c03a1d6b5569
-
-# restore cdpath
-cdpath=($cdpath_backup)
-
 antigen bundles <<EOBUNDLES
-    brew
-    brew-cask
-    debian
-
     autojump
     colored-man
     colorize
@@ -30,181 +18,37 @@ antigen bundles <<EOBUNDLES
     git
     git-flow
     mercurial
-
     gem
     rails
     ruby
-
     mix
-
     ssh-agent
     sudo
     systemd
     vundle
     virtualenvwrapper
     z
-
     zsh-users/zsh-syntax-highlighting
+
+    horosgrisa/autoenv
 EOBUNDLES
 
 antigen apply
 
-# use local pacman
-if [[ -x $(which etckeeper) && -x $(which ~/bin/pacman-etckeeper) ]]; then
-    alias pacman=pacman-etckeeper
-fi
-
-# load functions
-source ~/.zsh/functions.zsh
-
-## aliases
-
-platform=$(uname -s)
-
-alias df='df -h'
-alias du='du -h'
-alias grep='grep --color=auto --ignore-case'
-alias vgrep='grep --with-filename --line-number --color=auto --ignore-case'
-alias ll='ls -l'
-alias lm='ls -al |less'     # pipe through 'less'
-alias lR='ls -l'            # recursive ls
-alias lr='ls -ltr'          # sort by date DSC
-alias mkdir='mkdir -p'
-alias pl='tail -f -n 30 $HOME/.procmail/log/procmail'
-alias today='date +%F'
-alias todayISO1806='date -u +"%FT%TZ"'
-alias tree='tree -Csuh'         # nice alternative to 'ls'
-alias watch='watch -n 1'
-alias tmux='tmux -f ~/.tmux.conf'
-alias ln='ln -v'
-alias dff='cd ~/dot-files-forest'
-
-# # From http://justinlilly.com/dotfiles/zsh.html
-alias svim="sudo vim" # Run vim as super user
-
-# From http://www.thegeekstuff.com/2008/10/6-awesome-linux-cd-command-hacks-productivity-tip3-for-geeks/
-alias ..="cd .."
-alias ..2="cd ../.."
-alias ..3="cd ../../.."
-alias ..4="cd ../../../.."
-alias ..5="cd ../../../../.."
-
-alias -g G='| grep'
-alias -g M='| less'
-alias -g L='| wc -l'
-alias -g ONE="| awk '{ print \$1}'"
-
-# Bundler
-alias b="bundle"
-
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
-alias m="migrate"
-alias rk="rake"
-alias s="rspec"
-
-## completions
-
-## misc
-
-# set default umask
-umask 002
-
-# load (optional) percol
-function exists { which $1 &> /dev/null }
-
-if exists percol; then
-    function percol_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
-
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
-fi
-
-# load fasd
-[[ -s $(which fasd) ]] && eval "$(fasd --init auto)"
-
-# load LS colors
-[[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
-
-
-# # http://superuser.com/questions/521657/zsh-automatically-set-environment-variables-for-a-directory
-# function chpwd_profiles() {
-#     local profile context
-#     local -i reexecute
-
-#     context=":chpwd:profiles:$PWD"
-#     zstyle -s "$context" profile profile || profile='default'
-#     zstyle -T "$context" re-execute && reexecute=1 || reexecute=0
-
-#     if (( ${+parameters[CHPWD_PROFILE]} == 0 )); then
-#         typeset -g CHPWD_PROFILE
-#         local CHPWD_PROFILES_INIT=1
-#         (( ${+functions[chpwd_profiles_init]} )) && chpwd_profiles_init
-#     elif [[ $profile != $CHPWD_PROFILE ]]; then
-#         (( ${+functions[chpwd_leave_profile_$CHPWD_PROFILE]} )) \
-#             && chpwd_leave_profile_${CHPWD_PROFILE}
-#     fi
-#     if (( reexecute )) || [[ $profile != $CHPWD_PROFILE ]]; then
-#         (( ${+functions[chpwd_profile_$profile]} )) && chpwd_profile_${profile}
-#     fi
-
-#     CHPWD_PROFILE="${profile}"
-#     return 0
-# }
-# chpwd_functions=( ${chpwd_functions} chpwd_profiles )
-
-# zstyle ':chpwd:profiles:/home/skk/Projects/simple_virtual_machine(|/|/*)' SVM
-# zstyle ':chpwd:profiles:~/Projects/simple_virtual_machine(|/|/*)' SVM
-
-
-# chpwd_profile_SVM() {
-#     print "profile ${profile}"
-#     [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
-#     print "chpwd(): Switching to profile: $profile"
-#     # antigen bundle virtualenvwrapper
-# }
-
-# Python
-export PYTHONSTARTUP=$HOME/dot-files-forest/dotfiles/pythonstartup.py
-
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
-# See http://www.doughellmann.com/docs/virtualenvwrapper/
-export WORKON_HOME=$HOME/.virtualenvs
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_RESPECT_VIRTUALENV=true
-export VIRTUALENV_USE_DISTRIBUTE=True
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
-export MYSQL_PS1="\u@\h [\d]> "
-
-
 # strict control over source order
 sources=(
-    'hub'
-#  'path'
-#  'rbenv'
-#  'chruby'
-  # 'vcsinfo'
-  'bullet-train.zsh-theme'
-#  'prompt'
-#  'completions'
-#  'zle'
-#  'highlight'
-#  'functions'
-    'alias'
     'linux'
     'osx'
-#  'gtags'
-#  'gnome-keyring'
+
+    'hub'
+    'path'
+    'bullet-train.zsh-theme'
+    'completions'
+    'functions'
+    'alias'
+    # 'prompt'
+    # 'zle'
+    # 'highlight'
 )
 
 for src in $sources; do
@@ -212,6 +56,14 @@ for src in $sources; do
     source $filename
 done
 
-# if [ -f  ]/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-#   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fi
+if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# restore cdpath
+cdpath+=($cdpath_backup)
+
+time2=$(gdate +%s.%N)
+let "delta_time=$time2 - $time1"
+# echo "Elapsed Time $delta_time"
+
