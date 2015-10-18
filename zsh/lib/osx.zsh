@@ -1,6 +1,8 @@
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 if [[ "$OSTYPE" == darwin* ]]; then
+  alias ls='gls -hF --color'   # add colors for filetype recognition
+
   # new tab in terminal.app stays in same dir
   if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
     update_terminal_cwd() {

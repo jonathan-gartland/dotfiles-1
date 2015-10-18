@@ -20,5 +20,6 @@ if [[ "$OSTYPE" == linux* ]]; then
   if [[ "$TERM" == xterm ]]; then
     export TERM=xterm-256color
   fi
-fi
 
+  alias ls='ls -hF --color'   # add colors for filetype recognition
+fi

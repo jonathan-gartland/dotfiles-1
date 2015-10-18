@@ -12,8 +12,6 @@ alias em="emacs"
 # ag
 alias agq="ag -Q"
 
-alias ls="ls -lh --color=auto"
-
 # ;)
 alias ":q"="exit"
 alias ":qa"='[[ -n $TMUX ]] && tmux confirm-before kill-session'
