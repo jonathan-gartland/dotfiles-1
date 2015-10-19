@@ -40,7 +40,7 @@ BULLETTRAIN_STATUS_FG=white
 BULLETTRAIN_VIRTUALENV_SHOW=true
 BULLETTRAIN_VIRTUALENV_BG=yellow
 BULLETTRAIN_VIRTUALENV_FG=black
-BULLETTRAIN_VIRTUALENV_PREFIX=🐍
+BULLETTRAIN_VIRTUALENV_PREFIX="Py:"
 
 # NVM
 BULLETTRAIN_NVM_SHOW=false
@@ -263,6 +263,10 @@ prompt_dir() {
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   if [[ $BULLETTRAIN_VIRTUALENV_SHOW == false ]]; then
+    return
+  fi
+
+  if [[ ! -n $VIRTUAL_ENV ]]; then
     return
   fi
 
