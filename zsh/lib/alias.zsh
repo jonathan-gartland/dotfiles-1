@@ -29,7 +29,7 @@ alias svim='sudoedit'
 alias rake='noglob rake'
 
 # prompt if deleting more than 3 files
-alias rm='rm -I'
+# alias rm='rm -I'
 
 # update vundle
 alias vimup='vim +PluginInstall! +qall'
@@ -173,3 +173,5 @@ alias s="rspec"
 # Waiting for oh-my-zsh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
+alias rm='rm -i'
