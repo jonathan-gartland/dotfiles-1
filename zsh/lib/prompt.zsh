@@ -1,83 +1,94 @@
 
-# prompt
-setopt prompt_subst
+# # prompt
+# setopt prompt_subst
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git hg
-precmd() {
-    vcs_info
-}
+# autoload -Uz vcs_info
+# zstyle ':vcs_info:*' enable git hg
+# precmd() {
+#     vcs_info
+# }
 
-CONTEXT_SHOW=true
+# CONTEXT_SHOW=true
 
-# derived from https://github.com/blaenk/dots/blob/master/zsh/zsh/prompt.zsh
+# # derived from https://github.com/blaenk/dots/blob/master/zsh/zsh/prompt.zsh
 
-# mode-aware arrow
-function p_arrow {
-  if [[ $KEYMAP = "vicmd" ]]; then
-    echo "%F{magenta}»%f"
-  else
-    echo "%F{cyan}»%f"
-  fi
-}
+# # mode-aware arrow
+# function p_arrow {
+#   if [[ $KEYMAP = "vicmd" ]]; then
+#     echo "%F{magenta}»%f"
+#   else
+#     echo "%F{cyan}»%f"
+#   fi
+# }
 
-# colored path
-function p_colored_path {
-  local slash="%F{cyan}/%f"
-  echo "${${PWD/#$HOME/~}//\//$slash}"
-}
+# # colored path
+# function p_colored_path {
+#   local slash="%F{cyan}/%f"
+#   echo "${${PWD/#$HOME/~}//\//$slash}"
+# }
 
-# hg/git info
-function p_vcs {
-  vcs_info
-  echo $vcs_info_msg_0_
-}
+# # hg/git info
+# function p_vcs {
+#   vcs_info
+#   echo $vcs_info_msg_0_
+# }
 
-# Context: user@hostname (who am I and where am I)
-context() {
-  local user="$(whoami)"
-  [[ "$user" != "$CONTEXT_DEFAULT_USER" || -n "$IS_SSH_CLIENT" ]] && echo -n "${user}@%m"
-}
-prompt_context() {
-  local _context="$(context)"
-  [[ -n "$_context" ]] && echo "$_context"
-}
+# # Context: user@hostname (who am I and where am I)
+# context() {
+#   local user="$(whoami)"
+#   [[ "$user" != "$CONTEXT_DEFAULT_USER" || -n "$IS_SSH_CLIENT" ]] && echo -n "${user}@%m"
+# }
+# prompt_context() {
+#   local _context="$(context)"
+#   [[ -n "$_context" ]] && echo "$_context"
+# }
 
-# Status:
-# - was there an error
-# - am I root
-# - are there background jobs?
-prompt_status() {
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="✘"
-  [[ $RETVAL -ne 0 ]] && symbols+="✘ $RETVAL"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡%f"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="⚙"
+# # Status:
+# # - was there an error
+# # - am I root
+# # - are there background jobs?
+# prompt_status() {
+#   local symbols
+#   symbols=()
+#   [[ $RETVAL -ne 0 ]] && symbols+="✘"
+#   [[ $RETVAL -ne 0 ]] && symbols+="✘ $RETVAL"
+#   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡%f"
+#   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="⚙"
 
-  if [[ -n "$symbols" && $RETVAL -ne 0 ]]; then
-    echo "$symbols"
-  elif [[ -n "$symbols" ]]; then
-    echo "$symbols"
-  fi
-}
+#   if [[ -n "$symbols" && $RETVAL -ne 0 ]]; then
+#     echo "$symbols"
+#   elif [[ -n "$symbols" ]]; then
+#     echo "$symbols"
+#   fi
+# }
 
-# environments:
-#  - ssh
+# # environments:
+# #  - ssh
 
-function p_envs {
-  local envs
-  [[ -n $SSH_CLIENT ]]  && envs+="R"
-  [[ -n $envs ]] && echo "%F{green}[%f$envs%F{green}]%f"
-}
+# function p_envs {
+#   local envs
+#   [[ -n $SSH_CLIENT ]]  && envs+="R"
+#   [[ -n $envs ]] && echo "%F{green}[%f$envs%F{green}]%f"
+# }
 
 
-function virtualenv_prompt_info {
-  [ $VIRTUAL_ENV ] && '('`basename $VIRTUAL_ENV`') '
-}
+# function virtualenv_prompt_info {
+#   [ $VIRTUAL_ENV ] && '('`basename $VIRTUAL_ENV`') '
+# }
 
-PROMPT='
-%F{blue}λ%f $(prompt_context) $(p_colored_path) $(p_envs) $(p_vcs) $(prompt_status)
-$(p_arrow) '
+# PROMPT='
+# %F{blue}λ%f $(prompt_context) $(p_colored_path) $(p_envs) $(p_vcs) $(prompt_status)
+# $(p_arrow) '
 
-RPROMPT='$(virtualenv_prompt_info)'
+# RPROMPT='$(virtualenv_prompt_info)'
+
+# if pgrep "powerline-daemon" > /dev/null
+# then
+#   echo "running"
+# else
+#   echo "starting powerline-daemon"
+#   powerline-daemon -q
+# fi
+
+powerline-daemon -q
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
