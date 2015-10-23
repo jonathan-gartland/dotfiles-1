@@ -83,4 +83,4 @@ if [ -r ~/.zsh/local/$HOSTNAME.zsh ]; then
   source ~/.zsh/local/$HOSTNAME.zsh
 fi
 
-[ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+# [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
