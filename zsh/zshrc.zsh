@@ -36,18 +36,39 @@ antigen apply
 
 # strict control over source order
 sources=(
-    'linux'
-    'osx'
+    '01_alias'
+'02_completions'
+'03_functions'
+'04_path'
+'10_python'
+# '11_rbenv'
+# '12_ruby'
+# '13_chruby'
+'20_mysql'
+'30_linux'
+'31_osx'
+# '32_bullet-train.zsh-theme'
+# '40_prompt'
+'41_prompt.skk'
+'50_hub'
+'51_vcsinfo'
+# '60_zle'
+# '61_highlight'
+'62_misc'
+'63_smartcd'
 
-    'hub'
-    'path'
-    # prompt needs to be after path, as prompts uses external commands
-    'prompt'
+    # 'linux'
+    # 'osx'
 
-    'completions'
-    'functions'
-    'alias'
-    'smartcd'
+    # 'hub'
+    # 'path'
+    # # prompt needs to be after path, as prompts uses external commands
+    # 'prompt'
+
+    # 'completions'
+    # 'functions'
+    # 'alias'
+    # 'smartcd'
 
 
     # 'bullet-train.zsh-theme'
