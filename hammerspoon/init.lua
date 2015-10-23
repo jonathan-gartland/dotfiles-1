@@ -216,17 +216,17 @@ hs.hotkey.bind(ctrl_opt_shift, 'P',     hs.itunes.play)
 hs.hotkey.bind(ctrl_opt_shift, 'O',     hs.itunes.pause)
 hs.hotkey.bind(ctrl_opt_shift, 'N',     hs.itunes.next)
 hs.hotkey.bind(ctrl_opt_shift, 'I',     hs.itunes.previous)
+hs.hotkey.bind(ctrl_opt_shift, 'L', function() hs.caffeinate.lockScreen() end)
 
 hs.hotkey.bind(ctrl_opt_shift, ']', function() set_volume( volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '[', function() set_volume( -1 * volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
 
 -- rename to shift_focus
-hs.hotkey.bind(cmd_opt_shift, 'j', function() move_focused_window(hs.window.focusWindowWest) end)
-hs.hotkey.bind(cmd_opt_shift, 'k', function() move_focused_window(hs.window.focusWindowEast) end)
-hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
-hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
-
+-- hs.hotkey.bind(cmd_opt_shift, 'j', function() move_focused_window(hs.window.focusWindowWest) end)
+-- hs.hotkey.bind(cmd_opt_shift, 'k', function() move_focused_window(hs.window.focusWindowEast) end)
+-- hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
+-- hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
 
 hs.hotkey.bind(opt_cmd_ctrl, 'j', function() move_window_on_screen(_move_window_left) end)
 hs.hotkey.bind(opt_cmd_ctrl, 'k', function() move_window_on_screen(_move_window_down) end)
@@ -237,8 +237,6 @@ hs.hotkey.bind(cmd_opt_shift, 'j', function() move_window_within_grid(_move_wind
 hs.hotkey.bind(cmd_opt_shift, 'k', function() move_window_within_grid(_move_window_down) end)
 hs.hotkey.bind(cmd_opt_shift, 'l', function() move_window_within_grid(_move_window_up) end)
 hs.hotkey.bind(cmd_opt_shift, ';', function() move_window_within_grid(_move_window_right) end)
-
-hs.hotkey.bind(opt_cmd_ctrl, 'L', function() hs.caffeinate.lockScreen() end)
 
 -- hs.hotkey.bind(opt_cmd_ctrl, 'z', function()
 
