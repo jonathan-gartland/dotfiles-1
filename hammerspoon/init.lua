@@ -189,22 +189,25 @@ hs.hotkey.bind(cmd_opt_shift, 'right', function() hs.window.focusedWindow():focu
 hs.hotkey.bind(cmd_opt_shift, 'up',    function() hs.window.focusedWindow():focusWindowNorth() end)
 hs.hotkey.bind(cmd_opt_shift, 'down',  function() hs.window.focusedWindow():focusWindowSouth() end)
 
-hs.hotkey.bind(opt_cmd_ctrl, 'M', hs.grid.maximizeWindow)
-
+-- maximize window
+hs.hotkey.bind(cmd_opt_shift, 'M', hs.grid.maximizeWindow)
 -- move window to next screen
-hs.hotkey.bind(opt_cmd_ctrl, 'N', hs.grid.pushWindowNextScreen)
-
+hs.hotkey.bind(cmd_opt_shift, 'N', hs.grid.pushWindowNextScreen)
 -- move window to prev screen
-hs.hotkey.bind(opt_cmd_ctrl, 'P', hs.grid.pushWindowPrevScreen)
-
+hs.hotkey.bind(cmd_opt_shift, 'P', hs.grid.pushWindowPrevScreen)
 -- move window left
--- hs.hotkey.bind(opt_cmd_ctrl, 'J', hs.grid.pushWindowLeft)
--- move window down
--- hs.hotkey.bind(opt_cmd_ctrl, 'K', hs.grid.pushWindowDown)
--- move window up
--- hs.hotkey.bind(opt_cmd_ctrl, 'L', hs.grid.pushWindowUp)
--- move window right
--- hs.hotkey.bind(opt_cmd_ctrl, ';', hs.grid.pushWindowRight)
+-- hs.hotkey.bind(cmd_opt_shift, 'J', hs.grid.pushWindowLeft)
+-- -- move window down
+-- hs.hotkey.bind(cmd_opt_shift, 'K', hs.grid.pushWindowDown)
+-- -- move window up
+-- hs.hotkey.bind(cmd_opt_shift, 'L', hs.grid.pushWindowUp)
+-- -- move window right
+-- hs.hotkey.bind(cmd_opt_shift, ';', hs.grid.pushWindowRight)
+
+hs.hotkey.bind(cmd_opt_shift, 'j', function() move_window_on_screen(_move_window_left) end)
+hs.hotkey.bind(cmd_opt_shift, 'k', function() move_window_on_screen(_move_window_down) end)
+hs.hotkey.bind(cmd_opt_shift, 'l', function() move_window_on_screen(_move_window_up) end)
+hs.hotkey.bind(cmd_opt_shift, ';', function() move_window_on_screen(_move_window_right) end)
 
 hs.hotkey.bind(opt_cmd_ctrl, 'U', hs.grid.resizeWindowTaller)
 hs.hotkey.bind(opt_cmd_ctrl, 'O', hs.grid.resizeWindowWider)
@@ -216,6 +219,7 @@ hs.hotkey.bind(ctrl_opt_shift, 'P',     hs.itunes.play)
 hs.hotkey.bind(ctrl_opt_shift, 'O',     hs.itunes.pause)
 hs.hotkey.bind(ctrl_opt_shift, 'N',     hs.itunes.next)
 hs.hotkey.bind(ctrl_opt_shift, 'I',     hs.itunes.previous)
+
 hs.hotkey.bind(ctrl_opt_shift, 'L', function() hs.caffeinate.lockScreen() end)
 
 hs.hotkey.bind(ctrl_opt_shift, ']', function() set_volume( volumeIncrement ) end)
@@ -228,15 +232,11 @@ hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
 -- hs.hotkey.bind(cmd_opt_shift, 'l', function() move_focused_window(hs.window.focusWindowSouth) end)
 -- hs.hotkey.bind(cmd_opt_shift, ';', function() move_focused_window(hs.window.focusWindowNorth) end)
 
-hs.hotkey.bind(opt_cmd_ctrl, 'j', function() move_window_on_screen(_move_window_left) end)
-hs.hotkey.bind(opt_cmd_ctrl, 'k', function() move_window_on_screen(_move_window_down) end)
-hs.hotkey.bind(opt_cmd_ctrl, 'l', function() move_window_on_screen(_move_window_up) end)
-hs.hotkey.bind(opt_cmd_ctrl, ';', function() move_window_on_screen(_move_window_right) end)
 
-hs.hotkey.bind(cmd_opt_shift, 'j', function() move_window_within_grid(_move_window_left) end)
-hs.hotkey.bind(cmd_opt_shift, 'k', function() move_window_within_grid(_move_window_down) end)
-hs.hotkey.bind(cmd_opt_shift, 'l', function() move_window_within_grid(_move_window_up) end)
-hs.hotkey.bind(cmd_opt_shift, ';', function() move_window_within_grid(_move_window_right) end)
+-- hs.hotkey.bind(cmd_opt_shift, 'j', function() move_window_within_grid(_move_window_left) end)
+-- hs.hotkey.bind(cmd_opt_shift, 'k', function() move_window_within_grid(_move_window_down) end)
+-- hs.hotkey.bind(cmd_opt_shift, 'l', function() move_window_within_grid(_move_window_up) end)
+-- hs.hotkey.bind(cmd_opt_shift, ';', function() move_window_within_grid(_move_window_right) end)
 
 -- hs.hotkey.bind(opt_cmd_ctrl, 'z', function()
 
@@ -256,7 +256,7 @@ function reload_config(files)
     hs.reload()
     hs.alert.show("Config loaded")
 end
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", reload_config):start()
 hs.alert.show("Hammerspoon, at your service.", 3)
 
 -- appwatcher = hs.application.watcher.new(function(name, event_type, app)
