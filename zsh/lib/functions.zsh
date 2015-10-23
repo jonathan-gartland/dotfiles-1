@@ -82,10 +82,10 @@ function psgrep() {
     fi
 }
 
-# function killit() {
-#     # Kills any process that matches a regexp passed to it
-#     ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
-# }
+function killit() {
+    # Kills any process that matches a regexp passed to it
+    ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
 
 exip () {
     # gather external ip address
@@ -184,80 +184,12 @@ function mount_sshfs
     sshfs skk@$hostname:/ /sshfs/$hostname
 }
 
-# From http://justinlilly.com/dotfiles/zsh.html
-function dls () {
- # directory LS
- echo `ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/"`
-}
-
-function dgrep() {
-    # A recursive, case-insensitive grep that excludes binary files
-    grep -iR "$@" * | grep -v "Binary"
-}
-
-function dfgrep() {
-    # A recursive, case-insensitive grep that excludes binary files
-    # and returns only unique filenames
-    grep -iR "$@" * | grep -v "Binary" | sed 's/:/ /g' | awk '{ print $1 }' | sort | uniq
-}
-
-function psgrep() {
-    if [ ! -z $1 ] ; then
-        echo "Grepping for processes matching $1..."
-        ps aux | grep $1 | grep -v grep
-    else
-        echo "!! Need name to grep for"
-    fi
-}
-
-# function killit() {
-#     # Kills any process that matches a regexp passed to it
-#     ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
-# }
-
-exip () {
-    # gather external ip address
-    echo -n "Current External IP: "
-    curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/.*ha4">//g' -e 's/<\/span>.*//g'
-}
-
-ips () {
-    # determine local IP address
-    ifconfig | grep "inet " | awk '{ print $2 }'
-}
-
 # color support in diff
 if [ -x /usr/bin/colordiff ]; then
     case "$TERM" in
     xterm-color|xterm-256color) alias diff=colordiff ;;
     esac
 fi
-
-# Create and than change into it
-mkcd() {
-    mkdir $1 && cd $1
-}
-
-clone_spf13() {
-  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
-}
-
-update_spf13() {
-  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
-}
-
-clone_spaceemacs() {
-  (cd ~ && git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d)
-}
-
-update_spaceemacs() {
-  (cd ~/.emacs.d && git pull --recurse-submodules)
-}
-# open man page and jump to specific option
-# $ manf ls -l
-function manf() {
-  man -P "less -p \"^ +$2\"" $1
-}
 
 # open man page and jump to examples section
 function eg(){
