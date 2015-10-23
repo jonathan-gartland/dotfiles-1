@@ -23,6 +23,7 @@
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
+    ~/.config/powerline: powerline.config
 
     # files
     ~/.abcde.conf: dotfiles/abcde.conf
