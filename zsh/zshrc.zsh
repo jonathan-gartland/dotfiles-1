@@ -30,7 +30,6 @@ antigen bundles <<EOBUNDLES
     z
     zsh-users/zsh-syntax-highlighting
 
-    horosgrisa/autoenv
 EOBUNDLES
 
 antigen apply
@@ -42,11 +41,16 @@ sources=(
 
     'hub'
     'path'
-    'bullet-train.zsh-theme'
+    # prompt needs to be after path, as prompts uses external commands
+    'prompt'
+
     'completions'
     'functions'
     'alias'
-    # 'prompt'
+    'smartcd'
+
+
+    # 'bullet-train.zsh-theme'
     # 'zle'
     # 'highlight'
 )
@@ -56,9 +60,7 @@ for src in $sources; do
     source $filename
 done
 
-if [ -f "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+read_if_exists "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # restore cdpath
 cdpath+=($cdpath_backup)
@@ -67,3 +69,4 @@ cdpath+=($cdpath_backup)
 # let "delta_time=$time2 - $time1"
 # echo "Elapsed Time $delta_time"
 
+[ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
