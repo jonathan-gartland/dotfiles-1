@@ -42,7 +42,7 @@ function source_if_exists() {
         # echo "source'ing ${filename}"
         source $filename
     else
-        echo "$filename is not readable/sourceable"
+        # echo "$filename is not readable/sourceable"
     fi
 }
 
@@ -53,9 +53,7 @@ sources=(
     '03_functions'
     '04_path'
     '10_python'
-    # '11_rbenv'
-    # '12_ruby'
-    # '13_chruby'
+    '11_ruby'
     '20_mysql'
     '30_linux'
     '31_osx'
