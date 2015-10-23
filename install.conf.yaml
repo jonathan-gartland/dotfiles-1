@@ -7,32 +7,39 @@
     - [git submodule update --init --recursive, 'Updating submodules']
     - [git pull, 'Updating repo']
     - [cd spf13-vim; sh bootstrap.sh, 'Updating vim spf13']
+    - [cd smartcd; make install, 'Updating smartcd']
 
 - link:
-    ~/.Xresources: dotfiles/Xresources
-    ~/.abcde.conf: dotfiles/abcde.conf
-    ~/.spacemacs: dotfiles/spacemacs
-    ~/.astylerc: dotfiles/astylerc
+    # directories
+    ~/bin: bin
     ~/.bash: bash
+    ~/.dotfiles: dotfiles
+    ~/.emacs.d: spacemacs
+    ~/.fonts: fonts
+    ~/.hammerspoon: hammerspoon
+    ~/.i3: i3
+    ~/.mutt: mutt
+    ~/.smartcd/scripts: dot-files-forest/smartcd_config
+    ~/.spacemacs: dotfiles/spacemacs
+    ~/.tmux: tmux
+    ~/.zsh: zsh
+
+    # files
+    ~/.abcde.conf: dotfiles/abcde.conf
+    ~/.astylerc: dotfiles/astylerc
     ~/.bash_logout: bash/bash_logout
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
     ~/.cask: /usr/local/Cellar/cask/0.7.2_1
-    ~/.dotfiles: dotfiles
-    ~/.emacs.d: spacemacs
     ~/.emacs.skk: emacs/.emacs
-    ~/.fonts: fonts
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
     ~/.gitconfig: dotfiles/gitconfig.WORK
-    ~/.hammerspoon: hammerspoon
     ~/.hgrc: dotfiles/hgrc.WORK
-    ~/.i3: i3
     ~/.inputrc: bash/inputrc
     ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
     ~/.msmtprc: msmtp/msmtprc.HOME
-    ~/.mutt: mutt
     ~/.muttrc: mutt/muttrc
     ~/.offlineimap.py: dotfiles/offlineimap.py
     ~/.offlineimaprc: dotfiles/offlineimaprc.HOME
@@ -43,10 +50,11 @@
     ~/.rvmrc: dotfiles/rvmrc
     ~/.screenrc: dotfiles/screenrc
     ~/.signature.home: dotfiles/signature.HOME
-    ~/.sqliterc: dotfiles/sqliterc
-    ~/.tmux: tmux
-    ~/.tmux.conf: tmux/tmux.conf
+    ~/.smartcd_config: dotfiles/smartcd_config
     ~/.spf13-vim: spf13-vim
+    ~/.sqliterc: dotfiles/sqliterc
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.Xresources: dotfiles/Xresources
     # ~/.vimrc: spf13-vim/.vimrc
     # ~/.vimrc.bundles: spf13-vim/.vimrc.bundles
     # ~/.vimrc.before: spf13-vim/.vimrc.before
@@ -57,8 +65,8 @@
     ~/.zlogin: zsh/zlogin.zsh
     ~/.zlogout: zsh/zlogout.zsh
     ~/.zprofile: zsh/zprofile.zsh
-    ~/.zsh: zsh
     ~/.zshenv: zsh/zshenv.zsh
     ~/.zshrc: zsh/zshrc.zsh
-    ~/bin: bin/
+
+
 
