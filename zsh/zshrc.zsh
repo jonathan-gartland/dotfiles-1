@@ -48,6 +48,7 @@ function source_if_exists() {
 
 # strict control over source order
 sources=(
+    '00_platform'
     '01_alias'
     '02_completions'
     '03_functions'
