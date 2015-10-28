@@ -34,21 +34,10 @@ EOBUNDLES
 
 antigen apply
 
-function source_if_exists() {
-    filename=$1
-    # echo "filename ${filename}"
 
-    if [ -r "$filename" ]; then
-        # echo "source'ing ${filename}"
-        source $filename
-    else
-        # echo "$filename is not readable/sourceable"
-    fi
-}
 
 # strict control over source order
 sources=(
-    '00_platform'
     '01_alias'
     '02_completions'
     '03_functions'
@@ -68,6 +57,8 @@ sources=(
     '62_misc'
     '63_smartcd'
 )
+
+source "$HOME/.zsh/lib/00_base.zsh"
 
 for src in $sources; do
     source_if_exists "$HOME/.zsh/lib/$src.zsh"
