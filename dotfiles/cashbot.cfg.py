@@ -8,9 +8,8 @@
     'FEATURES': {'PASSWORD_DECRYPTION': False, 'AWS': False},
 
     # 'LOG_DB_URL': 'sqlite:///Users/steven.knight/Projects/qa/cashbot.db',
-    'LOG_DB_URL': 'sqlite:/:memory:',
-    # 'LOG_DB_URL': "mysql://cashbot:jJT!3VK14&llVP0o@localhost:3306/cashbotdb",
-    'LOG_DB_DEBUG': False,
+    # 'LOG_DB_URL': 'sqlite:/:memory:',
+    'LOG_DB_URL': "mysql://cashbot:jJT!3VK14&llVP0o@localhost:3306/cashbotdb",
 
     # 'GNUPG_VERBOSE': True,
     # 'LOG_DB_DEBUG': True,
