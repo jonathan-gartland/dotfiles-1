@@ -32,22 +32,16 @@
     ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
-    ~/.gitconfig: dotfiles/gitconfig.WORK
-    ~/.hgrc: dotfiles/hgrc.WORK
     ~/.inputrc: bash/inputrc
     ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
-    ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
-    ~/.msmtprc: msmtp/msmtprc.HOME
     ~/.muttrc: mutt/muttrc
     ~/.offlineimap.py: dotfiles/offlineimap.py
-    ~/.offlineimaprc: dotfiles/offlineimaprc.HOME
     ~/.perlcriticrc: dotfiles/perlcriticrc
     ~/.perltidy: dotfiles/perltidy
     ~/.procmail: procmail/home
     ~/.procmailrc: procmail/home/procmailrc
     ~/.rvmrc: dotfiles/rvmrc
     ~/.screenrc: dotfiles/screenrc
-    ~/.signature.home: dotfiles/signature.HOME
     ~/.smartcd_config: dotfiles/smartcd_config
     ~/.sqliterc: dotfiles/sqliterc
     ~/.tmux.conf: tmux/tmux.conf
