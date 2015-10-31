@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ~/dot-files-forest/zsh/lib/00_base.zsh
-
 cd ~/src/dotbot
 
 virtualenv .
@@ -17,12 +15,12 @@ linux_config_file=~/dot-files-forest/linux_install.conf.yaml
 
 ~/src/dotbot/bin/dotbot --base-directory $base_dir --config-file $config_file
 
-if [[ "$OS_IS_MAC_OS_X" = true ]]; then
-    ~/src/dotbot/bin/dotbot --base-directory $base_dir --config-file $osx_config_file -q
+if [[ "$OSTYPE" == darwin* ]]; then
+    ~/src/dotbot/bin/dotbot --base-directory $base_dir --config-file $osx_config_file
 fi
 
-if [[ "$OS_IS_LINUX" = true ]]; then
-    ~/src/dotbot/bin/dotbot --base-directory $base_dir --config-file $linux_config_file -q
+if [[ "$OSTYPE" == linux* ]]; then
+    ~/src/dotbot/bin/dotbot --base-directory $base_dir --config-file $linux_config_file
 fi
 
 deactivate
