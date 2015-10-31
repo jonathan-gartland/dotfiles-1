@@ -8,3 +8,4 @@
     ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
     ~/.offlineimaprc: dotfiles/offlineimaprc.HOME
     ~/.signature.home: dotfiles/signature.HOME
+    ~/.gitconfig: dotfiles/gitconfig.HOME
