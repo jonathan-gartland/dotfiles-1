@@ -2,13 +2,16 @@
 export OS_IS_MAC_OS_X=false
 export OS_IS_LINUX=false
 export OS_IS_WINDOWS=false
+export OS_IS_POSIX=false
 
 if [[ "$OSTYPE" == darwin* ]]; then
     export OS_IS_MAC_OS_X=true
+    export OS_IS_POSIX=true
 fi
 
 if [[ "$OSTYPE" == linux* ]]; then
     export OS_IS_LINUX=true
+    export OS_IS_POSIX=true
 fi
 
 function exists {
