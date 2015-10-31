@@ -1,1 +1,4 @@
-eval "$(hub alias -s)"
+
+if exists hub; then 
+    eval "$(hub alias -s)"
+fi
