@@ -51,7 +51,7 @@
     ~/.screenrc: dotfiles/screenrc
     ~/.signature.home: dotfiles/signature.HOME
     ~/.smartcd_config: dotfiles/smartcd_config
-    ~/.spf13-vim: spf13-vim
+    # ~/.spf13-vim: spf13-vim
     ~/.sqliterc: dotfiles/sqliterc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
