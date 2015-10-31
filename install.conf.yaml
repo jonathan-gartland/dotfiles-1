@@ -4,7 +4,7 @@
 - clean: ['~']
 
 - shell:
-    - [git submodule update --init --recursive, 'Updating submodules']
+    - [git submodule update --init, 'Updating submodules']
     - [git pull, 'Updating repo']
     - [cd smartcd; make install, 'Updating smartcd']
 
@@ -22,7 +22,6 @@
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
-    ~/.config/powerline: powerline.config
 
     # files
     ~/.abcde.conf: dotfiles/abcde.conf
