@@ -39,6 +39,7 @@
     ~/.gitconfig: dotfiles/gitconfig.WORK
     ~/.hgrc: dotfiles/hgrc.WORK
     ~/.inputrc: bash/inputrc
+    ~/.config/liquidpromptrc dotfiles/liquidpromptrc
     ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
     ~/.msmtprc: msmtp/msmtprc.HOME
     ~/.muttrc: mutt/muttrc

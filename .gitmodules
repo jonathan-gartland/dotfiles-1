@@ -25,3 +25,7 @@
 [submodule "smartcd"]
 	path = smartcd
 	url = git@github.com:cxreg/smartcd.git
+[submodule "liquidprompt"]
+	path = liquidprompt
+	url = git@github.com:nojhan/liquidprompt.git
+	branch = develop

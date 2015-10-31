@@ -2,8 +2,6 @@
 umask 002
 
 # load (optional) percol
-function exists { which $1 &> /dev/null }
-
 if exists percol; then
     function percol_select_history() {
         local tac
@@ -17,8 +15,18 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-# load fasd
-[[ -s $(which fasd) ]] && eval "$(fasd --init auto)"
 
-# load LS colors
-[[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(dircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
+if exists fuck; then
+    eval $(thefuck --alias)
+fi
+
+if exists fasd; then
+    eval $(fasd --init auto)
+fi
+
+
+if [[ "$OS_IS_LINUX" = true ]]; then
+    alias gdircolors=dircolrs
+fi
+
+[[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(gdircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)

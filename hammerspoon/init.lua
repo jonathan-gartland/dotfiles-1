@@ -153,6 +153,19 @@ function move_window_on_screen(new_frame_fn)
     end
 end
 
+local itunes_stop_or_start = 'iTunes Stop'
+
+function itunes_action(itunes_action_fn, msg)
+    itunes_action_fn()
+    hs.alert.show(msg)
+
+    if itunes_stop_or_start == 'iTunes Play' then
+        itunes_stop_or_start = 'iTunes Stop'
+    else
+        itunes_stop_or_start = 'iTunes Play'
+    end
+end
+
 -- function _move_window_left(grid)
 --     inspect("grid", grid)
 --     return grid
@@ -213,15 +226,16 @@ hs.hotkey.bind(opt_cmd_ctrl, 'U', hs.grid.resizeWindowTaller)
 hs.hotkey.bind(opt_cmd_ctrl, 'O', hs.grid.resizeWindowWider)
 hs.hotkey.bind(opt_cmd_ctrl, 'I', hs.grid.resizeWindowThinner)
 hs.hotkey.bind(opt_cmd_ctrl, 'Y', hs.grid.resizeWindowShorter)
+hs.hotkey.bind(opt_cmd_ctrl, 'L', function()
+        hs.caffeinate.lockScreen()
+        itunes_action(hs.itunes.play, 'iTunes Stop')
+    end)
 
-hs.hotkey.bind(ctrl_opt_shift, 'space', hs.itunes.displayCurrentTrack)
-hs.hotkey.bind(ctrl_opt_shift, 'P',     hs.itunes.play)
-hs.hotkey.bind(ctrl_opt_shift, 'O',     hs.itunes.pause)
-hs.hotkey.bind(ctrl_opt_shift, 'N',     hs.itunes.next)
-hs.hotkey.bind(ctrl_opt_shift, 'I',     hs.itunes.previous)
-
-hs.hotkey.bind(ctrl_opt_shift, 'L', function() hs.caffeinate.lockScreen() end)
-
+-- audio related keybindings
+hs.hotkey.bind(ctrl_opt_shift, 'space', function() hs.itunes.displayCurrentTrack() end)
+hs.hotkey.bind(ctrl_opt_shift, 'P', function() itunes_action(hs.itunes.play, itunes_stop_or_start) end)
+hs.hotkey.bind(ctrl_opt_shift, 'N', function() itunes_action(hs.itunes.next, 'Next') end)
+hs.hotkey.bind(ctrl_opt_shift, 'I', function() itunes_action(hs.itunes.previous, 'Previous') end)
 hs.hotkey.bind(ctrl_opt_shift, ']', function() set_volume( volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '[', function() set_volume( -1 * volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
