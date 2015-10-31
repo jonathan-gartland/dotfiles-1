@@ -6,7 +6,6 @@
 - shell:
     - [git submodule update --init --recursive, 'Updating submodules']
     - [git pull, 'Updating repo']
-    - [cd spf13-vim; sh bootstrap.sh, 'Updating vim spf13']
     - [cd smartcd; make install, 'Updating smartcd']
 
 - link:
@@ -51,23 +50,13 @@
     ~/.screenrc: dotfiles/screenrc
     ~/.signature.home: dotfiles/signature.HOME
     ~/.smartcd_config: dotfiles/smartcd_config
-    # ~/.spf13-vim: spf13-vim
     ~/.sqliterc: dotfiles/sqliterc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
     ~/.vimrc: vimrc/vimrcs/basic.vim
-    # ~/.vimrc: spf13-vim/.vimrc
-    # ~/.vimrc.bundles: spf13-vim/.vimrc.bundles
-    # ~/.vimrc.before: spf13-vim/.vimrc.before
-    # ~/.vimrc.local: vim/vimrc.local
-    # /.vimrc.before.local: vim/vimrc.before.local
-    # /.vimrc.bundles.local: vim/vimrc.bundles.local
-    # /.xbindkeysrc: dotfiles/xbindkeysrc
     ~/.zlogin: zsh/zlogin.zsh
     ~/.zlogout: zsh/zlogout.zsh
     ~/.zprofile: zsh/zprofile.zsh
     ~/.zshenv: zsh/zshenv.zsh
     ~/.zshrc: zsh/zshrc.zsh
-
-
 
