@@ -8,3 +8,11 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 export VIRTUALENV_USE_DISTRIBUTE=True
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
+
+
+# create virtualenv py if necessary
+lsvirtualenv -b |grep py
+
+if [ $? -eq 1 ]; then
+    mkvirtualenv py
+fi
