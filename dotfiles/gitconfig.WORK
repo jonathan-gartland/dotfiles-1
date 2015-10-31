@@ -125,8 +125,8 @@
 	fontdiff = monoOne,10,-1,5,50,0,0,0,0,0
 	fontui = Sans Serif,10,-1,5,50,0,0,0,0,0
 	tabwidth = 4
-[push]
-	default = simple
+#[push]
+#	default = simple
 [github]
 	user = skk
 [gui]
