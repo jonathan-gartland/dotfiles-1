@@ -32,14 +32,12 @@
     ~/.bash_profile: bash/bash_profile
     ~/.bashrc: bash/bashrc
     ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
-    ~/.cask: /usr/local/Cellar/cask/0.7.2_1
-    ~/.emacs.skk: emacs/.emacs
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
     ~/.gitconfig: dotfiles/gitconfig.WORK
     ~/.hgrc: dotfiles/hgrc.WORK
     ~/.inputrc: bash/inputrc
-    ~/.config/liquidpromptrc dotfiles/liquidpromptrc
+    ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
     ~/.msmtp.authinfo.HOME.gpg: msmtp/msmtp.authinfo.HOME.gpg
     ~/.msmtprc: msmtp/msmtprc.HOME
     ~/.muttrc: mutt/muttrc
