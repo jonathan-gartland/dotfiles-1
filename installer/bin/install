@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-# encoding: utf-8
-
-$LOAD_PATH << File.expand_path('../../lib', __FILE__)
-$LOAD_PATH << File.expand_path("../../lib/docopt/lib", __FILE__)
-
-require 'installer/cli'
-Installer::CLI.new(__FILE__).execute
