@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-source ~/dot-files-forest/zsh/lib/00_platform.zsh
+source ~/dot-files-forest/zsh/lib/00_base.zsh
 
 cd ~/src/dotbot
 
