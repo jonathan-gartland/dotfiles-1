@@ -1,4 +1,4 @@
-if [[ "$OSTYPE" == linux* ]]; then
+if [[ "$OS_IS_LINUX" = true ]]; then
 
   antigen bundle debian
 
@@ -13,8 +13,10 @@ if [[ "$OSTYPE" == linux* ]]; then
   # export __VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DFP-0
 
   # systemctl --user env imports
-  systemctl --user import-environment PATH SSH_AUTH_SOCK GTAGSCONF GTAGSLABEL VM
-
+  if exists systemctl; then
+  	systemctl --user import-environment PATH SSH_AUTH_SOCK GTAGSCONF GTAGSLABEL VM
+  fi
+  
   # for man --html etc.
   export BROWSER=chrome
 
