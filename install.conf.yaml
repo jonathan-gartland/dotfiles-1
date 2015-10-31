@@ -19,7 +19,7 @@
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.mutt: mutt
-    ~/.smartcd/scripts: dot-files-forest/smartcd_config
+    ~/.smartcd/scripts: smartcd_config
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
