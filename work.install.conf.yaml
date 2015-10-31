@@ -4,9 +4,5 @@
 - clean: ['~']
 
 - link:
-    ~/.msmtprc: msmtp/msmtprc.WORK
-    ~/.msmtp.authinfo.WORK.gpg: msmtp/msmtp.authinfo.WORK.gpg
-    ~/.offlineimaprc: dotfiles/offlineimaprc.WORK
-    ~/.signature.home: dotfiles/signature.WORK
     ~/.gitconfig: dotfiles/gitconfig.WORK
     ~/.hgrc: dotfiles/hgrc.WORK
