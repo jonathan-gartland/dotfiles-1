@@ -10,9 +10,11 @@ export VIRTUALENV_USE_DISTRIBUTE=True
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
 
 
-# create virtualenv py if necessary
-lsvirtualenv -b |grep py
+if [[ "$OS_IS_POSIX" = true ]]; then
+    # create virtualenv py if necessary
+    lsvirtualenv -b |grep py
 
-if [ $? -eq 1 ]; then
-    mkvirtualenv py
+    if [ $? -eq 1 ]; then
+        mkvirtualenv py
+    fi
 fi
