@@ -10,13 +10,14 @@ export VIRTUALENV_USE_DISTRIBUTE=True
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
 
 if [[ "$OS_IS_POSIX" = true ]]; then
+
+    antigen bundle virtualenvwrapper
+
     # create virtualenv py if necessary
     lsvirtualenv -b |grep py > /dev/null 2>&1
 
     if [ $? -eq 1 ]; then
         mkvirtualenv py
     fi
-
-    antigen bundle virtualenvwrapper
 fi
 
