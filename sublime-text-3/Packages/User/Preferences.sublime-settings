@@ -11,7 +11,10 @@
 		"cashbot",
 		"datapoints",
 		"cashbot's",
-		"Unmuted"
+		"Unmuted",
+		"keybindings",
+		"onboarding",
+		"Refactor"
 	],
 	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
@@ -89,7 +92,7 @@
 		"subpixel_antialias",
 		"directwrite"
 	],
-	"font_size": 13,
+	"font_size": 10,
 	"highlight_line": false,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
