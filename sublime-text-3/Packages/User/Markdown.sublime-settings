@@ -1,8 +1,10 @@
 {
+    "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Yellow.tmTheme",
+
 	"extensions":
 	[
-		"md",
 		"mdown",
-		"txt"
+		"txt",
+		"md"
 	]
 }
