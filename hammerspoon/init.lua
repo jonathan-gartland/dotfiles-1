@@ -232,13 +232,19 @@ hs.hotkey.bind(opt_cmd_ctrl, 'L', function()
     end)
 
 -- audio related keybindings
-hs.hotkey.bind(ctrl_opt_shift, 'space', function() hs.itunes.displayCurrentTrack() end)
+hs.hotkey.bind(ctrl_opt_shift, 'space', hs.itunes.displayCurrentTrack)
 hs.hotkey.bind(ctrl_opt_shift, 'P', function() itunes_action(hs.itunes.play, itunes_stop_or_start) end)
 hs.hotkey.bind(ctrl_opt_shift, 'N', function() itunes_action(hs.itunes.next, 'Next') end)
 hs.hotkey.bind(ctrl_opt_shift, 'I', function() itunes_action(hs.itunes.previous, 'Previous') end)
+
 hs.hotkey.bind(ctrl_opt_shift, ']', function() set_volume( volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '[', function() set_volume( -1 * volumeIncrement ) end)
 hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
+
+-- hs.hotkey.bind(ctrl_opt_shift, 'space', function() hs.spotify.displayCurrentTrack() end)
+-- hs.hotkey.bind(ctrl_opt_shift, 'P', function() spotify(hs.itunes.play, itunes_stop_or_start) end)
+-- hs.hotkey.bind(ctrl_opt_shift, 'N', function() spotify(hs.itunes.next, 'Next') end)
+-- hs.hotkey.bind(ctrl_opt_shift, 'I', function() spotify(hs.itunes.previous, 'Previous') end)
 
 -- rename to shift_focus
 -- hs.hotkey.bind(cmd_opt_shift, 'j', function() move_focused_window(hs.window.focusWindowWest) end)
