@@ -19,19 +19,6 @@ def get_parser(arguments):
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
         help="Print lots of debugging information",
         action="store_true")
-    # parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
-    #     help="Don't actually run any commands; just print them.",
-    #     action="store_true")
-    # parser.add_option("-f", "--force", dest="force", default=False,
-    #     help="Ignore existing files/directories.",
-    #     action="store_true")
-    # parser.add_option("-d", "--dst_dir", dest="dst_dir",
-    #     default=os.environ['HOME'],
-    #     help="LinkSet destination base directory (defaulting to: %s)" %
-    #     os.environ['HOME'], action="store")
-    # parser.add_option("-s", "--src_dst", dest="src_dir", default=os.getcwd(),
-    #     help="LinkSet source base directory (defaulting to: %s)" % os.getcwd(),
-    #     action="store")
 
     (options, args) = parser.parse_args(args = arguments)
     return (options, args, parser)
@@ -73,7 +60,7 @@ class install(object):
     def __init__(self, install_type, os_type, verbose):
         self.install_type = install_type
         self.os_type = os_type
-        self.base_dir = os.path.join(os.environ['HOME'], "dot-files-forest")
+        self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest', 'dotbot')
         self.config_files = {
             install.WORK: "work",
             install.HOME: "home",
@@ -84,12 +71,21 @@ class install(object):
         }
         self.config_file = "install.conf.yaml"
         self.dotbot = "~/src/dotbot/bin/dotbot"
-        self.quiet = "" if verbose else "-q"
+
+        self.verbose = self.quiet = ''
+        if verbose:
+            self.verbose = '-v'
+        else:
+            self.quiet = '-q'
 
     def _construct_cmd(self, config_file):
         config_file = self._config_file(config_file)
-        return "{dotbot} --base-directory {base_dir} --config-file {config_file} {quiet}".format(
-            dotbot=self.dotbot, base_dir=self.base_dir, config_file=config_file, quiet=self.quiet)
+        cmd = "{dotbot} --base-directory {base_dir} --config-file {config_file} {quiet} {verbose}".format(
+            dotbot=self.dotbot, base_dir=self.base_dir, config_file=config_file,
+            quiet=self.quiet, verbose=self.verbose)
+        print "CMD ", cmd
+
+        return cmd
 
     def _config_file(self, config_file_type):
         config_file_prefix = self.config_files.get(config_file_type)
