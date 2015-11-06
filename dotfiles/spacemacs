@@ -41,6 +41,7 @@ values."
 
      ; python
      python
+     django
 
      ; emacs-lisp
      emacs-lisp
