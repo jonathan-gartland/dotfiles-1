@@ -4,4 +4,7 @@
 - clean: ['~']
 
 - link:
-    ~/.cask: /usr/local/Cellar/cask/0.7.2_1
+    # TODO: path will change with updates to brew, need to fix this
+    ~/.cask: /usr/local/Cellar/cask/0.7.3
+
+    ~/.smartcd_config: dotfiles/smartcd_config/Users

@@ -11,39 +11,24 @@
 - link:
     # directories
     ~/bin: bin
-    ~/.bash: bash
     ~/.dotfiles: dotfiles
-    ~/.emacs.d: spacemacs
-    ~/.fonts: fonts
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
-    ~/.mutt: mutt
     ~/.smartcd/scripts: smartcd_config
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
 
     # files
-    ~/.abcde.conf: dotfiles/abcde.conf
-    ~/.astylerc: dotfiles/astylerc
-    ~/.bash_logout: bash/bash_logout
-    ~/.bash_profile: bash/bash_profile
-    ~/.bashrc: bash/bashrc
     ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
-    ~/.inputrc: bash/inputrc
+    ~/.inputrc: dotfiles/inputrc
     ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
-    ~/.muttrc: mutt/muttrc
-    ~/.offlineimap.py: dotfiles/offlineimap.py
-    ~/.perlcriticrc: dotfiles/perlcriticrc
-    ~/.perltidy: dotfiles/perltidy
     ~/.procmail: procmail/home
     ~/.procmailrc: procmail/home/procmailrc
     ~/.rvmrc: dotfiles/rvmrc
     ~/.screenrc: dotfiles/screenrc
-    ~/.smartcd_config: dotfiles/smartcd_config
-    ~/.sqliterc: dotfiles/sqliterc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
     ~/.vimrc: vimrc/vimrcs/basic.vim

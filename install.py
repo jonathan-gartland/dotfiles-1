@@ -19,6 +19,9 @@ def get_parser(arguments):
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
         help="Print lots of debugging information",
         action="store_true")
+    parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
+                      help="Don't actually run any commands; just print them.",
+                      action="store_true")
 
     (options, args) = parser.parse_args(args = arguments)
     return (options, args, parser)
@@ -45,7 +48,7 @@ def run(argv):
     else:
         os_type = None
 
-    install(install_type, os_type, options.verbose).run()
+    install(install_type, os_type, options).run()
 
     return 0
 
@@ -57,10 +60,10 @@ class install(object):
     LINUX = 4
     WINDOWS = 5
 
-    def __init__(self, install_type, os_type, verbose):
+    def __init__(self, install_type, os_type, options):
         self.install_type = install_type
         self.os_type = os_type
-        self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest', 'dotbot')
+        self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest')
         self.config_files = {
             install.WORK: "work",
             install.HOME: "home",
@@ -71,12 +74,14 @@ class install(object):
         }
         self.config_file = "install.conf.yaml"
         self.dotbot = "~/src/dotbot/bin/dotbot"
+        self.options = options
 
         self.verbose = self.quiet = ''
-        if verbose:
+        if options.verbose:
             self.verbose = '-v'
         else:
             self.quiet = '-q'
+        self.dry_run = options.dry_run
 
     def _construct_cmd(self, config_file):
         config_file = self._config_file(config_file)
@@ -93,7 +98,7 @@ class install(object):
         else:
             config_file = "{}.{}".format(config_file_prefix, self.config_file)
 
-        return os.path.join(self.base_dir, config_file)
+        return os.path.join(self.base_dir, 'dotbot', config_file)
 
     def run(self):
         commands = [
@@ -104,7 +109,8 @@ class install(object):
 
         for cmd in commands:
             print "command: %s" % cmd
-            self._execute_command(cmd)
+            if not self.dry_run:
+                self._execute_command(cmd)
 
     def _execute_command(self, command):
         try:
