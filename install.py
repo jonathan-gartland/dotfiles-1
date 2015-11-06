@@ -83,8 +83,6 @@ class install(object):
         cmd = "{dotbot} --base-directory {base_dir} --config-file {config_file} {quiet} {verbose}".format(
             dotbot=self.dotbot, base_dir=self.base_dir, config_file=config_file,
             quiet=self.quiet, verbose=self.verbose)
-        print "CMD ", cmd
-
         return cmd
 
     def _config_file(self, config_file_type):
