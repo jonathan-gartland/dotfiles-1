@@ -3,6 +3,7 @@
 import sys, os.path, optparse, fileinput
 from subprocess import call
 import os, errno, platform
+from collections import OrderedDict
 
 def mkdir_p(path):
     try:
@@ -128,11 +129,8 @@ class Repos(InstallBase):
         super(Repos, self).__init__(argv, options)
         self.dst_dir = options.dst_dir
 
-        self.dff_repo = {
-            'dot_files_forest': 'git@bitbucket.org:skknight/dot-files-forest.git'
-        }
-
-        self.repos = {
+        self.repos = OrderedDict({
+            'dot_files_forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
             'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
 	        'antigen': 'git@github.com:zsh-users/antigen.git',
 	        'tpm': 'git@github.com:tmux-plugins/tpm.git',
@@ -142,37 +140,38 @@ class Repos(InstallBase):
 	        'smartcd': 'git@github.com:cxreg/smartcd.git',
 	        'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
 	        'vimrc': 'git@github.com:amix/vimrc.git',
-        }
+        })
 
-    def clone_git_repo(self, repo):
-        self._execute_command("git clone {repo} --recurse-submodules".
-                              format(repo=repo))
+    def clone_git_repo(self, repo_name, repo_path):
+        print repo_name
+        self._execute_command("git clone {repopath} --recurse-submodules".format(
+            repopath=repopath))
 
-    def update_git_repo(self):
+    def update_git_repo(self, repo_name):
+        print repo_name
         self._execute_command('git pull')
 
-    def update_submodule_git_repo(self):
+    def update_submodule_git_repo(self, repo_name):
+        print '\n' + repo_name
         self._execute_command('git submodule update --recursive')
 
     def run(self):
         mkdir_p(self.dst_dir)
 
-        if self.options.clone_repos:
-            for repo_name, repo_path in self.dff_repo.iteritems():
-                print repo_name
-                with ChDir(self.dst_dir):
-                    self.clone_git_repo(repo_path)
-
         for repo_name, repo_path in self.repos.iteritems():
-            print repo_name
             if self.options.clone_repos:
                 with ChDir(self.dst_dir):
-                    self.clone_git_repo(repo_path)
+                    if repo_name == 'dot_files_forest':
+                        self.clone_git_repo('.', repo_path)
+                    else:
+                        self.clone_git_repo(repo_name, repo_path)
+
             if self.options.update_repos:
-                repo_dir = os.path.join(self.dst_dir, repo_name)
-                with ChDir(repo_dir):
-                    self.update_git_repo()
-                    self.update_submodule_git_repo()
+                if repo_name != 'dot_files_forest':
+                    repo_dir = os.path.join(self.dst_dir, repo_name)
+                    with ChDir(repo_dir):
+                        self.update_git_repo(repo_name)
+                        self.update_submodule_git_repo(repo_name)
 
 class Links(InstallBase):
 
