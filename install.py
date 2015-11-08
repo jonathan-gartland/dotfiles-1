@@ -5,6 +5,10 @@ from subprocess import call
 import os, errno, platform
 from collections import OrderedDict
 
+# To convert yaml to json
+# https://www.npmjs.com/package/yaml-to-json
+
+
 def mkdir_p(path):
     try:
         os.makedirs(path)
