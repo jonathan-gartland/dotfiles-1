@@ -29,4 +29,4 @@ if [[ "$OS_IS_LINUX" = true ]]; then
     alias gdircolors=dircolors
 fi
 
-[[ -s $HOME/dot-files-forest/LS_COLORS/LS_COLORS ]] && eval $(gdircolors -b $HOME/dot-files-forest/LS_COLORS/LS_COLORS)
+[[ -s $HOME/src/forest/LS_COLORS/LS_COLORS ]] && eval $(gdircolors -b $HOME/src/LS_COLORS/LS_COLORS)

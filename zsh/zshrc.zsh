@@ -3,7 +3,7 @@
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
 # load antigen
-source ~/dot-files-forest/antigen/antigen.zsh
+source ~/src/antigen/antigen.zsh
 
 # save cdpath as loading oh-my-zsh will reset it
 cdpath_backup=($cdpath)

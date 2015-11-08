@@ -4,7 +4,6 @@
 - clean: ['~']
 
 - shell:
-    - [git submodule update --init, 'Updating submodules']
     - [git pull, 'Updating repo']
     - [cd smartcd; make install, 'Updating smartcd']
 
@@ -15,7 +14,6 @@
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.smartcd/scripts: smartcd_config
-    ~/.emacs.d spacemacs
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
