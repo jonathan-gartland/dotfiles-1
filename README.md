@@ -4,7 +4,16 @@
 
 # Setup
 
-0) Install python, if necessary
+0) Install
+    a) python
+    c) virtualenv, mkvirtualenv
+    d) libyaml
+    d) create virtualenv and install pyyaml
+    ```
+    mkvirtualenv py
+    workon py
+    pip install pyyaml
+    ```
     
 1) Download install.py
 
