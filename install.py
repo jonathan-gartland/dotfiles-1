@@ -16,7 +16,9 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
-    parser.add_option('-d', '--dst_dir', dest='dst_dir', default=os.getenv('HOME'),
+    default_dst_dir = os.path.join(os.getenv('HOME'), 'src')
+
+    parser.add_option('-d', '--dst_dir', dest='dst_dir', default=default_dst_dir,
                       help='Dest directory', action='store')
     parser.add_option('-b', '--bootstrap', dest='bootstrap', default=False,
                       help='Download all required repos', action='store_true')
@@ -130,6 +132,8 @@ class Bootstrap(InstallBase):
         self._execute_command("git clone {repo} --recurse-submodules".
                               format(repo=repo))
     def run(self):
+        mkdir_p(self.dst_dir)
+
         with ChDir(self.dst_dir):
             for repo in self.repos:
                 self.clone_git_repo(repo)
