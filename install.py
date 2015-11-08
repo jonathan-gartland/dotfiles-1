@@ -142,10 +142,9 @@ class Repos(InstallBase):
 	        'vimrc': 'git@github.com:amix/vimrc.git',
         })
 
-    def clone_git_repo(self, repo_name, repo_path):
+    def clone_git_repo(self, repo_name, repo_branch, repo_path):
         print repo_name
-        self._execute_command("git clone {repo_path} --recurse-submodules".format(
-            repo_path=repo_path))
+        self._execute_command("git clone {repo_path} --branch={repo_branch} --recurse-submodules".format(repo_branch=repo_branch, repo_path=repo_path))
 
     def update_git_repo(self, repo_name):
         print repo_name
@@ -162,12 +161,14 @@ class Repos(InstallBase):
             if self.options.clone_repos:
                 if repo_name == 'dot_files_forest':
                     repo_path = os.path.join(self.base_dir , repo_name)
+                    repo_branch = 'develop'
                 else:
                     repo_path = os.path.join(self.base_dir, 'src', repo_name)
+                    repo_branch = 'master'
 
                 mkdir_p(repo_path)
                 with ChDir(repo_path):
-                    self.clone_git_repo(repo_name, repo_url)
+                    self.clone_git_repo(repo_name, repo_branch, repo_url)
 
             if self.options.update_repos:
                 if repo_name != 'dot_files_forest':
