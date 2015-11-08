@@ -1,0 +1,13 @@
+[
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "link": {
+      "~/.gitconfig": "dotfiles/gitconfig.WORK",
+      "~/.hgrc": "dotfiles/hgrc.WORK"
+    }
+  }
+]

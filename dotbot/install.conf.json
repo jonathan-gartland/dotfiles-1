@@ -1,0 +1,46 @@
+[
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "shell": [
+      [
+        "git pull",
+        "Updating repo"
+      ]
+    ]
+  },
+  {
+    "link": {
+      "~/bin": "bin",
+      "~/.dotfiles": "dotfiles",
+      "~/.hammerspoon": "hammerspoon",
+      "~/.i3": "i3",
+      "~/.spacemacs": "dotfiles/spacemacs",
+      "~/.tmux": "tmux",
+      "~/.zsh": "zsh",
+      "~/.emacs.d": "../src/spacemacs",
+      "~/.vimrc": "../src/vimrc/vimrcs/basic.vim",
+      "~/.smartcd": "../src/smartcd",
+      "~/.cashbot.cfg.py": "dotfiles/cashbot.cfg.py",
+      "~/.git-prompt.conf": "dotfiles/git-prompt.conf",
+      "~/.git.scmbrc": "dotfiles/git.scmbrc",
+      "~/.inputrc": "dotfiles/inputrc",
+      "~/.procmail": "procmail/home",
+      "~/.procmailrc": "procmail/home/procmailrc",
+      "~/.rvmrc": "dotfiles/rvmrc",
+      "~/.screenrc": "dotfiles/screenrc",
+      "~/.smartcd_config": "dotfiles/smartcd_config",
+      "~/.tmux.conf": "tmux/tmux.conf",
+      "~/.Xresources": "dotfiles/Xresources",
+      "~/.zlogin": "zsh/zlogin.zsh",
+      "~/.zlogout": "zsh/zlogout.zsh",
+      "~/.zprofile": "zsh/zprofile.zsh",
+      "~/.zshenv": "zsh/zshenv.zsh",
+      "~/.zshrc": "zsh/zshrc.zsh",
+      "~/.config/liquidpromptrc": "dotfiles/liquidpromptrc"
+    }
+  }
+]

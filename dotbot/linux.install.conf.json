@@ -1,0 +1,12 @@
+[
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "link": {
+      "~/.smartcd/scripts/home": "smartcd/home"
+    }
+  }
+]

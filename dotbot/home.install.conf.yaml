@@ -1,8 +1,0 @@
-%YAML 1.0
----
-
-- clean: ['~']
-
-- link:
-    ~/.signature.home: dotfiles/signature.HOME
-    ~/.gitconfig: dotfiles/gitconfig.HOME
