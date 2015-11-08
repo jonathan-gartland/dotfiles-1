@@ -29,6 +29,7 @@
     ~/.procmailrc: procmail/home/procmailrc
     ~/.rvmrc: dotfiles/rvmrc
     ~/.screenrc: dotfiles/screenrc
+    ~/.smartcd_config: dotfiles/smartcd_config
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
     ~/.zlogin: zsh/zlogin.zsh
