@@ -17,10 +17,10 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
-    default_dst_dir = os.path.join(os.getenv('HOME'), 'src')
+    default_base_dir = os.getenv('HOME')
 
-    parser.add_option('-d', '--dst_dir', dest='dst_dir', default=default_dst_dir,
-                      help='Dest directory, default: ' + default_dst_dir,
+    parser.add_option('-d', '--base_dir', dest='base_dir', default=default_base_dir,
+                      help='Base directory, default: ' + default_base_dir,
                       action='store')
 
     parser.add_option('-c', '--clone_repos', dest='clone_repos', default=False,
@@ -127,7 +127,7 @@ class Repos(InstallBase):
 
     def __init__(self, argv, options):
         super(Repos, self).__init__(argv, options)
-        self.dst_dir = options.dst_dir
+        self.base_dir = options.base_dir
 
         self.repos = OrderedDict({
             'dot_files_forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
@@ -144,8 +144,8 @@ class Repos(InstallBase):
 
     def clone_git_repo(self, repo_name, repo_path):
         print repo_name
-        self._execute_command("git clone {repopath} --recurse-submodules".format(
-            repopath=repopath))
+        self._execute_command("git clone {repo_path} --recurse-submodules".format(
+            repo_path=repo_path))
 
     def update_git_repo(self, repo_name):
         print repo_name
@@ -156,15 +156,18 @@ class Repos(InstallBase):
         self._execute_command('git submodule update --recursive')
 
     def run(self):
-        mkdir_p(self.dst_dir)
+        mkdir_p(self.base_dir)
 
-        for repo_name, repo_path in self.repos.iteritems():
+        for repo_name, repo_url in self.repos.iteritems():
             if self.options.clone_repos:
-                with ChDir(self.dst_dir):
-                    if repo_name == 'dot_files_forest':
-                        self.clone_git_repo('.', repo_path)
-                    else:
-                        self.clone_git_repo(repo_name, repo_path)
+                if repo_name == 'dot_files_forest':
+                    repo_path = os.path.join(self.base_dir , repo_name)
+                else:
+                    repo_path = os.path.join(self.base_dir, 'src', repo_name)
+
+                mkdir_p(repo_path)
+                with ChDir(repo_path):
+                    self.clone_git_repo(repo_name, repo_url)
 
             if self.options.update_repos:
                 if repo_name != 'dot_files_forest':
@@ -178,7 +181,7 @@ class Links(InstallBase):
     def __init__(self, argv, options):
         super(Links, self).__init__(argv, options)
 
-        self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest')
+        self.base_dir = os.path.join(options.base_dir, 'dot-files-forest')
         self.config_files = {
             InstallBase.WORK: "work",
             InstallBase.HOME: "home",
