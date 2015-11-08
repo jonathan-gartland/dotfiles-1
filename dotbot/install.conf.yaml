@@ -17,6 +17,7 @@
     ~/.zsh: zsh
 
     # src directories
+    ~/.emacs.d: ../src/spacemacs
     ~/.vimrc: ../src/vimrc/vimrcs/basic.vim
     ~/.smartcd: ../src/smartcd
 
