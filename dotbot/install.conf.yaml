@@ -15,6 +15,7 @@
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.smartcd/scripts: smartcd_config
+    ~/.emacs.d spacemacs
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
