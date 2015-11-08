@@ -130,7 +130,7 @@ class Repos(InstallBase):
         self.base_dir = options.base_dir
 
         self.repos = OrderedDict({
-            'dot_files_forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
+            'dot-files-forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
             'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
 	        'antigen': 'git@github.com:zsh-users/antigen.git',
 	        'tpm': 'git@github.com:tmux-plugins/tpm.git',
@@ -191,7 +191,7 @@ class Links(InstallBase):
             InstallBase.WINDOWS: "windows",
             None: None
         }
-        self.config_file = "install.conf.yaml"
+        self.config_file = "install.conf.json"
         self.dotbot = "~/src/dotbot/bin/dotbot"
         self.verbose = self.quiet = ''
         if options.verbose:
