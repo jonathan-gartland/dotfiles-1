@@ -16,11 +16,12 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
+    parser.add_option('-d', '--dst_dir', dest='dst_dir', default=os.getenv('HOME'),
+                      help='Dest directory', action='store')
     parser.add_option('-b', '--bootstrap', dest='bootstrap', default=False,
                       help='Download all required repos', action='store_true')
     parser.add_option('-l', '--links', dest='links', default=False,
                       help='Create all links', action='store_true')
-
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
                       help="Print lots of debugging information",
                       action="store_true")
@@ -39,9 +40,9 @@ def run(argv):
         return 1
 
     if options.links:
-       links(argv, options).run()
+       Links(argv, options).run()
     elif options.bootstrap:
-        bootstrap(argv, options).run()
+        Bootstrap(argv, options).run()
     else:
         raise ValueError("Need either option links or bootstrap")
 
@@ -92,10 +93,26 @@ class InstallBase(object):
         except OSError, e:
                 print >>sys.stderr, "Execution failed:", e
 
-class bootstrap(InstallBase):
+import os
+
+class ChDir(object):
+    """
+    Step into a directory temporarily.
+    """
+    def __init__(self, path):
+        self.old_dir = os.getcwd()
+        self.new_dir = path
+    def __enter__(self):
+        os.chdir(self.new_dir)
+
+    def __exit__(self, *args):
+        os.chdir(self.old_dir)
+
+class Bootstrap(InstallBase):
 
     def __init__(self, argv, options):
-        super(bootstrap, self).__init__(argv, options)
+        super(Bootstrap, self).__init__(argv, options)
+        self.dst_dir = options.dst_dir
 
         self.repos = [
             'git@github.com:trapd00r/LS_COLORS.git',
@@ -113,13 +130,14 @@ class bootstrap(InstallBase):
         self._execute_command("git clone {repo} --recurse-submodules".
                               format(repo=repo))
     def run(self):
-        for repo in self.repos:
-            self.clone_git_repo(repo)
+        with ChDir(self.dst_dir):
+            for repo in self.repos:
+                self.clone_git_repo(repo)
 
-class links(InstallBase):
+class Links(InstallBase):
 
     def __init__(self, argv, options):
-        super(links, self).__init__(argv, options)
+        super(Links, self).__init__(argv, options)
 
         self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest')
         self.config_files = {
