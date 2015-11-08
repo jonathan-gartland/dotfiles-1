@@ -19,7 +19,7 @@ def get_parser(arguments):
     default_dst_dir = os.path.join(os.getenv('HOME'), 'src')
 
     parser.add_option('-d', '--dst_dir', dest='dst_dir', default=default_dst_dir,
-                      help='Dest directory', action='store')
+                      help='Dest directory, default: ' + default_dst_dir, action='store')
     parser.add_option('-b', '--bootstrap', dest='bootstrap', default=False,
                       help='Download all required repos', action='store_true')
     parser.add_option('-l', '--links', dest='links', default=False,
@@ -145,11 +145,11 @@ class Links(InstallBase):
 
         self.base_dir = os.path.join(os.environ['HOME'], 'dot-files-forest')
         self.config_files = {
-            install.WORK: "work",
-            install.HOME: "home",
-            install.OSX: "osx",
-            install.LINUX: "linux",
-            install.WINDOWS: "windows",
+            InstallBase.WORK: "work",
+            InstallBase.HOME: "home",
+            InstallBase.OSX: "osx",
+            InstallBase.LINUX: "linux",
+            InstallBase.WINDOWS: "windows",
             None: None
         }
         self.config_file = "install.conf.yaml"

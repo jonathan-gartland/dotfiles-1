@@ -5,7 +5,6 @@
 
 - shell:
     - [git pull, 'Updating repo']
-    - [cd smartcd; make install, 'Updating smartcd']
 
 - link:
     # directories
@@ -13,27 +12,28 @@
     ~/.dotfiles: dotfiles
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
-    ~/.smartcd/scripts: smartcd_config
     ~/.spacemacs: dotfiles/spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
+
+    # src directories
+    ~/.vimrc: ../src/vimrc/vimrcs/basic.vim
+    ~/.smartcd: ../src/smartcd
 
     # files
     ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
     ~/.inputrc: dotfiles/inputrc
-    ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
     ~/.procmail: procmail/home
     ~/.procmailrc: procmail/home/procmailrc
     ~/.rvmrc: dotfiles/rvmrc
     ~/.screenrc: dotfiles/screenrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
-    ~/.vimrc: vimrc/vimrcs/basic.vim
     ~/.zlogin: zsh/zlogin.zsh
     ~/.zlogout: zsh/zlogout.zsh
     ~/.zprofile: zsh/zprofile.zsh
     ~/.zshenv: zsh/zshenv.zsh
     ~/.zshrc: zsh/zshrc.zsh
-
+    ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
