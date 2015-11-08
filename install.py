@@ -19,11 +19,17 @@ def get_parser(arguments):
     default_dst_dir = os.path.join(os.getenv('HOME'), 'src')
 
     parser.add_option('-d', '--dst_dir', dest='dst_dir', default=default_dst_dir,
-                      help='Dest directory, default: ' + default_dst_dir, action='store')
-    parser.add_option('-b', '--bootstrap', dest='bootstrap', default=False,
-                      help='Download all required repos', action='store_true')
+                      help='Dest directory, default: ' + default_dst_dir,
+                      action='store')
+
+    parser.add_option('-c', '--clone_repos', dest='clone_repos', default=False,
+                      help='Clone all repos', action='store_true')
+    parser.add_option('-u', '--update_repos', dest='update_repos', default=False,
+                      help='Update all repos', action='store_true')
+
     parser.add_option('-l', '--links', dest='links', default=False,
                       help='Create all links', action='store_true')
+
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
                       help="Print lots of debugging information",
                       action="store_true")
@@ -43,8 +49,8 @@ def run(argv):
 
     if options.links:
        Links(argv, options).run()
-    elif options.bootstrap:
-        Bootstrap(argv, options).run()
+    elif options.clone_repos or options.update_repos:
+        Repos(argv, options).run()
     else:
         raise ValueError("Need either option links or bootstrap")
 
@@ -88,7 +94,13 @@ class InstallBase(object):
 
     def _execute_command(self, command):
         try:
-            retcode = call(command, shell=True)
+            if self.options.verbose:
+                sys.stderr.write("command: {}\n".format(command))
+
+            if self.options.dry_run:
+                retcode = 0
+            else:
+                retcode = call(command, shell=True)
             if retcode < 0:
                 print >>sys.stderr, "Child was terminated by signal", -retcode
 
@@ -110,33 +122,57 @@ class ChDir(object):
     def __exit__(self, *args):
         os.chdir(self.old_dir)
 
-class Bootstrap(InstallBase):
+class Repos(InstallBase):
 
     def __init__(self, argv, options):
-        super(Bootstrap, self).__init__(argv, options)
+        super(Repos, self).__init__(argv, options)
         self.dst_dir = options.dst_dir
 
-        self.repos = [
-            'git@github.com:trapd00r/LS_COLORS.git',
-	        'git@github.com:zsh-users/antigen.git',
-	        'git@github.com:tmux-plugins/tpm.git',
-	        'git@github.com:Linell/hammerspoon-config.git',
-	        'git@github.com:skk/dotbot.git',
-	        'git@github.com:syl20bnr/spacemacs.git',
-	        'git@github.com:cxreg/smartcd.git',
-	        'git@github.com:nojhan/liquidprompt.git',
-	        'git@github.com:amix/vimrc.git',
-        ]
+        self.dff_repo = {
+            'dot_files_forest': 'git@bitbucket.org:skknight/dot-files-forest.git'
+        }
+
+        self.repos = {
+            'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
+	        'antigen': 'git@github.com:zsh-users/antigen.git',
+	        'tpm': 'git@github.com:tmux-plugins/tpm.git',
+	        'hammerspoon-config': 'git@github.com:Linell/hammerspoon-config.git',
+	        'dotbot': 'git@github.com:skk/dotbot.git',
+	        'spacemacs': 'git@github.com:syl20bnr/spacemacs.git',
+	        'smartcd': 'git@github.com:cxreg/smartcd.git',
+	        'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
+	        'vimrc': 'git@github.com:amix/vimrc.git',
+        }
 
     def clone_git_repo(self, repo):
         self._execute_command("git clone {repo} --recurse-submodules".
                               format(repo=repo))
+
+    def update_git_repo(self):
+        self._execute_command('git pull')
+
+    def update_submodule_git_repo(self):
+        self._execute_command('git submodule update --recursive')
+
     def run(self):
         mkdir_p(self.dst_dir)
 
-        with ChDir(self.dst_dir):
-            for repo in self.repos:
-                self.clone_git_repo(repo)
+        if self.options.clone_repos:
+            for repo_name, repo_path in self.dff_repo.iteritems():
+                print repo_name
+                with ChDir(self.dst_dir):
+                    self.clone_git_repo(repo_path)
+
+        for repo_name, repo_path in self.repos.iteritems():
+            print repo_name
+            if self.options.clone_repos:
+                with ChDir(self.dst_dir):
+                    self.clone_git_repo(repo_path)
+            if self.options.update_repos:
+                repo_dir = os.path.join(self.dst_dir, repo_name)
+                with ChDir(repo_dir):
+                    self.update_git_repo()
+                    self.update_submodule_git_repo()
 
 class Links(InstallBase):
 
@@ -186,9 +222,7 @@ class Links(InstallBase):
         ]
 
         for cmd in commands:
-            print "command: %s" % cmd
-            if not self.dry_run:
-                self._execute_command(cmd)
+            self._execute_command(cmd)
 
 if __name__ == '__main__':
     sys.exit(run(sys.argv))
