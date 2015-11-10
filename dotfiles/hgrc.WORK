@@ -6,4 +6,4 @@ ssh = ssh -C
 color=
 convert=
 record=
-
+rebase=
