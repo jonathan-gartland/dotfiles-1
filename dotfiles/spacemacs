@@ -32,21 +32,16 @@ values."
      syntax-checking
      version-control
 
-     ; elixir
+     ; programming languages
      alchemist
      elixir
-
-     ; rust
      rust
-
-     ; python
      python
      django
-
-     ; emacs-lisp
      emacs-lisp
+     lua
 
-     ; markdown
+     ; markup languages
      markdown
 
      ; shell
