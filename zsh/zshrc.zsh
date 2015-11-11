@@ -33,6 +33,8 @@ zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
 
+antigen apply
+
 # strict control over source order
 sources=(
     '01_alias'
