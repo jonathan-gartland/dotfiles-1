@@ -14,3 +14,5 @@ function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 antigen bundle vagrant
 
 antigen apply
+
+source_if_exists $HOME/Projects/cashbot_vendor/webdriver/MacOSX/start_webdriver.sh
