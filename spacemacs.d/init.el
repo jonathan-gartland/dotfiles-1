@@ -25,43 +25,53 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     git
+     org
+     restclient
+     smex
+     spell-checking
+     spotify
+     syntax-checking
      osx
 
-     spell-checking
-     syntax-checking
-     version-control
+; +frameworks
+     react
 
-     ; programming languages
-     alchemist
+; +lang
      elixir
-     rust
-     python
-     django
      emacs-lisp
-     lua
-     js
-     css
-
-     ; markup languages
-     markdown
      html
-     web
-
-     ; shell
+     javascript
+     lua
+     markdown
      shell-scripts
-     zsh
+     yaml
+     python
+     ruby
 
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     )
+; +source-control
+     version-control
+     git
+     github
+
+; +tools
+     dash
+     tmux
+     vagrant
+;     wakatime
+
+; +window-management
+     eyebrowse
+   )
+
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '
+   (
+    ibuffer
+   )
+
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -75,6 +85,9 @@ This function is called at the very startup of Spacemacs initialization
 before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
+
+  ; (setq exec-path-from-shell-debug t)
+
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
@@ -226,3 +239,27 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+;; (custom-set-variable
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(wakatime-api-key "6828653a-103b-47eb-a142-8b0d73827e4c")
+;;  '(wakatime-cli-path "/usr/local/bin/wakatime")
+;; )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 120 :width normal))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(wakatime-api-key "6828653a-103b-47eb-a142-8b0d73827e4c")
+ '(wakatime-python-bin "/usr/local/bin/python")
+ '(wakatime-cli-path "/usr/local/bin/wakatime"))
