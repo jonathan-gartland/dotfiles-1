@@ -12,7 +12,7 @@
     ~/.dotfiles: dotfiles
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
-    ~/.spacemacs: dotfiles/spacemacs
+    ~/.spacemacs.d: spacemacs.d
     ~/.tmux: tmux
     ~/.zsh: zsh
 
