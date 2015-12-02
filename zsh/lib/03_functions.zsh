@@ -480,7 +480,3 @@ function texi-to-epub() {
     zip -0Xq "${name}.epub" mimetype
     zip -Xr9D "${name}.epub" META-INF OEBPS
 }
-
-function start_webdriver() {
-  ~/Projects/qa/webdriver/MacOSX/start_webdriver.sh
-}
