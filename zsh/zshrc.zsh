@@ -1,6 +1,6 @@
 # time1=$(gdate +%s.%N)
 
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+[[ $TERM == "dumb" ]] && unstetopt zle && PS1='$ ' && return
 
 # load antigen
 source ~/src/antigen/antigen.zsh
@@ -28,11 +28,11 @@ ssh-agent
 sudo
 systemd
 vundle
+vagrant
+
 z
 zsh-users/zsh-syntax-highlighting
 EOBUNDLES
-
-
 antigen apply
 
 # strict control over source order
@@ -41,8 +41,10 @@ sources=(
     '02_completions'
     '03_functions'
     '04_path'
-    '10_python'
-    '11_ruby'
+    # moved to zshenv
+    # '10_python'
+    # '11_ruby'
+    
     '20_mysql'
     '30_linux'
     '31_osx'
