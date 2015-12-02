@@ -27,6 +27,4 @@ function source_if_exists {
     else
         # echo "source failed for filename $filename"
     fi
-
 }
-
