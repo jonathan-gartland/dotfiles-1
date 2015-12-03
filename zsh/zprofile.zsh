@@ -82,4 +82,5 @@ fi
 #
 # local settings
 #
+source ~/src/antigen/antigen.zsh
 source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
