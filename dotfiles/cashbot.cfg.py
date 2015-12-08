@@ -14,9 +14,8 @@
     # 'LOG_DB_URL': 'sqlite:/:memory:',
     'LOG_DB_URL': "mysql://cashbot:jJT!3VK14&llVP0o@localhost:3306/cashbotdb",
 
+    'PRINT_TRACEBACK': True,
     # 'GNUPG_VERBOSE': True,
     # 'LOG_DB_DEBUG': True,
     # 'CONSOLE_LOG_LEVEL': 'DEBUG',
 }
-
-
