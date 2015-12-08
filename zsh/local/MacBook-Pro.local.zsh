@@ -16,3 +16,9 @@ antigen bundle vagrant
 antigen apply
 
 source_if_exists $HOME/Projects/cashbot_vendor/webdriver/MacOSX/start_webdriver.sh
+
+# To use Homebrew's directories rather than ~/.jenv add to your profile:
+export JENV_ROOT=/usr/local/var/jenv
+
+# To enable shims and autocompletion add to your profile:
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
