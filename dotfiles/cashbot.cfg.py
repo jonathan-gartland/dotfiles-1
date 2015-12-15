@@ -13,6 +13,7 @@
     # 'LOG_DB_URL': 'sqlite:///Users/steven.knight/Projects/qa/cashbot.db',
     # 'LOG_DB_URL': 'sqlite:/:memory:',
     'LOG_DB_URL': "mysql://cashbot:jJT!3VK14&llVP0o@localhost:3306/cashbotdb",
+    'LOG_DB_CONSOLE_FORMAT_STRING': '%(relativeCreated)-8d %(levelname)-8s %(filename)s:%(lineno)d %(module)s.%(funcName)s %(message)s',
 
     'PRINT_TRACEBACK': True,
     # 'GNUPG_VERBOSE': True,
