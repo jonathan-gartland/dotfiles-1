@@ -54,5 +54,4 @@
 * (Subject):.*Payment to Netflix.*
 .Bills.Netflix/
 
-
 # vim: filetype=procmail syntax=procmail

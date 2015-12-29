@@ -33,6 +33,16 @@
 * ^(From).*elixir.radar@plataformatec.com.br.*
 .Weekly.ElixirRadar/
 
+# FitBit
+:0
+* ^(From):.*noreply@fitbit.com.*
+.Weekly.FitBit/
+
+# Rust
+:0
+* ^(From):.*this-week-in-rust@webstream.io.*
+.Weekly.ThisWeekInRust/
+
 :0
 * ^(From):.*support@wakatime.com.*
 ! steven.knight@cashstar.com
