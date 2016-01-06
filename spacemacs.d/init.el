@@ -47,6 +47,7 @@ values."
      yaml
      python
      ruby
+     rust
 
 ; +source-control
      version-control
