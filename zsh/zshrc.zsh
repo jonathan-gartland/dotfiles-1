@@ -14,7 +14,7 @@ source_if_exists "/etc/bash_completion.d/virtualenvwrapper"
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
 autojump
-colored-man
+colored-man-pages
 colorize
 common-aliases
 git
@@ -44,7 +44,6 @@ sources=(
     # moved to zshenv
     # '10_python'
     # '11_ruby'
-    
     '20_mysql'
     '30_linux'
     '31_osx'
