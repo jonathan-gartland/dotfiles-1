@@ -242,7 +242,7 @@ hs.hotkey.bind(opt_cmd_ctrl, 'L', function()
     end)
 
 -- audio related keybindings
-hs.hotkey.bind(ctrl_opt_shift, 'space', hs.itunes.displayCurrentTrack)
+hs.hotkey.bind(ctrl_opt_shift, 'U', hs.itunes.displayCurrentTrack)
 hs.hotkey.bind(ctrl_opt_shift, 'P', function() itunes_action(hs.itunes.playpause, nil) end)
 hs.hotkey.bind(ctrl_opt_shift, 'N', function() itunes_action(hs.itunes.next, 'Next') end)
 hs.hotkey.bind(ctrl_opt_shift, 'I', function() itunes_action(hs.itunes.previous, 'Previous') end)
@@ -282,11 +282,11 @@ hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
 -- end)
 
 
-function reload_config(files)
-    hs.reload()
-    hs.alert.show("Config loaded")
-end
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", reload_config):start()
+-- function reload_config(files)
+--    hs.reload()
+--    hs.alert.show("Config loaded")
+--end
+-- hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", reload_config):start()
 hs.alert.show("Hammerspoon, at your service.", 3)
 
 -- appwatcher = hs.application.watcher.new(function(name, event_type, app)
