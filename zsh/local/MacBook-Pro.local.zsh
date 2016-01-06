@@ -1,3 +1,5 @@
+source "$HOME/.zsh/lib/00_base.zsh"
+
 # add /usr/texbin to PATH, if available
 [[ -d "/usr/texbin" ]] && path=(/usr/texbin $path)
 
@@ -22,3 +24,7 @@ export JENV_ROOT=/usr/local/var/jenv
 
 # To enable shims and autocompletion add to your profile:
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+# update path and set RUST_SRC_PATH for racer support
+path=(/Users/steven.knight/.cargo/bin $path)
+export RUST_SRC_PATH=/Users/steven.knight/src/rustc-1.5.0/src
