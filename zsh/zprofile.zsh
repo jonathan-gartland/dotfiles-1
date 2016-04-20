@@ -1,3 +1,4 @@
+# echo "zprofile - top"
 
 #
 # Language
@@ -84,3 +85,5 @@ fi
 #
 source ~/src/antigen/antigen.zsh
 source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
+
+# echo "zprofile - btm"
