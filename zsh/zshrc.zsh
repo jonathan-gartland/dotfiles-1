@@ -1,4 +1,4 @@
-# time1=$(gdate +%s.%N)
+# echo "zshrc - top"
 
 [[ $TERM == "dumb" ]] && unstetopt zle && PS1='$ ' && return
 
@@ -22,18 +22,19 @@ git-flow
 mercurial
 gem
 rails
-ruby
 mix
 ssh-agent
 sudo
 systemd
 vundle
 vagrant
-
 z
 zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 antigen apply
+
+# ruby
+# rbenv
 
 # strict control over source order
 sources=(
@@ -41,8 +42,7 @@ sources=(
     '02_completions'
     '03_functions'
     '04_path'
-    # moved to zshenv
-    # '10_python'
+    '10_python'
     # '11_ruby'
     '20_mysql'
     '30_linux'
@@ -56,7 +56,6 @@ sources=(
     '63_smartcd'
 )
 
-
 for src in $sources; do
     source_if_exists "$HOME/.zsh/lib/$src.zsh"
 done
@@ -68,3 +67,4 @@ antigen apply
 # restore cdpath
 cdpath+=($cdpath_backup)
 
+# echo "zshrc - btm"
