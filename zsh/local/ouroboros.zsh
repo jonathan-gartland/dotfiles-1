@@ -14,8 +14,9 @@ export PYTHONPATH=$HOME/src/hooks:$PYTHONPATH
 function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 
 antigen bundle vagrant
-
 antigen apply
+
+source_if_exists /usr/local/bin/virtualenvwrapper.sh
 
 source_if_exists $HOME/Projects/cashbot_vendor/webdriver/MacOSX/start_webdriver.sh
 
@@ -28,3 +29,5 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 # update path and set RUST_SRC_PATH for racer support
 path=(/Users/steven.knight/.cargo/bin $path)
 export RUST_SRC_PATH=/Users/steven.knight/src/rustc-1.5.0/src
+
+export RBENV_ROOT=/usr/local/var/rbenv
