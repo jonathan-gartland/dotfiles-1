@@ -38,4 +38,6 @@
     ~/.zprofile: zsh/zprofile.zsh
     ~/.zshenv: zsh/zshenv.zsh
     ~/.zshrc: zsh/zshrc.zsh
+    ~/.myclirc: dotfiles/myclirc
+    ~/.pymux.conf: dotfiles/pymux.conf
     ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
