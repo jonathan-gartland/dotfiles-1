@@ -144,6 +144,7 @@ class Repos(InstallBase):
 	        'smartcd': 'git@github.com:cxreg/smartcd.git',
 	        'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
 	        'vimrc': 'git@github.com:amix/vimrc.git',
+            'bitbar-plugins': 'git@github.com:matryer/bitbar-plugins.git',
         })
 
     def clone_git_repo(self, repo_name, repo_branch, repo_path):
