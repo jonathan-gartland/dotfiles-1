@@ -5,13 +5,12 @@ export PYTHONSTARTUP=$HOME/dot-files-forest/dotfiles/pythonstartup.py
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_REQUIRE_VIRTUALENV=true
+export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=true
 export VIRTUALENV_USE_DISTRIBUTE=True
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=--no-site-packages
 
 if [[ "$OS_IS_POSIX" = true ]]; then
-
     antigen bundle virtualenvwrapper
 
     # create virtualenv py if necessary
