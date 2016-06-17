@@ -44,10 +44,12 @@ values."
      lua
      markdown
      shell-scripts
+     haskell
      yaml
      python
      ruby
      rust
+     sql
 
 ; +source-control
      version-control
