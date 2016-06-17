@@ -2,6 +2,7 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ls='gls -hF --color'   # add colors for filetype recognition
+  alias sed='gsed'
 
   export HOMEBREW_GITHUB_API_TOKEN=f4f09dc15dce213977f8def81db6c03a1d6b5569
 
