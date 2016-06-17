@@ -20,8 +20,6 @@ common-aliases
 git
 git-flow
 mercurial
-gem
-rails
 mix
 ssh-agent
 sudo
@@ -30,11 +28,14 @@ vundle
 vagrant
 z
 zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
 EOBUNDLES
 antigen apply
 
 # ruby
 # rbenv
+# gem
+# rails
 
 # strict control over source order
 sources=(
