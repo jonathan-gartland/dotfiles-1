@@ -161,13 +161,13 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 
 # Bundler
-alias b="bundle"
+# alias b="bundle"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
-alias m="migrate"
-alias rk="rake"
-alias s="rspec"
+# alias migrate="rake db:migrate db:rollback && rake db:migrate"
+# alias m="migrate"
+# alias rk="rake"
+# alias s="rspec"
 
 # grep: warning: GREP_OPTIONS is deprecated; please use an alias or script
 # Waiting for oh-my-zsh
@@ -175,3 +175,6 @@ alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
 alias rm='rm -i'
+
+alias clean_pyc="find . -name '.pyc' -delete"
+
