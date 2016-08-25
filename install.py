@@ -21,7 +21,7 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
-    default_base_dir = os.getenv('HOME')
+    default_base_dir = os.getcwd()
 
     parser.add_option('-d', '--base_dir', dest='base_dir', default=default_base_dir,
                       help='Base directory, default: ' + default_base_dir,
