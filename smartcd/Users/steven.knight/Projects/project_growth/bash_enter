@@ -11,4 +11,4 @@
 #
 # See http://smartcd.org for more ideas about what can be put here
 ########################################################################
-workon project_growth
+pyenv activate project_growth
