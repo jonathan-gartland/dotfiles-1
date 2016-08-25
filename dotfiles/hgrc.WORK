@@ -7,3 +7,7 @@ color=
 record=
 rebase=
 histedit=
+graphlog=
+
+[alias]
+latest=log --limit 8
