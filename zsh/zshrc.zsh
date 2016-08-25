@@ -9,7 +9,6 @@ source ~/src/antigen/antigen.zsh
 cdpath_backup=($cdpath)
 
 source "$HOME/.zsh/lib/00_base.zsh"
-source_if_exists "/etc/bash_completion.d/virtualenvwrapper"
 
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
@@ -43,6 +42,7 @@ sources=(
     '02_completions'
     '03_functions'
     '04_path'
+    '05_inputrc'
     '10_python'
     # '11_ruby'
     '20_mysql'
