@@ -16,9 +16,9 @@ function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 antigen bundle vagrant
 antigen apply
 
-source_if_exists /usr/local/bin/virtualenvwrapper.sh
-
+source_if_exists /usr/local/share/zsh/site-functions/_aws
 source_if_exists $HOME/Projects/cashbot_vendor/webdriver/MacOSX/start_webdriver.sh
+source_if_exists $HOME/Projects/cashbot/scripts/cashbot_defs.sh
 
 # To use Homebrew's directories rather than ~/.jenv add to your profile:
 export JENV_ROOT=/usr/local/var/jenv
