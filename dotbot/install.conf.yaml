@@ -17,19 +17,14 @@
     ~/.zsh: zsh
 
     # src directories
-    ~/.emacs.d: ../src/spacemacs
-    ~/.vimrc: ../src/vimrc/vimrcs/basic.vim
-    ~/.smartcd: ../src/smartcd
+    ~/.vimrc: ../vimrc/vimrcs/basic.vim
+    ~/.smartcd: ../smartcd
 
     # files
-    ~/.cashbot.cfg.py: dotfiles/cashbot.cfg.py
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
     ~/.git.scmbrc: dotfiles/git.scmbrc
     ~/.inputrc: dotfiles/inputrc
-    ~/.procmail: procmail/home
-    ~/.procmailrc: procmail/home/procmailrc
     ~/.rvmrc: dotfiles/rvmrc
-    ~/.screenrc: dotfiles/screenrc
     ~/.smartcd_config: dotfiles/smartcd_config
     ~/.tmux.conf: tmux/tmux.conf
     ~/.Xresources: dotfiles/Xresources
