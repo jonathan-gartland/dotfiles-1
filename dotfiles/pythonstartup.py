@@ -1,5 +1,7 @@
 # coding: utf-8
 
+# from https://www.reddit.com/comments/3ej9u2
+
 from __future__ import unicode_literals, print_function, absolute_import
 
 # import all the stuff I use all the time

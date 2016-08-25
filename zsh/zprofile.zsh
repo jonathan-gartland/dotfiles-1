@@ -1,8 +1,12 @@
+# echo "zprofile - top"
+
 #
 # Language
 #
 
-DOTSPATH="~/.zsh"
+DOTSPATH="$HOME/.zsh"
+
+source "$HOME/.zsh/lib/00_base.zsh"
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
@@ -79,8 +83,7 @@ fi
 #
 # local settings
 #
-if [ -r ~/.zsh/local/$HOSTNAME.zsh ]; then
-  source ~/.zsh/local/$HOSTNAME.zsh
-fi
+source ~/src/antigen/antigen.zsh
+source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
 
-# [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+# echo "zprofile - btm"

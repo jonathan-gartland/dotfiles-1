@@ -110,23 +110,6 @@ mkcd() {
     mkdir $1 && cd $1
 }
 
-clone_spf13() {
-  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
-}
-
-update_spf13() {
-  (cd ~ && curl 'https://j.mp/spf13-vim3' -L > /tmp/spf13-vim.sh && sh /tmp/spf13-vim.sh && rm -f /tmp/spf13-vim.sh)
-}
-
-clone_spaceemacs() {
-  (cd ~ && git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d)
-}
-
-update_spaceemacs() {
-  (cd ~/.emacs.d && git pull --recurse-submodules)
-}
-
-
 function _zsh_run_command # "Local zsh function to run a command"
 {
     if [[ $1 != '' ]]; then
@@ -282,22 +265,6 @@ function ip() {
   # only run ip if it exists
   elif (( $+commands[ip] )); then
     command ip $*
-  fi
-}
-
-# open alias for xdg-open
-# it ignores stdout and stderr
-# pass-through for os x
-
-function open() {
-  emulate -LR zsh
-
-  # linux
-  if (( $+commands[xdg-open] )); then
-    xdg-open $* > /dev/null 2>&1
-  # mac
-  elif (( $+commands[open] )); then
-    open $*
   fi
 }
 
@@ -496,8 +463,4 @@ function texi-to-epub() {
     echo "application/epub+zip" > mimetype
     zip -0Xq "${name}.epub" mimetype
     zip -Xr9D "${name}.epub" META-INF OEBPS
-}
-
-function start_webdriver() {
-  ~/Projects/qa/webdriver/MacOSX/start_webdriver.sh
 }

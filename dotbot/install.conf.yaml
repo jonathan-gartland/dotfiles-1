@@ -1,0 +1,38 @@
+%YAML 1.0
+---
+
+- clean: ['~']
+
+- shell:
+    - [git pull, 'Updating repo']
+
+- link:
+    # directories
+    ~/bin: bin
+    ~/.dotfiles: dotfiles
+    ~/.hammerspoon: hammerspoon
+    ~/.i3: i3
+    ~/.spacemacs.d: spacemacs.d
+    ~/.tmux: tmux
+    ~/.zsh: zsh
+
+    # src directories
+    ~/.vimrc: ../vimrc/vimrcs/basic.vim
+    ~/.smartcd: ../smartcd
+
+    # files
+    ~/.git-prompt.conf: dotfiles/git-prompt.conf
+    ~/.git.scmbrc: dotfiles/git.scmbrc
+    ~/.inputrc: dotfiles/inputrc
+    ~/.rvmrc: dotfiles/rvmrc
+    ~/.smartcd_config: dotfiles/smartcd_config
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.Xresources: dotfiles/Xresources
+    ~/.zlogin: zsh/zlogin.zsh
+    ~/.zlogout: zsh/zlogout.zsh
+    ~/.zprofile: zsh/zprofile.zsh
+    ~/.zshenv: zsh/zshenv.zsh
+    ~/.zshrc: zsh/zshrc.zsh
+    ~/.myclirc: dotfiles/myclirc
+    ~/.pymux.conf: dotfiles/pymux.conf
+    ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
