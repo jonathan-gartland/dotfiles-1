@@ -1,5 +1,0 @@
-# -*- mode: shell-script -*-
-
-export GIT_EDITOR=vim
-export EDITOR=vim
-export VISUAL=vim

@@ -1,23 +1,24 @@
 
--- TODO
+-- TODO:
 -- 1) Done - Use Spectacle's keyboard shortcuts
 -- 2) DONE - Add shortcuts for play, pause, step for iTunes
 -- 3) Move FireFox to second monitor using hs.application.watcher
 -- 4) start_iterm() will fail with an error if iTerm isn't running.
 -- 5) Keyboard shortcut to kill all Firefox instances
+-- 6) Add keybinding to switch between audiodevices.  Use hs.audiodevice.allOutputDevices() to get all output devices.
 
 -- Set up hotkey combinations
 local ctrl_opt_shift = {"ctrl", "alt", "shift"}
 local opt_cmd_ctrl = { "alt", "cmd", "ctrl"}
 local cmd_opt_shift = {"cmd", "alt", "shift"}
 
--- Set grid size.
+-- Set grid size
 hs.grid.GRIDWIDTH  = 12
 hs.grid.GRIDHEIGHT = 12
 hs.grid.MARGINX    = 0
 hs.grid.MARGINY    = 0
 
--- Set window animation off. It's much smoother.
+-- Set window animation off. It's much smoother
 hs.window.animationDuration = 0
 
 -- Set volume increments
@@ -153,17 +154,26 @@ function move_window_on_screen(new_frame_fn)
     end
 end
 
-local itunes_stop_or_start = 'iTunes Stop'
-
 function itunes_action(itunes_action_fn, msg)
-    itunes_action_fn()
-    hs.alert.show(msg)
 
-    if itunes_stop_or_start == 'iTunes Play' then
-        itunes_stop_or_start = 'iTunes Stop'
+  is_playing1 = hs.itunes.isPlaying()
+  itunes_action_fn()
+  is_playing2 = hs.itunes.isPlaying()
+
+  if msg == nil then
+    if is_playing1 == true and is_playing2 == false then
+      msg = 'Stop'
+    elseif is_playing1 == false and is_playing2 == true then
+      msg = 'Play'
     else
-        itunes_stop_or_start = 'iTunes Play'
+      msg = ''
     end
+  else
+    msg = ''
+  end
+
+  hs.alert.show(msg)
+
 end
 
 -- function _move_window_left(grid)
@@ -228,12 +238,12 @@ hs.hotkey.bind(opt_cmd_ctrl, 'I', hs.grid.resizeWindowThinner)
 hs.hotkey.bind(opt_cmd_ctrl, 'Y', hs.grid.resizeWindowShorter)
 hs.hotkey.bind(opt_cmd_ctrl, 'L', function()
         hs.caffeinate.lockScreen()
-        itunes_action(hs.itunes.play, 'iTunes Stop')
+        itunes_action(hs.itunes.playpause, nil)
     end)
 
 -- audio related keybindings
-hs.hotkey.bind(ctrl_opt_shift, 'space', hs.itunes.displayCurrentTrack)
-hs.hotkey.bind(ctrl_opt_shift, 'P', function() itunes_action(hs.itunes.play, itunes_stop_or_start) end)
+hs.hotkey.bind(ctrl_opt_shift, 'U', hs.itunes.displayCurrentTrack)
+hs.hotkey.bind(ctrl_opt_shift, 'P', function() itunes_action(hs.itunes.playpause, nil) end)
 hs.hotkey.bind(ctrl_opt_shift, 'N', function() itunes_action(hs.itunes.next, 'Next') end)
 hs.hotkey.bind(ctrl_opt_shift, 'I', function() itunes_action(hs.itunes.previous, 'Previous') end)
 
@@ -272,11 +282,11 @@ hs.hotkey.bind(ctrl_opt_shift, '\\', function() toggle_muted() end)
 -- end)
 
 
-function reload_config(files)
-    hs.reload()
-    hs.alert.show("Config loaded")
-end
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", reload_config):start()
+-- function reload_config(files)
+--    hs.reload()
+--    hs.alert.show("Config loaded")
+--end
+-- hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/init.lua", reload_config):start()
 hs.alert.show("Hammerspoon, at your service.", 3)
 
 -- appwatcher = hs.application.watcher.new(function(name, event_type, app)
@@ -293,3 +303,39 @@ hs.alert.show("Hammerspoon, at your service.", 3)
 --     end
 -- end)
 -- appwatcher:start()
+
+
+
+function print_r ( t )
+    local print_r_cache={}
+    local function sub_print_r(t,indent)
+        if (print_r_cache[tostring(t)]) then
+            print(indent.."*"..tostring(t))
+        else
+            print_r_cache[tostring(t)]=true
+            if (type(t)=="table") then
+                for pos,val in pairs(t) do
+                    if (type(val)=="table") then
+                        print(indent.."["..pos.."] => "..tostring(t).." {")
+                        sub_print_r(val,indent..string.rep(" ",string.len(pos)+8))
+                        print(indent..string.rep(" ",string.len(pos)+6).."}")
+                    elseif (type(val)=="string") then
+                        print(indent.."["..pos..'] => "'..val..'"')
+                    else
+                        print(indent.."["..pos.."] => "..tostring(val))
+                    end
+                end
+            else
+                print(indent..tostring(t))
+            end
+        end
+    end
+    if (type(t)=="table") then
+        print(tostring(t).." {")
+        sub_print_r(t,"  ")
+        print("}")
+    else
+        sub_print_r(t,"  ")
+    end
+    print()
+end

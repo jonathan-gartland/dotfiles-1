@@ -1,0 +1,10 @@
+%YAML 1.0
+---
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: dotfiles/gitconfig.WORK
+    ~/.hgrc: dotfiles/hgrc.WORK
+    ~/.cashbot.cfg: dotfiles/cashbot.cfg
+    ~/.cashbot.aliases: dotfiles/cashbot.aliases

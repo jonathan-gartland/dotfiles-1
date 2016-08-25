@@ -1,37 +1,40 @@
-# time1=$(gdate +%s.%N)
+# echo "zshrc - top"
 
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+[[ $TERM == "dumb" ]] && unstetopt zle && PS1='$ ' && return
 
 # load antigen
-source ~/dot-files-forest/antigen/antigen.zsh
+source ~/src/antigen/antigen.zsh
 
 # save cdpath as loading oh-my-zsh will reset it
 cdpath_backup=($cdpath)
 
 source "$HOME/.zsh/lib/00_base.zsh"
-source_if_exists "/etc/bash_completion.d/virtualenvwrapper"
 
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
 autojump
-colored-man
+colored-man-pages
 colorize
 common-aliases
 git
 git-flow
 mercurial
-gem
-rails
-ruby
 mix
 ssh-agent
 sudo
 systemd
 vundle
+vagrant
 z
 zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
 EOBUNDLES
+antigen apply
 
+# ruby
+# rbenv
+# gem
+# rails
 
 # strict control over source order
 sources=(
@@ -39,8 +42,9 @@ sources=(
     '02_completions'
     '03_functions'
     '04_path'
+    '05_inputrc'
     '10_python'
-    '11_ruby'
+    # '11_ruby'
     '20_mysql'
     '30_linux'
     '31_osx'
@@ -53,7 +57,6 @@ sources=(
     '63_smartcd'
 )
 
-
 for src in $sources; do
     source_if_exists "$HOME/.zsh/lib/$src.zsh"
 done
@@ -65,3 +68,4 @@ antigen apply
 # restore cdpath
 cdpath+=($cdpath_backup)
 
+# echo "zshrc - btm"

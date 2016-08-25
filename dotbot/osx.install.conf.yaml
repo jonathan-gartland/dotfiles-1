@@ -1,0 +1,10 @@
+%YAML 1.0
+---
+
+- clean: ['~']
+
+- link:
+    # TODO: path will change with updates to brew, need to fix this
+    ~/.cask: /usr/local/Cellar/cask/0.7.4
+
+    ~/.smartcd/scripts/Users: smartcd/Users

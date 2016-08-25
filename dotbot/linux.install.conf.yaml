@@ -1,0 +1,8 @@
+%YAML 1.0
+---
+
+- clean: ['~']
+
+- link:
+    # NOTE: home is /home/steven, not /home/skk
+    ~/.smartcd/scripts/home: smartcd/home

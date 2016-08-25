@@ -22,7 +22,9 @@ function source_if_exists {
     filename=$1
 
     if [[ -r "$filename" ]]; then
+        # echo "source filename $filename"
         source $filename
+    else
+        # echo "source failed for filename $filename"
     fi
 }
-

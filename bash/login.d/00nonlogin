@@ -1,6 +1,0 @@
-# -*- mode: shell-script -*-
-
-# include .zshrc if it exists
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi

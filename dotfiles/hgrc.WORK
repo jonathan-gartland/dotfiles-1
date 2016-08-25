@@ -4,6 +4,10 @@ ssh = ssh -C
 
 [extensions]
 color=
-convert=
 record=
+rebase=
+histedit=
+graphlog=
 
+[alias]
+latest=log --limit 8

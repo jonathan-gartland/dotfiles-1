@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: sqw ac3
-# --
-sqw.addColumn($1,$2,$3);

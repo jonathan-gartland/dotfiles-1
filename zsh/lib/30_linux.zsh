@@ -32,4 +32,17 @@ if [[ "$OS_IS_LINUX" = true ]]; then
   fi
 
   alias ls='ls -hF --color'   # add colors for filetype recognition
+
+  # open alias for xdg-open
+  # it ignores stdout and stderr
+
+  function open() {
+      emulate -LR zsh
+
+      # linux
+      if (( $+commands[xdg-open] )); then
+          xdg-open $* > /dev/null 2>&1
+      fi
+  }
+
 fi

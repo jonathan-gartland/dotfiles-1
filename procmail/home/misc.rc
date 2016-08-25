@@ -2,4 +2,21 @@
 * ^From:.*match.com.*
 .Match/
 
+:0
+* ^(From):.*team@mint.com.*
+.Mint/
+
+:0
+* ^(From):.*updates@bills.mint.com.*
+.Mint/
+
+
+:0
+* ^(From):.*mcinfo@ups.com.*
+.UPS/
+
+:0
+* ^From:.*Kathi@dirigomgmt.com.*
+.645\ Congress\ Street/
+
 # vim: filetype=procmail syntax=procmail
