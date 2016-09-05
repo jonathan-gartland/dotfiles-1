@@ -15,6 +15,7 @@
     ~/.spacemacs.d: spacemacs.d
     ~/.tmux: tmux
     ~/.zsh: zsh
+    ~/.zplug: zplug
 
     # src directories
     ~/.vimrc: ../vimrc/vimrcs/basic.vim
