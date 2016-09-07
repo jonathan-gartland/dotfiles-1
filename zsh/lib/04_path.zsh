@@ -1,4 +1,4 @@
-typeset -U path
+# typeset -U path
 
 # prepends
 # path=(~/.rbenv/bin "$path[@]")
@@ -9,7 +9,7 @@ typeset -U path
 # path+=(~/texlive/2015/bin/x86_64-linux)
 
 # prune paths that don't exist
-path=($^path(N))
+# path=($^path(N))
 
 # export GOPATH="~/code/go"
 # export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
