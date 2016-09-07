@@ -24,6 +24,8 @@ zplug "plugins/compfix", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions", from:github
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "zsh-users/zsh-completions"
 
 # MAC OS X only plugins
 zplug "junegunn/fzf-bin", \
@@ -47,7 +49,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load # --verbose
 
 # restore cdpath
 cdpath+=($cdpath_backup)
