@@ -38,6 +38,9 @@ zplug "lib/clipboard", from:oh-my-zsh, if:$OS_IS_MAC_OS_X
 # load local plugins
 zplug "~/.zsh/lib", from:local
 
+# local settings
+source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
+
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

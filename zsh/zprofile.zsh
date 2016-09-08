@@ -83,9 +83,4 @@ if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
   export TERM=rxvt-256color
 fi
 
-#
-# local settings
-#
-zplug "$DOTSPATH/local/$HOSTNAME.zsh", from:local
-
 # echo "zprofile - btm"
