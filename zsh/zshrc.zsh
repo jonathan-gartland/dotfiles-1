@@ -36,9 +36,10 @@ zplug "junegunn/fzf-bin", \
 zplug "lib/clipboard", from:oh-my-zsh, if:$OS_IS_MAC_OS_X
 
 # load local plugins
-zplug "~/.zsh/lib", from:local
+zplug "$DOTSPATH/lib", from:local
 
-# local settings
+# files which need to be source'd, not loaded via zplug
+source_if_exists "$DOTSPATH/lib/05_inputrc.zsh"
 source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
 
 # Install packages that have not been installed yet
