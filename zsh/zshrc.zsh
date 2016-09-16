@@ -5,6 +5,13 @@
 # save cdpath as loading oh-my-zsh will reset it
 cdpath_backup=($cdpath)
 
+# autoload modules
+autoload -Uz add-zsh-hook
+autoload -Uz history-search-end
+autoload -Uz is-at-least
+autoload -Uz zargs
+autoload -Uz zmv
+
 source "$HOME/.zsh/lib/00_base.zsh"
 
 zplug "plugins/auestojump",   from:oh-my-zsh
@@ -21,11 +28,17 @@ zplug "plugins/vundle", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "plugins/compfix", from:oh-my-zsh
-zplug "zsh-users/zsh-autosuggestions", from:github
+zplug "plugins/common-aliases", from:oh-my-zsh
+zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "plguins/history", from:oh-my-zsh
+
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "plugins/zsh_reload", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
+
+zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
+zplug "b4b4r07/zsh-vimode-visual", from:github
+zplug "zsh-users/zsh-autosuggestions", from:github
 
 # MAC OS X only plugins
 zplug "junegunn/fzf-bin", \
@@ -53,7 +66,8 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load # --verbose
+# zplug load --verbose
+zplug load
 
 # restore cdpath
 cdpath+=($cdpath_backup)
