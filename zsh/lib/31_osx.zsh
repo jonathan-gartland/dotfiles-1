@@ -1,4 +1,5 @@
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export ITERM_CURSOR="true"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ls='gls -hF --color'   # add colors for filetype recognition
