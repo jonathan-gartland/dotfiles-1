@@ -1,12 +1,15 @@
 # echo "zprofile - top"
 
+DOTSPATH="$HOME/.zsh"
+source "$HOME/.zsh/lib/00_base.zsh"
+
+# load zplug
+export ZPLUG_HOME="$HOME/.zplug"
+source "$ZPLUG_HOME/init.zsh"
+
 #
 # Language
 #
-
-DOTSPATH="$HOME/.zsh"
-
-source "$HOME/.zsh/lib/00_base.zsh"
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
@@ -79,11 +82,5 @@ export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline mode
 if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
   export TERM=rxvt-256color
 fi
-
-#
-# local settings
-#
-source ~/src/antigen/antigen.zsh
-source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
 
 # echo "zprofile - btm"

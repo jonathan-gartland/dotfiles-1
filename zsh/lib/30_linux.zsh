@@ -1,13 +1,11 @@
 if [[ "$OS_IS_LINUX" = true ]]; then
 
-  antigen bundle debian
-
   # use local pacman
   if [[ -x $(which etckeeper) && -x $(which ~/bin/pacman-etckeeper) ]]; then
       alias pacman=pacman-etckeeper
   fi
 
-  # nvidia fix
+  # nvidia fixcoloredlogs
   # export __GL_SYNC_TO_VBLANK=1
   # export __GL_SYNC_DISPLAY_DEVICE=DFP-0
   # export __VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DFP-0

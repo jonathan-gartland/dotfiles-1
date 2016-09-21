@@ -2,68 +2,73 @@
 
 [[ $TERM == "dumb" ]] && unstetopt zle && PS1='$ ' && return
 
-# load antigen
-source ~/src/antigen/antigen.zsh
-
 # save cdpath as loading oh-my-zsh will reset it
 cdpath_backup=($cdpath)
 
+# autoload modules
+autoload -Uz add-zsh-hook
+autoload -Uz history-search-end
+autoload -Uz is-at-least
+autoload -Uz zargs
+autoload -Uz zmv
+
 source "$HOME/.zsh/lib/00_base.zsh"
 
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-autojump
-colored-man-pages
-colorize
-common-aliases
-git
-git-flow
-mercurial
-mix
-ssh-agent
-sudo
-systemd
-vundle
-vagrant
-z
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-EOBUNDLES
-antigen apply
+zplug "plugins/auestojump",   from:oh-my-zsh
+zplug "plugins/colored-man-page",   from:oh-my-zsh
+zplug "plugins/colorize",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git-flow",   from:oh-my-zsh
+zplug "plugins/mercurial", from:oh-my-zsh
+zplug "plugins/mix", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/vundle", from:oh-my-zsh
+zplug "plugins/vagrant", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "plugins/compfix", from:oh-my-zsh
+zplug "plugins/common-aliases", from:oh-my-zsh
+zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "plguins/history", from:oh-my-zsh
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-completions"
+zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
+zplug "b4b4r07/zsh-vimode-visual", from:github
+zplug "zsh-users/zsh-autosuggestions", from:github
 
-# ruby
-# rbenv
-# gem
-# rails
+# MacOS only plugins
+zplug "junegunn/fzf-bin", \
+      from:gh-r, \
+      as:command, \
+      rename-to:fzf, \
+      use:"*darwin*amd64*", if:$OS_IS_MAC_OS_X
+zplug "lib/clipboard", from:oh-my-zsh, if:$OS_IS_MAC_OS_X
 
-# strict control over source order
-sources=(
-    '01_alias'
-    '02_completions'
-    '03_functions'
-    '04_path'
-    '05_inputrc'
-    '10_python'
-    # '11_ruby'
-    '20_mysql'
-    '30_linux'
-    '31_osx'
-    '40_prompt'
-    '50_hub'
-    '51_vcsinfo'
-    # '60_zle'
-    # '61_highlight'
-    '62_misc'
-    '63_smartcd'
-)
+# Linux only plugins
+zplug "plugins/systemd", from:oh-my-zsh, if:$OS_IS_LINUX
+zplug "plugins/debian", from:oh-my-zsh, if:$OS_IS_LINUX
 
-for src in $sources; do
-    source_if_exists "$HOME/.zsh/lib/$src.zsh"
-done
+# load local plugins
+zplug "$DOTSPATH/lib", from:local
 
-source_if_exists "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# files which need to be source'd, not loaded via zplug
+source_if_exists "$DOTSPATH/lib/05_inputrc.zsh"
+source_if_exists "$DOTSPATH/local/$HOSTNAME.zsh"
 
-antigen apply
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+# zplug load --verbose
+zplug load
 
 # restore cdpath
 cdpath+=($cdpath_backup)
