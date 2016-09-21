@@ -23,7 +23,6 @@ zplug "plugins/mercurial", from:oh-my-zsh
 zplug "plugins/mix", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/systemd", from:oh-my-zsh
 zplug "plugins/vundle", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
@@ -31,22 +30,24 @@ zplug "plugins/compfix", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/zsh_reload", from:oh-my-zsh
 zplug "plguins/history", from:oh-my-zsh
-
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-completions"
-
 zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
 zplug "b4b4r07/zsh-vimode-visual", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 
-# MAC OS X only plugins
+# MacOS only plugins
 zplug "junegunn/fzf-bin", \
       from:gh-r, \
       as:command, \
       rename-to:fzf, \
       use:"*darwin*amd64*", if:$OS_IS_MAC_OS_X
 zplug "lib/clipboard", from:oh-my-zsh, if:$OS_IS_MAC_OS_X
+
+# Linux only plugins
+zplug "plugins/systemd", from:oh-my-zsh, if:$OS_IS_LINUX
+zplug "plugins/debian", from:oh-my-zsh, if:$OS_IS_LINUX
 
 # load local plugins
 zplug "$DOTSPATH/lib", from:local
