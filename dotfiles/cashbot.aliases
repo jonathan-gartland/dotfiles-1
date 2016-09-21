@@ -1,11 +1,15 @@
 
 {
     'email_gen_gallery': (
-	'email_generation --brand={brand} --site={site} --order_number={order_number} --browser={browser} --driver={driver} --language={lang} --report_recipients=steven.knight@cashstar.com --message_type_groups={msg_type_groups} --image_gallery', 
-	{'site': 'semiprod', 'browser': 'FIREFOX', 'driver': 'BROWSERSTACK', 'lang': 'en-US', 'msg_type_groups': 'consumer'}
+	'email_generation --site={site} --order_number={order_number} --browser={browser} --driver={driver} --language={lang} --report_recipients=steven.knight@cashstar.com --message_type_groups={msg_type_groups} --image_gallery --output_format=PNG,HTML,TXT --save_subject_to_disk --move_gallery_to_separate_directory', 
+	{'site': 'semiprod', 'browser': 'PHANTOMJS', 'driver': 'LOCAL', 'lang': 'en-US', 'msg_type_groups': 'consumer'}
     ),
     'email_gen_presentation': (
-	'email_generation --brand={brand} --site={site} --order_number={order_number} --browser={browser} --driver={driver} --language={lang} --report_recipients=steven.knight@cashstar.com --message_type_groups={msg_type_groups} --add_iternal_template_name_to_presentation --split_multiple_language_email --image_presentation --presentation_logo={logo}', 
-	{'site': 'semiprod', 'browser': 'FIREFOX', 'driver': 'BROWSERSTACK', 'lang': 'en-US', 'msg_type_groups': 'consumer', 'logo': ''}
+	'email_generation --site={site} --order_number={order_number} --browser={browser} --driver={driver} --language={lang} --report_recipients=steven.knight@cashstar.com --message_type_groups={msg_type_groups} --add_internal_template_name_to_presentation --split_multiple_language_email --image_presentation --presentation_logo={logo} --output_format=PNG,HTML,TXT --save_subject_to_disk', 
+	{'site': 'semiprod', 'browser': 'PHANTOMJS', 'driver': 'LOCAL', 'lang': 'en-US', 'msg_type_groups': 'consumer', 'logo': ''}
+    ),
+    'email_gen': (
+    'email_generation --site={site} --order_number={order_number} --browser={browser} --driver={driver} --language={lang} --report_recipients=steven.knight@cashstar.com --message_type_groups={msg_type_groups} --add_internal_template_name_to_presentation --split_multiple_language_email --image_presentation --presentation_logo={logo} --output_format=PNG,HTML,TXT --save_subject_to_disk --image_gallery --move_gallery_to_separate_directory',
+	{'site': 'semiprod', 'browser': 'PHANTOMJS', 'driver': 'LOCAL', 'lang': 'en-US', 'msg_type_groups': 'consumer', 'logo': ''}
     )
 }

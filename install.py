@@ -135,15 +135,15 @@ class Repos(InstallBase):
 
         self.repos = OrderedDict({
             'dot-files-forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
+            'zplug': 'git@github.com:zplug/zplug.git',
             'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
-	        'antigen': 'git@github.com:zsh-users/antigen.git',
-	        'tpm': 'git@github.com:tmux-plugins/tpm.git',
-	        'hammerspoon-config': 'git@github.com:Linell/hammerspoon-config.git',
-	        'dotbot': 'git@github.com:skk/dotbot.git',
-	        'spacemacs': 'git@github.com:syl20bnr/spacemacs.git',
-	        'smartcd': 'git@github.com:cxreg/smartcd.git',
-	        'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
-	        'vimrc': 'git@github.com:amix/vimrc.git',
+            'tpm': 'git@github.com:tmux-plugins/tpm.git',
+	    'hammerspoon-config': 'git@github.com:Linell/hammerspoon-config.git',
+	    'dotbot': 'git@github.com:skk/dotbot.git',
+	    'spacemacs': 'git@github.com:syl20bnr/spacemacs.git',
+	    'smartcd': 'git@github.com:cxreg/smartcd.git',
+	    'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
+	    'vimrc': 'git@github.com:amix/vimrc.git',
             'bitbar-plugins': 'git@github.com:matryer/bitbar-plugins.git',
         })
 

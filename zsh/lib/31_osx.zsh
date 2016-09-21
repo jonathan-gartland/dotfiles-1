@@ -1,4 +1,5 @@
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export ITERM_CURSOR="true"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ls='gls -hF --color'   # add colors for filetype recognition
@@ -6,8 +7,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
   export HOMEBREW_GITHUB_API_TOKEN=f4f09dc15dce213977f8def81db6c03a1d6b5569
 
-  antigen bundle brew
-  antigen bundle brew-cask
+  # antigen bundle brew
+  # antigen bundle brew-cask
+
+  zplug "plugins/brew",   from:oh-my-zsh
+  zplug "plugins/brew-cask",   from:oh-my-zsh
 
   # new tab in terminal.app stays in same dir
   if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
