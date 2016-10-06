@@ -1,23 +1,23 @@
-[submodule "dotbot"]
-	path = dotbot
+[submodule ".gitsubmodules/dotbot"]
+	path = .gitsubmodules/dotbot
 	url = git@github.com:anishathalye/dotbot.git
-[submodule "spacemacs"]
-	path = spacemacs
+[submodule ".gitsubmodules/spacemacs"]
+	path = .gitsubmodules/spacemacs
 	url = git@github.com:syl20bnr/spacemacs.git
-[submodule "smartcd"]
-	path = smartcd
+[submodule ".gitsubmodules/smartcd"]
+	path = .gitsubmodules/smartcd
 	url = git@github.com:cxreg/smartcd.git
-[submodule "liquidprompt"]
-	path = liquidprompt
+[submodule ".gitsubmodules/liquidprompt"]
+	path = .gitsubmodules/liquidprompt
 	url = git@github.com:nojhan/liquidprompt.git
 	branch = develop
-[submodule "vimrc"]
-	path = vimrc
+[submodule ".gitsubmodules/vimrc"]
+	path = .gitsubmodules/vimrc
 	url = git@github.com:amix/vimrc.git
-[submodule "zplug"]
-	path = zplug
+[submodule ".gitsubmodules/zplug"]
+	path = .gitsubmodules/zplug
 	url = git@github.com:zplug/zplug.git
-  ignore = dirty
-[submodule "dircolors-solarized"]
-	path = dircolors-solarized
+    ignore = dirty
+[submodule ".gitsubmodules/dircolors-solarized"]
+	path = .gitsubmodules/dircolors-solarized
 	url = git@github.com:seebi/dircolors-solarized.git
