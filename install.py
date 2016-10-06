@@ -134,7 +134,6 @@ class Repos(InstallBase):
         self.base_dir = options.base_dir
 
         self.repos = OrderedDict({
-            # 'dot-files-forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
             'zplug': 'git@github.com:zplug/zplug.git',
             'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
             'tpm': 'git@github.com:tmux-plugins/tpm.git',
@@ -178,7 +177,7 @@ class Repos(InstallBase):
 
             if self.options.update_repos:
                 if repo_name != 'dot_files_forest':
-                    repo_dir = os.path.join(self.dst_dir, repo_name)
+                    repo_dir = os.path.join(self.base_dir, repo_name)
                     with ChDir(repo_dir):
                         self.update_git_repo(repo_name)
                         self.update_submodule_git_repo(repo_name)
@@ -188,7 +187,7 @@ class Links(InstallBase):
     def __init__(self, argv, options):
         super(Links, self).__init__(argv, options)
 
-        self.base_dir = os.path.join(options.base_dir, 'dot-files-forest')
+        self.base_dir = os.path.join(options.base_dir) # , 'dot-files-forest')
         self.config_files = {
             InstallBase.WORK: "work",
             InstallBase.HOME: "home",
