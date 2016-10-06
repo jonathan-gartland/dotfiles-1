@@ -19,15 +19,3 @@ zplug "plugins/osx",   from:oh-my-zsh
 zplug "/usr/local/share/zsh/site-functions/_aws", from:local
 zplug "$HOME/Projects/cashbot_vendor/webdriver/MacOSX/start_webdriver.sh", from:local
 zplug "$HOME/Projects/cashbot/scripts/cashbot_defs.sh", from:local
-
-# To use Homebrew's directories rather than ~/.jenv add to your profile:
-export JENV_ROOT=/usr/local/var/jenv
-
-# To enable shims and autocompletion add to your profile:
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-# update path and set RUST_SRC_PATH for racer support
-path=(/Users/steven.knight/.cargo/bin $path)
-export RUST_SRC_PATH=/Users/steven.knight/src/rustc-1.5.0/src
-
-export RBENV_ROOT=/usr/local/var/rbenv
