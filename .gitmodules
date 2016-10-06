@@ -26,3 +26,6 @@
 [submodule "vimrc"]
 	path = vimrc
 	url = git@github.com:amix/vimrc.git
+[submodule "zplug"]
+	path = zplug
+	url = git@github.com:zplug/zplug.git
