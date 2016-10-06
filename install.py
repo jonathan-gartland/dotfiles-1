@@ -21,26 +21,12 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
-    default_base_dir = os.getcwd()
-
-    parser.add_option('-d', '--base_dir', dest='base_dir', default=default_base_dir,
-                      help='Base directory, default: ' + default_base_dir,
-                      action='store')
-
-    parser.add_option('-c', '--clone_repos', dest='clone_repos', default=False,
-                      help='Clone all repos', action='store_true')
-    parser.add_option('-u', '--update_repos', dest='update_repos', default=False,
-                      help='Update all repos', action='store_true')
-
     parser.add_option('-l', '--links', dest='links', default=False,
                       help='Create all links', action='store_true')
-
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
-                      help="Print lots of debugging information",
-                      action="store_true")
+                      help="Print lots of debugging ifno", action="store_true")
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
-                      help="Don't actually run any commands; just print them.",
-                      action="store_true")
+                      help="Don't actually run any commands", action="store_true")
 
     (options, args) = parser.parse_args(args = arguments)
     return (options, args, parser)
@@ -127,67 +113,12 @@ class ChDir(object):
     def __exit__(self, *args):
         os.chdir(self.old_dir)
 
-class Repos(InstallBase):
-
-    def __init__(self, argv, options):
-        super(Repos, self).__init__(argv, options)
-        self.base_dir = options.base_dir
-
-        self.repos = OrderedDict({
-            'zplug': 'git@github.com:zplug/zplug.git',
-            'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
-            'tpm': 'git@github.com:tmux-plugins/tpm.git',
-	    'hammerspoon-config': 'git@github.com:Linell/hammerspoon-config.git',
-	    'dotbot': 'git@github.com:skk/dotbot.git',
-	    'spacemacs': 'git@github.com:syl20bnr/spacemacs.git',
-	    'smartcd': 'git@github.com:cxreg/smartcd.git',
-	    'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
-	    'vimrc': 'git@github.com:amix/vimrc.git',
-            'bitbar-plugins': 'git@github.com:matryer/bitbar-plugins.git',
-            'dircolors-solarized': 'git@github.com:seebi/dircolors-solarized.git',
-        })
-
-    def clone_git_repo(self, repo_name, repo_branch, repo_path):
-        print repo_name
-        self._execute_command("git clone {repo_path} --branch={repo_branch} --recurse-submodules".format(repo_branch=repo_branch, repo_path=repo_path))
-
-    def update_git_repo(self, repo_name):
-        print repo_name
-        self._execute_command('git pull')
-
-    def update_submodule_git_repo(self, repo_name):
-        print '\n' + repo_name
-        self._execute_command('git submodule update --recursive')
-
-    def run(self):
-        mkdir_p(self.base_dir)
-
-        for repo_name, repo_url in self.repos.iteritems():
-            if self.options.clone_repos:
-                if repo_name == 'dot_files_forest':
-                    repo_path = os.path.join(self.base_dir , repo_name)
-                    repo_branch = 'develop'
-                else:
-                    repo_path = os.path.join(self.base_dir, 'src', repo_name)
-                    repo_branch = 'master'
-
-                mkdir_p(repo_path)
-                with ChDir(repo_path):
-                    self.clone_git_repo(repo_name, repo_branch, repo_url)
-
-            if self.options.update_repos:
-                if repo_name != 'dot_files_forest':
-                    repo_dir = os.path.join(self.base_dir, repo_name)
-                    with ChDir(repo_dir):
-                        self.update_git_repo(repo_name)
-                        self.update_submodule_git_repo(repo_name)
-
 class Links(InstallBase):
 
     def __init__(self, argv, options):
         super(Links, self).__init__(argv, options)
 
-        self.base_dir = os.path.join(options.base_dir) # , 'dot-files-forest')
+        self.base_dir = os.getcwd()
         self.config_files = {
             InstallBase.WORK: "work",
             InstallBase.HOME: "home",
