@@ -5,6 +5,7 @@
 
 - shell:
     - [git pull, 'Updating repo']
+    - [git submodule update --init --recursive, Installing submodules]
 
 - link:
     # directories
@@ -13,6 +14,7 @@
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.spacemacs.d: spacemacs.d
+    ~/.emacs.d: spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
     ~/.zplug: zplug
@@ -37,6 +39,3 @@
     ~/.myclirc: dotfiles/myclirc
     ~/.pymux.conf: dotfiles/pymux.conf
     ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
