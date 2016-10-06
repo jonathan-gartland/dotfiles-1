@@ -134,7 +134,7 @@ class Repos(InstallBase):
         self.base_dir = options.base_dir
 
         self.repos = OrderedDict({
-            'dot-files-forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
+            # 'dot-files-forest': 'git@bitbucket.org:skknight/dot-files-forest.git',
             'zplug': 'git@github.com:zplug/zplug.git',
             'LS_COLORS': 'git@github.com:trapd00r/LS_COLORS.git',
             'tpm': 'git@github.com:tmux-plugins/tpm.git',
@@ -145,6 +145,7 @@ class Repos(InstallBase):
 	    'liquidprompt': 'git@github.com:nojhan/liquidprompt.git',
 	    'vimrc': 'git@github.com:amix/vimrc.git',
             'bitbar-plugins': 'git@github.com:matryer/bitbar-plugins.git',
+            'dircolors-solarized': 'git@github.com:seebi/dircolors-solarized.git',
         })
 
     def clone_git_repo(self, repo_name, repo_branch, repo_path):
