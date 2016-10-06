@@ -1,5 +1,5 @@
 # Python
-export PYTHONSTARTUP=$HOME/dot-files-forest/dotfiles/pythonstartup.py
+export PYTHONSTARTUP=$HOME/src/dot-files-forest/dotfiles/pythonstartup.py
 
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
