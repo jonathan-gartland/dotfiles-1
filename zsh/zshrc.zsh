@@ -14,25 +14,33 @@ autoload -Uz zmv
 
 source "$HOME/.zsh/lib/00_base.zsh"
 
-zplug "plugins/auestojump",   from:oh-my-zsh
+zplug "lib/clipboard", from:oh-my-zsh
+zplug "lib/compfix", from:oh-my-zsh
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/correction", from:oh-my-zsh
+zplug "lib/diagnostics", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/termsupport", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+
+zplug "plugins/autotojump",   from:oh-my-zsh
 zplug "plugins/colored-man-page",   from:oh-my-zsh
 zplug "plugins/colorize",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
 zplug "plugins/git-flow",   from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
 zplug "plugins/mercurial", from:oh-my-zsh
-zplug "plugins/mix", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/vundle", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "plugins/compfix", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/zsh_reload", from:oh-my-zsh
 zplug "plguins/history", from:oh-my-zsh
+
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+
 zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
 zplug "b4b4r07/zsh-vimode-visual", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
