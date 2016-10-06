@@ -37,3 +37,6 @@
     ~/.myclirc: dotfiles/myclirc
     ~/.pymux.conf: dotfiles/pymux.conf
     ~/.config/liquidpromptrc: dotfiles/liquidpromptrc
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
