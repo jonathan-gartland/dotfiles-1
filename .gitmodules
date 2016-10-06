@@ -29,3 +29,6 @@
 [submodule "zplug"]
 	path = zplug
 	url = git@github.com:zplug/zplug.git
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = git@github.com:seebi/dircolors-solarized.git
