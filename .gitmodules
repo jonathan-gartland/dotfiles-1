@@ -1,3 +1,6 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = git@github.com:anishathalye/dotbot.git
 [submodule "spacemacs"]
 	path = spacemacs
 	url = git@github.com:syl20bnr/spacemacs.git
