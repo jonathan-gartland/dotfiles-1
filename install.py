@@ -1,29 +1,36 @@
 #!/usr/bin/env python2
 
-import sys, os.path, optparse, fileinput
+import errno
+import optparse
+import os.path
+import platform
+import sys
+from itertools import product
 from subprocess import call
-import os, errno, platform
-from collections import OrderedDict
+
 
 def mkdir_p(path):
     try:
         os.makedirs(path)
-    except OSError as exc: # Python >2.5
+    except OSError as exc:  # Python >2.5
         if exc.errno == errno.EEXIST and os.path.isdir(path):
             pass
-        else: raise
+        else:
+            raise
+
 
 def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
-    parser = optparse.OptionParser(usage = usage)
+    parser = optparse.OptionParser(usage=usage)
 
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
                       help="Print lots of debugging ifno", action="store_true")
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
                       help="Don't actually run any commands", action="store_true")
 
-    (options, args) = parser.parse_args(args = arguments)
-    return (options, args, parser)
+    (options, args) = parser.parse_args(args=arguments)
+    return options, args, parser
+
 
 def run(argv):
     (options, args, parser) = get_parser(argv)
@@ -36,8 +43,8 @@ def run(argv):
 
     return 0
 
-class InstallBase(object):
 
+class InstallBase(object):
     WORK = 1
     HOME = 2
     NONE = 3
@@ -82,28 +89,13 @@ class InstallBase(object):
             else:
                 retcode = call(command, shell=True)
             if retcode < 0:
-                print >>sys.stderr, "Child was terminated by signal", -retcode
+                print >> sys.stderr, "Child was terminated by signal", -retcode
 
         except OSError, e:
-                print >>sys.stderr, "Execution failed:", e
+            print >> sys.stderr, "Execution failed:", e
 
-import os
-
-class ChDir(object):
-    """
-    Step into a directory temporarily.
-    """
-    def __init__(self, path):
-        self.old_dir = os.getcwd()
-        self.new_dir = path
-    def __enter__(self):
-        os.chdir(self.new_dir)
-
-    def __exit__(self, *args):
-        os.chdir(self.old_dir)
 
 class Links(InstallBase):
-
     def __init__(self, argv, options):
         super(Links, self).__init__(argv, options)
 
@@ -126,32 +118,40 @@ class Links(InstallBase):
             self.quiet = '-q'
         self.dry_run = options.dry_run
 
-    def _construct_cmd(self, config_file):
-        config_file = self._config_file(config_file)
-        cmd = "{dotbot} --base-directory {base_dir} --config-file {config_file} {quiet} {verbose}".format(
-            dotbot=self.dotbot, base_dir=self.base_dir, config_file=config_file,
-            quiet=self.quiet, verbose=self.verbose)
-        return cmd
+    def _construct_cmd(self, os_type, install_type):
+        config_file = self._config_file(os_type, install_type)
 
-    def _config_file(self, config_file_type):
-        config_file_prefix = self.config_files.get(config_file_type)
-
-        if config_file_prefix is None:
-            config_file = self.config_file
+        if os.path.exists(config_file):
+            cmd = "{dotbot} --base-directory {base_dir} --config-file {config_file} {quiet} {verbose}".format(
+                dotbot=self.dotbot, base_dir=self.base_dir, config_file=config_file,
+                quiet=self.quiet, verbose=self.verbose)
+            return cmd
         else:
-            config_file = "{}.{}".format(config_file_prefix, self.config_file)
+            return None
+
+    def _config_file(self, os_type, install_type):
+        os_type_prefix = self.config_files.get(os_type)
+        install_type_prefix = self.config_files.get(install_type)
+
+        prefixes = [install_type_prefix, os_type_prefix]
+        prefixes = filter(None, prefixes)
+
+        if prefixes:
+            prefixes = '.'.join(prefixes)
+            config_file = "{}.{}".format(prefixes, self.config_file)
+        else:
+            config_file = self.config_file
 
         return os.path.join(self.base_dir, 'dotbot', config_file)
 
     def run(self):
-        commands = [
-            self._construct_cmd(None),
-            self._construct_cmd(self.os_type),
-            self._construct_cmd(self.install_type),
-        ]
+        configs = list(product([None, self.os_type], [None, self.install_type]))
 
-        for cmd in commands:
-            self._execute_command(cmd)
+        for os_type, install_type in configs:
+            cmd = self._construct_cmd(os_type, install_type)
+            if cmd:
+                self._execute_command(cmd)
+
 
 if __name__ == '__main__':
     sys.exit(run(sys.argv))
