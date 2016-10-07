@@ -1,7 +1,0 @@
-%YAML 1.0
----
-
-- clean: ['~']
-
-- link:
-    ~/.smartcd/scripts/home/steven: smartcd/home/steven
