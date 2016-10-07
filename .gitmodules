@@ -19,4 +19,4 @@
 [submodule ".smartcd"]
 	path = .smartcd
 	url = git@github.com:cxreg/smartcd.git
-  dirty = True
+  ignore = dirty
