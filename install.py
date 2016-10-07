@@ -21,8 +21,6 @@ def get_parser(arguments):
     usage = "usage: %prog [options] home|work|none"
     parser = optparse.OptionParser(usage = usage)
 
-    parser.add_option('-l', '--links', dest='links', default=False,
-                      help='Create all links', action='store_true')
     parser.add_option("-v", "--verbose", dest="verbose", default=False,
                       help="Print lots of debugging ifno", action="store_true")
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
@@ -38,12 +36,7 @@ def run(argv):
         parser.print_help()
         return 1
 
-    if options.links:
-       Links(argv, options).run()
-    elif options.clone_repos or options.update_repos:
-        Repos(argv, options).run()
-    else:
-        raise ValueError("Need either option links or bootstrap")
+    Links(argv, options).run()
 
     return 0
 
@@ -128,7 +121,8 @@ class Links(InstallBase):
             None: None
         }
         self.config_file = "install.conf.yaml"
-        self.dotbot = "~/src/dotbot/bin/dotbot"
+        self.dotbot = os.path.join(self.base_dir,
+                                   ".dotbot", "bin", "dotbot")
         self.verbose = self.quiet = ''
         if options.verbose:
             self.verbose = '-v'
