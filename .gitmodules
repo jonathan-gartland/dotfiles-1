@@ -1,0 +1,18 @@
+[submodule ".zplug"]
+	path = .zplug
+	url = git@github.com:zplug/zplug.git
+[submodule ".dotbot"]
+	path = .dotbot
+	url = git@github.com:anishathalye/dotbot.git
+[submodule ".spacemacs"]
+	path = .spacemacs
+	url = git@github.com:syl20bnr/spacemacs.git
+[submodule ".liquidprompt"]
+	path = .liquidprompt
+	url = git@github.com:nojhan/liquidprompt.git
+[submodule ".vimrc"]
+	path = .vimrc
+	url = git@github.com:amix/vimrc.git
+[submodule ".dircolors-solarized"]
+	path = .dircolors-solarized
+	url = git@github.com:seebi/dircolors-solarized.git
