@@ -16,3 +16,6 @@
 [submodule ".dircolors-solarized"]
 	path = .dircolors-solarized
 	url = git@github.com:seebi/dircolors-solarized.git
+[submodule ".smartcd"]
+	path = .smartcd
+	url = git@github.com:cxreg/smartcd.git
