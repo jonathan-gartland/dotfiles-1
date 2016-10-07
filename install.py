@@ -5,10 +5,6 @@ from subprocess import call
 import os, errno, platform
 from collections import OrderedDict
 
-# To convert yaml to json
-# https://www.npmjs.com/package/yaml-to-json
-
-
 def mkdir_p(path):
     try:
         os.makedirs(path)
@@ -120,7 +116,7 @@ class Links(InstallBase):
             InstallBase.WINDOWS: "windows",
             None: None
         }
-        self.config_file = "install.conf.yaml"
+        self.config_file = "install.conf.json"
         self.dotbot = os.path.join(self.base_dir,
                                    "..", "dotbot", "bin", "dotbot")
         self.verbose = self.quiet = ''
