@@ -1,32 +1,18 @@
 
 # Introduction
-    Instructions for setting-up dot-files-forest.
+    Instructions for setting-up dotfiles
 
 # Setup
 
-0) Install
-    a) python
-    c) virtualenv, mkvirtualenv
-    d) libyaml
-    d) create virtualenv and install pyyaml
-    ```
-    mkvirtualenv py
-    workon py
-    pip install pyyaml
-    ```
-    
-1) Download install.py
+0. Install
+    1. python
 
-2) Clone Repos
+1) Download this repo
+   1) mkdir ~/src; cd ~/src
+   2) git clone git@github.com:skk/dotfiles.git
 
+2) install submodules and create links
     ```
-    cd $HOME
-    ~/dot-files-forest/install.py -c
-    ```
-
-3) Create Links
-
-    ```
-    cd $HOME
-    ~/dot-files-forest/install.py -l home|work|none
+    cd ~/src/dotfiles
+    python install.py -l home|work|none
     ```
