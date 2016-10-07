@@ -1,6 +1,0 @@
-# $Id: trac.rc 2649 2009-03-10 12:37:59Z skk $
-
-# trac
-:0
-* ^From:.*trac@morden.sr.unh.edu.*
-.Trac/
