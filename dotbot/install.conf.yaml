@@ -14,14 +14,14 @@
     ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.spacemacs.d: spacemacs.d
-    ~/.emacs.d: spacemacs
+    ~/.emacs.d: .spacemacs
     ~/.tmux: tmux
     ~/.zsh: zsh
-    ~/.zplug: zplug
+    ~/.zplug: .zplug
 
     # src directories
-    ~/.vimrc: ../vimrc/vimrcs/basic.vim
-    ~/.smartcd: ../smartcd
+    ~/.vimrc: .vimrc/vimrcs/basic.vim
+    ~/.smartcd: .smartcd
 
     # files
     ~/.git-prompt.conf: dotfiles/git-prompt.conf
