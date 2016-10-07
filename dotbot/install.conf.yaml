@@ -12,7 +12,6 @@
     # directories
     ~/bin: bin
     ~/.dotfiles: dotfiles
-    ~/.hammerspoon: hammerspoon
     ~/.i3: i3
     ~/.spacemacs.d: spacemacs.d
     ~/.emacs.d: .spacemacs
@@ -25,8 +24,6 @@
     ~/.smartcd: .smartcd
 
     # files
-    ~/.git-prompt.conf: dotfiles/git-prompt.conf
-    ~/.git.scmbrc: dotfiles/git.scmbrc
     ~/.inputrc: dotfiles/inputrc
     ~/.rvmrc: dotfiles/rvmrc
     ~/.smartcd_config: dotfiles/smartcd_config
