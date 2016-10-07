@@ -1,6 +1,7 @@
 [submodule ".zplug"]
 	path = .zplug
 	url = git@github.com:zplug/zplug.git
+    ignore = dirty
 [submodule ".spacemacs"]
 	path = .spacemacs
 	url = git@github.com:syl20bnr/spacemacs.git
@@ -16,4 +17,4 @@
 [submodule ".smartcd"]
 	path = .smartcd
 	url = git@github.com:cxreg/smartcd.git
-  ignore = dirty
+    ignore = dirty
