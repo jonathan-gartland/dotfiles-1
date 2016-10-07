@@ -24,11 +24,8 @@ if exists fasd; then
     eval $(fasd --init auto)
 fi
 
-
 if [[ "$OS_IS_LINUX" = true ]]; then
     alias gdircolors=dircolors
 fi
-
-# [[ -s $HOME/src/forest/LS_COLORS/LS_COLORS ]] && eval $(gdircolors -b $HOME/src/LS_COLORS/LS_COLORS)
 
 [[ -s $HOME/src/dotfiles/dircolors-solarized/dircolors.256dark ]] && eval $(dircolors -b $HOME/src/dotfiles/dircolors-solarized/dircolors.256dark)
