@@ -1,0 +1,50 @@
+[
+    {
+        "clean": [
+            "~"
+        ]
+    },
+    {
+        "shell": [
+            [
+                "git pull",
+                "Updating repo"
+            ],
+            [
+                "git submodule update --init",
+                "Installing submodules"
+            ],
+            [
+                "mkdir .smartcd/scripts",
+                "Creating smartcd/scripts dir"
+            ]
+        ]
+    },
+    {
+        "link": {
+            "~/bin": "bin",
+            "~/.dotfiles": "dotfiles",
+            "~/.i3": "i3",
+            "~/.spacemacs.d": "spacemacs.d",
+            "~/.emacs.d": ".spacemacs",
+            "~/.tmux": "tmux",
+            "~/.zsh": "zsh",
+            "~/.zplug": ".zplug",
+            "~/.vimrc": ".vimrc/vimrcs/basic.vim",
+            "~/.smartcd": ".smartcd",
+            "~/.inputrc": "dotfiles/inputrc",
+            "~/.rvmrc": "dotfiles/rvmrc",
+            "~/.smartcd_config": "dotfiles/smartcd_config",
+            "~/.tmux.conf": "tmux/tmux.conf",
+            "~/.Xresources": "dotfiles/Xresources",
+            "~/.zlogin": "zsh/zlogin.zsh",
+            "~/.zlogout": "zsh/zlogout.zsh",
+            "~/.zprofile": "zsh/zprofile.zsh",
+            "~/.zshenv": "zsh/zshenv.zsh",
+            "~/.zshrc": "zsh/zshrc.zsh",
+            "~/.myclirc": "dotfiles/myclirc",
+            "~/.pymux.conf": "dotfiles/pymux.conf",
+            "~/.config/liquidpromptrc": "dotfiles/liquidpromptrc"
+        }
+    }
+]
