@@ -5,7 +5,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   alias ls='gls -hF --color'   # add colors for filetype recognition
   alias sed='gsed'
 
-  export HOMEBREW_GITHUB_API_TOKEN=f4f09dc15dce213977f8def81db6c03a1d6b5569
+  export HOMEBREW_GITHUB_API_TOKEN=9c624e11371cfedc3e4e68b235200ca46bc7580d
 
   # antigen bundle brew
   # antigen bundle brew-cask
