@@ -75,7 +75,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load #--verbose
 
 # restore cdpath
 cdpath+=($cdpath_backup)
