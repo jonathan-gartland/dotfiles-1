@@ -18,3 +18,21 @@
 	path = .smartcd
 	url = git@github.com:cxreg/smartcd.git
     ignore = dirty
+[submodule ".vim-plug"]
+	path = .vim-plug
+	url = git@github.com:junegunn/vim-plug.git
+[submodule "pyenv"]
+	path = .pyenv
+	url = git@github.com:yyuu/pyenv.git
+[submodule "pyenv-doctor"]
+	path = .pyenv/plguins/pyenv-doctor
+	url = git@github.com/yyuu/pyenv-doctor.git
+[submodule "pyenv-installer"]
+	path = .pyenv/plguins/pyenv-installer
+	url = git@github.com/yyuu/pyenv-installer.git
+[submodule "pyenv-update"]
+	path = .pyenv/plguins/pyenv-update
+	url = git@github.com/yyuu/pyenv-update.git
+[submodule "pyenv-virtualenv"]
+	path = .pyenv/plguins/pyenv-virtualenv
+	url = git@github.com/yyuu/pyenv-virtualenv.git
