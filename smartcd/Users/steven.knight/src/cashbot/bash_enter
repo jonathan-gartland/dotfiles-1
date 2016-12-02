@@ -1,2 +1,1 @@
 pyenv activate cashbot
-nohup hg pull&
