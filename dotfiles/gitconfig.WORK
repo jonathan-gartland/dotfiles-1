@@ -8,6 +8,7 @@
     pager=less
     mode = progress
 	excludesfile = /Users/steven.knight/.gitignore_global
+	autocrlf = input
 
 # change colors
 [color]
@@ -111,6 +112,9 @@
     # from http://www.reddit.com/r/git/comments/1zcyua/looking_to_start_a_project_with_git/cfsmmtp
     first=commit --allow-empty -m 'Create empty, initial commit'
 
+    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+
+
 # giggle
 [giggle]
 	main-window-maximized = false
@@ -140,3 +144,6 @@
 	trustExitCode = true
 [push]
 	default = simple
+[commit]
+	template = /Users/steven.knight/.stCommitMsg
+
