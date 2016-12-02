@@ -1,3 +1,3 @@
 #!/bin/bash
-killall firefox
+pkill firefox
 exit 0
