@@ -1,0 +1,10 @@
+" Select your Leader key
+let mapleader = "\<Space>"
+
+call plug#begin()
+Plug 'sheerun/vimrc'
+Plug 'sheerun/vim-polyglot'
+Plug 'dracula/vim'
+call plug#end()
+
+colorscheme dracula
