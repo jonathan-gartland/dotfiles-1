@@ -16,7 +16,7 @@ function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 zplug "plugins/brew",   from:oh-my-zsh
 zplug "plugins/osx",   from:oh-my-zsh
 zplug "/usr/local/share/zsh/site-functions/_aws", from:local
-zplug "$HOME/Projects/cashbot/scripts/cashbot_defs.sh", from:local
+zplug "$HOME/src/cashbot/scripts/cashbot_defs.sh", from:local
 zplug "$HOME/src/cashbot/scripts/cashbot_defs.sh", from:local
 
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
