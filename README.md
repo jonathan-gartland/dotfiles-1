@@ -16,3 +16,7 @@
     cd ~/src/dotfiles
     python install.py -l home|work|none
     ```
+
+# License
+
+MIT License; see [LICENSE.txt](LICENSE.txt) for more details.
