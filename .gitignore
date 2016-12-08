@@ -112,3 +112,4 @@ tmux/plugins
 
 # intellij idea
 .idea/*
+zsh_plugins.zsh
