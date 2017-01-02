@@ -110,7 +110,7 @@ class Links(InstallBase):
         }
         self.config_file = "install.conf.json"
         self.dotbot = os.path.join(self.base_dir,
-                                   "..", "dotbot", "bin", "dotbot")
+                                   ".", ".dotbot", "bin", "dotbot")
         self.verbose = self.quiet = ''
         if options.verbose:
             self.verbose = '-v'
