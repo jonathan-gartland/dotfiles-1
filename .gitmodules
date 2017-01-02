@@ -39,3 +39,18 @@
 [submodule ".dotbot"]
 	path = .dotbot
 	url = git@github.com:anishathalye/dotbot.git
+[submodule ".pyenv"]
+	path = .pyenv
+	url = git@github.com:yyuu/pyenv.git
+[submodule ".pyenv-doctor"]
+	path = .pyenv-doctor
+	url = git@github.com:yyuu/pyenv-doctor.git
+[submodule ".pyenv-installer"]
+	path = .pyenv-installer
+	url = git@github.com:yyuu/pyenv-installer.git
+[submodule ".pyenv-update"]
+	path = .pyenv-update
+	url = git@github.com:yyuu/pyenv-update.git
+[submodule ".pyenv-virtualenv"]
+	path = .pyenv-virtualenv
+	url = git@github.com:yyuu/pyenv-virtualenv.git
