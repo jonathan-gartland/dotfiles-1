@@ -17,6 +17,9 @@
             ],
             [
                 "mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir"
+            ],
+            [
+              "mkdir -p ~/.pyenv/plugins", "Creating pyenv plugins dir"
             ]
         ]
     },
@@ -31,6 +34,11 @@
             "~/.zsh": "zsh",
             "~/.zplug": ".zplug",
             "~/.pyenv": ".pyenv",
+            "~/.tmux/plugins/tpm": ".tpm",
+            "~/.pyenv/plugins/pyenv-virtualenv": ".pyenv-virtualenv",
+            "~/.pyenv/plugins/pyenv-installer": ".pyenv-installer",
+            "~/.pyenv/plugins/pyenv-doctor": ".pyenv-doctor",
+            "~/.pyenv/plugins/pyenv-update": ".pyenv-update",
             "~/.vim/autoload/plug.vim": ".vim-plug/plug.vim",
             "~/.vimrc": "vim/vimrc",
             "~/.smartcd": ".smartcd",
