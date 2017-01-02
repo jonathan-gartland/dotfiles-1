@@ -36,3 +36,6 @@
 [submodule "pyenv-virtualenv"]
 	path = .pyenv/plguins/pyenv-virtualenv
 	url = git@github.com/yyuu/pyenv-virtualenv.git
+[submodule ".dotbot"]
+	path = .dotbot
+	url = git@github.com:anishathalye/dotbot.git
