@@ -11,13 +11,7 @@
    1) mkdir ~/src; cd ~/src
    2) git clone git@github.com:skk/dotfiles.git
 
-2) install submodules
-    ```
-    cd ~/src/dotfiles
-    git submodule init
-    git submodule update
-    ```
-3) Create Links
+2) Install (which downloads the submodules and create the links)
     ```
     cd ~/src/dotfiles
     python install.py -l home|work|none
