@@ -54,3 +54,6 @@
 [submodule ".pyenv-virtualenv"]
 	path = .pyenv-virtualenv
 	url = git@github.com:yyuu/pyenv-virtualenv.git
+[submodule ".tpm"]
+	path = .tpm
+	url = git@github.com:tmux-plugins/tpm.git
