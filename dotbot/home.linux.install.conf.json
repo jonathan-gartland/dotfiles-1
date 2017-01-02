@@ -6,7 +6,7 @@
     },
     {
         "link": {
-            "~/.smartcd/scripts/home/skk": "smartcd/home/skk"
+            "~/.smartcd/scripts/home": "smartcd/home"
         }
     }
 ]
