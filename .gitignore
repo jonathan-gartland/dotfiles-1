@@ -109,6 +109,7 @@ gnupg/gpg-agent.env.fish
 
 # tmux
 tmux/plugins
+tmux/resurrect/*
 
 # intellij idea
 .idea/*
