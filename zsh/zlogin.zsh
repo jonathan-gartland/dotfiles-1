@@ -1,3 +1,7 @@
-# Load RVM into a shell session *as a function*
+# echo "zlogin - top"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#
+# Executes commands at logout.
+#
+
+# echo "zlogin - btm"
