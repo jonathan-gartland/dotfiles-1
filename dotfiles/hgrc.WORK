@@ -11,3 +11,5 @@ graphlog=
 
 [alias]
 latest=log --limit 8
+l = log --style compact
+
