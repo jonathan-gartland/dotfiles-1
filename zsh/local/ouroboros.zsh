@@ -13,7 +13,6 @@ zplug "plugins/brew",   from:oh-my-zsh
 zplug "plugins/osx",   from:oh-my-zsh
 zplug "/usr/local/share/zsh/site-functions/_aws", from:local
 zplug "$HOME/src/cashbot/scripts/cashbot_defs.sh", from:local
-zplug "$HOME/src/cashbot/scripts/cashbot_defs.sh", from:local
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -24,9 +23,4 @@ export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
 function update_hg_tag {
     hg tag $1
     hg tag --force LATEST_RELEASE
-}
-
-function nvm {
-    export NVM_DIR="$HOME/.nvm"
-    . "$(brew --prefix nvm)/nvm.sh"
 }
