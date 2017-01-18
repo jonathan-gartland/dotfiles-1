@@ -22,11 +22,10 @@ def read_and_format_data(filename, outbuf):
     Read file and format
 
     Args:
-        filename
+        filename:
 
     Returns:
         str
-        :param outbuf:
 
     """
 
@@ -43,7 +42,9 @@ def main(args):
     hostname = uname()[1]
     local_dir = parent_dir.joinpath('local')
 
-    with open('zsh_plugins.zsh', 'w') as outbuf:
+    outfilename = parent_dir.joinpath("zsh_plugins.zsh")
+
+    with open(str(outfilename), 'w') as outbuf:
         for filename in scandir(str(lib_dir)):
             read_and_format_data(filename.path, outbuf)
 
