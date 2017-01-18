@@ -1,0 +1,2 @@
+pyenv deactivate storefront
+nvm use default
