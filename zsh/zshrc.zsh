@@ -1,6 +1,11 @@
+# echo "zshrc - top"
+
 integer t0=$(date '+%s')  # move this around
 
-# echo "zshrc - top"
+
+if [[ -z "$DOTSPATH" ]]; then
+    source "$HOME/.zprofile"
+fi
 
 [[ $TERM == "dumb" ]] && unstetopt zle && PS1='$ ' && return
 
@@ -55,7 +60,9 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 # zplug "plugins/zsh_reload", from:oh-my-zsh
 
 # load local plugins
-# don't forbot to run zsh_concat.py
+# don't forgot to run zsh_concat.py
+
+python3 $DOTSPATH/zsh_concat.py
 source_if_exists "$DOTSPATH/zsh_plugins.zsh"
 
 # Install packages that have not been installed yet
@@ -84,3 +91,5 @@ function {
     [[ $startup -gt 2 ]] && print "Hmm, poor shell startup time: $startup"
 }
 unset t0
+
+# echo "zshrc - btm"
