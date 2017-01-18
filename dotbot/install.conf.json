@@ -6,21 +6,10 @@
     },
     {
         "shell": [
-            [
-                "git pull", "Updating repo"
-            ],
-            [
-                "git submodule update --init", "Installing submodules"
-            ],
-            [
-                "mkdir -p .smartcd/scripts", "Creating smartcd/scripts dir"
-            ],
-            [
-                "mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir"
-            ],
-            [
-              "mkdir -p ~/.pyenv/plugins", "Creating pyenv plugins dir"
-            ]
+            [ "git pull", "Updating repo" ],
+            [ "git submodule update --init", "Installing submodules" ],
+            [ "mkdir -p .smartcd/scripts", "Creating smartcd/scripts dir" ],
+            [ "mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir" ]
         ]
     },
     {
@@ -33,8 +22,8 @@
             "~/.tmux": "tmux",
             "~/.zsh": "zsh",
             "~/.zplug": ".zplug",
-            "~/.pyenv": ".pyenv",
             "~/.tmux/plugins/tpm": ".tpm",
+            "~/.pyenv": ".pyenv",
             "~/.pyenv/plugins/pyenv-virtualenv": ".pyenv-virtualenv",
             "~/.pyenv/plugins/pyenv-installer": ".pyenv-installer",
             "~/.pyenv/plugins/pyenv-doctor": ".pyenv-doctor",

@@ -6,7 +6,7 @@
     },
     {
         "link": {
-            "~/.cask": "/usr/local/Cellar/cask/0.7.4",
+            "~/.cask": "/usr/local/Cellar/cask/0.7.4"
         }
     }
 ]
