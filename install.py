@@ -1,4 +1,6 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
+
+from __future__ import print_function
 
 import errno
 import optparse
@@ -89,10 +91,9 @@ class InstallBase(object):
             else:
                 retcode = call(command, shell=True)
             if retcode < 0:
-                print >> sys.stderr, "Child was terminated by signal", -retcode
-
-        except OSError, e:
-            print >> sys.stderr, "Execution failed:", e
+                print("Child was terminated by signal {}".format(retcode), file=sys.stderr)
+        except OSError as e:
+            print("Execution failed: {}".format(e), file=sys.stderr)
 
 
 class Links(InstallBase):
@@ -145,8 +146,9 @@ class Links(InstallBase):
         return os.path.join(self.base_dir, 'dotbot', config_file)
 
     def run(self):
-        configs = list(product([None, self.os_type], [None, self.install_type]))
-
+        configs = list(product([None, self.os_type],
+                               [None, self.install_type]))
+        configs.append([None, 'pyenv'])
         for os_type, install_type in configs:
             cmd = self._construct_cmd(os_type, install_type)
             if cmd:
