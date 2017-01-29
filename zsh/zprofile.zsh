@@ -1,6 +1,6 @@
 # echo "zprofile - top"
 
-DOTSPATH="$HOME/.zsh"
+export DOTSPATH="$HOME/.zsh"
 source "$HOME/.zsh/lib/00_base.zsh"
 
 # load zplug
