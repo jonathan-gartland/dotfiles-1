@@ -29,6 +29,7 @@
             "~/.pyenv/plugins/pyenv-doctor": ".pyenv-doctor",
             "~/.pyenv/plugins/pyenv-update": ".pyenv-update",
             "~/.vim/autoload/plug.vim": ".vim-plug/plug.vim",
+            "~/.tmuxp": "tmuxp",
             "~/.vimrc": "vim/vimrc",
             "~/.smartcd": ".smartcd",
             "~/.smartcd/scripts/home": "smartcd/home",
