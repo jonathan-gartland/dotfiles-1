@@ -1,2 +1,3 @@
-pyenv activate py
-nvm use node
+if [ "$PYENV_VERSION" != "py" ]; then
+  pyenv activate py
+fi
