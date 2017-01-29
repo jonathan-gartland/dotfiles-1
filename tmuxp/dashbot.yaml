@@ -1,0 +1,10 @@
+session_name: dashbot
+windows:
+- focus: 'true'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/cashbot/dashbot/ui
+    - npm run dashbot
+  window_name: dashbot
