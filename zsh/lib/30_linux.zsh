@@ -42,5 +42,4 @@ if [[ "$OS_IS_LINUX" = true ]]; then
           xdg-open $* > /dev/null 2>&1
       fi
   }
-
 fi

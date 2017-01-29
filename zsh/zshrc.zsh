@@ -1,7 +1,5 @@
 # echo "zshrc - top"
-
 integer t0=$(date '+%s')  # move this around
-
 
 if [[ -z "$DOTSPATH" ]]; then
     source "$HOME/.zprofile"
@@ -18,6 +16,7 @@ autoload -Uz history-search-end
 autoload -Uz is-at-least
 autoload -Uz zargs
 autoload -Uz zmv
+
 
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/compfix", from:oh-my-zsh
@@ -46,6 +45,7 @@ zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
 zplug "b4b4r07/zsh-vimode-visual", from:github
 zplug "zsh-users/zsh-autosuggestions", from:github
 
+
 # MacOS only plugins
 # Disable unused plugins.
 #zplug "junegunn/fzf-bin", \
@@ -62,8 +62,12 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 # load local plugins
 # don't forgot to run zsh_concat.py
 
-python3 $DOTSPATH/zsh_concat.py
+/usr/local/bin/python3 $DOTSPATH/zsh_concat.py
 source_if_exists "$DOTSPATH/zsh_plugins.zsh"
+
+# need to eval here otherwise we'll get complete error
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
+
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
@@ -81,8 +85,6 @@ zplug load #--verbose
 # restore cdpath
 cdpath+=($cdpath_backup)
 
-# echo "zshrc - btm"
-
 # End of zshrc
 function {
     local -i t1 startup
@@ -93,3 +95,5 @@ function {
 unset t0
 
 # echo "zshrc - btm"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
