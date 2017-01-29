@@ -8,8 +8,10 @@ record=
 rebase=
 histedit=
 graphlog=
+shelve=
 
 [alias]
 latest=log --limit 8
 l = log --style compact
+he = histedit
 
