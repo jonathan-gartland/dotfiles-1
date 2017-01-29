@@ -45,13 +45,14 @@ def main(args):
     outfilename = parent_dir.joinpath("zsh_plugins.zsh")
 
     with open(str(outfilename), 'w') as outbuf:
-        for filename in scandir(str(lib_dir)):
-            read_and_format_data(filename.path, outbuf)
-
         for filename in scandir(str(local_dir)):
             filename = Path(filename.path)
             if filename.stem == hostname:
                 read_and_format_data(str(filename), outbuf)
+
+        for filename in scandir(str(lib_dir)):
+            read_and_format_data(filename.path, outbuf)
+
 
 if __name__ == "__main__":
     main(argv)
