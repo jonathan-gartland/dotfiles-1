@@ -90,7 +90,7 @@ function {
     local -i t1 startup
     t1=$(date '+%s')
     startup=$(( t1 - t0 ))
-    [[ $startup -gt 2 ]] && print "Hmm, poor shell startup time: $startup"
+    [[ $startup -gt 3 ]] && print "Hmm, poor shell startup time: $startup"
 }
 unset t0
 
