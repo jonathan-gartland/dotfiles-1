@@ -1,0 +1,9 @@
+session_name: wachstum
+windows:
+- window_name: wachstum
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd ~/src/wachstum
