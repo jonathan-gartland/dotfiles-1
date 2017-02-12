@@ -1,0 +1,9 @@
+session_name: cashbot
+windows:
+- window_name: cashbot
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/cashbot
