@@ -45,12 +45,12 @@ LP_HOSTNAME_ALWAYS=0
 # Do you want to display the user, even if the user is the same as the one logged in?
 # Defaults to 1 (always display the user)
 # set to 0 if you want to hide the logged user (it will always display different users)
-LP_USER_ALWAYS=1
+LP_USER_ALWAYS=0
 
 # Do you want to display the percentages of load/batteries along with their
 # corresponding marks? Set to 0 to only print the colored marks.
 # Defaults to 1 (display percentages)
-LP_PERCENTS_ALWAYS=1
+LP_PERCENTS_ALWAYS=0
 
 # Do you want to use the permissions feature?
 # Recommended value is 1
@@ -62,7 +62,7 @@ LP_ENABLE_SHORTEN_PATH=1
 
 # Do you want to use the proxy detection feature?
 # Recommended value is 1
-LP_ENABLE_PROXY=1
+LP_ENABLE_PROXY=0
 
 # Do you want to use the jobs feature?
 # Recommended value is 1
@@ -70,11 +70,11 @@ LP_ENABLE_JOBS=1
 
 # Do you want to use the load feature?
 # Recommended value is 1
-LP_ENABLE_LOAD=1
+LP_ENABLE_LOAD=0
 
 # Do you want to use the battery feature?
 # Recommended value is 1
-LP_ENABLE_BATT=1
+LP_ENABLE_BATT=0
 
 # Do you want to use the 'sudo credentials' feature?
 # Be warned that this may pollute the syslog if you don't have sudo
