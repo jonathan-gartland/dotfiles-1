@@ -1,6 +1,7 @@
 session_name: storefront
 windows:
-- focus: 'true'
+- window_name: storefront
+  focus: 'false'
   layout: even-vertical
   options:
     automatic-rename: 'on'
@@ -12,4 +13,10 @@ windows:
     shell_command:
     - cd /Users/steven.knight/src/storefront
     - npm run build:dev-watch
-  window_name: storefront
+- window_name: 'false'
+  focus: 'true'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/storefront
