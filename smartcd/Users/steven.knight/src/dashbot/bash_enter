@@ -1,0 +1,2 @@
+pyenv activate dashbot
+nvm use dashbot
