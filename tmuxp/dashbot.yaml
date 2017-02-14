@@ -1,15 +1,18 @@
 session_name: dashbot
 windows:
 - window_name: dashbot-server
-  focus: 'false'
+  focus: 'true'
   options:
     automatic-rename: 'on'
   panes:
   - shell_command:
     - cd /Users/steven.knight/src/dashbot
-    - npm run dashbot
+    - npm run start_py
+  - shell_command:
+    - cd /Users/steven.knight/src/dashbot
+    - npm run start
 - window_name: 'false'
-  focus: 'true'
+  focus: 'false'
   options:
     automatic-rename: 'on'
   panes:
