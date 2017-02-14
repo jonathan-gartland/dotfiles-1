@@ -1,3 +1,4 @@
 if [ "$PYENV_VERSION" != "py" ]; then
   pyenv activate py
 fi
+nvm use default
