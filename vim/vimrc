@@ -2,9 +2,13 @@ call plug#begin()
 Plug 'sheerun/vimrc'
 Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 colorscheme dracula
+
+let g:airline_powerline_fonts = 1
 
 " Select your Leader key
 let mapleader = "\<Space>"
