@@ -95,3 +95,5 @@ function {
 unset t0
 
 # echo "zshrc - btm"
+
+export PATH="$HOME/.yarn/bin:$PATH"
