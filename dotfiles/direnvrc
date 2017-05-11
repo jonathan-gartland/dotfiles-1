@@ -1,0 +1,4 @@
+use_python() {
+  source ~/.zsh/lib/10_python.zsh
+  pyenv activate $1
+}

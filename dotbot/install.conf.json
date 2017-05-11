@@ -1,15 +1,14 @@
-[
-    {
+[{
         "clean": [
             "~"
         ]
     },
     {
         "shell": [
-            [ "git pull", "Updating repo" ],
-            [ "git submodule update --init", "Installing submodules" ],
-            [ "mkdir -p .smartcd/scripts", "Creating smartcd/scripts dir" ],
-            [ "mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir" ]
+            ["git pull", "Updating repo"],
+            ["git submodule update --init", "Installing submodules"],
+            ["mkdir -p .smartcd/scripts", "Creating smartcd/scripts dir"],
+            ["mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir"]
         ]
     },
     {
@@ -45,6 +44,7 @@
             "~/.zshenv": "zsh/zshenv.zsh",
             "~/.zshrc": "zsh/zshrc.zsh",
             "~/.myclirc": "dotfiles/myclirc",
+            "~/.direnvrc": "dotfiles/direnvrc",
             "~/.pymux.conf": "dotfiles/pymux.conf",
             "~/.config/liquidpromptrc": "dotfiles/liquidpromptrc"
         }
