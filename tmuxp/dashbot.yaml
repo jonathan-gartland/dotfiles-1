@@ -7,10 +7,10 @@ windows:
   panes:
   - shell_command:
     - cd /Users/steven.knight/src/dashbot
-    - npm run start_py
+    - npm run build:dev-watch
   - shell_command:
     - cd /Users/steven.knight/src/dashbot
-    - npm run start
+    - npm run server
 - window_name: 'false'
   focus: 'false'
   options:
