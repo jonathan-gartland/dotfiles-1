@@ -16,6 +16,7 @@ hgcontains=/Users/steven.knight/src/hg-contains/contains.py
 latest=log --limit 8
 l = log --style compact
 he = histedit
+pullup = pull update
 
 # [ui]
 # merge = meld
