@@ -1,0 +1,9 @@
+session_name: eche
+windows:
+- window_name: eche
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/eche/

@@ -1,0 +1,9 @@
+session_name: mal
+windows:
+- window_name: mal
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/dotfiles
