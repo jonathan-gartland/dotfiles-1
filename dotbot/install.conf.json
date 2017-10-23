@@ -7,7 +7,6 @@
         "shell": [
             ["git pull", "Updating repo"],
             ["git submodule update --init", "Installing submodules"],
-            ["mkdir -p .smartcd/scripts", "Creating smartcd/scripts dir"],
             ["mkdir -p ~/.vim/autoload/", "Creating ~/.vim/autoload dir"]
         ]
     },
@@ -30,12 +29,8 @@
             "~/.vim/autoload/plug.vim": ".vim-plug/plug.vim",
             "~/.tmuxp": "tmuxp",
             "~/.vimrc": "vim/vimrc",
-            "~/.smartcd": ".smartcd",
-            "~/.smartcd/scripts/home": "smartcd/home",
-            "~/.smartcd/scripts/Users": "smartcd/Users",
             "~/.inputrc": "dotfiles/inputrc",
             "~/.rvmrc": "dotfiles/rvmrc",
-            "~/.smartcd_config": "dotfiles/smartcd_config",
             "~/.tmux.conf": "tmux/tmux.conf",
             "~/.Xresources": "dotfiles/Xresources",
             "~/.zlogin": "zsh/zlogin.zsh",
