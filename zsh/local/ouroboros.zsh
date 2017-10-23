@@ -22,4 +22,25 @@ export EVENT_NOKQUEUE=1
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 export PYTHONPATH=/Users/steven.knight/src/hooks:$PYTHONPATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:/Library/TeX/texbin/
+
+type ls > /dev/null && unset -f ls 2> /dev/null
+type ll > /dev/null && unset -f ll 2> /dev/null
+type lR > /dev/null && unset -f lR 2> /dev/null
+type lr > /dev/null && unset -f lr 2> /dev/null
+
+alias ls='exa'
+alias ll='exa --long --classify --time-style long-iso'
+alias lR='exa --recurse'
+alias lt='exa --tree --long'
+alias lr='exa --long --reverse --sort modified'
+alias lg='exa --git --long'
+alias hg='/usr/local/bin/hg'
+
+# https://github.com/dvorka/hstr
+
+# add this configuration to ~/.zshrc
+export HISTFILE=~/.zsh_history  # ensure history file visibility
+export HH_CONFIG=hicolor        # get more colors
+# bind hh to Ctrl-r (for Vi mode check doc)
+bindkey -s '^R' '^Ahh ^M'   
