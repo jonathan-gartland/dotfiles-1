@@ -16,10 +16,10 @@ Host knight.cx
   User steven
 
 Host bastion.qa.cashstar.net
-    User sknight
+  User sknight
 
 Host bastion.semi.cashstar.net
-    User sknight
+  User sknight
 
 Host falcon
 	User skk
