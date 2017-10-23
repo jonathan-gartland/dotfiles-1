@@ -39,7 +39,7 @@ zplug "plguins/history", from:oh-my-zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:10
 
 zplug "benjaminwhite/vim-mode-for-oh-my-zsh", from:github
 zplug "b4b4r07/zsh-vimode-visual", from:github
@@ -62,12 +62,8 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 # load local plugins
 # don't forgot to run zsh_concat.py
 
-/usr/local/bin/python3 $DOTSPATH/zsh_concat.py
-source_if_exists "$DOTSPATH/zsh_plugins.zsh"
-
 # need to eval here otherwise we'll get complete error
-eval "$(_TMUXP_COMPLETE=source tmuxp)"
-
+eval "$(_TMUXP_COMPLETE=source /usr/local/bin/tmuxp)"
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
@@ -83,7 +79,11 @@ fi
 zplug load #--verbose
 
 # restore cdpath
+
 cdpath+=($cdpath_backup)
+
+/usr/local/bin/python3 $DOTSPATH/zsh_concat.py
+source_if_exists "$DOTSPATH/zsh_plugins.zsh"
 
 # End of zshrc
 function {
@@ -93,7 +93,5 @@ function {
     [[ $startup -gt 3 ]] && print "Hmm, poor shell startup time: $startup"
 }
 unset t0
-
-# echo "zshrc - btm"
 
 export PATH="$HOME/.yarn/bin:$PATH"
