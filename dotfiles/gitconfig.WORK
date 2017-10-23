@@ -113,6 +113,8 @@
     first=commit --allow-empty -m 'Create empty, initial commit'
 
     change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+	incoming = "!git remote update -p; git log ..@{u}"
+	outgoing = log @{u}..
 
 
 # giggle
