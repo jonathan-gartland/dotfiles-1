@@ -10,26 +10,14 @@ histedit=
 graphlog=
 shelve=
 churn=
-hgcontains=/Users/steven.knight/src/hg-contains/contains.py
 
 [alias]
 latest=log --limit 8
 l = log --style compact
 he = histedit
-pullup = pull update
+pullup = pull --update
 
-# [ui]
-# merge = meld
-
-# [merge-tools]
-# meld.priority = 1
-# meld.premerge = False
-# meld.args = $local $other $base 
-
-# [merge-patterns]
-# ** = meld
-
-# [hooks]
-preoutgoing.merge_forward_checker = python:hooks.merge_forward_checker
-pretxncommit.jira_ticket_in_commit_checker = python:hooks.jira_ticket_in_commit_checker
-preupdate.wrong_way_merge_checker = python:hooks.wrong_way_merge_checker
+[hooks]
+# preoutgoing.merge_forward_checker = python:hooks.merge_forward_checker
+# pretxncommit.jira_ticket_in_commit_checker = python:hooks.jira_ticket_in_commit_checker
+# preupdate.wrong_way_merge_checker = python:hooks.wrong_way_merge_checker
