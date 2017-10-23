@@ -10,7 +10,7 @@ windows:
     - npm run build:dev-watch
   - shell_command:
     - cd /Users/steven.knight/src/dashbot
-    - npm run server
+    - npm run server:debug
 - window_name: 'false'
   focus: 'false'
   options:
