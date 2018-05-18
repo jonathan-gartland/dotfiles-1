@@ -1,16 +1,12 @@
 session_name: dashbot
 windows:
-- window_name: dashbot-server
+- window_name: dashbot
   focus: 'true'
   options:
     automatic-rename: 'on'
   panes:
   - shell_command:
     - cd /Users/steven.knight/src/dashbot
-    - npm run build:dev-watch
-  - shell_command:
-    - cd /Users/steven.knight/src/dashbot
-    - npm run server:debug
 - window_name: 'false'
   focus: 'false'
   options:

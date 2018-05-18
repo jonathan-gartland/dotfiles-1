@@ -1,0 +1,12 @@
+session_name: dashbot-servers
+start_directory: ~/src/dashbot
+windows:
+- window_name: react-server
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - npm run build:dev-watch
+  - shell_command:
+    - aws_rds_cashbot_v2_tunnel && npm run server:debug
