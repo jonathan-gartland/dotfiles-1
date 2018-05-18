@@ -10,8 +10,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # antigen bundle brew
   # antigen bundle brew-cask
 
-  zplug "plugins/brew",   from:oh-my-zsh
-  zplug "plugins/brew-cask",   from:oh-my-zsh
+  # zplug "plugins/brew",   from:oh-my-zsh
+  # zplug "plugins/brew-cask",   from:oh-my-zsh
 
   # new tab in terminal.app stays in same dir
   if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then

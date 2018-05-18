@@ -1,7 +1,7 @@
 # typeset -U path
 
 # prepends
-path=(~/.local/bin "$path[@]")
+path=(~/.local/bin $HOME/bin "$path[@]")
 # path=(~/.cabal/bin "$path[@]")
 
 # appends

@@ -8,13 +8,13 @@ setopt always_to_end
 
 setopt correct nocorrectall
 
-# directories
+# # directories
 setopt auto_name_dirs
 setopt auto_cd
 
 zmodload -i zsh/complist
 
-# eval $(dircolors ~/.dircolors)
+eval $(dircolors $HOME/src/nord-dircolors/src/dir_colors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
@@ -25,11 +25,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 zstyle ':completion:*:*:*:*:*' menu select=1 _complete _ignored _approximate
 
-# use a cache
+# # use a cache
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path $DOTSPATH/zsh/zsh/cache
 
-# ignore _functions
+# # ignore _functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 zstyle '*' single-ignored complete
