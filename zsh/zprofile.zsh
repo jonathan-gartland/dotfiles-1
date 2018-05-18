@@ -4,8 +4,8 @@ export DOTSPATH="$HOME/.zsh"
 source "$HOME/.zsh/lib/00_base.zsh"
 
 # load zplug
-export ZPLUG_HOME="$HOME/.zplug"
-source "$ZPLUG_HOME/init.zsh"
+# export ZPLUG_HOME="$HOME/.zplug"
+# source "$ZPLUG_HOME/init.zsh"
 
 #
 # Language
@@ -84,3 +84,5 @@ if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
 fi
 
 # echo "zprofile - btm"
+
+export PATH="$HOME/.cargo/bin:$PATH"
