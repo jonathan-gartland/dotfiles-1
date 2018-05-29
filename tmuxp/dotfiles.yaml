@@ -1,6 +1,6 @@
-session_name: mal
+session_name: dotfiles
 windows:
-- window_name: mal
+- window_name: dotfiles
   focus: 'false'
   options:
     automatic-rename: 'on'
