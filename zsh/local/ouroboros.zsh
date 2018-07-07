@@ -65,3 +65,7 @@ export RLS_ROOT=${HOME}/src/rls
 # . /Applications/Docker.app/Contents/Resources/etc/docker.zsh-completion
 # . /Applications/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion
 # . /Applications/Docker.app/Contents/Resources/etc/docker-machine.zsh-completion 
+
+export PATH="$PATH:/Users/steven.knight/src/git_hooks/commands"
+
+export CASHSTAR_HOOKS=$HOME/src/git_hooks/
