@@ -1,8 +1,8 @@
-#!/usr/bin/env python
-from os import chdir
+#!/usr/bin/env python2.7
 
+import errno
 import re
-import typing
+import os
 import optparse
 import os.path
 import platform
@@ -10,8 +10,18 @@ import sys
 from itertools import product
 
 from contextlib import contextmanager
-from pathlib import Path
-from subprocess import call, Popen, PIPE
+from subprocess import Popen, PIPE
+
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise
+
 
 git_urls = [
     'git@github.com:zplug/zplug.git',
@@ -36,12 +46,12 @@ home_dir = os.getenv('HOME')
 if home_dir is None:
     raise OSError("HOME env. variable must be set")
 
-DEST_REPO_DIR = f"{home_dir}/.repos"
+DEST_REPO_DIR = "{home_dir}/.repos".format(home_dir=home_dir)
 
 
-def run_command(cmd: str, *, verbose: bool = False) -> typing.Tuple[int, str]:
+def run_command(cmd, verbose):
     if verbose:
-        print(f"Command: {cmd}")
+        print("Command: {cmd}".format(cmd=cmd))
     process = Popen(cmd.split(' '), stdout=PIPE, stderr=PIPE)
     p_stdout, p_stderr = process.communicate()
 
@@ -61,9 +71,11 @@ def get_parser(arguments):
     parser.add_option("-n", "--dry-run", dest="dry_run", default=False,
                       help="Don't actually run any commands", action="store_true")
     parser.add_option('-c', "--git_clone", dest='git_clone', default=False, action='store_true',
-                      help=f"Clone all URLS to {DEST_REPO_DIR}")
+                      help="Clone all URLS to {DEST_REPO_DIR}".format(DEST_REPO_DIR=DEST_REPO_DIR))
     parser.add_option('-u', "--git_update", dest='git_update', default=False, action='store_true',
-                      help=f"Update all URLS to {DEST_REPO_DIR}")
+                      help="Update all URLS to {DEST_REPO_DIR}".format(DEST_REPO_DIR=DEST_REPO_DIR))
+    parser.add_option("-p", "--python", dest='python', default='python2.7',
+                      help='Python binary to use')
 
     (options, args) = parser.parse_args(args=arguments)
     return options, args, parser
@@ -71,12 +83,12 @@ def get_parser(arguments):
 
 @contextmanager
 def working_directory(path):
-    prev_cwd = Path.cwd()
-    chdir(path)
+    prev_cwd = os.getcwd()
+    os.chdir(path)
     try:
         yield
     finally:
-        chdir(str(prev_cwd))
+        os.chdir(prev_cwd)
 
 
 def parse_git_url(git_url):
@@ -85,41 +97,44 @@ def parse_git_url(git_url):
     if mo:
         return mo.group(1)
     else:
-        raise ValueError(f"No regex match against git_url {git_url}")
+        raise ValueError("No regex match against git_url {git_url}".format(git_url=git_url))
 
 
 def clone_repo(name, git_url, opts):
     with working_directory(DEST_REPO_DIR):
         if opts.verbose:
-            print(f"Cloning {name} at {git_url}")
+            print("Cloning {name} at {git_url}".format(name=name, git_url=git_url))
 
-        cmd = f"git clone {git_url}"
+        cmd = "git clone {git_url}".format(git_url=git_url)
         if opts.dry_run:
-            print(f"Command: {cmd}")
+            print("Command: {cmd}".format(cmd=cmd))
             return
 
         error_code, stderr = run_command(cmd, verbose=opts.verbose)
         if error_code > 0:
-            raise OSError(f"cloning of git repo {git_url} failed; error: {stderr}")
+            raise OSError("cloning of git repo {git_url} failed; "
+                          "error: {stderr}".format(git_url=git_url, stderr=stderr))
         else:
-            print(f"Cloned: {name}")
+            print("Cloned: {name}".format(name=name))
 
 
 def update_repo(name, git_dir, git_url, opts):
     with working_directory(git_dir):
-        cmd = f"git pull"
+        cmd = "git pull"
         if opts.verbose:
-            print(f"Updating {name} at {git_url}")
+            print("Updating {name} at {git_url}".format(name=name, git_url=git_url))
 
         if opts.dry_run:
-            print(f"Command: {cmd}")
+            print("Command: {cmd}".format(cmd=cmd))
             return
 
         error_code, stderr = run_command(cmd, verbose=opts.verbose)
         if error_code > 0:
-            raise OSError(f"Updating of git repo {git_url} failed; error: {stderr}")
+            raise OSError("Updating of git repo {git_url} failed; error: {stderr}".format(
+                git_url=git_url, stderr=stderr
+            ))
         else:
-            print(f"Updated: {name}")
+            print("Updated: {name}".format(name=name))
 
 
 def clone_repos(opts):
@@ -129,9 +144,9 @@ def clone_repos(opts):
         except ValueError as e:
             print(e)
         else:
-            git_dir = Path(DEST_REPO_DIR).joinpath(name)
-            if git_dir.exists():
-                print(f"{name} already exists skipping")
+            git_dir = os.path.join([DEST_REPO_DIR, name])
+            if os.path.exists(git_dir):
+                print("{name} already exists skipping".format(name=name))
             else:
                 clone_repo(name, git_url, opts)
 
@@ -143,18 +158,18 @@ def update_repos(opts):
         except ValueError as e:
             print(e)
         else:
-            git_dir = Path(DEST_REPO_DIR).joinpath(name)
-            if git_dir.exists():
+            git_dir = os.path.join([DEST_REPO_DIR, name])
+            if os.path.exists(git_dir):
                 update_repo(name, git_dir, git_url, opts)
             else:
-                print(f"{name} does not exists clone")
+                print("{name} does not exists clone".format(name=name))
                 clone_repo(name, git_url, opts)
 
 
 def run(argv):
     (options, args, parser) = get_parser(argv)
 
-    Path(DEST_REPO_DIR).mkdir(exist_ok=True)
+    mkdir_p(DEST_REPO_DIR)
 
     if options.git_clone:
         clone_repos(options)
@@ -206,20 +221,6 @@ class InstallBase(object):
     def run(self):
         raise NotImplementedError
 
-    def _execute_command(self, command):
-        try:
-            if self.options.verbose:
-                sys.stderr.write("command: {}\n".format(command))
-
-            if self.options.dry_run:
-                retcode = 0
-            else:
-                retcode = call(command, shell=True)
-            if retcode < 0:
-                print("Child was terminated by signal {}".format(retcode), file=sys.stderr)
-        except OSError as e:
-            print("Execution failed: {}".format(e), file=sys.stderr)
-
 
 class Links(InstallBase):
     def __init__(self, argv, options):
@@ -235,21 +236,28 @@ class Links(InstallBase):
             None: None
         }
         self.config_file = "install.conf.json"
-        self.dotbot = os.path.join(self.base_dir,
-                                   ".", ".dotbot", "bin", "dotbot")
+        self.dotbot = os.path.join(DEST_REPO_DIR, "dotbot", "bin", "dotbot")
         self.verbose = self.quiet = ''
         if options.verbose:
             self.verbose = '-v'
         else:
             self.quiet = '-q'
         self.dry_run = options.dry_run
+        self.python = options.python
 
     def _construct_cmd(self, os_type, install_type):
         config_file = self._config_file(os_type, install_type)
 
         if os.path.exists(config_file):
-            cmd = f"{self.dotbot} --base-directory {self.base_dir} --config-file {config_file} " \
-                  f"{self.quiet} {self.verbose}"
+            cmd = "{python} {dotbot} --base-directory {base_dir} --config-file " \
+                  "{config_file} " \
+                  "{quiet} {verbose}".format(python=self.python,
+                                             dotbot=self.dotbot,
+                                             base_dir=self.base_dir,
+                                             config_file=config_file,
+                                             quiet=self.quiet,
+                                             verbose=self.verbose
+                                             )
             return cmd
         else:
             return None
@@ -280,7 +288,7 @@ class Links(InstallBase):
         for os_type, install_type in configs:
             cmd = self._construct_cmd(os_type, install_type)
             if cmd:
-                self._execute_command(cmd)
+                run_command(cmd, self.verbose)
 
 
 if __name__ == '__main__':
