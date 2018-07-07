@@ -136,3 +136,5 @@
 	trustExitCode = true
 [pager]
 	diff = false
+[init]
+	templatedir = /Users/steven.knight/src/git_hooks/git_template
