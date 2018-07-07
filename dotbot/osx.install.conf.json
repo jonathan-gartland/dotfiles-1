@@ -22,8 +22,8 @@
   {
     "link": {
 
-      "~/.skhdrc": "dotfiles/skhdrc",
-      "~/.chunkvmrc": "dotfiles/chunkwmrc"
+      "~/.skhdrc": "chunkwm/skhdrc",
+      "~/.chunkvmrc": "chunkwm/chunkwmrc"
     }
   }
 ]

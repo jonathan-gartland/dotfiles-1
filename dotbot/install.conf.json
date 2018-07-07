@@ -50,9 +50,7 @@
       "~/.myclirc": "dotfiles/myclirc",
       "~/.direnvrc": "dotfiles/direnvrc",
       "~/.pymux.conf": "dotfiles/pymux.conf",
-      "~/.config/liquidpromptrc": "dotfiles/liquidpromptrc",
-      "~/.skhdrc": "dotfiles/skhdrc",
-      "~/.chunkvmrc": "dotfiles/chunkwmrc"
+      "~/.config/liquidpromptrc": "dotfiles/liquidpromptrc"
     }
   }
 ]
