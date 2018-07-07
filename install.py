@@ -167,17 +167,19 @@ def update_repos(opts):
 def run(argv):
     (options, args, parser) = get_parser(argv)
 
+    if len(argv) < 2:
+        parser.print_help()
+        return 1
+
     mkdir_p(DEST_REPO_DIR)
 
     if options.git_clone:
         clone_repos(options)
+        return 0
 
     if options.git_update:
         update_repos(options)
-
-    if len(argv) < 2:
-        parser.print_help()
-        return 1
+        return 0
 
     Links(argv, options).run()
 
