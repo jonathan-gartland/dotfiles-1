@@ -1,0 +1,15 @@
+---
+  -
+    defaults:
+      link:
+        relink: true
+  -
+    clean:
+      - "~"
+  -
+    link:
+      ~/.pyenv: "~/.repos/pyenv"
+      ~/.pyenv/plugins/pyenv-virtualenv: "~/.repos/pyenv-virtualenv"
+      ~/.pyenv/plugins/pyenv-installer: "~/.repos/pyenv-installer"
+      ~/.pyenv/plugins/pyenv-doctor: "~/.repos/pyenv-doctor"
+      ~/.pyenv/plugins/pyenv-update: "~/.repos/pyenv-update"

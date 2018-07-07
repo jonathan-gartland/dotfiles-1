@@ -233,7 +233,7 @@ class Links(InstallBase):
             InstallBase.WINDOWS: "windows",
             None: None
         }
-        self.config_file = "install.conf.json"
+        self.config_file = "install.conf.yaml"
         self.dotbot = os.path.join(DEST_REPO_DIR, "dotbot", "bin", "dotbot")
         self.verbose = self.quiet = ''
         if options.verbose:
