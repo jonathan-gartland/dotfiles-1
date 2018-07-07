@@ -1,6 +1,7 @@
 # repo wide
 *.pyc
 \#*.*\#
+.python-version
 
 # emacs
 emacs/.cask/
