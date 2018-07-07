@@ -140,7 +140,7 @@ def clone_repos(opts):
         try:
             name = parse_git_url(git_url)
         except ValueError as e:
-            print(e)
+            print("Error: {error}".format(error=e))
         else:
             git_dir = os.path.join([DEST_REPO_DIR, name])
             if os.path.exists(git_dir):
@@ -281,7 +281,9 @@ class Links(InstallBase):
         for os_type, install_type in configs:
             cmd = self._construct_cmd(os_type, install_type)
             if cmd:
-                run_command(cmd, self.verbose)
+                return_code, stderr = run_command(cmd, self.verbose)
+                if return_code > 0:
+                    print("Error: {stderr}".format(stderr=stderr))
 
 
 if __name__ == '__main__':
