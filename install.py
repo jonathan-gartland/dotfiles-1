@@ -142,7 +142,7 @@ def clone_repos(opts):
         except ValueError as e:
             print("Error: {error}".format(error=e))
         else:
-            git_dir = os.path.join([DEST_REPO_DIR, name])
+            git_dir = os.path.join(DEST_REPO_DIR, name)
             if os.path.exists(git_dir):
                 print("{name} already exists skipping".format(name=name))
             else:
@@ -156,7 +156,7 @@ def update_repos(opts):
         except ValueError as e:
             print(e)
         else:
-            git_dir = os.path.join([DEST_REPO_DIR, name])
+            git_dir = os.path.join(DEST_REPO_DIR, name)
             if os.path.exists(git_dir):
                 update_repo(name, git_dir, git_url, opts)
             else:
