@@ -74,8 +74,6 @@ def get_parser(arguments):
                       help="Clone all URLS to {DEST_REPO_DIR}".format(DEST_REPO_DIR=DEST_REPO_DIR))
     parser.add_option('-u', "--git_update", dest='git_update', default=False, action='store_true',
                       help="Update all URLS to {DEST_REPO_DIR}".format(DEST_REPO_DIR=DEST_REPO_DIR))
-    parser.add_option("-p", "--python", dest='python', default='python2.7',
-                      help='Python binary to use')
 
     (options, args) = parser.parse_args(args=arguments)
     return options, args, parser
@@ -243,22 +241,17 @@ class Links(InstallBase):
         else:
             self.verbose = '-q'
         self.dry_run = options.dry_run
-        self.python = options.python
 
     def _construct_cmd(self, os_type, install_type):
         config_file = self._config_file(os_type, install_type)
 
         if os.path.exists(config_file):
-            cmd = "{python} {dotbot} --base-directory {base_dir} --config-file " \
-                  "{config_file} " \
-                  "{quiet} {verbose}".format(python=self.python,
-                                             dotbot=self.dotbot,
-                                             base_dir=self.base_dir,
-                                             config_file=config_file,
-                                             quiet=self.quiet,
-                                             verbose=self.verbose
-                                             )
-            return cmd
+            cmd = "{dotbot} -d {base_dir} -c {config_file} " \
+                  "{verbose}".format(dotbot=self.dotbot,
+                                     base_dir=self.base_dir,
+                                     config_file=config_file,
+                                     verbose=self.verbose)
+            return cmd.strip()
         else:
             return None
 
