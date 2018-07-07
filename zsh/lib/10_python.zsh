@@ -1,7 +1,7 @@
 # Python
 export PYTHONSTARTUP=$HOME/src/dotfiles/dotfiles/pythonstartup.py
 
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.repos/pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
 
 if which pyenv > /dev/null; then
