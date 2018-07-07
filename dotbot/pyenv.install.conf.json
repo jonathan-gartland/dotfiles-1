@@ -1,10 +1,10 @@
 [
     {
         "link": {
-            "~/.pyenv/plugins/pyenv-virtualenv": ".pyenv-virtualenv",
-            "~/.pyenv/plugins/pyenv-installer": ".pyenv-installer",
-            "~/.pyenv/plugins/pyenv-doctor": ".pyenv-doctor",
-            "~/.pyenv/plugins/pyenv-update": ".pyenv-update",
+            "~/.pyenv/plugins/pyenv-virtualenv": ".~/repos/pyenv-virtualenv",
+            "~/.pyenv/plugins/pyenv-installer": ".~/.repos/pyenv-installer",
+            "~/.pyenv/plugins/pyenv-doctor": "~/.repos/pyenv-doctor",
+            "~/.pyenv/plugins/pyenv-update": "~/.repos/pyenv-update",
         }
     }
 ]

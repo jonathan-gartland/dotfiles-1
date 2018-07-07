@@ -1,0 +1,30 @@
+[
+  {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
+    }
+  },
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "shell": [
+      [
+        "mkdir -p ~/.vim/autoload/",
+        "Creating ~/.vim/autoload dir"
+      ]
+    ]
+  },
+  {
+    "link": {
+
+      "~/.skhdrc": "dotfiles/skhdrc",
+      "~/.chunkvmrc": "dotfiles/chunkwmrc"
+    }
+  }
+]
+

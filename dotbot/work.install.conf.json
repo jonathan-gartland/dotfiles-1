@@ -1,13 +1,20 @@
 [
-    {
-        "clean": [
-            "~"
-        ]
-    },
-    {
-        "link": {
-            "~/.gitconfig": "dotfiles/gitconfig.WORK",
-            "~/.hgrc": "dotfiles/hgrc.WORK"
-        }
+  {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
     }
+  },
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "link": {
+      "~/.gitconfig": "dotfiles/gitconfig.WORK",
+      "~/.hgrc": "dotfiles/hgrc.WORK"
+    }
+  }
 ]

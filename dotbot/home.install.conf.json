@@ -1,12 +1,19 @@
 [
-    {
-        "clean": [
-            "~"
-        ]
-    },
-    {
-        "link": {
-            "~/.gitconfig": "dotfiles/gitconfig.HOME"
-        }
+  {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
     }
+  },
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "link": {
+      "~/.gitconfig": "dotfiles/gitconfig.HOME"
+    }
+  }
 ]
