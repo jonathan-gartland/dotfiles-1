@@ -241,7 +241,7 @@ class Links(InstallBase):
         if options.verbose:
             self.verbose = '-v'
         else:
-            self.quiet = '-q'
+            self.verbose = '-q'
         self.dry_run = options.dry_run
         self.python = options.python
 
