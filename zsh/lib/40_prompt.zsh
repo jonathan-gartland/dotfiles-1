@@ -24,10 +24,10 @@ export SPACESHIP_CHAR_SYMBOL='λ'
 
 export SPACESHIP_PROMPT_ORDER=(
   # time          # Time stampts section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
+  user            # Username section
+  dir             # Current directory section
+  host            # Hostname section
+  git             # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
   # package       # Package version
   # node          # Node.js section
@@ -43,14 +43,14 @@ export SPACESHIP_PROMPT_ORDER=(
   # aws           # Amazon Web Services section
   # venv          # virtualenv section
   # conda         # conda virtualenv section
-  # pyenv         # Pyenv section
+  pyenv           # Pyenv section
   # dotnet        # .NET section
   # ember         # Ember.js section
   # kubecontext   # Kubectl context section
   # exec_time     # Execution time
-  line_sep      # Line break
-  # battery       # Battery level and status
-  char          # Prompt character
+  line_sep        # Line break
+  battery         # Battery level and status
+  char            # Prompt character
 )
 
 
@@ -59,7 +59,7 @@ export SPACESHIP_RPROMPT_ORDER=(
   rust          # Rust section
   jobs          # Background jobs indicator
   vi_mode       # Vi-mode indicator
-  # exit_code     # Exit code section
+  exit_code     # Exit code section
 )
 
 
