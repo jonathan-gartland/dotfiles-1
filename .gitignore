@@ -115,4 +115,4 @@ tmux/resurrect/*
 # intellij idea
 .idea/*
 zsh_plugins.zsh
-dotfiles.sublime-workspace
+/dotfiles.iml
