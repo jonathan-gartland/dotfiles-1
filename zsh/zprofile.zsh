@@ -83,6 +83,9 @@ if [ -n "$DISPLAY" -a "$TERM" = "rxvt-unicode" ]; then
   export TERM=rxvt-256color
 fi
 
+# cd'ing to $HOME is necessary as kitty opens the terminal at root directory
+cd $HOME
+
 # echo "zprofile - btm"
 
 export PATH="$HOME/.cargo/bin:$PATH"
