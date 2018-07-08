@@ -1,9 +1,0 @@
-{
-	"extensions":
-	[
-		".gitmodules",
-		".gitattributes",
-		".gitconfig",
-		"gitconfig.HOME"
-	]
-}
