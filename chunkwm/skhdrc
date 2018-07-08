@@ -54,7 +54,11 @@
 #
 #                                  an EOL character signifies the end of the bind.
 
-shift - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance --session /Users/steven.knight/.config/kitty/startup_session.conf
+# brew services restart skhd
+
+# switch to fn key??
+
+shift - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance
 
 # enter fullscreen mode for the focused container
 # enter fullscreen mode for the focused container
