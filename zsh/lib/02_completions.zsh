@@ -14,7 +14,6 @@ setopt auto_cd
 
 zmodload -i zsh/complist
 
-eval $(dircolors $HOME/src/nord-dircolors/src/dir_colors)
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
