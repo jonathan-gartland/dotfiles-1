@@ -1,6 +1,6 @@
 # set default umask
 umask 002
 
-# https://github.com/arcticicestudio/nord-dircolors
-[[ -s $HOME/src/nord-dircolors/src/dir_colors ]] && eval $(dircolors -b $HOME/src/nord-dircolors/src/dir_colors)
-
+# From https://github.com/dracula/dracula-theme/issues/218
+DRACULA_DIRCOLORS=$HOME/src/dotfiles/dotfiles/Dracula.dircolors
+[[ -s ${DRACULA_DIRCOLORS} ]] && eval $(dircolors -b ${DRACULA_DIRCOLORS})
