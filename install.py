@@ -23,12 +23,9 @@ def mkdir_p(path):
             raise
 
 
-git_urls = [
+git_urls = (
     'git@github.com:zplug/zplug.git',
-    'git@github.com:syl20bnr/spacemacs.git',
-    'git@github.com:nojhan/liquidprompt.git',
     'git@github.com:amix/vimrc.git',
-    'git@github.com:seebi/dircolors-solarized.git',
     'git@github.com:junegunn/vim-plug.git',
     'git@github.com:anishathalye/dotbot.git',
     'git@github.com:pyenv/pyenv.git',
@@ -39,7 +36,7 @@ git_urls = [
     'git@github.com:tmux-plugins/tpm.git',
     'git@github.com:petervanderdoes/gitflow.git',
     'git@github.com:petervanderdoes/git-flow-completion.git',
-]
+)
 
 home_dir = os.getenv('HOME')
 
@@ -83,6 +80,7 @@ def get_parser(arguments):
 def working_directory(path):
     prev_cwd = os.getcwd()
     os.chdir(path)
+    print("chdir'ing to {path}".format(path=path))
     try:
         yield
     finally:
@@ -160,7 +158,7 @@ def update_repos(opts):
             if os.path.exists(git_dir):
                 update_repo(name, git_dir, git_url, opts)
             else:
-                print("{name} does not exists clone".format(name=name))
+                print("{name} does not exists; cloning {git_url}".format(name=name, git_url=git_url))
                 clone_repo(name, git_url, opts)
 
 
