@@ -1,95 +1,104 @@
-#  NOTE(koekeishiya): A list of all built-in modifier and literal keywords can
-#                     be found at https://github.com/koekeishiya/skhd/issues/1
-#
-#                     A hotkey is written according to the following rules:
-#
-#                       hotkey   = <mode> '<' <action> | <action>
-#
-#                       mode     = 'name of mode' | <mode> ',' <mode>
-#
-#                       action   = <keysym> ':' <command> | <keysym> '->' ':' <command>
-#                                  <keysym> ';' <mode>    | <keysym> '->' ';' <mode>
-#
-#                       keysym   = <mod> '-' <key> | <key>
-#
-#                       mod      = 'built-in mod keyword' | <mod> '+' <mod>
-#
-#                       key      = <literal> | <keycode>
-#
-#                       literal  = 'single letter or built-in keyword'
-#
-#                       keycode  = 'apple keyboard kVK_<Key> values (0x3C)'
-#
-#                       ->       = keypress is not consumed by skhd
-#
-#                       command  = command is executed through '$SHELL -c' and
-#                                  follows valid shell syntax. if the $SHELL environment
-#                                  variable is not set, it will default to '/bin/bash'.
-#                                  when bash is used, the ';' delimeter can be specified
-#                                  to chain commands.
-#
-#                                  to allow a command to extend into multiple lines,
-#                                  prepend '\' at the end of the previous line.
-#
-#                                  an EOL character signifies the end of the bind.
-#
-#
-#  NOTE(koekeishiya): A mode is declared according to the following rules:
-#
-#                       mode_decl = '::' <name> '@' ':' <command> | '::' <name> ':' <command> |
-#                                   '::' <name> '@'               | '::' <name>
-#
-#                       name      = desired name for this mode,
-#
-#                       @         = capture keypresses regardless of being bound to an action
-#
-#                       command  = command is executed through '$SHELL -c' and
-#                                  follows valid shell syntax. if the $SHELL environment
-#                                  variable is not set, it will default to '/bin/bash'.
-#                                  when bash is used, the ';' delimeter can be specified
-#                                  to chain commands.
-#
-#                                  to allow a command to extend into multiple lines,
-#                                  prepend '\' at the end of the previous line.
-#
-#                                  an EOL character signifies the end of the bind.
 
-# brew services restart skhd
+# Switch to fn key: 0x3F
 
-# switch to fn key??
+# alt == option == ⌥
 
+# tabbed lay
+# alt - w : feature not available
+
+# default layout
+alt - e : chunkc tiling::window --toggle float
+
+# resize mode
+# alt - r : chunkc mouse_resize_window 1
+
+# focus floating/tiling
+# alt - space : TODO
+
+# toggle tiling / floating
+# shift + alt - space : chunkc set window_float_next 1
+
+# focus parent
+alt - a : chunkc tiling::window --toggle parent
+
+# stacked layout
+# alt - s : feature not available
+alt - s: chunkc tiling::window --toggle split
+
+# dmenu - You'll need to manually update spotlight or alfred
+# alt - d
+
+# full screen
+ctrl + alt - f : chunkc tiling::window --toggle fullscreen
+
+# split horizontal
+alt - h : chunkc set bsp_split_mode horizontal
+
+# split vertical
+alt - v : chunkc set bsp_split_mode vertical
+
+# focus-left
+alt - j : chunkc tiling::window --focus west
+cmd + alt - j : chunkc tiling::window --focus west
+
+# focus-down
+alt - k : chunkc tiling::window --focus south
+
+# focus-up
+alt - l : chunkc tiling::window --focus north
+
+# focus-right
+# 0x29 is the semicolon key ;
+alt - 0x29 : chunkc tiling::window --focus east
+cmd + alt - 0x29 : chunkc tiling::window --focus east
+
+# open terminal
+# I use Intellij IDEA so alt - return isn't a good choice.
+# alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance
 shift - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance
 
-# enter fullscreen mode for the focused container
-# enter fullscreen mode for the focused container
-alt - f : chunkc tiling::window --toggle fullscreen
-
-# change focus between tiling / floating windows
-shift + alt - space : chunkc tiling::window --toggle float
-
-# change layout of desktop
-alt - e : chunkc tiling::desktop --layout bsp
-alt - s : chunkc tiling::desktop --layout monocle
-
-# kill focused window
+# kill-window
 shift + alt - q : chunkc tiling::window --close
 
-# change focus
-alt - h : chunkc tiling::window --focus west
-alt - j : chunkc tiling::window --focus south
-alt - k : chunkc tiling::window --focus north
-alt - l : chunkc tiling::window --focus east
+# close chunkwm, logout
+shift + alt - e : osascript -e 'tell app "System Events" to log out'
 
+# restart chunkwm
+shift + alt - r : brew services restart chunkwm
+# restart skhd
+ctrl + shift + alt - r : brew services restart skhd
+
+# move window left
+shift + alt - j : chunkc tiling::window --warp west
+
+# move window down
+shift + alt - k : chunkc tiling::window --warp south
+
+# move window up
+shift + alt - l : chunkc tiling::window --warp north
+
+# move window left
+shift + alt - 0x29 : chunkc tiling::window --warp east
+
+# TODO add key bindings for move windows between desktops
+
+#
+# custom chunkwm key bindings
+
+# focus window prev
 alt - p : chunkc tiling::window --focus prev
+# focus window next
 alt - n : chunkc tiling::window --focus next
 
-# move focused window
-shift + alt - h : chunkc tiling::window --warp west
-shift + alt - j : chunkc tiling::window --warp south
-shift + alt - k : chunkc tiling::window --warp north
-shift + alt - l : chunkc tiling::window --warp east
+# focus desktop prev
+shift + ctrl - p : chunkc tiling::desktop --focus prev
+# focus desktop next
+shift + ctrl - n : chunkc tiling::desktop --focus next
 
-alt - r : chunkc tiling::desktop --rotate 90
+# focus window to prev monitor
+ctrl + alt - p : chunkc tiling::monitor prev
+# focus window to next monitor
+ctrl + alt - n : chunkc tiling::monitor next
 
 # move focused container to workspace
 shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
@@ -101,3 +110,7 @@ shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
 shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
 shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
 shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+shift + alt - 6 : chunkc tiling::window --send-to-desktop 7
+shift + alt - 7 : chunkc tiling::window --send-to-desktop 8
+shift + alt - 8 : chunkc tiling::window --send-to-desktop 9
+shift + alt - 9 : chunkc tiling::window --send-to-desktop 0
