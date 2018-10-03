@@ -21,11 +21,15 @@
         python install.py work
         python install.py home
         python install.py none
+        
+a) If using tmux, run
+
+    tmux source ~/.tmux.conf
 
 
-3) Update dependencies - This will download all the dependencies for dotfiles
+4) Update dependencies - This will download all the dependencies for dotfiles
 
-        python install.py --git_update, -u
+        python install.py --git_update  # or -u
 
 # License
 
