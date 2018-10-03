@@ -199,3 +199,4 @@ function {
 unset t0
 
 export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
