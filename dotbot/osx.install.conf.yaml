@@ -14,5 +14,5 @@
   - 
     link: 
       ~/.skhdrc: "chunkwm/skhdrc"
-      ~/.chunkvmrc: "chunkwm/chunkwmrc"
+      ~/.chunkwmrc: "chunkwm/chunkwmrc"
 
