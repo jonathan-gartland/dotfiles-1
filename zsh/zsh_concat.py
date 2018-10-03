@@ -6,6 +6,11 @@ from platform import uname
 from pathlib import Path
 
 
+# TODO: re-write to run in py2 because install.py is written for python3 and run
+#  dotbot (e.g. /Users/steven.knight/.repos/dotbot/bin/dotbot) is run it fails
+#  Error: pyenv: python3: command not found
+#  re-write in rust ??
+
 filename_template = """
 # -------------------------------------------------------------------------------
 # filename: {filename}
