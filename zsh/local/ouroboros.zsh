@@ -9,7 +9,7 @@ alias hide_dot_files='defaults write com.apple.finder AppleShowAllFiles NO; kill
 # zplug "plugins/brew",   from:oh-my-zsh
 # zplug "plugins/osx",   from:oh-my-zsh
 # zplug "/usr/local/share/zsh/site-functions/_aws", from:local
-source $HOME/src/cashbot/scripts/cashbot_defs.sh
+source $HOME/Projects/cashbot/scripts/cashbot_defs.sh
 
 export PATH="/usr/local/mysql/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -21,7 +21,6 @@ export EVENT_NOKQUEUE=1
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
-export PYTHONPATH=/Users/steven.knight/src/hooks:$PYTHONPATH
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:/Library/TeX/texbin/
 
 type ls > /dev/null && unset -f ls 2> /dev/null
@@ -36,12 +35,6 @@ alias lt='exa --tree --long'
 alias lr='exa --long --reverse --sort modified'
 alias lg='exa --git --long'
 alias hg='/usr/local/bin/hg'
-
-# function hg {
-#     eval $(pyenv global | xargs pyenv default)
-#     pyenv exec hg $*
-#     pyenv shell -
-# }
 
 # https://github.com/dvorka/hstr
 
@@ -66,6 +59,19 @@ export RLS_ROOT=${HOME}/src/rls
 # . /Applications/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion
 # . /Applications/Docker.app/Contents/Resources/etc/docker-machine.zsh-completion 
 
-export PATH="$PATH:/Users/steven.knight/src/git_hooks/commands"
+export PATH="$PATH:/Users/steven.knight/Projects/git_hooks/commands"
 
-export CASHSTAR_HOOKS=$HOME/src/git_hooks/
+
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# Add to .bashrc, too
+export CASHSTAR_HOOKS=$HOME/Projects/git_hooks/
+
+
+alias chunkwm_stop='brew services stop chunkwm'
+alias chunkwm_start='brew services start chunkwm'
+alias chunkwm_restart='chunkwm_stop && chunkwm_start'
+
+alias skhd_stop='brew services stop skhd'
+alias skhd_start='brew services start skhd'
+alias skhd_restart='skhd_stop && skhd_start'
