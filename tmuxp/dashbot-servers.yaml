@@ -1,5 +1,4 @@
 session_name: dashbot-servers
-start_directory: ~/src/dashbot
 windows:
 - window_name: react-server
   focus: 'false'
@@ -7,6 +6,13 @@ windows:
     automatic-rename: 'on'
   panes:
   - shell_command:
+    - cd ~/Projects/dashbot
     - npm run build:dev-watch
+- window_name: flask-server
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
   - shell_command:
+    - cd ~/Projects/dashbot
     - aws_rds_cashbot_v2_tunnel && npm run server:debug

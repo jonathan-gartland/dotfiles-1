@@ -6,4 +6,4 @@ windows:
     automatic-rename: 'on'
   panes:
   - shell_command:
-    - cd /Users/steven.knight/src/cashbot
+    - cd /Users/steven.knight/Projects/cashbot

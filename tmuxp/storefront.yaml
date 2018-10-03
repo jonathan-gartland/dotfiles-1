@@ -1,22 +1,17 @@
 session_name: storefront
+start_directory: /Users/steven.knight/Projects/storefront
 windows:
-- window_name: storefront
+- window_name: flask-server
   focus: 'false'
-  layout: even-vertical
   options:
     automatic-rename: 'on'
   panes:
   - shell_command:
-    - cd /Users/steven.knight/src/storefront
     - python runserver.py
-  - focus: 'true'
-    shell_command:
-    - cd /Users/steven.knight/src/storefront
-    - npm run build:dev-watch
-- window_name: 'false'
+- window_name: react-server
   focus: 'true'
   options:
     automatic-rename: 'on'
   panes:
-  - shell_command:
-    - cd /Users/steven.knight/src/storefront
+    shell_command:
+    - npm run build:dev-watch
