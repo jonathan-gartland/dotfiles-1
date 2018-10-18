@@ -10,12 +10,13 @@
     shell: 
       - 
         - "mkdir -p ~/.vim/autoload/"
+        - "mkdir -p ~/.repos/tmux_plugins"
         - "Creating ~/.vim/autoload dir"
   - 
     link: 
       ~/.emacs.d: "~/.repos/spacemacs"
       ~/.zplug: "~/.repos/zplug"
-      ~/.tmux/plugins/tpm: "~/.repos/tpm"
+      ~/.tmux/pluginsm: "~/.repos/tmux_plugins"
       ~/.pyenv: "~/.repos/pyenv"
       ~/.pyenv/plugins/pyenv-virtualenv: "~/.repos/pyenv-virtualenv"
       ~/.pyenv/plugins/pyenv-installer: "~/.repos/pyenv-installer"
