@@ -75,3 +75,5 @@ alias chunkwm_restart='chunkwm_stop && chunkwm_start'
 alias skhd_stop='brew services stop skhd'
 alias skhd_start='brew services start skhd'
 alias skhd_restart='skhd_stop && skhd_start'
+
+alias cat='bat'
