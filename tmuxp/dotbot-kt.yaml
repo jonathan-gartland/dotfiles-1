@@ -1,0 +1,9 @@
+session_name: dotbot-kt
+windows:
+- window_name: dotbot-kt
+  focus: 'false'
+  options:
+    automatic-rename: 'on'
+  panes:
+  - shell_command:
+    - cd /Users/steven.knight/src/dotbot-kt
