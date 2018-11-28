@@ -116,3 +116,4 @@ tmux/resurrect/*
 .idea/*
 zsh_plugins.zsh
 /dotfiles.iml
+/zsh/lib.zsh
