@@ -464,3 +464,8 @@ function texi-to-epub() {
     zip -0Xq "${name}.epub" mimetype
     zip -Xr9D "${name}.epub" META-INF OEBPS
 }
+
+function update_zshrc_cache() {
+    python3 "$DOTSPATH/zsh_concat.py"
+    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+}
