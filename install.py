@@ -24,7 +24,6 @@ def mkdir_p(path):
 
 
 git_urls = (
-    'git@github.com:zplug/zplug.git',
     'git@github.com:amix/vimrc.git',
     'git@github.com:junegunn/vim-plug.git',
     'git@github.com:anishathalye/dotbot.git',
