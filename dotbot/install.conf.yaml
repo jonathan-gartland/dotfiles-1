@@ -37,7 +37,6 @@
       ~/.tmux.conf: "tmux/tmux.conf"
       ~/.Xresources: "dotfiles/Xresources"
       ~/.zlogin: "zsh/zlogin.zsh"
-      ~/.zsh_plugins.txt: "zsh/zsh_plugins.txt"
       ~/.zlogout: "zsh/zlogout.zsh"
       ~/.zprofile: "zsh/zprofile.zsh"
       ~/.zshenv: "zsh/zshenv.zsh"
