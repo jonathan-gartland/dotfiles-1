@@ -47,7 +47,7 @@ def main(args):
     hostname = uname()[1]
     local_dir = parent_dir.joinpath('local')
 
-    outfilename = parent_dir.joinpath("zsh_plugins.zsh")
+    outfilename = parent_dir.joinpath("concatenated.zsh")
 
     with open(str(outfilename), 'w') as outbuf:
         for filename in scandir(str(local_dir)):
