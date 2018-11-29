@@ -467,5 +467,5 @@ function texi-to-epub() {
 
 function update_zshrc_cache() {
     python3 "$DOTSPATH/zsh_concat.py"
-    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+    antibody bundle < $DOTSPATH/plugins.zsh > ~/.zsh_plugins.sh
 }
